@@ -1,33 +1,8 @@
-button {
-    width: 100px;
-    height: 100px;
-    border: 5px solid black;
-    font-size: 30px;
-    font-weight: 700;
-    cursor: pointer;
+.correct{
+    background-color: green;
+    color: white;
 }
-.btn_box {
-    display: inline-block;
-    width: 100px;
-    height: 100px;
-    border: 5px solid black;
-    text-align: center;
-    line-height: 100px;
-    font-size: 30px;
-    font-weight: 700;
-}
-.ex_eight button.active{
+.incorrect{
     background-color: firebrick;
-}
-.ex_ten div.active1{
-    background-color: crimson;
-}
-.ex_ten div.active2{
-    background-color: darkgreen;
-}
-.ex_ten div.active3{
-    background-color: darkblue;
-}
-.ex_ten div.active4{
-    background-color: yellow;
+    color: white;
 }
