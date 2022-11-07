@@ -1,30 +1,32 @@
 $(function () {
-      /* ex_eight ------------------------------------------------ */
-      for (var i = 1 ; i <= 10; i++) {
-        var numOne = Math.floor(Math.random() * 10)
-        var numTwo = Math.floor(Math.random() * 10)
-        $('.ex_nine .question').append(`
-        <p class='q${i}'>
-        <input class='n1' type='text' size='1' readonly value='${numOne}'>
-        +
-        <input class='n2' type='text' size='1' readonly value='${numTwo}'>
-        =
-        <input class='n3' type='text' size='1'>
-        </p>
-        `)}
-        $('.ex_nine button').click(function () {
-            var a = 0; // 맞힌 갯수 변수 선언
-            for (var i = 1; i <= 10; i++) {
-                var b = parseInt($(`.ex_nine .q${i} .n1`).val())
-                var c = parseInt($(`.ex_nine .q${i} .n2`).val())
-                var d = parseInt($(`.ex_nine .q${i} .n3`).val()) // user가 넣은 값
-                if (d === (b + c)){
-                    a ++
-                    $(`.ex_nine .q${i}`).css({'background-color':'green'})
-                } else {
-                    $(`.ex_nine .q${i}`).css({'background-color':'firebrick'})
-                }//if
-            }//for
-            $('.ex_nine .result').text(a)
+    var checkAnNum = [
+        [2, 3], //chk2, chk3 < q1
+        [1] //chk1 < q2
+    ]// checkAnNum (for - i) => 정답의 갯수는 j.length
+    $('.ex_five button').click(function () {
+            var point = 0;
+            var checkCnt = 0;
+            for (var j = 0; j < checkAnNum.length; j++){
+            if ($(`.ex_five .q1 .chk${checkAnNum[0][0]}`).prop('checked')) {
+                    checkCnt++
+                }//chk2
+                if ($(`.ex_five .q1 .chk${checkAnNum[0][1]}`).prop('checked')) {
+                    checkCnt++
+                }//chk3, checkCnt = 2
+                console.log(checkCnt)
+                if ($(`.ex_five .q2 .chk${checkAnNum[1][0]}`).prop('checked')) {
+                    checkCnt++
+                }//chk1
+            }//for-j
+            if(checkCnt == checkAnNum[0].length){
+                point++
+            }
+
+            if(checkCnt == checkAnNum[1].length){
+                point++
+            }
+        console.log(point)
+        console.log(checkAnNum[0].length, checkAnNum[1].length)    
+        console.log(checkCnt)
         })//click
 })//call-back
