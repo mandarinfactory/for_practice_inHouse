@@ -1,40 +1,52 @@
 $(function () {
-    var checkAnNum = [
-        [2, 3], //chk2, chk3 < q1
-        [1] //chk1 < q2
-    ]// checkAnNum (for - i) => 정답의 갯수는 j.length
-    $('.ex_five button').click(function () {
-        /* if ($(`.ex_five .q1 .chk${checkAnNum[0][0]}`).prop('checked')) {
-            checkCnt++
-        }//chk2, checkCnt = 1
-        console.log(checkCnt)
-        if ($(`.ex_five .q1 .chk${checkAnNum[0][1]}`).prop('checked')) {
-            checkCnt++
-        }//chk3, checkCnt = 2
-        console.log(checkCnt)
-        if(checkCnt === checkAnNum[0].length){
-                point++
-            }
-            console.log(point)
-            if ($(`.ex_five .q2 .chk${checkAnNum[1][0]}`).prop('checked')) {
-                checkCnt++
-            }//chk1, checkCnt = 3
-            console.log(checkCnt)
-            if(checkCnt === checkAnNum[1].length){
-                point++
-            } */
+    $('.ex_one button').click(function () {
+        var a = [1, 3]
         var point = 0;
+        for(var i = 0; i < a.length; i++)
+        if($(`.ex_one .q_${i} .radio${a[i]}`).prop('checked')) point++
+    })//click(.ex_one)
+    /* ex_one ------------------------------------------------------- */
+    $('.ex_two button').click(function () {
+        var a = [0,1,0,1]
         var checkCnt = 0;
-        for(var k = 1; k <= 2; k++){
-        for(var i = 0; i < checkAnNum.length; i++){
-        for(var j = 0; j < checkAnNum[i].length; j++){
-            if ($(`.ex_five .q${k} .chk${checkAnNum[i][j]}`).prop('checked')) {
-                checkCnt++
-                    }//if 
-                }//for-j
-                if(checkCnt === checkAnNum[i].length) point++ //if
-            }//for-i
-            $('.ex_five .result').text(point)
-        }//for-k
-        })//click
+        for(var i = 0; i < a.length; i++)
+        if( // 정답조건!
+        ($(`.ex_two .chk${i}`).prop('checked') && a[i] === 1)
+        ||
+        (!$(`.ex_two .chk${i}`).prop('checked') && a[i] === 0) // checkbox 하나 검사한것!(check된것, 안된것 4개!) * 총4번해야함!
+        ){checkCnt++}
+        if(checkCnt === a.length){
+            $('.ex_two .result').text('정답')
+        } else {
+            $('.ex_two .result').text('오답')
+        }
+    })//click(.ex_two)
+    /* ex_two ------------------------------------------------------- */
+    $('.ex_three button').click(function () {
+        var a = [0,1,0,1]
+        var i = 0
+        var checkCnt = 0;
+        $('.ex_three input').each(function () {
+            if(
+                ($(this).prop('checked') && a[i] === 1)
+                ||
+                (!$(this).prop('checked') && a[i] === 0) // => .ex_two랑 비슷하다! i만 변경!
+                ){checkCnt++} //4번 검사! 
+                i++ // i값도 변화해야하니까!
+        })//each
+        if(checkCnt === a.length){
+            $('.ex_three .result').text('정답')
+        } else {
+            $('.ex_three .result').text('오답')
+        }//if-else
+    })//click(.ex_three)
+    /* ex_three ------------------------------------------------------- */
+    $('.ex_four button').click(function () {
+        var checkCnt = 0;
+        var a = [2,4] //2, 4번째에 답이있다!(1, 3번째에는 답X)
+        for(var i = 1; i <= 4; i++){
+            $(`.ex_four input:nth-child(${i})`).prop('checked') && 
+        }//for
+    })//click
+    /* ex_four ------------------------------------------------------- */
 })//call-back
