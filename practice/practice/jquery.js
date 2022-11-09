@@ -1,52 +1,27 @@
 $(function () {
-    $('.ex_one button').click(function () {
-        var a = [1, 3]
-        var point = 0;
-        for(var i = 0; i < a.length; i++)
-        if($(`.ex_one .q_${i} .radio${a[i]}`).prop('checked')) point++
-    })//click(.ex_one)
-    /* ex_one ------------------------------------------------------- */
-    $('.ex_two button').click(function () {
-        var a = [0,1,0,1]
-        var checkCnt = 0;
-        for(var i = 0; i < a.length; i++)
-        if( // 정답조건!
-        ($(`.ex_two .chk${i}`).prop('checked') && a[i] === 1)
-        ||
-        (!$(`.ex_two .chk${i}`).prop('checked') && a[i] === 0) // checkbox 하나 검사한것!(check된것, 안된것 4개!) * 총4번해야함!
-        ){checkCnt++}
-        if(checkCnt === a.length){
-            $('.ex_two .result').text('정답')
-        } else {
-            $('.ex_two .result').text('오답')
-        }
-    })//click(.ex_two)
-    /* ex_two ------------------------------------------------------- */
-    $('.ex_three button').click(function () {
-        var a = [0,1,0,1]
-        var i = 0
-        var checkCnt = 0;
-        $('.ex_three input').each(function () {
-            if(
-                ($(this).prop('checked') && a[i] === 1)
-                ||
-                (!$(this).prop('checked') && a[i] === 0) // => .ex_two랑 비슷하다! i만 변경!
-                ){checkCnt++} //4번 검사! 
-                i++ // i값도 변화해야하니까!
-        })//each
-        if(checkCnt === a.length){
-            $('.ex_three .result').text('정답')
-        } else {
-            $('.ex_three .result').text('오답')
-        }//if-else
-    })//click(.ex_three)
-    /* ex_three ------------------------------------------------------- */
-    $('.ex_four button').click(function () {
-        var checkCnt = 0;
-        var a = [2,4] //2, 4번째에 답이있다!(1, 3번째에는 답X)
-        for(var i = 1; i <= 4; i++){
-            $(`.ex_four input:nth-child(${i})`).prop('checked') && 
-        }//for
-    })//click
-    /* ex_four ------------------------------------------------------- */
+    for(var i = 1; i <= 5; i++){
+        var randomNum = Math.ceil(Math.random() * 100);
+        $('.ex_nine .q').append(`${randomNum},`);
+    }//for-i
+    $('.ex_nine .btn_odd').click(function j() {
+        $('.ex_nine .result').empty();
+        var numberArr = ($('.ex_nine .q').text()).split(',') // 1. 글자전체 가져옴, 2. ['','','']꼴로 만들어준다.
+        console.log($('.ex_nine .q').text())   
+        console.log(numberArr)   
+        numberArr.forEach(function (v){
+        var oddArr = []
+            if(parseInt(v) % 2 !== 0){
+            oddArr = numberArr.push(v)//map-oddArr //3. 홀수, 짝수검사를 통해 해당하는 배열을 새로 만든다!
+            }//if
+            })//forEach-numberArr
+            console.log(oddArr);
+            /* 
+            1. 글자 전체를 가져온다. '3','2','5' // split
+            2. 그리고 글자를 , 기준으로 쪼개고 배열로 만든다. ['3','2','5']
+            3. 배열을 반복해서 홀수,짝수검사를 통해(parseInt) 해당하는 배열을 새로 만들어야한다. ['3', '5'] // map
+            4. 생성된 배열의 갯수는 .length로!
+            5. 생성된 배열로 반복해서 숫자를 출력한다.(여러개니까!)  
+            */
+        })//click(.btn_odd)
+    /* ex_nine -------------------------------------------------------- */
 })//call-back
