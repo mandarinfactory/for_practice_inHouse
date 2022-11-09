@@ -28,7 +28,7 @@ $(function () {
             $(this).css({'background-color':boxColor})
         })//each
     })//click
-    /* assignment!(ex_four) --------------------------------------------- */
+    /* assignment!(ex_four) -------------------------------------------- */
     $('.ex_four button').click(function () {
         var a = 0;
         $('.ex_four p').each(function () {
