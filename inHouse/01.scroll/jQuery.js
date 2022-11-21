@@ -12,9 +12,7 @@ $(function () {
 
     $(window).scroll(function () {/* window === web-browser, document = HTML DOM */
         floatBanner();
-    })//scroll
-
-    $(window).resize(function () {
+    }).resize(function () {
         floatBanner();
-    })//resize
+    })//scroll && resize
 })//document.ready
