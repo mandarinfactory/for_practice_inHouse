@@ -1,7 +1,8 @@
 $(function () {
     function scrollBox () {
         var scrTop = $(window).scrollTop();
-        if(scrTop >= 200){
+        var box1Top = $('.box1').offset().top;
+        if(scrTop >= box1Top){
             $('.box1').addClass('active')
         } else {
             $('.box1').removeClass('active')
