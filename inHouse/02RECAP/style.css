@@ -2,12 +2,25 @@ body {
     margin: 0;
     height: 1000vh;
 }
+.line {
+    position: fixed;
+    width: 100%;
+    border-top: 1px solid black;
+}
+.line1 {
+    height: 25%;
+}
 .box1 {
     position: relative;
     width: 100px;
-    height: 100px;
-    background-color: fuchsia;
 }
-.box1.active {
+.box1 div {
+    padding: 80px 0;
     background-color: firebrick;
+    transform: scale(0);
+    transition: all 0.5s;
+}
+.box1.active div{
+    transform: scale(1);
+    background-color: aquamarine;
 }
