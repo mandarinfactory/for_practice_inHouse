@@ -9,3 +9,6 @@ body {
     height: 100px;
     background-color: fuchsia;
 }
+.box1.active {
+    background-color: firebrick;
+}
