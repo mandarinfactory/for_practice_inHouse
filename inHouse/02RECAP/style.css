@@ -1,0 +1,11 @@
+body {
+    margin: 0;
+    height: 1000vh;
+}
+.box1 {
+    position: relative;
+    top: 200px;
+    width: 100px;
+    height: 100px;
+    background-color: fuchsia;
+}
