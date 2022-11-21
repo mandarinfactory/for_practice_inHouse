@@ -3,20 +3,54 @@
     padding: 0;
 }
 .dummy {
+    width: 1000vw;
     height: 1000vh;
 }
 .banner {
     position: absolute;
-    right: 0;
-    top: 0;
     width: 100px;
-    height: 300px;
+    height: 200px;
     text-align: center;
-    line-height: 300px;
+    line-height: 200px;
     font-size: 2em;
     color: white;
     transition: all 0.3s;
 }
+.banner_lt {
+    background-color: yellow;
+}
+.banner_lc {
+    background-color: darksalmon;
+}
+.banner_lb {
+    background-color: darkviolet;
+}
+.banner_ct {
+    left: calc(50% - 50px);
+    background-color: darkslateblue;
+}
+.banner_cc {
+    left: calc(50% - 50px);
+    top: calc(50% - 100px);
+    background-color: green;
+
+}
+.banner_cb {
+    left: calc(50% - 50px);
+    top: calc(100% - 200px) ;
+    background-color: darkkhaki;
+}
+.banner_rt {
+    right: 0;
+    background-color: darkred;
+}
 .banner_rc {
+    right: 0;
+    top: calc(50% - 100px);
     background-color: indianred;
+}
+.banner_rb {
+    right: 0;
+    top: calc(100% - 200px) ;
+    background-color: aquamarine;
 }
