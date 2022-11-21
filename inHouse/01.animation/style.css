@@ -1,0 +1,22 @@
+* {
+    margin:0;
+    padding: 0;
+}
+.dummy {
+    height: 1000vh;
+}
+.banner {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100px;
+    height: 300px;
+    text-align: center;
+    line-height: 300px;
+    font-size: 2em;
+    color: white;
+    transition: all 0.3s;
+}
+.banner_rc {
+    background-color: indianred;
+}
