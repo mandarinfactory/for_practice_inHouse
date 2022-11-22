@@ -1,3 +1,51 @@
 .ex_one div {
-    
+    border: 3px solid black;
+    width: 30%;
+    margin: 0 auto;
+}
+.ex_one div::before{
+    content: '';
+    display: block;
+    padding-top: 100%; /* parent인 div의 width기준으로 잡는다. */
+    background-color: deeppink;
+}
+.ex_two div {
+    position: relative;
+    width: 80%;
+    max-width: 700px;
+    margin: 0 auto;
+}
+.ex_two div::before{
+    /* 유튜브는 560 / 315 * 100 */
+    content: '';
+    display: block;
+    padding-top: 56.25%; 
+    background-color: deeppink;
+}
+.ex_two div iframe {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+.ex_three div {
+    position: relative;
+    width: 90%;
+    max-width: 700px;
+    margin: 300px;
+    margin: 0 auto;
+    border: 5px solid indianred;
+}
+.ex_three div img {
+    min-width: 100%;
+    min-height: 100%;
+    filter: brightness(50%);
+}
+.ex_three div iframe {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+iframe {
+    border: none;
 }
