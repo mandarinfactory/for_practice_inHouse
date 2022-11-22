@@ -14,7 +14,7 @@ $(function () {
         else if(scrTop >= offstThree - 40 && scrTop < offstFour - 40){// >= ~ 부터 <  ~ 까지
             $('.a3').addClass('active')
         } 
-        else if(scrTop >= offstFour - 40){// >= ~ 부터 <  ~ 까지
+        else {// >= ~ 부터 <  ~ 까지
             $('.a4').addClass('active')
         } 
     }//function
@@ -27,4 +27,7 @@ $(function () {
         scrollSpy();
     })//resize && scroll
 
+    $('nav a').click(function (e) {
+        e.preventDefault()
+    })//click
 })//document.ready
