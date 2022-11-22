@@ -25,6 +25,14 @@ $(function () {
             $('section > p').removeClass('active')
             $('.section4 > p').addClass('active')
         } 
+    /*     $('section p').each(function () {
+            var a = $(this).offset().top
+            if(scrTop >= a - 40) {
+                $(this).addClass('active')
+            } else {
+                $(this).removeClass('active')
+            }
+        })//each => 모범적인 답안! */
     }//function
 
     scrollSpy();
