@@ -15,4 +15,13 @@ nav a {
     text-decoration: none;
     color: white;
     margin: 0 10px;
+    transition: all 0.3s;
+}
+nav a.active {
+    color: yellow;
+    font-size: 20px;
+    font-weight: 600;
+}
+section {
+    border-bottom: 5px solid black;
 }
