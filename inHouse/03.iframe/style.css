@@ -35,16 +35,19 @@
     margin: 300px;
     margin: 0 auto;
     border: 5px solid indianred;
+    overflow: hidden;
 }
 .ex_three div img {
+    position: relative;
     min-width: 100%;
     min-height: 100%;
-    filter: brightness(50%);
+    opacity: 0;
 }
 .ex_three div iframe {
     position: absolute;
-    left: 0;
-    top: 0;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 iframe {
     border: none;
