@@ -1,0 +1,164 @@
+@font-face {
+  font-family: "LeferiPoint-BlackA";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/LeferiPoint-BlackA.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+.korean {
+  font-family: "LeferiPoint-BlackA";
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  font-family: "Rubik", sans-serif;
+  margin: 0 auto;
+  display: flex;
+}
+
+li {
+  list-style: none;
+  line-height: 30px;
+  font-size: 1.1em;
+}
+.hidden_one {
+    position: absolute;
+    width: 60%;
+    height: 155%;
+    background-color: gray;
+    z-index: -10;
+}
+/* root_design ------------------------------------------------ */
+section.section_box {
+  width: 59%;
+  margin: 40px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 3px 3px 10px black;
+}
+
+.section_box > section {
+  display: block;
+  width: 100%;
+  max-width: 500px;
+  height: 100%;
+  padding: 30px;
+  box-sizing: border-box;
+}
+/* section_box ------------------------------ */
+.section_box .lg_section_left {
+    background-color: black;
+    color: white;
+    position: relative;
+}
+.section_box .lg_section_left a {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+}.section_box .lg_section_right a {
+    text-decoration: none;
+    color: black;
+}
+/* section_left ------------------------------- */
+.section_left .left_one .title {
+  font-size: 2em;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-top: 100px;
+}
+.section_left .left_one .title > li {
+    margin-bottom: 25px;
+}
+.section_left .left_one .title > li:nth-child(2) {
+    color: gray;
+}
+.section_left .left_one .title figure {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color:gray;
+    top: -1%;
+    right: 10%;
+}
+.section_left .left_one .title figure img.picture {
+    border: 0;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+}
+/* left_one_title -------------------------------- */
+.section_left .left_one .social > li {
+    font-size: 2em;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+.section_left .left_one .social > li > ul > li {
+    margin-top: 15px;
+    font-size: 25px;
+}
+/* left_one_social -------------------------------- */
+.section_left .left_one .profile > li {
+    font-size: 2em;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+.section_left .left_one .profile > li > ul > li {
+    margin-top: 15px;
+    font-size: 20px;
+}
+/* left_one_profile -------------------------------- */
+.section_left .left_one .skills > li {
+    font-size: 2em;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+.section_left .left_one .skills > li > ul > li {
+    margin-top: 15px;
+    font-size: 20px;
+}
+/* left_one_skill -------------------------------- */
+.section_box .lg_section_right {
+    background-color: white;
+    color: black;
+}
+.section_right .right_one .portpolio {
+    font-size: 2em;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+.section_right .right_one .portpolio ul {
+    padding-left: 0;
+}
+.section_right .right_one .portpolio ul li:nth-child(odd) a{
+    display: block;
+    margin-top: 20px;
+    width: 350px;
+    height: 200px;
+    padding-top: 160px;
+    text-align: right;
+    box-sizing: border-box;
+}
+.section_right .right_one .portpolio ul li:nth-child(even) {
+    margin-top: 15px;
+    font-size: 20px;
+}
+.section_right .right_one .portpolio ul li.sunshine a {
+    background-color: rgb(237,25,58);
+    color: white;
+    transition: all 0.3s;
+}
+.section_right .right_one .portpolio ul li.sunshine a:hover {
+    background-color: white;
+    color: rgb(237,25,58);
+}
+.section_right .right_one .portpolio ul li.museum a {
+    background-color: rgb(46,55,76);
+    color: white;
+    transition: all 0.3s;
+}
+.section_right .right_one .portpolio ul li.museum a:hover {
+    background-color: white;
+    color: rgb(46,55,76);
+}
