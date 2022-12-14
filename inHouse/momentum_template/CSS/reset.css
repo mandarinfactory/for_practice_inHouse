@@ -1,0 +1,15 @@
+body {
+    font-family: 'Ubuntu', sans-serif;
+    font-family: sans-serif;
+}
+input {
+    font-family: 'Ubuntu', sans-serif;
+}
+button {
+    font-family: 'Ubuntu', sans-serif;
+}
+.hidden {
+    display: none;
+}
+/* display:none --> element를 숨겨주는 역할을 한다. */
+

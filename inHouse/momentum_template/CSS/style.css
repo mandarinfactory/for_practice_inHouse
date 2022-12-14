@@ -1,0 +1,16 @@
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+section.section_one figure {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+section.section_one figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
