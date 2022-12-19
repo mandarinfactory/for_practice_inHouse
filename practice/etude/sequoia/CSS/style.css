@@ -1,0 +1,28 @@
+@import "reset.css";
+@import "variables.css";
+
+/* Components */
+@import "components/status-bar.css";
+@import "components/nav-bar.css";
+
+/* Screens*/
+@import "screens/login.css";
+@import "screens/assets.css";
+/* 항상 다른file들을 가져올때는 @import를 사용해서 연결시켜 놓자! */
+
+body {
+    font-family: 'LINESeedKR-Bd';
+}
+input {
+    font-family: 'LINESeedKR-Bd';
+}
+button {
+    font-family: 'LINESeedKR-Bd';
+}
+
+@font-face {
+    font-family: 'LINESeedKR-Bd';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Bd.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}

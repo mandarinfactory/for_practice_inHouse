@@ -1,0 +1,251 @@
+/* CSS PRACTICE by mandarinfactory */
+
+
+/* *{  }은 모든것에 적용되는것을 뜻한다. */
+html{
+    background-color: indianred
+}
+:root {
+    --main-color: tomatored;
+}
+/* JS의 const로 묶는것처럼 CSS에서 root로 한번에 묶어서 사용할수 있다. */
+body {
+    height: 1000vh;
+    margin: 20px;
+    padding: 20px 10px;
+    background-color: white;
+    font-family: 'Ubuntu', sans-serif;
+}
+input {
+    font-family: 'Ubuntu', sans-serif;
+}
+.identity {
+    font-family: 'Ubuntu', sans-serif;
+}
+h1 {
+    font-size: 40px;
+    text-decoration: underline;
+    font-weight: 700;
+    text-align: center;
+}
+/* border은 box의 경게,테두리를 말한다. --> property가 많은데 아마 soild외에는 별로여서 잘 안씀 */
+/* border의 style을 바꿀때 많이 쓰인다. --> inline, block 상관없이 다 적용된다. */
+/* inline에서 height, width는 적용되지 않는다!!! --> inline내에서 padding과 margin 또한 가능하다. */
+/* 단, margin은 상하는 안되고 좌우만 가능하다. (height, width를 inline은 가지지 않으므로!) */
+#first {
+    padding: 10px;
+    height: 200px;
+    width: 200px;
+    background-color: #faebd7;
+}
+#second {
+    margin-left: 10px;
+    padding: 10px;
+    height: 200px;
+    width: 200px;
+    background-color: firebrick;
+}
+#third {
+    margin-left: 10px;
+    padding: 10px;
+    height: 200px;
+    width: 200px;
+    background-color: coral;
+}
+#fourth {
+    margin-left: 10px;
+    padding: 10px;
+    height: 200px;
+    width: 200px;
+    background-color: orange;
+}
+#fifth {
+    margin-left: 80px;
+    padding: 10px;
+    height: 200px;
+    width: 200px;
+    background-color: orangered;
+}
+/* display로 block, inline을 재설정 할 수 있다. */
+/* inline으로 설정시, inline으로 된 element는 height와 width를 가질수 없다. */
+/* margin에 한값만 주면 상하좌우 다 설정되므로, margin:top right bottom left을 기억하고 차례대로 넣어주면 된다. */
+/* collapsing margins : 위에처럼 div와 body의 상하 경계가 같아지거나 한쪽이 넘어가게 되면 browser는 같은 경계값으로 인식해서 출력하게 된다. */
+/* 따라서 이때 div의 margin값을 변경하더라도 body의 margin이 움직이게 된다. (같은 margin으로 인식하므로) */
+/* padding은 box의 경계로부터 안쪽에 있는 공간을 말한다. margin : 타인과 나와의 거리, padding : 나의 크기(키울수록 살크업이 된다고 생각하면 됨) */
+/* div로 묶은게 padding값이 똑같은데 옆으로 밀린건 하위div로 묶여서 그렇다. */
+/* 별개의 div로 하면 div는 block이므로 아래로 정렬된다. */
+/* 또한, fifth가 fourth를 먹었는게 그건 fifth는 first랑 같이 기준에 맞게 있어서 그렇다.(second-fourth는 first의 하위div들이므로) */
+.donut {
+    margin: 10px;
+    padding: 20px;
+    text-align: center;
+    background-color: indianred;
+    font-size: 40px;
+    font-weight: 700;
+    display: block;
+}
+.firebrick {
+    background-color: firebrick;
+    color: white;
+}
+.almond {
+    background-color: blanchedalmond;
+}
+.btn {
+    margin: 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: 500; 
+    font-size: 18px;
+}
+.for_display {
+    margin-top: 100px;
+    width: 400px;
+    height: 400px;
+    display: flex;
+    text-align: center;
+}
+.nothing_box {
+    display: flex;
+    /* body내 div(.nothing_box)여도 그div내 child element가 있다면, div또한 flex container가 될 수 있다. */
+    /* 이때 .nothing_box의 flex가 없어지면 grandparent에 flex가 있다고 해도 숫자는 움직이지 않는다. --> 직접적인 parent display가 flexbox가 아니므로! */
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    font-weight: 500;
+    width:100px;
+    height: 100px;
+    background-color: pink;
+}
+.another {
+    background-color: cornflowerblue;
+}
+/* inline-block은 inline인데 height, width를 가지고 바로옆으로도 올 수 있다. */
+/* 하지만 잘 쓰이지 않음 --> default로 각 element사이에 간격이 생기고, 이 간격이 일정하지 않다.(element의 크기에 따라 간격도 변함) */
+/* 따라서 responsive design이 되기 어려워 즉각적으로 이용하기 매우 좋지 않아서 안쓰인다. */
+/* inline-block을 대체하려고 만든게 flexbox(flex)이다. --> 어디든 어떻게 하든 맘대로 넣을 수 있다. */
+/* 1. flex를 쓸때 child element는 어떤것도 적지 않고 parent element에만 적는다. (body>div면 body가 flex cotainer로써 여기에만 적어야한다.) */
+/* 2. flex는 main axis, cross axis를 기준으로 하고, 각각 default값은 horizontal, vertical이다. 두 값은 변경 가능하다. */
+/* flex로는 다양한 속성을 바꿀수 있고 대표적으로 justify-content(main axis기준), align-items(cross axis기준)으로 볼 수 있다. */
+/* align-item을 body에 쓸 경우, body는 내부 div크기에 맞게 되어있으므로 따로 height를 크게 해야 align-item을 쓸 수 있다. */
+/* 다시 말해, justify-content는 수평에서 움직이고, align-item은 수직으로 움직인다. --> 이 설정은 변경 가능하다는 점을 다시 한번 기억하자. */
+/* flex-direction으로 방향을 바꿀수 있다.--> default는 row고, column으로 변경 가능하다. */
+#for_fixed {
+    height: 100px;
+    width: 100px;
+    background-color: aquamarine;
+    display: fixed;
+}
+/* fixed --> 말그대로 element가 화면에 고정되어있는 상태로 만들어준다. =/= flex와는 반대라고 생각하면 된다. */
+/* fixed가 되면 해당 element는 layout상에서 그려진 위치에 고정되게 된다. + 다른 element와 겹치게 되면 fixed된 element가 가장 위로 올라오게 된다. */
+#different {
+    height: 200px;
+    width: 200px;
+    background-color: chartreuse;
+}
+.position {
+    height: 250px;
+    width: 250px;
+    background-color: blueviolet;
+    position: relative;
+}
+.relative {
+    position: relative;
+    top: -10px;
+    left: -10px;
+    height: 100px;
+    width: 100px;
+    background-color: black;
+}
+/* position은 browser상에서 element를 배치하는 방법을 지정하는걸 말한다. --> static은 기본값 그대로 인식하는걸 말한다.(default값) */
+/* relative는 element가 처음 위치한 곳을 기준으로 수정할수 있도록 해준다.(top,bottom,left,right를 이용해서!) --> 처음 놓인 자리에서 상하좌우로 움직이게 해준다. */
+/* absolute는 가장 가까운 relative parent element를 기준으로 이동시켜준다. --> 대부분 body를 기준으로 하게 된다.(직접적인 parent element에 relative가 없는경우가 많으니까) */
+/* 실제로 대부분 cotaining block을 기준으로 한다고 나와있다. --> 이걸 body로 생각하면 쉽다. */
+/* absolute된 element가 body를 기준으로 하는걸 막기 위해선 해당 element의 parent element를 relative position으로 바꿔주면 된다. */ 
+span{
+    background-color: crimson;
+    padding:3px;
+    border-radius: 5px;
+}
+span:nth-child(even) {
+    background-color: aqua;
+}
+div p span {
+    background-color: bisque;
+}
+div > span {
+    text-decoration: underline;
+}
+/* pseudo selectors는 추가하는 키워드로, 선택한 요소가 특별한 상태여야 만족할 수 있다. */
+/* first-child,last-child,nth-child()등으로 하위element를 지칭해서 따로 class나 id로 변경하지 않더라도 CSS내에서 변경할 수 있다. */
+/* div > span이라는 표시를 통해 div의 직접적인 child element의 span만(p하위에 있는 span제외) 인식시키도록 할 수 있다. */
+/* p + span으로 표시하면 p 하위에 있는 span이 아닌 p 다음으로 오는 span으로 인식한다 */
+/* p ~ span으로 표시하면 span이 같은 형제element인데 바로 뒤에 오지 않을때 쓸 수 있는게 ~ 표시이다. */
+
+input {
+    border: 3px solid wheat;
+    border-radius: 3px;
+}
+input:required {
+    border-color: firebrick;
+}
+input[type="password"] {
+    background-color: aquamarine;
+}
+input[placeholder~="name"] {
+    background-color: pink;
+}
+button {
+    font-family: 'Ubuntu', sans-serif;
+}
+button:hover {
+    background-color: tomato;
+}
+/* input내에서도 border을 이용해서 테두리를 꾸밀수 있다. (required가 없는element는 optional로 쓰인다.) */
+/* attribute를 통해 어떤것이든 선택할 수 있게 해준다. --> tagname[]{}꼴로 나타낼수 있다. */
+/* '~'뜻은 ~을 포함하고 있다는 뜻이다. --> 'name'을 포함하고 있다. */
+
+p {
+    color: var(--main-color);
+}
+/* color를 만들수 있는 방법은 많다. #f, rgba(a는 투명도이다.), rgb로 쓸수 있고, #fff는 white, #000은 black이다. */
+/* 위에서 root로 묶었던 element를 var를 이용해서 편하게 쓸수 있다. --> JS의 const, let으로 묶은것과 비슷하게 사용된다. */
+
+a {
+    color: white;
+    background-color: tomato;
+    text-decoration: none;
+    padding: 5px;
+    border-radius: 5px;
+    transition: all 5s ease-in-out;
+}
+a:hover {
+    color : yellow;
+    background-color: darkgreen;
+    text-decoration: none;
+    padding: 5px;
+    border-radius: 5px;
+}
+@keyframes pictureCoinFlip {
+    0% {
+        transform: rotateY(0deg);
+    }
+    50% {
+        transform: rotateY(180deg) translateX(100px);
+    }
+    100% {
+        transform: rotateY(0);
+    }
+}
+img {
+    border: 10px solid black;
+    border-radius: 50%;
+    animation: pictureCoinFlip 10s ease-in-out infinite;
+}
+/* transition은 state가 없는 element에 써야한다. (a, a:hover가 있다면 state가 있는 hover가 아닌 root인 a에 적는다.) */
+/* transition의 effect방법은 linear, ease-in/out, ease-in-out등이 있고 cubic-bezier로 custom화해서 effect를 줄 수 있다. */
+/* 일반적으로 사용하는건 all, 따로 나눠져 있으면 해당 부분만 바꾸면 된다.(color, background-color등으로 기재해주면 된다.) */
+/* transformation은 말그대로 element를 transform해준다. */
+/* rotate(해당자리에서 기준축을 중심으로 전환), scale(크기 전환), translate(축을 중심으로 위치 전환)등으로 전환,이동시킬수 있다. */
+/* transform은 해당element에만 적용되고, 다른 형제 element에는 적용되지 않는다. + padding, margin도 적용되지 않는다.(해당 element에 변형을 시키지 않고 전환하므로!) */
+/* transfrom은 state에 써도 무방하다. --> transition/root --- transform/state(여기서 전환이 이루어지므로!) */

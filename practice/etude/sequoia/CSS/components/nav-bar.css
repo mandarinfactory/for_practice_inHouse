@@ -1,0 +1,13 @@
+.nav {
+    height:100%;
+    padding: 20px 60px;
+}
+.nav__list{
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.nav__link {
+    color:black;
+}
