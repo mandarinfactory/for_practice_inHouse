@@ -1,0 +1,69 @@
+@font-face {
+    font-family: 'Happiness-Sans-Title';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/Happiness-Sans-Title.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+html,body {
+    margin: 0;
+    padding: 0;
+} 
+li {
+    list-style: none;
+}
+body {
+    width: 100%;
+    height: 4000px;
+}
+.title_font {
+    font-family: 'Happiness-Sans-Title';
+}
+/* root ---------------------------------------------------------------------- */
+.left {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background-color: rgb(46,48,75);
+    z-index: 10;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.left ul li {
+    margin-left: 40px;
+    color: rgb(137,244,170);
+    font-size: 2.2em;
+    font-weight: 800;
+    line-height: 55px;
+}
+/* left_side ------------------------------------------------------------------ */
+.section_one {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 1000px;
+    background-color: white;
+}
+.section_two {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    height: 1000px;
+    background-color: lightgray;
+}
+.section_three {
+    position: absolute;
+    top: 200%;
+    left: 0;
+    height: 1000px;
+    background-color: gray;
+}
+.section_four {
+    position: absolute;
+    top: 300%;
+    left: 0;
+    height: 1000px;
+    background-color: dimgray;
+}

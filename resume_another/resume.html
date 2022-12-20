@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./resume.css">
+    <link rel="stylesheet" href="./onepage-scroll.css">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="./resume.js"></script>
+    <script src="./jquery.onepage-scroll.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="left">
+        <ul>
+            <li class="title_font">
+                안녕하세요.
+            </li>
+            <li class="title_font">
+                일관성 있는 배움의 자세를 통해
+            </li>
+            <li class="title_font">
+                성장할 개발자 이호준이라고 합니다.
+            </li>
+        </ul>
+    </div>
+    <div class="main">
+        <section class="section_one"></section>
+        <section class="section_two"></section>
+        <section class="section_three"></section>
+        <section class="section_four"></section>
+    </div>
+    <script>
+        $(".main").onepage_scroll({
+            sectionContainer: "section",     // sectionContainer accepts any kind of selector in case you don't want to use section
+            easing: "ease",                  // Easing options accepts the CSS3 easing animation such "ease", "linear", "ease-in",
+                                                // "ease-out", "ease-in-out", or even cubic bezier value such as "cubic-bezier(0.175, 0.885, 0.420, 1.310)"
+            animationTime: 700,             // AnimationTime let you define how long each section takes to animate
+            pagination: false,                // You can either show or hide the pagination. Toggle true for show, false for hide.
+            updateURL: false,                // Toggle this true if you want the URL to be updated automatically when the user scroll to each page.
+            beforeMove: function(index) {},  // This option accepts a callback function. The function will be called before the page moves.
+            afterMove: function(index) {},   // This option accepts a callback function. The function will be called after the page moves.
+            loop: false,                     // You can have the page loop back to the top/bottom when the user navigates at up/down on the first/last page.
+            keyboard: false,                  // You can activate the keyboard controls
+            responsiveFallback: false,        // You can fallback to normal page scroll by defining the width of the browser in which
+                                                // you want the responsive fallback to be triggered. For example, set this to 600 and whenever
+                                                // the browser's width is less than 600, the fallback will kick in.
+            direction: "vertical"            // You can now define the direction of the One Page Scroll animation. Options available are "vertical" and "horizontal". The default value is "vertical".  
+            });
+    </script>
+</body>
+</html>
