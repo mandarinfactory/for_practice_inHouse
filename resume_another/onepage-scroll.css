@@ -15,7 +15,7 @@ body, .onepage-wrapper, html {
 }
 
 .onepage-wrapper {
-  width: 100%;
+  width: 50%;
   height: 100%;
   display: block;
   position: relative;

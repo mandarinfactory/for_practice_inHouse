@@ -7,6 +7,8 @@
 html,body {
     margin: 0;
     padding: 0;
+    height: 100%;
+    box-sizing: border-box;
 } 
 li {
     list-style: none;
@@ -22,7 +24,7 @@ body {
 .left {
     position: fixed;
     top: 0;
-    left: 0;
+    right: 0;
     width: 50%;
     height: 100%;
     background-color: var(--navy);
@@ -89,35 +91,35 @@ body {
 }
 .section_two div.about_first {
     margin-top: 100px;
-    margin-left: 350px;
     font-size: 2em;
+    width: 55%;
+    display: flex;
 }
 .section_two ul.about_main_first {
     margin-top: 50px;
 }
 .section_two ul.about_main_first li{
     margin-top: 6px;
-    margin-left: 680px; 
     font-size: 1.35em;
 }
 .section_two ul.about_main_second h3 {
     margin-top: 9px;
-    margin-left: 690px;
     font-size: 1.25em;
 }
 .section_two ul.about_main_second li {
     margin-top: 7px;
-    margin-left: 690px;
     color: var(--dark);
+}
+.section_two ul.about_main_third {
+    padding-left: 0;
+    padding-right: 50px;
 }
 .section_two ul.about_main_third h3 {
     margin-top: 9px;
-    margin-left: 580px;
     font-size: 1.25em;
 }
 .section_two ul.about_main_third li {
     margin-top: 7px;
-    margin-left: 580px;
     color: var(--dark);
 }
 /* section_two ---------------------------------------------------------------- */
@@ -130,18 +132,21 @@ body {
 }
 .section_three ul.project_main {
     margin-top: 9px;
-    margin-left: 580px;
     font-size: 1.25em;
 }
 .section_three ul.project_main h3 {
+    width: 55%;
+    display: flex;
+    justify-content: center;
     margin-top: 100px;
-    margin-left: 435px;
     font-size: 1.7em;
     color: var(--navy);
 }
 .section_three ul.project_main li {
+    display: flex;
+    justify-content: center;
     margin-top: 3px;
-    margin-left: 435px;
+    margin-right: 45px;
     font-size: 0.8em;
     color: var(--dark);
 }
