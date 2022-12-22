@@ -7,13 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./CSS/résumé.css">
     <link rel="stylesheet" href="./CSS/style.css">
-    <link rel="stylesheet" href="./CSS/onepage-scroll.css">
+    <link rel="stylesheet" href="./CSS/plugin/onepage-scroll.css">
+    <link rel="stylesheet" href="./CSS/plugin/viewbox.css">
     <!-- link_CSS -->
     <script src="http://code.jquery.com/jquery-latest.js"></script><!-- jQuery -->
-    <script src="./JS/jquery.onepage-scroll.js"></script>
-    <script src="./JS/app_particle_default.js"></script>
-    <script src="./JS/particles.js"></script>
-    <!-- src_JS -->
+    <script src="./JS/plugin/jquery.onepage-scroll.js"></script>
+    <script src="./JS/plugin/app_particle_default.js"></script>
+    <script src="./JS/plugin/particles.js"></script>
+    <script src="./JS/plugin/jquery.viewbox.js"></script>
+    <script src="./JS/plugin/jquery.viewbox.min.js"></script>
+    <script src="./JS/store.js"></script>
+    <!-- src_JS(plugins) -->
     <script src="https://kit.fontawesome.com/7d1f9ca95d.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
@@ -102,8 +106,27 @@
                             전체적인 테마를 밝고 개구쟁이같은 느낌을 주고 싶어서 밝은 색과 다채로운 이미지,
                             패턴들을 이용해서 홈페이지를 만들게 되었습니다.</li>
                     </ul>
+                    <img src="./IMG/template_01.jpg" alt="">
                 </figcaption>
             </figure>
+            <div class="viewbox_section">
+
+            </div>
+            <script>
+                $('.viewbox_section').prepend(`<ul></ul>`)
+                viewBoxArr.forEach(function (v) {
+                    $('.viewbox_section ul').append(`
+                    <li>
+                        <figure>
+                            <a href="${v.path}">
+                                <img src="${v.path} alt">
+                            </a>
+                        </figure>
+                    </li>
+                    `)//append
+                })//forEach
+
+            </script>
         </section>
         <section class="section_four"></section>
     </div>
