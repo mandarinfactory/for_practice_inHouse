@@ -1,0 +1,268 @@
+@font-face {
+    font-family: 'Happiness-Sans-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/Happiness-Sans-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+html,body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    box-sizing: border-box;
+} 
+li {
+    list-style: none;
+}
+body {
+    width: 100%;
+    height: 4000px;
+}
+.title_font {
+    font-family: 'Happiness-Sans-Bold';
+}
+.project {
+    position: absolute;
+    top: 5%;
+    left: 0;
+    width: 180px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    background-color: var(--navy);
+    color: var(--mint);
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: uppercase;
+    box-shadow: 1px 1px 5px black;
+}
+/* root ---------------------------------------------------------------------- */
+.right {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background-color: var(--navy);
+    z-index: 10;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.right ul li {
+    margin-right: 40px;
+    color: var(--mint);
+    font-size: 2.2em;
+    font-weight: 500;
+    line-height: 55px;
+}
+.right ul li:nth-child(2) {
+    margin-bottom: 30px;
+}
+.right ul li b.white_color {
+    color: white;
+    font-weight: 650;
+}
+.right ul li.small {
+    font-size: 1.2em;
+    font-weight: 600;
+    line-height: 35px;
+}
+.right ul li.box {
+    display: flex;
+    width: 225px;
+    border-bottom: 2px solid var(--mint);
+}
+.right ul li.box span{
+    display: block;
+    margin-top: 55px;
+    width: 100px;
+    height: 40px;
+    font-size: 0.6em;
+    text-align: center;
+}
+.right ul li.box a {
+    margin: 0 10px;
+    margin-top: 55px;
+    color: var(--mint);
+    text-decoration: none;
+    transition: all 0.5s;
+}
+.right ul li.box a:hover {
+    color: white;
+}
+.right ul li.address {
+    height: 30px;
+    font-size: 1.0em;
+    color: var(--mint);
+}
+.right #particles-js {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+/* right_side ------------------------------------------------------------------ */
+.section_one {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 1000px;
+    background-color: var(--mint);
+}
+/* section_one ---------------------------------------------------------------- */
+.section_two {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    height: 1000px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    color: var(--navy);
+}
+.section_two ul {
+    padding-left: 0;
+}
+.section_two div.about_first {
+    margin-top: 100px;
+    font-size: 2em;
+    width: 54%;
+    display: flex;
+    font-weight: 600;
+}
+.section_two ul.about_main_first {
+    margin-top: 50px;
+}
+.section_two ul.about_main_first li{
+    margin-top: 6px;
+    font-size: 1.35em;
+}
+.section_two ul.about_main_first li b.bg_navy {
+    background-color: var(--navy);
+    color: var(--mint);
+}
+.section_two ul.about_main_second h3 {
+    margin-top: 9px;
+    font-size: 1.25em;
+}
+.section_two ul.about_main_second li {
+    margin-top: 7px;
+    color: var(--dark);
+}
+.section_two ul.about_main_third {
+    padding-left: 0;
+    padding-right: 10px;
+}
+.section_two ul.about_main_third h3 {
+    margin-top: 9px;
+    font-size: 1.25em;
+}
+.section_two ul.about_main_third li {
+    margin-top: 7px;
+    color: var(--dark);
+}
+/* section_two ---------------------------------------------------------------- */
+.section_three {
+    position: absolute;
+    top: 200%;
+    left: 0;
+    height: 1000px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+}
+.section_three figure.figure_one {
+    position: relative;
+    width: 100%;
+    height: 50%;
+    cursor: pointer;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.section_three figure.figure_one img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+.section_three figure.figure_one figcaption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: black;
+    opacity: 0.8;
+    border-radius: 20px;
+    color: black;
+    font-size: 1.2em;
+    box-shadow: 2px 2px 7px black;
+    transform: translateX(-10000px);
+    z-index: 10;
+}
+.section_three figure.figure_one:hover figcaption::before {
+    content: '';
+    position: absolute;
+    top: 55%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 500px;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: white;
+    box-shadow: 2px 2px 7px black;
+    opacity: 0.8;
+}
+.section_three figure.figure_one figcaption ul {
+    padding-left: 0;
+}
+.section_three figure.figure_one figcaption ul li {
+    line-height: 30px;
+    margin: 10px 20px;
+    font-size: 0.9em;
+    font-weight: 700;
+    color: white;
+    z-index: 10;
+}
+.section_three figure.figure_one figcaption ul li:first-child {
+    display: flex;
+    justify-content: center;
+    margin-left: 0;
+}
+.section_three figure.figure_one figcaption ul li.sub_title {
+    font-size: 1em;
+    font-weight: 900;
+    color: var(--mint);
+}
+.section_three figure.figure_one figcaption ul li a {
+    display: block;
+    width: 130px;
+    height: 40px;
+    margin-bottom: 20px;
+    background-color: aqua;
+    font-size: 1.2em;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 20px;
+    color: white;
+    cursor: pointer;
+}
+.section_three figure.figure_one:hover figcaption {
+    transform: translate(-50%, -50%);
+}
+/* section_three ---------------------------------------------------------------- */
