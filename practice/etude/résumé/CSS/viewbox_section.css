@@ -1,0 +1,57 @@
+.viewbox_section ul {
+    padding-left: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+.viewbox_section ul li {
+    width: 25%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.viewbox_section ul li figure {
+    padding: 5px;
+    background-color: white;
+    box-shadow: 2px 2px 7px black;
+}
+.viewbox_section ul li.active figure {
+    margin: 0 5px;
+}
+.viewbox_section ul li figure a {
+    display: block;
+    position: relative;
+}
+.viewbox_section ul li figure a img {
+    width: 100%;
+}
+/* @media screen and (min-width:1000px) {
+    .viewbox_section ul li {
+        width: 25%;
+    }
+}
+@media screen and (min-width:600px) and (max-width:1000px) {
+    .viewbox_section ul li {
+        width: 50%;
+    }
+}
+@media screen and (max-width:600px) {
+    .viewbox_section ul li {
+        width: 100%;
+    }
+}*/
+/* motions ----------------------------------------- */
+.viewbox_section ul li figure a {
+    overflow: hidden;
+}
+.viewbox_section img {
+    transition: all 0.5s;
+}
+.viewbox_section a:hover img {
+    transform: scale(1.3);
+}
+.viewbox_section li figure {
+    transform: scale(0);
+    transition: all 0.5s;
+}
+.viewbox_section li.active figure {
+    transform: scale(1);
+}

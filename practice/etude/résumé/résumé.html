@@ -7,17 +7,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./CSS/résumé.css">
     <link rel="stylesheet" href="./CSS/style.css">
+    <!-- link_CSS -->
+    <link rel="stylesheet" href="./CSS/viewbox_section.css">
     <link rel="stylesheet" href="./CSS/plugin/onepage-scroll.css">
     <link rel="stylesheet" href="./CSS/plugin/viewbox.css">
-    <!-- link_CSS -->
+    <!-- link_CSS_plugin -->
     <script src="http://code.jquery.com/jquery-latest.js"></script><!-- jQuery -->
     <script src="./JS/plugin/jquery.onepage-scroll.js"></script>
     <script src="./JS/plugin/app_particle_default.js"></script>
     <script src="./JS/plugin/particles.js"></script>
     <script src="./JS/plugin/jquery.viewbox.js"></script>
-    <script src="./JS/plugin/jquery.viewbox.min.js"></script>
-    <script src="./JS/store.js"></script>
+    <script src="./JS/plugin/viewbox_section.js"></script>
     <!-- src_JS(plugins) -->
+    <script src="./JS/store.js"></script>
+    <script src="./JS/common.js"></script>
     <script src="https://kit.fontawesome.com/7d1f9ca95d.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
@@ -83,19 +86,19 @@
                 <h3>Personal</h3>
                 <li>저는 현재 28살이고 지난 15년부터 20년까지 군복무를 제외하고</li>
                 <li>4년동안 유니클로(현대백화점 중동점, 여의도 IFC몰점)에서 근무했으며, </li>
-                <li>20년도 하반기부터 22년도 하반기까지 AONE 북부감평법인에서 일했습니다.</li>
-                <li>금년에 퇴사후, 바로 더 조은컴퓨터학원에서 </li>
-                <li>웹퍼블리셔 3개월과정을 수료했습니다.</li>
+                <li>20년도 하반기부터 22년도 6월까지 AONE 북부감평법인에서 일했습니다.</li>
+                <li>금년에 퇴사후, 바로 더조은컴퓨터학원 부평지점에서 </li>
+                <li>웹퍼블리셔 3개월과정을 수료했습니다.(22.10.17 ~ 23.01.17)</li>
             </ul>
         </section>
         <section class="section_three">
-            <div class="project">Project01</div>
+            <div class="title_font project">Project01</div>
             <figure class="figure_one">
                 <img src="./IMG/mockup_sunshine.jpg" alt>
                 <figcaption>
-                    <ul>
+                    <ul class="title_font">
                         <li>
-                            <a target="_blank" href="http://mandarin.dothome.co.kr">webpage</a>
+                            <a target="_blank" href="http://mandarinfactory.dothome.co.kr/">webpage</a>
                         </li>
                         <li class="sub_title">작업언어</li>
                         <li>HTML5, CSS3, jQuery</li>
@@ -106,11 +109,9 @@
                             전체적인 테마를 밝고 개구쟁이같은 느낌을 주고 싶어서 밝은 색과 다채로운 이미지,
                             패턴들을 이용해서 홈페이지를 만들게 되었습니다.</li>
                     </ul>
-                    <img src="./IMG/template_01.jpg" alt="">
                 </figcaption>
             </figure>
             <div class="viewbox_section">
-
             </div>
             <script>
                 $('.viewbox_section').prepend(`<ul></ul>`)
@@ -118,8 +119,8 @@
                     $('.viewbox_section ul').append(`
                     <li>
                         <figure>
-                            <a href="${v.path}">
-                                <img src="${v.path} alt">
+                            <a href="./IMG/template_${v.path}.jpg">
+                                <img src="./IMG/template_${v.path}.jpg" alt>
                             </a>
                         </figure>
                     </li>

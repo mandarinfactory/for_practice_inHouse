@@ -1,14 +1,14 @@
 window.viewBoxArr = [
     {
-        path : './IMG/template_01.jpg'
+        path : '01'
     },
     {
-        path : './IMG/template_02.jpg'
+        path : '02'
     },
     {
-        path : './IMG/template_03.jpg'
+        path : '03'
     },
     {
-        path : './IMG/template_04.jpg'
+        path : '04'
     },
 ]
