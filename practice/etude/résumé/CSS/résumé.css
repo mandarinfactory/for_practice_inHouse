@@ -1,7 +1,7 @@
 @font-face {
-    font-family: 'GmarketSansMedium';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
-    font-weight: normal;
+    font-family: 'LINESeedKR-Bd';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Bd.woff2') format('woff2');
+    font-weight: 700;
     font-style: normal;
 }
 html,body {
@@ -18,19 +18,19 @@ body {
     height: 4000px;
 }
 .title_font {
-    font-family: 'GmarketSansMedium';
+    font-family: 'LINESeedKR-Bd';
 }
 .project {
     position: absolute;
     top: 5%;
     left: 0;
-    width: 180px;
-    height: 50px;
+    width: 160px;
+    height: 40px;
     text-align: center;
-    line-height: 50px;
+    line-height: 40px;
     background-color: var(--navy);
-    color: var(--mint);
-    font-size: 24px;
+    color: var(--mustard);
+    font-size: 16px;
     font-weight: 700;
     text-transform: uppercase;
     box-shadow: 1px 1px 5px black;
@@ -50,7 +50,7 @@ body {
 }
 .right ul li {
     margin-right: 40px;
-    color: var(--mint);
+    color: var(--mustard);
     font-size: 2.2em;
     font-weight: 500;
     line-height: 55px;
@@ -64,14 +64,14 @@ body {
     font-size: 1.1em;
 }
 .right ul li.small {
-    font-size: 1.2em;
-    font-weight: 600;
+    font-size: 1.1em;
+    font-weight: 500;
     line-height: 35px;
 }
 .right ul li.box {
     display: flex;
-    width: 225px;
-    border-bottom: 2px solid var(--mint);
+    width: 235px;
+    border-bottom: 2px solid var(--mustard);
 }
 .right ul li.box span{
     display: block;
@@ -84,7 +84,7 @@ body {
 .right ul li.box a {
     margin: 0 10px;
     margin-top: 55px;
-    color: var(--mint);
+    color: var(--mustard);
     text-decoration: none;
     transition: all 0.5s;
     cursor: pointer;
@@ -95,7 +95,7 @@ body {
 .right ul li.address {
     height: 30px;
     font-size: 1.0em;
-    color: var(--mint);
+    color: var(--mustard);
 }
 .right #particles-js {
     position: absolute;
@@ -106,13 +106,59 @@ body {
     height: 100%;
     pointer-events: none;
   }
+  @media screen and (min-width:1000px) and (max-width:1300px){
+    .right ul li {
+        font-size: 1.7em;
+        line-height: 45px;
+    }
+    .right ul li.small {
+        font-size: 0.9em;
+    }
+    .right ul li.box {
+        width: 200px;
+    }
+    .right ul li.address {
+        font-size: 0.8em;
+    }
+}
+@media screen and (min-width:900px) and (max-width:1000px) {
+    .right ul li {
+        font-size: 1.5em;
+        line-height: 40px;
+    }
+    .right ul li.small {
+        font-size: 1em;
+    }
+    .right ul li.box {
+        width: 180px;
+    }
+    .right ul li.address {
+        font-size: 0.8em;
+    }
+  }
+@media screen and (min-width:700px) and (max-width:900px) {
+    .right ul li {
+        font-size: 1.2em;
+        line-height: 35px;
+    }
+    .right ul li.small {
+        font-size: 0.8em;
+        line-height: 25px;
+    }
+    .right ul li.box {
+        width: 150px;
+    }
+    .right ul li.address {
+        font-size: 0.8em;
+    }
+  }
 /* right_side ------------------------------------------------------------------ */
 .section_one {
     position: absolute;
     top: 0;
     left: 0;
     height: 1000px;
-    background-color: var(--mint);
+    background-color: var(--mustard);
 }
 /* section_one ---------------------------------------------------------------- */
 .section_two {
@@ -133,12 +179,12 @@ body {
 .section_two div.about_first {
     margin-top: 100px;
     font-size: 2em;
-    width: 62%;
+    width: 52%;
     display: flex;
     font-weight: 600;
 }
 .section_two ul.about_main_first {
-    margin-top: 50px;
+    margin-top: 40px;
 }
 .section_two ul.about_main_first li{
     margin-top: 6px;
@@ -147,6 +193,35 @@ body {
 .section_two ul.about_main_first li b.bg_navy {
     font-size: 1.1em;
     font-weight: 900;
+}
+@media screen and (min-width:900px) and (max-width:1100px) {
+    .section_two div.about_first {
+        font-size: 1.5em;
+    }
+    .section_two ul.about_main_first li {
+        font-size: 1.2em;
+    }
+    .section_two ul.about_main_first li b.bg_navy {
+        font-size: 1.1em;
+    }
+}
+@media screen and (min-width:700px) and (max-width:900px) {
+    .section_two {
+        justify-content: center;
+    }
+    .section_two div.about_first {
+        margin-top: 0;
+        font-size: 1.3em;
+    }
+    .section_two ul.about_main_first {
+        padding-right: 50px;
+    }
+    .section_two ul.about_main_first li {
+        font-size: 0.8em;
+    }
+    .section_two ul.about_main_first li b.bg_navy {
+        font-size: 1.1em;
+    }
 }
 .section_two ul.about_main_second h3 {
     margin-top: 9px;
@@ -168,110 +243,39 @@ body {
     margin-top: 7px;
     color: var(--dark);
 }
+@media screen and (min-width: 900px) and (max-width: 1100px){
+     .section_two ul.about_main_second h3 {
+        font-size: 1em;
+    }
+    .section_two ul.about_main_second li {
+        font-size: 0.9em;
+    }
+    .section_two ul.about_main_third h3 {
+        font-size: 1em;
+    }
+    .section_two ul.about_main_third li {
+        font-size: 0.9em;
+    }
+}
+@media screen and (min-width: 700px) and (max-width: 900px){
+    .section_two ul.about_main_second,
+    .section_two ul.about_main_third {
+        padding: 0 15px;
+    }
+    .section_two ul.about_main_third {
+        padding-right: 30px;
+    }
+    .section_two ul.about_main_second h3 {
+        font-size: 0.8em;
+    }
+    .section_two ul.about_main_second li {
+        font-size: 0.7em;
+    }
+    .section_two ul.about_main_third h3 {
+        font-size: 0.8em;
+    }
+    .section_two ul.about_main_third li {
+        font-size: 0.7em;
+    }
+}
 /* section_two ---------------------------------------------------------------- */
-.section_three {
-    position: absolute;
-    top: 200%;
-    left: 0;
-    height: 1000px;
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-.section_three figure.figure_one {
-    position: relative;
-    width: 100%;
-    height: 50%;
-    cursor: pointer;
-    margin-top: 100px;
-    margin-bottom: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.section_three figure.figure_one img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-}
-.section_three figure.figure_one figcaption {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 300px;
-    height: 500px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    background-color: black;
-    opacity: 0.9;
-    color: black;
-    font-size: 1.2em;
-    box-shadow: 2px 2px 7px black;
-    transform: translateX(-10000px);
-    z-index: 10;
-}
-.section_three figure.figure_one:hover::before {
-    content: '';
-    position: absolute;
-    top: 55%;
-    left: 53%;
-    transform: translate(-50%, -50%);
-    width: 300px;
-    height: 500px;
-    padding: 20px;
-    background-color: white;
-    box-shadow: 2px 2px 7px black;
-    opacity: 0.3;
-}
-.section_three figure.figure_one figcaption ul {
-    padding-left: 0;
-}
-.section_three figure.figure_one figcaption ul li {
-    line-height: 30px;
-    margin: 10px 20px;
-    font-size: 0.9em;
-    font-weight: 300;
-    color: white;
-    z-index: 10;
-}
-.section_three figure.figure_one figcaption ul li:first-child {
-    display: flex;
-    justify-content: center;
-    margin-left: 0;
-}
-.section_three figure.figure_one figcaption ul li.sub_title {
-    font-size: 1.2em;
-    font-weight: 900;
-    color: var(--mint);
-}
-.section_three figure.figure_one figcaption ul li.sub_title::before {
-    content: '';
-    border-left: 3px solid gray;
-    margin-right: 7px;
-}
-.section_three figure.figure_one figcaption ul li a {
-    display: block;
-    width: 130px;
-    height: 40px;
-    margin-bottom: 20px;
-    font-size: 1.4em;
-    font-weight: 800;
-    text-decoration: none;
-    text-transform: uppercase;
-    text-align: center;
-    color: white;
-    cursor: pointer;
-}
-.section_three figure.figure_one figcaption ul li a:hover {
-    color: firebrick;
-}
-.section_three figure.figure_one:hover figcaption {
-    transform: translate(-50%, -50%);
-}
-/* section_three ---------------------------------------------------------------- */

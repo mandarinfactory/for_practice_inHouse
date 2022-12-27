@@ -8,7 +8,12 @@
     <link rel="stylesheet" href="./CSS/résumé.css">
     <link rel="stylesheet" href="./CSS/style.css">
     <!-- link_CSS -->
-    <link rel="stylesheet" href="./CSS/viewbox_section.css">
+    <link rel="stylesheet" href="./CSS/viewbox/viewbox_sunshine.css">
+    <link rel="stylesheet" href="./CSS/viewbox/viewbox_museum.css">
+    <!-- link_CSS_viewbox -->
+    <link rel="stylesheet" href="./CSS/project/section_three.css">
+    <link rel="stylesheet" href="./CSS/project/section_four.css">
+    <!-- link_CSS_project -->
     <link rel="stylesheet" href="./CSS/plugin/onepage-scroll.css">
     <link rel="stylesheet" href="./CSS/plugin/viewbox.css">
     <!-- link_CSS_plugin -->
@@ -94,7 +99,7 @@
         <section class="section_three">
             <div class="title_font project">Project01</div>
             <figure class="figure_one">
-                <img src="./IMG/mockup_sunshine.jpg" alt>
+                <img src="./IMG/sunshine/mockup_sunshine.jpg" alt>
                 <figcaption>
                     <ul class="title_font">
                         <li>
@@ -111,26 +116,61 @@
                     </ul>
                 </figcaption>
             </figure>
-            <div class="viewbox_section">
+            <div class="viewbox_sunshine">
             </div>
             <script>
-                $('.viewbox_section').prepend(`<ul></ul>`)
+                $('.viewbox_sunshine').prepend(`<ul></ul>`)
                 viewBoxArr.forEach(function (v) {
-                    $('.viewbox_section ul').append(`
+                    $('.viewbox_sunshine ul').append(`
                     <li>
                         <figure>
-                            <a href="./IMG/template_${v.path}.jpg">
-                                <img src="./IMG/template_${v.path}.jpg" alt>
+                            <a href="./IMG/sunshine/template_${v.path}.jpg">
+                                <img src="./IMG/sunshine/template_${v.path}.jpg" alt>
                             </a>
                         </figure>
                     </li>
                     `)//append
                 })//forEach
-
             </script>
         </section>
-        <section class="section_four"></section>
+
+        <section class="section_four">
+            <div class="title_font project">Project02</div>
+            <figure class="figure_one">
+                <img src="./IMG/museum/museum_main_02.jpg" alt>
+                <figcaption>
+                    <ul class="title_font">
+                        <li>
+                            <a target="_blank" href="#">webpage</a>
+                        </li>
+                        <li class="sub_title">작업언어</li>
+                        <li>HTML5, CSS3, jQuery</li>
+                        <li class="sub_title">작업시간 및 구조</li>
+                        <li>3주 · 반응형, 역동적인 구조</li>
+                        <li class="sub_title">작업사유</li>
+                        <li>박물관____</li>
+                    </ul>
+                </figcaption>
+            </figure>
+            <div class="viewbox_museum">
+            </div>
+            <script>
+                $('.viewbox_museum').prepend(`<ul></ul>`)
+                viewBoxArr.forEach(function (v) {
+                    $('.viewbox_museum ul').append(`
+                    <li>
+                        <figure>
+                            <a href="./IMG/museum/museum_${v.path}.jpg">
+                                <img src="./IMG/museum/museum_${v.path}.jpg" alt>    
+                            </a>    
+                        </figure>    
+                    </li>
+                    `)//append
+                })//forEach
+            </script>
+        </section>
     </div>
+    <!--------------------------- slider_plugin ---------------------------->
     <script>
         $(".main").onepage_scroll({
             sectionContainer: "section",     // sectionContainer accepts any kind of selector in case you don't want to use section

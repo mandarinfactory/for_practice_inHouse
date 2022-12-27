@@ -1,10 +1,10 @@
 $(function () {
+    /* viewbox_plugin_sunshine -------------------------------------- */
     $(window).load(function () {
-        $('.viewbox_section ul li figure a').viewbox();
+        $('.viewbox_sunshine ul li figure a').viewbox();
     })//load
-    /* viewbox_plugin -------------------------------------- */
-    function callMotion () {
-        $('.viewbox_section ul li').each(function () {
+    function callMotionSunshine() {
+        $('.viewbox_sunshine ul li').each(function () {
             var offsetTop = $(this).offset().top
             if (scrY = offsetTop) {
                 $(this).addClass('active')
@@ -13,11 +13,30 @@ $(function () {
             }
         })//each
     }//callMotion_function
-    callMotion();
-    $(window).scroll (function () {
+    callMotionSunshine();
+    $(window).scroll(function () {
 
-    }).resize (function () {
+    }).resize(function () {
 
     })//window_event
-    /* scroll_motion ------------------- ------------------- */
+    /* viewbox_plugin_museum -------------------------------------- */
+    $(window).load(function () {
+        $('.viewbox_museum ul li figure a').viewbox();
+    })//load
+    function callMotionMuseum() {
+        $('.viewbox_museum ul li').each(function () {
+            var offsetTop = $(this).offset().top
+            if (scrY = offsetTop) {
+                $(this).addClass('active')
+            } else {
+                $(this).removeClass('active')
+            }
+        })//each
+    }//callMotion_function
+    callMotionMuseum();
+    $(window).scroll(function () {
+
+    }).resize(function () {
+
+    })//window_event
 })//document.ready
