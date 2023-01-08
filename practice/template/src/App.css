@@ -1,0 +1,18 @@
+.App {
+  text-align: center;
+}
+.App .nav_one {
+  background-color: #333;
+  width: 100%;
+  display: flex;
+  color: white;
+  padding: 20px;
+  font-weight: 600;
+  font-size: 20px;
+}
+.App .list {
+  margin-top: 30px;
+  text-align: left;
+  padding-left: 20px;
+  padding-right: 20px;
+}/*# sourceMappingURL=App.css.map */
