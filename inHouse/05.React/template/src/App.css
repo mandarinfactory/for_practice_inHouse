@@ -22,7 +22,12 @@ button {
   font-size: 1.3em;
   font-weight: 700;
 }
-
+.modal {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: white;
+  text-align: left;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
