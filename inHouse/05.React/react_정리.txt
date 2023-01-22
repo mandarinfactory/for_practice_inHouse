@@ -36,6 +36,7 @@
 
  3. Component
 
+    - Component는 일종의 UI 조각이라고 생각하면 되고, 쉽게 재사용도 할 수 있다.
     < Component는 언제 사용하는건가? >
 
         - 반복적인 HTML을 축약할때
@@ -52,3 +53,35 @@
         └-> React에서는 버튼을 누르면 modal창 스위치(state)만 건드림(직접 HTML은 안건드림!) 
             JS는 modal창의 HTML 직접 건드림
 
+4. map
+
+- map() 사용법
+[1,2,3].map(() => {})
+    1. array의 자료 갯수만큼 callback함수안의 코드를 실행해줌
+    2. 함수의 파라미터는 array안에 있던 자료임
+        [1,2,3].map(a => {
+            console.log(a);
+        }) // 1, 2, 3이 순차적으로 출력된다.
+    3. return에 뭐 적으면 자료 갯수만큼 array로 담아줌
+        [1,2,3].map(() => {
+            return '1234';
+        }) // ['1234','1234','1234']
+    4. map()함수
+        - 써있는 왼쪽 array 자료만큼 내부코드를 실행시켜줌
+        - return 오른쪽에 있는걸 array로 담아줌
+        - 유용한 parameter 2개 사용가능 (a, b)
+            -> a : array안에 있던 자료들을 뜻함
+            -> b : array안에 있던 자료들의 번호를 뜻함(0,1,2···)
+        - 반복문으로 HTML을 생성하게 되면 React에서는 'key={HTML마다 다른숫자}'로 선택자를 추가해줘야한다.
+
+5. props(proporties) 
+
+- 어떠한 값을 comp에게 전달해줘야 할 때, props를 사용한다.
+- 부모state ---> 자식state은 가능하지만 자식간의 또는 자식state ---> 부모state로는 이동이 가능하지 않다.
+- 부모state ---> 자식state 전송하는법
+
+    1. <자식 Comp 작명(대부분state이름으로함)={state이름} />
+    2. props 파라미터 등록 후 props.작명 사용
+
+
+    

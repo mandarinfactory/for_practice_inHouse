@@ -23,9 +23,8 @@ button {
   font-weight: 700;
 }
 .modal {
-  margin-top: 20px;
+  margin: 20px;
   padding: 20px;
-  background-color: white;
   text-align: left;
 }
 .App-logo {
