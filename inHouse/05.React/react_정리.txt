@@ -1,0 +1,54 @@
+1. Destructuring 문법
+
+    - let num = [1,2]
+    let a = num[0]; // 1
+    let b = num[1]; // 2
+
+    let [a, b] = [1, 2] // a = 1. b = 2  --> 이런꼴로 만드는걸 Destructuring문법이라고 한다.
+
+2. useState 
+
+    < useState를 왜쓰는가? >
+
+        - 변동시 자동으로 HTML에 반영되게 만들고 싶을때 쓴다.
+        - 다시말해, 자주변경될거 같은 HTML부분은 state로 만든다.
+        - 자주변경할 필요가 없는 HTML들은 하드코딩을 하는게 낫다.
+
+    < state변경함수의 특징 >
+
+        - 기존state == 변경state라면 바꿔주지 않는다.
+        let [state, setState] = useState('hello');
+        <div onClick = {() => {
+            setState(state)
+        }}>{state}</div> ---> 이꼴이면 변경하지 않는다. 어처피 'hello'인건 같으니까(자동으로 절약시켜줌)
+
+    < array/object 특징 >
+
+        - array/object 담은 변수엔 화살표만 저장된다.
+        let arr = [1,2,3]
+        일때, let arr가 [1,2,3]이 아니고 [1,2,3]이 어디에 있는지(RAM의 어디에 위치해 있는지)를 
+        가리키는 화살표이다.
+        - 따라서. arr[0] = 4라고 하면 array 자체는 수정했지만 변수arr에 있던 화살표는 수정이 되지 않았다.
+        - useState도 기존==변경이 다른점이 없다고 인식하게 되므로 변경해주지 않는다.
+        - 만약, let copy = arr라고 하더라도, 화살표만 copy한거기 때문에 결과는 같다.
+        - [...arr]으로 쓰게 되면 화살표를 아예 새로 바꿔달라라는 말이다. === 완전히 독립적인 array
+        - useState도 새로운 arr로 인식한다. (object도 똑같이 해당함.)
+
+ 3. Component
+
+    < Component는 언제 사용하는건가? >
+
+        - 반복적인 HTML을 축약할때
+        - 큰 page들
+        - 자주변경되는 HTML들
+        - 단, state를 가져다쓸 때 문제가 생긴다. --> 각각 Comp들마다 다른 function들이므로 쓰기가 번거로움.
+        따라서, Comp를 너무 남용하는것도 좋지는 않다.
+
+    < 동적인 UI 만드는 step! >
+
+        1. HTML, CSS로 미리 design 완성하기
+        2. UI의 현재 상태를 state로 저장하기
+        3. state에 따라 UI가 어떻게 보일지 작성하기(조건문등으로)
+        └-> React에서는 버튼을 누르면 modal창 스위치(state)만 건드림(직접 HTML은 안건드림!) 
+            JS는 modal창의 HTML 직접 건드림
+
