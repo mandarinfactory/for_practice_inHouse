@@ -21,6 +21,7 @@
         <div onClick = {() => {
             setState(state)
         }}>{state}</div> ---> 이꼴이면 변경하지 않는다. 어처피 'hello'인건 같으니까(자동으로 절약시켜줌)
+        - state변경함수는 늦게 처리 되게 된다.
 
     < array/object 특징 >
 
@@ -33,10 +34,23 @@
         - 만약, let copy = arr라고 하더라도, 화살표만 copy한거기 때문에 결과는 같다.
         - [...arr]으로 쓰게 되면 화살표를 아예 새로 바꿔달라라는 말이다. === 완전히 독립적인 array
         - useState도 새로운 arr로 인식한다. (object도 똑같이 해당함.)
+        - array값을 변경할 때에는 객체와 마찬가지로, 불변성을 지켜줘야한다. --> push, splice, sort등의 함수를 사용시에는 copy후 사용해야한다.
+        - 불변성을 지키면서 배열에 새 항목을 추가하는 방법은 spread연산자를 사용하거나, concat함수를 사용하는 것이다.
+        
+            1. spread연산자를 사용하기 
+                - 기존의 배열을 수정하지 않고, 새로운 원소가 추가된 새로운 배열을 만들어준다. ...users를 통해 기존배열을
+                복사해서 새배열을 생성한다.
+                    setUsers([..users, user])
+            
+            2. concat함수 사용하기
+                - concat도 기존의 배열을 수정하지 않고, 새로운 원소가 추가된 새로운 배열을 만들어준다. 
+                여러개의 배열을 하나의 배열로 합칠 때 사용한다. concat뒤에 값은 배열이 아닌 값도 넣을 수 있다.
+                    setUsers(users,concat(user))
 
  3. Component
 
     - Component는 일종의 UI 조각이라고 생각하면 되고, 쉽게 재사용도 할 수 있다.
+    - React에서는 불변성을 지켜줘야하만 Component 업데이트 성능 최적화를 제대로 할 수 있다.
     < Component는 언제 사용하는건가? >
 
         - 반복적인 HTML을 축약할때
@@ -76,12 +90,18 @@
 
 5. props(proporties) 
 
-- 어떠한 값을 comp에게 전달해줘야 할 때, props를 사용한다.
-- 부모state ---> 자식state은 가능하지만 자식간의 또는 자식state ---> 부모state로는 이동이 가능하지 않다.
-- 부모state ---> 자식state 전송하는법
+    - 어떠한 값을 comp에게 전달해줘야 할 때, props를 사용한다.
+    - 부모state ---> 자식state은 가능하지만 자식간의 또는 자식state ---> 부모state로는 이동이 가능하지 않다.
+    - 부모state ---> 자식state 전송하는법
 
-    1. <자식 Comp 작명(대부분state이름으로함)={state이름} />
-    2. props 파라미터 등록 후 props.작명 사용
+        1. <자식 Comp 작명(대부분state이름으로함)={state이름} />
+        2. props 파라미터 등록 후 props.작명 사용
+
+6. input 
+
+    - React에서는 항상 HTML 요소를 열었으면 닫아줘야한다. <></>
+    - input에서 뭔가 입력시 코드를 실행하고 싶으면 --> onChange, onInput으로 event-handler(onClick, onChange···)를 써주면 된다.
+
 
 
     
