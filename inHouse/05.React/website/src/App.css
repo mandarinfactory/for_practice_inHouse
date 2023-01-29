@@ -3,6 +3,16 @@ body {
   height: 100%;
   max-height: 100vh;
 }
+.me-auto .button {
+  margin-left: 15px;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+.me-auto .button:hover {
+  color: rgba(255, 255, 255, 1);
+}
 .title {
   color: coral;
   font-weight: 700;
@@ -30,7 +40,6 @@ body {
   font-size: 1.2em;
   font-weight: 800;
   text-transform: uppercase;
-  text-align: center;
 }
 .col-md-4 p {
   font-size: 1em;
