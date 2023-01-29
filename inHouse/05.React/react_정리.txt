@@ -72,14 +72,17 @@
 - map() 사용법
 [1,2,3].map(() => {})
     1. array의 자료 갯수만큼 callback함수안의 코드를 실행해줌
+
     2. 함수의 파라미터는 array안에 있던 자료임
         [1,2,3].map(a => {
             console.log(a);
         }) // 1, 2, 3이 순차적으로 출력된다.
+
     3. return에 뭐 적으면 자료 갯수만큼 array로 담아줌
         [1,2,3].map(() => {
             return '1234';
         }) // ['1234','1234','1234']
+        
     4. map()함수
         - 써있는 왼쪽 array 자료만큼 내부코드를 실행시켜줌
         - return 오른쪽에 있는걸 array로 담아줌
@@ -101,6 +104,14 @@
 
     - React에서는 항상 HTML 요소를 열었으면 닫아줘야한다. <></>
     - input에서 뭔가 입력시 코드를 실행하고 싶으면 --> onChange, onInput으로 event-handler(onClick, onChange···)를 써주면 된다.
+
+7. export---import
+
+    - export하려면 export하려는 해당 file에 'export default 변수명'으로 써주면 된다.(변수, 함수든 export 가능하다!)
+        └-> 여려개 하려면 export { 변수1, 변수2}로 써주면 된다.
+    - import는 import 작명 from 'export하는 해당 파일 경로'로 써주면 된다.
+        └-> 여러개로 받았다면 import { 변수1, 변수2 } from '해당경로'로 써주면 된다.
+
 
 
 
