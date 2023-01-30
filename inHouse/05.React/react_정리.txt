@@ -112,6 +112,14 @@
     - import는 import 작명 from 'export하는 해당 파일 경로'로 써주면 된다.
         └-> 여러개로 받았다면 import { 변수1, 변수2 } from '해당경로'로 써주면 된다.
 
+8. react-router
+
+    -
+
+    - router hooks : useNavigate(), Outlet
+
+    1. useNavigate() --> 페이지 이동을 도와준다.
+
 
 
 
