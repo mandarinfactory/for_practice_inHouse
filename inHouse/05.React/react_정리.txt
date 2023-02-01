@@ -62,7 +62,7 @@
     < 동적인 UI 만드는 step! >
 
         1. HTML, CSS로 미리 design 완성하기
-        2. UI의 현재 상태를 state로 저장하기
+        2. UI의 현재 상태를 useState로 저장하기
         3. state에 따라 UI가 어떻게 보일지 작성하기(조건문등으로)
         └-> React에서는 버튼을 누르면 modal창 스위치(state)만 건드림(직접 HTML은 안건드림!) 
             JS는 modal창의 HTML 직접 건드림

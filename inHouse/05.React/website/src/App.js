@@ -11,9 +11,12 @@ import './App.css';
 import CompEvent from './components/CompEvent';
 import axios from 'axios';
 
+let count = 0;
 function App() {
-
-  const [shoes] = useState(data)
+  const btnClick = () => {
+    count ++;
+  }//function_btnClick
+  let [ shoes, setShoes ] = useState(data);
     return (
       <div className="App">
       <Navbar bg="dark" variant="dark">
@@ -36,14 +39,32 @@ function App() {
                 </div>
               </div> 
               <button onClick = {() => {
+                btnClick();
+                /* 로딩중UI 띄움! */
                 axios.get('https://codingapple1.github.io/shop/data2.json')
                 .then(v => {
-                  console.log(v.data);
-                })
+                  let copy = [...shoes, ...v.data]
+                  setShoes(copy)
+                  /* 로딩중UI 숨김! */
+                  console.log(count);
+                })//then
                 .catch(() => {
+                  /* 로딩중UI 숨김! */
                   alert('인터넷이 연결이 되지 않았습니다.')
                 })//then_catch
-              }}>버튼</button>
+                if(count == 2) {
+                  axios.get('https://codingapple1.github.io/shop/data3.json')
+                  .then(v => {
+                    let copy = [...shoes, ...v.data]
+                    console.log(copy);
+                    setShoes(copy)
+                  })//then
+                }//if
+                if(count == 3) {
+                  alert('더 볼 제품이 없습니다. 감사합니다.')
+                  return false
+                }//if
+              }}>더보기</button>
           </>
         } />
         <Route path='/detail/:id' element={<CompDetail shoes={shoes}/>} />

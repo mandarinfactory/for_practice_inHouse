@@ -45,4 +45,11 @@ body {
   font-size: 1em;
   font-weight: 400;
 }
+.start {
+  opacity: 0;
+}
+.end {
+  opacity: 1;
+  transition: all 0.3s;
+}
 
