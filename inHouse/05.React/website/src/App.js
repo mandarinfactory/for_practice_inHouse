@@ -9,14 +9,13 @@ import { Routes, Route, Link, Outlet } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import CompEvent from './components/CompEvent';
+import axios from 'axios';
 
 function App() {
 
   const [shoes] = useState(data)
-
     return (
-    <div className="App">
-
+      <div className="App">
       <Navbar bg="dark" variant="dark">
         <Container>
           <Navbar.Brand href="#home" className='title'>ReactShop</Navbar.Brand>
@@ -29,26 +28,32 @@ function App() {
 
       <Routes>
         <Route path='/' element={
-            <>
+          <>
             <div className='main-bg'></div>
               <div className="container">
                 <div className="row">
                   <CompSection shoes={shoes}></CompSection>
                 </div>
               </div> 
-        </>
+              <button onClick = {() => {
+                axios.get('https://codingapple1.github.io/shop/data2.json')
+                .then(v => {
+                  console.log(v.data);
+                })
+                .catch(() => {
+                  alert('인터넷이 연결이 되지 않았습니다.')
+                })//then_catch
+              }}>버튼</button>
+          </>
         } />
-        <Route path='/detail' element={<CompDetail/>} />
-        <Route path='/about' element={<About/>}>
-          <Route path='member' element={<div>member</div>} />
-          <Route path='location' element={<About/>} />
-        </Route>
-
+        <Route path='/detail/:id' element={<CompDetail shoes={shoes}/>} />
+        
         <Route path='/event' element={<CompEvent/>}>
           <Route path='one' element={<div>첫 주문시 케일즙 증정 ★</div>} />
           <Route path='two' element={<div>생일기념 쿠폰받기</div>} />
         </Route>
       </Routes>
+
       </div>
   );
 }
