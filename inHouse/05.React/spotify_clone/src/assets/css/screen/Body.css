@@ -1,0 +1,7 @@
+.body {
+  flex: 0.8;
+  height: 100vh;
+  padding: 30px;
+  background: linear-gradient(var(--purple), black);
+  color: white;
+}/*# sourceMappingURL=Body.css.map */
