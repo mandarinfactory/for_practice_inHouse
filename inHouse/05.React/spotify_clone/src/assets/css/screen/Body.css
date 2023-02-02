@@ -4,4 +4,25 @@
   padding: 30px;
   background: linear-gradient(var(--purple), black);
   color: white;
+}
+.body .body_info {
+  display: flex;
+  align-items: flex-end;
+  padding: 10px;
+}
+.body .body_info img {
+  height: 20vw;
+  margin: 0 20px;
+  box-shadow: 0 4px 60px black;
+}
+.body .body_infoText {
+  flex: 1;
+}
+.body .body_infoText h2 {
+  font-size: 2.2em;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+.body .body_infoText p {
+  font-size: 1.2em;
 }/*# sourceMappingURL=Body.css.map */
