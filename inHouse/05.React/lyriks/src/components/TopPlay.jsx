@@ -57,9 +57,9 @@ const TopPlay = () => {
     <div className='xl:ml-6 ml-0 xl:mb-0 mb-6 flex-1 xl:max-w-[500px] max-w-full flex flex-col' ref={divRef}>
       <div className='w-full flex flex-col'>
         <div className='flex flex-row justify-between items-center'>
-            <h2 className='text-white font-bold text-2xl'>Top Charts</h2>
+            <h2 className='text-white font-bold text-2xl'>Top Chart</h2>
             <Link to='/top-charts'>
-              <p className='text-gray-300 text-base cursor-pointer'>See More</p>
+              <p className='text-gray-300 text-base cursor-pointer'>더보기</p>
             </Link>
         </div>
         <div className='mt-4 flex flex-col gap-1'>
@@ -79,9 +79,8 @@ const TopPlay = () => {
 
         <div className='w-full flex flex-col mt-8'>
             <div className='flex flex-row justify-between items-center'>
-                  <h2 className='text-white font-bold text-2xl'>Top Artists</h2>
                   <Link to='/top-charts'>
-                    <p className='text-gray-300 text-base cursor-pointer'>See More</p>
+                    <p className='text-gray-300 text-base cursor-pointer'>더보기</p>
                   </Link>
             </div>
 
