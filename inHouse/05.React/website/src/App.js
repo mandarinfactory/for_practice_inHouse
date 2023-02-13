@@ -1,47 +1,52 @@
-import "./App.css";
+import { useState } from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
+import { Routes, Route, Link } from "react-router-dom";
+import "./App.css";
+import CompDetail from "./asset/components/CompDetail";
+import CompShoes from "./asset/components/CompShoes";
+import data from "./asset/js/data";
 
 function App() {
+  const [shoes] = useState(data);
+
   return (
     <div className="App">
       <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="#home" className="title">
+          <Link to="/" className="title">
             ReactShop
-          </Navbar.Brand>
+          </Link>
           <Nav className="me-auto">
-            <Nav.Link href="#home" className="subtitle">
+            <Link to="/" className="subtitle">
               Home
-            </Nav.Link>
-            <Nav.Link href="#features" className="subtitle">
-              Item
-            </Nav.Link>
-            <Nav.Link href="#pricing" className="subtitle">
-              Cart
-            </Nav.Link>
+            </Link>
+            <Link to="/detail" className="subtitle">
+              Detail
+            </Link>
           </Nav>
         </Container>
       </Navbar>
-      <div className="main-bg" />
-      <div className="container">
-        <div className="row">
-          <div className="col-md-4">
-            <img src='https://codingapple1.github.io/shop/shoes1.jpg' width='80%'></img>
-            <h4>상품명</h4>
-            <p>상품설명</p>
-          </div>
-          <div className="col-md-4">
-            <img src='https://codingapple1.github.io/shop/shoes2.jpg' width='80%'></img>
-            <h4>상품명</h4>
-            <p>상품설명</p>
-          </div>
-          <div className="col-md-4">
-            <img src='https://codingapple1.github.io/shop/shoes3.jpg' width='80%'></img>
-            <h4>상품명</h4>
-            <p>상품설명</p>
-          </div>
-        </div>
-      </div>
+
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <div className="main-bg" />
+              <div className="container">
+                <div className="row">
+                  <CompShoes shoes={shoes[0]} i={1} />
+                  <CompShoes shoes={shoes[1]} i={2} />
+                  <CompShoes shoes={shoes[2]} i={3} />
+                </div>
+              </div>
+            </>
+          }
+        />
+        <Route path="/detail" element={
+          <CompDetail />
+        } />
+      </Routes>
     </div>
   );
 }

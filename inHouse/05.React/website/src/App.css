@@ -10,19 +10,23 @@
   background-position: center;
 }
 .title {
+  margin-right: 20px;
   font-size: 1.5em;
   font-weight: 800;
   color: crimson;
+  text-decoration: none;
   transition: color 0.3s;
 }
 .title:hover {
   color: orangered;
 }
 .subtitle {
+  margin-right: 10px;
   font-size: 1.2em;
   font-weight: 600;
   color: white;
   transition: color 0.3s;
+  text-decoration: none;
 }
 .subtitle:hover {
   color: rgba(255, 255, 255, 0.8);
