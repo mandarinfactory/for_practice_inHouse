@@ -44,40 +44,10 @@ function App() {
             </>
           }
         />
-        <Route path="/detail" element={<CompDetail />} />
-        <Route path="/about" element={<About />}>
-          <Route path="member" element={<div>멤버임</div>} />
-          <Route path="location" element={<div>위치정보임</div>} />
-        </Route>
-        <Route path="/event" element={<Event />}>
-          <Route
-            path="one"
-            element={<div>첫 주문시 케일 + 양배추즙 서비스 증정~!</div>}
-          />
-          <Route path="two" element={<div>생일기념 COUPON 받기~!</div>} />
-        </Route>
-        <Route path="*" element={<div>없는페이지입니다~!</div>}></Route>
+        <Route path='/detail/:id' element={<CompDetail shoes={shoes} />} />
       </Routes>
     </div>
   );
 }
-
-const About = () => {
-  return (
-    <>
-      <h4>회사정보</h4>
-      <Outlet></Outlet>
-    </>
-  );
-};
-
-const Event = () => {
-  return (
-    <>
-      <h4>오늘의 EVENT~!</h4>
-      <Outlet></Outlet>
-    </>
-  );
-};
 
 export default App;

@@ -1,4 +1,4 @@
-let data = [
+const data = [
   {
     id : 0,
     title : "White and Black",
