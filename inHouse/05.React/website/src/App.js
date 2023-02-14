@@ -5,9 +5,15 @@ import "./App.css";
 import CompDetail from "./asset/components/CompDetail";
 import CompShoes from "./asset/components/CompShoes";
 import data from "./asset/js/data";
-import axois from 'axios'
+import axios from 'axios';
+
+let count = 0;
 
 function App() {
+
+  const handleCount = () => {
+    count ++;
+  } 
   const [shoes, setShoes] = useState(data);
 
   return (
@@ -39,22 +45,39 @@ function App() {
                   {
                     shoes.map((v, i) => {
                       return (
-                        <CompShoes shoes={shoes[i]} i={i+1} />
+                        <CompShoes shoes={shoes[i]} i={i + 1} />
                         )
                     })
                   }
                 </div>
               </div>
               <button onClick={()=> {
-                axois.get('https://codingapple1.github.io/shop/data2.json')
-                .then(res => {
-                  let copy = [...shoes, ...res.data]
-                  setShoes(copy)
-                  console.log(copy);
-                })
-                .catch(() => {
-                  console.log('ERROR~!');
-                })
+                let copy;
+                handleCount();
+                if(count == 1) {
+                  axios.get('https://codingapple1.github.io/shop/data2.json')
+                  .then(res => {
+                    copy = [...shoes]
+                    copy = copy.concat(res.data)
+                    setShoes(copy)
+                  })
+                  .catch(() => {
+                    console.log('ERROR~!');
+                  })
+                }
+                else if(count == 2) {
+                  axios.get('https://codingapple1.github.io/shop/data3.json')
+                  .then(res => {
+                    copy = [...shoes]
+                    copy = copy.concat(res.data)
+                    setShoes(copy)
+                  })
+                  .catch(() => {
+                    console.log('ERROR~!');
+                  })
+                } else {
+                  alert('더 보여줄 제품이 없습니다.')
+                }
               }}>더보기</button>
             </>
           }
