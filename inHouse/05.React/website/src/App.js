@@ -21,7 +21,7 @@ function App() {
       <Navbar bg="dark" variant="dark">
         <Container>
           <Link to="/" className="title">
-            ReactShop
+            Shoeslover
           </Link>
           <Nav className="me-auto">
             <Link to="/" className="subtitle">
