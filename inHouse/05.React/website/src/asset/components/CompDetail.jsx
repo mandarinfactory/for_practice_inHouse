@@ -7,18 +7,24 @@ const CompDetail = (props) => {
   const [alertMsg, setAlertMsg] = useState(true);
   const [modal, setModal] = useState(0);
   const [inputVal, setInputVal] = useState("");
+  const [open, setOpen] = useState('');
 
   useEffect(() => {
     if (isNaN(inputVal) == true) {
       alert("숫자만 확인해서 입력해주십시오.");
     }
   }, [inputVal]);
-
+  
   useEffect(() => {
+    let openTimeoutID = setTimeout(() => {
+      setOpen('end')
+    }, 10);
     let timeoutID = setTimeout(() => {
       setAlertMsg(false);
     }, 2000);
     return () => {
+      setOpen('');
+      clearTimeout(openTimeoutID);
       clearTimeout(timeoutID);
     };
   }, []);
@@ -28,7 +34,7 @@ const CompDetail = (props) => {
   });
   return (
     <>
-      <div className="container">
+      <div className={`container start ${open}`}>
         {alertMsg === true ? (
           <div className="alert alert-warning notice">
             2초이내 구매시 할인~!
