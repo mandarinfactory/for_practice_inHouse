@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
-import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 import "./App.css";
 import CompDetail from "./asset/components/CompDetail";
 import CompShoes from "./asset/components/CompShoes";
 import data from "./asset/js/data";
+import axois from 'axios'
 
 function App() {
   const [shoes] = useState(data);
-  const navigate = useNavigate();
 
   return (
     <div className="App">
@@ -41,6 +41,15 @@ function App() {
                   <CompShoes shoes={shoes[2]} i={3} />
                 </div>
               </div>
+              <button onClick={()=> {
+                axois.get('https://codingapple1.github.io/shop/data2.json')
+                .then(res => {
+                  console.log(res.data);
+                })
+                .catch(() => {
+                  console.log('ERROR~!');
+                })
+              }}>가져오기!</button>
             </>
           }
         />

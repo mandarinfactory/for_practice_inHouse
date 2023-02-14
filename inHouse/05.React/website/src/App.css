@@ -9,6 +9,11 @@
   background-size: cover;
   background-position: center;
 }
+.notice {
+  font-size: 1.7em;
+  color: firebrick;
+  font-weight: 900;
+}
 .title {
   margin-right: 20px;
   font-size: 1.5em;
@@ -30,4 +35,9 @@
 }
 .subtitle:hover {
   color: rgba(255, 255, 255, 0.8);
+}
+.stock_input {
+  margin-right: 15px;
+  border: none;
+  border-bottom: 2px solid black;
 }
