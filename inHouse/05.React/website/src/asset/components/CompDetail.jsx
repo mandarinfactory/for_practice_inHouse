@@ -1,29 +1,31 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { Nav } from "react-bootstrap";
+/* import { ContextOne } from "../../App"; */
 
 const CompDetail = (props) => {
+  /* const stock = useContext(ContextOne) */
   const { id } = useParams();
   const [alertMsg, setAlertMsg] = useState(true);
   const [modal, setModal] = useState(0);
   const [inputVal, setInputVal] = useState("");
-  const [open, setOpen] = useState('');
+  const [open, setOpen] = useState("");
 
   useEffect(() => {
     if (isNaN(inputVal) == true) {
       alert("숫자만 확인해서 입력해주십시오.");
     }
   }, [inputVal]);
-  
+
   useEffect(() => {
     let openTimeoutID = setTimeout(() => {
-      setOpen('end')
+      setOpen("end");
     }, 10);
     let timeoutID = setTimeout(() => {
       setAlertMsg(false);
     }, 2000);
     return () => {
-      setOpen('');
+      setOpen("");
       clearTimeout(openTimeoutID);
       clearTimeout(timeoutID);
     };
@@ -67,43 +69,69 @@ const CompDetail = (props) => {
 
         <Nav variant="tabs" defaultActiveKey="link0">
           <Nav.Item>
-            <Nav.Link onClick={() => { setModal(0) }} eventKey="link0">버튼0</Nav.Link>
+            <Nav.Link
+              onClick={() => {
+                setModal(0);
+              }}
+              eventKey="link0"
+            >
+              버튼0
+            </Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link onClick={() => { setModal(1) }} eventKey="link1">버튼1</Nav.Link>
+            <Nav.Link
+              onClick={() => {
+                setModal(1);
+              }}
+              eventKey="link1"
+            >
+              버튼1
+            </Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link onClick={() => { setModal(2) }} eventKey="link2">버튼2</Nav.Link>
+            <Nav.Link
+              onClick={() => {
+                setModal(2);
+              }}
+              eventKey="link2"
+            >
+              버튼2
+            </Nav.Link>
           </Nav.Item>
         </Nav>
-        <ModalContent modal={modal}/>
+        <ModalContent modal={modal} shoes={props.shoes} />
       </div>
     </>
   );
 
-  function ModalContent ( {modal} ) {
-   /*  if (modal == 0){
+  function ModalContent({ modal, shoes }) {
+    /*  if (modal == 0){
       return <div>내용0</div>
     } else if (modal == 1) {
       return <div>내용1</div>
     } else if (modal == 2) {
       return <div>내용2</div>
     } 이거 대신!*/
-    const [fade, setFade] = useState('')
+    const [fade, setFade] = useState("");
     useEffect(() => {
       let timeoutID = setTimeout(() => {
-        setFade('end')
-      },10);
+        setFade("end");
+      }, 10);
       return () => {
         clearTimeout(timeoutID);
-        setFade('');
-      }
-    },[modal])
-    return <div className={`start ${fade}`}>
-      { [<div>내용0</div>, <div>내용1</div>, <div>내용2</div>][modal] }
-    </div> 
+        setFade("");
+      };
+    }, [modal]);
+    return (
+      <div className={`start ${fade}`}>
+        {
+          [<div>{shoes[0].title}</div>, <div>내용1</div>, <div>내용2</div>][
+            modal
+          ]
+        }
+      </div>
+    );
   }
-
 };
 
 export default CompDetail;
