@@ -9,7 +9,7 @@ const CompShoes = (props) => {
       </a>
       <h4>{props.shoes.title}</h4>
       <p>{props.shoes.content}</p>
-      <h5>{props.shoes.price}</h5>
+      <h5>{props.shoes.price}원</h5>
     </div>
   );
 };

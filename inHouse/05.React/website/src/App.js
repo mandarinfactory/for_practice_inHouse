@@ -8,7 +8,7 @@ import data from "./asset/js/data";
 import axois from 'axios'
 
 function App() {
-  const [shoes] = useState(data);
+  const [shoes, setShoes] = useState(data);
 
   return (
     <div className="App">
@@ -36,20 +36,26 @@ function App() {
               <div className="main-bg" />
               <div className="container">
                 <div className="row">
-                  <CompShoes shoes={shoes[0]} i={1} />
-                  <CompShoes shoes={shoes[1]} i={2} />
-                  <CompShoes shoes={shoes[2]} i={3} />
+                  {
+                    shoes.map((v, i) => {
+                      return (
+                        <CompShoes shoes={shoes[i]} i={i+1} />
+                        )
+                    })
+                  }
                 </div>
               </div>
               <button onClick={()=> {
                 axois.get('https://codingapple1.github.io/shop/data2.json')
                 .then(res => {
-                  console.log(res.data);
+                  let copy = [...shoes, ...res.data]
+                  setShoes(copy)
+                  console.log(copy);
                 })
                 .catch(() => {
                   console.log('ERROR~!');
                 })
-              }}>가져오기!</button>
+              }}>더보기</button>
             </>
           }
         />
