@@ -25,9 +25,6 @@ function App() {
             Shoeslover
           </Link>
           <Nav className="me-auto">
-            <Link to="/" className="subtitle">
-              Home
-            </Link>
             <Link to="/detail" className="subtitle">
               Detail
             </Link>

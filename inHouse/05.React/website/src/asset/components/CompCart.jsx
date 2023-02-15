@@ -4,7 +4,6 @@ import { Table } from "react-bootstrap";
 
 const CompCart = () => {
   const selector = useSelector(state => state);
-  console.log(selector);
 
   return (
     <div>
@@ -19,10 +18,16 @@ const CompCart = () => {
         </thead>
         <tbody>
           <tr>
-            <td>1</td>
-            <td>안녕</td>
-            <td>안녕</td>
-            <td>안녕</td>
+            <td>{selector.list[0].id}</td>
+            <td>{selector.list[0].name}</td>
+            <td>{selector.list[0].count}</td>
+            <td><button>+</button></td>
+          </tr>
+          <tr>
+            <td>{selector.list[1].id}</td>
+            <td>{selector.list[1].name}</td>
+            <td>{selector.list[1].count}</td>
+            <td><button>+</button></td>
           </tr>
         </tbody>
       </Table>
