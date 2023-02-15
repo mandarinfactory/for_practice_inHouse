@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { Routes, Route, Link } from "react-router-dom";
+
 import "./App.css";
 import CompDetail from "./asset/components/CompDetail";
 import CompShoes from "./asset/components/CompShoes";
+import CompCart from "./asset/components/CompCart";
 import data from "./asset/js/data";
 import axios from "axios";
 
@@ -29,6 +31,9 @@ function App() {
             <Link to="/detail" className="subtitle">
               Detail
             </Link>
+            <Link to="/cart" className="subtitle">
+              Cart
+            </Link>
           </Nav>
         </Container>
       </Navbar>
@@ -42,7 +47,7 @@ function App() {
               <div className="container">
                 <div className="row">
                   {shoes.map((v, i) => {
-                    return <CompShoes shoes={shoes[i]} i={i + 1} />;
+                    return <CompShoes shoes={shoes[i]} i={i + 1} key={i}/>;
                   })}
                 </div>
               </div>
@@ -82,7 +87,8 @@ function App() {
             </>
           }
         />
-        <Route path="/detail/:id" element={<CompDetail shoes={shoes} />} />
+        <Route path="/detail/:id" element={<CompDetail shoes={shoes}/>} />
+        <Route path='/cart' element={<CompCart/>}/>
       </Routes>
     </div>
   );
