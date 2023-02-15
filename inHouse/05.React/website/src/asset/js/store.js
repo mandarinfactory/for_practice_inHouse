@@ -5,8 +5,14 @@ const user = createSlice({
     initialState : '값'
 });
 
+const goods = createSlice({
+    name : 'goods',
+    initialState : [10, 11, 12]
+})
+
 export default configureStore({
   reducer: { 
-    user : user.reducer
+    user : user.reducer,
+    goods : goods.reducer
    }
 }) 

@@ -3,8 +3,8 @@ import { useSelector } from "react-redux";
 import { Table } from "react-bootstrap";
 
 const CompCart = () => {
-  const selector = useSelector(state => {return state});
-  console.log(selector.user);
+  const selector = useSelector(state => state);
+  console.log(selector);
 
   return (
     <div>
