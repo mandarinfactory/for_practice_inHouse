@@ -44,7 +44,7 @@ function App() {
               <div className="container">
                 <div className="row">
                   {shoes.map((v, i) => {
-                    return <CompShoes shoes={shoes[i]} i={i + 1} key={i}/>;
+                    return <CompShoes shoes={shoes[i]} i={i + 1} key={i} />;
                   })}
                 </div>
               </div>
@@ -84,8 +84,8 @@ function App() {
             </>
           }
         />
-        <Route path="/detail/:id" element={<CompDetail shoes={shoes}/>} />
-        <Route path='/cart' element={<CompCart/>}/>
+        <Route path="/detail/:id" element={<CompDetail shoes={shoes} />} />
+        <Route path="/cart" element={<CompCart />} />
       </Routes>
     </div>
   );

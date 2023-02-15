@@ -1,12 +1,25 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Table } from "react-bootstrap";
+import { chAge } from "../store/userSlice";
+import { chStock } from "../js/store";
 
 const CompCart = () => {
-  const selector = useSelector(state => state);
+  const selector = useSelector((state) => state);
+  const dispatch = useDispatch();
 
   return (
     <div>
+      <h4>
+        {selector.user.name} {selector.user.age}의 장바구니!
+      </h4>
+      <button
+        onClick={() => {
+          dispatch(chAge(1));
+        }}
+      >
+        버튼
+      </button>
       <Table>
         <thead>
           <tr>
@@ -17,18 +30,22 @@ const CompCart = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>{selector.list[0].id}</td>
-            <td>{selector.list[0].name}</td>
-            <td>{selector.list[0].count}</td>
-            <td><button>+</button></td>
-          </tr>
-          <tr>
-            <td>{selector.list[1].id}</td>
-            <td>{selector.list[1].name}</td>
-            <td>{selector.list[1].count}</td>
-            <td><button>+</button></td>
-          </tr>
+          {selector.list.map((v, i) => (
+            <tr key={i}>
+              <td>{selector.list[i].id}</td>
+              <td>{selector.list[i].name}</td>
+              <td>{selector.list[i].count}</td>
+              <td>
+                <button
+                  onClick={() => {
+                    dispatch(chStock(selector.list[i].id));
+                  }}
+                >
+                  +
+                </button>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </Table>
     </div>

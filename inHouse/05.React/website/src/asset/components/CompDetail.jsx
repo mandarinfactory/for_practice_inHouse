@@ -1,6 +1,8 @@
 import { useState, useEffect} from "react";
 import { useParams } from "react-router-dom";
 import { Nav } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { addItem } from "../js/store";
 /* import { ContextOne } from "../../App"; */
 
 const CompDetail = (props) => {
@@ -10,6 +12,7 @@ const CompDetail = (props) => {
   const [modal, setModal] = useState(0);
   const [inputVal, setInputVal] = useState("");
   const [open, setOpen] = useState("");
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (isNaN(inputVal) == true) {
@@ -63,7 +66,9 @@ const CompDetail = (props) => {
               className="stock_input"
               placeholder="갯수를 숫자로만 적어주세요."
             />
-            <button className="btn btn-danger">주문하기</button>
+            <button onClick={() => {
+              dispatch(addItem({ id : idNum.id, name : idNum.title, count : 1 }))
+            }}className="btn btn-danger">주문하기</button>
           </div>
         </div>
 
