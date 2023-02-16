@@ -148,10 +148,25 @@
 11. AJAX
 
     - 서버(어떤 데이터를 부탁하면 보내주는 프로그램)에 AJAX를 사용해서 데이터를 요청하는것
-
     - 데이터 가져올때는 GET, 데이터를 보낼때는 POST를 사용한다.
 
 
+12. localStorage
+
+    - data를 서버로 보내서 DB에 영구저장하면 지워지지 않고 브라우저가 렌더링이 되더라도 계속 남는다.
+    - 따로 브라우저마다 localStorage라고 서버처럼 쓰일수 있는 저장소가 있다. (문자만 가능, 최대 5MB --> 반영구적 저장가능)
+    - LocalStorage : 재접속하더라도 계속해서 남는다. / SessionStorage : 브라우저를 끄면 저장되어 있던 data도 날라간다.
+        
+        1. localStorage.setItem('key', 'value') --> 데이터 저장하는 방법('이름','값')
+        2. localStorage.getItem('key') --> 'value'를 가져온다 / 데이터를 가져오는 방법
+        3. localStorage.removeItem('key') --> 데이터를 제거하는 방법 && 따로 수정하는 방법은 없고, 데이터를 가져와서 수정하고 다시 넣으면 된다.
+
+    - local/sessionStorage에는 오직 문자만 저장가능하므로, array이나 object는 저장할수가 없다.
+
+        1. 단, JSON.stringify()를 이용해서 저장할수 있다. (JSON.stringify)() --> string화 해서 만들어준다.)
+            └-> localStorage.setItem('key', JSON.stringify('array/object'));
+        2. 해당 데이터를 출력하더라도 JSON화 된 데이터로 나오므로, 다시 JSON.parse()를 이용해서 원래 array/object로 변경해서 출력하면 된다.
+            └-> console.log(JSON.parse(localStorage.getItem('key')));
 
 
 

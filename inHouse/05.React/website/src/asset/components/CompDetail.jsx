@@ -1,18 +1,28 @@
 import { useState, useEffect} from "react";
 import { useParams } from "react-router-dom";
 import { Nav } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addItem } from "../js/store";
-/* import { ContextOne } from "../../App"; */
 
 const CompDetail = (props) => {
-  /* const stock = useContext(ContextOne) */
   const { id } = useParams();
   const [alertMsg, setAlertMsg] = useState(true);
   const [modal, setModal] = useState(0);
   const [inputVal, setInputVal] = useState("");
   const [open, setOpen] = useState("");
+  const idNum = props.shoes.find((v) => {
+    return v.id == id;
+  });
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    let outItem = localStorage.getItem('watched')
+    outItem = JSON.parse(outItem)
+    outItem.push(idNum.id)
+    outItem = new Set(outItem)
+    outItem = Array.from(outItem)
+    localStorage.setItem('watched', JSON.stringify(outItem))
+  }, [])
 
   useEffect(() => {
     if (isNaN(inputVal) == true) {
@@ -34,9 +44,6 @@ const CompDetail = (props) => {
     };
   }, []);
 
-  const idNum = props.shoes.find((v) => {
-    return v.id == id;
-  });
   return (
     <>
       <div className={`container start ${open}`}>
@@ -59,7 +66,7 @@ const CompDetail = (props) => {
             <p>{idNum.content}</p>
             <p>{idNum.price}</p>
             <input
-              onChange={(e) => {
+              onChange={(e) => { 
                 setInputVal(e.target.value);
               }}
               type="text"

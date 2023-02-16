@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { Routes, Route, Link } from "react-router-dom";
 
@@ -12,6 +12,11 @@ import axios from "axios";
 let count = 0;
 
 function App() {
+  useEffect(() => {
+    let idSetItem = localStorage.setItem("watched", JSON.stringify([]));
+  }, []);
+
+
   const handleCount = () => {
     count++;
   };
