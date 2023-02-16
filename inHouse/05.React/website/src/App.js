@@ -1,11 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy } from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { Routes, Route, Link } from "react-router-dom";
+import { useQuery } from "react-query";
 
 import "./App.css";
 import CompDetail from "./asset/components/CompDetail";
 import CompShoes from "./asset/components/CompShoes";
 import CompCart from "./asset/components/CompCart";
+/* const CompDetail = lazy( () => import("./asset/components/CompDetail") )
+const CompShoes = lazy( () => import("./asset/components/CompShoes") )
+const CompCart = lazy( () => import("./asset/components/CompCart") ) */
 import data from "./asset/js/data";
 import axios from "axios";
 
@@ -13,14 +17,22 @@ let count = 0;
 
 function App() {
   useEffect(() => {
-    let idSetItem = localStorage.setItem("watched", JSON.stringify([]));
+    localStorage.setItem("watched", JSON.stringify([]));
   }, []);
-
 
   const handleCount = () => {
     count++;
   };
   const [shoes, setShoes] = useState(data);
+  let result = useQuery("작명", () =>
+    axios
+      .get("https://codingapple1.github.io/userdata.json")
+      .then(e => {
+        console.log('요청됨!');
+        return e.data
+      }),
+      { staleTime : 2000 }
+  );
 
   return (
     <div className="App">
@@ -36,6 +48,11 @@ function App() {
             <Link to="/cart" className="subtitle">
               Cart
             </Link>
+          </Nav>
+          <Nav className="ms-auto subtitle">
+            { result.isLoading && "Loading" }
+            { result.error && '에러남' }
+            { result.data && result.data.name }
           </Nav>
         </Container>
       </Navbar>
