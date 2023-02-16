@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./apps.js"></script>
+    <title>JS기초01</title>
+  </head>
+  <body>
+    <h1>JavaScript 매우매우 기초강의 정리페이지01</h1>
+    <div class="one">
+      <ul>
+        <h2>1. 변수</h2>
+        <li>1. 변수는 문자와 숫자, $와 _만 사용가능하다.</li>
+        <li>2. 첫글자는 숫자가 될 수 없다.</li>
+        <li>3. 예약어(alert, console.log등)은 사용할 수 없다.</li>
+        <li>4. 가급적 상수(const)로 선언한 변수는 대문자로 선언한다.</li>
+        <li>5. 변수명은 읽기 쉽고 이해할수 있게 선언한다.</li>
+        <li>
+          let
+          <ul>
+            <li>선언 후 차후에 바꿀 수 있는 변수</li>
+            <li>var의 단점을 수정하여 나온 변수이다.</li>
+          </ul>
+        </li>
+        <li>
+          const
+          <ul>
+            <li>절대로 바뀌지 않는 상수</li>
+            <li>수정할 수 없다.</li>
+            <li>대문자로 선언하여 시인성을 좋게하는 편이다.</li>
+            <li>
+              처음에는 const로 선언하고 차후에 변경될 수 있는 변수는 let으로
+              변경해준다.
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="two">
+      <ul>
+        <h2>2. 자료형</h2>
+        <li>
+          <h4>문자형</h4>
+          <ul>
+            <li>
+              문자형은 ""(큰따옴표), ''(작은따옴표), ``(백틱)으로 쓸 수 있다.
+              3개의 큰차이는 없으나 통일성있게 하나만 쓰는게 좋다.
+            </li>
+            <li>
+              ``(백틱)은 문자형 내부에 변수를 넣을때 편리하다. -->
+              console.log(`He is ${userName}`)꼴로 나타낼수 있다.
+            </li>
+          </ul>
+        </li>
+        <li>
+          <h4>숫자형</h4>
+          <ul>
+            <li>
+              숫자형은 더하기(+), 빼기(-), 곱하기(*), 나누기(/), 나머지(%)로
+              분류된다.
+            </li>
+            <li>숫자를 0으로 나누면 infinity(무한대)가 출력된다.</li>
+            <li>문자열을 숫자로 나누면 NaN(Not a Number)가 출력된다.</li>
+          </ul>
+        </li>
+        <li>
+          <h4>boolean형</h4>
+          <ul>
+            <li>boolean형은 true(참), false(거짓) 두개 종류만 존재한다.</li>
+          </ul>
+        </li>
+        <li>
+          <h4>null/undefined</h4>
+          <ul>
+            <li>null : 존재하지 않는 값</li>
+            <li>undefined : 값이 할당되지 않음.</li>
+          </ul>
+        </li>
+        <li>
+          <h4>typeof 연산자</h4>
+          <ul>
+            <li>typeof 연산자는 해당 자료형이 어떤 종류인지를 알려준다.</li>
+            <li>console.log(typeof 7) // number</li>
+            <li>string은 문자를 뜻한다.</li>
+            <li>typeof null --> object(객체형)로 출력된다.</li>
+            <li>
+              null은 객체가 아니다. JS의 오류이지만 아직 잡을 생각이 없다고
+              한다.
+            </li>
+            <li>
+              문자형 + 문자형으로 해 새로운 문자형을 만들수 있다. 하나의
+              자료형이라도 문자형이면 사칙연산이 아닌 문자 붙여주는 기능을
+              수행하게 된다.
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="three">
+      <ul>
+        <h2>3. 대화상자</h2>
+        <li>
+          대화상자들이 떠있는 동안 script는 그 상태로 일시정지가 된다. -->
+          닫기전까지 이후 동작에 제한을 받는다.
+        </li>
+        <li>대화상자들은 따로 custom styling이 제한되어 있다.</li>
+        <li>
+          <h4>alert(알려줌)</h4>
+          <ul>
+            <li>
+              메세지를 띄우고 사용자가 확인버튼을 누를때까지 떠있는다. -->
+              일방적으로 알리는 용도로 쓰인다.
+            </li>
+          </ul>
+        </li>
+        <li>
+          <h4>prompt(입력받음)</h4>
+          <ul>
+            <li>어떤 값을 임력받을때 사용된다.</li>
+            <li>
+              const name = prompt('이름을 입력하세요.');<br />
+              alert( `환영합니다. ${name}님`);
+            </li>
+            <li>prompt를 그냥 빈공간으로 출력하게 되면 null이 출력된다.</li>
+          </ul>
+        </li>
+        <li>
+          <h4>confirm(확인받음)</h4>
+          <ul>
+            <li>어떤값을 확인받을때 사용된다.</li>
+            <li>confirm은 alert과 다르게 확인/취소 버튼 2개가 있다.</li>
+            <li>확인을 누르면 true, 취소를 누르면 false가 출력된다.</li>
+            <li>
+              const isAdult = confirm('당신은 성인입니까?');
+              console.log(isAdult)
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="four">
+      <ul>
+        <h2>4.형변환(Type Conversion)</h2>
+        <li>
+          각각 자료형이 다르면 의도치 않은 동작이 발현되서 원하지 않는 값이
+          출력될수 있으므로 필요하다.
+        </li>
+        <li>
+          const 수학점수 = prompt('수학 몇점?'); // 80<br />
+          const 영어점수 = prompt('영어 몇점?'); // 90<br />
+          const 평균값 = (수학점수 + 영어점수) / 2; // 곱셈과 나눗셈이 덧셈과
+          뺄셈보다 우선적으로 계산된다!<br />
+          console.log(평균값); // 85가 아닌 4045가 나오게 된다.<br />
+          └-> prompt로 입력한 값은 무조건! 문자형(string)으로 나온다.<br />
+          따라서, +가 덧셈이 아닌 문자간 결합으로 바뀌어 170이 아닌 8090이
+          출력되게 된다.<br />
+          근데 왜 8090이 문자열이면 4045으로 나누기(/)는 잘되는것일까?<br />
+          나누기는 문자열이여도 자동적으로 숫자로 인식되기 때문이다. ('6'/'2' =
+          3 --> 자동 형변환)
+        </li>
+        <li>
+          원인을 찾기 힘든 error를 만들수 있으므로 항상 의도된 형(type)으로
+          변환해주는것이 좋다. --> 명시적 형변환
+        </li>
+        <li>
+          명시적 형변환을 쓸때 항상 대문자 String, Number, Boolean으로
+          써줘야한다.
+        </li>
+        <li>
+          <h4>String()</h4>
+          <ul>
+            <li>각각 문자열로 변경시킬수 있다.</li>
+          </ul>
+        </li>
+        <li>
+          <h4>Number()</h4>
+          <ul>
+            <li>Number(true) // 1로 변환시킨다.</li>
+            <li>Number(false) // 0으로 변환시킨다.</li>
+            <li>Number(null) // 0</li>
+            <li>Number(undefined) // NaN</li>
+            <li>Number(0)//false지만, Number('0')//true이다.</li>
+            <li>Number("")//false지만, Number(" ")//true이다.</li>
+          </ul>
+        </li>
+        <li>
+          <h4>Boolean()</h4>
+          <ul>
+            <li>false의 케이스만 기억하면 된다.</li>
+            <li>
+              숫자, 빈문자열"", null, undefined, NaN는 모두 false로 출력된다.
+            </li>
+            <li>이 의외에는 모두 true로 출력된다.</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>
