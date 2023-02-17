@@ -39,3 +39,52 @@ console.log(theName + theLastName); //HarryPotter
 console.log(theName + 30); //Harry30
 console.log('30' + 30); //3030
 /* 자료형 ------------------------------- */
+
+for(let i = 0;i < 10; i++){
+    console.log(i);
+} // 1 2 3 4 5 6 7 8 9, for문
+
+let a = 0;
+while(a < 10) {
+    console.log(a++);
+} // 1 2 3 4 5 6 7 8 9, while문
+
+while(true) {
+    let answer = confirm('계속할까요?');
+    if(!answer){
+        break; // 확인을 누르면 계속 반복하게 되고, 취소를 누르면 break로 빠져나오게 된다.
+    }
+} // break
+
+for (let b = 0;b < 10; b++) {
+    if (b % 2) {
+        continue;
+    }
+    console.log(b);
+} // %2를 해서 0이면 false로 인식하므로 10 미만 숫자 중 나머지가 있는 숫자를 제외하고 짝수인 0, 2, 4, 6, 8이 출력된다.
+/* 반복문(for,while,do..while,break,continue) ------------------------------------- */
+
+const fruit = prompt('무슨 과일을 사고 싶으신가요?')
+
+switch(fruit){
+    case '사과' :
+    console.log('2,000원 입니다.');
+    break;
+    case '포도' :
+    console.log('5,000원 입니다.');
+    break;
+    case '귤' :
+    case '복숭아' :
+    console.log('2,500원 입니다.');
+    break;
+    default :
+    console.log('그런 과일은 판매하지 않습니다.');
+} /* 
+'사과'를 입력하면 이후 모든 log들을 다 출력하는데 case는 해당 case를 실행하면 
+그 이후의 case들까지 다 실행한다. 꼭 break 써줘야한다. 
+또한, if-else문에서 else의 일을 switch문에서는 default가 한다.
+같은 출력값을 갖는 case는 같이 써도 무방하다. (귤, 복숭아)
+*/
+
+
+
