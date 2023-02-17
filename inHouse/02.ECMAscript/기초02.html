@@ -20,29 +20,81 @@
       <ul>
         <h2>6.비교 연산자,조건문</h2>
         <li>
-          비교연산자는 원래 아는 대로 <, >, <=, >= 같은 기호이지만, <br>
+          비교연산자는 원래 아는 대로 <, >, <=, >= 같은 기호이지만, <br />
           ==,===(=)와 !=(=/=) 두개는 원래 아는 기호와 다른 기호로 쓰이고 있다.
         </li>
         <li>
-          = 한개를 쓰는건 이미 변수선언 후 값을 할당할때 쓰이므로, 코드가 충돌날수 있음을 방지하기 위해 ==, ===로 바뀌었다.
+          = 한개를 쓰는건 이미 변수선언 후 값을 할당할때 쓰이므로, 코드가
+          충돌날수 있음을 방지하기 위해 ==, ===로 바뀌었다.
         </li>
         <li>
-          각각 ==(동등연산자), ===(일치연산자)는 어떨때 쓰이는건가? <br>
-          const a = 1 <br>
-          const b = '1' <br>
-          console.log(a == b) // true<br>
-          └-> '==(동등연산자)'는 해당 값이 같으면 true를 출력해준다. (어떤 type에 상관없이!!! --> JS의 특성이다.)<br>
-          그리고 console.log(a === b)를 하면,<br>
-          '===(일치연산자)'은 type과 값 둘다가 같을때만 true를 출력해주므로,<br>
+          각각 ==(동등연산자), ===(일치연산자)는 어떨때 쓰이는건가? <br />
+          const a = 1 <br />
+          const b = '1' <br />
+          console.log(a == b) // true<br />
+          └-> '==(동등연산자)'는 해당 값이 같으면 true를 출력해준다. (어떤
+          type에 상관없이!!! --> JS의 특성이다.)<br />
+          그리고 console.log(a === b)를 하면,<br />
+          '===(일치연산자)'은 type과 값 둘다가 같을때만 true를 출력해주므로,<br />
           a는 number이고 b는 string이므로 false를 출력해준다.
         </li>
         <li>
+          if문 : if문내 괄호가 true면 실행해주는 문(statement)이다. <br />
+          const age = prompt('귀하의 나이를 적어주세요.') <br />
+          if(age > 19) {<br />
+          console.log('환영합니다.') <br />
+          } // 만약 age가 19보다 크면 '환영합니다'가 출력될것이다.
+        </li>
+        <li>
+          if를 사용하고 false일 경우일때 출력시키려면 if문 이후 else를 써주면
+          된다. <br />
+          if(age > 19) {<br />
+          console.log('환영합니다.') <br />
+          } else { <br />
+          console.log('19세 이상만 들어올수 있습니다.') <br />
+          } // true면 '환영합니다.', false면 '19세 이상만 들어올수 있습니다.'가
+          출력될것이다.
+        </li>
+        <li>
+          if문 외로 추가적으로 true를 출력시킬 if문을 쓰기 위해서는 else if를
+          사용한다. <br />
+          if (age > 19) {<br />
+          console.log('환영합니다.') <br />
+          } else if (age == 19) { <br />
+          console.log('고3도 못들어옵니다.') <br />
+          } else { <br />
+          console.log('19세 이상만 들어올수 있습니다.') <br />
+        </li>
+      </ul>
+    </div>
+    <div class="seven">
+      <ul>
+        <h2>7.논리 연산자(and, or, not)</h2>
+        <li>
+          <h4>|| (or)</h4>
           <ul>
             <li>
-
+              여러개 중 하나라도 true면 true이다. <br>
+              즉, 모든값이 false 일때만 false를 반환한다.
             </li>
           </ul>
+          <h4>&& (and)</h4>
+          <ul>
+            <li>
+              모든값이 true여야지 true이다. <br>
+              즉, 하나라도 false면 false를 반환한다.
+            </li>
+          </ul>
+          <h4>! (not)</h4>
+          <ul>
+            <li>true면 false로, false면 true로 바꿔준다.</li>
+          </ul>
         </li>
+      </ul>
+    </div>
+    <div class="eight">
+      <ul>
+        <h2></h2>
       </ul>
     </div>
   </body>

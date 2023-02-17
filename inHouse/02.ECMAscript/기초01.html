@@ -188,8 +188,6 @@
             <li>Number(false) // 0으로 변환시킨다.</li>
             <li>Number(null) // 0</li>
             <li>Number(undefined) // NaN</li>
-            <li>Number(0)//false지만, Number('0')//true이다.</li>
-            <li>Number("")//false지만, Number(" ")//true이다.</li>
           </ul>
         </li>
         <li>
@@ -200,6 +198,8 @@
               숫자, 빈문자열"", null, undefined, NaN는 모두 false로 출력된다.
             </li>
             <li>이 의외에는 모두 true로 출력된다.</li>
+            <li>Boolean(0)//false지만, Boolean('0')//true이다.</li>
+            <li>Boolean("")//false지만, Boolean(" ")//true이다.</li>
           </ul>
         </li>
       </ul>
