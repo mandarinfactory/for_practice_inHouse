@@ -49,12 +49,12 @@ while(a < 10) {
     console.log(a++);
 } // 1 2 3 4 5 6 7 8 9, while문
 
-while(true) {
+/* while(true) {
     let answer = confirm('계속할까요?');
     if(!answer){
         break; // 확인을 누르면 계속 반복하게 되고, 취소를 누르면 break로 빠져나오게 된다.
     }
-} // break
+} // break */
 
 for (let b = 0;b < 10; b++) {
     if (b % 2) {
@@ -64,7 +64,7 @@ for (let b = 0;b < 10; b++) {
 } // %2를 해서 0이면 false로 인식하므로 10 미만 숫자 중 나머지가 있는 숫자를 제외하고 짝수인 0, 2, 4, 6, 8이 출력된다.
 /* 반복문(for,while,do..while,break,continue) ------------------------------------- */
 
-const fruit = prompt('무슨 과일을 사고 싶으신가요?')
+/* const fruit = prompt('무슨 과일을 사고 싶으신가요?')
 
 switch(fruit){
     case '사과' :
@@ -79,12 +79,74 @@ switch(fruit){
     break;
     default :
     console.log('그런 과일은 판매하지 않습니다.');
-} /* 
+}  */
+/* 
 '사과'를 입력하면 이후 모든 log들을 다 출력하는데 case는 해당 case를 실행하면 
 그 이후의 case들까지 다 실행한다. 꼭 break 써줘야한다. 
 또한, if-else문에서 else의 일을 switch문에서는 default가 한다.
 같은 출력값을 갖는 case는 같이 써도 무방하다. (귤, 복숭아)
 */
 
+function showName (name) {
+    console.log(`Hello, ${name}`);
+}
+showName('Brent');
 
+function sayHello (name = 'friend') {
+    let msg = `Hello, ${name}`;
+/*     if(name){
+        msg += `, ${name}`;
+    } */
+    console.log(msg);
+}
 
+sayHello();
+sayHello('Mike');
+/* console.log(msg) --> msg는 sayHello함수내에서만 선언된 변수이므로 함수 밖에서는 인식되지 않는다. */
+
+let theMsg = 'welcome';
+console.log(theMsg);
+
+function theSayHello (name) {
+    let theMsg = 'Hello'
+    console.log(theMsg + ' ' + name);
+}
+
+theSayHello('Tom')
+console.log(theMsg);
+/* 
+같은이름(theMsg)으로 변수를 선언했지만, 함수내외에서 서로 영향을 주지 않기 때문에 충돌하지 않고 
+함수내에서는 Hello를, 외에서는 welcome을 각각 출력시키고 있다.
+함수외 -> 전역변수, 함수내 -> 지역변수
+ */
+
+let thisName = 'Samantha'
+
+function herName (name) {
+    console.log(name);
+}
+
+herName();
+herName('Jane');
+
+function add(num1, num2) {
+    return num1 + num2;
+}// return은 오른쪽에 있는 값을 반환한다.(여기서는 num1 + num2)
+
+const result = add(2,3)
+console.log(result);
+/* 함수 -------------------------------------------------- */
+
+/* showError() --> 함수표현식으로 선언했으므로, 함수를 표현식 다음에 호출하던가 아니면 표현식을 선언문으로 바꿔줘야한다. */
+
+let showError = function () {
+    console.log('error');
+}//함수표현식
+showError();
+
+showingError();
+function showingError () {
+    console.log('error');
+}//함수선언문
+
+const addNum = (num1, num2) => num1 + num2; //화살표함수
