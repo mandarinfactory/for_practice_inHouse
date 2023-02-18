@@ -150,3 +150,62 @@ function showingError () {
 }//함수선언문
 
 const addNum = (num1, num2) => num1 + num2; //화살표함수
+/* 함수선언문, 화살표함수 --------------------------------------------- */
+
+const superman = {
+    name : 'clark',
+    age : 30,
+}
+
+console.log(superman);
+console.log(superman.name);
+console.log(superman['age']);
+
+superman.hairColor = 'blonde';
+superman['hobby'] = 'flying'
+console.log(superman);
+
+delete superman.age;
+console.log(superman.age);
+
+function makeObject (name,age) {
+    return {
+        name,
+        age,
+        hobby : 'soccer',
+    }
+}
+
+const Mike = makeObject('Mike', 30);
+console.log(Mike);
+
+console.log('age' in Mike);
+console.log('birthday' in Mike);
+
+function isAdult (user) {
+    if(!('age' in user) || user.age < 20) {
+        return false;
+    } 
+        return true;
+}
+
+const Brent = {
+    name : 'Brent',
+    age : 29,
+}
+const Janet = {
+    name : 'Janet',
+}
+
+console.log(isAdult(Brent));
+console.log(isAdult(Janet));
+
+const Alex = {
+    name : 'Alex',
+    age : 20,
+}
+
+for(key in Alex){
+    console.log(key); // name과 age key가 출력된다.
+    console.log(Alex[key]); // Alex의 key에 있는 값들이 출력된다. 
+}

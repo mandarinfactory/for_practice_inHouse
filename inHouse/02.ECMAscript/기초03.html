@@ -61,6 +61,52 @@
     <div class="twelve">
         <ul>
             <h2>12.객체(object)</h2>
+            <li>
+                const superman = { <br>
+                    name : 'clark', <br>
+                    age : 33, <br>
+                } --> 객체
+            </li>
+            <li>
+                객체로 접근하기 위해서는 .을 사용하면 된다. --> superman.name; // clark 또는 superman['age'] // 33;
+            </li>
+            <li>
+                추가시에도 .이나 []를 사용하면 된다. --> superman.gender = 'male';, superman['hairColor'] = 'blonde';
+            </li>
+            <li>
+                삭제는 삭제하려는 property앞에 delete를 써주면 된다. --> delete superman.hairColor;
+            </li>
+            <li>
+                객체는 단축해서 property를 사용할 수 있다. <br>
+                const name = 'clark'; <br>
+                const age = 33; <br>
+                const gender = 'male' <br>
+                const superman = { <br>
+                    name, <br>
+                    age, <br>
+                    gender, <br>
+                }
+            </li>
+            <li>
+                존재하지 않는 property를 확인하려고 하면 error가 아닌 undefined가 나오게 된다. <br>
+                만약, in을 사용하게 되면 해당 property가 있는지 확인할 수 있다. <br>
+                'birthDay' in superman; // false <br>
+                'age' in superman; //true
+            </li>
+        </ul>
+    </div>
+    <div class="thirteen">
+        <ul>
+            <h2>13.객체(object) - method, this</h2>
+            <li>
+                method : 객체 프로퍼티로 할당 된 함수를 말한다. <br>
+                const superman = { <br>
+                    name : 'clark'; <br>
+                    fly : function () { <br>
+                        console.log('날아갑니다.') <br>
+                    } <br>
+                }
+            </li>
         </ul>
     </div>
   </body>
