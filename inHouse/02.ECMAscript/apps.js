@@ -209,7 +209,6 @@ for(key in Alex){
     console.log(key); // name과 age key가 출력된다.
     console.log(Alex[key]); // Alex의 key에 있는 값들이 출력된다. 
 }
-/* object ------------------------------------------------ */
 
 let boy = {
     name : 'Tommy',
@@ -223,4 +222,15 @@ boy = null;
 
 /* man.showName(); --> boy가 null이므로 error가 뜬다! 이럴때는 boy.name이 아닌 this.name을 써준다. */
 man.showName()
+/* object ------------------------------------------------ */
 
+let days = ['월', '화', '수'];
+
+console.log(days[1]); // 화
+days[1] = '목'
+days.push('금');
+days.unshift('일');
+
+for(let i = 0;i < days.length; i++){
+    console.log(days[i]);
+}// 일, 월, 목, 수, 금
