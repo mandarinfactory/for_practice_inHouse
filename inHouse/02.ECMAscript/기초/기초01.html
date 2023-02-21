@@ -24,23 +24,50 @@
         <li>3. 예약어(alert, console.log등)은 사용할 수 없다.</li>
         <li>4. 가급적 상수(const)로 선언한 변수는 대문자로 선언한다.</li>
         <li>5. 변수명은 읽기 쉽고 이해할수 있게 선언한다.</li>
+        <li>6. 변수의 생성과정 : 선언단계 --> 초기화단계 --> 할당단계</li>
+        <li>
+          7. var는 함수 스코프(function(){})이고 let,const는 블록 스코프({})이다. <br>
+          블록스코프({})는 함수,if/while/try·catch문등의 내부스코프로 쓰였다는걸 뜻하므로 지역변수로 사용된다고 보면 된다. <br>
+          함수스코프는 함수내에서만 선언되면 지역변수가 된다는 뜻이다. --> function내에서만 지역변수지, if/while/try·catch문등에서 선언했더라도 전역변수로 사용된다는 뜻이다.
+        </li>
+        <li>
+          var
+          <ul>
+            <li>var는 한번 선언된 변수를 다시 선언할수 있다.</li>
+            <li>var는 선언과 초기화단계가 한번에 나타난다. --> 따라서 호이스팅이 될때 undefined가 나온다.</li>
+            <li>선언하기 전에 사용할 수 있다. --> 변수 호이스팅</li>
+            <li>호이스팅(hoisitng) : scope내부 어디서든 변수 선언은 최상위에 선언된 것 처럼 행동한다.</li>
+            <li>호이스팅은 변수선언은 되지만, 할당된 값에서는 나오지 않는다. <br>
+              var name; <br>
+              console.log(name); // undefined --> 선언된 변수는 나오지만, 할당된 값은 호이스팅 되지 않는다.<br>
+              name = 'Brent';
+            </li>
+          </ul>
+        </li>
         <li>
           let
           <ul>
             <li>선언 후 차후에 바꿀 수 있는 변수</li>
             <li>var의 단점을 수정하여 나온 변수이다.</li>
+            <li>let은 선언단계 --> 초기화단계가 나뉘어서 나타난다.</li>
+            <li>
+              console.log(name); // ReferenceError가 뜬다. <br>
+              let name = 'Samantha'; 
+            </li>
           </ul>
         </li>
         <li>
           const
           <ul>
             <li>절대로 바뀌지 않는 상수</li>
+            <li>const는 선언 + 초기화 + 할당단계가 한번에 나타난다.  --> var. let은 선언후 차후에 할당도 가능하지만, const는 안된다!</li>
             <li>수정할 수 없다.</li>
             <li>대문자로 선언하여 시인성을 좋게하는 편이다.</li>
             <li>
               처음에는 const로 선언하고 차후에 변경될 수 있는 변수는 let으로
               변경해준다.
             </li>
+            <li>let, const도 var와 마찬가지로 호이스팅이 되지만, Temperal Dead Zone(TDZ)의 영향으로 할당하기전에는 사용이 안된다.</li>
           </ul>
         </li>
       </ul>

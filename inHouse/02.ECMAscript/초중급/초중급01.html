@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./apps.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="one">
+        <h2>1.생성자함수</h2>
+        <ul>
+            <li>생성자함수는 보통 첫글자를 대문자로 쓰는편이다.</li>
+        </ul>
+    </div>
+    <div class="two">
+        <h2>2.객체(object)method, 계산된 프로퍼티(computed property)</h2>
+        <ul>
+            <li>01.계산된 프로퍼티(computed property)</li>
+            <ul>
+                <li>
+                    let a = 'age'; <br>
+                    const user = { <br>
+                        name : 'Brent', <br>
+                        age가 아닌 [a] : 30 --> 계산된 프로퍼티라고 한다. <br>
+                    }
+                </li>
+            </ul>
+            <li>02. method들(assign, keys, values, entries, fromEntries)</li>
+            <ul>
+                <li>
+                    - Object.assign() : 객체 복제 <br>
+                    const user = { <br>
+                        name : 'John', <br>
+                        age : 31 <br>
+                    } <br>
+                    const cloneUser = user만 했다고 user가 정말 clone된게 아니다! <br> 
+                    user, cloneUser둘다 그냥 화살표로 같은곳을 향하고 있는 의미이다! <br>
+                    const cloneUser = Object.assign({}, user); 꼴로 써야 객체가 복제가 된다. <br>
+                    여기서 빈객체({})는 초기값을 말한다. <br>
+                    빈객체가 아닌 같은 index를 가지고 있다면 덮어쓰기가 되서 복제되는 객체의 값으로 변경된다.
+                </li>
+            </ul>
+            <li>
+                - Object.keys() : 키 배열 반환 / values() : 값 배열 반환<br>
+                const user = { <br>
+                    name : 'Mike',<br>
+                    age : 30,<br>
+                    gender : 'male'<br>
+                }<br>
+                Object.keys(user);
+                Object.values(user);
+            </li>
+            <li>
+                - Object.entries() : 키/값 모두 배열 반환
+                - Object.fromEntries() : 키/값 배열을 모두 객체로 반환
+            </li>
+        </ul>
+    </div>
+  </body>
+</html>
