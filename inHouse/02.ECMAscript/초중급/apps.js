@@ -79,15 +79,23 @@ console.log(Object.fromEntries(theToday)); // {year: '2023', month: 'February', 
 
 /* 02.  object(method) : assign(), keys/values(), entries/forEntries() ------------------------------------- */
 
-const theID = Symbol('id');
+//다른 개발자가 만들어 놓은 객체
 const thisUser = {
     name : 'Steve',
-    age : 37,
-    [theID] : 'myid'
+    age : 36,
+};
+
+//본인이 작업
+const showName = Symbol('show name');
+thisUser[showName] = function () {
+    console.log(this.name);
+};
+
+thisUser[showName]();
+
+//사용자가 접속하면 보는 메세지
+for (let key in thisUser) {
+    console.log(`His ${key} is ${thisUser[key]}.`);
 }
-console.log(thisUser); // {name: 'Steve', age: 37, Symbol(id): 'myid'}
-/* 
-Symbol로 되어있는 data는 Object.keys/values등으로 나타나지 않는다. 
-*/
 
 

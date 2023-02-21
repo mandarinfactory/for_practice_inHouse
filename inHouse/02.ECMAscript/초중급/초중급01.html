@@ -80,7 +80,9 @@
             const a = Symbol(); // new를 붙이지 않는다! <br>
             const b = Symbol(); <br>
             같아 보일지라도 a === b, a ==b 둘다 false로 출력된다. <br>
-            id.description을 사용해야 기본 Symbol 메소드는 이름을 얻을수 있다.
+            id.description을 사용해야 기본 Symbol 메소드는 이름을 얻을수 있다. <br>
+            Symbol은 Object.keys/values등으로 나오지 않고, 따로 Object.getOwnPropertySymbols()를 써줘야한다. <br>
+            또는, Reflect.ownKeys()를 사용하면 Symbol을 포함한 모든 index를 보여준다.
         </li>
         <li>
             Symbol.for --> 전역 심볼이다. <br>
