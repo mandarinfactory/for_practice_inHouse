@@ -26,7 +26,8 @@ const item1 = new Item('인형', 8900)
 const item2 = new Item('연필세트', 5500)
 item1.showPrice();// 가격은 8900원 입니다.
 console.log(item1, item2);
-/* 생성자함수 ------------------------------------------------ */
+
+/* 01. 생성자함수 ------------------------------------------------ */
 
 let n = 'name';
 let a = 'age';
@@ -75,3 +76,18 @@ console.log(theToday); // [['year', '2023']['month', 'February']['day', 21]['dat
 
 console.log(Object.fromEntries(theToday)); // {year: '2023', month: 'February', day: 21, date: 'Tuesday'}
 //Object.keys() && values() && entries() && fromEntries()
+
+/* 02.  object(method) : assign(), keys/values(), entries/forEntries() ------------------------------------- */
+
+const theID = Symbol('id');
+const thisUser = {
+    name : 'Steve',
+    age : 37,
+    [theID] : 'myid'
+}
+console.log(thisUser); // {name: 'Steve', age: 37, Symbol(id): 'myid'}
+/* 
+Symbol로 되어있는 data는 Object.keys/values등으로 나타나지 않는다. 
+*/
+
+

@@ -16,54 +16,84 @@
   </head>
   <body>
     <div class="one">
+      <ul>
         <h2>1.생성자함수</h2>
-        <ul>
-            <li>생성자함수는 보통 첫글자를 대문자로 쓰는편이다.</li>
-        </ul>
+        <li>생성자함수는 보통 첫글자를 대문자로 쓰는편이다.</li>
+      </ul>
     </div>
     <div class="two">
+      <ul>
         <h2>2.객체(object)method, 계산된 프로퍼티(computed property)</h2>
+        <li>01.계산된 프로퍼티(computed property)</li>
         <ul>
-            <li>01.계산된 프로퍼티(computed property)</li>
-            <ul>
-                <li>
-                    let a = 'age'; <br>
-                    const user = { <br>
-                        name : 'Brent', <br>
-                        age가 아닌 [a] : 30 --> 계산된 프로퍼티라고 한다. <br>
-                    }
-                </li>
-            </ul>
-            <li>02. method들(assign, keys, values, entries, fromEntries)</li>
-            <ul>
-                <li>
-                    - Object.assign() : 객체 복제 <br>
-                    const user = { <br>
-                        name : 'John', <br>
-                        age : 31 <br>
-                    } <br>
-                    const cloneUser = user만 했다고 user가 정말 clone된게 아니다! <br> 
-                    user, cloneUser둘다 그냥 화살표로 같은곳을 향하고 있는 의미이다! <br>
-                    const cloneUser = Object.assign({}, user); 꼴로 써야 객체가 복제가 된다. <br>
-                    여기서 빈객체({})는 초기값을 말한다. <br>
-                    빈객체가 아닌 같은 index를 가지고 있다면 덮어쓰기가 되서 복제되는 객체의 값으로 변경된다.
-                </li>
-            </ul>
-            <li>
-                - Object.keys() : 키 배열 반환 / values() : 값 배열 반환<br>
-                const user = { <br>
-                    name : 'Mike',<br>
-                    age : 30,<br>
-                    gender : 'male'<br>
-                }<br>
-                Object.keys(user);
-                Object.values(user);
-            </li>
-            <li>
-                - Object.entries() : 키/값 모두 배열 반환
-                - Object.fromEntries() : 키/값 배열을 모두 객체로 반환
-            </li>
+          <li>
+            let a = 'age'; <br />
+            const user = { <br />
+            name : 'Brent', <br />
+            age가 아닌 [a] : 30 --> 계산된 프로퍼티라고 한다. <br />
+            }
+          </li>
         </ul>
+        <li>
+          02. method들(assign, keys, values, entries, fromEntries)
+          <ul>
+            <li>
+              - Object.assign() : 객체 복제 <br />
+              const user = { <br />
+              name : 'John', <br />
+              age : 31 <br />
+              } <br />
+              const cloneUser = user만 했다고 user가 정말 clone된게 아니다!
+              <br />
+              user, cloneUser둘다 그냥 화살표로 같은곳을 향하고 있는 의미이다!
+              <br />
+              const cloneUser = Object.assign({}, user); 꼴로 써야 객체가 복제가
+              된다. <br />
+              여기서 빈객체({})는 초기값을 말한다. <br />
+              빈객체가 아닌 같은 index를 가지고 있다면 덮어쓰기가 되서 복제되는
+              객체의 값으로 변경된다.
+            </li>
+          </ul>
+        </li>
+        <li>
+          - Object.keys() : 키 배열 반환 / values() : 값 배열 반환<br />
+          const user = { <br />
+          name : 'Mike',<br />
+          age : 30,<br />
+          gender : 'male'<br />
+          }<br />
+          Object.keys(user); Object.values(user);
+        </li>
+        <li>
+          - Object.entries() : 키/값 모두 배열 반환 - Object.fromEntries() :
+          키/값 배열을 모두 객체로 반환
+        </li>
+      </ul>
+    </div>
+    <div class="three">
+      <ul>
+        <h2>3.심볼(Symbol)</h2>
+        <li>
+            symbol은 유일한 식별자를 만들때 쓰인다. <br>
+            symbol은 property key로 사용할 수 있다.
+            symbol은 유일성이 보장된다. --> 전체의 코드 중 딱 하나이다! <br> 
+            const a = Symbol(); // new를 붙이지 않는다! <br>
+            const b = Symbol(); <br>
+            같아 보일지라도 a === b, a ==b 둘다 false로 출력된다. <br>
+            id.description을 사용해야 기본 Symbol 메소드는 이름을 얻을수 있다.
+        </li>
+        <li>
+            Symbol.for --> 전역 심볼이다. <br>
+            하나의 심볼만 보장받을 수 있다. <br>
+            없으면 만들고, 있으면 가져와야하기 때문이다. <br>
+            Symbol 함수는 매번 다른 Symbol값을 생성하지만, <br>
+            Symbol.for 메소드는 하나를 생성한 뒤 키를 통해 같은 Symbol을 공유한다. <br>
+            const id1 = Symbol.for('id') <br>
+            const id2 = Symbol.for('id') <br>
+            id1 === id2 // true로 출력한다. <br>
+            또한, 이름을 얻고싶다면 Symbol.keyFor(id1)을 하면 'id'가 출력된다.
+        </li>
+      </ul>
     </div>
   </body>
 </html>
