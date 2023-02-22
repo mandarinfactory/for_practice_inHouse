@@ -77,7 +77,7 @@ console.log(theToday); // [['year', '2023']['month', 'February']['day', 21]['dat
 console.log(Object.fromEntries(theToday)); // {year: '2023', month: 'February', day: 21, date: 'Tuesday'}
 //Object.keys() && values() && entries() && fromEntries()
 
-/* 02.  object(method) : assign(), keys/values(), entries/forEntries() ------------------------------------- */
+/* 02. object(method) : assign(), keys/values(), entries/forEntries() ------------------------------------- */
 
 //다른 개발자가 만들어 놓은 객체
 const thisUser = {
@@ -97,5 +97,50 @@ thisUser[showName]();
 for (let key in thisUser) {
     console.log(`His ${key} is ${thisUser[key]}.`);
 }
+
+/* 03. Symbol ----------------------------------------------------------- */
+
+let list = [
+    '01. 들어가며',
+    '02. JS의 역사',
+    '03. 자료형',
+    '04. 함수',
+    '05. 배열'
+]
+
+let newList = [];
+
+for(let i = 0; i < list.length; i++) {
+    newList.push(
+        list[i].slice(4)
+    )
+}
+console.log(newList);
+
+// 금칙어 : 코카콜라
+
+function hasPepsi(str) {
+    if(str.indexOf('코카콜라') > -1){
+        console.log('누가아아 코카콜라를 말했는가아아?');
+    } else {
+        console.log('킹시 갓시');
+    }
+}
+
+hasPepsi('와 코카콜라가 짱이지~');
+hasPepsi('펩시가 최고지~');
+
+//includes --> 문자가 있으면 true, 없으면 false를 반환한다.
+
+function thePepsi(str) {
+    if(str.includes('코카콜라')){
+        console.log('누가아아 코카콜라를 말했는가아아?');
+    } else {
+        console.log('킹시 갓시');
+    }
+}
+
+thePepsi('와 코카콜라가 짱이지~');
+thePepsi('펩시가 최고지~');
 
 
