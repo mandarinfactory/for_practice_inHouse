@@ -142,5 +142,71 @@ function thePepsi(str) {
 
 thePepsi('와 코카콜라가 짱이지~');
 thePepsi('펩시가 최고지~');
+/* string method --------------------------------------------------- */
+
+
+let users = ['Jane', 'Jonathan', 'Brent']
+users.forEach((name, index) => {
+    console.log(`${index + 1}. ${name}`);
+})
+//forEach
+
+let arr = [1, 2, 3, 4, 5];
+const result = arr.find(i => {
+    return i % 2 === 0 // 짝수만 출력한다.
+})
+console.log(result)
+let userList = [
+    { name : 'John', age : 20 },
+    { name : 'Karl', age : 28 },
+    { name : 'Mitchel', age : 10 },
+];
+const resultAge = userList.find(user => {
+    if(user.age < 19){
+        return true
+    }
+    return false
+})
+console.log(resultAge); //findIndex로 하면 2가 나온다.
+//find
+
+const arrFilter = [1,2,3,4,5,6];
+const resultFilter = arrFilter.filter(i => {
+    return i % 2 === 0;
+});
+console.log(resultFilter); // [2, 4, 6]
+//filter
+
+let userList1 = [
+    { name : 'John', age : 32 },
+    { name : 'Karl', age : 28 },
+    { name : 'Mitchel', age : 10 },
+];
+let newUserList1 = userList1.map((user, index) => {
+    return Object.assign({}, user, {
+        id : index + 1,
+        isAdult : user.age > 19
+    })
+})
+console.log(newUserList1);
+//map + assign
+
+let arr2 = ['안녕', '나는', '철수야'];
+
+let resultArr2 = arr2.join(' ')
+console.log(resultArr2); // 안녕 나는 철수야
+//join(각 인수를 합쳐버린다.)
+
+let friends = 'Timmy, Joel, Jimmy, Henry'
+console.log(friends.split(',')); // ['Timmy', ' Joel', ' Jimmy', ' Henry']
+//split(각 인수를 ''를 기준으로 쪼개서 배열로 변환시킨다.)
+
+let object1 = {
+    num : 1,
+    name : 'Brent'
+}
+let array1 = [1,'Brent']
+console.log(typeof object1); // typeof는 string, number, object까지만 판별할수 있다.
+console.log(Array.isArray(array1)); // 배열은 따로 Array.isArray()를 사용해야 배열인지 아닌지를 판별할수 있다. (true/false)
 
 

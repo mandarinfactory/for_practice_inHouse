@@ -234,3 +234,4 @@ days.unshift('일');
 for(let i = 0;i < days.length; i++){
     console.log(days[i]);
 }// 일, 월, 목, 수, 금
+
