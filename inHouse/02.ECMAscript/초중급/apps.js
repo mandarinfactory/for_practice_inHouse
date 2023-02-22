@@ -267,3 +267,29 @@ let resultLine = userLine.reduce((prev, cur) => {
 },[])
 console.log(resultLine); // ['Mariah', 'Harold', 'Silvana', 'Lizzy']
 /* array.method_02 --------------------------------------------- */
+
+let users1 = ['Sarah', 'Brent', 'Maxwell', 'Adrian'];
+let [person1, person2, person3, person4] = users1;
+// let person1 = users1[0], let person2 = users1[1] ···
+console.log(person1); // 'Sarah'
+console.log(person2); // 'Brent'
+console.log(person3); // 'Maxwell'
+console.log(person4); // 'Adrian'
+
+let [x,y,z] = [1,2] // --> z에 해당하는 값이 없다면 undefined를 출력하게 된다.
+let [per1, ,per2] = ['a', 'b', 'c', 'd'];
+console.log(per1); // a
+console.log(per2); // c --> b는 빈칸에 할당되서 넘어가고 c가 per2에 할당된다. d는 할당받을 key가 없다.
+
+let aa = 1;
+let bb = 2;
+[aa, bb] = [bb, aa] // aa = 2, bb = 1 --> 배열구조분해 : 바꿔치기방법
+
+let Mike = {theName : 'Mike', age: 30};
+let {age, theName} = Mike; // 객체에서도 구조분해가 쓰일수있고, 배열과 달리 객체에서는 순서에 상관이 없다. (age 나오고 theName이 나옴)
+console.log(theName); // Mike
+console.log(age); // 30
+let {theName : userName1, age : userAge1} = Mike; // 객체는 또한 새로운 변수 이름으로 할당할수 있다.
+console.log(userName1); // Mike
+console.log(userAge1); // 30
+/* 구조분해할당 --------------------------------------------------------------------- */
