@@ -293,3 +293,31 @@ let {theName : userName1, age : userAge1} = Mike; // 객체는 또한 새로운 
 console.log(userName1); // Mike
 console.log(userAge1); // 30
 /* 구조분해할당 --------------------------------------------------------------------- */
+
+function showTheName (name) {
+  console.log(arguments.length); // 2
+  console.log(arguments[0]); // Mike
+  console.log(arguments[1]); // Tom
+}
+
+showTheName('Mike', 'Tom');
+//arguments
+
+function showThisName (...names) {
+  console.log(names);
+}
+
+showThisName(); // []
+showThisName('Mike'); // ['Mike']
+showThisName('Mike', 'Tom'); // ['Mike', 'Tom']
+
+//전달받은 모든 수를 더해아함 
+function addNum (...numbers) {
+  let result = 0;
+  numbers.forEach(num => {
+    result += num
+  })
+  console.log(result);
+}
+addNum(1,2,3); // 6
+addNum(1,2,3,4,5,6,7,8,9,10); // 55
