@@ -22,6 +22,17 @@ document.querySelector('#close').addEventListener('click', () => {
     document.querySelector('.black-bg').style.display =' none'
     document.querySelector('.black-bg').classList.remove('show-modal')
 })
+let count = 0
+const badge = document.querySelector('.badge')
+badge.addEventListener('click', () => {
+    count++
+    if (count % 2 === 0) {
+        badge.innerHTML = 'Dark 🔄'
+    } else {
+        badge.innerHTML = 'Light 🔄'
+    }
+})
 
-/* 전송버튼 누르면 ---
-저기 input에 입력한 값이 공백이면 --- 알림창 띄어주기 ---- */
+setTimeout(() => {
+    document.querySelector('.alert').style.display='none'
+}, 5000)
