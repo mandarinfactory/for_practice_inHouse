@@ -1,12 +1,34 @@
 body {
     font-family: 'Noto Sans KR', sans-serif;
 }
-.alert_box {
+.list-group {
     display: none;
-    padding: 20px;
-    border-radius: 15px;
-    font-size: 1.8em;
-    font-weight: 700;
-    color: white;
-    background-color: firebrick;
-}//alert_box
+}//list-group
+.show {
+    display: block;
+}//show
+.main-bg {
+    padding: 100px 20px;
+    background-color: lightgray;
+}
+.black-bg {
+    position : fixed;
+    visibility: hidden; /* display : none 보다 더 유용하고 JS도 인식이 잘됨! */
+    width : 100%;
+    height : 100%;
+    padding: 30px;
+    background : rgba(0,0,0,0.5);
+    z-index : 5;
+    opacity: 0;
+    transition: all 0.5s;
+    .white-bg {
+        background: white;
+        border-radius: 5px;
+        padding: 30px;
+    }//white-bg
+}//black-bg
+.show-modal {
+    visibility: visible;
+    opacity: 1;
+}//show-modal
+ 
