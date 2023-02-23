@@ -313,11 +313,54 @@ showThisName('Mike', 'Tom'); // ['Mike', 'Tom']
 
 //전달받은 모든 수를 더해아함 
 function addNum (...numbers) {
-  let result = 0;
-  numbers.forEach(num => {
-    result += num
-  })
+  let result = numbers.reduce((prev, cur) => prev + cur)
   console.log(result);
 }
 addNum(1,2,3); // 6
 addNum(1,2,3,4,5,6,7,8,9,10); // 55
+
+//user 객체를 만들어 주는 생성자 함수 만들기
+function theUsers (name, age, ...skills) {
+  this.name = name;
+  this.age = age;
+  this.skills = skills;
+}
+
+const userThe1 = new theUsers('Mike', 31, 'programmer');
+const userThe2 = new theUsers('Sarah', 38, 'designer');
+const userThe3 = new theUsers('Mariah', 28, 'publisher');
+
+console.log(userThe1); // {name: 'Mike', age: 31, skills: Array(1)}
+console.log(userThe2); // {name: 'Sarah', age: 38, skills: Array(1)}
+console.log(userThe3); // {name: 'Mariah', age: 28, skills: Array(1)}
+//나머지 매개변수(Rest parameters)
+
+let arrOne = [1,2,3];
+let arrTwo = [4,5,6];
+
+let arrResult = [...arrOne, ...arrTwo];
+console.log(arrResult); // [1, 2, 3, 4, 5, 6]
+arrResult = [0, ...arrOne, ...arrTwo, 7, 8, 9, 10]
+console.log(arrResult); // [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+let objOne = {name : 'Brent', age : 39};
+let copyObjOne = {...objOne}
+console.log(copyObjOne); // {name: 'Brent', age: 39}
+//전개구문(Spread syntax --> 배열)
+/* 나머지 매개변수(Rest parameters) && 전개구문(Spread syntax) ----------------------------- */
+
+function makeAdder(x) {
+  return function (y) {
+    // function(y) --> y를 가지고 있고 상위함수인 makeAdder의 x에 접근 가능하다.
+    return x + y;
+  }
+}
+
+const add3 = makeAdder(3);
+console.log(add3(2)); // 5
+// add3 함수가 생성된 이후에도 상위함수인 makeAdder의 x에 접근 가능하다. --> 이걸 Closure라고 한다.
+
+const add10 = makeAdder(10);
+console.log(add10(5)); // 15
+console.log(add3(1)); // 4
+/* Closure ------------------------------------------------------------- */

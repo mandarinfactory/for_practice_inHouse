@@ -11,7 +11,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./style.css" />
-    <script src="./apps.js"></script>
+    <script src="./apps01.js"></script>
     <title>JS초중급02</title>
 </head>
 <body>
@@ -115,6 +115,20 @@
                 02. 나머지 매개변수(Rest parameters)
                 <ul>
                     <li>정해지지않은 갯수의 인수를 배열로 나타낼수 있게 해준다.</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="ten">
+        <ul>
+            <h2>10.Closure</h2>
+            <li>JS는 어휘적환경(Lexical Environment)을 갖는다.
+                <ul>
+                    <li>코드를 실행하면 스크립트 내에서 먼저 선언된 변수들이 전역 Lexical 환경으로 올라간다.</li>
+                    <li>선언한 변수는 아직 초기화가 안됐지만, 함수는 이미 Lex.환경에서부터 초기화가 되어있어 사용가능하다.</li>
+                    <li>
+                        Closure --> 함수와 lexical 환경의 조합, 함수가 생성될 당시의 외부 변수를 기억해서 생성 이후에도 계속 접근 가능하게 한다.
+                    </li>
                 </ul>
             </li>
         </ul>
