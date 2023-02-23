@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -13,8 +13,17 @@
     <link rel="stylesheet" href="./style.css" />
     <script src="./apps.js"></script>
     <title>Project_JS기초</title>
-</head>
-<body>
-
-</body>
+  </head>
+  <body>
+    <div class="alert_box">
+      알림창!
+      <button onclick="handleAlert('none')">닫기</button>
+    </div>
+    <button class="one" onclick="handleAlert('block')">버튼</button>
+    <script>
+      const handleAlert = param => {
+        document.querySelector(".alert_box").style.display = param;
+      }; //handleAlert
+    </script>
+  </body>
 </html>

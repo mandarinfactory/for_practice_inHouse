@@ -1,3 +1,11 @@
 body {
   font-family: "Noto Sans KR", sans-serif;
+}
+
+.alert_box {
+  background-color: darkblue;
+  padding: 20px;
+  color: white;
+  border-radius: 15px;
+  display: none;
 }/*# sourceMappingURL=style.css.map */
