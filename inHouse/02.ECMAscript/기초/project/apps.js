@@ -1,8 +1,11 @@
 document.querySelector('.btn-primary').addEventListener('click', () => {
     const inputIdVal = document.querySelector('.id').value
     const inputPwVal = document.querySelector('.pw').value
+    console.log(inputPwVal.length);
     if(inputIdVal == '' || inputPwVal == '') {
         alert('빈칸을 확인하고 다시 제출해주십시오.')
+    } else if (inputPwVal.length < 6) {
+        alert ('비번을 6자이상 쳐주시기 바랍니다.')
     }//if
 })
 
