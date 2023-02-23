@@ -32,7 +32,13 @@ badge.addEventListener('click', () => {
         badge.innerHTML = 'Light 🔄'
     }
 })
-
+let second = 5;
+setInterval(() => {
+    second -= 1;
+    if(second >= 0) {
+        document.querySelector('.alert').innerHTML = `${second}초 이내 구매시 사은품을 증정합니다!`
+    }
+},1000)
 setTimeout(() => {
     document.querySelector('.alert').style.display='none'
 }, 5000)
