@@ -16,13 +16,15 @@
   </head>
   <body>
     <div class="alert_box">
-      알림창!
+      <p>알림창임!</p>
       <button onclick="handleAlert('none')">닫기</button>
     </div>
-    <button class="one" onclick="handleAlert('block')">버튼</button>
+    <button onclick="handleAlert('block', '아이디를 입력하세요.')">버튼1</button>
+    <button onclick="handleAlert('block', '비번을 입력하세요.')">버튼2</button>
     <script>
-      const handleAlert = param => {
+      const handleAlert = (param, text) => {
         document.querySelector(".alert_box").style.display = param;
+        document.querySelector(".alert_box p").innerHTML = text;
       }; //handleAlert
     </script>
   </body>

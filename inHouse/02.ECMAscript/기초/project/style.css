@@ -3,9 +3,11 @@ body {
 }
 
 .alert_box {
-  background-color: darkblue;
-  padding: 20px;
-  color: white;
-  border-radius: 15px;
   display: none;
+  padding: 20px;
+  border-radius: 15px;
+  font-size: 1.8em;
+  font-weight: 700;
+  color: white;
+  background-color: firebrick;
 }/*# sourceMappingURL=style.css.map */
