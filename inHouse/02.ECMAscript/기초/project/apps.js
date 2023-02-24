@@ -56,3 +56,14 @@ setInterval(() => {
 setTimeout(() => {
     document.querySelector('.alert').style.display='none'
 }, 5000)
+
+const slideContainer =  document.querySelector('.slide-container')
+document.querySelector('.slide-1').addEventListener('click', () => {
+    slideContainer.style.transform = 'translateX(0vw)';
+})
+document.querySelector('.slide-2').addEventListener('click', () => {
+    slideContainer.style.transform = 'translateX(-100vw)';
+})
+document.querySelector('.slide-3').addEventListener('click', () => {
+    slideContainer.style.transform = 'translateX(-200vw)';
+})

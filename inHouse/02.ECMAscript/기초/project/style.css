@@ -36,4 +36,16 @@ body {
 .show-modal {
   visibility: visible;
   opacity: 1;
+}
+
+.slide-container {
+  width: 300vw;
+  transition: all 1s;
+}
+.slide-container .slide-box {
+  width: 100vw;
+  float: left;
+}
+.slide-container .slide-box img {
+  width: 100%;
 }/*# sourceMappingURL=style.css.map */

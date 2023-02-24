@@ -31,4 +31,15 @@ body {
     visibility: visible;
     opacity: 1;
 }//show-modal
+.slide-container {
+    width: 300vw;
+    transition: all 1s;
+    .slide-box {
+        width: 100vw;
+        float: left;
+        img {
+            width: 100%;
+        }//img
+    }//slide-box
+}//slide-container
  
