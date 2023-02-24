@@ -1,7 +1,7 @@
-document.querySelector('.btn-primary').addEventListener('click', () => {
-    const inputIdVal = document.querySelector('.id').value;
-    const inputPwVal = document.querySelector('.pw').value;
+const inputIdVal = document.querySelector('.id').value;
+const inputPwVal = document.querySelector('.pw').value;
 
+document.querySelector('.btn-primary').addEventListener('click', () => {
     console.log(inputPwVal.length);
     if(inputIdVal == '' || inputPwVal == '') {
         alert('빈칸을 확인하고 다시 제출해주십시오.')
@@ -11,14 +11,17 @@ document.querySelector('.btn-primary').addEventListener('click', () => {
     if(/\S+@\S+.\S+/.test(inputIdVal)) {
         alert('이메일의 형식이 확인되었습니다.')
     }//if
-    if([A-Z].test(inputPwVal)) {
-        alert('비번이 확인되었습니다.')
-        console.log(inputPwVal);
-    } else {
+})//click
+document.querySelector('form').addEventListener('submit', () => {
+    if(/[A-Z]/.test(inputPwVal) == false) {
         alert('비번에 대문자 1개를 추가해주시기 바랍니다.')
         console.log(inputPwVal);
-    }
-})
+    } else {
+        alert('비번이 확인되었습니다.')
+        console.log(inputPwVal);
+    }//if
+})//submit
+
 
 document.querySelector('.navbar-toggler').addEventListener('click', () => {
     document.querySelector('.list-group').classList.toggle('show');
