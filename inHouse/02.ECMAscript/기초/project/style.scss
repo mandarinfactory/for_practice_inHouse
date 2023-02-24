@@ -1,6 +1,17 @@
 body {
     font-family: 'Noto Sans KR', sans-serif;
 }
+.navbar {
+    position: fixed;
+    width: 100%;
+    z-index: 5;
+    .navbar-brand {
+        font-size: 1.8em;
+        font-weight: 800;
+        color: rgb(220,53,69);
+        transition: all 0.1s;
+    }//navbar-brand
+}//navbar
 .list-group {
     display: none;
 }//list-group

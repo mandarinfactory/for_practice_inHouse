@@ -86,3 +86,20 @@ function foo() {
     또한, return은 함수를 종료해달라는 기능도 있으므로 아래 쓰여진 코드들은 죽게 된다.
     */
 }
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 100) { // window.scrollY = 브라우저에서 사용자가 scroll한 양
+        document.querySelector('.navbar-brand').style.fontSize = '1.4em'
+    } else {
+        document.querySelector('.navbar-brand').style.fontSize = '1.8em'
+    }
+})//window.scroll
+
+/* div의 스크롤바 내린 양 + 해당 div의 높이 == div의 실제높이면 alert() 띄우기 */
+document.querySelector('.lorem').addEventListener('scroll', () => {
+    let scrTop = document.querySelector('.lorem').scrollTop; // 사용자가 scroll한 양
+    let scrHeight = document.querySelector('.lorem').scrollHeight; // 실제 scroll의 높이
+    let divHeight = document.querySelector('.lorem').clientHeight // 실제 해당 div의 높이
+    if (scrTop + divHeight == scrHeight) {
+        alert('페이지를 다 읽으셨습니다.')
+    }
+})
