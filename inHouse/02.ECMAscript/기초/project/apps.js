@@ -67,3 +67,22 @@ document.querySelector('.slide-2').addEventListener('click', () => {
 document.querySelector('.slide-3').addEventListener('click', () => {
     slideContainer.style.transform = 'translateX(-200vw)';
 })
+
+/* 다음버튼 누르면 지금 보이는 사진이 1이면 2번 사진 보여주기  */
+let thisPhoto = 1;
+document.querySelector('.prev').addEventListener('click', () => {
+    slideContainer.style.transform = `translateX(-${thisPhoto-2}00vw)`;
+    thisPhoto--
+})//prev
+document.querySelector('.next').addEventListener('click', () => {
+    slideContainer.style.transform = `translateX(-${thisPhoto}00vw)`;
+    thisPhoto++
+})//next
+
+function foo() {
+    return 123
+    /* 
+    return은 오른쪽에 있는 123을 '퉤' 밷어준다고 생각하면 쉽다.
+    또한, return은 함수를 종료해달라는 기능도 있으므로 아래 쓰여진 코드들은 죽게 된다.
+    */
+}
