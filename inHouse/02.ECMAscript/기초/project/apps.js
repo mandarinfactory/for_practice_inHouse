@@ -86,12 +86,19 @@ function foo() {
     또한, return은 함수를 종료해달라는 기능도 있으므로 아래 쓰여진 코드들은 죽게 된다.
     */
 }
+const handleIndicator = () => {
+    let curY = document.querySelector('html').scrollTop; // scroll한높이
+    let totalY = document.querySelector('html').scrollHeight - document.querySelector('html').clientHeight; // 전체높이
+    let percentage = (curY / totalY) * 100;
+    document.querySelector('.indicator').style.width = `${percentage}%`
+}//handleIndicator
 window.addEventListener('scroll', () => {
     if (window.scrollY > 100) { // window.scrollY = 브라우저에서 사용자가 scroll한 양
         document.querySelector('.navbar-brand').style.fontSize = '1.4em'
     } else {
         document.querySelector('.navbar-brand').style.fontSize = '1.8em'
     }
+    if(document.querySelector('.indicatorbar') != null) handleIndicator();
 })//window.scroll
 
 /* div의 스크롤바 내린 양 + 해당 div의 높이 == div의 실제높이면 alert() 띄우기 */
@@ -99,7 +106,12 @@ document.querySelector('.lorem').addEventListener('scroll', () => {
     let scrTop = document.querySelector('.lorem').scrollTop; // 사용자가 scroll한 양
     let scrHeight = document.querySelector('.lorem').scrollHeight; // 실제 scroll의 높이
     let divHeight = document.querySelector('.lorem').clientHeight // 실제 해당 div의 높이
-    if (scrTop + divHeight == scrHeight) {
+    if (scrTop + divHeight == scrHeight - 5) {
         alert('페이지를 다 읽으셨습니다.')
     }
 })
+
+let htmlScrH = document.querySelector('html').scrollHeight; // 현재 페이지의 실제높이
+let htmlCliH = document.querySelector('html').clientHeight;// 현재 보고있는 페이지의 실제높이
+let htmlScrY = window.scrollY // 현재 페이지의 scroll양
+console.log(htmlScrH, htmlCliH, htmlScrY);
