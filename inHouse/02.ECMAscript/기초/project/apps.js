@@ -114,4 +114,11 @@ document.querySelector('.lorem').addEventListener('scroll', () => {
 let htmlScrH = document.querySelector('html').scrollHeight; // 현재 페이지의 실제높이
 let htmlCliH = document.querySelector('html').clientHeight;// 현재 보고있는 페이지의 실제높이
 let htmlScrY = window.scrollY // 현재 페이지의 scroll양
-console.log(htmlScrH, htmlCliH, htmlScrY);
+
+document.querySelector('.black-bg').addEventListener('click', e => {
+    if (e.target == document.querySelector('.black-bg')) {
+        /* e.stopPropagation();
+        모든 브라우저는 event-bubbling이 일어남 --> event가 상위 html로 퍼지는 현상 */
+        document.querySelector('.black-bg').classList.remove('show-modal')
+    }
+})
