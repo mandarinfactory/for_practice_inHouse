@@ -24,9 +24,26 @@ document.querySelectorAll('.tab-button').forEach(v => {
 fetch('https://codingapple1.github.io/price.json')
 .then(res => res.json())
 .then(data => {
-  console.log(data.price);
 })
 .catch(error => {
   console.log(error);
 })
 
+fetch('https://codingapple1.github.io/js/more1.json')
+.then(res => res.json())
+.then(data => {
+  document.querySelector('.btn').addEventListener('click', () => {
+    data.forEach(e => {
+      const divCol = 
+        `<div class='col-sm-4'>
+          <img src="https://via.placeholder.com/600" class="w-100">
+          <h5>${e.title}</h5>
+          <p>가격 : ${e.price}</p>
+          </div>`;
+        document.querySelector('.row').insertAdjacentHTML("beforeend", divCol)
+    })
+  })
+})
+.catch(error => {
+  console.log(error);
+}) 
