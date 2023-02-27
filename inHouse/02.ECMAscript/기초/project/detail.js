@@ -20,12 +20,3 @@ document.querySelectorAll('.tab-button').forEach(v => {
         })//click
     })//click
 })//forEach
-
-let carArr = [
-  '소나타', 50000, 'white'
-];
-let carObj = {
-  car : '소나타',
-  price : 50000,
-  color : 'white',
-}
