@@ -20,3 +20,8 @@ document.querySelectorAll('.tab-button').forEach(v => {
         })//click
     })//click
 })//forEach
+
+let pants = [28, 30, 32];
+pants.forEach(() => {
+  document.querySelectorAll('.form-select')[1].appendChild('<option>28</option>')
+})
