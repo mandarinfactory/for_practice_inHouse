@@ -21,7 +21,12 @@ document.querySelectorAll('.tab-button').forEach(v => {
     })//click
 })//forEach
 
-let pants = [28, 30, 32];
-pants.forEach(() => {
-  document.querySelectorAll('.form-select')[1].appendChild('<option>28</option>')
+fetch('https://codingapple1.github.io/price.json')
+.then(res => res.json())
+.then(data => {
+  console.log(data.price);
 })
+.catch(error => {
+  console.log(error);
+})
+

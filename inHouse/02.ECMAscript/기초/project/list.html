@@ -17,46 +17,35 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="./style.css" />
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
     <title>list페이지</title>
   </head>
   <body>
-    <div class="card-group container">
-      <div class="card" data-num="0">
-        <img src="https://via.placeholder.com/600" />
-        <div class="card-body">
-          <h5>produce</h5>
+    <div class="container">
+      <div class="row">
+        <!-- <div class="col-sm-4">
+          <img src="https://via.placeholder.com/600" class="w-100" />
+          <h5>Card title</h5>
           <p>가격 : 70000</p>
-          <button class="btn btn-danger">주문하기</button>
-        </div>
-      </div>
-      <div class="card" data-num="1">
-        <img src="https://via.placeholder.com/600" />
-        <div class="card-body">
-          <h5>produce</h5>
-          <p>가격 : 70000</p>
-          <button class="btn btn-danger">주문하기</button>
-        </div>
-      </div>
-      <div class="card" data-num="2">
-        <img src="https://via.placeholder.com/600" />
-        <div class="card-body">
-          <h5>produce</h5>
-          <p>가격 : 70000</p>
-          <button class="btn btn-danger">주문하기</button>
-        </div>
+        </div> -->
       </div>
     </div>
 
     <script>
-      let products = [
+      const products = [
         { id: 0, price: 70000, title: "Blossom Dress" },
         { id: 1, price: 50000, title: "Springfield Shirt" },
         { id: 2, price: 60000, title: "Black Monastery" },
       ];
-      for(let i = 0;i < 3;i++) {
-          document.querySelectorAll('.card-body h5')[i].innerHTML = products[i].title
-          document.querySelectorAll('.card-body p')[i].innerHTML = `가격 : ${products[i].price}`
-        }
+      products.forEach(e => {
+        const divCol = 
+        `<div class='col-sm-4'>
+          <img src="https://via.placeholder.com/600" class="w-100">
+          <h5>${e.title}</h5>
+          <p>가격 : ${e.price}</p>
+          </div>`;
+        document.querySelector('.row').insertAdjacentHTML("beforeend", divCol)
+      }) 
     </script>
 
     <script
