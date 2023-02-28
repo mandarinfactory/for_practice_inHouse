@@ -50,6 +50,17 @@
           </div>`;
         document.querySelector('.row').insertAdjacentHTML("beforeend", divCol)
       }) 
+
+      let arr = [7, 5, 6, 3, 4, 1, 90, 20];
+      arr.sort(function (a, b) {
+        return a - b
+      })
+      /* 
+      1. a,b는 arr 안의 자료
+      2. return값이 오른쪽이 양수면 a를 오른쪽으로 옮긴다. (sort)
+      3. return값이 오른쪽이 음수면 b를 오른쪽으로 옮긴다. (sort)
+      */
+      console.log(arr);
     </script>
 
     <script
