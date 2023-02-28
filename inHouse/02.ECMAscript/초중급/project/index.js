@@ -109,3 +109,29 @@ let thisBtn = document.querySelector('.btn').addEventListener('click', function 
     },1000)
 })
 
+// 03.variables //
+
+// - 변수는 선언, 할당, 범위만 알면 된다.
+
+// 1. var : 재선언 && 재할당이 가능하다. / 범위 : function, 그외에는 전역변수임
+var name1 = 'Brent';
+var name1 = 'Kate'; // name1을 재선언 및 재할당을 했다.
+console.log(name1); // Kate
+
+// 2. let : 재선언 X, 재할당은 가능하다. / 범위 : block({})
+let name2 = 'John';
+/* let name2 = 'Laura' --> error가 뜬다. */
+name2 = 'Laura'; // 이렇게 재할당만은 가능하다.
+console.log(name2); // Laura
+
+// 3. const : 재선언, 재할당 둘다 XXXXXXX / 범위 : block({})
+const name3 = 'Kelly';
+/* const name3 = 'Bob';
+name3 = 'Bob' --> 재선언, 재할당 둘다 error가 뜬다. */
+const 사람1 = { 이름 : 'Kim'}
+사람1.이름 = 'Park';
+console.log(사람1); // Park --> const로 선언했는데 재할당이 왜 가능한가? 이건 const변수 자체를 재할당한게 아닌 값을 변경했으므로!
+// 만약 객체(object)자체를 수정불가능하게 하고 싶으면?
+Object.freeze(사람1);
+사람1.이름 = 'Kim'
+console.log(사람1); // Park으로 출력된다.
