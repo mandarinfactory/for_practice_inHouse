@@ -9,6 +9,7 @@ const products = [
       <img src="https://via.placeholder.com/600" class="w-100">
       <h5>${e.title}</h5>
       <p>가격 : ${e.price}</p>
+      <button class="buy">구매</button>
       </div>`;
     document.querySelector(".row").insertAdjacentHTML("beforeend", divCol);
   }); // 더보기
@@ -21,6 +22,7 @@ const products = [
         <img src="https://via.placeholder.com/600" class="w-100">
         <h5>${e.title}</h5>
         <p>가격 : ${e.price}</p>
+        <button class="buy">구매</button>
         </div>`;
       document
         .querySelector(".row")
@@ -40,13 +42,14 @@ const products = [
         <img src="https://via.placeholder.com/600" class="w-100">
         <h5>${e.title}</h5>
         <p>가격 : ${e.price}</p>
+        <button class="buy">구매</button>
         </div>`;
       document
         .querySelector(".row")
         .insertAdjacentHTML("beforeend", divCol);
     });
   }) // 오름차순정렬
-  
+
   document.querySelector('.hangel-low').addEventListener('click', () => {
     products.sort(function (a, b) {
       if (a.title > b.title) return -1;
@@ -59,6 +62,7 @@ const products = [
         <img src="https://via.placeholder.com/600" class="w-100">
         <h5>${e.title}</h5>
         <p>가격 : ${e.price}</p>
+        <button class="buy">구매</button>
         </div>`;
       document
         .querySelector(".row")
@@ -74,6 +78,7 @@ const products = [
         <img src="https://via.placeholder.com/600" class="w-100">
         <h5>${e.title}</h5>
         <p>가격 : ${e.price}</p>
+        <button class="buy">구매</button>
         </div>`;
       document
         .querySelector(".row")
