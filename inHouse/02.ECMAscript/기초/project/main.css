@@ -1,1 +1,15 @@
-/*# sourceMappingURL=main.css.map */
+.card-background {
+  height: 3000px;
+  margin-top: 800px;
+  margin-bottom: 1600px;
+}
+.card-background .card-box {
+  position: sticky;
+  top: 400px;
+  margin-top: 200px;
+}
+.card-background .card-box img {
+  display: block;
+  margin: 0 auto;
+  max-width: 80%;
+}/*# sourceMappingURL=main.css.map */
