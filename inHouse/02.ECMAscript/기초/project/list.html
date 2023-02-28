@@ -54,9 +54,7 @@
       }); // 더보기
 
       document.querySelector(".price").addEventListener("click", () => {
-        products.sort(function (a, b) {
-          return a.price - b.price;
-        });
+        products.sort((a, b) => a.price - b.price);
         document.querySelector(".row").innerHTML = "";
         products.forEach((e) => {
           const divCol = `<div class='col-sm-4'>
@@ -90,9 +88,7 @@
       }) // 내림차순정렬
 
       document.querySelector('.less').addEventListener('click', () => {
-        let products1 = products.filter(v => {
-          return v.price <= 50000
-        })
+        let products1 = products.filter(v => v.price <= 50000)
         document.querySelector(".row").innerHTML = "";
         products1.forEach((e) => {
           const divCol = `<div class='col-sm-4'>
