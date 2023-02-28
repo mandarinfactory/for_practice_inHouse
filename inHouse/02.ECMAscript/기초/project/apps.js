@@ -122,3 +122,18 @@ document.querySelector('.black-bg').addEventListener('click', e => {
         document.querySelector('.black-bg').classList.remove('show-modal')
     }
 })
+
+let startCoord = 0;
+let isClick
+document.querySelectorAll('.slide-box')[0].addEventListener('mousedown', e => {
+    startCoord = e.clientX;
+    isClick = true
+})
+document.querySelectorAll('.slide-box')[0].addEventListener('mousemove', e => {
+    if(isClick === true) {
+        document.querySelector('.slide-container').style.transform = `translateX(${e.clientX - startCoord}px)`
+    }
+})
+document.querySelectorAll('.slide-box')[0].addEventListener('mouseup', e => {
+    isClick = false;
+})
