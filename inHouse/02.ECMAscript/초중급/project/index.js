@@ -149,3 +149,13 @@ undefined가 나오는 이유는 할당은 안된거지 변수의 선언은 이�
 var age1 = 20;
 window.age2 = 32; // 전역변수 만드는 또다른 방법
 console.log(age2);
+
+for(let i = 0;i < 3; i++){
+  document.querySelectorAll('.btn1')[i].addEventListener('click', () => {
+    document.querySelectorAll('.modal')[i].style.display = 'block'
+  })
+}// var로 쓰면 error가 난다!
+
+// 04.template literals(strings) //
+
+var 문자 = 'Brent';
