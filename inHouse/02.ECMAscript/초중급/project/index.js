@@ -174,7 +174,7 @@ function 함수2 (a, b) {
 두번째 인수 b는 ${장소}를 말한다.
 */
 
-let pants = 20;
+let pants = 0;
 let socks = 120;
 let stock = `바지${pants} 양말${socks}`;
 
@@ -185,3 +185,12 @@ function 함수3 (a, b, c) {
   console.log(a[1] + b + a[0] + c); //  양말20바지120
 }
 함수3`바지${pants} 양말${socks}`
+
+function 함수4 (a, b, c) {
+  if(b === 0) {
+    console.log(`바지가 다 팔렸습니다.`);
+  }
+}
+함수4`바지${pants} 양말${socks}`
+
+// 05. spread operator(...) //
