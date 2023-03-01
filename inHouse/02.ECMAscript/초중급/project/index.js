@@ -63,7 +63,7 @@ obj4.fun();
 
 // 02.arrow-function //
 
-let 함수 = a => a + 10;
+let 함수 = (a) => a + 10;
 console.log(함수(5)); // 15
 /* 
 - 함수는 그냥 쓰는 문법이 아니다! 
@@ -71,76 +71,78 @@ console.log(함수(5)); // 15
 2. 입출력 기계를 만들고 싶을때 사용
     └-> arrow를 쓰면 입출력 기계를 만들때 보기 쉬움(인자가 한개면 ()생략, return이 한줄로 가능하면 return과 {}생략가능)
 */
-[1, 2, 3, 4].forEach(a => console.log(a)); // 1 2 3 4
-document.querySelector('.hi').addEventListener('click', e => {
-    // 여기서 this를 출력하면 내부this를 외부this로 가져오므로 window가 출력된다!
-    e.currentTarget//으로 왠만하면 써주자! arrow를 쓰는경우라면!
+[1, 2, 3, 4].forEach((a) => console.log(a)); // 1 2 3 4
+document.querySelector(".hi").addEventListener("click", (e) => {
+  // 여기서 this를 출력하면 내부this를 외부this로 가져오므로 window가 출력된다!
+  e.currentTarget; //으로 왠만하면 써주자! arrow를 쓰는경우라면!
 });
 let obj5 = {
-    fun : () => {
-        //return this를 쓰면 마찬가지로 window로 출력된다.
-    },//function
-}
-obj5.fun()
+  fun: () => {
+    //return this를 쓰면 마찬가지로 window로 출력된다.
+  }, //function
+};
+obj5.fun();
 
 let 사람 = {
-    name : 'Brent',
-    sayHi : function () {
-        console.log(`Hi I'm ${this.name}`);
-    }
-}
+  name: "Brent",
+  sayHi: function () {
+    console.log(`Hi I'm ${this.name}`);
+  },
+};
 사람.sayHi(); // Hi I'm Brent
 
-let num = 0
-function allAdd () {
-    let 자료 = {
-        data : [1,2,3,4,5]
-    }
-    자료.data.forEach(e => {
-        num = num += e
-        console.log(num);
-    })
+let num = 0;
+function allAdd() {
+  let 자료 = {
+    data: [1, 2, 3, 4, 5],
+  };
+  자료.data.forEach((e) => {
+    num = num += e;
+    console.log(num);
+  });
 }
 allAdd(); // 15
 
-let thisBtn = document.querySelector('.btn').addEventListener('click', function () {
+let thisBtn = document
+  .querySelector(".btn")
+  .addEventListener("click", function () {
     setTimeout(() => {
-        console.log(this.innerHTML);
-    },1000)
-})
+      console.log(this.innerHTML);
+    }, 1000);
+  });
 
 // 03.variables //
 
 // - 변수는 선언, 할당, 범위만 알면 된다.
 
 // 1. var : 재선언 && 재할당이 가능하다. / 범위 : function, 그외에는 전역변수임
-var name1 = 'Brent';
-var name1 = 'Kate'; // name1을 재선언 및 재할당을 했다.
+var name1 = "Brent";
+var name1 = "Kate"; // name1을 재선언 및 재할당을 했다.
 console.log(name1); // Kate
 
 // 2. let : 재선언 X, 재할당은 가능하다. / 범위 : block({})
-let name2 = 'John';
+let name2 = "John";
 /* let name2 = 'Laura' --> error가 뜬다. */
-name2 = 'Laura'; // 이렇게 재할당만은 가능하다.
+name2 = "Laura"; // 이렇게 재할당만은 가능하다.
 console.log(name2); // Laura
 
 // 3. const : 재선언, 재할당 둘다 XXXXXXX / 범위 : block({})
-const name3 = 'Kelly';
+const name3 = "Kelly";
 /* const name3 = 'Bob';
 name3 = 'Bob' --> 재선언, 재할당 둘다 error가 뜬다. */
-const 사람1 = { 이름 : 'Kim'}
-사람1.이름 = 'Park';
+const 사람1 = { 이름: "Kim" };
+사람1.이름 = "Park";
 console.log(사람1); // Park --> const로 선언했는데 재할당이 왜 가능한가? 이건 const변수 자체를 재할당한게 아닌 값을 변경했으므로!
 // 만약 객체(object)자체를 수정불가능하게 하고 싶으면?
 Object.freeze(사람1);
-사람1.이름 = 'Kim'
+사람1.이름 = "Kim";
 console.log(사람1); // Park으로 출력된다.
 
 // - 변수의 hoisting 현상
 
 console.log(나이); // undefined
 var 나이 = 30;
-console.log(나이);  // 30
+console.log(나이); // 30
 /* 
 - hoisting현상 :  변수의 선언을 변수 범위 맨위로 끌고 오는 현상(JS언어 자체의 현상임) + 함수선언도 hoisting이 일어난다.
 undefined가 나오는 이유는 할당은 안된거지 변수의 선언은 이미 hoisting현상으로 되어있다는걸 볼 수 있다. 
@@ -150,25 +152,25 @@ var age1 = 20;
 window.age2 = 32; // 전역변수 만드는 또다른 방법
 console.log(age2);
 
-for(let i = 0;i < 3; i++){
-  document.querySelectorAll('.btn1')[i].addEventListener('click', () => {
-    document.querySelectorAll('.modal')[i].style.display = 'block'
-  })
-}// var로 쓰면 error가 난다!
+for (let i = 0; i < 3; i++) {
+  document.querySelectorAll(".btn1")[i].addEventListener("click", () => {
+    document.querySelectorAll(".modal")[i].style.display = "block";
+  });
+} // var로 쓰면 error가 난다!
 
 // 04.template literals(strings) //
 
-var 장소 = 'London'
+var 장소 = "London";
 var 문자 = `Brent is live in ${장소}`;
 console.log(문자);
 
-function 함수2 (a, b) {
+function 함수2(a, b) {
   console.log(a); // ['안녕하세요 ', ' 입니다.', raw: Array(2)]
   console.log(b); // London
-  console.log(b + a[1] + a[0]); // London 입니다.안녕하세요 
+  console.log(b + a[1] + a[0]); // London 입니다.안녕하세요
 }
 
-함수2`안녕하세요 ${장소} 입니다.` // ['안녕하세요 ', ' 입니다.', raw: Array(2)](a), London(b)
+함수2`안녕하세요 ${장소} 입니다.`; // ['안녕하세요 ', ' 입니다.', raw: Array(2)](a), London(b)
 /*
 첫번째 인수 a는 함수에 들어온 값에서 문자들을 array화 해준다.
 두번째 인수 b는 ${장소}를 말한다.
@@ -178,19 +180,60 @@ let pants = 0;
 let socks = 120;
 let stock = `바지${pants} 양말${socks}`;
 
-function 함수3 (a, b, c) {
+function 함수3(a, b, c) {
   console.log(a); // ['바지', ' 양말', '', raw: Array(3)]
   console.log(b); // 20
   console.log(c); // 120
   console.log(a[1] + b + a[0] + c); //  양말20바지120
 }
-함수3`바지${pants} 양말${socks}`
+함수3`바지${pants} 양말${socks}`;
 
-function 함수4 (a, b, c) {
-  if(b === 0) {
+function 함수4(a, b, c) {
+  if (b === 0) {
     console.log(`바지가 다 팔렸습니다.`);
   }
 }
-함수4`바지${pants} 양말${socks}`
+함수4`바지${pants} 양말${socks}`;
 
 // 05. spread operator(...) //
+// 배열, 객체를 풀어서 합치거나 복사할때 많이 쓰인다!
+// ...은 항상! {},[],함수()안에서만 써야한다!
+
+var array01 = ["hello", "world"];
+console.log(...array01); // hello world --> 배열에 ...을 붙이면 []를 제거한다.
+
+var 문자01 = "hello";
+console.log(...문자01); // h e l l o --> 문자에 붙이면 한글자씩 떼서 출력해준다.
+
+var a = [1, 2, 3];
+var b = [4, 5];
+
+var c = [...a]
+console.log(c); // [1, 2, 3]
+c = [...a,...b]
+console.log(c); // [1, 2, 3, 4, 5] --> 배열을 합치거나 복사(deep copy)할때 ...이 자주쓰인다.
+
+var o1 = {
+  a : 1,
+  b : 2
+}
+var o2 = {
+  ...o1, // 이렇게 하는게 deep copy!
+  c : 3
+}
+console.log(o2); // {a: 1, b: 2, c: 3}
+var o2 = {
+  a : 2,
+  ...o1
+}
+console.log(o2); // {a: 1, b: 2} --> 같은값을 합치게 되면 뒤에있는 값으로 변경된다.
+var o2 = {
+  ...o1,
+  a : 2
+}
+console.log(o2); // {a: 2, b: 2} --> 같은값을 합치게 되면 뒤에있는 값으로 변경된다.
+function addAll(a,b,c) {
+  console.log(a + b + c);
+}
+var array02 = [10,20,30]
+addAll(...array02) // 60
