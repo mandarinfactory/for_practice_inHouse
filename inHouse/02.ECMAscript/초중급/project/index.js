@@ -135,3 +135,17 @@ console.log(사람1); // Park --> const로 선언했는데 재할당이 왜 가�
 Object.freeze(사람1);
 사람1.이름 = 'Kim'
 console.log(사람1); // Park으로 출력된다.
+
+// - 변수의 hoisting 현상
+
+console.log(나이); // undefined
+var 나이 = 30;
+console.log(나이);  // 30
+/* 
+- hoisting현상 :  변수의 선언을 변수 범위 맨위로 끌고 오는 현상(JS언어 자체의 현상임) + 함수선언도 hoisting이 일어난다.
+undefined가 나오는 이유는 할당은 안된거지 변수의 선언은 이미 hoisting현상으로 되어있다는걸 볼 수 있다. 
+- 전역변수 : 모든 곳에서 쓸 수 있는 변수
+*/
+var age1 = 20;
+window.age2 = 32; // 전역변수 만드는 또다른 방법
+console.log(age2);
