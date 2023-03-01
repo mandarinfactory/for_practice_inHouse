@@ -158,4 +158,30 @@ for(let i = 0;i < 3; i++){
 
 // 04.template literals(strings) //
 
-var 문자 = 'Brent';
+var 장소 = 'London'
+var 문자 = `Brent is live in ${장소}`;
+console.log(문자);
+
+function 함수2 (a, b) {
+  console.log(a); // ['안녕하세요 ', ' 입니다.', raw: Array(2)]
+  console.log(b); // London
+  console.log(b + a[1] + a[0]); // London 입니다.안녕하세요 
+}
+
+함수2`안녕하세요 ${장소} 입니다.` // ['안녕하세요 ', ' 입니다.', raw: Array(2)](a), London(b)
+/*
+첫번째 인수 a는 함수에 들어온 값에서 문자들을 array화 해준다.
+두번째 인수 b는 ${장소}를 말한다.
+*/
+
+let pants = 20;
+let socks = 120;
+let stock = `바지${pants} 양말${socks}`;
+
+function 함수3 (a, b, c) {
+  console.log(a); // ['바지', ' 양말', '', raw: Array(3)]
+  console.log(b); // 20
+  console.log(c); // 120
+  console.log(a[1] + b + a[0] + c); //  양말20바지120
+}
+함수3`바지${pants} 양말${socks}`
