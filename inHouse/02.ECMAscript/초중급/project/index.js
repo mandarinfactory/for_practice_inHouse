@@ -237,3 +237,13 @@ function addAll(a,b,c) {
 }
 var array02 = [10,20,30]
 addAll(...array02) // 60
+
+var person = {
+  greet : function () {
+    console.log(this.name + '안녕?'); // undefined안녕?
+  }
+}
+var person2 = {
+  name : 'Brent',
+}
+person.greet.apply(person2) // Brent안녕? --> apply(function)내에서 person.greet가 실행되게 해준다. = call과 비슷한데 apply는 배열형태도 가능하다.
