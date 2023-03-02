@@ -247,3 +247,36 @@ var person2 = {
   name : 'Brent',
 }
 person.greet.apply(person2) // Brent안녕? --> apply(function)내에서 person.greet가 실행되게 해준다. = call과 비슷한데 apply는 배열형태도 가능하다.
+
+// 06. rest Parameter //
+function 함수03(a,b,c) {
+  for(var i = 0;i < arguments.length; i++){
+    console.log(arguments[i]);
+  }
+}
+함수03(1,2,3); // arguments는 배열로써 활용이 된다. --> 모든 parameter를 []에 담아준다.
+
+function 함수04(a,b, ...rest) {
+  console.log(rest);
+}
+함수04(2,5,4,6,9) 
+/* 
+[4, 6, 9] --> rest는 ...rest된 부분만 배열로 반환시킨다. 다시말해, 이미 인자로 되어있는 a.b는 빼고 배열로 만든다.()
+다시말해, 2,5는 제외하고 배열로 만들어준다.
+1. ...rest는 가장 뒤에 써야한다.
+2. 두번이상 쓸수 없다.
+*/
+function 함수05(...rest) {
+  for(var i =0;i < rest.length;i++){
+    console.log(rest[i]);
+  }
+}
+함수05(1,2,3,4)
+
+var a = [1,2,3];
+var b = ['you', 'are'];
+var c = function(a,b){
+  console.log( [[...a], ...[...b]][1] )
+}
+c(a,b);
+
