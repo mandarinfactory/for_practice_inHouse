@@ -272,11 +272,3 @@ function 함수05(...rest) {
   }
 }
 함수05(1,2,3,4)
-
-var a = [1,2,3];
-var b = ['you', 'are'];
-var c = function(a,b){
-  console.log( [[...a], ...[...b]][1] )
-}
-c(a,b);
-
