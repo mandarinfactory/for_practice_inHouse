@@ -23,7 +23,7 @@ const Navbar = () => {
         >
           <img src={logo} alt="logo" className="w-9 h-9 object-contain" />
           <p className="text-white text-[18px] font-bold cursor-pointer flex">
-            Mandarin&nbsp;<span className="sm:block hidden">| portpolio</span>
+            이호준&nbsp;<span className="sm:block hidden">| 포트폴리오</span>
           </p>
         </Link>
         <ul className="list-none hidden sm:flex flex-row gap-10">
