@@ -137,15 +137,19 @@ console.log(손자.name, 손자.age); // Brent 21 --> 손자 < 자식(21) < 부�
 
 //ES6 상속기능방법 --> class
 class 부모01 {
-  constructor() {
-    this.name = 'Brent';
+  constructor(name) {
+    this.name = name;
     /* this.sayHi = function(){console.log('hello');} --> 자식이 직접 함수를 가짐 */
   }
   sayHi(){
     console.log('hello'); // 여기에 함수적으면 prototype에 추가된다.
   }
 }
-var 자식 = new 부모01();
+var 자식 = new 부모01('Brent');
 console.log(자식); // 부모01 {name: 'Brent'}
 console.log(자식.__proto__); // {constructor: ƒ, sayHi: ƒ} --> 부모prototype(유전자)
 console.log(Object.getPrototypeOf(자식)); // {constructor: ƒ, sayHi: ƒ} --> 부모prototype(유전자)
+/* 
+그놈의 말만 오지게 많이 들은 객체지향문법(Object-Oriented)을 쓰는이유
+1. object 여러개 만들어서 편하게 쓰려고 하는 것
+*/
