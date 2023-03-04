@@ -161,14 +161,17 @@ console.log(Object.getPrototypeOf(자식)); // {constructor: ƒ, sayHi: ƒ} --> 
 class 할아버지 {
   constructor(name){
     this.name = name;
-    this.lastname = "Everett";
+    this.lastname = "Alpha";
+  }
+  sayHi(){
+    console.log('안녕!'); // 할아버지.prototype에 추가됨
   }
 }
-var 할아버지1 = new 할아버지('Brent');
-console.log(할아버지1); // 할아버지 {name: 'Brent', lastname: 'Everett'}
+var 할아버지1 = new 할아버지('Beta');
+console.log(할아버지1); // 할아버지 {name: 'Beta', lastname: 'Alpha'}
 class 아버지 extends 할아버지 {
   constructor(name){
-    super(name);
+    super(name); // 부모class(여기서는 할아버지)의 constructor를 의미한다.
     this.age = 42; 
     /* 
     extends를 사용하고 this를 쓰려면 꼭! super()를 this전에 사용해야한다.
@@ -176,6 +179,12 @@ class 아버지 extends 할아버지 {
     또한, 상속할 class에서 쓰인 parameter들을 상속받을 class의 constructor, super의 ()에다가 넣어주면 된다.
     */
   }
+  sayHi(){
+    console.log('Hi! Beta Alpha입니다.'); // 할아버지.prototype에 추가됨
+    super.sayHi(); // 부모 class의 prototype을 의미한다.
+  }
 }
-var 아버지1 = new 아버지('Brent');
-console.log(아버지1); // {name: 'Brent', lastname: 'Everett', age: 42}
+var 아버지1 = new 아버지('Beta');
+console.log(아버지1); // {name: 'Beta', lastname: 'Alpha', age: 42}
+console.log(할아버지1.sayHi()); // 안녕!
+console.log(아버지1.sayHi()); // 'Hi! Beta Alpha입니다.' + '안녕!' 다음칸에 같이 출력된다.
