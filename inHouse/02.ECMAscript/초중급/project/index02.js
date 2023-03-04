@@ -189,15 +189,37 @@ console.log(아버지1); // {name: 'Beta', lastname: 'Alpha', age: 42}
 console.log(할아버지1.sayHi()); // 안녕!
 console.log(아버지1.sayHi()); // 'Hi! Beta Alpha입니다.' + '안녕!' 다음칸에 같이 출력된다.
 
+
+// 10.getter && setter //
+// - 복잡한 소괄호가 보기 싫어서 set/get 키워드가 나왔다.
+// - getter함수들은 꼭 return을 강제한다.
+// - setter는 parameter가 1개 있어야한다.
+
 var 사람01 = {
   name : 'Alpha',
   age : 35,
-  nextAge(){
+  get nextAge(){ // get은 데이터를 꺼내쓰는 함수에 붙인다.(getter)
     return this.age + 1;
   },
-  setAge(age){
+  set setAge(age){ // set은 데이터를 변경하는 함수에 붙인다.(setter)
     this.age = parseInt(age);
   }
 }
-사람01.setAge('28')
-console.log(사람01.nextAge()) // 29
+사람01.setAge = '29'
+console.log(사람01.nextAge) // 29
+
+class 휴먼 {
+  constructor(){
+    this.name = 'June';
+    this.age = 39;
+  }
+  get nextAge(){
+    return this.age + 1;
+  }
+  set setAge(age){
+    this.age = parseInt(age);
+  }
+}
+
+var 휴먼1 = new 휴먼(45);
+console.log(휴먼1.nextAge) // get이 있으므로 따로 ()가 필요없다!
