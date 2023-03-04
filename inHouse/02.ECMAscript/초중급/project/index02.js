@@ -118,3 +118,18 @@ var 자식Obj = {};
 자식Obj.__proto__ = 부모Obj;
 console.log(자식Obj.name); // John --> 부모Obj가 자식Obj의 prototype이 된것으로 볼 수 있다.
 
+//ES5 상속기능방법 --> Object.create();
+
+var 부모 = { name : 'Brent', age : 29 };
+var 자식 = Object.create(부모);
+console.log(자식); // {}
+console.log(자식.name, 자식.age); // Brent 29
+console.log(자식.__proto__); // {name: 'Brent', age: 29}
+/* 
+Object.create()는 자식이 prototype을 부모로 두는것이므로 key는 따로 가지고 있지 않지만,
+JS문법상 없으면 부모prototype(유전자)를 확인하므로, prototype에 있는 key가 출력된다.
+해당 prototype에 있는 key를 자식객체가 바꾸고 싶으면 그냥 '자식객체key = 변경할값'을 입력하면 
+해당 key와 값이 자식객체에 저장된다.
+*/
+var 손자 = Object.create(자식);
+console.log(손자.name, 손자.age); // Brent 29 --> 손자 < 자식 < 부모순으로 JS문법은 prototype(유전자)을 타고타고 올라가서 확인한다.
