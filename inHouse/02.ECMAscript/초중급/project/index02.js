@@ -99,6 +99,7 @@ var arr = new Array(1, 2, 3); // --> 실제 array가 만들어지는 방식
 console.log(Array.prototype); // 실제 부모Constructor를 확인해보면 다양한 내장함수들을 볼 수 있다.
 /* 
 위, 아래는 차이가 없는 같은 배열을 만들고 있다. [1,2,3] 
+단, 함수로 만들어지지 않은 array나 object는 따로 prototype이 없다.
 그럼, 실제 array가 만들어지는 방식을 보면 new ~ 가 붙는걸 알수 있는데 위에 Constructor를 생각해보면,
 array를 만드는것도 이미 만들어져있는 Constructor를 통해 출력됨을 알 수 있다.(부모 ==> 자식으로 상속 받았다고 할 수 있다.)
 따라서 부모의 유전자에 여러가지 내장함수들(sort, push, unshift ···)이 있기 때문이다.
@@ -109,3 +110,11 @@ var obj1 = { name: "Brent" };
 var obj1 = new Object();
 console.log(Object.prototype); // 얘 또한 다양한 내장함수들을 볼 수 있다.
 // 얘도 마찬가지로 Object라는 부모Constructor에 따라 만들어지는 자식들중 하나라고 생각하면 된다.
+
+console.log(학생1.__proto__); // {gender: 'male', constructor: ƒ}
+// array.__proto__는 해당 array의 부모를 찾아준다.
+var 부모Obj = { name: "John" };
+var 자식Obj = {};
+자식Obj.__proto__ = 부모Obj;
+console.log(자식Obj.name); // John --> 부모Obj가 자식Obj의 prototype이 된것으로 볼 수 있다.
+
