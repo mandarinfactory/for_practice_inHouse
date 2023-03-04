@@ -59,9 +59,10 @@ obj = { name : 'Park' }
 따라서 이름1을 찍어보면 바뀌지 않고 {name: '김'}가 출력됨을 알 수 있다.
 */
 
-// 08.Constructor //
+// 08.Constructor && prototype //
 // - object를 마구 복사하고 싶을 때 사용된다. (비슷한 object를 여러개 만들어야할때)
 // - Constructor는 function을 이용하고, 이름은 대문자로 시작하는편이다.
+// - 상속을 구현할 수 있는 또 하나의 문법 --> prototype === '유전자'
 
 function Student(name, age) {
   this.name = name;
@@ -70,13 +71,41 @@ function Student(name, age) {
     console.log(` 안녕하세요. ${this.name}입니다.`);
   };
   /* 
-    여기서 this는 새로생성되는 object를 뜻한다. 
+    여기서 this는 새로생성되는 object를 뜻한다. --> instance라고 한다.
     this.age = 18; 처럼
     새로생성되는 object에 값 부여가능
+    // prototype
+    Student라는 함수(부모) ==> new Student들(자식)
+    prototype에 값을 추가하면 모든 자식들이 물려받기가 가능하다.
     */
+  Student.prototype.gender = "male";
 }
-var 학생1 = new Student("Kevin", 31);
+var 학생1 = new Student("Kevin", 31); // --> Student function이 가지고 있는 name, age, sayHi속성들을 물려받음(상속)
 var 학생2 = new Student("Brent", 25);
 console.log(학생1); // Student {name: 'Kevin', age: 31, sayHi: ƒ}
 console.log(학생2); // Student {name: 'Brent', age: 25, sayHi: ƒ}
 console.log(학생1.sayHi()); // 안녕하세요. Kevin입니다.
+
+console.log(학생1.gender); // male --> 따로 학생1을 출력한다고 gender와 관련된 key는 없다.
+/* 
+그렇다면 왜 gender라는 key를 가지고 있지 않는데 출력은 되는걸까?
+JS는 일단 출력하려고 하는 key가 해당 object에 있는 확인하고 있으면 바로 출력, 없다면
+해당 object의 부모유전자(prototype, 여기서는 Student라는 함수)를 확인해 있으면 거기서 출력하게끔 해준다.
+└-> JavaScript만 있는 prototype의 동작원리이다.
+ */
+
+var arr = [1, 2, 3];
+var arr = new Array(1, 2, 3); // --> 실제 array가 만들어지는 방식
+console.log(Array.prototype); // 실제 부모Constructor를 확인해보면 다양한 내장함수들을 볼 수 있다.
+/* 
+위, 아래는 차이가 없는 같은 배열을 만들고 있다. [1,2,3] 
+그럼, 실제 array가 만들어지는 방식을 보면 new ~ 가 붙는걸 알수 있는데 위에 Constructor를 생각해보면,
+array를 만드는것도 이미 만들어져있는 Constructor를 통해 출력됨을 알 수 있다.(부모 ==> 자식으로 상속 받았다고 할 수 있다.)
+따라서 부모의 유전자에 여러가지 내장함수들(sort, push, unshift ···)이 있기 때문이다.
+그래서 자식에 없다고 하더라도 부모유전자(prototype)까지 올라가서 확인 후 동작하게 된다.
+└-> MDN에서 배열 내장함수 검색하면 'Array.prototype.sort()'꼴로 나오는 이유가 이런 이유이다.
+*/
+var obj1 = { name: "Brent" };
+var obj1 = new Object();
+console.log(Object.prototype); // 얘 또한 다양한 내장함수들을 볼 수 있다.
+// 얘도 마찬가지로 Object라는 부모Constructor에 따라 만들어지는 자식들중 하나라고 생각하면 된다.
