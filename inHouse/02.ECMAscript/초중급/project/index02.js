@@ -59,10 +59,11 @@ obj = { name : 'Park' }
 따라서 이름1을 찍어보면 바뀌지 않고 {name: '김'}가 출력됨을 알 수 있다.
 */
 
-// 08.Constructor && prototype //
+// 08.Constructor && prototype && Object.create() + class //
 // - object를 마구 복사하고 싶을 때 사용된다. (비슷한 object를 여러개 만들어야할때)
 // - Constructor는 function을 이용하고, 이름은 대문자로 시작하는편이다.
 // - 상속을 구현할 수 있는 또 하나의 문법 --> prototype === '유전자'
+// - Object.create()는 ES5, class는 ES6 버전의 prototype문법이다.
 
 function Student(name, age) {
   this.name = name;
@@ -153,3 +154,28 @@ console.log(Object.getPrototypeOf(자식)); // {constructor: ƒ, sayHi: ƒ} --> 
 그놈의 말만 오지게 많이 들은 객체지향문법(Object-Oriented)을 쓰는이유
 1. object 여러개 만들어서 편하게 쓰려고 하는 것
 */
+
+// 09.extends && super //
+// - 유사한 class를 만드는법(extends --> class상속)
+
+class 할아버지 {
+  constructor(name){
+    this.name = name;
+    this.lastname = "Everett";
+  }
+}
+var 할아버지1 = new 할아버지('Brent');
+console.log(할아버지1); // 할아버지 {name: 'Brent', lastname: 'Everett'}
+class 아버지 extends 할아버지 {
+  constructor(name){
+    super(name);
+    this.age = 42; 
+    /* 
+    extends를 사용하고 this를 쓰려면 꼭! super()를 this전에 사용해야한다.
+    super()는 extends한 할아버지의 constructor들을 가져온다고 생각하면 된다.
+    또한, 상속할 class에서 쓰인 parameter들을 상속받을 class의 constructor, super의 ()에다가 넣어주면 된다.
+    */
+  }
+}
+var 아버지1 = new 아버지('Brent');
+console.log(아버지1); // {name: 'Brent', lastname: 'Everett', age: 42}
