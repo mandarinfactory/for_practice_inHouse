@@ -136,6 +136,16 @@ var 손자 = Object.create(자식);
 console.log(손자.name, 손자.age); // Brent 21 --> 손자 < 자식(21) < 부모(Brent)순으로 JS문법은 prototype(유전자)을 타고타고 올라가서 확인한다.
 
 //ES6 상속기능방법 --> class
-class 부모 {
-
+class 부모01 {
+  constructor() {
+    this.name = 'Brent';
+    /* this.sayHi = function(){console.log('hello');} --> 자식이 직접 함수를 가짐 */
+  }
+  sayHi(){
+    console.log('hello'); // 여기에 함수적으면 prototype에 추가된다.
+  }
 }
+var 자식 = new 부모01();
+console.log(자식); // 부모01 {name: 'Brent'}
+console.log(자식.__proto__); // {constructor: ƒ, sayHi: ƒ} --> 부모prototype(유전자)
+console.log(Object.getPrototypeOf(자식)); // {constructor: ƒ, sayHi: ƒ} --> 부모prototype(유전자)
