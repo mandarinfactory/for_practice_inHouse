@@ -188,3 +188,16 @@ var 아버지1 = new 아버지('Beta');
 console.log(아버지1); // {name: 'Beta', lastname: 'Alpha', age: 42}
 console.log(할아버지1.sayHi()); // 안녕!
 console.log(아버지1.sayHi()); // 'Hi! Beta Alpha입니다.' + '안녕!' 다음칸에 같이 출력된다.
+
+var 사람01 = {
+  name : 'Alpha',
+  age : 35,
+  nextAge(){
+    return this.age + 1;
+  },
+  setAge(age){
+    this.age = parseInt(age);
+  }
+}
+사람01.setAge('28')
+console.log(사람01.nextAge()) // 29
