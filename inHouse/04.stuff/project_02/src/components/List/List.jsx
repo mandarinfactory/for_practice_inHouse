@@ -13,10 +13,8 @@ import PlaceDetails from "../PlaceDetails/PlaceDetails";
 
 import useStyles from "./styles";
 
-const List = ({ places, childClicked, isLoad }) => {
+const List = ({ places, childClicked, isLoad, type, setType, rating, setRating }) => {
   const classes = useStyles();
-  const [type, setType] = useState("restaurants");
-  const [rate, setRate] = useState("");
   const [ elRefs, setElRefs ] = useState([]);
 
   useEffect(() => {
@@ -43,7 +41,7 @@ const List = ({ places, childClicked, isLoad }) => {
       </FormControl>
       <FormControl className={classes.formControl}>
         <InputLabel>평점</InputLabel>
-        <Select value={rate} onChange={(e) => setRate(e.target.value)}>
+        <Select value={rating} onChange={(e) => setRating(e.target.value)}>
           <MenuItem value={0}>전체</MenuItem>
           <MenuItem value={3}>3점 이상</MenuItem>
           <MenuItem value={4}>4점 이상</MenuItem>
@@ -52,7 +50,7 @@ const List = ({ places, childClicked, isLoad }) => {
       </FormControl>
       <Grid container spacing={3} className={classes.list}>
         {places?.map((place, i) => (
-          <Grid item key={i} xs={12}>
+          <Grid ref={elRefs[i]} item key={i} xs={12}>
             <PlaceDetails 
               place={place}
               selected={Number(childClicked) === i}
