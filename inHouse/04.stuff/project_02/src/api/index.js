@@ -13,7 +13,7 @@ export const getPlacesData = async (sw, ne) => {
         tr_latitude: ne.lat,
         bl_longitude: sw.lng,
         tr_longitude: ne.lng,
-        lang : 'ko_KR'
+        lang : 'ko_KR',
       },
       headers: {
         "X-RapidAPI-Key": "4bf661b071mshb7293e86ca3d69ap1cc4b0jsn143e9dcba9ca",
