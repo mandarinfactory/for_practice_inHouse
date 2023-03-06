@@ -26,3 +26,12 @@ var obj02 = {
     age
 }
 console.log(obj02); // {name: 'John', age: 32}
+
+var obj03 = {
+    name : 'Brian',
+    age : 42,
+};
+function 함수01({ name, age }) {
+    console.log(name, age);
+}
+함수01(obj03); // Brian --> name / 42 --> age
