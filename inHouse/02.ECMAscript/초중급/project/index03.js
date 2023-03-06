@@ -11,9 +11,18 @@ console.log(a,b,c,d);
 --> destructuring을 쓰면 보다 직관적으로 변수를 만들 수 있다. 
 --> 만약, 값을 할당하지 않는다면 undefined가 나온다.
 */
-var obj = {
+var obj1 = {
     name : 'Brent',
     age : 30
 };
-/* var name = obj.name; */
-var {name,age} = { name : 'Brent', age : 29 } // 위에서 말한대로 destructuring을 쓰려면 해당 모양만 맞춰서 생성하면 된다.
+/* var name = obj1.name; */
+var {name : 나이, age = 31} = { name : 'Brent' }; // 위에서 말한대로 destructuring을 쓰려면 해당 모양만 맞춰서 생성하면 된다.
+console.log(나이, age); // Brent 31
+
+var name = 'John';
+var age = 32;
+var obj02 = {
+    name, // object의 key와 value가 같으면 2번쓸필요 없다.
+    age
+}
+console.log(obj02); // {name: 'John', age: 32}
