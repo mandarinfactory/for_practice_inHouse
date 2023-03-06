@@ -46,6 +46,8 @@ function 함수01({ name, age }) {
 6. export로만 내보냈으면 import로 받을때에도 같은이름으로 {}를 사용해서 받아야한다.
 7. export와 export default는 동시에 사용할수 있다.
 8. 단, 두개를 동시에 출력시에는 export default로 내보낸 변수가 가장 최우선으로 앞으로 와야한다.
+9. 변수명을 바꾸려면 import시에 {변수 as 새로운변수명} ~으로 바꿔주면 된다.
+10. *는 모든 변수를 import해오는데 보통 as를 사용해서 이름을 변경해준다. --> 단, default를 사용한건 따로 가져와야한다.
 */
 export var aa = 10;
 var bb = 20;
