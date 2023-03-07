@@ -55,3 +55,55 @@ var cc = 30;
 
 export {bb};
 export default cc;
+
+// 13.Stack, Queue를 이용한 웹브라우저 동작원리 //
+// - 우리가 짠 JS는 웹브라우저를 통해 실행이 되므로!
+/* 
+1. Stack --> 코드를 실행해주는 곳(하나만 있다. --> 그래서 JS는 보통 single threaded)
+2. 잠깐 '대기실(Web API)'에 보내는 코드들이 있다 . --> Ajax요청코드, eventListener, setTimeout등
+3. '대기실(Web API)'에서 queue로 이동 후 stack으로 하나씩 올린다.(stack이 바쁜곳이므로 stack이 비어있을때만 하나씩 올려보낸다.)
+4. JS에서 동기적(synchronous)/비동기적(asynchronous)?
+└-> JS는 동기적으로 처리된다.(한번에 한줄, 순서대로)
+└-> 근데 가끔 비동기적인 처리도 가능하다.(setTimeout, eventListener, Ajax요청함수 등)
+*/
+
+// 14.sync/async && callback //
+// - JS는 동기식처리(synchronous) --> 한번에 코드 한줄씩 차례로 실행!
+console.log(1);
+console.log(2);
+console.log(3); // 동기식처리, 코드한줄씩 순차적으로!
+// - 비동기식처리(asynchronous) --> Ajax요청함수, eventListener, setTimeout
+console.log(1);
+setTimeout(() => {
+    console.log(2);
+}, 1000);
+console.log(3);
+// 1 3 이 나오고 1초후에 2가 나온다. --> 비동기식처리
+
+// - callback함수는 JS를 순차적으로 실행하려고 쓴다. ==> callback함수를 보완해서 나온게 Promise패턴!
+function fn01(param) {
+    console.log(100);
+    param(); // callback함수를 이용한 함수 디자인
+}
+function fn02() {
+    console.log(200);
+
+}
+fn01(fn02);
+
+// 15.Promise //
+// Promise === 성공/실패 판정 기계
+// Promise는 성공하면 resolved, 판정대기중이면 pending, 실패하면 rejected로 3가지 상태로 나뉜다.
+// Promise는 비동기적 처리가 가능하게 바꿔주는 기계가 아닌 성공/실패를 판정해주는 기계이다. --> 그냥 callback함수의 대체제
+// 단, fetch API는 쓰면 자동으로 Promise를 반환하므로 .then(), catch(), finally()등을 쓸 수 있다.
+
+var 프로미스 = new Promise(function (resolve, reject){
+    setTimeout(function() {
+        resolve();
+    },1000);
+});
+프로미스.then(function (){//.then 이후는 프로미스가 성공일 경우 실행할 코드이다. --> then은 계속 연결시킬수 있다.
+    console.log(`성공`);
+}).catch(function() {//.catch는 실패일 경우 실행될 코드이다.
+    console.log('실패!');
+})
