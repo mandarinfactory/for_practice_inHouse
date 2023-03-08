@@ -25,17 +25,19 @@ body, html, button, input {
   z-index: 10;
 }
 .header span {
-  margin-left: 10px;
+  margin-left: 20px;
   font-size: 2.2em;
   font-weight: 900;
   color: rgb(250, 225, 0);
 }
 .header input {
-  width: 200px;
-  height: 20px;
+  width: 15%;
+  height: 30%;
   margin-right: 15px;
   background-color: transparent;
   border-color: transparent;
+  font-size: 1em;
+  font-weight: 600;
   color: white;
 }
 
