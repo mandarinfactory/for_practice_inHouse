@@ -29,15 +29,18 @@ body,html,button,input {
         font-weight: 900;
         color: yellow;
     }//span
-    input {
-        width: 15%;
-        height: 30%;
-        margin-right: 20px;
-        background-color: transparent;
-        border-color: transparent;
-        font-size: 1em;
-        font-weight: 600;
-    }//input
+    form {
+        input {
+            width: 250px;
+            height: 30%;
+            margin-right: 20px;
+            background-color: transparent;
+            border-color: transparent;
+            font-size: 1em;
+            font-weight: 600;
+            color: white;
+        }//input
+    }//form
 }//header
 .main_section {
     width: 100%;

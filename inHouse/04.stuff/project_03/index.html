@@ -17,11 +17,14 @@
   <body>
     <div class="header">
       <span>여행도우미</span>
-      <input type="text" placeholder="원하시는 도시를 찾아보세요.">
+      <form action="/search" method="post" content-type>
+        <input type="text" placeholder="원하시는 도시를 찾아보세요.">
+      </form>
     </div>
     <div class="main_section">
       <div class="list"></div>
       <div class="map" id="map" style="width: 100%; height: 100%"></div>
     </div>
   <script src="./apps.js"></script>
+  <script src="./search.js"></script>
 </html>
