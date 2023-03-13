@@ -1,38 +1,38 @@
 // 11.desctructuring(구조분해, 패턴매칭) //
 
-var arr = [1,2,3,4];
+var arr = [1, 2, 3, 4];
 
 /* var a = arr[0]; */
-var [a,b,c,d = 10] = [1,2,3];
+var [a, b, c, d = 10] = [1, 2, 3];
 // 모양만 맞춰서 변수를 선언하면 변수가 생성된다.
-console.log(a,b,c,d); 
+console.log(a, b, c, d);
 /* 
 1 2 3 10(d에는 다른값이 들어가지 않았으므로 default값으로 들어간다.) 
 --> destructuring을 쓰면 보다 직관적으로 변수를 만들 수 있다. 
 --> 만약, 값을 할당하지 않는다면 undefined가 나온다.
 */
 var obj1 = {
-    name : 'Brent',
-    age : 30
+  name: "Brent",
+  age: 30,
 };
 /* var name = obj1.name; */
-var {name : 나이, age = 31} = { name : 'Brent' }; // 위에서 말한대로 destructuring을 쓰려면 해당 모양만 맞춰서 생성하면 된다.
+var { name: 나이, age = 31 } = { name: "Brent" }; // 위에서 말한대로 destructuring을 쓰려면 해당 모양만 맞춰서 생성하면 된다.
 console.log(나이, age); // Brent 31
 
-var name = 'John';
+var name = "John";
 var age = 32;
 var obj02 = {
-    name, // object의 key와 value가 같으면 2번쓸필요 없다.
-    age
-}
+  name, // object의 key와 value가 같으면 2번쓸필요 없다.
+  age,
+};
 console.log(obj02); // {name: 'John', age: 32}
 
 var obj03 = {
-    name : 'Brian',
-    age : 42,
+  name: "Brian",
+  age: 42,
 };
 function 함수01({ name, age }) {
-    console.log(name, age);
+  console.log(name, age);
 }
 함수01(obj03); // Brian --> name / 42 --> age
 
@@ -53,7 +53,7 @@ export var aa = 10;
 var bb = 20;
 var cc = 30;
 
-export {bb};
+export { bb };
 export default cc;
 
 // 13.Stack, Queue를 이용한 웹브라우저 동작원리 //
@@ -75,19 +75,18 @@ console.log(3); // 동기식처리, 코드한줄씩 순차적으로!
 // - 비동기식처리(asynchronous) --> Ajax요청함수, eventListener, setTimeout
 console.log(1);
 setTimeout(() => {
-    console.log(2);
+  console.log(2);
 }, 1000);
 console.log(3);
 // 1 3 이 나오고 1초후에 2가 나온다. --> 비동기식처리
 
 // - callback함수는 JS를 순차적으로 실행하려고 쓴다. ==> callback함수를 보완해서 나온게 Promise패턴!
 function fn01(param) {
-    console.log(100);
-    param(); // callback함수를 이용한 함수 디자인
+  console.log(100);
+  param(); // callback함수를 이용한 함수 디자인
 }
 function fn02() {
-    console.log(200);
-
+  console.log(200);
 }
 fn01(fn02);
 
@@ -96,14 +95,56 @@ fn01(fn02);
 // Promise는 성공하면 resolved, 판정대기중이면 pending, 실패하면 rejected로 3가지 상태로 나뉜다.
 // Promise는 비동기적 처리가 가능하게 바꿔주는 기계가 아닌 성공/실패를 판정해주는 기계이다. --> 그냥 callback함수의 대체제
 // 단, fetch API는 쓰면 자동으로 Promise를 반환하므로 .then(), catch(), finally()등을 쓸 수 있다.
+// 순차적인 실행을 위해 callback함수 대신 쓸 수 있는 코딩pattern이다.
 
-var 프로미스 = new Promise(function (resolve, reject){
-    setTimeout(function() {
-        resolve();
-    },1000);
+var 프로미스 = new Promise(function (resolve, reject) {
+  setTimeout(function () {
+    resolve();
+  }, 1000);
 });
-프로미스.then(function (){//.then 이후는 프로미스가 성공일 경우 실행할 코드이다. --> then은 계속 연결시킬수 있다.
+프로미스 
+  .then(function () {
+    //.then 이후는 프로미스가 성공일 경우 실행할 코드이다. --> then은 계속 연결시킬수 있다.
     console.log(`성공`);
-}).catch(function() {//.catch는 실패일 경우 실행될 코드이다.
-    console.log('실패!');
-})
+  })
+  .catch(function () {
+    //.catch는 실패일 경우 실행될 코드이다.
+    console.log("실패!");
+  });
+
+// 16.async&&await //
+// async는 Promise와 달리 성공만 가능하다.
+
+async function 더하기() {
+  //async를 function앞에 붙이면 함수 실행 후에 Promise 오브젝트가 남는다.
+  var 프로미스 = new Promise(function (resolve, reject) {
+    var 힘든연산 = 1 + 1;
+    resolve(10000);
+  });
+  try {
+    var result = await 프로미스; // async function 안에서 쓰는 await은 then 대신해서 사용가능하다.
+    console.log(result);
+  } catch {
+     console.log('실패!');
+  } // await은 Promise실패시 에러가 나는데 방지하러면 try{}catch{}를 쓰면 된다.
+
+  /* === Promise.then(function() {
+        console.log('성공!');
+    }) */
+}
+더하기();
+
+async function handleClick(){
+    var thePromise = new Promise(function(resolve, reject){
+        document.querySelector('.btn2').addEventListener('click', e => {
+            resolve('성공!')
+        })
+    });
+    var result = await thePromise
+    try {
+        console.log(result);
+    } catch {
+        console.log('실패!');
+    }
+} 
+handleClick();
