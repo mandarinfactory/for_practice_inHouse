@@ -71,11 +71,18 @@ console.log(출석부2); // Set(3) {'John', 'Tom', 'Andy'}, Set은 중복을 �
 console.log(출석부); // (3) ['John', 'Tom', 'Andy'],배열화 되었다.
 
 // 19. Web Components //
-// JS 문법으로 구현할 수 있는 브라우저 기본 기능이다.
+// JS 문법으로 구현할 수 있는 브라우저 기본 기능이다. --> 사용자만의 커스텀태그를 만드는것
 
 class theClass extends HTMLElement {
     connectedCallback(){
-        this.innerHTML = `<label>EMAIL-input</label><input>`
+        let name = this.getAttribute('name');
+        this.innerHTML = `<label>EMAIL-input${name}</label><input>`
+    }
+    static get observedAttributes() {
+        return['name']
+    }
+    attributeChangedCallback(){
+        console.log(this.getAttribute('name'));
     }
 }
 
