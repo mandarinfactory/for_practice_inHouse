@@ -73,10 +73,10 @@ console.log(출석부); // (3) ['John', 'Tom', 'Andy'],배열화 되었다.
 // 19. Web Components //
 // JS 문법으로 구현할 수 있는 브라우저 기본 기능이다.
 
-class theClass extends HTMLElements {
+class theClass extends HTMLElement {
     connectedCallback(){
         this.innerHTML = `<label>EMAIL-input</label><input>`
     }
 }
 
-customElements.define('custom-input', );
+customElements.define('custom-input', theClass);
