@@ -29,11 +29,47 @@ class Cactus {
   }
 }
 
+var timer = 0;
+var cactuses = [];
+var jumpTime = 0;
+
 function handleFrame() {
   requestAnimationFrame(handleFrame);
+  timer++;
+
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  var cactus = new Cactus();
-  cactus.draw();
+
+  if (timer % 60 === 0) {
+    var cactus = new Cactus();
+    cactuses.push(cactus);
+  }
+  cactuses.forEach((a, i, o) => {
+    //x좌표가 0미만이면 제거!
+    if (a.x < 0) {
+      o.splice(i, 1);
+    }
+    a.x--;
+    a.draw();
+  });
+  if (jump == true) {
+    square.y-= 2 ;
+    jumpTime++;
+  }
+  if (jump == false) {
+    if (square.y < 200) {
+      square.y++;
+    }
+  }
+  if (jumpTime > 100) {
+    jump = false;
+  }
   square.draw();
 }
 handleFrame();
+
+var jump = false;
+document.addEventListener("keydown", function (e) {
+  if (e.code === "Space") {
+    jump = true;
+  }
+});
