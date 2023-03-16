@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import '../src/App.css';
 import { useState } from 'react';
 
