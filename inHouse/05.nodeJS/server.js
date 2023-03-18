@@ -7,16 +7,6 @@ const MongoClient = require('mongodb').MongoClient;
 MongoClient.connect('mongodb+srv://mandarinfactory:tiger6475!@mandarinfactory.ldgnukl.mongodb.net/?retryWrites=true&w=majority', (error, client) => {
     if(error) return console.log('ERROR!')
     db = client.db('template');
-
-   /* db.collection('post').insertOne({ 이름 : 'Brent', 나이 : 29 }, (error, result) => {
-        console.log('COMPELTE!');
-    }); 
-    app.post('/add', (req, res) => {
-    res.send('good!')
-    console.log(req.body.title);
-    console.log(req.body.date);
-});
-    */
     app.post('/add', (req, res) => {
         res.send('good!')
         db.collection('post').insertOne({ title : req.body.title, date : req.body.date })
