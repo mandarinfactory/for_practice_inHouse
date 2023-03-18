@@ -9,9 +9,10 @@ MongoClient.connect('mongodb+srv://mandarinfactory:tiger6475!@mandarinfactory.ld
     db = client.db('template');
     app.post('/add', (req, res) => {
         res.send('good!')
-        db.collection('post').insertOne({ title : req.body.title, date : req.body.date })
+        db.collection('post').insertOne({ title : req.body.title, date : req.body.date }, () => {
+            console.log('COMPLETE!');
+        })
     });
-
     app.listen(8080, () => {
         console.log('listening on 8080');
     });
@@ -32,5 +33,3 @@ app.get('/',(req, res) => {
 app.get('/write',(req, res) => {
     res.sendFile(__dirname + '/write.html');
 });
-
-// /add 경로로 post 요청을 하면, data 2개(날짜, 제목)를 보내주는데 --> post라는 이름을 가진 collection에 두개 data를 저장하기!
