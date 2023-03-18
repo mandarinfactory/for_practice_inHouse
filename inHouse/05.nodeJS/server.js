@@ -1,9 +1,10 @@
 const express = require('express');
 const app = express();
-const bodyParser = require('body-parser')
-app.use(express.urlencoded({extended: true})) 
-
+const bodyParser = require('body-parser');
+app.use(express.urlencoded({extended: true}));
 const MongoClient = require('mongodb').MongoClient;
+app.set('view engine', 'ejs');
+
 MongoClient.connect('mongodb+srv://mandarinfactory:tiger6475!@mandarinfactory.ldgnukl.mongodb.net/?retryWrites=true&w=majority', (error, client) => {
     if(error) return console.log('ERROR!')
     db = client.db('template');
@@ -32,4 +33,8 @@ app.get('/',(req, res) => {
 });
 app.get('/write',(req, res) => {
     res.sendFile(__dirname + '/write.html');
+});
+
+app.get('/list',(req, res) => {
+    res.render('list.ejs');
 });
