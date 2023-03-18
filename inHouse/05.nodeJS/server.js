@@ -4,10 +4,29 @@ const bodyParser = require('body-parser')
 app.use(express.urlencoded({extended: true})) 
 
 const MongoClient = require('mongodb').MongoClient;
+MongoClient.connect('mongodb+srv://mandarinfactory:tiger6475!@mandarinfactory.ldgnukl.mongodb.net/?retryWrites=true&w=majority', (error, client) => {
+    if(error) return console.log('ERROR!')
+    db = client.db('template');
 
-app.listen(8080, () => {
-    console.log('listening on 8080');
+   /* db.collection('post').insertOne({ 이름 : 'Brent', 나이 : 29 }, (error, result) => {
+        console.log('COMPELTE!');
+    }); 
+    app.post('/add', (req, res) => {
+    res.send('good!')
+    console.log(req.body.title);
+    console.log(req.body.date);
 });
+    */
+    app.post('/add', (req, res) => {
+        res.send('good!')
+        db.collection('post').insertOne({ title : req.body.title, date : req.body.date })
+    });
+
+    app.listen(8080, () => {
+        console.log('listening on 8080');
+    });
+});
+
 // server를 띄우기 위한 기본 셋팅!(설치한 express 라이브러리 사용방법)
 
 app.get('/pet',(req, res) => {
@@ -24,8 +43,4 @@ app.get('/write',(req, res) => {
     res.sendFile(__dirname + '/write.html');
 });
 
-app.post('/add', (req, res) => {
-    res.send('good!')
-    console.log(req.body.title);
-    console.log(req.body.date);
-});
+// /add 경로로 post 요청을 하면, data 2개(날짜, 제목)를 보내주는데 --> post라는 이름을 가진 collection에 두개 data를 저장하기!
