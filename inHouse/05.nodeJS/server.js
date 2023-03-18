@@ -26,6 +26,4 @@ app.post('/add', (req, res) => {
     res.send('good!')
     console.log(req.body.title);
     console.log(req.body.date);
-})
-
-//REST API
+});
