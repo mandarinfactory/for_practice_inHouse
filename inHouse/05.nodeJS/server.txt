@@ -16,4 +16,32 @@
 3. npm 
     - npm --> 라이브러리 설치를 도와주는 도구이다.
     - package.json --> npm으로 설치한 라이브러리가 어떤건지 기록하는 곳(npm init으로 설치함)
-    - 
+
+4. API && REST-API
+    - Application Programming Interface
+    - 웹개발환경에서의 API? ==> 웹서버와 고객간의 소통방법(어떻게 해야 server랑 통신을 할 수 있을까?)
+        └-> GET, POST요청들이 모두 API들이다.
+    - REST(REpresentational State Transfer)
+        - HTTP요청시스템(GET, POST, PUT, DELETE)을 너무 막쓰고 있는 우려가 많았었음.
+        - 그래서 규칙적으로 요청하자는 법칙을 만들었는데 그게 REST-API이다.
+
+            1. Uniform interface(얘가 제일 중요하다!)
+                - 하나의 자료는 하나의 URL로
+                - URL 하나를 알면 둘을 알 수 있어야한다.
+                - 요청과 응답은 정보가 충분히 들어있어야 한다.
+            2. Client-Server 역할구분
+                - 브라우저는 요청만 할 뿐
+                - server는 응답만 할 뿐
+            3. Stateless
+                - 각각의 요청들은 독립적인 존재로, 의존성이 없어야한다.
+            4. Cacheable
+                - 이건 브라우저가 알아서 해줌
+
+        - 좋은 REST-API
+            - 이름짓기 원칙
+                1. URL울 명사로 작성하는것을 추천
+                2. 하위문서를 나타낼 땐 '/'을 사용
+                3. 파일확장자(.html등)은 쓰지말것
+                4. 띄어쓰기는 대시(-) 사용
+                5. 자료 하나당 하나의 URL로!(Unifrom interface)
+
