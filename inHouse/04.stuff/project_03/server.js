@@ -1,10 +1,10 @@
 // 네이버 검색 API 예제 - 블로그 검색
 var express = require('express');
 var app = express();
-var client_id = '97gi3wHYe0SVzbmFuIJW';
-var client_secret = 'Q8IvuVzzbm';
-app.get('/search/blog', function (req, res) {
-   var api_url = 'https://openapi.naver.com/v1/search/blog?query=' + encodeURI(req.query.query); // JSON 결과
+app.get('/search/local', function (req, res) {
+  var client_id = '97gi3wHYe0SVzbmFuIJW';
+  var client_secret = 'Q8IvuVzzbm';
+   var api_url = 'https://openapi.naver.com/v1/search/local?query=' + encodeURI(req.query.query); // JSON 결과
    var request = require('request');
    var options = {
        url: api_url,
@@ -21,5 +21,5 @@ app.get('/search/blog', function (req, res) {
    });
  });
  app.listen(3000, function () {
-   console.log('http://127.0.0.1:3000/search/blog?query=검색어 app listening on port 3000!');
+   console.log('listening on port 3000!');
  });
