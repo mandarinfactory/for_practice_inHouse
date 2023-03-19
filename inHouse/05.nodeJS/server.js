@@ -54,7 +54,8 @@ app.delete('/delete', function(req, res) {
     console.log(req.body);
     req.body._id = parseInt(req.body._id)
     //req.body에 담겨온 게시물번호를 가진 글을 db에서 찾아서 삭제하기
-    db.collection('post').deleteOne(req.body, (err, res) => {
+    db.collection('post').deleteOne(req.body, (err, result) => {
         console.log('완료!');
+        res.status(400).send({ message : 'FAIL!' });
     });
 });

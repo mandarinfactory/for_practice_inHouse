@@ -104,11 +104,21 @@
     <script>
       $(".delete").click(function (e) {
         let postNum = e.target.dataset.id;
+        let thisItem = $(this);
         $.ajax({
           method: "DELETE",
           url: "/delete",
           data: { _id: postNum },
-        }).done(function (res) {});
+        }).done(function (res) {
+          // 페이지를 강제로 새로고침
+          // 삭제버튼을 누른 li요소를 제거 + 안보이게
+          console.log('삭제성공띠★');
+          thisItem.parent('li').fadeOut();
+        }).fail(function(a,b,c) { // xhr, textStatus(실패한 응답코드), errorThrown(에러의 메세지) --> 각각의 인자의 뜻
+          console.log('삭제실패띠★');
+          console.log(a,b,c);
+
+        });
       });
     </script>
   </body>
