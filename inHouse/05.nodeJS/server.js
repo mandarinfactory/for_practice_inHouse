@@ -5,7 +5,7 @@ app.use(express.urlencoded({ extended: true }));
 const MongoClient = require("mongodb").MongoClient;
 app.set("view engine", "ejs");
 
-app.use('/public', express.static('public'))//middleware
+app.use("/public", express.static("public")); //middleware
 
 MongoClient.connect(
   "mongodb+srv://mandarinfactory:tiger6475!@mandarinfactory.ldgnukl.mongodb.net/?retryWrites=true&w=majority",
@@ -40,27 +40,18 @@ MongoClient.connect(
     }); // server를 띄우기 위한 기본 셋팅!(설치한 express 라이브러리 사용방법)
   }
 );
-
 /* app.get("/pet", (req, res) => {
   res.send("방굽! 여기는 PET 용품을 쇼핑할 수 있는 페이지입니다.");
 });
 app.get("/beauty", (req, res) => {
   res.send("방굽! 여기는 BEAUTY 용품을 쇼핑할 수 있는 페이지입니다.");
 }); */
-//app.get(GET요청-->읽기요청)을 하면 주소창에 URL을 입력해서 server에 GET요청을 할 수 있다.
-/* app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/index.html");
-}); */
-app.get('/', (req, res) => {
-    res.render('index.ejs')
+app.get("/", (req, res) => {
+  res.render("index.ejs");
 });
-/* app.get("/write", (req, res) => {
-  res.sendFile(__dirname + "/write.html");
-}); */
-app.get('/write', (req, res) => {
-    res.render('write.ejs')
+app.get("/write", (req, res) => {
+  res.render("write.ejs");
 });
-
 app.get("/list", (req, res) => {
   db.collection("post")
     .find()
