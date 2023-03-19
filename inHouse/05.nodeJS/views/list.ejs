@@ -42,12 +42,16 @@
         </div>
       </div>
     </nav>
-    서버에서 가져온 할일 리스트! 
-    <% for (var i = 0; i < posts.length; i++){ %>
-    <h4>할일제목 : <%= posts[i].title %></h4>
-    <p>할일 마감날짜 : <%= posts[i].date %></p>
-    <button>삭제!</button>
-    <% } %>
+
+    <ul class="list-group">
+      <% for (var i = 0; i < posts.length; i++){ %>
+      <li class="list-group-item">
+        <h4 style="font-weight: 800; color: #333;">할일제목 : <%= posts[i].title %></h4>
+        <p style="font-weight: 600; color: firebrick;">할일 마감날짜 : <%= posts[i].date %></p>
+        <button>삭제!</button>
+      </li>
+      <% } %>
+    </ul>
 
     <!-- Optional JavaScript; choose one of the two! -->
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
