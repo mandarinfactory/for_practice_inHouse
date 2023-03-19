@@ -8,14 +8,19 @@ app.set('view engine', 'ejs');
 MongoClient.connect('mongodb+srv://mandarinfactory:tiger6475!@mandarinfactory.ldgnukl.mongodb.net/?retryWrites=true&w=majority', (error, client) => {
     if(error) return console.log('ERROR!')
     db = client.db('template');
+    // user가 form에서 /add로 POST요청(쓰기요청)하면
     app.post('/add', (req, res) => {
         res.send('good!')
+        // mongoDB.counter내의 총게시물갯수를 찾음
         db.collection('counter').findOne({ name : 'postNumber' }, (err, res) => {
-            let totalPostNum = res.totalPost;
+            let totalPostNum = res.totalPost; // 총게시물갯수를 변수에 저장
+            // 이제 DB.post에 새게시물을 기록함
             db.collection('post').insertOne({ _id : totalPostNum + 1, title : req.body.title, date : req.body.date }, () => {
                 console.log('COMPLETE!');
                 // counter라는 collection에 잇는 totalPost라는 항목도 1 증가시켜야함! --> 얘도 이 안에다가!
-                db.collection('counter').updateOne({ name : 'postNumber' }, { $set : { totalPost : 1 } }, () => {})
+                db.collection('counter').updateOne({ name : 'postNumber' }, { $inc : { totalPost : 1 } }, (err, res) => {
+                    if(err) return console.log(err);
+                });
             });
         });
     });
