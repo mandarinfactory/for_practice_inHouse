@@ -50,11 +50,10 @@
     </h4>
     <ul class="list-group">
       <% for (var i = 0; i < posts.length; i++){ %>
-      <li class="list-group-item">
+      <li class="list-group-item list">
         <h4 style="font-size: 1.8em; font-weight: 800; color: #333">
           할일제목 : <%= posts[i].title %>
         </h4>
-        <!--         <p style="font-size: 1.2em; font-weight: 700;">글번호 <%= posts[i]._id %></p> -->
         <p style="font-size: 1.2em; font-weight: 700; color: firebrick">
           할일 마감날짜 : <%= posts[i].date %>
         </p>
@@ -109,17 +108,19 @@
           method: "DELETE",
           url: "/delete",
           data: { _id: postNum },
-        }).done(function (res) {
-          // 페이지를 강제로 새로고침
-          // 삭제버튼을 누른 li요소를 제거 + 안보이게
-          console.log('삭제성공띠★');
-          thisItem.parent('li').fadeOut();
-        }).fail(function(a,b,c) { // xhr, textStatus(실패한 응답코드), errorThrown(에러의 메세지) --> 각각의 인자의 뜻
-          console.log('삭제실패띠★');
-          console.log(a,b,c);
-
+        })
+          .done(function (res) {
+            // 페이지를 강제로 새로고침
+            // 삭제버튼을 누른 li요소를 제거 + 안보이게
+            console.log("삭제성공띠★");
+            thisItem.parent("li").fadeOut();
+          })
+          .fail(function (a, b, c) {
+            // xhr, textStatus(실패한 응답코드), errorThrown(에러의 메세지) --> 각각의 인자의 뜻
+            console.log("삭제실패띠★");
+            console.log(a, b, c);
+          });
         });
-      });
-    </script>
+        </script>
   </body>
 </html>
