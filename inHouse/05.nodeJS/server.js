@@ -10,9 +10,14 @@ MongoClient.connect('mongodb+srv://mandarinfactory:tiger6475!@mandarinfactory.ld
     db = client.db('template');
     app.post('/add', (req, res) => {
         res.send('good!')
-        db.collection('post').insertOne({ title : req.body.title, date : req.body.date }, () => {
-            console.log('COMPLETE!');
-        })
+        db.collection('counter').findOne({ name : 'postNumber' }, (err, res) => {
+            let totalPostNum = res.totalPost;
+            db.collection('post').insertOne({ _id : totalPostNum + 1, title : req.body.title, date : req.body.date }, () => {
+                console.log('COMPLETE!');
+                // counter라는 collection에 잇는 totalPost라는 항목도 1 증가시켜야함! --> 얘도 이 안에다가!
+                db.collection('counter').updateOne({ name : 'postNumber' }, { $set : { totalPost : 1 } }, () => {})
+            });
+        });
     });
     app.listen(8080, () => {
         console.log('listening on 8080');
