@@ -58,7 +58,7 @@ app.get("/list", (req, res) => {
     .toArray((error, result) => {
       console.log(result[0]._id);
       res.render("list.ejs", { posts: result });
-    });
+    }); 
 });
 
 app.delete("/delete", function (req, res) {
@@ -80,3 +80,6 @@ app.get("/detail/:id", (req, res) => {
     }
   );
 });
+app.get('/edit', (req, res) => {
+  res.render('edit.ejs')
+})

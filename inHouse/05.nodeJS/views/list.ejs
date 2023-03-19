@@ -15,7 +15,7 @@
       integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="../public/main.css">
+    <link rel="stylesheet" href="../public/main.css" />
     <title>LIST</title>
   </head>
   <body>
@@ -29,25 +29,25 @@
     <div class="container">
       <ul class="list-group">
         <% for (var i = 0; i < posts.length; i++){ %>
-          <li class="list-group-item list">
-            <h4 style="font-size: 1.8em; font-weight: 800; color: #333">
-              할일제목 : <%= posts[i].title %>
-            </h4>
-            <p style="font-size: 1.2em; font-weight: 700; color: firebrick">
-              할일 마감날짜 : <%= posts[i].date %>
-            </p>
-            <button
+        <li class="list-group-item list">
+          <h4 style="font-size: 1.8em; font-weight: 800; color: #333">
+            할일제목 : <%= posts[i].title %>
+          </h4>
+          <p style="font-size: 1.2em; font-weight: 700; color: firebrick">
+            할일 마감날짜 : <%= posts[i].date %>
+          </p>
+          <button
             type="button"
             class="btn btn-danger delete"
             data-id="<%= posts[i]._id %>"
-            >
+          >
             삭제
           </button>
         </li>
         <% } %>
       </ul>
     </div>
-      
+
     <!-- Optional JavaScript; choose one of the two! -->
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
     <script
@@ -99,7 +99,15 @@
             console.log("삭제실패띠★");
             console.log(a, b, c);
           });
+      });
+      let lists = document.querySelectorAll(".list");
+      lists.forEach((e) => {
+        e.addEventListener("click", () => {
+          lists.forEach((e) => {
+            console.log(e);
+          });
         });
-        </script>
+      });
+    </script>
   </body>
 </html>
