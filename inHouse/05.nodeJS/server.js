@@ -5,6 +5,8 @@ app.use(express.urlencoded({ extended: true }));
 const MongoClient = require("mongodb").MongoClient;
 app.set("view engine", "ejs");
 
+app.use('/public', express.static('public'))//middleware
+
 MongoClient.connect(
   "mongodb+srv://mandarinfactory:tiger6475!@mandarinfactory.ldgnukl.mongodb.net/?retryWrites=true&w=majority",
   (error, client) => {
@@ -59,9 +61,6 @@ app.get("/list", (req, res) => {
     .toArray((error, result) => {
       console.log(result[0]._id);
       res.render("list.ejs", { posts: result });
-      $("li.list").click(function () {
-        window.open = `https://localhost:8080/detail/result[0]._id`;
-      });
     });
 });
 
