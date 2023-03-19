@@ -86,4 +86,4 @@ app.get('/edit/:id', (req, res) => {
     (err, result) => {
       res.render('edit.ejs', { post : result });
     });
-})
+});
