@@ -87,3 +87,11 @@ app.get('/edit/:id', (req, res) => {
       res.render('edit.ejs', { post : result });
     });
 });
+
+app.put('/edit', (req, res) => {
+  // 폼에 담긴 제목데이터, 날짜데이터를 가지고 db.collection 게시물 찾아서 업데이트
+  db.collection('post').updateOne({ _id : parseInt(req.body.id) },{ $set : { title : req.body.title, date : req.body.date }},(error, result) => {
+    console.log('수정완료!');
+    res.redirect('/list');
+  });
+});
