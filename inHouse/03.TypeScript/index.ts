@@ -40,3 +40,7 @@ let 이름1 :unknown; // any랑 비슷하다. --> any보다는 안전한 모든 
 string타입 + 1, number타입 + 1 은 허용하지만,
 string | number타입 + 1은 허용하지 않는다.(해당타입이 어떤타입인지 애매하므로)
 */
+
+function 함수(){
+  
+}
