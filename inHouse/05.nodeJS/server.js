@@ -23,7 +23,7 @@ MongoClient.connect(
         // 이제 DB.post에 새게시물을 기록함
         db.collection("post").insertOne(
           { _id: totalPostNum + 1, title: req.body.title, date: req.body.date },
-          () => {
+          (err, result) => {
             console.log("COMPLETE!");
             // counter라는 collection에 잇는 totalPost라는 항목도 1 증가시켜야함! --> 얘도 이 안에다가!
             db.collection("counter").updateOne(
