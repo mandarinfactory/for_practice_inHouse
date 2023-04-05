@@ -16,3 +16,7 @@
     => 다시말해, 최종상태와 어떤 상황에서 어떤 상태가 사용되어야 하는지 정의하면 된다. (직접 HTML을 제어할 필요가 없다. => useState사용)
 
 7. src파일에서 index.js가 가장 먼저 실행되는 파일이다.
+
+8. JSX는 JavaScript XML을 의미한다. HTML == XML
+
+9. React에 있는 component들은 단지 JS의 function일 뿐이다.
