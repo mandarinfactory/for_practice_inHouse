@@ -1,4 +1,5 @@
 import ExpenseItem from "./ExpenseItem";
+import '../css/Expenses.css'
 
 function Expenses() {
   const expenses = [
@@ -29,7 +30,7 @@ function Expenses() {
   ];
 
   return (
-    <>
+    <div className="expenses">
       <ExpenseItem
         title={expenses[0].title}
         amount={expenses[0].amount}
@@ -50,8 +51,8 @@ function Expenses() {
         amount={expenses[3].amount}
         date={expenses[3].date}
       />
-    </>
+    </div>
   );
-}
+};
 
 export default Expenses;
