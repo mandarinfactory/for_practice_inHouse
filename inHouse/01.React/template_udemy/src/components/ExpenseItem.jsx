@@ -1,13 +1,15 @@
-function ExpenseItem() {
+import "./ExpenseItem.css";
+
+function ExpenseItem(props) {
   return (
-    <div>
-      <div>23.03.19</div>
-      <div>
-        <h2>차보험료</h2>
-        <div>563,000원</div>
+    <div className="expense-item">
+      <div>{props.date.toISOString()}</div>
+      <div className="expense-item__description">
+        <h2>{props.title}</h2>
+        <div className="expense-item__price">{props.amount}원</div>
       </div>
     </div>
   );
-};
+}
 
 export default ExpenseItem;
