@@ -19,4 +19,6 @@
 
 8. JSX는 JavaScript XML을 의미한다. HTML == XML
 
-9. React에 있는 component들은 단지 JS의 function일 뿐이다.
+9. React에 있는 component들은 단지 JS의 function일 뿐이다. => 기반은 JS이므로 JS가 중요하다!
+
+10. component들은 프로젝트를 진행할수록 점차 많아지는데 이건 당연한거고 점차 component tree를 만들게 된다. => 여기서 가장 뿌리는 App.js이다.(App.js는 react.dom을 이용해 HTML페이지에 직접 렌더링된다.)
