@@ -6,7 +6,7 @@ function Card (props) {
     <div className={classes}>
         {props.children}
     </div>
- )
-}
+ );
+};
 
 export default Card;
