@@ -1,10 +1,10 @@
 import Expenses from "./components/Expense/Expenses";
 
-function App() {
+const App = () => {
 
   return (
       <Expenses/> 
   );
-}
+};
 
 export default App;
