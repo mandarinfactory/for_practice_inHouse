@@ -4,11 +4,10 @@ import Card from "../Design/Card";
 import "../../css/ExpenseItem.css";
 
 const ExpenseItem = (props) => {
-  const [ title, setTitle ] = useState(props.title);
-
-    const clickHandler = () => {
-      setTitle('UPDATED!!!')
-    }
+  const [title, setTitle] = useState(props.title);
+  const clickHandler = () => {
+    setTitle("UPDATED!!!");
+  };
   return (
     <Card className="expense-item">
       <ExpenseDate date={props.date} />
