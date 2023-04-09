@@ -6,14 +6,31 @@ const ExpenseForm = () => {
   const [ enteredTitle, setEnteredTitle ] = useState('');
   const [ enteredAmount, setEnteredAmount ] = useState('');
   const [ enteredDate, setEnteredDate ] = useState('');
+  /* const [userInput, setUserInput ] = useState({
+    enteredTitle :'',
+    enteredAmount : '',
+    enteredDate : ''
+  }); */
   const titleChHandler = event => {
     setEnteredTitle(event.target.value);
+    /* setUserInput({
+      ...userInput,
+      enteredTitle : event.target.value,
+    }); */
   };
   const amountChHandler = event => {
     setEnteredAmount(event.target.value);
+    /* setUserInput({
+      ...userInput,
+      enteredAmount : event.target.value,
+    }); */
   };
   const dateChHandler = event => {
     setEnteredDate(event.target.value);
+    /* setUserInput({
+      ...userInput,
+      enteredDate : event.target.value,
+    }); --> 주석 처리된것들은 다른 방법의 여러개의 useState를 쓰는 방법! */
   };
   return (
     <form>
