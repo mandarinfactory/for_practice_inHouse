@@ -3,29 +3,29 @@ import react, { useState } from "react";
 import "../../css/ExpenseForm.css";
 
 const ExpenseForm = () => {
-  const [ enteredTitle, setEnteredTitle ] = useState('');
-  const [ enteredAmount, setEnteredAmount ] = useState('');
-  const [ enteredDate, setEnteredDate ] = useState('');
+  const [enteredTitle, setEnteredTitle] = useState("");
+  const [enteredAmount, setEnteredAmount] = useState("");
+  const [enteredDate, setEnteredDate] = useState("");
   /* const [userInput, setUserInput ] = useState({
     enteredTitle :'',
     enteredAmount : '',
     enteredDate : ''
   }); */
-  const titleChHandler = event => {
+  const titleChHandler = (event) => {
     setEnteredTitle(event.target.value);
     /* setUserInput({
       ...userInput,
       enteredTitle : event.target.value,
     }); */
   };
-  const amountChHandler = event => {
+  const amountChHandler = (event) => {
     setEnteredAmount(event.target.value);
     /* setUserInput({
       ...userInput,
       enteredAmount : event.target.value,
     }); */
   };
-  const dateChHandler = event => {
+  const dateChHandler = (event) => {
     setEnteredDate(event.target.value);
     /* setUserInput({
       ...userInput,
@@ -43,13 +43,17 @@ const ExpenseForm = () => {
     꼴로 써야 안정적으로 변환이 된다.
     */
   };
-  const submitHandler = event => {
+  const submitHandler = (event) => {
     event.preventDefault();
     const expenseData = {
-      title : enteredTitle,
-      amount : enteredAmount,
-      date : new Date(enteredDate),
+      title: enteredTitle,
+      amount: enteredAmount,
+      date: new Date(enteredDate),
     };
+    console.log(expenseData);
+    setEnteredTitle("");
+    setEnteredAmount("");
+    setEnteredDate("");
   };
 
   return (
@@ -57,15 +61,27 @@ const ExpenseForm = () => {
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>제목</label>
-          <input type="text" onChange={titleChHandler} />
+          <input type="text" value={enteredTitle} onChange={titleChHandler} />
         </div>
         <div className="new-expense__control">
           <label>금액</label>
-          <input type="number" min="0.01" step="0.01" onChange={amountChHandler}/>
+          <input
+            type="number"
+            min="0.01"
+            step="0.01"
+            value={enteredAmount}
+            onChange={amountChHandler}
+          />
         </div>
         <div className="new-expense__control">
           <label>날짜</label>
-          <input type="date" min="2019-01-01" max="2023-12-31" onChange={dateChHandler}/>
+          <input
+            type="date"
+            min="2019-01-01"
+            max="2023-12-31"
+            value={enteredDate}
+            onChange={dateChHandler}
+          />
         </div>
       </div>
       <div className="new-expense__actions">
