@@ -30,17 +30,37 @@ const ExpenseForm = () => {
     /* setUserInput({
       ...userInput,
       enteredDate : event.target.value,
-    }); --> 주석 처리된것들은 다른 방법의 여러개의 useState를 쓰는 방법! */
+    }); --> 주석 처리된것들은 다른 방법의 여러개의 useState를 쓰는 방법! 
+    이렇게 하면 이전state(...userInput으로 복사)에 의존하게 된다. 따라서 기존값이 손상되거나 없어지면
+    모두 영향을 받게 된다. 의존하고 또 새로운 값으로 바꾸게 되면 꽤나 state가 불안정해진다.
+    따라서,
+    setUserInput(prevState => {
+     return {
+       ...prevState,
+       enteredDate : event.target.value;
+     };
+    });
+    꼴로 써야 안정적으로 변환이 된다.
+    */
   };
+  const submitHandler = event => {
+    event.preventDefault();
+    const expenseData = {
+      title : enteredTitle,
+      amount : enteredAmount,
+      date : new Date(enteredDate),
+    };
+  };
+
   return (
-    <form>
+    <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>제목</label>
           <input type="text" onChange={titleChHandler} />
         </div>
         <div className="new-expense__control">
-          <label>총량</label>
+          <label>금액</label>
           <input type="number" min="0.01" step="0.01" onChange={amountChHandler}/>
         </div>
         <div className="new-expense__control">
