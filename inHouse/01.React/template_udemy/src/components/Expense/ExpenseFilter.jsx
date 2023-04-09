@@ -9,7 +9,7 @@ const ExpensesFilter = (props) => {
     <div className="expenses-filter">
       <div className="expenses-filter__control">
         <label>년단위로 확인</label>
-        <select value={props.filteredYear} onClick={dateHandler}>
+        <select value={props.filteredYear} onChange={dateHandler}>
           <option value="2023">2023</option>
           <option value="2022">2022</option>
           <option value="2021">2021</option>
