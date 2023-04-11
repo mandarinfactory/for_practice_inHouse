@@ -2,8 +2,8 @@
 
 import react, { useState } from "react";
 import Card from "../Design/Card";
-import ExpenseItem from "./ExpenseItem";
 import ExpensesFilter from "./ExpenseFilter";
+import ExpensesList from './ExpensesList'
 import "../../css/Expenses.css";
 
 const Expenses = (props) => {
@@ -16,17 +16,6 @@ const Expenses = (props) => {
     return expense.date.getFullYear().toString() === filteredYear;
   });
 
-  let expensesContent = <p>지출이 발견되지 않았습니다.</p>;
-  if(filteredExpenses.length > 0) {
-    expensesContent = filteredExpenses.map((expense) => (
-      <ExpenseItem
-        key={expense.id}
-        title={expense.title}
-        amount={expense.amount}
-        date={expense.date}
-      />
-    ))};
-
   return (
     <div>
       <Card className="expenses">
@@ -34,7 +23,7 @@ const Expenses = (props) => {
           filteredYear={filteredYear}
           filterChHandler={filterChHandler}
         />
-        {expensesContent}
+        <ExpensesList expenses={filteredExpenses} />
       </Card>
     </div>
   );
