@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import react, { useState } from "react";
 import Card from "../Design/Card";
 import ExpenseItem from "./ExpenseItem";
@@ -10,9 +12,20 @@ const Expenses = (props) => {
     setFilteredYear(selectedYear);
   };
 
-  const filteredExpenses = props.expenses.filter(expense => {
+  const filteredExpenses = props.expenses.filter((expense) => {
     return expense.date.getFullYear().toString() === filteredYear;
   });
+
+  let expensesContent = <p>지출이 발견되지 않았습니다.</p>;
+  if(filteredExpenses.length > 0) {
+    expensesContent = filteredExpenses.map((expense) => (
+      <ExpenseItem
+        key={expense.id}
+        title={expense.title}
+        amount={expense.amount}
+        date={expense.date}
+      />
+    ))};
 
   return (
     <div>
@@ -21,14 +34,7 @@ const Expenses = (props) => {
           filteredYear={filteredYear}
           filterChHandler={filterChHandler}
         />
-        {filteredExpenses.map((expense) => (
-          <ExpenseItem
-            key={expense.id}
-            title={expense.title}
-            amount={expense.amount}
-            date={expense.date}
-          />
-        ))};
+        {expensesContent}
       </Card>
     </div>
   );

@@ -32,6 +32,10 @@ const INITIAL_EXPENSES = [
 ];
 const App = () => {
   const [ expenses, setExpenses ] = useState(INITIAL_EXPENSES);
+  const [ isClicked, setIsClicked ] = useState(false);
+  const clickHandler = () => {
+    setIsClicked(true);
+  };
   const addExpenseHandler = (expense) => {
     setExpenses(prevExpenses => {
       return [expense, ...prevExpenses];
@@ -40,7 +44,8 @@ const App = () => {
 
   return (
     <div>
-      <NewExpense addExpenseHandler={addExpenseHandler} />
+      <NewExpense addExpenseHandler={addExpenseHandler} isClicked={isClicked}/>
+      <button onClick={clickHandler}>새로운지출 추가하기</button>
       <Expenses expenses={expenses} />
     </div>
   );
