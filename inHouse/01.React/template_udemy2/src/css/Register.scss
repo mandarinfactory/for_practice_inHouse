@@ -1,0 +1,32 @@
+.register_card {
+    margin: 20px auto;
+    width: 50%;
+    background-color: white;
+    border-radius: 20px;
+    form {
+        padding: 10px;
+        box-sizing: border-box;
+        p {
+            color: #333;
+            font-size: 1.8em;
+            font-weight: 900;
+        }//p
+        input {
+            width: 100%;
+            height: 30px;
+        }//input
+    }//form
+    button {
+        margin: 20px;
+        padding: 10px;
+        background-color: cadetblue;
+        border-color: transparent;
+        color: black;
+        font-size: 1.5em;
+        font-weight: 800;
+        transition: color 0.15s;
+        &:hover {
+            color: white;
+        }
+    }//button
+}//register_card
