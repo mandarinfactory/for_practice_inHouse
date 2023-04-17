@@ -1,10 +1,10 @@
-import Register from "./components/Register";
-import './App.css'
+import React from 'react';
+
 
 function App() {
   return (
-    <div className="App">
-      <Register/>
+    <div>
+
     </div>
   );
 }
