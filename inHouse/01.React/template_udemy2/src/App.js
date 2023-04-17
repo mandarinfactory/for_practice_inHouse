@@ -5,9 +5,7 @@ import Card from "./components/UI/Card";
 function App() {
   return (
     <div>
-      <Card>
-        <AppUser />
-      </Card>
+      <AppUser />
     </div>
   );
 }

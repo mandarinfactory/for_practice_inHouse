@@ -1,4 +1,6 @@
-import React from "react";
+import React from 'react';
+import Card from '../UI/Card';
+import classes from '../../css/AddUser.module.css';
 
 const AppUser = (props) => {
   const addUserHandler = (e) => {
@@ -6,6 +8,7 @@ const AppUser = (props) => {
   };
 
   return (
+    <Card className={classes.input}>
       <form onSubmit={addUserHandler}>
         <label htmlFor="username">유저이름</label>
         <input id="username" type="text" />
@@ -13,6 +16,7 @@ const AppUser = (props) => {
         <input id="age" type="number" />
         <button type="submit">유저추가하기</button>
       </form>
+    </Card>
   );
 };
 

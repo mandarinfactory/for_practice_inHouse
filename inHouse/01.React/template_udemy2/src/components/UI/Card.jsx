@@ -1,9 +1,10 @@
 import React from "react";
-import '../../css/Card.css'
+import classes from '../../css/Card.module.css'
 
-const Card = () => {
+const Card = (props) => {
     return (
-        <div className="card">
+        <div className={`${classes.card} ${props.className}`}>
+            {props.children}
         </div>
     );
 };
