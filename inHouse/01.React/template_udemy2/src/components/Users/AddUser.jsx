@@ -3,6 +3,7 @@ import Card from "../UI/Card";
 import Button from "../UI/Button";
 import classes from "../../css/AddUser.module.css";
 import ErrorModal from "../UI/ErrorModal";
+import Wrapper from "../Helpers/Wrapper";
 
 const AppUser = (props) => {
   const [enteredUsername, setEnteredUsername] = useState("");
@@ -43,7 +44,7 @@ const AppUser = (props) => {
   };
 
   return (
-    <div>
+    <Wrapper>
       {error && (
         <ErrorModal
           title={error.title}
@@ -70,7 +71,7 @@ const AppUser = (props) => {
           <Button type="submit">유저추가하기</Button>
         </form>
       </Card>
-    </div>
+    </Wrapper>
   );
 };
 
