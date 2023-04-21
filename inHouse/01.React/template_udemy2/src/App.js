@@ -18,6 +18,6 @@ function App() {
       <UsersList users={usersList} />
     </React.Fragment>
   );
-}
+};
 
 export default App;
