@@ -51,7 +51,7 @@ let obj4 = {
     console.log(this); // {name: Array(3), fun: ƒ}로 출력된다. --> 해당함수의 주인인 객체 obj4가 출력된다.
     obj4.name.forEach(function () {
       console.log(this);
-          /*
+           /*
             window로 출력된다. -->  이 this는 일반함수내에서 출력되므로 obj4가 아닌 window가 출력된다.
             만약, arrow function으로 썼다면 내부의 this값을 외부 this값 그대로 재사용해서 가져온다.
             따라서 window가 아닌 {name: Array(3), fun: ƒ}가 3번 반복 출력된다.
