@@ -13,7 +13,7 @@ function App() {
     if (storedUserInfo === "1") {
       setIsLoggedIn(true);
     }
-  }, []);
+  }, []); // APP이 시작될 때 한번만 실행되게 된다.
 
   const loginHandler = (email, password) => {
     localStorage.setItem("isLoggedIn", "1");
