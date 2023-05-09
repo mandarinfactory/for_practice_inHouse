@@ -10,4 +10,4 @@ const CartIcon = () => {
     );
   };
   
-  export default CartIcon;n 
+  export default CartIcon;
