@@ -6,7 +6,7 @@ const DUMMY_MEALS = [
   {
     id: "m1",
     name: "초밥",
-    description: "최상의 물고기와 밥으로 만들었습니다.",
+    description: "최상의 물고기와 밥으로 만들었습니다!",
     price: 18500,
   },
   {
@@ -30,7 +30,7 @@ const DUMMY_MEALS = [
 ];
 
 const AvaliableMeals = () => {
-  const mealsList = DUMMY_MEALS.map((meal) => <li>{meal.name}</li>);
+  const mealsList = DUMMY_MEALS.map((meal) => <MealItem key={meal.id} name={meal.name} description={meal.description} price={meal.price}/>);
 
   return (
     <section className={classes.meals}>
