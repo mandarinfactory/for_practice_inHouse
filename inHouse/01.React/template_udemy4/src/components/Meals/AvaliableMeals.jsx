@@ -1,30 +1,31 @@
 import Card from "../UI/Card";
+import MealItem from "./MealItem/MealItem";
 import classes from "./AvaliableMeals.module.css";
 
 const DUMMY_MEALS = [
   {
     id: "m1",
-    name: "Sushi",
-    description: "Finest fish and veggies",
-    price: 22.99,
+    name: "초합",
+    description: "최상의 물고기와 밥으로 만들었습니다.",
+    price: 18500,
   },
   {
     id: "m2",
-    name: "Schnitzel",
-    description: "A german specialty!",
-    price: 16.5,
+    name: "슈니첼",
+    description: "독일식 돈까스! 맛있습니다!",
+    price: 12000,
   },
   {
     id: "m3",
-    name: "Barbecue Burger",
-    description: "American, raw, meaty",
-    price: 12.99,
+    name: "바베큐버커",
+    description: "미국스러운 아주 기름진맛!",
+    price: 5900,
   },
   {
     id: "m4",
-    name: "Green Bowl",
-    description: "Healthy...and green...",
-    price: 18.99,
+    name: "풀때기들",
+    description: "다이어터들을 위해 만든 풀때기 메뉴!",
+    price: 7800,
   },
 ];
 
