@@ -5,7 +5,7 @@ import classes from "./AvaliableMeals.module.css";
 const DUMMY_MEALS = [
   {
     id: "m1",
-    name: "초합",
+    name: "초밥",
     description: "최상의 물고기와 밥으로 만들었습니다.",
     price: 18500,
   },
