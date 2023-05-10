@@ -21,7 +21,7 @@ const Cart = (props) => {
       {cartItems}
       <div className={classes.total}>
         <span>총수량</span>
-        <span>215800</span>
+        <span>74000원</span>
       </div>
       <div className={classes.actions}>
         <button className={classes["button-alt"]}>닫기</button>
