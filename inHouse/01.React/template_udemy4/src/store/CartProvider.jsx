@@ -1,20 +1,41 @@
-import React from "react";
+import React, { useReducer } from "react";
 import CartContext from "./cart-context";
 
+const defaultCartState = {
+  items: [],
+  totalAmount: 0,
+};
+
+const cartReducer = (state, action) => {
+  if (action.type === "ADD") {
+    const updatedItems = state.items.concat(); // 새로운 배열을 반환한다.(기존배열을 변환 XX)
+  }
+  return defaultCartState;
+};
+
 const CartProvider = (props) => {
-    const addItemToCartHandler = item => {};
+  const [cartState, dispatchCartAction] = useReducer(
+    cartReducer,
+    defaultCartState
+  );
+  const addItemToCartHandler = (item) => {
+    dispatchCartAction({ type: "ADD", item: item });
+  };
 
-    const removeItemFromCartHandler = id => {};
-
-    const cartContext = {
-        items : [],
-        totalAmount : 0,
-        addItem : addItemToCartHandler,
-        removeItem : removeItemFromCartHandler,
-    }
-    return <CartContext.Provider value={CartContext}>
-        {props.children}
+  const removeItemFromCartHandler = (id) => {
+    dispatchCartAction({ type: "REMOVE", id: id });
+  };
+  const cartContext = {
+    items: cartState.items,
+    totalAmount: cartState.totalAmount,
+    addItem: addItemToCartHandler,
+    removeItem: removeItemFromCartHandler,
+  };
+  return (
+    <CartContext.Provider value={cartContext}>
+      {props.children}
     </CartContext.Provider>
+  );
 };
 
 export default CartProvider;
