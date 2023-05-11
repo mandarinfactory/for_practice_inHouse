@@ -11,7 +11,8 @@ const cartReducer = (state, action) => {
     const updatedItems = state.items.concat(action.item); // 새로운 배열을 반환한다.(기존배열을 변환 XX)
     const updatedTotalAmount = state.totalAmount + action.item.price * action.item.amount;
     return {
-
+        items : updatedItems,
+        totalAmount : updatedTotalAmount,
     };
   }
   return defaultCartState;
