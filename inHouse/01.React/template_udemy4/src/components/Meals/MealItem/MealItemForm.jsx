@@ -1,11 +1,23 @@
-import { useRef } from "react";
+import { useState, useRef } from "react";
 import Input from "../../UI/Input";
 import classes from "./MealItemForm.module.css";
 
 const MealItemForm = (props) => {
+  useState();
   const amountInputRef = useRef();
   const submitHandler = (event) => {
     event.preventDefault();
+
+    const enteredAmount = amountInputRef.current.value;
+    const enteredAmountNum = +enteredAmount;
+
+    if (
+      enteredAmount.trim().length === 0 ||
+      enteredAmountNum < 1 ||
+      enteredAmountNum > 5
+    ) {
+      return;
+    }
   };
 
   return (
