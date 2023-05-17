@@ -17,7 +17,7 @@ const DUMMY_MEALS = [
   },
   {
     id: "m3",
-    name: "바베큐버커",
+    name: "바베큐버거",
     description: "미국스러운 아주 기름진맛!",
     price: 5900,
   },
