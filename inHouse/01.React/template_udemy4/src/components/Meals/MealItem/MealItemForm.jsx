@@ -3,7 +3,7 @@ import Input from "../../UI/Input";
 import classes from "./MealItemForm.module.css";
 
 const MealItemForm = (props) => {
-  useState();
+  const [amountIsValid, setAmountIsValid] = useState(true);
   const amountInputRef = useRef();
   const submitHandler = (event) => {
     event.preventDefault();
@@ -16,6 +16,7 @@ const MealItemForm = (props) => {
       enteredAmountNum < 1 ||
       enteredAmountNum > 5
     ) {
+      setAmountIsValid(false);
       return;
     }
   };
@@ -35,6 +36,7 @@ const MealItemForm = (props) => {
         }}
       />
       <button>추가</button>
+      {!amountIsValid && <p>유효한 수량을 입력해주세요!(1 - 5개 사이로만)</p>}
     </form>
   );
 };
