@@ -8,11 +8,27 @@ const defaultCartState = {
 
 const cartReducer = (state, action) => {
   if (action.type === "ADD") {
+    const updatedTotalAmount =
+      state.totalAmount + action.item.price * action.item.amount;
+
+    const existCartItemIndex = state.items.findIndex(
+      (item) => item.id === action.item.id
+    );
+    const existCartItem = state.items[existCartItemIndex];
+    let updatedItem;
+    let updatedItems;
+
+    if (existCartItem) {
+      updatedItem = {
+        ...existCartItem,
+        amount : existCartItem.amount + action.item.amount 
+      };
+    };
+
     const updatedItems = state.items.concat(action.item); // 새로운 배열을 반환한다.(기존배열을 변환 XX)
-    const updatedTotalAmount = state.totalAmount + action.item.price * action.item.amount;
     return {
-        items : updatedItems,
-        totalAmount : updatedTotalAmount,
+      items: updatedItems,
+      totalAmount: updatedTotalAmount,
     };
   }
   return defaultCartState;
