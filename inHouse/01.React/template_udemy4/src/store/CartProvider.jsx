@@ -15,17 +15,19 @@ const cartReducer = (state, action) => {
       (item) => item.id === action.item.id
     );
     const existCartItem = state.items[existCartItemIndex];
-    let updatedItem;
     let updatedItems;
-
+    
     if (existCartItem) {
-      updatedItem = {
+      const updatedItem = {
         ...existCartItem,
-        amount : existCartItem.amount + action.item.amount 
+        amount : existCartItem.amount + action.item.amount
       };
-    };
+      updatedItems = [...state.items];
+      updatedItems[existCartItemIndex] = updatedItem;
+    } else {
+      updatedItems = state.items.concat(action.item);
+    }
 
-    const updatedItems = state.items.concat(action.item); // 새로운 배열을 반환한다.(기존배열을 변환 XX)
     return {
       items: updatedItems,
       totalAmount: updatedTotalAmount,
