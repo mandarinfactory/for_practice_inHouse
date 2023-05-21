@@ -1,56 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" href="./public/sushi.png">
-  <link rel="stylesheet" href="scss/style.css">
-  <title>스시사랑</title>
-</head>
-<body>
-  <header>
-    <nav class="header__nav">
-      <div class="header__logo">
-        <h4>스시사랑</h4>
-        <div class="header__logo-overlay"></div>
-      </div>
-      <ul class="header__menu">
-        <li>
-          <a href="#menu">Menu</a>
-        </li>
-        <li>
-          <a href="#food">Food</a>
-        </li>
-        <li>
-          <a href="#services">Services</a>
-        </li>
-        <li>
-          <a href="#about-us">About Us</a>
-        </li>
-        <li>
-          <img src="assets/search.svg" alt="search">
-        </li>
-      </ul>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="./public/sushi.png" />
+    <link rel="stylesheet" href="scss/style.css" />
+    <title>스시사랑</title>
+  </head>
+  <body>
+    <header>
+      <nav class="header__nav">
+        <div class="header__logo">
+          <h4>스시사랑</h4>
+          <div class="header__logo-overlay"></div>
+        </div>
+        <ul class="header__menu">
+          <li>
+            <a href="#menu">Menu</a>
+          </li>
+          <li>
+            <a href="#food">Food</a>
+          </li>
+          <li>
+            <a href="#services">Services</a>
+          </li>
+          <li>
+            <a href="#about-us">About Us</a>
+          </li>
+          <li>
+            <img src="assets/search.svg" alt="search" />
+          </li>
+        </ul>
 
-      <ul class="header__menu-mobile">
-        <li>
-          <img src="assets/menu.svg" alt="menu">
-        </li>
-      </ul>
-    </nav>
-  </header>
-  <section class="hero">
-    <div class="hero-image">
-      <img src="assets/sushi-1.png" alt="sushi">
-      <h2>
-        日 <br>
-        本 <br>
-        食 <br>
-      </h2>
-      <div class="hero-image__overlay"></div>
-    </div>
-  </section>
-  <script src="js/app.js" type="module"></script>
-</body>
+        <ul class="header__menu-mobile">
+          <li>
+            <img src="assets/menu.svg" alt="menu" />
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <section class="hero">
+      <div class="hero-image">
+        <img src="assets/sushi-1.png" alt="sushi" />
+        <h2>
+          日 <br />
+          本 <br />
+          食 <br />
+        </h2>
+        <div class="hero-image__overlay"></div>
+      </div>
+
+      <div class="hero-content">
+        <div class="hero-content-info">
+          <h1>일본의 맛을 <br>
+             느껴보세요</h1>
+          <p>언제 어디서든 일본에서 가장 인기있는 맛을 느껴보세요</p>
+
+          <div class="hero-content__buttons">
+            <button class="hero-content__order-button">주문하기</button>
+            <button class="hero-content__play-button">
+              <img src="assets/play-circle.svg" alt="play" />
+              주문하는 방법
+            </button>
+          </div>
+        </div>
+        
+        <div class="hero-content__testimonial2">
+          <div class="hero-content__customer flex-center">
+            <h4>24<span>k+</span></h4>
+            <p>기분좋은 고객님들</p>
+          </div>
+
+          <div class="hero-content__review">
+            <img src="assets/user.png" alt="user">
+            <p>"제가 먹은 스시집 중 가장 신선하고 맛있었어요! 추천합니다!"</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="js/app.js" type="module"></script>
+  </body>
 </html>
