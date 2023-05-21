@@ -1,1 +1,25 @@
-/*# sourceMappingURL=hero.css.map */
+.hero {
+  display: flex;
+  min-height: calc(100vh - 74px);
+  overflow: hidden;
+}
+.hero .hero-image {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 5;
+}
+.hero .hero-image img {
+  width: 120%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.hero .hero-image .hero-image__overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  background-color: var(--primary-color);
+  z-index: -1;
+}/*# sourceMappingURL=hero.css.map */
