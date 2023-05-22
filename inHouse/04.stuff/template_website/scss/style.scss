@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Song+Myung&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;600;700;900&display=swap');
 
 /* 다른 css 파일들 imports */
 @import url("sections/header.css");
@@ -14,6 +15,7 @@
 :root {
   --playfair-display: "Playfair Display", serif;
   --song-myung: "Song Myung", serif;
+  --chinese-display : "Noto Serif TC", serif;
 
   --primary-color: #b1454a;
   --secondary-color: #121212;
