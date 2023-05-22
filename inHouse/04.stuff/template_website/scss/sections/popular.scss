@@ -71,7 +71,7 @@
       border-radius: 36px;
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255, 255, 255, 0.2);
-      .popular-foods__card-image {
+      .popular-foods__card-img {
         width: 110px;
         height: 84px;
         object-fit: contain;
@@ -82,7 +82,59 @@
         font-size: 25px;
         line-height: 32px;
         font-family: var(--song-myung);
+        color: #fff;
+        text-align: center;
       }//popular-foods__card-title
+      .popular-foods__card-details {
+        width: 100%;
+        margin-top: 32px;
+      }//popular-foods__card-details
+      .popular-foods__card-rating {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        img {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+        }//img
+        p {
+            font-size: 24px;
+            font-weight: 300;
+            font-family: var(--song-myung);
+            color: #fff;
+        }//p
+    }//popular-foods__card-rating
+    .popular-foods__card-price {
+          font-size: 24px;
+          font-weight: 500;
+          font-family: var(--song-myung);
+          color: #fff;
+      }//popular-foods__card-price
+      &.active-card {
+        background-color: #fff;
+        min-width: 340px;
+        .popular-foods__card-image {
+            width: 214px;
+            height: 160px;
+        }//popular-foods__card-image
+        .popular-foods__card-title {
+            color: var(--black-500);
+            font-size: 32px;
+        }//popular-foods__card-title
+        .popular-foods__card-rating img {
+            width: 32px;
+            height: 32px;
+        }//popular-foods__card-rating img
+        .popular-foods__card-rating p {
+            font-size: 24px;
+            color: var(--gray-100);
+        }//popular-foods__card-rating p
+        .popular-foods__card-price {
+            font-size: 24px;
+            color: var(--secondary-color2);
+        }//popular-foods__card-price
+      }//active-card
     } //popular-foods__card
   } //popular-foods__catalogue
   .popular-foods__button {
