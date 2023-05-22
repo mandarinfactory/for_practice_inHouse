@@ -21,7 +21,7 @@
       z-index: 2;
     } //h4
   } //header__logo
-  .header__menu,.header__menu-mobile {
+  .header__menu {
     padding: 20px;
     flex: 1.19;
     display: flex;
@@ -44,15 +44,15 @@
       } //img
     } //li
   } //header_menu
-  .header__menu-mobile {
+  /* .header__menu-mobile {
     display: none;
     padding: 20px;
-    flex: 1.19;
+    flex: 1.235;
     display: flex;
     justify-content: flex-end;
     align-items: center;
     list-style: none;
     gap: 20px;
     position: relative;
-  }//header__menu-mobile
+  } //header__menu-mobile */
 } //header__nav

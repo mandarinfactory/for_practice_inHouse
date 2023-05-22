@@ -1,6 +1,17 @@
 .header__nav {
   display: flex;
   overflow: hidden;
+  /* .header__menu-mobile {
+    display: none;
+    padding: 20px;
+    flex: 1.235;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    list-style: none;
+    gap: 20px;
+    position: relative;
+  } //header__menu-mobile */
 }
 .header__nav .header__logo {
   flex: 1;
@@ -45,15 +56,4 @@
   height: 24px;
   -o-object-fit: contain;
      object-fit: contain;
-}
-.header__nav .header__menu-moblie {
-  display: none;
-  padding: 20px;
-  flex: 1.19;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  list-style: none;
-  gap: 20px;
-  position: relative;
 }/*# sourceMappingURL=header.css.map */
