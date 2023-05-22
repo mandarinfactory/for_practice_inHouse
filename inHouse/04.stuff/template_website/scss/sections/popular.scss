@@ -38,6 +38,20 @@
             font-family: var(--song-myung);
             color: #fff;
             cursor: pointer;
+            transition: all 0.5s;
+            img {
+                width: 36px;
+                height: 36px;
+                object-fit: contain;
+            }//img
+            &.active {
+                background: #fff;
+                color: var(--primary-color);
+            }//active
+            &:hover {
+                background: #fff;
+                color: var(--primary-color);
+            }//hover
         }//popular-foods__filter-btn
     }//popular-foods__filters
 }//popular-foods

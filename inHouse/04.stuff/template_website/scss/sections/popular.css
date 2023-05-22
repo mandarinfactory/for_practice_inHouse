@@ -40,4 +40,19 @@
   font-family: var(--song-myung);
   color: #fff;
   cursor: pointer;
+  transition: all 0.5s;
+}
+.popular-foods .popular-foods__filters .popular-foods__filter-btn img {
+  width: 36px;
+  height: 36px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.popular-foods .popular-foods__filters .popular-foods__filter-btn.active {
+  background: #fff;
+  color: var(--primary-color);
+}
+.popular-foods .popular-foods__filters .popular-foods__filter-btn:hover {
+  background: #fff;
+  color: var(--primary-color);
 }/*# sourceMappingURL=popular.css.map */
