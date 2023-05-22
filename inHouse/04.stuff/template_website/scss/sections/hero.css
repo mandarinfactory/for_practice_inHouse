@@ -31,7 +31,7 @@
   font-weight: 700;
   font-size: 10em;
   line-height: 140px;
-  color: #FFF;
+  color: #fff;
 }
 .hero .hero-content {
   flex: 1.22;
@@ -71,7 +71,7 @@
   min-width: none;
   border: none;
   background: var(--secondary-color);
-  color: #FFF;
+  color: #fff;
   font-weight: 500;
   font-size: 18px;
   line-height: 24px;
@@ -93,6 +93,43 @@
   margin-right: 12px;
   width: 46px;
   height: 46px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.hero .hero-content .hero-content__testimonial {
+  padding: 32px 64px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  background-color: var(--color-white);
+}
+.hero .hero-content .hero-content__customer {
+  flex: 1;
+  gap: 10px;
+}
+.hero .hero-content .hero-content__customer h4 {
+  font-size: 5em;
+  font-weight: 400;
+  font-family: var(--playfair-display);
+}
+.hero .hero-content .hero-content__customer p {
+  font-size: 1.5em;
+  font-weight: 400;
+  color: var(--secondary-color);
+  opacity: 0.5;
+}
+.hero .hero-content .hero-content__review {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  min-width: 200px;
+  gap: 10px;
+  padding-left: 20px;
+  border-left: 1px solid rgba(2, 2, 2, 0.1);
+}
+.hero .hero-content .hero-content__review img {
+  width: 42px;
+  height: 42px;
   -o-object-fit: contain;
      object-fit: contain;
 }/*# sourceMappingURL=hero.css.map */
