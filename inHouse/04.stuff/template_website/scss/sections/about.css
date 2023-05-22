@@ -34,4 +34,31 @@
 .about-us .about-us__image .about-us__image-sushi2 img {
   width: 240px;
   height: 160px;
+}
+.about-us .about-us__button {
+  position: absolute;
+  right: 0;
+  padding: 12px 32px;
+  min-height: 64px;
+  background: var(--secondary-color);
+  border-radius: 32px 0 0 32px;
+  border: 0;
+  outline: 0;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 22px;
+  cursor: pointer;
+}
+.about-us .about-us__button img {
+  -o-object-fit: contain;
+     object-fit: contain;
+  margin-left: 32px;
+}
+.about-us .about-us__content {
+  padding: 64px;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }/*# sourceMappingURL=about.css.map */

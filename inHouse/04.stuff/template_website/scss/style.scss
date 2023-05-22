@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Song+Myung&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Song+Myung&display=swap");
 
 /* 다른 css 파일들 imports */
 @import url("sections/header.css");
@@ -61,7 +61,6 @@ a {
 .sushi__subtitle {
   font-size: 18px;
   font-weight: 400;
-  font-family: var(--plus-jakarta-sans);
 
   color: var(--primary-color);
   opacity: 0.8;
@@ -72,7 +71,7 @@ a {
 .sushi__title {
   font-size: 64px;
   font-weight: 600;
-  font-family: var(--playfair-display);
+  font-family: var(--song-myung);
 
   color: var(--secondary-color);
 
@@ -82,7 +81,7 @@ a {
 .sushi__description {
   font-size: 18px;
   font-weight: 400;
-  font-family: var(--plus-jakarta-sans);
+  font-family: var(--song-myung);
 
   line-height: 36px;
   letter-spacing: -0.01em;
