@@ -1,6 +1,6 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Song+Myung&display=swap");
 /* 다른 css 파일들 imports */
 @import url("sections/header.css");
 @import url("sections/hero.css");
@@ -12,7 +12,7 @@
 /* CSS variables for reusablity across all files (including above imported) */
 :root {
   --playfair-display: "Playfair Display", serif;
-  --plus-jakarta-sans: "Plus Jakarta Sans", sans-serif;
+  --song-myung: "Song Myung", serif;
   --primary-color: #b1454a;
   --secondary-color: #121212;
   --black-200: #020202;

@@ -7,6 +7,7 @@
   display: flex;
   position: relative;
   padding: 20px;
+  font-family: var(--song-myung);
 }
 .header__nav .header__logo .header__logo-overlay {
   position: absolute;
