@@ -116,6 +116,7 @@
   font-size: 1.5em;
   font-weight: 400;
   color: var(--secondary-color);
+  font-family: var(--song-myung);
   opacity: 0.5;
 }
 .hero .hero-content .hero-content__review {
