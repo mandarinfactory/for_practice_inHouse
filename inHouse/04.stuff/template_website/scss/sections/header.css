@@ -23,7 +23,7 @@
 }
 .header__nav .header__menu {
   padding: 20px;
-  flex: 1.235;
+  flex: 1.19;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -48,7 +48,7 @@
 .header__nav .header__menu-moblie {
   display: none;
   padding: 20px;
-  flex: 1.235;
+  flex: 1.19;
   display: flex;
   justify-content: flex-end;
   align-items: center;
