@@ -1,0 +1,126 @@
+.trending {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  .trending__discover {
+  } //trending__discover
+  .trending-sushi,
+  .trending-drink {
+    width: 100%;
+    min-height: 640px;
+    display: flex;
+    flex-direction: row;
+  } //sushi, drink
+  .trending-sushi {
+    .trending__content {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      padding: 32px 64px;
+      .trending__list {
+        list-style: none;
+        flex-wrap: wrap;
+        gap: 20px;
+        li {
+          flex: 1;
+          display: flex;
+          align-items: center;
+          flex-direction: row;
+          gap: 20px;
+          min-width: 210px;
+          .trending__icon {
+            width: 24px;
+            height: 24px;
+            background-color: var(--primary-color);
+            border-radius: 100%;
+            img {
+              width: 50%;
+              height: 50%;
+              object-fit: contain;
+            } //img
+          } //trending__icon
+        } //li
+        p {
+          flex: 1;
+          font-size: 19px;
+          font-weight: 500;
+          font-family: var(--song-myung);
+          color: var(--secondary-color);
+        } //p
+      } //trending__list
+    } //trending__content
+    .trending__image {
+      flex: 1;
+      position: relative;
+      padding: 32px 64px;
+      background-color: var(--color-white);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+      background-image: url("../../assets/japanese_sushi.png");
+      img {
+        width: 254px;
+        height: 260px;
+        object-fit: contain;
+      } //img
+    } //trending__image
+    .trending__arrow {
+      position: absolute;
+      z-index: 1;
+      img {
+        object-fit: contain;
+      } //img
+      &.trending__arrow-right {
+        right: -2.5px;
+        bottom: 12%;
+        img {
+          width: 100%;
+          height: auto;
+        }
+      } //trending__arrow-right
+      &.trending__arrow-left {
+        left: -2.5px;
+        top: 12%;
+        img {
+          width: auto;
+          height: 100%;
+        }
+      } //trending__arrow-left
+      &.trending__arrow-top {
+        top: -10.5px;
+        left: 12%;
+        img {
+          width: auto;
+          height: 100%;
+        }
+      } //trending__arrow-top
+      &.trending__arrow-bottom {
+        bottom: -6.5px;
+        right: 12%;
+        img {
+            width: 100%;
+            height: auto;
+          }
+      } //trending__arrow-bottom
+    } //trending__arrow
+  } //trending-sushi
+  .trending-drink {
+    .trending__image {
+      flex: 1;
+      position: relative;
+      padding: 32px 64px;
+      background-color: var(--color-white);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+      background-image: url("../../assets/japanese_drinks.png");
+      img {
+        width: 254px;
+        height: 260px;
+        object-fit: contain;
+      } //img
+    } //trending__image
+  } //trending-drink
+} //trending
