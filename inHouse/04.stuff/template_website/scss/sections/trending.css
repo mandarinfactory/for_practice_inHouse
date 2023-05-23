@@ -126,6 +126,45 @@
   font-weight: 700;
   font-family: var(--playfair-display);
 }
+.trending .trending-drink .trending__content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 32px 64px;
+}
+.trending .trending-drink .trending__content .trending__list {
+  list-style: none;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.trending .trending-drink .trending__content .trending__list li {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 20px;
+  min-width: 210px;
+}
+.trending .trending-drink .trending__content .trending__list li .trending__icon {
+  width: 24px;
+  height: 24px;
+  background-color: var(--primary-color);
+  border-radius: 100%;
+}
+.trending .trending-drink .trending__content .trending__list li .trending__icon img {
+  width: 50%;
+  height: 50%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.trending .trending-drink .trending__content .trending__list p {
+  flex: 1;
+  font-size: 19px;
+  font-weight: 500;
+  font-family: var(--song-myung);
+  color: var(--secondary-color);
+}
 .trending .trending-drink .trending__image {
   flex: 1;
   position: relative;
@@ -141,4 +180,44 @@
   height: 260px;
   -o-object-fit: contain;
      object-fit: contain;
+}
+.trending .trending-drink .trending__arrow {
+  position: absolute;
+  z-index: 1;
+}
+.trending .trending-drink .trending__arrow img {
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.trending .trending-drink .trending__arrow.trending__arrow-right {
+  right: -2.5px;
+  bottom: 12%;
+}
+.trending .trending-drink .trending__arrow.trending__arrow-right img {
+  width: 100%;
+  height: auto;
+}
+.trending .trending-drink .trending__arrow.trending__arrow-left {
+  left: -2.5px;
+  top: 12%;
+}
+.trending .trending-drink .trending__arrow.trending__arrow-left img {
+  width: auto;
+  height: 100%;
+}
+.trending .trending-drink .trending__arrow.trending__arrow-top {
+  top: -10.5px;
+  left: 12%;
+}
+.trending .trending-drink .trending__arrow.trending__arrow-top img {
+  width: auto;
+  height: 100%;
+}
+.trending .trending-drink .trending__arrow.trending__arrow-bottom {
+  bottom: -6.5px;
+  right: 12%;
+}
+.trending .trending-drink .trending__arrow.trending__arrow-bottom img {
+  width: 100%;
+  height: auto;
 }/*# sourceMappingURL=trending.css.map */
