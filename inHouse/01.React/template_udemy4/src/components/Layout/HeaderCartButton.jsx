@@ -13,7 +13,7 @@ const HeaderCartButton = (props) => {
     return currentNum + item.amount;
   }, 0);
 
-  const btnClasses = `${classes.button} ${btnAnimated ? classes.bump : ""}`;
+  const btnClasses = `${classes.button} ${btnAnimated ? classes.bump : ""}`;.20
 
   useEffect(() => {
     if (items.length === 0) {
