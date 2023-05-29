@@ -14,17 +14,27 @@ const camera = new THREE.PerspectiveCamera(
 );
 const geometry = new THREE.BoxGeometry(1, 1, 1);
 // 간단하게 박스모양의 geometry를 추가하고, 너비, 높이, 깊이를 각각 1,1,1로 설정한다.
-const material = new THREE.MeshBasicMaterial({ color: "darkgreen" });
+const material = new THREE.MeshBasicMaterial({ color: "firebrick" });
 // 빛의 영향을 받지 않는 MeshBasicMaterial을 추가하고, 원하는 색을 넣는다.
 const mesh = new THREE.Mesh(geometry, material);
 // mesh에 앞서 만든 geometry와 material을 인자로 넣어서 만든다.
 const orbitControls = new OrbitControls(camera, renderer.domElement);
 /* orbitControls --> orbit이 바뀔때마다, 바뀐 앵글에 대한 새로운 장면을 rendering 해야하므로,
 setAnimationLoop함수를 이용해 재귀적으로 무한히 실행한다. */
+orbitControls.enableDamping = true;
+// orbit을 변경할때, enableDamping 속성을 true로 주게되면 부자연스러울 정도로 딱딱 끊기게 멈추는 현상을 막을 수 있다.
+orbitControls.dampingFactor = 0.05;
+// dampingFactor의 값을 작게하면 damping(drag가 멈췄을때, 조금 더 움직이는 느낌)을 강화할 수 있다.
+
 const renderHandler = () => {
   orbitControls.update();
   renderer.render(scene, camera);
   renderer.setAnimationLoop(renderHandler);
+  mesh.position.y += 0.001;
+  // 매 frame마다 mesh의 y좌표를 0.001만큼 올려준다.(위로 올라간다.)
+  mesh.rotation.y += 0.01;
+  /* 매 frame마다 mesh를 y축에 대하여 0.01 radian만큼 회전시킨다. 
+  (y축이 중심기둥이 되고 롯데월드 회전컵처럼 빙글빙글 회전한다.) */
 };
 
 camera.position.z = 5; // 카메라와 Z축 위치를 5로 바꿔준다.
