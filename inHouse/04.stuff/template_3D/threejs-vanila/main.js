@@ -1,5 +1,6 @@
 import "./style.css";
-import * as THREE from "three"; 
+import * as THREE from "three";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
 const renderer = new THREE.WebGLRenderer();
 const app = document.querySelector("#app");
@@ -17,7 +18,14 @@ const material = new THREE.MeshBasicMaterial({ color: "firebrick" });
 // 빛의 영향을 받지 않는 MeshBasicMaterial을 추가하고, 원하는 색을 넣는다.
 const mesh = new THREE.Mesh(geometry, material);
 // mesh에 앞서 만든 geometry와 material을 인자로 넣어서 만든다.
-
+const orbitControls = new OrbitControls(camera, renderer.domElement);
+/* orbitControls --> orbit이 바뀔때마다, 바뀐 앵글에 대한 새로운 장면을 rendering 해야하므로,
+setAnimationLoop함수를 이용해 재귀적으로 무한히 실행한다. */
+const renderHandler = () => {
+  orbitControls.update();
+  renderer.render(scene, camera);
+  renderer.setAnimationLoop(renderHandler);
+};
 
 camera.position.z = 5; // 카메라와 Z축 위치를 5로 바꿔준다.
 camera.position.y = 2; // 카메라와 y축 위치를 2로 바꿔준다.
@@ -25,4 +33,20 @@ scene.add(camera);
 scene.add(mesh); //scene에 방금 만든 mesh를 추가한다.
 app.appendChild(renderer.domElement);
 renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.render(scene, camera);
+
+
+// 브라우저의 크기를 조작하는 행위는 resize-event이므로, 해당 event 발생 시,
+// callback함수 내에서 camera의 aspect와, renderer의 size를 재설정해주면 된다.
+const resizeHandler = () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  // 바뀐 브라우저의 가로, 세로를 카메라의 aspect로 설정한다.(비율설정)
+  camera.updateProjectionMatrix();
+  // 바뀐 속성대로 카메라를 업데이트 해주는 method라고 생각하면 된다.
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  // renderer의 사이즈를 바뀐 브라우저의 가로, 세로 크기로 정해준다.
+  renderer.render(scene, camera);
+  // 바뀐 속성대로 rendering해준다.
+};
+window.addEventListener("resize", resizeHandler)// resize-event
+
+renderHandler();
