@@ -21,6 +21,7 @@ const mesh = new THREE.Mesh(geometry, material);
 const orbitControls = new OrbitControls(camera, renderer.domElement);
 /* orbitControls --> orbit이 바뀔때마다, 바뀐 앵글에 대한 새로운 장면을 rendering 해야하므로,
 setAnimationLoop함수를 이용해 재귀적으로 무한히 실행한다. */
+
 orbitControls.enableDamping = true;
 // orbit을 변경할때, enableDamping 속성을 true로 주게되면 부자연스러울 정도로 딱딱 끊기게 멈추는 현상을 막을 수 있다.
 orbitControls.dampingFactor = 0.05;
