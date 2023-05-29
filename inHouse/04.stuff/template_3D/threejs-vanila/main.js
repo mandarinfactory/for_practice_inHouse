@@ -14,7 +14,7 @@ const camera = new THREE.PerspectiveCamera(
 );
 const geometry = new THREE.BoxGeometry(1, 1, 1);
 // 간단하게 박스모양의 geometry를 추가하고, 너비, 높이, 깊이를 각각 1,1,1로 설정한다.
-const material = new THREE.MeshBasicMaterial({ color: "firebrick" });
+const material = new THREE.MeshBasicMaterial({ color: "darkgreen" });
 // 빛의 영향을 받지 않는 MeshBasicMaterial을 추가하고, 원하는 색을 넣는다.
 const mesh = new THREE.Mesh(geometry, material);
 // mesh에 앞서 만든 geometry와 material을 인자로 넣어서 만든다.
