@@ -2,7 +2,13 @@ import "./style.css";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
-const renderer = new THREE.WebGLRenderer();
+const renderer = new THREE.WebGLRenderer({
+  antialias: true,
+  //안티알리아싱method
+});
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
 const app = document.querySelector("#app");
 
 const scene = new THREE.Scene();
@@ -14,13 +20,41 @@ const camera = new THREE.PerspectiveCamera(
 );
 const geometry = new THREE.BoxGeometry(1, 1, 1);
 // 간단하게 박스모양의 geometry를 추가하고, 너비, 높이, 깊이를 각각 1,1,1로 설정한다.
-const material = new THREE.MeshBasicMaterial({ color: "#f7df1e" });
+
+const material = new THREE.MeshStandardMaterial({ color: "#f7df1e" });
 // 빛의 영향을 받지 않는 MeshBasicMaterial을 추가하고, 원하는 색을 넣는다.
+// Basic --> Standard로 바꿈으로써, 빛의 영향을 받도록 한다.
+
 const mesh = new THREE.Mesh(geometry, material);
 // mesh에 앞서 만든 geometry와 material을 인자로 넣어서 만든다.
+
 const orbitControls = new OrbitControls(camera, renderer.domElement);
 /* orbitControls --> orbit이 바뀔때마다, 바뀐 앵글에 대한 새로운 장면을 rendering 해야하므로,
 setAnimationLoop함수를 이용해 재귀적으로 무한히 실행한다. */
+
+//const ambientLight = new THREE.AmbientLight();
+// 모든 곳에 같은 밝기를 제공하는 AmbientLight를 만들고 scene에 추가한다.
+//ambientLight.intensity = 0.7; // 밝기를 조절할 수 있다.
+//scene.add(ambientLight);
+
+const directionalLight = new THREE.DirectionalLight(); // 직사광선같은 조명method
+directionalLight.position.set(3, 3, 3); // 약간우측앞쪽에서 조명이 발사되도록 조정했다.
+directionalLight.lookAt(0, 0, 0);
+directionalLight.castShadow = true; // light로 인해 그림자 생기게 하기 위해 속성을 true로 해야한다.
+directionalLight.shadow.mapSize.width = 2048; // 각각 width, height값을 조정해 그림자의 퀄리티 조정이 가능하다.
+directionalLight.shadow.mapSize.height = 2048;
+directionalLight.shadow.camera.near = 1;
+directionalLight.shadow.camera.far = 60;
+scene.add(directionalLight);
+
+const floorGeometry = new THREE.PlaneGeometry(100, 100);
+const floorMaterial = new THREE.MeshStandardMaterial();
+const floorMesh = new THREE.Mesh(floorGeometry, floorMaterial);
+// mesh가 놓여있을 평면 mesh를 생성하고 추가했다.
+floorMesh.rotation.x = -Math.PI / 2; // 평면이 수직으로 서있는 형태이므로 -90도만큼 회전시켜준다.
+floorMesh.position.y -= 0.5;
+floorMesh.receiveShadow = true; // mesh가 자신에게 그림자가 드리워지게 하려면 true로 해야한다.
+scene.add(floorMesh);
 
 orbitControls.enableDamping = true;
 // orbit을 변경할때, enableDamping 속성을 true로 주게되면 부자연스러울 정도로 딱딱 끊기게 멈추는 현상을 막을 수 있다.
@@ -31,9 +65,9 @@ const renderHandler = () => {
   orbitControls.update();
   renderer.render(scene, camera);
   renderer.setAnimationLoop(renderHandler);
-  mesh.position.y += 0.001;
+  //mesh.position.y += 0.001;
   // 매 frame마다 mesh의 y좌표를 0.001만큼 올려준다.(위로 올라간다.)
-  mesh.rotation.y += 0.01;
+  //mesh.rotation.y += 0.01;
   /* 매 frame마다 mesh를 y축에 대하여 0.01 radian만큼 회전시킨다. 
   (y축이 중심기둥이 되고 롯데월드 회전컵처럼 빙글빙글 회전한다.) */
 };
@@ -44,7 +78,6 @@ scene.add(camera);
 scene.add(mesh); //scene에 방금 만든 mesh를 추가한다.
 app.appendChild(renderer.domElement);
 renderer.setSize(window.innerWidth, window.innerHeight);
-
 
 // 브라우저의 크기를 조작하는 행위는 resize-event이므로, 해당 event 발생 시,
 // callback함수 내에서 camera의 aspect와, renderer의 size를 재설정해주면 된다.
@@ -58,6 +91,6 @@ const resizeHandler = () => {
   renderer.render(scene, camera);
   // 바뀐 속성대로 rendering해준다.
 };
-window.addEventListener("resize", resizeHandler)// resize-event
+window.addEventListener("resize", resizeHandler); // resize-event
 
 renderHandler();
