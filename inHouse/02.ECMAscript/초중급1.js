@@ -5,6 +5,7 @@ function 함수 () {
     console.log(this); // {window}
 };
 함수();
+/* 어쨋든 함수내 log(this)나 밖에 있는 log(this)나 해당 this를 담고있는 객체(object)는 {window}로 동일하다. */
 
 var 객체 = {
     data : "Kim",
