@@ -91,8 +91,8 @@ var 자료 = {
 
 자료.전부더하기();
 
-document.getElementById("버튼").addEventListener("click", (v) => {
+document.getElementById("버튼").addEventListener("click", function () {
   setTimeout(() => {
-    console.log(v.target.innerHTML);
+    console.log(this.innerHTML); // 만약 addEvent도 arrow면 그냥 e.target~꼴로 바꾸면 된다.
   }, 1000);
 });
