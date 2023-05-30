@@ -1,3 +1,4 @@
+/* 01. 기본타입정리(primitive type) */
 let 이름 :string = "kim";
 // 이 변수(이름)엔 string(문자)type만 들어올 수 있다.
 
