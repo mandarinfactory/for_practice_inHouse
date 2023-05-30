@@ -39,3 +39,12 @@ let 나이몰루 = 1;
 나이몰루 - 1;
 /* 이 또한 TS가 엄격하다는걸 유념해야한다. unknown이라서 1로 변수선언을 할 수는 있지만,
 이 1이 number-type이 아닌 unknown이므로 - 1은 numner type만 가능하므로 error가 출력된다. */
+/* 03. function에 type 지정 && void type */
+function 함수1(x) {
+    return x * 2;
+}
+함수1(30);
+// return값이 없을경우 return type값에 void type을 쓰면된다. --> 실수로 뭔가 return하는걸 사전에 막아준다.
+// TS는 JS와 다르게 함수를 생성해서 실행시 무 조 건 type이 지정된 parameter를 넣어줘야한다. 빈()XXX
+/* parameter가 필요없는 함수일경우 ?를 붙이면 option화 되서 강제성이 사라진다.(객체에서 key값에서도 사용가능)
+? :number === number | undefined와 같다.(union type 생성) */
