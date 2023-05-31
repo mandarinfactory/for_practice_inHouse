@@ -2,7 +2,7 @@
 
 type AnimalType = { name :string, age: number};
 let 동물 :AnimalType = {name :"kim", age : 29};
-// type변수는 같은이름으로 다른 type변수를 지정할 수 없다.
+// type변수(alias,별칭)는 같은이름으로 다른 type변수를 지정할 수 없다.
 
 type BF = {
   readonly name? :string // readonly === "읽기전용"으로 되어서 수정이 아예 불가하다.
