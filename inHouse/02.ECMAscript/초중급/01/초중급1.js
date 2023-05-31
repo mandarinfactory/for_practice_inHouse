@@ -97,25 +97,41 @@ document.getElementById("버튼").addEventListener("click", function () {
   }, 1000);
 });
 
-/* 03. 변수선언 --> var, let, const */
+/* 03. 변수선언 --> var, let, const + hoisting현상 */
 
 // 변수선언시에는 선언, 할당, 범위만 잘 파악하면 된다.
 
 // 1. var : 재선언 O, 재할당 O, 범위 function
+
 var 이름 = 1;
 var 이름 = "kim"; // 재선언 O
 이름 = "Lee"; // 재할당 O
+function 함수var() {
+  var 이름 = 7;
+}; // 범위 function
+console.log(이름); // 1
 
-// 2. let : 재선언 X, 재할당 O, 범위 function
+// 2. let : 재선언 X, 재할당 O, 범위 {}(객체)
+
 let 나이 = 20;
 let 나이 = 30; // 재선언 X, error가 출력된다.
 나이 - 60; // 재할당 O
 
-// 3. const(constant,상수) : 재선언 X, 재할당 X, 범위 function
+// 3. const(constant,상수) : 재선언 X, 재할당 X, 범위 {}(객체)
+
 const 장소 = "서울";
 const 장소 = "부천"; // 재선언 X 
 장소 = "부산"; // 재할당 X
 const 사람이름 = { 이름 : "Kim" }
 사람이름.이름 = "Lee"; //const는 "=" 사이에서의 재할당이 안될뿐이지 내부 값 변경에는 관여하지 않는다.
-
 Object.freeze(사람이름); // 이렇게 freeze로 묶으면 수정이 불가능해진다. erroe가 따로 출력되지는 않는다.
+
+if (true) {
+  let 나이 = "Park";
+}
+console.log(나이); // 60
+
+var 나이1 = 30;
+// JS는 "var 나이1"로 먼저 변수선언 후 "나이1 = 30;"로 후에 할당한다.
+// 다시말해, 변수의 선언을 변수 범위 맨위로 끌고 오게 하는데 이걸 hoisting 현상이라고 한다.
+// 따라서, console.log()시에 var로 변수선언했을경우 아직 할당이 안되서 undefined가 출력되는 경우가 종종있다.
