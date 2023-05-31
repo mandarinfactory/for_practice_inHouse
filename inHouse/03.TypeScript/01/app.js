@@ -48,3 +48,66 @@ function 함수1(x) {
 // TS는 JS와 다르게 함수를 생성해서 실행시 무 조 건 type이 지정된 parameter를 넣어줘야한다. 빈()XXX
 /* parameter가 필요없는 함수일경우 ?를 붙이면 option화 되서 강제성이 사라진다.(객체에서 key값에서도 사용가능)
 ? :number === number | undefined와 같다.(union type 생성) */
+/* 03. type 확정하기 --> Narrowing && Assertion */
+function 내함수(x) {
+    if (typeof x === "string") {
+        return x + 1;
+    }
+    else {
+        return x * 2;
+    } // 어떤 변수가 type이 아직 불확실하면(union type등)if문으로 Narrowing 해줘야 조작이 가능하다.
+}
+내함수(123);
+function 내함수2(x) {
+    let arr = [1, 2, 3, 4];
+    if (typeof x === "number") {
+        arr[0] = x;
+    }
+    else {
+        return "";
+    } // Narrowing --> 만약 if문 썼으면 안전하게 else / else if까지 써서 error 방지할것
+}
+;
+내함수2(123);
+// Narrowing으로 판정해주는 문법들 :  typeof 변수, in 오브젝트자료, instanceof 부모
+function 내함수3(x) {
+    let arr = [1, 2, 3, 4];
+    arr[0] = x; // as number = number type으로 덮어쓰기(Assertion)
+}
+내함수(12);
+/*
+Assertion 문법의 용도
+1. Narrowing할때 --> 다시말해, type을 a에서 b로 변경할때 쓰는게 아니라 union type일때 Narrowing할때 쓰인다.
+2. 무슨 type이 들어올지 10000% 확실할때 쓴다. --> 반대로 말하면 debugging하기가 힘들어져서 if문등을 쓰는걸 선호한다.
+*/
+function 클리닝함수(x) {
+    let cleanedArr = [];
+    x.forEach(v => {
+        if (typeof v === "string") {
+            cleanedArr.push(parseInt(v));
+        }
+        else {
+            cleanedArr.push(v);
+        }
+        ;
+    });
+    return cleanedArr;
+}
+;
+console.log(클리닝함수([1, 2, 3, "4", "5"]));
+let 철수쌤 = { subject: 'math' };
+let 영희쌤 = { subject: ['science', 'english'] };
+let 민수쌤 = { subject: ['science', 'art', 'korean'] };
+function 마지막과목(x) {
+    let subjectLast = x.subject;
+    if (Array.isArray(subjectLast)) {
+        let subjectResult = subjectLast[subjectLast.length - 1];
+        console.log(subjectResult);
+    }
+    else {
+        console.log(subjectLast);
+    }
+    ;
+}
+;
+마지막과목(철수쌤);
