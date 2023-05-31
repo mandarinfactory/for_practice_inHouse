@@ -96,3 +96,26 @@ document.getElementById("버튼").addEventListener("click", function () {
     console.log(this.innerHTML); // 만약 addEvent도 arrow면 그냥 e.target~꼴로 바꾸면 된다.
   }, 1000);
 });
+
+/* 03. 변수선언 --> var, let, const */
+
+// 변수선언시에는 선언, 할당, 범위만 잘 파악하면 된다.
+
+// 1. var : 재선언 O, 재할당 O, 범위 function
+var 이름 = 1;
+var 이름 = "kim"; // 재선언 O
+이름 = "Lee"; // 재할당 O
+
+// 2. let : 재선언 X, 재할당 O, 범위 function
+let 나이 = 20;
+let 나이 = 30; // 재선언 X, error가 출력된다.
+나이 - 60; // 재할당 O
+
+// 3. const(constant,상수) : 재선언 X, 재할당 X, 범위 function
+const 장소 = "서울";
+const 장소 = "부천"; // 재선언 X 
+장소 = "부산"; // 재할당 X
+const 사람이름 = { 이름 : "Kim" }
+사람이름.이름 = "Lee"; //const는 "=" 사이에서의 재할당이 안될뿐이지 내부 값 변경에는 관여하지 않는다.
+
+Object.freeze(사람이름); // 이렇게 freeze로 묶으면 수정이 불가능해진다. erroe가 따로 출력되지는 않는다.
