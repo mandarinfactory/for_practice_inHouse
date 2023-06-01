@@ -1,4 +1,4 @@
-// 4. template literals
+// 4. template literals && tagged literals(tagged는 자주 쓰이는 편은 아니다.)
 
 var 문자 = `문자`; // ES6이후 부터 ``(backtick, backquote)을 이용해서 문자열을 나타낼수 있다.
 // ``의 장점 : 엔터키 가능, 중간중간 변수넣기가 쉬움(""여기에 넣으려면 +""등 따로 떠 써야해서 불편했음.)
