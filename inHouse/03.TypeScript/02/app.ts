@@ -47,4 +47,11 @@ function 함수02 (x :"kim") {
 }
 함수02("kim");
 함수02(자료.name); //error가 출력된다. --> "자료.name"은 "kim"이라는 type이 아니기 때문이다.
-// 근데 해당 값에 as const를 추가하면 literal type화되어서 error가 없어진다.
+// 해결법. 해당 값에 as const를 추가하면 literal type화되어서 error가 없어진다. + object 모든 속성에 readonly가 추가된다.
+
+/* 05. method types */
+
+type FunctionType = (x :string) => number; // 함수 type alias 만들때는 꼭 arrow function을 써줘야한다.
+let 함수03 :FunctionType = function () {
+
+};

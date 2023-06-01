@@ -150,9 +150,9 @@ function 함수2 () {
 
 함수01();
 function 함수01 () {};
-// 'function(){}'꼴로 함수를 만들면 함수 전부가 hoisting된다.
+// 'function(){}(함수선언식)'꼴로 함수를 만들면 함수 전부가 hoisting된다.
 
 함수02();
 var 함수02 = function () {};
-// 'var 함수 = ~'꼴로 함수를 만들면 선언 부분만 hoisting된다. --> 따라서 '함수02'만 hoisting으로 변수로 있기 때문에 error가 뜬다.(아직 함수가 아니므로!)
+// 'var 함수 = ~(함수표현식)'꼴로 함수를 만들면 선언 부분만 hoisting된다. --> 따라서 '함수02'만 hoisting으로 변수로 있기 때문에 error가 뜬다.(아직 함수가 아니므로!)
 
