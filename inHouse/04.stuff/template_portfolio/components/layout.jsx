@@ -1,13 +1,13 @@
-import Header from "./header";
 import Footer from "./footer";
+import Header from "./header";
 
 export default function Layout({ children }) {
   return (
     <>
       <Header />
-      <h1>레이아웃</h1>
+      <h1>레이아웃입니다.</h1>
       <div>{children}</div>
       <Footer />
     </>
   );
-};
+}
