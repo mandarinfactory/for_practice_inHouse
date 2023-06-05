@@ -9,7 +9,7 @@ export default function Hero() {
               배움의 자세를 통해 <br />
               성장하는 개발자 이호준이라고 합니다. <br />
             </h1>
-            <p className="mb-8 leading-relaxed font-semibold text-lg">
+            <p className="mb-8 leading-relaxed text-lg">
               하늘같이 높고 넓은 사람이 되라는 이름처럼 <br />
               항상 깊고 많은 호기심을 갖고 개발하고 있습니다. <br />
             </p>
