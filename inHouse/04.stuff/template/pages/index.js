@@ -1,11 +1,9 @@
-import { Inter } from 'next/font/google'
-
-const inter = Inter({ subsets: ['latin'] })
+import Layout from '@/components/layout';
 
 export default function Home() {
   return (
-    <div>
-      <h1>이호준의 포트폴리오</h1>
-    </div>
+    <Layout>
+      <h1>홈입니다.</h1>
+    </Layout>
   );
 };
