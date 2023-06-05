@@ -7,7 +7,7 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      "sans" : ["NanumSquare-Neo"]
+      "sans" : ["NanumSquare-Neo"],
     },
     extend: {
       backgroundImage: {
