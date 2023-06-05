@@ -1,9 +1,10 @@
-import Layout from '@/components/layout';
+import Hero from "@/components/hero";
+import Layout from "@/components/layout";
 
 export default function Home() {
   return (
     <Layout>
-      <h1>홈입니다.</h1>
+      <Hero />
     </Layout>
   );
-};
+}
