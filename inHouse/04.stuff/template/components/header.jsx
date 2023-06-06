@@ -14,7 +14,7 @@ export default function Header() {
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="2"
-                className="w-10 h-10 text-white p-2 bg-green-500 rounded-full"
+                className="w-10 h-10 text-white p-2 bg-orange-500 hover:bg-indigo-700 rounded-full duration-200"
                 viewBox="0 0 24 24"
               >
                 <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
@@ -24,17 +24,17 @@ export default function Header() {
           </Link>
           <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
             <Link legacyBehavior href="/">
-              <a className="mr-5 hover:text-gray-900">홈</a>
+              <a className="mr-5 anchor">홈</a>
             </Link>
             <Link legacyBehavior href="/about_me">
-              <a className="mr-5 hover:text-gray-900">About Me</a>
+              <a className="mr-5 anchor">About Me</a>
             </Link>
             <Link legacyBehavior href="projects">
-              <a className="mr-5 hover:text-gray-900">프로젝트</a>
+              <a className="mr-5 anchor">프로젝트</a>
             </Link>
             <Link legacyBehavior href="#">
               {/* 여기다가는 카톡연결이나 이메일등을 해놓을것! */}
-              <a className="mr-5 hover:text-gray-900">연락하기</a>
+              <a className="mr-5 anchor">연락하기</a>
             </Link>
           </nav>
           <button className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">

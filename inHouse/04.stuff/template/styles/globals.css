@@ -2,3 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
+.anchor {
+    @apply text-lg font-semibold hover:text-indigo-700 dark:hover:text-orange-500 duration-200;
+};
