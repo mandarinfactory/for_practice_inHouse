@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 .anchor {
-    @apply text-lg hover:text-indigo-700 dark:hover:text-orange-500 duration-200;
+    @apply text-lg hover:text-fuchsia-700 dark:hover:text-indigo-700 duration-200;
 };

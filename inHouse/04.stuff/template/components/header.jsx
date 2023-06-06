@@ -15,7 +15,7 @@ export default function Header() {
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="2"
-                className="w-10 h-10 text-white p-2 bg-orange-500 hover:bg-indigo-700 rounded-full duration-200"
+                className="w-10 h-10 text-white p-2 bg-fuchsia-700 hover:bg-indigo-700 rounded-full duration-200"
                 viewBox="0 0 24 24"
               >
                 <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
