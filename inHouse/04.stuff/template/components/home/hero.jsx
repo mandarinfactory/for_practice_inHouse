@@ -1,4 +1,4 @@
-import Animation from "@/components/animation";
+import Animation from "./animation";
 
 export default function Hero() {
   return (
