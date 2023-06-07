@@ -1,6 +1,7 @@
 import Layout from "@/components/layout";
 import Head from "next/head";
 import { DATABASE_ID, TOKEN } from "@/config";
+import ProjectItem from "@/components/projects/project_item";
 
 export default function Projects({ projects }) {
   return (
@@ -10,11 +11,16 @@ export default function Projects({ projects }) {
         <meta name="description" content="이호준의 포트폴리오" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1>총 프로젝트 : {projects.results.length}</h1>
+      <h1 className="text-4xl font-bold sm:text-6xl">총 프로젝트 : {projects.results.length}</h1>
 
+      <div className="grid grid-cols-1 md:grid-cols-2 py-10 gap-8 sm:w-full">
       {projects.results.map((theProject) => (
-        <h1>{theProject.properties.이름.title[0].plain_text}</h1>
+        <>
+          <ProjectItem key={theProject.id} data={theProject} />
+        </>
       ))}
+      </div>
+
     </Layout>
   );
 }
@@ -29,14 +35,14 @@ export async function getStaticProps(context) {
       "content-type": "application/json",
       Authorization: `Bearer ${TOKEN}`,
     },
-    body: JSON.stringify({ 
-        sorts: [
-            {
-                "property": "이름",
-                "direction" : "ascending"
-            }/* data들의 순서를 지정할수 있다. property --> 순서의 기준, ascending은 오름차순, descending은 내림차순 */
-        ],
-        page_size: 100 
+    body: JSON.stringify({
+      sorts: [
+        {
+          property: "이름",
+          direction: "ascending",
+        } /* data들의 순서를 지정할수 있다. property --> 순서의 기준, ascending은 오름차순, descending은 내림차순 */,
+      ],
+      page_size: 100,
     }),
   };
 
