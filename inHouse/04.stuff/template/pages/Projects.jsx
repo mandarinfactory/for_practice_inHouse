@@ -6,7 +6,7 @@ import ProjectItem from "@/components/projects/project_item";
 export default function Projects({ projects }) {
   return (
     <Layout>
-      <div className="flex flex-col items-center justify-center min-h-screen px-5 py-15 mb-10">
+      <div className="flex flex-col items-center justify-center min-h-screen px-5 py-15 mb-10 animation_fadeUp">
         <Head>
           <title>이호준의 포트폴리오</title>
           <meta name="description" content="이호준의 포트폴리오" />
@@ -17,7 +17,7 @@ export default function Projects({ projects }) {
           <span className="pl-4 text-indigo-600">{projects.results.length}</span>
         </h1>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 py-10 gap-8 sm:w-full">
+        <div className="grid grid-cols-1 md:grid-cols-3 py-10 gap-8 sm:w-full">
           {projects.results.map((theProject) => (
             <>
               <ProjectItem key={theProject.id} data={theProject} />

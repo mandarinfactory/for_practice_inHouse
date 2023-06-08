@@ -11,7 +11,8 @@
 }
 
 .project-card {
-  @apply flex flex-col m-3 rounded-xl w-full
+  @apply flex flex-col m-3 w-full
+            shadow-xl
             transition duration-200 transform border border-gray-300
             hover:scale-105
             hover:shadow-lg

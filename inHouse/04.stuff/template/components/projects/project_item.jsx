@@ -13,7 +13,7 @@ export default function ProjectItem({ data }) {
   return (
     <div className="project-card">
       <Image
-        className="rounded-t-xl"
+        className="rounded-t-xl box-border p-10"
         src={ImgSrc}
         alt="cover image"
         width="100"
@@ -22,7 +22,7 @@ export default function ProjectItem({ data }) {
         objectFit="none"
         quality={100}
       />
-      <div className="p-4 flex flex-col w-full">
+      <div className="p-4 flex flex-col items-center justify-center w-full leading-9">
         <h1 className="my-5 text-3xl font-bold">{projectTitle}</h1>
         <h3>
           {projectStartPeriod} - {projectEndPeriod}
@@ -32,7 +32,7 @@ export default function ProjectItem({ data }) {
         <a href={projectGitHubLink}>GitHub 바로가기</a>
         <div className="flex items-start mt-3">
           {projectTags.map((theTag) => (
-            <h3 className="w-30 px-3 py-2 mr-2 rounded-md bg-sky-300  dark:bg-sky-700" key={theTag.id}>{theTag.name}</h3>
+            <h3 className="w-30 px-3 py-1 mr-2 rounded-md bg-sky-300  dark:bg-sky-700 font-bold" key={theTag.id}>{theTag.name}</h3>
           ))}
         </div>
       </div>

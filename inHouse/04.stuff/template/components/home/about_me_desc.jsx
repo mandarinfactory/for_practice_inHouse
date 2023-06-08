@@ -14,10 +14,11 @@ export default function AboutMeDescription() {
         </h2>
         <h4 className="text-2xl py-3 font-extrabold text-gray-800">Technical</h4>
         <p className="text-xl py-10 text-gray-600 leading-loose">
-          현재 HTML5, CSS3, Sass, JavaScript(jQuery, ECMA6)을 수학했으며, <br />
-          배운것을 바탕으로 각각 다른 디자인으로 2개의 project 만들었고, <br />
-          framework인 react도 공부하여 이에 따른 project들도 만들었습니다. <br />
-          또한, 독학으로 figma, git 그리고 JavaScript를 깊이있게 공부하고 있습니다.
+          국비교육을 통해 HTML5, CSS3, Sass, JavaScript(jQuery, ECMA6)을 수학했으며, <br />
+          배운것을 바탕으로 여러개의 다양한 project 만들었고, <br />
+          library인 react도 공부하여 이에 따른 project들도 만들었습니다. <br />
+          또한, 독학으로 Next.JS, React Native, Flutter <br />
+          그리고 깊이있게 JavaScript를 그리고 TypeScript를 공부하고 있습니다.
         </p>
         <h4 className="text-2xl py-3 font-extrabold text-gray-800">Personal</h4>
         <p className="text-xl py-10 text-gray-600 leading-loose">
@@ -25,7 +26,7 @@ export default function AboutMeDescription() {
           4년동안 유니클로(현대백화점 중동점, 여의도 IFC몰점)에서 근무했으며, <br />
           20년도 하반기부터 22년도 6월까지 AONE 북부감평법인에서 일했습니다. 금년에 퇴사후, <br />
           바로 더조은컴퓨터학원 부평지점에서 웹퍼블리셔 3개월과정을 <br />
-          수료했습니다.(22.10.17 ~ 23.01.17)
+          수료했습니다. (22.10.17 ~ 23.02.17)
         </p>
       </section>
       <section className="flex-1">
