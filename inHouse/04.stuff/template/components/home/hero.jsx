@@ -3,10 +3,10 @@ import Animation from "./animation";
 
 export default function Hero() {
   return (
-    <section className="flex min-h-screen felx-col items-center justify-center text-gray-600 body-font">
+    <section className="flex min-h-screen felx-col items-center justify-center text-gray-600 body-font  animation_fadeUp">
       <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
         <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
-          <h1 className="title-font text-4xl mb-4 font-bold text-gray-900 leading-snug">
+          <h1 className="title-font text-4xl mb-4 font-black text-gray-900 leading-snug">
             일관성 있는 <br />
             배움의 자세를 통해 <br />
             성장하는 개발자 <br/>

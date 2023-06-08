@@ -8,7 +8,7 @@ module.exports = {
   darkMode: "class",
   theme: {
     fontFamily: {
-      "sans" : ["NanumSquare-Neo"],
+      "sans" : ["NanumSquare"],
     },
     extend: {
       backgroundImage: {
@@ -18,5 +18,7 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require("tailwindcss-animated")
+  ],
 }

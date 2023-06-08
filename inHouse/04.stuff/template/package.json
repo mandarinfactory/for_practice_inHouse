@@ -20,5 +20,8 @@
     "react-dom": "18.2.0",
     "react-lottie-player": "^1.5.4",
     "tailwindcss": "3.3.2"
+  },
+  "devDependencies": {
+    "tailwindcss-animated": "^1.0.1"
   }
 }

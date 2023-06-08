@@ -8,7 +8,7 @@ export default function Footer() {
           <div className="container px-5 py-6 mx-auto flex items-center sm:flex-row flex-col">
             <Link legacyBehavior href="/">
               <a className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
-                <span className="ml-3 text-xl">이호준의 포트폴리오</span>
+                <span className="ml-3 text-2xl">이호준의 포트폴리오</span>
               </a>
             </Link>
             <span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
