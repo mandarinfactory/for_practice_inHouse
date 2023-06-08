@@ -1,9 +1,11 @@
 import Layout from "@/components/layout";
+import AboutMeDescription from "@/components/home/about_me_desc";
 
 export default function AboutMe () {
     return (
         <Layout>
-            <h1>자기소개입니다.</h1>
+            <AboutMeDescription/>
+
         </Layout>
     );
 };

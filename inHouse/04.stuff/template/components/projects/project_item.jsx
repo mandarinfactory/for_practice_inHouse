@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 export default function ProjectItem({ data }) {
-  const ImgSrc = data.cover.file?.rul || data.cover.external.url;
+  const ImgSrc = data.cover.file?.url || data.cover.external.url;
   const projectTitle = data.properties.이름.title[0].plain_text;
   const projectStartPeriod = data.properties.WorkPeriod.date.start;
   const projectEndPeriod = data.properties.WorkPeriod.date.end;
