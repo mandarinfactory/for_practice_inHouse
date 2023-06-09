@@ -5,10 +5,10 @@ export default function ContactMenu({ setMenuIsOpen }) {
 
   return (
     <div
-      className="absolute top-[55px] w-50 h-64 flex flex-col items-start justify-center bg-gray-200 dark:bg-slate-500 rounded-lg shadow-lg animate-fade animate-duration-500 z-10"
+      className="absolute top-[55px] h-64 flex flex-col items-start justify-center bg-gray-200 dark:bg-slate-500 rounded-lg shadow-lg animate-fade animate-duration-500 z-10"
       onClick={closeMenu}
     >
-      <a className="flex p-5 text-2xl">
+      <a className="flex p-5 text-base" href="tel:01098370037">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
@@ -23,7 +23,7 @@ export default function ContactMenu({ setMenuIsOpen }) {
         </svg>
         010-9837-0037
       </a>
-      <a className="flex p-5 text-2xl">
+      <a className="flex p-5 text-base" href="mailto:hoojunee@gmail.com">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
@@ -38,7 +38,7 @@ export default function ContactMenu({ setMenuIsOpen }) {
         </svg>
         hoojunee@gmail.com
       </a>
-      <a className="flex p-5 text-2xl">
+      <a className="flex p-5 text-base">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 256 256"

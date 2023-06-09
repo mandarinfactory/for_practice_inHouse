@@ -8,7 +8,7 @@ module.exports = {
   darkMode: "class",
   theme: {
     fontFamily: {
-      "sans" : ["NanumSquare"],
+      "sans" : ["NanumSquare-Neo"],
     },
     extend: {
       backgroundImage: {
