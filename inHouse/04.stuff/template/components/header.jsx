@@ -1,7 +1,19 @@
+import { useState } from "react";
 import Link from "next/link";
 import DarkModeToggleButton from "./darkmode_toggle";
+import ContactMenu from "./contact";
 
 export default function Header() {
+  const [menuIsOpen, setMenuIsOpen] = useState(false);
+  const [count, setCount] = useState(0)
+  const contactMenuHandler = () => {
+    setCount(prevCount => prevCount + 1);
+    console.log(count);
+    if(count % 2 === 0) {
+      setMenuIsOpen(true) 
+    } else setMenuIsOpen(false);
+  };
+
   return (
     <>
       <header className="text-gray-600 body-font">
@@ -20,7 +32,9 @@ export default function Header() {
               >
                 <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
               </svg>
-              <span className="ml-3 text-2xl font-extrabold">이호준의 포트폴리오</span>
+              <span className="ml-3 text-2xl font-extrabold">
+                이호준의 포트폴리오
+              </span>
             </a>
           </Link>
           <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
@@ -33,10 +47,13 @@ export default function Header() {
             <Link legacyBehavior href="projects">
               <a className="mr-5 anchor">프로젝트</a>
             </Link>
-            <Link legacyBehavior href="#">
-              {/* 여기다가는 카톡연결이나 이메일등을 해놓을것! */}
-              <a className="mr-5 anchor">연락하기</a>
-            </Link>
+            <button
+              className="userCount mr-5 anchor dark:text-slate-400"
+              onClick={contactMenuHandler}
+            >
+              연락하기
+            </button>
+            {menuIsOpen && <ContactMenu setMenuIsOpen={setMenuIsOpen}/>}
           </nav>
           <DarkModeToggleButton />
         </div>
