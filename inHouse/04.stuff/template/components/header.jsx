@@ -51,9 +51,9 @@ export default function Header() {
               onClick={contactMenuHandler}
             >
               연락하기
+          {menuIsOpen && <ContactMenu setMenuIsOpen={setMenuIsOpen} />}
             </button>
           </nav>
-          {menuIsOpen && <ContactMenu setMenuIsOpen={setMenuIsOpen} />}
           <DarkModeToggleButton />
         </div>
       </header>
