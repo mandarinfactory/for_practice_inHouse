@@ -5,12 +5,11 @@ import ContactMenu from "./contact";
 
 export default function Header() {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
   const contactMenuHandler = () => {
-    setCount(prevCount => prevCount + 1);
-    console.log(count);
-    if(count % 2 === 0) {
-      setMenuIsOpen(true) 
+    setCount((prevCount) => prevCount + 1);
+    if (count % 2 === 0) {
+      setMenuIsOpen(true);
     } else setMenuIsOpen(false);
   };
 
@@ -53,8 +52,8 @@ export default function Header() {
             >
               연락하기
             </button>
-            {menuIsOpen && <ContactMenu setMenuIsOpen={setMenuIsOpen}/>}
           </nav>
+          {menuIsOpen && <ContactMenu setMenuIsOpen={setMenuIsOpen} />}
           <DarkModeToggleButton />
         </div>
       </header>

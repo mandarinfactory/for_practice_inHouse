@@ -3,8 +3,8 @@ import profilePic from "../../public/me.JPG"
 
 export default function AboutMeDescription() {
   return (
-    <div className="flex flex-row items-center justify-center animation_fadeUp">
-      <section className="flex-1 box-border p-20">
+    <div className="container mx-auto px-5 flex flex-row items-center justify-center animation_fadeUp">
+      <section className="flex-1 box-border">
         <h2 className="text-3xl py-20 font-extrabold text-gray-900 leading-relaxed">
           몇번이고 벽을 만나 부딪힌 적도, 힘든적도 많지만, <br />
           직접 코딩을 통해 나오는 결과에 성취감을 느끼고 <br />

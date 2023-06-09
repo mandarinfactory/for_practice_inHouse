@@ -12,12 +12,12 @@ export default function Projects({ projects }) {
           <meta name="description" content="이호준의 포트폴리오" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        <h1 className="text-5xl font-bold">
+        <h1 className="my-10 text-5xl font-bold">
           총 프로젝트 : 
           <span className="pl-4 text-indigo-600">{projects.results.length}</span>
         </h1>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 py-10 gap-8 sm:w-full">
+        <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 py-10 gap-8 sm:w-full">
           {projects.results.map((theProject) => (
             <>
               <ProjectItem key={theProject.id} data={theProject} />
