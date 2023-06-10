@@ -1,0 +1,30 @@
+export default function Header() {
+  return (
+    <header className="text-gray-700 body-font bg-orange-500">
+      <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+        <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              fillRule="evenodd"
+              d="M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a16.975 16.975 0 001.144-.742 19.58 19.58 0 002.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 00-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 002.682 2.282 16.975 16.975 0 001.145.742zM12 13.5a3 3 0 100-6 3 3 0 000 6z"
+              clipRule="evenodd"
+            />
+          </svg>
+
+          <span className="ml-3 text-2xl font-bold">관광정보알리미</span>
+        </a>
+        <nav className="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:borderL md:border-gray-400 flex flex-wrap items-center text-base justify-center">
+          <a className="mr-5 hover:text-gray-900 text-lg font-semibold">맛집</a>
+          <a className="mr-5 hover:text-gray-900 text-lg font-semibold">카페</a>
+          <a className="mr-5 hover:text-gray-900 text-lg font-semibold">관광명소</a>
+        </nav>
+        <input type="text" placeholder="도시를 입력해주십시오." className="p-2 bg-orange-700 text-black font-lg font-semibold placeholder:text-black rounded-md"/>
+      </div>
+    </header>
+  );
+}

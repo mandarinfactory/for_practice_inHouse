@@ -32,7 +32,7 @@ export default function ProjectItem({ data }) {
         <a href={projectGitHubLink}>GitHub 바로가기</a>
         <div className="flex items-start mt-3">
           {projectTags.map((theTag) => (
-            <h3 className="w-30 px-3 py-1 mr-2 rounded-md bg-sky-300  dark:bg-sky-700 font-bold" key={theTag.id}>{theTag.name}</h3>
+            <h3 className="w-30 px-3 py-1 mr-2 rounded-md bg-sky-300 dark:bg-sky-700 font-bold" key={theTag.id}>{theTag.name}</h3>
           ))}
         </div>
       </div>
