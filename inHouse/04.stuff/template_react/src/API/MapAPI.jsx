@@ -28,7 +28,7 @@ function Map() {
       });
     }, []);
   
-    return <div ref={mapElement} className="min-h-[790px]" />;
+    return <div ref={mapElement} className="w-[80%] h-screen" />;
   }
   
   export default Map;
