@@ -81,3 +81,16 @@ function 더하기 (a,b,c) {
 
 var 배열2 = [10,20,30];
 더하기(...배열2); // 60 --> function 인자로 넣을때 ...을 사용한다. ③
+
+var person = {
+  인사 : function () {
+    console.log(this.name + " Hi");
+  },
+};
+
+var person2 = {
+  name : "Brent",
+};
+
+person.인사(); // undefined Hi
+person.인사.apply(person2) // Brent Hi --> apply는 함수를 옮겨와서 해당 함수에서 실행시켜준다. (call도 비슷하다.) 근데 요즘에는 잘 안씀 ㅎ
