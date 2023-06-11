@@ -6,7 +6,7 @@ export default function App() {
   const [inputData, setInputData] = useState("");
   return (
     <Layout inputData={inputData} setInputData={setInputData}>
-      <Hero />
+      <Hero setInputData={setInputData} />
     </Layout>
   );
 }

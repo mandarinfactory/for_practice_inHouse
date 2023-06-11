@@ -1,7 +1,6 @@
 export default function Header({ inputData, setInputData }) {
   const getInputValue = (event) => {
     setInputData(event.target.value);
-    console.log(event.target.value);
   };
 
   return (
@@ -35,7 +34,7 @@ export default function Header({ inputData, setInputData }) {
           placeholder="도시를 입력해주십시오."
           value={inputData}
           onChange={getInputValue}
-          className="p-2 bg-orange-700 text-black font-lg font-semibold placeholder:text-black rounded-md"
+          className="input p-2 bg-orange-700 text-black font-lg font-semibold placeholder:text-black rounded-md"
         />
       </div>
     </header>
