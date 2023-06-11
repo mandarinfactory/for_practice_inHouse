@@ -75,22 +75,84 @@ var 객체3 = { ...객체1, a: 2 };
 console.log(객체3); // {a: 2, b: 2} --> 마찬가지로 뒤에 온 값으로 적용시킨다.
 // 항상 ...은 소,중,대괄호안에서만 사용할 수 있다.
 
-function 더하기 (a,b,c) {
+function 더하기(a, b, c) {
   console.log(a + b + c);
-};
+}
 
-var 배열2 = [10,20,30];
+var 배열2 = [10, 20, 30];
 더하기(...배열2); // 60 --> function 인자로 넣을때 ...을 사용한다. ③
 
 var person = {
-  인사 : function () {
+  인사: function () {
     console.log(this.name + " Hi");
   },
 };
 
 var person2 = {
-  name : "Brent",
+  name: "Brent",
 };
 
 person.인사(); // undefined Hi
-person.인사.apply(person2) // Brent Hi --> apply는 함수를 옮겨와서 해당 함수에서 실행시켜준다. (call도 비슷하다.) 근데 요즘에는 잘 안씀 ㅎ
+person.인사.apply(person2); // Brent Hi --> apply는 함수를 옮겨와서 해당 함수에서 실행시켜준다. (call도 비슷하다.) 근데 요즘에는 잘 안씀 ㅎ
+
+// 6. default parameter, arguments
+
+// 1. default parameter
+function 더하기1(a, b = 10) {
+  // b값에 아무 값도 들어오지 않을경우 10을 넣어준다.
+  console.log(a + b);
+}
+
+더하기1(3); // 13 --> 2번째 인자에 따로 값을 넣어주지 않았으므로 자동으로 10이 들어가게 된다.
+
+function 더하기2(a, b = a * 2) {
+  console.log(a + b);
+}
+
+더하기2(1); // 3 --> 꼭 숫자가 아닌 함수도 들어갈수 있다.
+
+// 2. arguments
+
+function 함수(a, b, c) {
+  // 여기서 a,b,c를 parameters라고 한다.
+  console.log(a, b, c); // 1 1 1 --> 여기서 a,b,c를 arguments라고 한다.
+  console.log(arguments); // Arguments(3) [1, 1, 1] --> 배열은 아니지만 유사배열로 쓸 수 있다.
+  console.log(arguments[0]); // 1
+  console.log(arguments[1]); // 4
+  console.log(arguments[2]); // 7
+  // arguments는 모든 parameter들을 []안에 넣은 변수이다.
+}
+
+함수(1, 4, 7);
+
+function 함수2(a, b, c, d, e) {
+  for (var i = 0; i < arguments.length; i++) {
+    console.log(arguments[i]); // 1 2 3 4 5
+  };
+};
+
+함수2(1,2,3,4,5)
+
+// 7. Rest parameter
+// arguments도 한물간 방법이다.
+
+function 함수3 (...rest) { // === Rest parameter
+  console.log(rest);
+}
+
+함수3(1,2,3,4,5,6,7); // [1, 2, 3, 4, 5, 6, 7] --> parameter로 오는 모든 값을 []에 보관해준다.
+// argument와 차이점은 그냥 모든 parameter를 담아준다. + custom화 할 수 있다.
+
+function 함수4 (a,b,...rest) {
+  console.log(rest);
+};
+
+함수4(5,6,1,2,3); // [1, 2, 3] --> a,b 인자 제외하고 그 외에 것들 전부 rest[]로 들어가게 된다.(custom화)
+// 단 rest는 parameter에서 쓸때 항상 가장 뒤에 써줘야한다.
+
+function 함수5 (...rest) {
+  for(var i = 0;i < rest.length;i++)
+  console.log(rest[i]); // 1 2 3 4
+};
+
+함수5(1,2,3,4)
