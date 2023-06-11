@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 
-const Map = () => {
+const Map = ({ setLatInfo, setLngInfo }) => {
   const mapElement = useRef(null);
 
   useEffect(() => {
