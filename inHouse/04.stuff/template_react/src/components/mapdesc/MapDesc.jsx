@@ -7,6 +7,8 @@ const MapDescRawData = (props) => {
   const address = props.row.address;
   const lat = props.row.mapx;
   const lng = props.row.mapy;
+  console.log(props.setLatInfo());
+  console.log(props.setLngInfo());
 
   return (
     <div className="py-10">
@@ -20,7 +22,7 @@ const MapDescRawData = (props) => {
   );
 };
 
-export default function MapDesc() {
+export default function MapDesc({setLatInfo, setLngInfo}) {
   const [mapDesc, setMapDesc] = useState(null);
 
   const apiGet = async (type, param) => {
@@ -48,7 +50,7 @@ export default function MapDesc() {
     <div className="w-[20%] h-screen overflow-auto">
       {mapDesc &&
         mapDesc.map((v, index) => {
-          return <MapDescRawData key={index} row={v} />;
+          return <MapDescRawData key={index} row={v} setLatInfo={setLatInfo} setLngInfo={setLngInfo}/>;
         })}
     </div>
   );

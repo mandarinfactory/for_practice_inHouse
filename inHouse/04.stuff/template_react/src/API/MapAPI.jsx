@@ -1,11 +1,7 @@
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect } from "react";
 
-const Map = ({ setInputData }) => {
+const Map = () => {
   const mapElement = useRef(null);
-  const getInputData = () => {
-    let findCityData = setInputData;
-
-  };
 
   useEffect(() => {
     const { naver } = window;
@@ -33,5 +29,5 @@ const Map = ({ setInputData }) => {
   }, []);
 
   return <div ref={mapElement} className="w-[80%] h-screen" />;
-}
+};
 export default Map;

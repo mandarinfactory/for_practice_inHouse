@@ -1,7 +1,4 @@
-export default function Header({ inputData, setInputData }) {
-  const getInputValue = (event) => {
-    setInputData(event.target.value);
-  };
+export default function Header() {
 
   return (
     <header className="text-gray-700 body-font bg-orange-500">
@@ -29,13 +26,6 @@ export default function Header({ inputData, setInputData }) {
             관광명소
           </a>
         </nav>
-        <input
-          type="text"
-          placeholder="도시를 입력해주십시오."
-          value={inputData}
-          onChange={getInputValue}
-          className="input p-2 bg-orange-700 text-black font-lg font-semibold placeholder:text-black rounded-md"
-        />
       </div>
     </header>
   );
