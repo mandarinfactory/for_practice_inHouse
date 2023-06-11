@@ -39,3 +39,30 @@ function 해체분석기03(a, b, c) {
 };
 pants = 0;
 해체분석기03`바지${pants} 양말${socks}`;
+
+// 5. spread operator (...)
+
+var 배열 = ["hello", "world"];
+console.log(...배열); // hello world --> 배열에 붙이면 대괄호를 제거해준다.
+
+var 문자 = "hello";
+console.log(...문자); // h e l l o --> 문자에 붙이면 각각 해체해서 펼쳐준다.
+/* 참고로 문자도 배열처럼 indexing이 가능하다 --> 문자[0] = h, 문자[1] = e */
+
+var a = [1,2,3];
+var b = [4,5,6];
+
+var c = [...a,...b];
+console.log(c); // [1, 2, 3, 4, 5, 6]
+
+var d = a;
+console.log(d); // [1, 2, 3]
+a[2] = 7;
+console.log(a, d); // [1, 2, 7] [1, 2, 7]
+d[0] = 3;
+console.log(a, d); // [3, 2, 7] [3, 2, 7] --> 이렇게 같이 변하게 되는 deep copy가 된다.
+// reference data type(배열, 객체)는 복사를 하게 되면 값을 공유한다. 따라서 ...을 사용하는것을 지향한다.
+
+var 객체1 = {a : 1, b : 2};
+var 객체2 = {...객체1, c : 3, d : 4};
+console.log(객체2); // {a: 1, b: 2, c: 3, d: 4} --> 대괄호, 중괄호 둘다 해체시켜 버린다.
