@@ -1,12 +1,12 @@
 import Header from "./Header";
 import Footer from "./Footer";
 
-export default function Layout({ children }) {
+export default function Layout({ inputData, setInputData, children }) {
     return (
-      <div className="">
-        <Header />
+      <>
+        <Header inputData={inputData} setInputData={setInputData}/>
         <div>{children}</div>
         <Footer />
-      </div>
+      </>
     );
-  };
+  }; 

@@ -1,4 +1,9 @@
-export default function Header() {
+export default function Header({ inputData, setInputData }) {
+  const getInputValue = (event) => {
+    setInputData(event.target.value);
+    console.log(event.target.value);
+  };
+
   return (
     <header className="text-gray-700 body-font bg-orange-500">
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
@@ -21,9 +26,17 @@ export default function Header() {
         <nav className="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:borderL md:border-gray-400 flex flex-wrap items-center text-base justify-center">
           <a className="mr-5 hover:text-gray-900 text-lg font-semibold">맛집</a>
           <a className="mr-5 hover:text-gray-900 text-lg font-semibold">카페</a>
-          <a className="mr-5 hover:text-gray-900 text-lg font-semibold">관광명소</a>
+          <a className="mr-5 hover:text-gray-900 text-lg font-semibold">
+            관광명소
+          </a>
         </nav>
-        <input type="text" placeholder="도시를 입력해주십시오." className="p-2 bg-orange-700 text-black font-lg font-semibold placeholder:text-black rounded-md"/>
+        <input
+          type="text"
+          placeholder="도시를 입력해주십시오."
+          value={inputData}
+          onChange={getInputValue}
+          className="p-2 bg-orange-700 text-black font-lg font-semibold placeholder:text-black rounded-md"
+        />
       </div>
     </header>
   );

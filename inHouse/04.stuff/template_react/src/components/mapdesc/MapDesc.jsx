@@ -26,7 +26,7 @@ export default function MapDesc() {
   const apiGet = async (type, param) => {
     const CLIENT_ID = "97gi3wHYe0SVzbmFuIJW";
     const CLIENT_SECRET = "Q8IvuVzzbm";
-    const apiUrl = `https://openapi.naver.com/v1/search/${type}?query=${param}&display=20&start=1&sort=random`;
+    const apiUrl = `https://openapi.naver.com/v1/search/${type}?query=${param}&display=5&sort=random`;
     const resp = await fetch(apiUrl, {
       method: "GET",
       headers: {
@@ -40,7 +40,8 @@ export default function MapDesc() {
     });
   };
   useEffect(() => {
-    apiGet("local.json", "맛집");
+    apiGet("local.json", "카페,맛집");
+    /* 인수 하드코딩! */
   }, []);
 
   return (
