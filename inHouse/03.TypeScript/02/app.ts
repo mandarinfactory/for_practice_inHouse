@@ -98,9 +98,19 @@ let 버튼 = document.querySelector(".button");
 }) //?가 있으므로 자동으로 narrowing으로 인식한다.
 
 let 버튼2 = document.querySelector(".button");
+console.log(버튼2);
+
 버튼2?.addEventListener("click", function () {
     let 이미지 = document.querySelector("#image");
     if (이미지 instanceof HTMLImageElement) {
         이미지.src = "new.jpg";
     };
 });
+
+let 모든링크 = document.querySelectorAll(".link");
+for (var i = 0;i < 모든링크.length;i++) {
+  let theLink = 모든링크[i]
+  if (theLink instanceof HTMLAnchorElement) {
+    theLink.href = "https://www.kakao.com";
+  }; // for문 쓸꺼면 따로 변수선언까지 해줘서 narrowing 해야하고 forEach 쓰는게 편하다.
+};
