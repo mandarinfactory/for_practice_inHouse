@@ -21,3 +21,4 @@ console.log(기계.prototype); // {constructor: ƒ} --> prototype은 유전자�
 
 기계.prototype.name = "Brent";
 console.log(a.name); // Brent
+// 이렇게 a객체가 name이라는 key를 가지고 있지 않더라도 부모인 prototype(부모유전자)에 있는걸 확인후 인식하여 출력시킨다.
