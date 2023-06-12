@@ -62,3 +62,45 @@ let 회원정보 = {
   changeName : () => {},
 };
 회원정보.plusOne("a");
+
+/* 06. TS로 HTML 변경과 주의점 */
+
+let 제목 = document.querySelector(".title");
+if (제목 !== null) {
+  제목.innerHTML = "반가워요!";
+}; // 이렇게 따로 narrowing을 해줘야한다. --> HTML element는 기본적으로 union-type이기 때문이다. (element | null)
+
+let 제목2 = document.querySelector(".title");
+if (제목2 instanceof Element) {
+  제목2.innerHTML = "반가워요!";
+  // instanceof를 사용할 수도 있다.
+};
+
+let 제목3 = document.querySelector(".title") as Element; 
+// as는 type assertion으로 쓰인다. (as Element : type을 element로 간주한다.)
+제목3.innerHTML = "반가워요!";
+
+let 제목4 = document.querySelector(".title");
+if(제목4?.innerHTML) {
+  제목4.innerHTML = "반가워요!";
+  // .왼쪽에 ?를 붙이면 --> 제목4에 innerHTML이 있으면 출력하고 없으면 undefined를 출력해준다.(optional chaining)
+};
+
+let 링크 = document.querySelector(".link");
+if (링크 instanceof HTMLAnchorElement) { // href등 해당 HTML element(Button, Heading···)에 제대로 narrowing을 해줘야한다.
+  링크.href = "https://www.kakao.com";
+};
+
+let 버튼 = document.querySelector(".button");
+버튼?.addEventListener("click", () => {
+  return console.log(42);
+  ;
+}) //?가 있으므로 자동으로 narrowing으로 인식한다.
+
+let 버튼2 = document.querySelector(".button");
+버튼2?.addEventListener("click", function () {
+    let 이미지 = document.querySelector("#image");
+    if (이미지 instanceof HTMLImageElement) {
+        이미지.src = "new.jpg";
+    };
+});
