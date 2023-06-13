@@ -12,3 +12,5 @@ function 함수2({ student, age }) {
     console.log(student, age); // true 17
 }
 함수2({ student: true, age: 17 }); // destructuring을 쓰면 여기에 값을 객체로 넣어줄수 있다.
+function 함수3() {
+}
