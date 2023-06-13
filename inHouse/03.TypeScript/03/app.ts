@@ -35,7 +35,8 @@ let 선생: Teacher = { name: "kim", age: 20 };
 // interface를 쓰면 extends(복사붙여넣기 명령어이다.)로 복사가 가능하다.
 // 단, extend를 썼는데 중복속성이 발생하면 바로 TS는 error를 출력한다. (Student와 Teacher 둘다 name : string이 겹칠경우)
 // interface는 중복선언이 가능하고, type은 중복선언이 불가능하다.
-interface Student { // 중복선언이 되면 병합된다.
+interface Student {
+  // 중복선언이 되면 병합된다.
   score?: number;
 }
 
