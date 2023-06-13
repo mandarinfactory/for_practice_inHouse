@@ -20,6 +20,27 @@ function 함수2({ student, age }: Student) {
 }
 함수2({ student: true, age: 17 }); // destructuring을 쓰면 여기에 값을 객체로 넣어줄수 있다.
 
-function 함수3 () {
-    
+function 최댓값구하기(...rest: number[]) {
+  console.log(Math.max(...rest));
 }
+최댓값구하기(6, 3, 7, 2);
+
+interface Identity {
+  user: string;
+  comment: number[];
+  admin: boolean;
+}
+function 함수3({ user, comment, admin }: Identity): void {
+  console.log(user, comment, admin);
+}
+함수3({ user: "kim", comment: [3, 5, 4], admin: false });
+
+type Thing = [
+    num : number,
+    wine : string,
+    define : boolean
+]
+function 함수4 ([num, wine, define] : Thing) {
+    console.log(num, wine, define);
+}
+함수4( [40, 'wine', false] )

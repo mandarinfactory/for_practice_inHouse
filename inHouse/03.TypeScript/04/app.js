@@ -12,5 +12,15 @@ function 함수2({ student, age }) {
     console.log(student, age); // true 17
 }
 함수2({ student: true, age: 17 }); // destructuring을 쓰면 여기에 값을 객체로 넣어줄수 있다.
-function 함수3() {
+function 최댓값구하기(...rest) {
+    console.log(Math.max(...rest));
 }
+최댓값구하기(6, 3, 7, 2);
+function 함수3({ user, comment, admin }) {
+    console.log(user, comment, admin);
+}
+함수3({ user: "kim", comment: [3, 5, 4], admin: false });
+function 함수4([num, wine, define]) {
+    console.log(num, wine, define);
+}
+함수4([40, 'wine', false]);
