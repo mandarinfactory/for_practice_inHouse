@@ -18,3 +18,7 @@ let 사람2 = new Person("John");
 let 네모 = { color: "red", width: 100 };
 let 학생 = { name: "kim" };
 let 선생 = { name: "kim", age: 20 };
+// extends와 같이 &(intersection type)기호를 써도 된다.
+// &기호는 두 type을 전부 만족하는 type으로 만들어준다.
+// &기호는 중복속성이 발생하면 extend와 다르게 따로 error를 출력하지 않고 type을 쓸때 never type이라고 후에 출력된다.
+let 고양이 = { name: "나옹이", age: 39 };

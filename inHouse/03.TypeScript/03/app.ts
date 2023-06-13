@@ -32,7 +32,17 @@ interface Teacher extends Student {
 }
 let 학생: Student = { name: "kim" };
 let 선생: Teacher = { name: "kim", age: 20 };
-/* interface를 쓰면 extends(복사붙여넣기 명령어이다.)로 복사가 가능하다. */
+// interface를 쓰면 extends(복사붙여넣기 명령어이다.)로 복사가 가능하다.
+// 단, extend를 썼는데 중복속성이 발생하면 바로 TS는 error를 출력한다. (Student와 Teacher 둘다 name : string이 겹칠경우)
+// interface는 중복선언이 가능하고, type은 중복선언이 불가능하다.
+interface Student { // 중복선언이 되면 병합된다.
+  score?: number;
+}
 
 type Animal = { name: string };
-type Cat = { age: number } & Animal; // extends와 같이 type을 쓸때는 &(intersection type)기호를 쓰면 된다.
+type Cat = { age: number } & Animal;
+// extends와 같이 &(intersection type)기호를 써도 된다.
+// &기호는 두 type을 전부 만족하는 type으로 만들어준다.
+// &기호는 중복속성이 발생하면 extend와 다르게 따로 error를 출력하지 않고 type을 쓸때 never type이라고 후에 출력된다.
+
+let 고양이: Cat = { name: "나옹이", age: 39 };
