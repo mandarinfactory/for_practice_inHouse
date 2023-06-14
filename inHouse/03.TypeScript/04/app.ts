@@ -82,3 +82,18 @@ function 함수7() :never{
 };
 // never type을 쓰러면 return값이 없어야한다. + endpoint가 없어야한다. => 끝나지 않는 함수?
 // 대부분은 void type을 쓴다.
+
+/* 11. private, public */
+// TS의 장점은 객체지향(object-oriented)언어같은 문법도 제공한다.(public, private, protected, static)
+// 다시말해 class를 많이 만들어서 개발할때 유용하다.
+
+class User {
+  public name = "kim"; // -public이 붙으면 모든 자식들이 사용가능해 진다. (있으나 없으나 큰 차이가 없다. --> 강제부여됨)
+  private age = 29; // private이 붙으면 자식들이 수정할 수 없다.
+  constructor (a) {
+    this.name = a
+  };
+};
+let 유저1 = new User("park");
+유저1.name = "안녕?";
+유저1.age
