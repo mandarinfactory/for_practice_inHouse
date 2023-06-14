@@ -78,6 +78,7 @@ function 함수6(x: Car | Bike) {
 
 function 함수7() :never{
   throw new Error(); // endless함수를 만들기 위해 강제로 error를 출력시킨다.
-}
-//never type을 쓰러면 return값이 없어야한다. + endpoint가 없어야한다. => 끝나지 않는 함수?
-
+  // 잘 안쓰는데 잘못 입력해서 자동으로 출력될때가 있다.
+};
+// never type을 쓰러면 return값이 없어야한다. + endpoint가 없어야한다. => 끝나지 않는 함수?
+// 대부분은 void type을 쓴다.
