@@ -67,12 +67,17 @@ type Bike = {
   wheel: "2개";
   color: string;
 };
-function 함수(x: Car | Bike) {
+function 함수6(x: Car | Bike) {
   if (x.wheel === "4개") {
     // object type마다 각각의 literal type을 만들어주면 narrowing 하기 편리하다.(여기서는 string)
     console.log("x는 Car-type 입니다.");    
   };
 };
 
-/* 10. never type */
+/* 10. never type --> 딱히 막 자주 쓰이지는 않는다. */
+
+function 함수7() :never{
+  throw new Error(); // endless함수를 만들기 위해 강제로 error를 출력시킨다.
+}
+//never type을 쓰러면 return값이 없어야한다. + endpoint가 없어야한다. => 끝나지 않는 함수?
 

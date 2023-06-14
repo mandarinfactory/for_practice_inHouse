@@ -25,11 +25,26 @@ function 함수4([num, wine, define]) {
 }
 함수4([40, "wine", false]);
 function 함수5(animal) {
-    if ("swim" in animal) { // in 키워드로 narrowing이 가능하다 --> 속성명 in 객체자료
+    if ("swim" in animal) {
+        // in 키워드로 narrowing이 가능하다 --> 속성명 in 객체자료
         animal.swim;
+    }
+}
+let 날짜 = new Date();
+if (날짜 instanceof Date) {
+    console.log(날짜);
+    // instanceof 연산자로 object narrowing이 가능하다.
+}
+function 함수6(x) {
+    if (x.wheel === "4개") {
+        // object type마다 각각의 literal type을 만들어주면 narrowing 하기 편리하다.(여기서는 string)
+        console.log("x는 Car-type 입니다.");
     }
     ;
 }
 ;
-    instanceof
-;
+/* 10. never type --> 딱히 막 자주 쓰이지는 않는다. */
+function 함수7() {
+    throw new Error(); // endless함수를 만들기 위해 강제로 error를 출력시킨다.
+}
+//never type을 쓰러면 return값이 없어야한다. + endpoint가 없어야한다. => 끝나지 않는 함수?
