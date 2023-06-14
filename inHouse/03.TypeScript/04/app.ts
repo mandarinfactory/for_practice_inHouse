@@ -83,7 +83,8 @@ function 함수7(): never {
 // never type을 쓰러면 return값이 없어야한다. + endpoint가 없어야한다. => 끝나지 않는 함수?
 // 대부분은 void type을 쓴다.
 
-/* 11. private, public */
+/* 11. private, public, protected, static */
+
 // TS의 장점은 객체지향(object-oriented)언어같은 문법도 제공한다.(public, private, protected, static)
 // 다시말해 class를 많이 만들어서 개발할때 유용하다.
 
@@ -95,12 +96,40 @@ class User {
   constructor(a) {
     this.name = this.familyName + a;
   }
-  이름변경함수 () {
+  이름변경함수() {
     this.familyName = "대한민국"; // 이렇게 private을 class내에서 변경할 수 있다.
-  };
+  }
 }
 let 유저1 = new User("park");
 console.log(유저1); // User {name: 'leepark', familyName: 'lee', theName: undefined}
 
 유저1.이름변경함수();
 console.log(유저1); // User {name: 'leepark', familyName: '대한민국', theName: undefined} --> private이 변경된걸 알수 있다.
+
+class thePerson {
+  constructor(public name: string) {}
+}
+
+let 자식 = new thePerson("kim");
+console.log(자식); // thePerson {name: 'kim'}
+
+class User2 {
+  protected x = 10; 
+  // private, protected(private보다 좀 더 확장성을 준다.) 둘다 붙이면 class{}안에서만 사용가능하다.
+  // protected --> 현재의 class{}안에서 + extends 된 class{}안에서 사용가능하다.
+}
+
+class NewUser extends User2 {
+  doThis () {
+    this.x = 20;
+  };
+};
+
+class User3 {
+  static x = 10;
+  // static --> 부모 class에 직접 부여된다. 자식들에게 물려주지 못한다. 단, extends는 같이 잘 딸려온다.
+  y = 20;
+}
+let 자식들 = new User3();
+console.log(자식들); // User3 {y: 20} --> x는 자식에게 없다.
+console.log(User3.x); // 10 --> 직접 부모에만 부여되어있으므로 부모로 직접 찾아야한다.
