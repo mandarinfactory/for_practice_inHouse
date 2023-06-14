@@ -82,9 +82,7 @@ class NewUser extends User2 {
     doThis() {
         this.x = 20;
     }
-    ;
 }
-;
 class User3 {
     static x = 10;
     // static --> 부모 class에 직접 부여된다. 자식들에게 물려주지 못한다. 단, extends는 같이 잘 딸려온다.

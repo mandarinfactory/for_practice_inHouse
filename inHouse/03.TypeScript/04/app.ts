@@ -114,16 +114,16 @@ let 자식 = new thePerson("kim");
 console.log(자식); // thePerson {name: 'kim'}
 
 class User2 {
-  protected x = 10; 
+  protected x = 10;
   // private, protected(private보다 좀 더 확장성을 준다.) 둘다 붙이면 class{}안에서만 사용가능하다.
   // protected --> 현재의 class{}안에서 + extends 된 class{}안에서 사용가능하다.
 }
 
 class NewUser extends User2 {
-  doThis () {
+  doThis() {
     this.x = 20;
-  };
-};
+  }
+}
 
 class User3 {
   static x = 10;
