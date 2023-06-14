@@ -40,15 +40,12 @@ function 함수6(x) {
         // object type마다 각각의 literal type을 만들어주면 narrowing 하기 편리하다.(여기서는 string)
         console.log("x는 Car-type 입니다.");
     }
-    ;
 }
-;
 /* 10. never type --> 딱히 막 자주 쓰이지는 않는다. */
 function 함수7() {
     throw new Error(); // endless함수를 만들기 위해 강제로 error를 출력시킨다.
     // 잘 안쓰는데 잘못 입력해서 자동으로 출력될때가 있다.
 }
-;
 // never type을 쓰러면 return값이 없어야한다. + endpoint가 없어야한다. => 끝나지 않는 함수?
 // 대부분은 void type을 쓴다.
 /* 11. private, public */
@@ -56,14 +53,18 @@ function 함수7() {
 // 다시말해 class를 많이 만들어서 개발할때 유용하다.
 class User {
     name = "kim"; // -public이 붙으면 모든 자식들이 사용가능해 진다. (있으나 없으나 큰 차이가 없다. --> 강제부여됨)
-    age = 29; // private이 붙으면 자식들이 수정할 수 없다.
     familyName = "lee";
+    // private이 붙으면 자식들이 수정할 수 없다. 단, -private을 붙이면 class안에서만 수정, 이용이 가능하다.
     theName;
     constructor(a) {
-        this.name = a;
+        this.name = this.familyName + a;
+    }
+    이름변경함수() {
+        this.familyName = "대한민국"; // 이렇게 private을 class내에서 변경할 수 있다.
     }
     ;
 }
-;
 let 유저1 = new User("park");
-유저1.name = "안녕?";
+console.log(유저1); // User {name: 'leepark', familyName: 'lee', theName: undefined}
+유저1.이름변경함수();
+console.log(유저1); // User {name: 'leepark', familyName: '대한민국', theName: undefined} --> private이 변경된걸 알수 있다.
