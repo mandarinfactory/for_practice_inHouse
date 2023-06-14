@@ -35,12 +35,44 @@ function 함수3({ user, comment, admin }: Identity): void {
 }
 함수3({ user: "kim", comment: [3, 5, 4], admin: false });
 
-type Thing = [
-    num : number,
-    wine : string,
-    define : boolean
-]
-function 함수4 ([num, wine, define] : Thing) {
-    console.log(num, wine, define);
+type Thing = [num: number, wine: string, define: boolean];
+function 함수4([num, wine, define]: Thing) {
+  console.log(num, wine, define);
 }
-함수4( [40, 'wine', false] )
+함수4([40, "wine", false]);
+
+/* 09. Narrowing 심화학습 */
+
+type Fish = { swim: string };
+type Bird = { fly: string };
+
+function 함수5(animal: Fish | Bird) {
+  if ("swim" in animal) {
+    // in 키워드로 narrowing이 가능하다 --> 속성명 in 객체자료
+    animal.swim;
+  }
+}
+
+let 날짜 = new Date();
+if (날짜 instanceof Date) {
+  console.log(날짜);
+  // instanceof 연산자로 object narrowing이 가능하다.
+}
+
+type Car = {
+  wheel: "4개";
+  color: string;
+};
+type Bike = {
+  wheel: "2개";
+  color: string;
+};
+function 함수(x: Car | Bike) {
+  if (x.wheel === "4개") {
+    // object type마다 각각의 literal type을 만들어주면 narrowing 하기 편리하다.(여기서는 string)
+    console.log("x는 Car-type 입니다.");    
+  };
+};
+
+/* 10. never type */
+

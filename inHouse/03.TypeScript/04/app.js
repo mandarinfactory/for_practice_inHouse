@@ -23,4 +23,13 @@ function 함수3({ user, comment, admin }) {
 function 함수4([num, wine, define]) {
     console.log(num, wine, define);
 }
-함수4([40, 'wine', false]);
+함수4([40, "wine", false]);
+function 함수5(animal) {
+    if ("swim" in animal) { // in 키워드로 narrowing이 가능하다 --> 속성명 in 객체자료
+        animal.swim;
+    }
+    ;
+}
+;
+    instanceof
+;
