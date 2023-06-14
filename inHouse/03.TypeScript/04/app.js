@@ -57,7 +57,7 @@ function 함수7() {
 class User {
     name = "kim"; // -public이 붙으면 모든 자식들이 사용가능해 진다. (있으나 없으나 큰 차이가 없다. --> 강제부여됨)
     age = 29; // private이 붙으면 자식들이 수정할 수 없다.
-    familyName = "몰루?";
+    familyName = "lee";
     theName;
     constructor(a) {
         this.name = a;
