@@ -69,4 +69,10 @@ let 제품1 = ProductInfo("셔츠", 35000)
 
 // prototype은 유전자라고 생각하면 된다.
 // constructor를 만들면 꼭 prototype이라는 공간이 자동으로 생긴다.
-console.log(ProductInfo.prototype); // {constructor: ƒ} --> prototype은 유전자이다!
+
+StudentId.prototype.gender = "남자";
+var 학생3 = new StudentId("박", 17);
+console.log(학생3); // StudentId {name: '박', age: 17, sayHi: ƒ}
+console.log(학생3.gender); // 남자
+// 따로 학생3에 gender 값이 없는데도 이미 prototype으로 부모에 gender값이 있으므로 "남자"가 출력된다.
+// JS는 일단 해당 값을 요청하면 자식(학생3) 확인 후 없으면 부모(StudentId···)까지 확인해보고 출력시킨다.
