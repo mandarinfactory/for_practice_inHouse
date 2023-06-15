@@ -40,20 +40,33 @@ function 변경기계(obj) {
 예상하는 값이 아닌 값이 나온다. (이름1 = { name: "김" }, obj = { name : "park"})
 */
 
-// 9. constructor (object 생성기계)
+// 9. constructor (object 생성기계) && prototype
 
 var 학생1 = {
-    name : "김",
-    age : 16,
+  name: "김",
+  age: 16,
 };
 
-function StudentId (a,b) {
-    this.name = a; // 여기서 this는 해당 object를 뜻한다. (새로생성되는 object, instance를 뜻한다.)
-    this.age = b;
-    this.sayHi= function () {
-        console.log(`안녕하세요 ${this.name}입니다.`);
-    };
-};
+function StudentId(a, b) {
+  this.name = a; // 여기서 this는 해당 object를 뜻한다. (새로생성되는 object, instance를 뜻한다.)
+  this.age = b;
+  this.sayHi = function () {
+    console.log(`안녕하세요 ${this.name}입니다.`);
+  };
+}
 var 학생2 = new StudentId("최", 18);
 console.log(학생2); // StudentId {name: '최', age: 18, sayHi: ƒ}}
 학생2.sayHi(); // 안녕하세요 최입니다.
+
+function ProductInfo(a, b) {
+  this.name = a;
+  this.price = b;
+  console.log((this.price) * 0.1);
+};
+
+let 제품1 = ProductInfo("셔츠", 35000)
+// 여기서 constructor가 부모(StudentId, ProductInfo)고 부모를 이용해 만든 object를 자식(학생2, 제품1)이라고 한다.
+
+// prototype은 유전자라고 생각하면 된다.
+// constructor를 만들면 꼭 prototype이라는 공간이 자동으로 생긴다.
+console.log(ProductInfo.prototype); // {constructor: ƒ} --> prototype은 유전자이다!
