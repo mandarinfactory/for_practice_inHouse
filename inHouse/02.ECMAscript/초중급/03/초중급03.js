@@ -29,7 +29,7 @@ console.log(이름1 == 이름2); // false
 // 보기엔 이름1과 이름2는 같아 보이지만 각각 다른 메모리에 저장되어있는 화살표이다. 전혀 다른값이라는것! (배열도 똑같음)
 
 function 변경기계(obj) {
-  obj = { name : "park"};
+  obj = { name: "park" };
 }
 변경기계(이름1); // { name: "김" }
 /* 
@@ -39,3 +39,7 @@ function 변경기계(obj) {
 위에처럼 함수가 성림되면 이름1과 obj가 각각 reference type이라서 값이 아닌 화살표로 각각의 객체값을 가리키고 있어서
 예상하는 값이 아닌 값이 나온다. (이름1 = { name: "김" }, obj = { name : "park"})
 */
+
+// 9. constructor (object 생성기계)
+
+var 사람 = { name: "kim" };
