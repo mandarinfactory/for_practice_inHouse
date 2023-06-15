@@ -1,3 +1,3 @@
-import { 이름 } from "./app";
+import { Name } from "./app";
 
-console.log(이름);
+let 변수: Name = "park";
