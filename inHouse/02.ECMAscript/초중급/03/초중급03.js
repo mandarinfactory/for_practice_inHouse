@@ -35,7 +35,7 @@ function 변경기계(obj) {
 /* 
 풀어서 정리하자면, 변경기계(이름1)은 변경기계(var obj = 이름1)이므로 obj는 reference를 복사한 또다른 화살표이다.
 그러다가 obj는 다시 함수내에서 { name: "park" }를 가리키는 화살표로 변경된다.
-따라서, obj.name = "park"으로 하면 이름1의 객체값이 아예 바뀌어서 park로 나오지만,
+따라서, obj.name = "park"으로 하면 이름1의 객체값이 아예 바뀌어서 park로 나오지만,(이때는 obj는 primitive type이다.)
 위에처럼 함수가 성림되면 이름1과 obj가 각각 reference type이라서 값이 아닌 화살표로 각각의 객체값을 가리키고 있어서
 예상하는 값이 아닌 값이 나온다. (이름1 = { name: "김" }, obj = { name : "park"})
 */
