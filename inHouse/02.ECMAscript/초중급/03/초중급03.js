@@ -42,4 +42,18 @@ function 변경기계(obj) {
 
 // 9. constructor (object 생성기계)
 
-var 사람 = { name: "kim" };
+var 학생1 = {
+    name : "김",
+    age : 16,
+};
+
+function StudentId (a,b) {
+    this.name = a; // 여기서 this는 해당 object를 뜻한다. (새로생성되는 object, instance를 뜻한다.)
+    this.age = b;
+    this.sayHi= function () {
+        console.log(`안녕하세요 ${this.name}입니다.`);
+    };
+};
+var 학생2 = new StudentId("최", 18);
+console.log(학생2); // StudentId {name: '최', age: 18, sayHi: ƒ}}
+학생2.sayHi(); // 안녕하세요 최입니다.
