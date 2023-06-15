@@ -133,3 +133,4 @@ class User3 {
 let 자식들 = new User3();
 console.log(자식들); // User3 {y: 20} --> x는 자식에게 없다.
 console.log(User3.x); // 10 --> 직접 부모에만 부여되어있으므로 부모로 직접 찾아야한다.
+
