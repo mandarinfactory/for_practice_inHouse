@@ -14,7 +14,7 @@ interface LengthCheck {
     length : number;
 }
 
-function 함수2<MyType extends string> (x :MyType) {
+function 함수2<MyType extends LengthCheck> (x :MyType) {
     // custom타입(여기서는 MyType)을 제한하려면 extends ~로 제한할수 있다. (constraint)
     return x.length;
 };
