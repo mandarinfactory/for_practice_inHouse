@@ -176,3 +176,28 @@ class 아버지 extends 할아버지 {
 var 아버지1 = new 아버지("영수")
 console.log(아버지1); // 아버지 {성: '김', 이름: "영수", 나이: 52} --> class 할아버지에 있던 성과 이름을 물려받았다.
 console.log(아버지1.sayHi()); // 안녕~! 저는 아버지에요. 안녕~! 저는 할아버지에요 (2개의 log가 찍힌다.)
+
+// 11. getter, setter
+
+var 사람 = {
+   name : "park",
+   age : 30,
+   get nextAge () { // get을 써주면 data를 꺼내는 함수에, set은 data를 변경하는 함수에 쓰인다.
+    return this.age + 1;
+   },
+   set setAge (theAge) { // 함수앞에 set을 써주면 직관적으로 setAge = 20꼴로 쓸수가 있다. (setAge()이런꼴 XX)
+    this.age = parseInt(theAge);
+   }
+   /* 
+   이렇게 따로 함수를 만들어서 object data를 다루는 이유
+    1. object 자료가 복잡할때 유용하다.
+    2. object 자료 수정시 편리하다.
+    직접 사람.age + 1이나, 사람.age = theAge로 할 수 있지만, data 수정시 미리 검사를 용이하게 해주기 위해 만든다.
+    3. data를 꺼내거나, 수정하거나할때 편리 + 실수방지 & 관리가 가능하다.
+
+   */
+}
+
+console.log(사람.setAge = "20") // 20 --> set이 설정되어있는 함수이므로 "="만 가지고도 인수값을 넣을 수 있다.
+console.log(사람.nextAge); // 21
+// get, set 둘다 함수 앞에 써주면 함수를 호출할때 따로 ()를 붙일 필요가 없다.
