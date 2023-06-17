@@ -108,3 +108,15 @@ var arr = [1, 2, 3];
 var arr = arr.filter((x) => x != 3);
 
 console.log(arr); //[1,2]
+
+// ES5부터 상속기능을 구현하는 method를 추가했다.(Object.create())
+
+var 부모객체2 = { name: "kim", age : 50 };
+var 자식객체2 = Object.create(부모객체2);
+console.log(자식객체2, 자식객체2.name); // {} 'kim'
+/* 
+현재 자식객체2에는 어떤 값도 없다. 하지만, 부모로 Object.create를 이욯해 만들었으므로
+.name을 하면 "kim"이 출력된다. 
+*/
+var 손자객체1 = Object.create(자식객체2);
+console.log(손자객체1.name); // kim --> 손자객체1 > 자식객체2 > 부모객체2까지 거슬러 올라가서 확인해준다.
