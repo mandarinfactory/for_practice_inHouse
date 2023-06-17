@@ -152,14 +152,15 @@ class 할아버지 {
 }
 
 class 아버지 extends 할아버지 {
-  constructor () {
-    super();
+  constructor (name) {
+    super(name);
     this.나이 = 52;
     /* 
     extends는 배웠던것 처럼 다른 class를 복사하는 기능을 한다.
     여기서는 class 아버지가 class 할아버지를 extends 해왔다.
-    단, extends를 쓰면 this를 쓰기전에 super()를 써줘서 JS가 헷갈리지 않도록 해준다.(this의 위치)
-    super()는 extends를 한 class를 뜻한다. 여기서는 class 할아버지를 말한다.
+    단, extends를 쓰면 this를 쓰기전에 super()를 써줘서 JS가 헷갈리지 않도록 해준다.
+    super()는 extends를 한 class를 뜻한다. 여기서는 class 할아버지
+    단, 부모의 constructor에 있던 parameter 또한 같이 써줘야한다. 여기서는 name
     */
   }
 }
