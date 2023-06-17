@@ -127,10 +127,10 @@ console.log(손자객체1.name); // kim --> 손자객체1 > 자식객체2 > 부�
 class 부모 {
   constructor() {
     this.name = "brent";
-  };
-  sayHi () {
+  }
+  sayHi() {
     console.log(`${this.name}안녕?`);
-  }; 
+  }
   /* 
   class문법을 쓰면 function을 constructor내에 쓸수도 있지만 밖에다가도 쓸 수 있다. 
   단, constructor밖에 쓰면 자식객체에 추가되지 않는다. --> 부모.prototype에만 추가된다.
@@ -145,17 +145,17 @@ Object.getPrototypeOf(자식); // {constructor: ƒ, sayHi: ƒ} __. getPrototypeO
 // 10. extends && super (class문법관련 method)
 
 class 할아버지 {
-  constructor (name) {
+  constructor(name) {
     this.성 = "김";
     this.이름 = name;
   }
-  sayHi () {
+  sayHi() {
     console.log("안녕~! 저는 할아버지에요.");
   }
 }
 
 class 아버지 extends 할아버지 {
-  constructor (name, name2) {
+  constructor(name, name2) {
     super(name, name2); // === class 할아버지
     this.나이 = 52;
     /* 
@@ -166,40 +166,108 @@ class 아버지 extends 할아버지 {
     단, 부모의 constructor에 있던 parameter 또한 같이 써줘야한다. 여기서는 name
     */
   }
-  sayHi () {
+  sayHi() {
     console.log("안녕~! 저는 아버지에요.");
     super.sayHi();
     // 여기서의 super는 부모class의 prototype을 뜻한다. --> console.log("안녕~! 저는 할아버지에요.");
   }
 }
 
-var 아버지1 = new 아버지("영수")
+var 아버지1 = new 아버지("영수");
 console.log(아버지1); // 아버지 {성: '김', 이름: "영수", 나이: 52} --> class 할아버지에 있던 성과 이름을 물려받았다.
 console.log(아버지1.sayHi()); // 안녕~! 저는 아버지에요. 안녕~! 저는 할아버지에요 (2개의 log가 찍힌다.)
 
 // 11. getter, setter
 
 var 사람 = {
-   name : "park",
-   age : 30,
-   get nextAge () { // get을 써주면 data를 꺼내는 함수에, set은 data를 변경하는 함수에 쓰인다.
+  name: "park",
+  age: 30,
+  get nextAge() {
+    // get을 써주면 data를 꺼내는 함수에, set은 data를 변경하는 함수에 쓰인다.
     return this.age + 1;
-   },
-   set setAge (theAge) { // 함수앞에 set을 써주면 직관적으로 setAge = 20꼴로 쓸수가 있다. (setAge()이런꼴 XX)
+  },
+  set setAge(theAge) {
+    // 함수앞에 set을 써주면 직관적으로 setAge = 20꼴로 쓸수가 있다. (setAge()이런꼴 XX)
     this.age = parseInt(theAge);
-   }
-   /* 
+  },
+  /* 
    이렇게 따로 함수를 만들어서 object data를 다루는 이유
     1. object 자료가 복잡할때 유용하다.
     2. object 자료 수정시 편리하다.
     직접 사람.age + 1이나, 사람.age = theAge로 할 수 있지만, data 수정시 미리 검사를 용이하게 해주기 위해 만든다.
     3. data를 꺼내거나, 수정하거나할때 편리 + 실수방지 & 관리가 가능하다.
-
+    --> data 수정전에 직접적으로 수정하기보단 사전에 확인 및 방지 차원에서 주로 쓰이고 있다.
    */
-}
+};
 
-console.log(사람.setAge = "20") // 20 --> set이 설정되어있는 함수이므로 "="만 가지고도 인수값을 넣을 수 있다.
+console.log((사람.setAge = "20")); // 20 --> set이 설정되어있는 함수이므로 "="만 가지고도 인수값을 넣을 수 있다.
 console.log(사람.nextAge); // 21
 // get, set 둘다 함수 앞에 써주면 함수를 호출할때 따로 ()를 붙일 필요가 없다.
-// get을 붙이려면 꼭 return이 필요하다!
+// get을 붙이려면 꼭 return이 필요 + parameter가 없어야한다 !
 // set을 붙이려면 꼭 parameter가 꼭 하나만 필요하다!
+
+class 사람2 {
+  constructor() {
+    this.name = "박";
+    this.age = 18;
+  }
+  get nextAge() {
+    // class에서도 get, set 둘다 사용가능하다.
+    return this.age + 1;
+  }
+  set setAge(theAge) {
+    this.age = parseInt(theAge);
+  }
+}
+
+var 사람1 = new 사람2();
+console.log(사람1.nextAge); // 19
+console.log((사람1.setAge = 20)); // 20
+
+class DogId {
+  constructor(type, color) {
+    this.type = type;
+    this.color = color;
+  }
+}
+
+class CatId extends DogId {
+  constructor(type, color, age) {
+    super(type, color);
+    this.age = age;
+  }
+  get addCatAge() {
+    return this.age + 1;
+  }
+}
+
+console.log(new CatId("고등어태비", "검정", 20).addCatAge); // 21
+
+class MakeUnit {
+  constructor() {
+    this.기본공격력 = 5;
+    this.기본체력 = 100;
+  }
+  get battlePoint() {
+    return this.기본공격력 + this.기본체력;
+  }
+  set pointHeal (healPoint) {
+    console.log(this.기본체력 + healPoint);
+  }
+}
+
+console.log(new MakeUnit().battlePoint); // 105
+new MakeUnit().pointHeal = 50; // 150
+
+var data = {
+  odd : [],
+  even : [],
+  set numberHandler (num) {
+    if (num % 2 === 0) {
+      this.even(...num)
+    } else {
+      this.odd(...num)
+    };
+  }
+}
+console.log(data.numberHandler(1,2,3,4,5));
