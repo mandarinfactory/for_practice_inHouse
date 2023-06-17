@@ -201,3 +201,5 @@ var 사람 = {
 console.log(사람.setAge = "20") // 20 --> set이 설정되어있는 함수이므로 "="만 가지고도 인수값을 넣을 수 있다.
 console.log(사람.nextAge); // 21
 // get, set 둘다 함수 앞에 써주면 함수를 호출할때 따로 ()를 붙일 필요가 없다.
+// get을 붙이려면 꼭 return이 필요하다!
+// set을 붙이려면 꼭 parameter가 꼭 하나만 필요하다!
