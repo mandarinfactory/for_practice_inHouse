@@ -149,11 +149,14 @@ class 할아버지 {
     this.성 = "김";
     this.이름 = name;
   }
+  sayHi () {
+    console.log("안녕~! 저는 할아버지에요.");
+  }
 }
 
 class 아버지 extends 할아버지 {
-  constructor (name) {
-    super(name);
+  constructor (name, name2) {
+    super(name, name2); // === class 할아버지
     this.나이 = 52;
     /* 
     extends는 배웠던것 처럼 다른 class를 복사하는 기능을 한다.
@@ -163,7 +166,13 @@ class 아버지 extends 할아버지 {
     단, 부모의 constructor에 있던 parameter 또한 같이 써줘야한다. 여기서는 name
     */
   }
+  sayHi () {
+    console.log("안녕~! 저는 아버지에요.");
+    super.sayHi();
+    // 여기서의 super는 부모class의 prototype을 뜻한다. --> console.log("안녕~! 저는 할아버지에요.");
+  }
 }
 
 var 아버지1 = new 아버지("영수")
 console.log(아버지1); // 아버지 {성: '김', 이름: "영수", 나이: 52} --> class 할아버지에 있던 성과 이름을 물려받았다.
+console.log(아버지1.sayHi()); // 안녕~! 저는 아버지에요. 안녕~! 저는 할아버지에요 (2개의 log가 찍힌다.)
