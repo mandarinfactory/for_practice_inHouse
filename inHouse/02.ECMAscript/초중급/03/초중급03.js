@@ -61,27 +61,50 @@ console.log(학생2); // StudentId {name: '최', age: 18, sayHi: ƒ}}
 function ProductInfo(a, b) {
   this.name = a;
   this.price = b;
-  console.log((this.price) * 0.1);
-};
+  console.log(this.price * 0.1);
+}
 
-let 제품1 = ProductInfo("셔츠", 35000)
+let 제품1 = ProductInfo("셔츠", 35000);
 // 여기서 constructor가 부모(StudentId, ProductInfo)고 부모를 이용해 만든 object를 자식(학생2, 제품1)이라고 한다.
 
 // prototype은 유전자라고 생각하면 된다.
 // constructor를 만들면 꼭 prototype이라는 공간이 자동으로 생긴다.
+// 내 부모 유전자(부모prototype)을 검사하고 싶다면 .__proto__라고 하면 출력된다.
 
 StudentId.prototype.gender = "남자";
 var 학생3 = new StudentId("박", 17);
 console.log(학생3); // StudentId {name: '박', age: 17, sayHi: ƒ}
 console.log(학생3.gender); // 남자
+console.log(학생3.__proto__); // Object
 // 따로 학생3에 gender 값이 없는데도 이미 prototype으로 부모에 gender값이 있으므로 "남자"가 출력된다.
 // JS는 일단 해당 값을 요청하면 자식(학생3) 확인 후 없으면 부모(StudentId···)까지 확인해보고 출력시킨다.
 
-var arr = [1,2,3];
-var arr = new Array(1,2,3); // 위 아래가 같은 방법이다.
+var arr = [1, 2, 3];
+var arr = new Array(1, 2, 3); // 위 아래가 같은 방법이다.
 /* 
 "new Array" --> 새로운 constructor를 만드는 방법과 같은걸 알 수 있다. 
 다시말해, new Array가 있다는건 상속할 수 있는 constructor가 있고, 
 이 부모prototype 안에는 .sort(), .toString()···등의 내장함수가 포함되어있다는것을 알 수 있다.
 */
 var obj = new Object(); // --> 마찬가지로 Object.prototype이라는 부모 prototype이 있다.
+
+var 부모객체1 = { name: "kim" };
+var 자식객체1 = {};
+자식객체1.__proto__ = 부모객체1; // .__proto__를 이용해서 부모-자식관계를 만들수 있다.
+console.log(자식객체1.name); // kim
+
+function StudentName(a, b) {
+  this.name = a;
+  this.age = b;
+  this.sayHi = function () {
+    console.log("반가워~!");
+  };
+}
+
+console.log(new StudentName("kim", 20).sayHi());
+console.log(new StudentName("lee", 17));
+
+var arr = [1, 2, 3];
+var arr = arr.filter((x) => x != 3);
+
+console.log(arr); //[1,2]
