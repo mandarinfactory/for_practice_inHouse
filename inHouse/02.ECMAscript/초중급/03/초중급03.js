@@ -122,6 +122,7 @@ var 손자객체1 = Object.create(자식객체2);
 console.log(손자객체1.name); // kim --> 손자객체1 > 자식객체2 > 부모객체2까지 거슬러 올라가서 확인해준다.
 
 // ES6 방식으로 구현한 상속기능 (class)
+// class문법등이 자주 듣는 객체지향 문법이다. --> 그냥 객체 여러개 만들어 쓰려고 쓰는 문법이다.
 
 class 부모 {
   constructor() {
@@ -140,3 +141,27 @@ var 자식 = new 부모();
 console.log(자식); // 부모 {name: 'brent'}
 console.log(부모.prototype); // {constructor: ƒ, sayHi: ƒ} --> 여기에만 sayHi()가 들어있는걸 볼 수 있다.
 Object.getPrototypeOf(자식); // {constructor: ƒ, sayHi: ƒ} __. getPrototypeOf() === .__proto__
+
+// 10. extends && super (class문법관련 method)
+
+class 할아버지 {
+  constructor (name) {
+    this.성 = "김";
+    this.이름 = name;
+  }
+}
+
+class 아버지 extends 할아버지 {
+  constructor () {
+    super();
+    this.나이 = 52;
+    /* 
+    extends는 배웠던것 처럼 다른 class를 복사하는 기능을 한다.
+    여기서는 class 아버지가 class 할아버지를 extends 해왔다.
+    단, extends를 쓰면 this를 쓰기전에 super()를 써줘서 JS가 헷갈리지 않도록 해준다.(this의 위치)
+    super()는 extends를 한 class를 뜻한다. 여기서는 class 할아버지를 말한다.
+    */
+  }
+}
+
+var 아버지1 = new 아버지() 
