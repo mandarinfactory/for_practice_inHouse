@@ -111,7 +111,7 @@ console.log(arr); //[1,2]
 
 // ES5부터 상속기능을 구현하는 method를 추가했다.(Object.create())
 
-var 부모객체2 = { name: "kim", age : 50 };
+var 부모객체2 = { name: "kim", age: 50 };
 var 자식객체2 = Object.create(부모객체2);
 console.log(자식객체2, 자식객체2.name); // {} 'kim'
 /* 
@@ -120,3 +120,23 @@ console.log(자식객체2, 자식객체2.name); // {} 'kim'
 */
 var 손자객체1 = Object.create(자식객체2);
 console.log(손자객체1.name); // kim --> 손자객체1 > 자식객체2 > 부모객체2까지 거슬러 올라가서 확인해준다.
+
+// ES6 방식으로 구현한 상속기능 (class)
+
+class 부모 {
+  constructor() {
+    this.name = "brent";
+  };
+  sayHi () {
+    console.log(`${this.name}안녕?`);
+  }; 
+  /* 
+  class문법을 쓰면 function을 constructor내에 쓸수도 있지만 밖에다가도 쓸 수 있다. 
+  단, constructor밖에 쓰면 자식객체에 추가되지 않는다. --> 부모.prototype에만 추가된다.
+  */
+}
+
+var 자식 = new 부모();
+console.log(자식); // 부모 {name: 'brent'}
+console.log(부모.prototype); // {constructor: ƒ, sayHi: ƒ} --> 여기에만 sayHi()가 들어있는걸 볼 수 있다.
+Object.getPrototypeOf(자식); // {constructor: ƒ, sayHi: ƒ} __. getPrototypeOf() === .__proto__
