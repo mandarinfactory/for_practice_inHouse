@@ -251,7 +251,7 @@ class MakeUnit {
   get battlePoint() {
     return this.기본공격력 + this.기본체력;
   }
-  set pointHeal (healPoint) {
+  set pointHeal(healPoint) {
     console.log(this.기본체력 + healPoint);
   }
 }
@@ -260,14 +260,22 @@ console.log(new MakeUnit().battlePoint); // 105
 new MakeUnit().pointHeal = 50; // 150
 
 var data = {
-  odd : [],
-  even : [],
-  set numberHandler (num) {
-    if (num % 2 === 0) {
-      this.even(...num)
-    } else {
-      this.odd(...num)
-    };
-  }
-}
-console.log(data.numberHandler(1,2,3,4,5));
+  odd: [],
+  even: [],
+  numHandler: function (...a) {
+    a.forEach((x) => {
+      if (x % 2 == 1) {
+        this.odd.push(x);
+      } else {
+        this.even.push(x);
+      }
+    });
+  },
+  get numLinear() {
+    return [...this.odd, ...this.even].sort();
+  },
+};
+
+data.numHandler(2, 7, 4, 5, 6, 1, 3);
+console.log(data.odd, data.even);
+console.log(data.numLinear);
