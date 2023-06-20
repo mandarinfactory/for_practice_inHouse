@@ -27,3 +27,30 @@ function 함수2([name, age]) {
   console.log(age); // 2
 }
 함수2([1, 2]); // 배열일때
+
+let {
+  body: { height: 키, weight: 몸무게 },
+  size: [상의사이즈, 하의사이즈],
+} = {
+  body: {
+    height: 190,
+    weight: 70,
+  },
+  size: ["상의 Large", "바지 30인치"],
+};
+console.log(키, 몸무게, 상의사이즈, 하의사이즈); // 190 70 '상의 Large' '바지 30인치'
+
+// 13. import, export
+
+var a = 10;
+var b = 20;
+var c = 30;
+
+//export default a;
+export {a, b};
+// export default 내보낼값; --> export보낼때의 값의 이름과 import 받을때의 이름이 같을필요는 없다.
+// export는 해당 값의 이름을 적어야하지만 import할때는 임의의 이름을 적어도 무방하다.
+// export default는 값이 몇개이든 한번만 쓸 수 있다. --> 보내야할 값이 여러개이면 export {}꼴로 써줘야한다.
+
+export default c;
+// export를 쓰고 export default를 동시에 쓸수 있다.

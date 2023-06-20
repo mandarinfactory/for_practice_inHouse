@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    <script src="./초중급04.js"></script>
-</body>
+  </head>
+  <body>
+    <script type="module">
+      import c,{a, b} from "/초중급04.js"; // export default로 var 1 = 10값을 aaa값으로 가져온다.
+      // import 가져올값 from "경로";
+      // export로 가져올 값들이 2개이상 이면 {해당값의 이름}꼴로 그대로 적어줘야한다. --> 여기서는 {a, b}
+
+      // export와 export default된 값은 같이 import 할수 있다. --> 단, export default로 가져온 값이 제일 먼저 우선한다!
+      console.log(a, b, c); // 10 20 30
+    </script>
+  </body>
 </html>
