@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
+import { useResultContext } from "../../contexts/MapDataContext";
 
 const MapDescRawData = (props) => {
+  const { result } = useResultContext();
   const title = props.row.title;
   const instaLink = props.row.link;
   const category = props.row.category;
@@ -16,6 +18,7 @@ const MapDescRawData = (props) => {
       <h1>{address}</h1>
       <h1>{lat}</h1>
       <h1>{lng}</h1>
+      {result(lat, lng)}
     </div>
   );
 };
@@ -48,8 +51,7 @@ export default function MapDesc() {
       {mapDesc &&
         mapDesc.map((v, index) => {
           return <MapDescRawData key={index} row={v} />;
-        })
-      }
+        })}
     </div>
   );
 }

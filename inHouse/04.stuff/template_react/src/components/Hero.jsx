@@ -1,13 +1,14 @@
-import { useState } from "react";
 import Map from "../API/MapAPI";
 import MapDesc from "./mapdesc/MapDesc";
+import { ResultContextProvider } from "../contexts/MapDataContext";
 
 export default function Hero() {
-
   return (
-    <div className="flex flex-row">
-      <MapDesc/>
-      <Map/>
-    </div>
+    <ResultContextProvider>
+      <div className="flex flex-row">
+        <MapDesc />
+        <Map />
+      </div>
+    </ResultContextProvider>
   );
 }
