@@ -3,12 +3,12 @@ import { useResultContext } from "../contexts/MapDataContext";
 
 const Map = ({ setLatInfo, setLngInfo }) => {
   const mapElement = useRef(null);
-  const { setResult } = useResultContext();
+/*   const { setResult } = useResultContext(); */
 
   useEffect(() => {
     const { naver } = window;
     if (!mapElement.current || !naver) return;
-    console.log(setResult());
+    /* console.log(setResult()); */
 
     //로케이션표시 Google maps에서 원하는 장소 찾은 후 주변검색을 누르면 좌표를 찾을 수 있다.
     const location = new naver.maps.LatLng(37.5663, 126.9779);

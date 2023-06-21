@@ -9,6 +9,8 @@ const MapDescRawData = (props) => {
   const address = props.row.address;
   const lat = props.row.mapx;
   const lng = props.row.mapy;
+  result.push(lat)
+  console.log(result);
 
   return (
     <div className="py-10">
@@ -18,7 +20,6 @@ const MapDescRawData = (props) => {
       <h1>{address}</h1>
       <h1>{lat}</h1>
       <h1>{lng}</h1>
-      {result(lat, lng)}
     </div>
   );
 };
