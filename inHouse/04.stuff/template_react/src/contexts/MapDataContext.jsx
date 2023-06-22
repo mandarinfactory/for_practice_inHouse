@@ -6,11 +6,14 @@ export const ResultContext = createContext(undefined);
 // CreateContext 선언
 
 export function ResultContextProvider({ children }) {
-  const [result, setResult] = useState([]); // global하게 관리할 state
+  const [resultLat, setResultLat] = useState([]); // global하게 관리할 state
+  const [resultLng, setResultLng] = useState([]); // global하게 관리할 state
 
   const value = {
-    result,
-    setResult,
+    resultLat,
+    setResultLat,
+    resultLng,
+    setResultLng,
   };
 
   return <ResultContext.Provider value={value}>{children}</ResultContext.Provider>
