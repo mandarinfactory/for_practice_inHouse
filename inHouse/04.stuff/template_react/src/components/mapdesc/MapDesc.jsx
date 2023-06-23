@@ -13,7 +13,6 @@ const MapDescRawData = (props) => {
   //global context에 각각 위, 경도 useContext로 추가함
   resultLat.push(lat);
   resultLng.push(lng);
-  console.log(resultLat, resultLng);
 
   return (
     <div className="py-10">
