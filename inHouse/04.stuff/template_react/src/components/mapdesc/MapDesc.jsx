@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useResultContext } from "../../contexts/MapDataContext";
 
 const MapDescRawData = (props) => {
-  const { resultLat, resultLng } = useResultContext();
+  const { resultTitle, resultInstaLink, resultCategory, resultAddress, resultLat, resultLng } = useResultContext();
   const title = props.row.title;
   const instaLink = props.row.link;
   const category = props.row.category;
@@ -10,7 +10,10 @@ const MapDescRawData = (props) => {
   const lat = props.row.mapx;
   const lng = props.row.mapy;
 
-  //global context에 각각 위, 경도 useContext로 추가함
+  resultTitle.push(title);
+  resultInstaLink.push(instaLink);
+  resultCategory.push(category);
+  resultAddress.push(address);
   resultLat.push(lat);
   resultLng.push(lng);
 
@@ -46,7 +49,7 @@ export default function MapDesc() {
     });
   };
   useEffect(() => {
-    apiGet("local.json", "카페,맛집,관광명소");
+    apiGet("local.json", "카페");
     /* 인수 하드코딩! */
   }, []);
   return (
