@@ -6,9 +6,11 @@ export default {
   ],
   theme: {
     fontFamily: {
-      "sans" : ["NanumSquare-Neo"]
+      "sans" : ["NanumSquare-Neo"],
     },
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    require('tailwindcss-animated')
+  ],
 }
