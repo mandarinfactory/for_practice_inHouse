@@ -4,8 +4,8 @@ export default function Header() {
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
         <h1 className="mr-20 text-3xl font-bold text-black drop-shadow-lg">무비써치</h1>
         <nav className="md:ml-auto my-5 flex flex-wrap items-center text-base justify-center">
-          <a className="mr-20 text-2xl font-bold hover:text-white cursor-pointer drop-shadow-lg duration-200">login</a>
-          <a className="mr-10 text-2xl font-bold hover:text-white cursor-pointer drop-shadow-lg duration-200">my taste</a>
+          <a className="mr-20 text-2xl font-bold hover:text-white cursor-pointer drop-shadow-lg duration-200">로그인</a>
+          <a className="mr-10 text-2xl font-bold hover:text-white cursor-pointer drop-shadow-lg duration-200">추천영화</a>
         </nav>
       </div>
     </header>
