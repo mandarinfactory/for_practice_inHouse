@@ -5,7 +5,6 @@ export default function AboutMe () {
     return (
         <Layout>
             <AboutMeDescription/>
-
         </Layout>
     );
 };
