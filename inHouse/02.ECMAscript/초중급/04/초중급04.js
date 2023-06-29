@@ -115,12 +115,18 @@ var 프로미스 = new Promise(function (resolve, reject) {
   .catch(function () {}); //Promise가 실패할경우 catch(~)을 실행한다. --> 코드가 실패할 경우에도 실행이 된다.
 
 var 프로미스2 = new Promise(function (resolve, reject) {
-  setTimeout(function (){
+  setTimeout(function () {
     resolve();
-  },1000);
+  }, 1000);
 });
-프로미스2.then(function () {
-  console.log("성공!");
-}).catch(function () {
-  console.log("실패!");
-})
+프로미스2
+  .then(function () {
+    console.log("성공!");
+  })
+  .catch(function () {
+    console.log("실패!");
+  });
+/* 
+Promise는 성공하면(성공을 출력하면) resolved, 판정대기중이면 pending, 실패하면 rejected가 출력된다.
+fetch(), jQuery.ajax() 둘다 Promise가 적용된 함수이다.
+*/
