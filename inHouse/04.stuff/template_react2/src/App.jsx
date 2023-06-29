@@ -46,6 +46,7 @@ function App() {
         isLoading={isLoading}
         moviesInfo={moviesInfo}
         searchedMovie={searchedMovie}
+        searchMovieKeyword={searchMovieKeyword}
         setSearchMovieKeyword={setSearchMovieKeyword}
       />
     </Layout>

@@ -1,7 +1,10 @@
+import CinemaMap from "../CinemaMap";
+
 export default function Hero({
   isLoading,
   moviesInfo,
   searchedMovie,
+  searchMovieKeyword,
   setSearchMovieKeyword,
 }) {
   return (
@@ -25,32 +28,34 @@ export default function Hero({
           </div>
         )}
       </div>
+      <CinemaMap/>
       <input
-        className="w-[50%] p-5 opacity-40 rounded-lg text-2xl shadow-xl"
+        className="w-[50%] p-5 my-10 opacity-40 rounded-lg text-2xl shadow-xl"
         type="text"
         placeholder="영화를 검색해보세요."
         onChange={(e) => {
           setSearchMovieKeyword(e.target.value);
         }}
       />
-      {searchedMovie ? (
+      {searchedMovie && searchMovieKeyword ? (
         <div className="flex flex-col justify-center items-start w-[50%] p-5 my-10 bg-white rounded-xl backdrop-filter backdrop-blur-md bg-opacity-10 border-gray-200 shadow-xl">
           {searchedMovie.map((movie, i) => (
-            <div className="w-full flex flex-row justify-between" key={i}>
+            <div className="w-full flex flex-row justify-between items-center" key={i}>
               <h2
-                className="my-3 text-xl font-bold text-gray-800 hover:text-black cursor-pointer"
+                className="my-3 text-xl text-gray-800 hover:text-black cursor-pointer"
                 key={i}
               >
                 {movie.movieNm}
               </h2>
-              <p className="text-sm italic text-gray-900">{movie.genreAlt} / {movie.movieNmEn}</p>
+              <p className="text-sm italic text-gray-900">
+                {movie.genreAlt} / {movie.movieNmEn}
+              </p>
             </div>
           ))}
         </div>
       ) : (
-        <div>
-          <h1 className="p-10 text-3xl">로딩중......</h1>
-        </div>
+        <>
+        </>
       )}
     </div>
   );

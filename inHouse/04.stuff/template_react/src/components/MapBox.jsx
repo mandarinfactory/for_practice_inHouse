@@ -6,9 +6,8 @@ export default function MapBox({
   coordinates,
   setCoordinates,
   setBounds,
-  setChildClicked
+  setChildClicked,
 }) {
-
   return (
     <div className="flex-[0.7]  w-auto h-[800px]">
       <GoogleMapReact
@@ -17,7 +16,11 @@ export default function MapBox({
         center={coordinates}
         defaultZoom={15}
         margin={[50, 50, 50, 50]}
-        options={{ disableDefaultUI : true, zoomControl : true, styles : MapStyles }}
+        options={{
+          disableDefaultUI: true,
+          zoomControl: true,
+          styles: MapStyles,
+        }}
         onChange={(e) => {
           setCoordinates({ lat: e.center.lat, lng: e.center.lng });
           setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw });
@@ -45,8 +48,8 @@ export default function MapBox({
                 className="p-2 w-[100%] h-[55%]"
                 src={
                   place.photo
-                  ? place.photo.images.large.url
-                  : "https://images.unsplash.com/photo-1552566626-52f8b828add9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8cmVzdGF1cmFudHxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+                    ? place.photo.images.large.url
+                    : "https://images.unsplash.com/photo-1552566626-52f8b828add9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8cmVzdGF1cmFudHxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
                 }
                 alt={place.name}
               />
