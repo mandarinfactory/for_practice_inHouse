@@ -29,10 +29,9 @@ export default function MapBox({
       >
         {places?.map((place, i) => (
           <div
-            className=""
             lat={Number(place.latitude)}
             lng={Number(place.longitude)}
-            ket={i}
+            key={i}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
