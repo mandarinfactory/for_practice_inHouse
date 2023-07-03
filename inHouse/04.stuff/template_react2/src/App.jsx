@@ -4,6 +4,7 @@ import Hero from "./components/screen/Hero";
 
 function App() {
   const KEY = "03d2542e7c0e7e77045f52c5567f0546";
+  const ALTKEY = "Y9097046I5G4HIUSN831";
   const DATE = "20230626";
 
   const [isLoading, setIsLoading] = useState(true);
@@ -21,25 +22,13 @@ function App() {
     setIsLoading(false);
   };
 
-  /*   const searchMovieInfo = async () => {
-    const json = await (
-      await fetch(
-        `http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.json?key=${KEY}&movieNm=${searchMovieKeyword}`
-      )
-    ).json();
-    setSearchedMovie(json.movieListResult.movieList);
-    setIsLoading(false);
-  }; */
-
-  const ALTKEY = "Y9097046I5G4HIUSN831";
-
-  const AltSearchMovieInfo = async () => {
+  const searchMovieInfo = async () => {
     const json = await (
       await fetch(
         `http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json2.jsp?collection=kmdb_new2&ServiceKey=${ALTKEY}&query=${searchMovieKeyword}`
       )
     ).json();
-    console.log(json.Data[0].Result[0].title);
+    console.log(json.Data[0].Result);
     setSearchedMovie(json.Data[0].Result)
     setIsLoading(false);
   };
@@ -50,7 +39,7 @@ function App() {
 
   useEffect(() => {
     getMovieInfo();
-    AltSearchMovieInfo();
+    searchMovieInfo();
   }, [searchMovieKeyword]); // []내 해당 state가 변경될때마다 새로고침 됨
 
   return (

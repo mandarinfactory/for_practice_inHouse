@@ -48,12 +48,23 @@ export default function Hero({
                 key={i}
               >
                 {movie.title.includes("!")
-                  ? movie.title.replace(/!HS?E?/ig, "")
-                  :  movie.title}
+                  ? movie.title.replace(/!HS?E?/gi, "")
+                  : movie.title}
               </h2>
               <p className="text-sm italic text-gray-900">
                 {movie.genre} / {movie.titleEng}
               </p>
+              <div>
+                {movie.posters ? (
+                  <div className="w-[60%] h-[50%] object-contain">
+                    <img src={movie.posters} alt="movie-poster" />
+                  </div>
+                ) : (
+                  <div className="w-[20%] h-[50%] object-contain">
+                    <img src="https://img.freepik.com/premium-vector/cinema-items-retro-style-movie-tickets-film-clapperboard-popcorn-bucket-vintage-reel-3d-glasses-composition-cinematography-industry-colored-flat-vector-illustration-isolated-white_198278-14391.jpg" alt="movie-template" />
+                  </div>
+                )}
+              </div>
             </div>
           ))}
         </div>
