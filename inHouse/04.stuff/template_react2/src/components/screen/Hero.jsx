@@ -17,8 +17,8 @@ export default function Hero({
             <h1 className="my-7 text-3xl font-extrabold">현재 박스오피스</h1>
             {moviesInfo.map((movie, i) => (
               <div
-              className="p-2 my-1 bg-white backdrop-filter backdrop-blur-md bg-opacity-10 border-gray-200 shadow-md animate-fade-left duration-100"
-              key={movie.movieCd}
+                className="p-2 my-1 bg-white backdrop-filter backdrop-blur-md bg-opacity-10 border-gray-200 shadow-md animate-fade-left duration-100"
+                key={movie.movieCd}
               >
                 <h3 className="mx-10 my-3 text-3xl">
                   {i + 1}. {movie.movieNm}
@@ -47,10 +47,12 @@ export default function Hero({
                 className="my-3 text-xl text-gray-800 hover:text-black cursor-pointer"
                 key={i}
               >
-                {movie.movieNm}
+                {movie.title.includes("!")
+                  ? movie.title.replace(/!HS?E?/ig, "")
+                  :  movie.title}
               </h2>
               <p className="text-sm italic text-gray-900">
-                {movie.genreAlt} / {movie.movieNmEn}
+                {movie.genre} / {movie.titleEng}
               </p>
             </div>
           ))}
