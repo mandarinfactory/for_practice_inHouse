@@ -43,28 +43,38 @@ export default function Hero({
               className="w-full flex flex-row justify-between items-center"
               key={i}
             >
+              <div className="flex flex-col justify-center items-start">
               <h2
-                className="my-3 text-xl text-gray-800 hover:text-black cursor-pointer"
+                className="my-3 text-2xl font-bold text-gray-800 hover:text-black cursor-pointer"
                 key={i}
               >
                 {movie.title.includes("!")
                   ? movie.title.replace(/!HS?E?/gi, "")
                   : movie.title}
               </h2>
+              <div>
+                {movie.posters ? (
+                  <div className="w-[40%] h-auto object-contain shadow-lg">
+                    <img
+                      src={
+                        movie.posters.includes("|")
+                          ? movie.posters.substring(
+                              0,
+                              movie.posters.indexOf("|")
+                            )
+                          : movie.posters
+                      }
+                      alt="movie-poster"
+                    />
+                  </div>
+                ) : (
+                  <></>
+                )}
+              </div>
+              </div>
               <p className="text-sm italic text-gray-900">
                 {movie.genre} / {movie.titleEng}
               </p>
-              <div>
-                {movie.posters ? (
-                  <div className="w-[60%] h-[50%] object-contain">
-                    <img src={movie.posters} alt="movie-poster" />
-                  </div>
-                ) : (
-                  <div className="w-[20%] h-[50%] object-contain">
-                    <img src="https://img.freepik.com/premium-vector/cinema-items-retro-style-movie-tickets-film-clapperboard-popcorn-bucket-vintage-reel-3d-glasses-composition-cinematography-industry-colored-flat-vector-illustration-isolated-white_198278-14391.jpg" alt="movie-template" />
-                  </div>
-                )}
-              </div>
             </div>
           ))}
         </div>
