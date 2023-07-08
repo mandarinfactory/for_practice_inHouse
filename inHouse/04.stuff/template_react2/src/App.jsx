@@ -28,7 +28,6 @@ function App() {
         `http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json2.jsp?collection=kmdb_new2&ServiceKey=${ALTKEY}&query=${searchMovieKeyword}`
       )
     ).json();
-    console.log(json.Data[0].Result);
     setSearchedMovie(json.Data[0].Result)
     setIsLoading(false);
   };

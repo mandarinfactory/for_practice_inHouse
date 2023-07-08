@@ -1,4 +1,6 @@
+import { useState } from "react";
 import CinemaMap from "../CinemaMap";
+import DetailMovieInfos from "./DetailMovieInfos";
 
 export default function Hero({
   isLoading,
@@ -7,6 +9,9 @@ export default function Hero({
   searchMovieKeyword,
   setSearchMovieKeyword,
 }) {
+  const [movieVal, setMovieVal] = useState();
+  const [detailMovieInfos, setDetailMovieInfos] = useState(false);
+
   return (
     <div className="w-full h-full flex flex-col justify-center items-center">
       <div className="w-[50%]">
@@ -44,33 +49,37 @@ export default function Hero({
               key={i}
             >
               <div className="flex flex-col justify-center items-start">
-              <h2
-                className="my-3 text-2xl font-bold text-gray-800 hover:text-black cursor-pointer"
-                key={i}
-              >
-                {movie.title.includes("!")
-                  ? movie.title.replace(/!HS?E?/gi, "")
-                  : movie.title}
-              </h2>
-              <div>
-                {movie.posters ? (
-                  <div className="w-[40%] h-auto object-contain shadow-lg">
-                    <img
-                      src={
-                        movie.posters.includes("|")
-                          ? movie.posters.substring(
-                              0,
-                              movie.posters.indexOf("|")
-                            )
-                          : movie.posters
-                      }
-                      alt="movie-poster"
-                    />
-                  </div>
-                ) : (
-                  <></>
-                )}
-              </div>
+                <h2
+                  className="my-3 text-2xl font-bold text-gray-800 hover:text-black cursor-pointer"
+                  key={i}
+                  onClick={() => {
+                    setDetailMovieInfos(true);
+                    setMovieVal(searchedMovie[i]);
+                  }}
+                >
+                  {movie.title.includes("!")
+                    ? movie.title.replace(/!HS?E?/gi, "")
+                    : movie.title}
+                </h2>
+                <div>
+                  {movie.posters ? (
+                    <div className="w-[40%] h-auto object-contain shadow-lg">
+                      <img
+                        src={
+                          movie.posters.includes("|")
+                            ? movie.posters.substring(
+                                0,
+                                movie.posters.indexOf("|")
+                              )
+                            : movie.posters
+                        }
+                        alt="movie-poster"
+                      />
+                    </div>
+                  ) : (
+                    <></>
+                  )}
+                </div>
               </div>
               <p className="text-sm italic text-gray-900">
                 {movie.genre} / {movie.titleEng}
@@ -82,6 +91,7 @@ export default function Hero({
         <></>
       )}
       <CinemaMap />
+      {detailMovieInfos ? <DetailMovieInfos movieVal={movieVal} /> : <></>}
     </div>
   );
 }
