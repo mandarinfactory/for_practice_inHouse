@@ -1,5 +1,4 @@
 export default function DetailMovieInfos({ movieVal, setDetailMovieInfos }) {
-  console.log(movieVal);
   const actorsName = [];
   movieVal.actors.actor.forEach((v) => {
     actorsName.push(`${v.actorNm}, `);
@@ -8,7 +7,7 @@ export default function DetailMovieInfos({ movieVal, setDetailMovieInfos }) {
   actorsName.splice(actorsName.length - 2, 1); // 계속,이 붙어있는 문자열은 제거해줌.
 
   return (
-    <div className="flex flex-col justify-center items-center absolute w-[35%] h-full bg-slate-50 shadow-lg rounded-xl">
+    <div className="flex flex-col justify-center items-center absolute w-[35%] h-full bg-slate-50 shadow-lg rounded-xl" onClick={() => setDetailMovieInfos(false)}>
       <button onClick={() => setDetailMovieInfos(false)}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -33,8 +32,12 @@ export default function DetailMovieInfos({ movieVal, setDetailMovieInfos }) {
           ? movieVal.title.replace(/!HS?E?/gi, "")
           : movieVal.title}
       </h1>
-      <p className="my-1 text-lg font-bold">감독 : {movieVal.directors.director[0].directorNm}</p>
-      <p className="flex justify-center w-[70%] my-1 text-lg font-bold">배우 : {actorsName}</p>
+      <p className="my-1 text-lg font-bold">
+        감독 : {movieVal.directors.director[0].directorNm}
+      </p>
+      <p className="flex justify-center w-[70%] my-1 text-lg font-bold">
+        배우 : {actorsName}
+      </p>
       <p className="my-1">
         {movieVal.ratings.rating[0].ratingGrade.includes("|")
           ? movieVal.ratings.rating[0].ratingGrade.substring(
