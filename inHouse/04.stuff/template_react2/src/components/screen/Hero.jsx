@@ -91,7 +91,7 @@ export default function Hero({
         <></>
       )}
       <CinemaMap />
-      {detailMovieInfos ? <DetailMovieInfos movieVal={movieVal} /> : <></>}
+      {detailMovieInfos ? <DetailMovieInfos movieVal={movieVal} setDetailMovieInfos={setDetailMovieInfos}/> : <></>}
     </div>
   );
 }
