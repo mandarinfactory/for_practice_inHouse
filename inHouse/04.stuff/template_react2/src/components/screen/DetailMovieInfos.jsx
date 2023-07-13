@@ -7,7 +7,7 @@ export default function DetailMovieInfos({ movieVal, setDetailMovieInfos }) {
   actorsName.splice(actorsName.length - 2, 1); // 계속,이 붙어있는 문자열은 제거해줌.
 
   return (
-    <div className="flex flex-col justify-center items-center absolute w-[35%] h-full bg-slate-50 shadow-lg rounded-xl" onClick={() => setDetailMovieInfos(false)}>
+    <div className="flex flex-col justify-center items-center absolute w-[35%] h-full bg-white shadow-lg rounded-xl overflow-auto animate-fade animate-duration-200">
       <button onClick={() => setDetailMovieInfos(false)}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -19,7 +19,7 @@ export default function DetailMovieInfos({ movieVal, setDetailMovieInfos }) {
         </svg>
       </button>
       <img
-        className="w-[40%] h-auto my-10"
+        className="w-[40%] h-auto my-10 shadow-lg"
         src={
           movieVal.posters.includes("|")
             ? movieVal.posters.substring(0, movieVal.posters.indexOf("|"))
@@ -44,7 +44,7 @@ export default function DetailMovieInfos({ movieVal, setDetailMovieInfos }) {
               0,
               movieVal.ratings.rating[0].ratingGrade.indexOf("|")
             )
-          : movieVal.ratings.rating[0].ratingGrade}
+          : movieVal.ratings.rating[0].ratingGrade} / {movieVal.repRlsDate} 개봉
       </p>
       <p className="w-[70%] my-3">{movieVal.plots.plot[0].plotText}</p>
     </div>

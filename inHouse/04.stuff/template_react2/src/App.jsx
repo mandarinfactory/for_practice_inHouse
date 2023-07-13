@@ -11,8 +11,9 @@ function App() {
   const [moviesInfo, setMoviesInfo] = useState([]);
   const [searchMovieKeyword, setSearchMovieKeyword] = useState("");
   const [searchedMovie, setSearchedMovie] = useState();
+  const [boxOfficeInfo, setBoxOfficeInfo] = useState();
 
-  const getMovieInfo = async () => {
+  const getBoxOfficeInfo = async () => {
     const json = await (
       await fetch(
         `http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=${KEY}&targetDt=${DATE}&itemPerPage=5`
@@ -22,23 +23,27 @@ function App() {
     setIsLoading(false);
   };
 
-  const searchMovieInfo = async () => {
+  const getSearchMovieInfo = async () => {
     const json = await (
       await fetch(
         `http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json2.jsp?collection=kmdb_new2&ServiceKey=${ALTKEY}&query=${searchMovieKeyword}`
       )
     ).json();
-    setSearchedMovie(json.Data[0].Result)
+    {
+      searchMovieKeyword.includes(" ")
+        ? setBoxOfficeInfo(json.Data[0].Result)
+        : setSearchedMovie(json.Data[0].Result);
+    }
     setIsLoading(false);
   };
 
   useEffect(() => {
-    getMovieInfo();
+    getBoxOfficeInfo();
   }, []); // 브라우저가 실행될때 한번만 됨
 
   useEffect(() => {
-    getMovieInfo();
-    searchMovieInfo();
+    getBoxOfficeInfo();
+    getSearchMovieInfo();
   }, [searchMovieKeyword]); // []내 해당 state가 변경될때마다 새로고침 됨
 
   return (
@@ -49,6 +54,8 @@ function App() {
         searchedMovie={searchedMovie}
         searchMovieKeyword={searchMovieKeyword}
         setSearchMovieKeyword={setSearchMovieKeyword}
+        boxOfficeInfo={boxOfficeInfo}
+        setBoxOfficeInfo={setBoxOfficeInfo}
       />
     </Layout>
   );

@@ -2,7 +2,7 @@ import { useState, useEffect, createRef } from "react";
 import MapInfoBoxCard from "../components/screen/MapInfoBox/MapInfoBoxCard";
 import MapInfoBoxHeader from "./screen/MapInfoBox/MapInfoBoxHeader";
 
-export default function MapInfoBox({ type, setType, places, isLoading, childClicked }) {
+export default function MapInfoBox({ type, setType, places, childClicked }) {
 
   const [eleRefs, setEleRefs] = useState([]);
 
