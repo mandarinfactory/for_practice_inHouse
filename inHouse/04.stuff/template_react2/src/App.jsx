@@ -44,6 +44,7 @@ function App() {
   useEffect(() => {
     getBoxOfficeInfo();
     getSearchMovieInfo();
+    searchMovieKeyword
   }, [searchMovieKeyword]); // []내 해당 state가 변경될때마다 새로고침 됨
 
   return (

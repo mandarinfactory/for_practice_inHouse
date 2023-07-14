@@ -28,7 +28,6 @@ export default function Hero({
                 data-key={movie.movieCd}
                 key={movie.movieCd}
                 onClick={(v) => {
-                  console.log(searchMovieKeyword);
                   setSearchMovieKeyword(
                     v.target.innerText.replace(/1?2?3?4?5?./, "")
                   );
@@ -39,6 +38,7 @@ export default function Hero({
                   if (filteredInfo !== undefined) {
                     setMovieVal(filteredInfo);
                     setDetailMovieInfos(true);
+                    setNotUpdatedInfos(false);
                   } else {
                     setNotUpdatedInfos(true);
                   }
@@ -57,10 +57,10 @@ export default function Hero({
         type="text"
         placeholder="영화를 검색해보세요."
         onChange={(e) => {
-          setSearchMovieKeyword(e.target.value);
+          setSearchMovieKeyword(e.target.value)
         }}
       />
-      {searchedMovie && searchMovieKeyword ? (
+      {searchedMovie && !searchMovieKeyword.includes(" ") && searchMovieKeyword ? (
         <div className="flex flex-col justify-center items-start w-[50%] p-5 my-10 bg-white rounded-xl backdrop-filter backdrop-blur-md bg-opacity-50 border-gray-200 shadow-xl">
           {searchedMovie.map((movie, i) => (
             <div
@@ -112,11 +112,14 @@ export default function Hero({
           setDetailMovieInfos={setDetailMovieInfos}
         />
       ) : (
-        <NotUpdatedInfos
-        notUpdatedInfos={notUpdatedInfos}
-        setNotUpdatedInfos={setNotUpdatedInfos}
-        />
+        <></>
       )}
+      {notUpdatedInfos ? (
+        <NotUpdatedInfos setNotUpdatedInfos={setNotUpdatedInfos} />
+      ) : (
+        <></>
+      )}
+      ;
     </div>
   );
 }

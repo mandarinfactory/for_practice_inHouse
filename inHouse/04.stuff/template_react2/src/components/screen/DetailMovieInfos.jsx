@@ -7,7 +7,7 @@ export default function DetailMovieInfos({ movieVal, setDetailMovieInfos }) {
   actorsName.splice(actorsName.length - 2, 1); // 계속,이 붙어있는 문자열은 제거해줌.
 
   return (
-    <div className="flex flex-col justify-center items-center absolute w-[35%] h-full bg-white shadow-lg rounded-xl overflow-auto animate-fade animate-duration-200">
+    <div className="flex justify-center items-center absolute top-[20%] w-[35%] h-auto p-10 bg-white shadow-lg rounded-xl overflow-auto animate-fade animate-duration-200">
       <button onClick={() => setDetailMovieInfos(false)}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -19,7 +19,7 @@ export default function DetailMovieInfos({ movieVal, setDetailMovieInfos }) {
         </svg>
       </button>
       <img
-        className="w-[40%] h-auto my-10 shadow-lg"
+        className="w-[40%] h-auto m-10 shadow-lg"
         src={
           movieVal.posters.includes("|")
             ? movieVal.posters.substring(0, movieVal.posters.indexOf("|"))
@@ -27,26 +27,29 @@ export default function DetailMovieInfos({ movieVal, setDetailMovieInfos }) {
         }
         alt="movie-poster"
       />
-      <h1 className="text-3xl font-bold my-3">
-        {movieVal.title.includes("!")
-          ? movieVal.title.replace(/!HS?E?/gi, "")
-          : movieVal.title}
-      </h1>
-      <p className="my-1 text-lg font-bold">
-        감독 : {movieVal.directors.director[0].directorNm}
-      </p>
-      <p className="flex justify-center w-[70%] my-1 text-lg font-bold">
-        배우 : {actorsName}
-      </p>
-      <p className="my-1">
-        {movieVal.ratings.rating[0].ratingGrade.includes("|")
-          ? movieVal.ratings.rating[0].ratingGrade.substring(
-              0,
-              movieVal.ratings.rating[0].ratingGrade.indexOf("|")
-            )
-          : movieVal.ratings.rating[0].ratingGrade} / {movieVal.repRlsDate} 개봉
-      </p>
-      <p className="w-[70%] my-3">{movieVal.plots.plot[0].plotText}</p>
+      <div className="p-5 flex flex-col">
+        <h1 className="p-1 text-3xl font-bold my-3 bg-gradient-to-r from-yellow-400 to-blue-500 text-black shadow-xl drop-shadow-lg">
+          {movieVal.title.includes("!")
+            ? movieVal.title.replace(/!HS?E?/gi, "")
+            : movieVal.title}
+        </h1>
+        <p className="my-1 text-xl font-bold">
+          감독 : {movieVal.directors.director[0].directorNm}
+        </p>
+        <p className="flex justify-center w-full my-1 text-xl font-bold">
+          배우 : {actorsName}
+        </p>
+        <p className="my-1 text-xl">
+          {movieVal.ratings.rating[0].ratingGrade.includes("|")
+            ? movieVal.ratings.rating[0].ratingGrade.substring(
+                0,
+                movieVal.ratings.rating[0].ratingGrade.indexOf("|")
+              )
+            : movieVal.ratings.rating[0].ratingGrade}{" "}
+          / {movieVal.repRlsDate} 개봉
+        </p>
+        <p className="w-full my-3 text-lg font-bold">{movieVal.plots.plot[0].plotText}</p>
+      </div>
     </div>
   );
 }
