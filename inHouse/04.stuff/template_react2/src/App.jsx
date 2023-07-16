@@ -56,8 +56,11 @@ function App() {
 
   useEffect(() => {
     getBoxOfficeInfo();
-    getSearchGenreMovies();
   }, []); // 브라우저가 실행될때 한번만 됨
+  
+  useEffect(() => {
+    getSearchGenreMovies();
+  },[genres])
 
   useEffect(() => {
     getBoxOfficeInfo();
@@ -83,6 +86,9 @@ function App() {
         curatedMovie={curatedMovie}
         setMovieVal={setMovieVal}
         setDetailMovieInfos={setDetailMovieInfos}
+        genre={genre}
+        randomNumber={randomNumber}
+        setGenres={setGenres}
       />
     </Layout>
   );

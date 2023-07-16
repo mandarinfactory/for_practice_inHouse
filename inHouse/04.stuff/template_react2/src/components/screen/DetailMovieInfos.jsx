@@ -19,7 +19,7 @@ export default function DetailMovieInfos({ movieVal, setDetailMovieInfos }) {
         </svg>
       </button>
       <img
-        className="w-[50%] h-auto m-10 shadow-lg hover:scale-[1.3] duration-300"
+        className="w-[20%] h-auto m-10 shadow-lg hover:scale-[1.3] duration-300"
         src={
           movieVal.posters
             ? movieVal.posters.includes("|")
