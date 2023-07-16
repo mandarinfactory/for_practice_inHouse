@@ -1,5 +1,4 @@
 export default function DetailMovieInfos({ movieVal, setDetailMovieInfos }) {
-  console.log(movieVal);
   const actorsName = [];
   movieVal.actors.actor.forEach((v) => {
     actorsName.push(`${v.actorNm}, `);

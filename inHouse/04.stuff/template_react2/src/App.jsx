@@ -15,7 +15,7 @@ function App() {
   const [searchMovieKeyword, setSearchMovieKeyword] = useState();
   const [searchedMovie, setSearchedMovie] = useState();
   const [boxOfficeInfo, setBoxOfficeInfo] = useState();
-  const [genres, setGenres] =useState(genre[randomNumber]);
+  const [genres, setGenres] = useState(genre[randomNumber]);
   const [curatedMovie, setCuratedMovie] = useState();
   const [movieVal, setMovieVal] = useState();
   const [detailMovieInfos, setDetailMovieInfos] = useState(false);

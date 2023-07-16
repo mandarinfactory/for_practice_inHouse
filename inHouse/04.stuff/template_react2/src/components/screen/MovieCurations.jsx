@@ -19,17 +19,19 @@ export default function MovieCurations({
                 setMovieVal(curatedMovie[i]);
               }}
             >
-              <img
-                src={
-                  movie.posters
-                    ? movie.posters.includes("|")
-                      ? movie.posters.substring(0, movie.posters.indexOf("|"))
-                      : movie.posters
-                    : "https://s.studiobinder.com/wp-content/uploads/2017/12/Movie-Poster-Template-Dark-with-Image.jpg?x81279"
-                }
-                alt="movie poster"
-                className="w-full h-full cursor-pointer"
-              />
+              <div className="w-full h-full overflow-hidden">
+                <img
+                  src={
+                    movie.posters
+                      ? movie.posters.includes("|")
+                        ? movie.posters.substring(0, movie.posters.indexOf("|"))
+                        : movie.posters
+                      : "https://s.studiobinder.com/wp-content/uploads/2017/12/Movie-Poster-Template-Dark-with-Image.jpg?x81279"
+                  }
+                  alt="movie poster"
+                  className="w-full h-full cursor-pointer hover:scale-110 duration-300"
+                />
+              </div>
               <h1 className="my-2 text-xl font-bold">{movie.title}</h1>
             </div>
           ))
