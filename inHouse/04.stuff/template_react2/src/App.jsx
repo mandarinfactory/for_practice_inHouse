@@ -7,8 +7,8 @@ function App() {
   const KEY = "03d2542e7c0e7e77045f52c5567f0546";
   const ALTKEY = "Y9097046I5G4HIUSN831";
   const DATE = "20230626";
-  const genre = ["SF", "공포", "로맨스", "액션", "범죄", "스릴러", "전쟁", "스포츠", "판타지", "뮤지컬"]
-  const randomNumber = Math.floor(Math.random()* 10)
+  const genre = ["SF", "공포", "로맨스", "액션", "범죄", "스릴러", "전쟁", "스포츠", "판타지", "뮤지컬", "가족", "미스터리", "애니메이션", "어드벤처"];
+  const randomNumber = Math.floor(Math.random() * 14);
 
   const [isLoading, setIsLoading] = useState(true);
   const [moviesInfo, setMoviesInfo] = useState([]);
@@ -56,7 +56,6 @@ function App() {
 
   useEffect(() => {
     getBoxOfficeInfo();
-    getSearchGenreMovies();
     getSearchGenreMovies();
   }, []); // 브라우저가 실행될때 한번만 됨
 

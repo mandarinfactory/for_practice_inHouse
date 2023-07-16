@@ -1,4 +1,5 @@
 export default function DetailMovieInfos({ movieVal, setDetailMovieInfos }) {
+  console.log(movieVal);
   const actorsName = [];
   movieVal.actors.actor.forEach((v) => {
     actorsName.push(`${v.actorNm}, `);
@@ -7,7 +8,7 @@ export default function DetailMovieInfos({ movieVal, setDetailMovieInfos }) {
   actorsName.splice(actorsName.length - 2, 1); // 계속,이 붙어있는 문자열은 제거해줌.
 
   return (
-    <div className="flex justify-center items-center absolute top-[20%] w-[35%] h-auto p-10 bg-white shadow-lg rounded-xl overflow-auto animate-fade animate-duration-200 z-10">
+    <div className="flex justify-center items-center absolute top-[20%] w-[50%] h-auto p-10 bg-white shadow-lg rounded-xl overflow-auto animate-fade animate-duration-200 z-10">
       <button onClick={() => setDetailMovieInfos(false)}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -19,7 +20,7 @@ export default function DetailMovieInfos({ movieVal, setDetailMovieInfos }) {
         </svg>
       </button>
       <img
-        className="w-[40%] h-auto m-10 shadow-lg"
+        className="w-[50%] h-auto m-10 shadow-lg hover:scale-[1.3] duration-300"
         src={
           movieVal.posters
             ? movieVal.posters.includes("|")
@@ -35,12 +36,14 @@ export default function DetailMovieInfos({ movieVal, setDetailMovieInfos }) {
             ? movieVal.title.replace(/!HS?E?/gi, "")
             : movieVal.title}
         </h1>
-        <p className="my-1 text-xl font-bold">
+        <h4 className="my-1 text-lg">{movieVal.titleEng}</h4>
+        <p className="my-1 w-full text-xl font-bold">
           감독 : {movieVal.directors.director[0].directorNm}
         </p>
-        <p className="flex justify-center w-full my-1 text-xl font-bold">
+        <p className="w-full my-1 text-xl font-bold">
           배우 : {actorsName}
         </p>
+        <p className="my-1 text-xl">{movieVal.genre}</p>
         <p className="my-1 text-xl">
           {movieVal.ratings.rating[0].ratingGrade.includes("|")
             ? movieVal.ratings.rating[0].ratingGrade.substring(

@@ -4,7 +4,7 @@ export default function MovieCurations({
   setDetailMovieInfos,
 }) {
   return (
-    <div className="w-full p-5 bg-white rounded-xl backdrop-filter backdrop-blur-md bg-opacity-50 border-gray-200 shadow-xl">
+    <div className="w-full p-5 m-10 bg-white rounded-xl backdrop-filter backdrop-blur-md bg-opacity-50 border-gray-200 shadow-xl">
       <h1 className="w-[15%] p-1 text-center text-3xl font-bold bg-white shadow-lg">
         오늘은 이런영화 어떠세요?
       </h1>
@@ -15,8 +15,8 @@ export default function MovieCurations({
               className="w-full h-auto p-3 m-5 bg-white rounded-xl backdrop-filter backdrop-blur-md bg-opacity-50 border-gray-200 shadow-xl hover:bg-slate-300 duration-100"
               key={i}
               onClick={() => {
-                setDetailMovieInfos(true)
-                setMovieVal(curatedMovie[i])
+                setDetailMovieInfos(true);
+                setMovieVal(curatedMovie[i]);
               }}
             >
               <img
