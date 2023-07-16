@@ -9,10 +9,16 @@ export default function Hero({
   searchMovieKeyword,
   setSearchMovieKeyword,
   boxOfficeInfo,
+  movieVal,
+  setMovieVal,
+  detailMovieInfos,
+  setDetailMovieInfos
 }) {
-  const [movieVal, setMovieVal] = useState();
-  const [detailMovieInfos, setDetailMovieInfos] = useState(false);
   const [notUpdatedInfos, setNotUpdatedInfos] = useState(false);
+
+  useEffect(() => {
+    searchMovieKeyword;
+  }, []);
 
   return (
     <div className="w-full h-full flex flex-col justify-center items-center">
@@ -57,10 +63,12 @@ export default function Hero({
         type="text"
         placeholder="영화를 검색해보세요."
         onChange={(e) => {
-          setSearchMovieKeyword(e.target.value)
+          setSearchMovieKeyword(e.target.value);
         }}
       />
-      {searchedMovie && !searchMovieKeyword.includes(" ") && searchMovieKeyword ? (
+      {searchedMovie &&
+      !searchMovieKeyword.includes(" ") &&
+      searchMovieKeyword ? (
         <div className="flex flex-col justify-center items-start w-[50%] p-5 my-10 bg-white rounded-xl backdrop-filter backdrop-blur-md bg-opacity-50 border-gray-200 shadow-xl">
           {searchedMovie.map((movie, i) => (
             <div
@@ -119,7 +127,6 @@ export default function Hero({
       ) : (
         <></>
       )}
-      ;
     </div>
   );
 }

@@ -7,7 +7,7 @@ export default function DetailMovieInfos({ movieVal, setDetailMovieInfos }) {
   actorsName.splice(actorsName.length - 2, 1); // 계속,이 붙어있는 문자열은 제거해줌.
 
   return (
-    <div className="flex justify-center items-center absolute top-[20%] w-[35%] h-auto p-10 bg-white shadow-lg rounded-xl overflow-auto animate-fade animate-duration-200">
+    <div className="flex justify-center items-center absolute top-[20%] w-[35%] h-auto p-10 bg-white shadow-lg rounded-xl overflow-auto animate-fade animate-duration-200 z-10">
       <button onClick={() => setDetailMovieInfos(false)}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -21,9 +21,11 @@ export default function DetailMovieInfos({ movieVal, setDetailMovieInfos }) {
       <img
         className="w-[40%] h-auto m-10 shadow-lg"
         src={
-          movieVal.posters.includes("|")
-            ? movieVal.posters.substring(0, movieVal.posters.indexOf("|"))
-            : movieVal.posters
+          movieVal.posters
+            ? movieVal.posters.includes("|")
+              ? movieVal.posters.substring(0, movieVal.posters.indexOf("|"))
+              : movieVal.posters
+            : "https://s.studiobinder.com/wp-content/uploads/2017/12/Movie-Poster-Template-Dark-with-Image.jpg?x81279"
         }
         alt="movie-poster"
       />
@@ -48,7 +50,9 @@ export default function DetailMovieInfos({ movieVal, setDetailMovieInfos }) {
             : movieVal.ratings.rating[0].ratingGrade}{" "}
           / {movieVal.repRlsDate} 개봉
         </p>
-        <p className="w-full my-3 text-lg font-bold">{movieVal.plots.plot[0].plotText}</p>
+        <p className="w-full my-3 text-lg font-bold">
+          {movieVal.plots.plot[0].plotText}
+        </p>
       </div>
     </div>
   );
