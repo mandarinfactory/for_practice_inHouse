@@ -23,18 +23,25 @@ export default function BoxOffice({
                 setSearchMovieKeyword(
                   v.target.innerText.replace(/1?2?3?4?5?./, "")
                 );
-                const clickedKey = v.currentTarget.getAttribute("data-key");
-                const filteredInfo = boxOfficeInfo.find((e) => {
-                  return e.Codes.Code[0].CodeNo == clickedKey;
+                const clickedTitle = v.target.innerText.replace(
+                  /1?2?3?4?5?./,
+                  ""
+                );
+                const filteredTitle = boxOfficeInfo.find((e) => {
+                  return (
+                    e.titleEtc.substring(0, e.titleEtc.indexOf("^")) ==
+                    clickedTitle.replace(/ /g, "")
+                  );
                 });
-                if (filteredInfo !== undefined) {
-                  setMovieVal(filteredInfo);
+                if (filteredTitle !== undefined) {
+                  setMovieVal(filteredTitle);
                   setDetailMovieInfos(true);
                   setNotUpdatedInfos(false);
                 } else {
                   setNotUpdatedInfos(true);
                 }
               }}
+              //movieNm && titleEtc
             >
               <h3 className="mx-10 my-3 text-3xl">
                 {i + 1}. {movie.movieNm}

@@ -6,7 +6,6 @@ import MovieCurations from "./components/screen/MovieCurations";
 function App() {
   const KEY = "03d2542e7c0e7e77045f52c5567f0546";
   const ALTKEY = "Y9097046I5G4HIUSN831";
-  const DATE = "20230626";
   const genre = [
     "SF",
     "공포",
@@ -25,6 +24,11 @@ function App() {
   ];
   const randomNumber = Math.floor(Math.random() * 14);
 
+  const year = new Date().getFullYear();
+  const month = ("0" + (new Date().getMonth() + 1)).slice(-2);
+  const day = ("0" + new Date().getDate()).slice(-2);
+  const date = parseInt(year + month + day);
+
   const [isLoading, setIsLoading] = useState(true);
   const [moviesInfo, setMoviesInfo] = useState([]);
   const [searchMovieKeyword, setSearchMovieKeyword] = useState();
@@ -38,7 +42,9 @@ function App() {
   const getBoxOfficeInfo = async () => {
     const json = await (
       await fetch(
-        `http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=${KEY}&targetDt=${DATE}&itemPerPage=5`
+        `http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=${KEY}&targetDt=${
+          date - 1
+        }&itemPerPage=5`
       )
     ).json();
     setMoviesInfo(json.boxOfficeResult.dailyBoxOfficeList);
@@ -80,6 +86,9 @@ function App() {
   useEffect(() => {
     getBoxOfficeInfo();
     getSearchMovieInfo();
+    searchMovieKeyword
+    boxOfficeInfo
+    detailMovieInfos
   }, [searchMovieKeyword]);
 
   return (
@@ -103,6 +112,7 @@ function App() {
         setDetailMovieInfos={setDetailMovieInfos}
         genre={genre}
         randomNumber={randomNumber}
+        genres={genres}
         setGenres={setGenres}
       />
     </Layout>

@@ -14,11 +14,11 @@ export default function AboutMeDescription() {
         </h2>
         <h4 className="text-2xl py-3 font-extrabold text-gray-800">Technical</h4>
         <p className="text-xl py-10 text-gray-600 leading-loose">
-          국비교육을 통해 HTML5, CSS3, Sass, JavaScript(jQuery, ECMA6)을 수학했으며, <br />
-          배운것을 바탕으로 여러개의 다양한 project 만들었고, <br />
-          library인 react도 공부하여 이에 따른 project들도 만들었습니다. <br />
-          또한, 독학으로 Next.JS, React Native, Flutter <br />
-          그리고 깊이있게 JavaScript를 그리고 TypeScript를 공부하고 있습니다.
+          국비교육을 통해 HTML5, CSS3, Sass, JavaScript(jQuery, ECMA6)을 배웠으며, <br />
+          배운것을 바탕으로 웹페이지를 만드는 project 했습니다. <br />
+          교육후 독학으로 library인 react도 공부하여 이에 따른 project들도 만들었습니다. <br />
+          또한, Next JS, React Native, <br />
+          그리고 깊이있게 JavaScript, 기초적인 TypeScript를 공부하고 있습니다.
         </p>
         <h4 className="text-2xl py-3 font-extrabold text-gray-800">Personal</h4>
         <p className="text-xl py-10 text-gray-600 leading-loose">
