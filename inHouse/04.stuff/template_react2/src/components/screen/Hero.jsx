@@ -33,7 +33,7 @@ export default function Hero({
         setMovieVal={setMovieVal}
         setDetailMovieInfos={setDetailMovieInfos}
         setNotUpdatedInfos={setNotUpdatedInfos}
-      />
+        />
       <input
         className="w-[50%] p-5 my-10 opacity-40 rounded-lg text-2xl shadow-xl"
         type="text"
@@ -41,7 +41,7 @@ export default function Hero({
         onChange={(e) => {
           setSearchMovieKeyword(e.target.value);
         }}
-      />
+        />
       {searchedMovie &&
       !searchMovieKeyword.includes(" ") &&
       searchMovieKeyword ? (
@@ -50,13 +50,14 @@ export default function Hero({
           setDetailMovieInfos={setDetailMovieInfos}
           searchedMovie={searchedMovie}
         />
-      ) : (
-        <></>
-      )}
+        ) : (
+          <></>
+          )}
       {detailMovieInfos ? (
         <DetailMovieInfos
-          movieVal={movieVal}
-          setDetailMovieInfos={setDetailMovieInfos}
+        movieVal={movieVal}
+        boxOfficeInfo={boxOfficeInfo}
+        setDetailMovieInfos={setDetailMovieInfos}
         />
       ) : (
         <></>

@@ -41,7 +41,6 @@ export default function BoxOffice({
                   setNotUpdatedInfos(true);
                 }
               }}
-              //movieNm && titleEtc
             >
               <h3 className="mx-10 my-3 text-3xl">
                 {i + 1}. {movie.movieNm}

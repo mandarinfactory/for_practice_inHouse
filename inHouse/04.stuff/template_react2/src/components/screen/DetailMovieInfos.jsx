@@ -1,4 +1,8 @@
-export default function DetailMovieInfos({ movieVal, setDetailMovieInfos }) {
+export default function DetailMovieInfos({
+  movieVal,
+  boxOfficeInfo,
+  setDetailMovieInfos,
+}) {
   const actorsName = [];
   movieVal.actors.actor.forEach((v) => {
     actorsName.push(`${v.actorNm}, `);
@@ -41,9 +45,17 @@ export default function DetailMovieInfos({ movieVal, setDetailMovieInfos }) {
             : movieVal.titleEng}
         </h4>
         <p className="my-1 w-full text-xl font-bold">
-          감독 : {movieVal.directors.director[0].directorNm}
+          감독 :
+          {movieVal.directors.director[0].directorNm.includes("!")
+            ? movieVal.directors.director[0].directorNm.replace(/!HS?E?/gi, "")
+            : movieVal.directors.director[0].directorNm}
         </p>
-        <p className="w-full my-1 text-xl font-bold">배우 : {actorsName}</p>
+        <p className="w-full my-1 text-xl font-bold">
+          배우 :
+          {actorsName.includes("!")
+            ? actorsName.replace(/!HS?E?/gi, "")
+            : actorsName}
+        </p>
         <p className="my-1 text-xl">{movieVal.genre}</p>
         <p className="my-1 text-xl">
           {movieVal.ratings.rating[0].ratingGrade.includes("|")

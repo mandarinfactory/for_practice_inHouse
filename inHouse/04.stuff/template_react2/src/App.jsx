@@ -4,8 +4,9 @@ import Hero from "./components/screen/Hero";
 import MovieCurations from "./components/screen/MovieCurations";
 
 function App() {
-  const KEY = "03d2542e7c0e7e77045f52c5567f0546";
-  const ALTKEY = "Y9097046I5G4HIUSN831";
+  const KOBIS_KEY = "03d2542e7c0e7e77045f52c5567f0546";
+  const KMDB_KEY = "Y9097046I5G4HIUSN831";
+  const TMDB_KEY = "deec042ed38d5c0d68aaeedf6f2a9ae3";
   const genre = [
     "SF",
     "공포",
@@ -42,7 +43,7 @@ function App() {
   const getBoxOfficeInfo = async () => {
     const json = await (
       await fetch(
-        `http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=${KEY}&targetDt=${
+        `http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=${KOBIS_KEY}&targetDt=${
           date - 1
         }&itemPerPage=5`
       )
@@ -54,7 +55,7 @@ function App() {
   const getSearchMovieInfo = async () => {
     const json = await (
       await fetch(
-        `http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json2.jsp?collection=kmdb_new2&ServiceKey=${ALTKEY}&query=${searchMovieKeyword}`
+        `http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json2.jsp?collection=kmdb_new2&ServiceKey=${KMDB_KEY}&query=${searchMovieKeyword}`
       )
     ).json();
     {
@@ -68,15 +69,28 @@ function App() {
   const getSearchGenreMovies = async () => {
     const json = await (
       await fetch(
-        `http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json2.jsp?collection=kmdb_new2&ServiceKey=${ALTKEY}&genre=${genres}&releaseDts="20100101`
+        `http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json2.jsp?collection=kmdb_new2&ServiceKey=${KMDB_KEY}&genre=${genres}&releaseDts="20100101`
       )
     ).json();
     setCuratedMovie(json.Data[0].Result);
     setIsLoading(false);
   };
 
+  const getUpComingMovies = async () => {
+    const json = new Array(
+      await (
+        await fetch(
+          `https://api.themoviedb.org/3/movie/upcoming?api_key=${TMDB_KEY}`
+        )
+      ).json()
+    );
+    setIsLoading(false);
+    console.log(json);
+  };
+
   useEffect(() => {
     getBoxOfficeInfo();
+    getUpComingMovies();
   }, []); // 브라우저가 실행될때 한번만 됨
 
   useEffect(() => {
@@ -86,9 +100,9 @@ function App() {
   useEffect(() => {
     getBoxOfficeInfo();
     getSearchMovieInfo();
-    searchMovieKeyword
-    boxOfficeInfo
-    detailMovieInfos
+    searchMovieKeyword;
+    boxOfficeInfo;
+    detailMovieInfos;
   }, [searchMovieKeyword]);
 
   return (
