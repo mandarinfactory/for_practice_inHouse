@@ -10,7 +10,7 @@ export default function MovieCurations({
   return (
     <div className="w-full p-5 m-10 bg-white rounded-xl backdrop-filter backdrop-blur-md bg-opacity-50 border-gray-200 shadow-xl">
       <button
-        className="p-[10px] absolute top-5 right-10 bg-white text-black text-2xl font-bold hover:bg-blue-500 hover:text-white duration-200"
+        className="p-[10px] absolute top-5 right-10 bg-white text-black text-2xl font-bold hover:bg-black hover:text-white duration-200"
         onClick={() => {setGenres(genre[randomNumber])}}
       >
         다시추천!

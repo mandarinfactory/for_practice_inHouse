@@ -34,7 +34,7 @@ export default function DetailMovieInfos({
         alt="movie-poster"
       />
       <div className="p-5 flex flex-col">
-        <h1 className="p-1 text-3xl font-bold my-3 bg-gradient-to-r from-yellow-400 to-blue-500 text-black shadow-xl drop-shadow-lg">
+        <h1 className="p-1 text-3xl font-bold my-3 bg-gradient-to-r from-yellow-400 to-red-400 text-black shadow-xl drop-shadow-lg">
           {movieVal.title.includes("!")
             ? movieVal.title.replace(/!HS?E?/gi, "")
             : movieVal.title}
