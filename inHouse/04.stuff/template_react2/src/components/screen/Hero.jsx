@@ -4,6 +4,7 @@ import NotUpdatedInfos from "./NotUpdatedInfos";
 import BoxOffice from "./BoxOffice";
 import SearchedMovieBox from "./SearchedMovieBox";
 import Upcoming from "./UpComing";
+import { useRef } from "react";
 
 export default function Hero({
   isLoading,
@@ -18,6 +19,7 @@ export default function Hero({
   setDetailMovieInfos,
   upcomings,
 }) {
+  const clickedToFocus = useRef();
   const [notUpdatedInfos, setNotUpdatedInfos] = useState(false);
   const [isBoxOffice, setIsBoxOffice] = useState(true);
   const [isUpcoming, setIsUpcoming] = useState(false);
@@ -25,6 +27,10 @@ export default function Hero({
   useEffect(() => {
     searchMovieKeyword;
   }, []);
+
+  useEffect(() => {
+    clickedToFocus
+  },[clickedToFocus])
 
   return (
     <div className="w-full h-full flex flex-col justify-center items-center">
@@ -85,12 +91,14 @@ export default function Hero({
           setMovieVal={setMovieVal}
           setDetailMovieInfos={setDetailMovieInfos}
           searchedMovie={searchedMovie}
+          clickedToFocus={clickedToFocus}
         />
       ) : (
         <></>
       )}
       {detailMovieInfos ? (
         <DetailMovieInfos
+          clickedToFocus={clickedToFocus}
           movieVal={movieVal}
           boxesMoviesInfo={boxesMoviesInfo}
           setDetailMovieInfos={setDetailMovieInfos}

@@ -1,7 +1,7 @@
 export default function DetailMovieInfos({
   movieVal,
-  boxOfficeInfo,
   setDetailMovieInfos,
+  clickedToFocus
 }) {
   const actorsName = [];
   movieVal.actors.actor.forEach((v) => {
@@ -11,7 +11,10 @@ export default function DetailMovieInfos({
   actorsName.splice(actorsName.length - 2, 1); // 계속,이 붙어있는 문자열은 제거해줌.
 
   return (
-    <div className="flex justify-center items-center absolute top-[20%] w-[50%] h-auto p-10 bg-white shadow-lg rounded-xl overflow-auto animate-fade animate-duration-200 z-10">
+    <div 
+      className="flex justify-center items-center absolute top-[20%] w-[50%] h-auto p-10 bg-white shadow-lg rounded-xl overflow-auto animate-fade animate-duration-200 z-10"
+      ref={clickedToFocus}
+    >
       <button onClick={() => setDetailMovieInfos(false)}>
         <svg
           xmlns="http://www.w3.org/2000/svg"

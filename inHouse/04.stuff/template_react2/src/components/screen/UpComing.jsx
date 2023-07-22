@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-
 export default function Upcoming({
   isLoading,
   isUpcoming,
@@ -10,12 +8,9 @@ export default function Upcoming({
   boxesMoviesInfo,
   setNotUpdatedInfos,
 }) {
-  useEffect(() => {
-    upcomings;
-  }, []);
-  upcomings.length = 5;
   return (
     <>
+      {upcomings ? upcomings.splice(5,7) : upcomings}
       {isUpcoming ? (
         <div className="w-[50%]">
           {isLoading ? (
@@ -28,7 +23,6 @@ export default function Upcoming({
                   data-key={movie.id}
                   key={movie.id}
                   onClick={(v) => {
-                    console.log(movie);
                     setSearchMovieKeyword(
                       v.target.innerText.replace(/1?2?3?4?5?./, "")
                     );
@@ -37,7 +31,6 @@ export default function Upcoming({
                       ""
                     );
                     const filteredTitle = boxesMoviesInfo.find((e) => {
-                      console.log(e);
                       return (
                         e.titleEtc.substring(0, e.titleEtc.indexOf("^")) ==
                         clickedTitle.replace(/ /g, "")

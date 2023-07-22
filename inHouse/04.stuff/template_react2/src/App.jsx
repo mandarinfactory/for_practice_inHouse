@@ -85,23 +85,18 @@ function App() {
         )
       ).json()
     );
+    setUpcomings(json[0].results);
     setIsLoading(false);
-    setUpcomings(json[0].results)
   };
 
   useEffect(() => {
-    getBoxOfficeInfo();
     getUpComingMovies();
-  }, []); // 브라우저가 실행될때 한번만 됨
-  
+  },[])
+
   useEffect(() => {
     getSearchGenreMovies();
   }, [genres]);
-  
-  useEffect(() => {
-    upcomings;
-  },[upcomings])
-  
+
   useEffect(() => {
     getUpComingMovies();
     getBoxOfficeInfo();
@@ -109,7 +104,6 @@ function App() {
     searchMovieKeyword;
     boxesMoviesInfo;
     detailMovieInfos;
-    upcomings;
   }, [searchMovieKeyword]);
 
   return (

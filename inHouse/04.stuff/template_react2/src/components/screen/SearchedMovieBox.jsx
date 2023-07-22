@@ -2,6 +2,7 @@ export default function SearchedMovieBox({
   setDetailMovieInfos,
   setMovieVal,
   searchedMovie,
+  clickedToFocus
 }) {
   return (
     <div className="flex flex-col justify-center items-start w-[50%] p-5 my-10 bg-white rounded-xl backdrop-filter backdrop-blur-md bg-opacity-50 border-gray-200 shadow-xl">
@@ -12,6 +13,7 @@ export default function SearchedMovieBox({
           onClick={() => {
             setDetailMovieInfos(true);
             setMovieVal(searchedMovie[i]);
+            clickedToFocus.current.scrollIntoView({ behavior: "smooth" });
           }}
         >
           <div className="flex flex-col justify-center items-start">
@@ -38,9 +40,10 @@ export default function SearchedMovieBox({
             </div>
           </div>
           <p className="text-sm italic text-gray-900">
-            {movie.genre} / {movie.titleEng.includes("!")
-                ? movie.titleEng.replace(/!HS?E?/gi, "")
-                : movie.titleEng}
+            {movie.genre} /{" "}
+            {movie.titleEng.includes("!")
+              ? movie.titleEng.replace(/!HS?E?/gi, "")
+              : movie.titleEng}
           </p>
         </div>
       ))}
