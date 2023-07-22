@@ -34,11 +34,12 @@ function App() {
   const [moviesInfo, setMoviesInfo] = useState([]);
   const [searchMovieKeyword, setSearchMovieKeyword] = useState();
   const [searchedMovie, setSearchedMovie] = useState();
-  const [boxOfficeInfo, setBoxOfficeInfo] = useState();
+  const [boxesMoviesInfo, setBoxesMoviesInfo] = useState();
   const [genres, setGenres] = useState(genre[randomNumber]);
   const [curatedMovie, setCuratedMovie] = useState();
   const [movieVal, setMovieVal] = useState();
   const [detailMovieInfos, setDetailMovieInfos] = useState(false);
+  const [upcomings, setUpcomings] = useState();
 
   const getBoxOfficeInfo = async () => {
     const json = await (
@@ -60,7 +61,7 @@ function App() {
     ).json();
     {
       searchMovieKeyword.includes(" ")
-        ? setBoxOfficeInfo(json.Data[0].Result)
+        ? setBoxesMoviesInfo(json.Data[0].Result)
         : setSearchedMovie(json.Data[0].Result);
     }
     setIsLoading(false);
@@ -80,29 +81,35 @@ function App() {
     const json = new Array(
       await (
         await fetch(
-          `https://api.themoviedb.org/3/movie/upcoming?api_key=${TMDB_KEY}`
+          `https://api.themoviedb.org/3/movie/upcoming?api_key=${TMDB_KEY}&language=ko-KR&region=KR`
         )
       ).json()
     );
     setIsLoading(false);
-    console.log(json);
+    setUpcomings(json[0].results)
   };
 
   useEffect(() => {
     getBoxOfficeInfo();
     getUpComingMovies();
   }, []); // 브라우저가 실행될때 한번만 됨
-
+  
   useEffect(() => {
     getSearchGenreMovies();
   }, [genres]);
-
+  
   useEffect(() => {
+    upcomings;
+  },[upcomings])
+  
+  useEffect(() => {
+    getUpComingMovies();
     getBoxOfficeInfo();
     getSearchMovieInfo();
     searchMovieKeyword;
-    boxOfficeInfo;
+    boxesMoviesInfo;
     detailMovieInfos;
+    upcomings;
   }, [searchMovieKeyword]);
 
   return (
@@ -113,12 +120,13 @@ function App() {
         searchedMovie={searchedMovie}
         searchMovieKeyword={searchMovieKeyword}
         setSearchMovieKeyword={setSearchMovieKeyword}
-        boxOfficeInfo={boxOfficeInfo}
-        setBoxOfficeInfo={setBoxOfficeInfo}
+        boxesMoviesInfo={boxesMoviesInfo}
+        setBoxesMoviesInfo={setBoxesMoviesInfo}
         movieVal={movieVal}
         setMovieVal={setMovieVal}
         detailMovieInfos={detailMovieInfos}
         setDetailMovieInfos={setDetailMovieInfos}
+        upcomings={upcomings}
       />
       <MovieCurations
         curatedMovie={curatedMovie}

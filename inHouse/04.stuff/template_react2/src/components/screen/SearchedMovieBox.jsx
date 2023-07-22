@@ -38,7 +38,9 @@ export default function SearchedMovieBox({
             </div>
           </div>
           <p className="text-sm italic text-gray-900">
-            {movie.genre} / {movie.titleEng}
+            {movie.genre} / {movie.titleEng.includes("!")
+                ? movie.titleEng.replace(/!HS?E?/gi, "")
+                : movie.titleEng}
           </p>
         </div>
       ))}
