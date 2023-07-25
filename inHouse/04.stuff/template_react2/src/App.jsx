@@ -85,7 +85,7 @@ function App() {
         )
       ).json()
     );
-    setUpcomings(json[0].results);
+    setUpcomings(json[0].results)
     setIsLoading(false);
   };
 

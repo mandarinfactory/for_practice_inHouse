@@ -29,14 +29,14 @@ export default function Hero({
   }, []);
 
   useEffect(() => {
-    clickedToFocus
-  },[clickedToFocus])
-
+    clickedToFocus;
+  }, [clickedToFocus]);
+  
   return (
     <div className="w-full h-full flex flex-col justify-center items-center">
       <div className="w-[50%] h-full flex justify-start">
         <button
-          className="mr-10 mt-7 text-3xl font-extrabold drop-shadow-lg hover:text-gray-800"
+          className="mr-10 mt-7 text-3xl font-extrabold drop-shadow-lg hover:text-slate-700 duration-100"
           onClick={() => {
             setIsBoxOffice(true);
             setIsUpcoming(false);
@@ -45,7 +45,7 @@ export default function Hero({
           박스오피스
         </button>
         <button
-          className="mt-7 text-3xl font-extrabold drop-shadow-lg hover:text-gray-800"
+          className="mt-7 text-3xl font-extrabold drop-shadow-lg hover:text-slate-700 duration-100"
           onClick={() => {
             setIsBoxOffice(false);
             setIsUpcoming(true);
@@ -54,12 +54,13 @@ export default function Hero({
           상영예정작
         </button>
       </div>
-      <div className="w-full h-full flex flex-col justify-center items-center">
+      <div className="hero w-full h-full flex flex-col justify-center items-center">
         <BoxOffice
           isLoading={isLoading}
           isBoxOffice={isBoxOffice}
           moviesInfo={moviesInfo}
           boxesMoviesInfo={boxesMoviesInfo}
+          searchMovieKeyword={searchMovieKeyword}
           setSearchMovieKeyword={setSearchMovieKeyword}
           setMovieVal={setMovieVal}
           setDetailMovieInfos={setDetailMovieInfos}

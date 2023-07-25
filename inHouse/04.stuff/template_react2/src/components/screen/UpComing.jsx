@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 export default function Upcoming({
   isLoading,
   isUpcoming,
@@ -8,9 +10,12 @@ export default function Upcoming({
   boxesMoviesInfo,
   setNotUpdatedInfos,
 }) {
+  useEffect(() => {
+    upcomings
+  },[upcomings])
   return (
     <>
-      {upcomings ? upcomings.splice(5,7) : upcomings}
+      {upcomings ? upcomings.length = 5 : upcomings}
       {isUpcoming ? (
         <div className="w-[50%]">
           {isLoading ? (

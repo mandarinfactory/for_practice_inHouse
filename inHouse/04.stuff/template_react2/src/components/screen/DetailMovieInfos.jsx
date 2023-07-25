@@ -1,9 +1,11 @@
 export default function DetailMovieInfos({
   movieVal,
   setDetailMovieInfos,
-  clickedToFocus
+  clickedToFocus,
 }) {
   const actorsName = [];
+  const stillCuts = new Array(movieVal.stlls.split("|"));
+  stillCuts[0].length = 5;
   movieVal.actors.actor.forEach((v) => {
     actorsName.push(`${v.actorNm}, `);
   });
@@ -11,8 +13,8 @@ export default function DetailMovieInfos({
   actorsName.splice(actorsName.length - 2, 1); // 계속,이 붙어있는 문자열은 제거해줌.
 
   return (
-    <div 
-      className="flex justify-center items-center absolute top-[20%] w-[50%] h-auto p-10 bg-white shadow-lg rounded-xl overflow-auto animate-fade animate-duration-200 z-10"
+    <div
+      className="flex justify-center items-center absolute top-[20%] w-[60%] h-auto p-10 bg-white shadow-lg rounded-xl overflow-auto animate-fade animate-duration-200 z-10"
       ref={clickedToFocus}
     >
       <button onClick={() => setDetailMovieInfos(false)}>
@@ -25,53 +27,111 @@ export default function DetailMovieInfos({
           <path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
         </svg>
       </button>
-      <img
-        className="w-[20%] h-auto m-10 shadow-lg hover:scale-[1.3] duration-300"
-        src={
-          movieVal.posters
-            ? movieVal.posters.includes("|")
-              ? movieVal.posters.substring(0, movieVal.posters.indexOf("|"))
-              : movieVal.posters
-            : "https://s.studiobinder.com/wp-content/uploads/2017/12/Movie-Poster-Template-Dark-with-Image.jpg?x81279"
-        }
-        alt="movie-poster"
-      />
-      <div className="p-5 flex flex-col">
-        <h1 className="p-1 text-3xl font-bold my-3 bg-gradient-to-r from-yellow-400 to-red-400 text-black shadow-xl drop-shadow-lg">
-          {movieVal.title.includes("!")
-            ? movieVal.title.replace(/!HS?E?/gi, "")
-            : movieVal.title}
-        </h1>
-        <h4 className="my-1 text-lg">
-          {movieVal.titleEng.includes("!")
-            ? movieVal.titleEng.replace(/!HS?E?/gi, "")
-            : movieVal.titleEng}
-        </h4>
-        <p className="my-1 w-full text-xl font-bold">
-          감독 :
-          {movieVal.directors.director[0].directorNm.includes("!")
-            ? movieVal.directors.director[0].directorNm.replace(/!HS?E?/gi, "")
-            : movieVal.directors.director[0].directorNm}
-        </p>
-        <p className="w-full my-1 text-xl font-bold">
-          배우 :
-          {actorsName.includes("!")
-            ? actorsName.replace(/!HS?E?/gi, "")
-            : actorsName}
-        </p>
-        <p className="my-1 text-xl">{movieVal.genre}</p>
-        <p className="my-1 text-xl">
-          {movieVal.ratings.rating[0].ratingGrade.includes("|")
-            ? movieVal.ratings.rating[0].ratingGrade.substring(
-                0,
-                movieVal.ratings.rating[0].ratingGrade.indexOf("|")
-              )
-            : movieVal.ratings.rating[0].ratingGrade}{" "}
-          / {movieVal.repRlsDate} 개봉
-        </p>
-        <p className="w-full my-3 text-lg font-bold">
-          {movieVal.plots.plot[0].plotText}
-        </p>
+      <div>
+        <div className="flex mb-2 overflow-hidden">
+          <img
+            className="w-[25%] h-auto m-10 hover:scale-[1.3] duration-300 object-contain"
+            src={
+              movieVal.posters
+                ? movieVal.posters.includes("|")
+                  ? movieVal.posters.substring(0, movieVal.posters.indexOf("|"))
+                  : movieVal.posters
+                : "https://s.studiobinder.com/wp-content/uploads/2017/12/Movie-Poster-Template-Dark-with-Image.jpg?"
+            }
+            alt="movie-poster"
+          />
+          <div className="p-5 flex flex-col">
+            <h1 className="p-1 text-3xl font-bold my-3 bg-gradient-to-r from-yellow-400 to-red-400 text-black shadow-xl drop-shadow-lg">
+              {movieVal.title.includes("!")
+                ? movieVal.title.replace(/!HS?E?/gi, "")
+                : movieVal.title}
+            </h1>
+            <h4 className="my-1 text-lg">
+              {movieVal.titleEng.includes("!")
+                ? movieVal.titleEng.replace(/!HS?E?/gi, "")
+                : movieVal.titleEng}
+            </h4>
+            <p className="my-1 w-full text-xl font-bold">
+              감독 :
+              {movieVal.directors.director[0].directorNm.includes("!")
+                ? movieVal.directors.director[0].directorNm.replace(
+                    /!HS?E?/gi,
+                    ""
+                  )
+                : movieVal.directors.director[0].directorNm}
+            </p>
+            <p className="w-full my-1 text-xl font-bold">
+              배우 :
+              {actorsName.includes("!")
+                ? actorsName.replace(/!HS?E?/gi, "")
+                : actorsName}
+            </p>
+            <div className="flex justify-between">
+              <div>
+                <p className="my-1 text-xl">{movieVal.genre}</p>
+                <p className="my-1 text-xl">
+                  {movieVal.ratings.rating[0].ratingGrade.includes("|")
+                    ? movieVal.ratings.rating[0].ratingGrade.substring(
+                        0,
+                        movieVal.ratings.rating[0].ratingGrade.indexOf("|")
+                      )
+                    : movieVal.ratings.rating[0].ratingGrade}{" "}
+                  / {movieVal.repRlsDate} 개봉
+                </p>
+              </div>
+              <a href={movieVal.kmdbUrl} target="_blank">
+                <svg
+                  width="45px"
+                  height="45px"
+                  version="1.0"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 1280.000000 1280.000000"
+                  className="fill-orange-400 hover:fill-red-500 duration-100"
+                >
+                  <g
+                    transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)"
+                    stroke="none"
+                  >
+                    <path
+                      d="M6095 12794 c-1354 -72 -2631 -552 -3669 -1378 -273 -218 -627 -554
+                          -842 -801 -821 -944 -1342 -2077 -1518 -3305 -49 -339 -60 -507 -60 -910 0
+                          -403 11 -571 60 -910 177 -1235 697 -2364 1527 -3314 132 -151 446 -464 592
+                          -592 944 -821 2077 -1342 3305 -1518 339 -49 507 -60 910 -60 403 0 571 11
+                          910 60 1128 162 2192 621 3075 1327 371 297 735 662 1031 1033 627 788 1071
+                          1748 1263 2734 86 439 115 755 115 1240 0 403 -11 571 -60 910 -176 1228 -697
+                          2361 -1518 3305 -128 146 -441 460 -592 592 -1039 907 -2282 1440 -3659 1568
+                          -162 15 -716 27 -870 19z m595 -1869 c235 -65 463 -226 587 -416 92 -141 134
+                          -296 134 -494 1 -177 -28 -302 -102 -448 -120 -238 -310 -399 -556 -473 -80
+                          -24 -108 -27 -293 -32 -127 -2 -234 0 -278 7 -284 44 -580 257 -706 508 -40
+                          80 -76 217 -85 326 -25 303 71 567 289 788 112 114 251 192 415 233 94 23 108
+                          24 325 21 160 -2 219 -6 270 -20z m670 -5550 l0 -2845 380 0 380 0 0 -340 0
+                          -340 -1720 0 -1720 0 0 340 0 340 380 0 380 0 0 2505 0 2505 -380 0 -380 0 0
+                          340 0 340 1340 0 1340 0 0 -2845z"
+                    />
+                  </g>
+                </svg>
+              </a>
+            </div>
+            <p className="w-full my-3 text-lg font-bold">
+              {movieVal.plots.plot[0].plotText}
+            </p>
+          </div>
+        </div>
+        <div className="w-auto h-auto flex justify-center">
+          {stillCuts[0].map((pic) => (
+            <div className="w-auto h-auto rounded-lg overflow-hidden">
+              <img
+                src={pic}
+                alt=""
+                className="mx-5 rounded-lg object-contain hover:scale-[1.3] duration-300"
+                onClick={(v) => {
+                  setIsPicClicked(true);
+                  setCLickedPicture(v.target.src);
+                }}
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
