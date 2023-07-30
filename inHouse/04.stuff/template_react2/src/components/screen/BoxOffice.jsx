@@ -10,7 +10,6 @@ export default function BoxOffice({ isBoxOffice, setNotUpdatedInfos }) {
     MovieInfosCtx.setIsBoxClicked(true);
   };
   if (MovieInfosCtx.isBoxClicked) {
-    console.log(MovieInfosCtx.boxesMoviesInfo);
     const filteredTitle = MovieInfosCtx.boxesMoviesInfo?.find((e) => {
       return (
         e.titleEtc.substring(0, e.titleEtc.indexOf("^")) ==
