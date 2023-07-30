@@ -1,12 +1,17 @@
+import { useContext } from "react";
+import { MovieInfoContextStore } from "../../contexts";
+
 export default function DetailMovieInfos({
-  movieVal,
   setDetailMovieInfos,
   clickedToFocus,
 }) {
+  const MovieInfosCtx = useContext(MovieInfoContextStore);
+
   const actorsName = [];
-  const stillCuts = new Array(movieVal.stlls.split("|"));
+  const stillCuts = new Array(MovieInfosCtx.movieVal.stlls.split("|"));
   stillCuts[0].length = 5;
-  movieVal.actors.actor.forEach((v) => {
+  
+  MovieInfosCtx.movieVal.actors.actor.forEach((v) => {
     actorsName.push(`${v.actorNm}, `);
   });
   actorsName.push(actorsName[actorsName.length - 1].replace(/,?/gi, "")); // 마지막에 오는 문자열에 있는 ,을 없애주고 추가해서
@@ -17,7 +22,7 @@ export default function DetailMovieInfos({
       className="flex justify-center items-center absolute top-[20%] w-[60%] h-auto p-10 bg-white shadow-lg rounded-xl overflow-auto animate-fade animate-duration-200 z-10"
       ref={clickedToFocus}
     >
-      <button onClick={() => setDetailMovieInfos(false)}>
+      <button onClick={() => MovieInfosCtx.setDetailMovieInfos(false)}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="3em"
@@ -32,33 +37,33 @@ export default function DetailMovieInfos({
           <img
             className="w-[25%] h-auto m-10 hover:scale-[1.3] duration-300 object-contain"
             src={
-              movieVal.posters
-                ? movieVal.posters.includes("|")
-                  ? movieVal.posters.substring(0, movieVal.posters.indexOf("|"))
-                  : movieVal.posters
+              MovieInfosCtx.movieVal.posters
+                ? MovieInfosCtx.movieVal.posters.includes("|")
+                  ? MovieInfosCtx.movieVal.posters.substring(0, MovieInfosCtx.movieVal.posters.indexOf("|"))
+                  : MovieInfosCtx.movieVal.posters
                 : "https://s.studiobinder.com/wp-content/uploads/2017/12/Movie-Poster-Template-Dark-with-Image.jpg?"
             }
             alt="movie-poster"
           />
           <div className="p-5 flex flex-col">
             <h1 className="p-1 text-3xl font-bold my-3 bg-gradient-to-r from-yellow-400 to-red-400 text-black shadow-xl drop-shadow-lg">
-              {movieVal.title.includes("!")
-                ? movieVal.title.replace(/!HS?E?/gi, "")
-                : movieVal.title}
+              {MovieInfosCtx.movieVal.title.includes("!")
+                ? MovieInfosCtx.movieVal.title.replace(/!HS?E?/gi, "")
+                : MovieInfosCtx.movieVal.title}
             </h1>
             <h4 className="my-1 text-lg">
-              {movieVal.titleEng.includes("!")
-                ? movieVal.titleEng.replace(/!HS?E?/gi, "")
-                : movieVal.titleEng}
+              {MovieInfosCtx.movieVal.titleEng.includes("!")
+                ? MovieInfosCtx.movieVal.titleEng.replace(/!HS?E?/gi, "")
+                : MovieInfosCtx.movieVal.titleEng}
             </h4>
             <p className="my-1 w-full text-xl font-bold">
               감독 :
-              {movieVal.directors.director[0].directorNm.includes("!")
-                ? movieVal.directors.director[0].directorNm.replace(
+              {MovieInfosCtx.movieVal.directors.director[0].directorNm.includes("!")
+                ? MovieInfosCtx.movieVal.directors.director[0].directorNm.replace(
                     /!HS?E?/gi,
                     ""
                   )
-                : movieVal.directors.director[0].directorNm}
+                : MovieInfosCtx.movieVal.directors.director[0].directorNm}
             </p>
             <p className="w-full my-1 text-xl font-bold">
               배우 :
@@ -68,18 +73,18 @@ export default function DetailMovieInfos({
             </p>
             <div className="flex justify-between">
               <div>
-                <p className="my-1 text-xl">{movieVal.genre}</p>
+                <p className="my-1 text-xl">{MovieInfosCtx.movieVal.genre}</p>
                 <p className="my-1 text-xl">
-                  {movieVal.ratings.rating[0].ratingGrade.includes("|")
-                    ? movieVal.ratings.rating[0].ratingGrade.substring(
+                  {MovieInfosCtx.movieVal.ratings.rating[0].ratingGrade.includes("|")
+                    ? MovieInfosCtx.movieVal.ratings.rating[0].ratingGrade.substring(
                         0,
-                        movieVal.ratings.rating[0].ratingGrade.indexOf("|")
+                        MovieInfosCtx.movieVal.ratings.rating[0].ratingGrade.indexOf("|")
                       )
-                    : movieVal.ratings.rating[0].ratingGrade}{" "}
-                  / {movieVal.repRlsDate} 개봉
+                    : MovieInfosCtx.movieVal.ratings.rating[0].ratingGrade}{" "}
+                  / {MovieInfosCtx.movieVal.repRlsDate} 개봉
                 </p>
               </div>
-              <a href={movieVal.kmdbUrl} target="_blank">
+              <a href={MovieInfosCtx.movieVal.kmdbUrl} target="_blank">
                 <svg
                   width="45px"
                   height="45px"
@@ -113,21 +118,17 @@ export default function DetailMovieInfos({
               </a>
             </div>
             <p className="w-full my-3 text-lg font-bold">
-              {movieVal.plots.plot[0].plotText}
+              {MovieInfosCtx.movieVal.plots.plot[0].plotText}
             </p>
           </div>
         </div>
         <div className="w-auto h-auto flex justify-center">
-          {stillCuts[0].map((pic) => (
-            <div className="w-auto h-auto rounded-lg overflow-hidden">
+          {stillCuts[0].map((pic,i) => (
+            <div className="w-auto h-auto rounded-lg overflow-hidden" key={i}>
               <img
                 src={pic}
                 alt=""
                 className="mx-5 rounded-lg object-contain hover:scale-[1.3] duration-300"
-                onClick={(v) => {
-                  setIsPicClicked(true);
-                  setCLickedPicture(v.target.src);
-                }}
               />
             </div>
           ))}

@@ -1,9 +1,14 @@
+import { useContext, useEffect } from "react";
+import { MovieInfoContextStore } from "../../contexts";
+
 export default function SearchedMovieBox({
-  setDetailMovieInfos,
-  setMovieVal,
   searchedMovie,
   clickedToFocus
 }) {
+  useEffect(() => {
+    clickedToFocus
+  },[])
+  const MovieInfosCtx = useContext(MovieInfoContextStore);
   return (
     <div className="flex flex-col justify-center items-start w-[50%] p-5 my-10 bg-white rounded-xl backdrop-filter backdrop-blur-md bg-opacity-50 border-gray-200 shadow-xl">
       {searchedMovie.map((movie, i) => (
@@ -11,8 +16,8 @@ export default function SearchedMovieBox({
           className="w-full p-2 flex flex-row justify-between items-center duration-100 hover:bg-slate-200 bg-opacity-70 cursor-pointer rounded-lg"
           key={i}
           onClick={() => {
-            setDetailMovieInfos(true);
-            setMovieVal(searchedMovie[i]);
+            MovieInfosCtx.setDetailMovieInfos(true);
+            MovieInfosCtx.setMovieVal(searchedMovie[i]);
             clickedToFocus.current.scrollIntoView({ behavior: "smooth" });
           }}
         >

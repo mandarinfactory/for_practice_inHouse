@@ -1,31 +1,25 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef, useContext } from "react";
 import DetailMovieInfos from "./DetailMovieInfos";
 import NotUpdatedInfos from "./NotUpdatedInfos";
 import BoxOffice from "./BoxOffice";
 import SearchedMovieBox from "./SearchedMovieBox";
 import Upcoming from "./UpComing";
-import { useRef } from "react";
+import { MovieInfoContextStore } from "../../contexts";
 
 export default function Hero({
-  isLoading,
-  moviesInfo,
   searchedMovie,
-  searchMovieKeyword,
-  setSearchMovieKeyword,
-  boxesMoviesInfo,
-  movieVal,
-  setMovieVal,
-  detailMovieInfos,
-  setDetailMovieInfos,
   upcomings,
 }) {
   const clickedToFocus = useRef();
+
+  const MovieInfosCtx = useContext(MovieInfoContextStore);
+
   const [notUpdatedInfos, setNotUpdatedInfos] = useState(false);
   const [isBoxOffice, setIsBoxOffice] = useState(true);
   const [isUpcoming, setIsUpcoming] = useState(false);
 
   useEffect(() => {
-    searchMovieKeyword;
+    MovieInfosCtx.searchMovieKeyword;
   }, []);
 
   useEffect(() => {
@@ -56,24 +50,12 @@ export default function Hero({
       </div>
       <div className="hero w-full h-full flex flex-col justify-center items-center">
         <BoxOffice
-          isLoading={isLoading}
           isBoxOffice={isBoxOffice}
-          moviesInfo={moviesInfo}
-          boxesMoviesInfo={boxesMoviesInfo}
-          searchMovieKeyword={searchMovieKeyword}
-          setSearchMovieKeyword={setSearchMovieKeyword}
-          setMovieVal={setMovieVal}
-          setDetailMovieInfos={setDetailMovieInfos}
           setNotUpdatedInfos={setNotUpdatedInfos}
         />
         <Upcoming
-          isLoading={isLoading}
           isUpcoming={isUpcoming}
           upcomings={upcomings}
-          setMovieVal={setMovieVal}
-          setDetailMovieInfos={setDetailMovieInfos}
-          setSearchMovieKeyword={setSearchMovieKeyword}
-          boxesMoviesInfo={boxesMoviesInfo}
           setNotUpdatedInfos={setNotUpdatedInfos}
         />
       </div>
@@ -82,27 +64,22 @@ export default function Hero({
         type="text"
         placeholder="영화를 검색해보세요."
         onChange={(e) => {
-          setSearchMovieKeyword(e.target.value);
+          MovieInfosCtx.setSearchMovieKeyword(e.target.value);
         }}
       />
       {searchedMovie &&
-      !searchMovieKeyword.includes(" ") &&
-      searchMovieKeyword ? (
+      
+      MovieInfosCtx.searchMovieKeyword ? (
         <SearchedMovieBox
-          setMovieVal={setMovieVal}
-          setDetailMovieInfos={setDetailMovieInfos}
           searchedMovie={searchedMovie}
           clickedToFocus={clickedToFocus}
         />
       ) : (
         <></>
       )}
-      {detailMovieInfos ? (
+      {MovieInfosCtx.detailMovieInfos ? (
         <DetailMovieInfos
           clickedToFocus={clickedToFocus}
-          movieVal={movieVal}
-          boxesMoviesInfo={boxesMoviesInfo}
-          setDetailMovieInfos={setDetailMovieInfos}
         />
       ) : (
         <></>

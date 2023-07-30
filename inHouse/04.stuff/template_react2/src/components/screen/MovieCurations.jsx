@@ -1,12 +1,16 @@
+import { useContext } from "react";
+import { MovieInfoContextStore } from "../../contexts";
+
 export default function MovieCurations({
   curatedMovie,
-  setMovieVal,
-  setDetailMovieInfos,
   genre,
   randomNumber,
   genres,
   setGenres
 }) {
+
+  const MovieInfosCtx = useContext(MovieInfoContextStore);
+
   return (
     <div className="w-full p-5 m-10 bg-white rounded-xl backdrop-filter backdrop-blur-md bg-opacity-50 border-gray-200 shadow-xl">
       <button
@@ -25,8 +29,8 @@ export default function MovieCurations({
               className="w-full h-auto p-3 m-5 bg-white rounded-xl backdrop-filter backdrop-blur-md bg-opacity-50 border-gray-200 shadow-xl hover:bg-slate-300 duration-100"
               key={i}
               onClick={() => {
-                setDetailMovieInfos(true);
-                setMovieVal(curatedMovie[i]);
+                MovieInfosCtx.setDetailMovieInfos(true);
+                MovieInfosCtx.setMovieVal(curatedMovie[i]);
               }}
             >
               <div className="w-full h-full overflow-hidden">

@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Layout from "./components/Layout";
 import Hero from "./components/screen/Hero";
 import MovieCurations from "./components/screen/MovieCurations";
+import { MovieInfoContextStore } from "./contexts"; 
 
 function App() {
   const KOBIS_KEY = "03d2542e7c0e7e77045f52c5567f0546";
@@ -25,20 +26,16 @@ function App() {
   ];
   const randomNumber = Math.floor(Math.random() * 14);
 
+  const MovieInfosCtx = useContext(MovieInfoContextStore);
+
   const year = new Date().getFullYear();
   const month = ("0" + (new Date().getMonth() + 1)).slice(-2);
   const day = ("0" + new Date().getDate()).slice(-2);
   const date = parseInt(year + month + day);
 
-  const [isLoading, setIsLoading] = useState(true);
-  const [moviesInfo, setMoviesInfo] = useState([]);
-  const [searchMovieKeyword, setSearchMovieKeyword] = useState();
-  const [searchedMovie, setSearchedMovie] = useState();
-  const [boxesMoviesInfo, setBoxesMoviesInfo] = useState();
   const [genres, setGenres] = useState(genre[randomNumber]);
+  const [searchedMovie, setSearchedMovie] = useState();
   const [curatedMovie, setCuratedMovie] = useState();
-  const [movieVal, setMovieVal] = useState();
-  const [detailMovieInfos, setDetailMovieInfos] = useState(false);
   const [upcomings, setUpcomings] = useState();
 
   const getBoxOfficeInfo = async () => {
@@ -49,22 +46,24 @@ function App() {
         }&itemPerPage=5`
       )
     ).json();
-    setMoviesInfo(json.boxOfficeResult.dailyBoxOfficeList);
-    setIsLoading(false);
+    MovieInfosCtx.setMoviesInfo(json.boxOfficeResult.dailyBoxOfficeList);
+    MovieInfosCtx.setIsLoading(false);
   };
 
   const getSearchMovieInfo = async () => {
     const json = await (
       await fetch(
-        `http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json2.jsp?collection=kmdb_new2&ServiceKey=${KMDB_KEY}&query=${searchMovieKeyword}`
+        `http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json2.jsp?collection=kmdb_new2&ServiceKey=${KMDB_KEY}&query=${MovieInfosCtx.searchMovieKeyword}`
       )
     ).json();
     {
-      searchMovieKeyword.includes(" ")
-        ? setBoxesMoviesInfo(json.Data[0].Result)
-        : setSearchedMovie(json.Data[0].Result);
+      MovieInfosCtx.searchMovieKeyword
+        ? MovieInfosCtx.searchMovieKeyword.includes(" ")
+          ? MovieInfosCtx.setBoxesMoviesInfo(json.Data[0].Result)
+          : setSearchedMovie(json.Data[0].Result)
+        : MovieInfosCtx.searchMovieKeyword;
     }
-    setIsLoading(false);
+    MovieInfosCtx.setIsLoading(false);
   };
 
   const getSearchGenreMovies = async () => {
@@ -74,7 +73,7 @@ function App() {
       )
     ).json();
     setCuratedMovie(json.Data[0].Result);
-    setIsLoading(false);
+    MovieInfosCtx.setIsLoading(false);
   };
 
   const getUpComingMovies = async () => {
@@ -85,13 +84,13 @@ function App() {
         )
       ).json()
     );
-    setUpcomings(json[0].results)
-    setIsLoading(false);
+    setUpcomings(json[0].results);
+    MovieInfosCtx.setIsLoading(false);
   };
 
   useEffect(() => {
     getUpComingMovies();
-  },[])
+  }, []);
 
   useEffect(() => {
     getSearchGenreMovies();
@@ -101,31 +100,22 @@ function App() {
     getUpComingMovies();
     getBoxOfficeInfo();
     getSearchMovieInfo();
-    searchMovieKeyword;
-    boxesMoviesInfo;
-    detailMovieInfos;
-  }, [searchMovieKeyword]);
+    MovieInfosCtx.searchMovieKeyword;
+    MovieInfosCtx.detailMovieInfos;
+  }, [MovieInfosCtx.searchMovieKeyword]);
+
+  useEffect(() => {
+    MovieInfosCtx.MovieboxesMoviesInfo;
+  }, [MovieInfosCtx.MovieboxesMoviesInfo]);
 
   return (
     <Layout>
       <Hero
-        isLoading={isLoading}
-        moviesInfo={moviesInfo}
         searchedMovie={searchedMovie}
-        searchMovieKeyword={searchMovieKeyword}
-        setSearchMovieKeyword={setSearchMovieKeyword}
-        boxesMoviesInfo={boxesMoviesInfo}
-        setBoxesMoviesInfo={setBoxesMoviesInfo}
-        movieVal={movieVal}
-        setMovieVal={setMovieVal}
-        detailMovieInfos={detailMovieInfos}
-        setDetailMovieInfos={setDetailMovieInfos}
         upcomings={upcomings}
       />
       <MovieCurations
         curatedMovie={curatedMovie}
-        setMovieVal={setMovieVal}
-        setDetailMovieInfos={setDetailMovieInfos}
         genre={genre}
         randomNumber={randomNumber}
         genres={genres}
