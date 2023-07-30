@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 export const MovieInfoContextStore = createContext(); // context생성
 // context 생성할 때 기본값을 setting한다. --> React에서는 값을 컨트로할때는 component를 만들어 사용하는걸 지향한다.
@@ -10,6 +10,9 @@ const MovieInfoContext = (props) => {
   const [detailMovieInfos, setDetailMovieInfos] = useState(false);
   const [movieVal, setMovieVal] = useState();
   const [moviesInfo, setMoviesInfo] = useState([]);
+  useEffect(() => {
+    searchMovieKeyword
+  },[setSearchMovieKeyword])
   const MovieInfoStore = {
     isLoading,
     setIsLoading,
@@ -24,6 +27,7 @@ const MovieInfoContext = (props) => {
     moviesInfo,
     setMoviesInfo
   };
+
   return (
     <MovieInfoContextStore.Provider value={MovieInfoStore}>
       {props.children}

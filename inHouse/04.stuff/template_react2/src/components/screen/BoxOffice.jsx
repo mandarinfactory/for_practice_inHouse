@@ -1,13 +1,12 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { MovieInfoContextStore } from "../../contexts";
 
-export default function BoxOffice({
-  isBoxOffice,
-  setNotUpdatedInfos,
-}) {
-
+export default function BoxOffice({ isBoxOffice, setNotUpdatedInfos }) {
   const MovieInfosCtx = useContext(MovieInfoContextStore);
-  
+  useEffect(() => {
+    MovieInfosCtx.searchMovieKeyword;
+  }, [MovieInfosCtx.searchMovieKeyword]);
+
   return (
     <>
       {isBoxOffice ? (
@@ -22,19 +21,20 @@ export default function BoxOffice({
                   data-key={movie.movieCd}
                   key={movie.movieCd}
                   onClick={(v) => {
-                    MovieInfosCtx.setSearchMovieKeyword(
-                      v.target.innerText.replace(/1?2?3?4?5?./, "")
-                    );
                     const clickedTitle = v.target.innerText.replace(
-                      /1?2?3?4?5?. /,
+                      /1?2?3?4?5?./,
                       ""
                     );
-                    const filteredTitle = MovieInfosCtx.boxesMoviesInfo?.find((e) => {
-                      return (
-                        e.titleEtc.substring(0, e.titleEtc.indexOf("^")) ==
-                        clickedTitle.replace(/ /g, "")
-                      );
-                    });
+                    MovieInfosCtx.setSearchMovieKeyword(clickedTitle);
+                    console.log(MovieInfosCtx.searchMovieKeyword);
+                    const filteredTitle = MovieInfosCtx.boxesMoviesInfo?.find(
+                      (e) => {
+                        return (
+                          e.titleEtc.substring(0, e.titleEtc.indexOf("^")) ==
+                          clickedTitle.replace(/ /g, "")
+                        );
+                      }
+                    );
                     if (filteredTitle !== undefined) {
                       MovieInfosCtx.setMovieVal(filteredTitle);
                       MovieInfosCtx.setDetailMovieInfos(true);

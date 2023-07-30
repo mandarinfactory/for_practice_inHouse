@@ -89,10 +89,6 @@ function App() {
   };
 
   useEffect(() => {
-    getUpComingMovies();
-  }, []);
-
-  useEffect(() => {
     getSearchGenreMovies();
   }, [genres]);
 
@@ -100,7 +96,6 @@ function App() {
     getUpComingMovies();
     getBoxOfficeInfo();
     getSearchMovieInfo();
-    MovieInfosCtx.searchMovieKeyword;
     MovieInfosCtx.detailMovieInfos;
   }, [MovieInfosCtx.searchMovieKeyword]);
 
