@@ -1,16 +1,13 @@
 import { useContext } from "react";
 import { MovieInfoContextStore } from "../../contexts";
 
-export default function DetailMovieInfos({
-  setDetailMovieInfos,
-  clickedToFocus,
-}) {
+export default function DetailMovieInfos({ clickedToFocus }) {
   const MovieInfosCtx = useContext(MovieInfoContextStore);
 
   const actorsName = [];
   const stillCuts = new Array(MovieInfosCtx.movieVal.stlls.split("|"));
   stillCuts[0].length = 5;
-  
+
   MovieInfosCtx.movieVal.actors.actor.forEach((v) => {
     actorsName.push(`${v.actorNm}, `);
   });
@@ -22,7 +19,12 @@ export default function DetailMovieInfos({
       className="flex justify-center items-center absolute top-[20%] w-[60%] h-auto p-10 bg-white shadow-lg rounded-xl overflow-auto animate-fade animate-duration-200 z-10"
       ref={clickedToFocus}
     >
-      <button onClick={() => MovieInfosCtx.setDetailMovieInfos(false)}>
+      <button
+        onClick={() => {
+          MovieInfosCtx.setDetailMovieInfos(false);
+          MovieInfosCtx.setIsBoxClicked(false);
+        }}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="3em"
@@ -39,7 +41,10 @@ export default function DetailMovieInfos({
             src={
               MovieInfosCtx.movieVal.posters
                 ? MovieInfosCtx.movieVal.posters.includes("|")
-                  ? MovieInfosCtx.movieVal.posters.substring(0, MovieInfosCtx.movieVal.posters.indexOf("|"))
+                  ? MovieInfosCtx.movieVal.posters.substring(
+                      0,
+                      MovieInfosCtx.movieVal.posters.indexOf("|")
+                    )
                   : MovieInfosCtx.movieVal.posters
                 : "https://s.studiobinder.com/wp-content/uploads/2017/12/Movie-Poster-Template-Dark-with-Image.jpg?"
             }
@@ -58,7 +63,9 @@ export default function DetailMovieInfos({
             </h4>
             <p className="my-1 w-full text-xl font-bold">
               감독 :
-              {MovieInfosCtx.movieVal.directors.director[0].directorNm.includes("!")
+              {MovieInfosCtx.movieVal.directors.director[0].directorNm.includes(
+                "!"
+              )
                 ? MovieInfosCtx.movieVal.directors.director[0].directorNm.replace(
                     /!HS?E?/gi,
                     ""
@@ -75,10 +82,14 @@ export default function DetailMovieInfos({
               <div>
                 <p className="my-1 text-xl">{MovieInfosCtx.movieVal.genre}</p>
                 <p className="my-1 text-xl">
-                  {MovieInfosCtx.movieVal.ratings.rating[0].ratingGrade.includes("|")
+                  {MovieInfosCtx.movieVal.ratings.rating[0].ratingGrade.includes(
+                    "|"
+                  )
                     ? MovieInfosCtx.movieVal.ratings.rating[0].ratingGrade.substring(
                         0,
-                        MovieInfosCtx.movieVal.ratings.rating[0].ratingGrade.indexOf("|")
+                        MovieInfosCtx.movieVal.ratings.rating[0].ratingGrade.indexOf(
+                          "|"
+                        )
                       )
                     : MovieInfosCtx.movieVal.ratings.rating[0].ratingGrade}{" "}
                   / {MovieInfosCtx.movieVal.repRlsDate} 개봉
@@ -123,7 +134,7 @@ export default function DetailMovieInfos({
           </div>
         </div>
         <div className="w-auto h-auto flex justify-center">
-          {stillCuts[0].map((pic,i) => (
+          {stillCuts[0].map((pic, i) => (
             <div className="w-auto h-auto rounded-lg overflow-hidden" key={i}>
               <img
                 src={pic}

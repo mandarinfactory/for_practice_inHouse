@@ -7,6 +7,28 @@ export default function Upcoming({
   setNotUpdatedInfos,
 }) {
   const MovieInfosCtx = useContext(MovieInfoContextStore);
+
+  const clickHandler = (v) => {
+    const clickedTitle = v.target.innerText.replace(/1?2?3?4?5?./, "");
+    MovieInfosCtx.setSearchMovieKeyword(clickedTitle);
+    MovieInfosCtx.setIsBoxClicked(true);
+  };
+  if (MovieInfosCtx.isBoxClicked) {
+    const filteredTitle = MovieInfosCtx.boxesMoviesInfo?.find((e) => {
+      return (
+        e.titleEtc.substring(0, e.titleEtc.indexOf("^")) ==
+        MovieInfosCtx.searchMovieKeyword?.replace(/ /g, "")
+      );
+    });
+    if (filteredTitle !== undefined) {
+      MovieInfosCtx.setMovieVal(filteredTitle);
+      MovieInfosCtx.setDetailMovieInfos(true);
+      setNotUpdatedInfos(false);
+    } else {
+      setNotUpdatedInfos(true);
+    }
+  }
+
   {
     upcomings ? (upcomings.length = 5) : <></>;
   }
@@ -23,28 +45,7 @@ export default function Upcoming({
                   className="p-2 my-1 bg-white backdrop-filter backdrop-blur-md bg-opacity-10 border-gray-200 shadow-md animate-fade-left duration-100 hover:bg-slate-200 cursor-pointer"
                   data-key={movie.id}
                   key={movie.id}
-                  onClick={(v) => {
-                    MovieInfosCtx.setSearchMovieKeyword(
-                      v.target.innerText.replace(/1?2?3?4?5?./, "")
-                    );
-                    const clickedTitle = v.target.innerText.replace(
-                      /1?2?3?4?5?./,
-                      ""
-                    );
-                    const filteredTitle = MovieInfosCtx.boxesMoviesInfo.find((e) => {
-                      return (
-                        e.titleEtc.substring(0, e.titleEtc.indexOf("^")) ==
-                        clickedTitle.replace(/ /g, "")
-                      );
-                    });
-                    if (filteredTitle !== undefined) {
-                      MovieInfosCtx.setMovieVal(filteredTitle);
-                      MovieInfosCtx.setDetailMovieInfos(true);
-                      setNotUpdatedInfos(false);
-                    } else {
-                      setNotUpdatedInfos(true);
-                    }
-                  }}
+                  onClick={clickHandler}
                 >
                   <h3 className="mx-10 my-3 text-3xl">
                     {i + 1}. {movie.title}

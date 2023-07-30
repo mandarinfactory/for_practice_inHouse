@@ -18,7 +18,7 @@ export default function SearchedMovieBox({
           onClick={() => {
             MovieInfosCtx.setDetailMovieInfos(true);
             MovieInfosCtx.setMovieVal(searchedMovie[i]);
-            clickedToFocus.current.scrollIntoView({ behavior: "smooth" });
+            clickedToFocus.current?.scrollIntoView({ behavior: "smooth" });
           }}
         >
           <div className="flex flex-col justify-center items-start">

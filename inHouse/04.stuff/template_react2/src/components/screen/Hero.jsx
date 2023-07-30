@@ -21,10 +21,6 @@ export default function Hero({
   useEffect(() => {
     MovieInfosCtx.searchMovieKeyword;
   }, []);
-
-  useEffect(() => {
-    clickedToFocus;
-  }, [clickedToFocus]);
   
   return (
     <div className="w-full h-full flex flex-col justify-center items-center">
