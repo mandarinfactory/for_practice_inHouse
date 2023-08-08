@@ -1,25 +1,33 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, Button } from "react-native";
+import { StyleSheet, Text, View, Button, TextInput } from "react-native";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>반가워 세게! :P</Text>
+    <View style={styles.appContainer}>
+      <View style={styles.inputContainer}>
+        <TextInput style={styles.textInput} placeholder="할일을 적어주세요!" />
+        <Button title="할일" />
+      </View>
       <View>
-        <Text>
-          여기는 어떤 세계일까?
-        </Text>
-        <Button title="클릭해봐!"/>
+        <Text>할일들.....</Text>
       </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+  appContainer: {
+    padding: 50,
+  },
+  inputContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  textInput: {
+    borderWidth: 1,
+    borderColor: "black",
+    width: "80%",
+    marginRight: 8,
+    padding: 5,
   },
 });
