@@ -1,14 +1,39 @@
+import { useState } from "react";
 import { StyleSheet, Text, View, Button, TextInput } from "react-native";
 
 export default function App() {
+  const [enteredGoalText, setEnteredGoalText] = useState("");
+  const [courseGoals, setCourseGoals] = useState([]);
+
+  const goalInputHandler = (enteredText) => {
+    setEnteredGoalText(enteredText);
+  };
+
+  const addGoalHandler = () => {
+    setCourseGoals((currentCourseGoals) => [
+      ...currentCourseGoals,
+      enteredGoalText,
+    ]);
+  };
+
   return (
     <View style={styles.appContainer}>
       <View style={styles.inputContainer}>
-        <TextInput style={styles.textInput} placeholder="할일을 적어주세요!" />
-        <Button title="할일추가!" />
+        <TextInput
+          style={styles.textInput}
+          placeholder="할일을 적어주세요!"
+          onChangeText={goalInputHandler}
+        />
+        <Button title="할일추가!" onPress={addGoalHandler} />
       </View>
       <View style={styles.goalsContainer}>
-        <Text>할일들.....</Text>
+        {courseGoals.map((goal, i) => (
+          <View>
+            <Text style={styles.goalItem} key={i}>
+              {goal}
+            </Text>
+          </View>
+        ))}
       </View>
     </View>
   );
@@ -38,6 +63,13 @@ const styles = StyleSheet.create({
   },
   goalsContainer: {
     flex: 4,
-    paddingTop: 10,
+  },
+  goalItem: {
+    margin: 10,
+    padding: 5,
+    borderRadius: 7,
+    backgroundColor: "#ed1c24",
+    color: "white",
+    fontWeight: "700",
   },
 });
