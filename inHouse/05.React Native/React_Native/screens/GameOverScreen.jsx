@@ -1,3 +1,7 @@
+import { Text } from "react-native";
+
 export default function GamaOverScreen () {
-    return ();
+    return (
+        <Text>게임오버!</Text>
+    );
 }
