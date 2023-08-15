@@ -43,7 +43,7 @@ export default function StartGameScreen({ onPickNumber }) {
           <PrimaryButton onPress={resetInputHandler}>리셋</PrimaryButton>
         </View>
         <View style={styles.btnContainer}>
-          <PrimaryButton onPressing={confirmInputHandler}>확인</PrimaryButton>
+          <PrimaryButton onPress={confirmInputHandler}>확인</PrimaryButton>
         </View>
       </View>
     </View>

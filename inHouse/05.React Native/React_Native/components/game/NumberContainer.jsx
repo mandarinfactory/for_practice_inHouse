@@ -13,15 +13,13 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: "center",
     alignItems: "center",
-    margin: 25,
+    margin: 20,
     padding: 25,
-    borderWidth: 3,
-    borderColor: Colors.yellow100,
-    borderRadius: 10,
+    backgroundColor: "white",
   },
   numberText: {
     color: Colors.yellow100,
-    fontSize: 40,
+    fontSize: 60,
     fontWeight: "bold",
   },
 });
