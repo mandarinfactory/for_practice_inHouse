@@ -8,10 +8,11 @@ import GameScreen from "./screens/GameScreen";
 
 export default function App() {
   const [userNumber, setUserNumber] = useState();
-  const [gameIsOver, setGameIsOver] = useState(true);
+  const [gameIsOver, setGameIsOver] = useState(false);
 
   const pickedNumberHandler = (pickedNumber) => {
     setUserNumber(pickedNumber);
+    setGameIsOver(false);
   };
   const gameOverHandler = () => {
     setGameIsOver(true);
@@ -20,13 +21,14 @@ export default function App() {
   let screen = <StartGameScreen onPickNumber={pickedNumberHandler} />;
 
   if (userNumber) {
-    screen = <GameScreen userNumber={userNumber} onGameOver={gameOverHandler}/>;
+    screen = (
+      <GameScreen userNumber={userNumber} onGameOver={gameOverHandler} />
+    );
   }
 
-  if (gameIsOver) {
+  if (gameIsOver && userNumber) {
     screen = <GameOverScreen />;
   }
-
 
   return (
     <LinearGradient colors={["#dc3545", "#ddb52f"]} style={styles.rootScreen}>

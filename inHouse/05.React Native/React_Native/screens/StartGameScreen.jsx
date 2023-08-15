@@ -1,8 +1,11 @@
 import { useState } from "react";
-import { TextInput, View, Alert, StyleSheet } from "react-native";
+import { TextInput, View, Text, Alert, StyleSheet } from "react-native";
 
 import PrimaryButton from "../components/UI/PrimaryButton";
+import InstructionText from "../components/UI/InstructionText";
 import Colors from "../constants/colors";
+import Title from "../components/UI/Title";
+import Card from "../components/UI/Card";
 
 export default function StartGameScreen({ onPickNumber }) {
   const [enteredNumber, setEnteredNumber] = useState("");
@@ -28,42 +31,37 @@ export default function StartGameScreen({ onPickNumber }) {
   };
 
   return (
-    <View style={styles.inputContainer}>
-      <TextInput
-        style={styles.textInput}
-        maxLength={2}
-        keyboardType="number-pad"
-        autoCapitalize="none"
-        autoCorrect={false}
-        onChangeText={numberInputHandler}
-        value={enteredNumber}
-      />
-      <View style={styles.btnsContainer}>
-        <View style={styles.btnContainer}>
-          <PrimaryButton onPress={resetInputHandler}>리셋</PrimaryButton>
+    <View style={styles.rootContainer}>
+      <Title>숫자 수수깨기</Title>
+      <Card>
+        <InstructionText>원하는 숫자를 입력해주세요!</InstructionText>
+        <TextInput
+          style={styles.textInput}
+          maxLength={2}
+          keyboardType="number-pad"
+          autoCapitalize="none"
+          autoCorrect={false}
+          onChangeText={numberInputHandler}
+          value={enteredNumber}
+        />
+        <View style={styles.btnsContainer}>
+          <View style={styles.btnContainer}>
+            <PrimaryButton onPress={resetInputHandler}>리셋</PrimaryButton>
+          </View>
+          <View style={styles.btnContainer}>
+            <PrimaryButton onPress={confirmInputHandler}>확인</PrimaryButton>
+          </View>
         </View>
-        <View style={styles.btnContainer}>
-          <PrimaryButton onPress={confirmInputHandler}>확인</PrimaryButton>
-        </View>
-      </View>
+      </Card>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  inputContainer: {
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 15,
+  rootContainer: {
+    flex: 1,
     marginTop: 100,
-    marginHorizontal: 25,
-    borderRadius: 13,
-    backgroundColor: Colors.purple300,
-    elevation: 5, // android box-shadow
-    shadowColor: "black", //iphone box-shadow(그림지의 색상)
-    shadowOffset: { width: 0, height: 2 }, //iphone box-shadow(그림자의 크기, 위치)
-    shadowRadius: 7, //iphone box-shadow(그림자의 번짐의 크기)
-    shadowOpacity: 0.25, //iphone box-shadow(그림자의 투명도)
+    alignItems: "center",
   },
   textInput: {
     width: 50,
