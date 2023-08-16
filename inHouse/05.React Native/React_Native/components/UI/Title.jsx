@@ -8,6 +8,7 @@ export default function Title({ children }) {
 
 const styles = StyleSheet.create({
   title: {
+    fontFamily: "gameSans",
     fontSize: 25,
     fontWeight: "bold",
     backgroundColor: Colors.yellow100,

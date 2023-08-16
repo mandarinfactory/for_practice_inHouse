@@ -32,7 +32,7 @@ export default function StartGameScreen({ onPickNumber }) {
 
   return (
     <View style={styles.rootContainer}>
-      <Title>숫자 수수깨기</Title>
+      <Title>숫자 수수깨끼</Title>
       <Card>
         <InstructionText>원하는 숫자를 입력해주세요!</InstructionText>
         <TextInput

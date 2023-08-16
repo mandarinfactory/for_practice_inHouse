@@ -18,6 +18,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
   numberText: {
+    fontFamily: "gameSans",
     color: Colors.yellow100,
     fontSize: 60,
     fontWeight: "bold",

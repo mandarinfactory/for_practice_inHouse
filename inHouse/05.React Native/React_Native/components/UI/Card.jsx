@@ -8,6 +8,7 @@ export default function Card({ children }) {
 
 const styles = StyleSheet.create({
   cardContainer: {
+    fontFamily: "gameSans",
     justifyContent: "center",
     alignItems: "center",
     padding: 15,

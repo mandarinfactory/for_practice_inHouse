@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   btnText: {
+    fontFamily: "gameSans",
     color: "white",
     textAlign: "center",
     fontSize: 18,
