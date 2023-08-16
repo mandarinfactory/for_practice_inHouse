@@ -58,7 +58,7 @@ export default function GameScreen({ userNumber, onGameOver }) {
 
   return (
     <View style={styles.screen}>
-      <Title>추측한 숫자가 선택한 숫자와 같나요?</Title>
+      <Title>추측한 숫자</Title>
       <Card>
         <NumberContainer>{currentGuess}</NumberContainer>
         <InstructionText style={styles.instructionText}>

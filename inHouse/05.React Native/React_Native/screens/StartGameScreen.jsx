@@ -32,7 +32,7 @@ export default function StartGameScreen({ onPickNumber }) {
 
   return (
     <View style={styles.rootContainer}>
-      <Title>숫자 수수깨끼</Title>
+      <Title style={styles.titleText}>숫자 수수깨끼</Title>
       <Card>
         <InstructionText>원하는 숫자를 입력해주세요!</InstructionText>
         <TextInput
@@ -62,6 +62,10 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: 100,
     alignItems: "center",
+  },
+  titleText : {
+    width : "80%",
+    fontSize : 35,
   },
   textInput: {
     width: 50,

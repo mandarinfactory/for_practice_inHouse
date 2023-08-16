@@ -2,14 +2,14 @@ import { Text, StyleSheet } from "react-native";
 
 import Colors from "../../constants/colors";
 
-export default function Title({ children }) {
-  return <Text style={styles.title}>{children}</Text>;
+export default function Title({ children, style }) {
+  return <Text style={[styles.title, style]}>{children}</Text>;
 }
 
 const styles = StyleSheet.create({
   title: {
     fontFamily: "gameSans",
-    fontSize: 25,
+    fontSize: 33,
     fontWeight: "bold",
     backgroundColor: Colors.yellow100,
     color: "white",
