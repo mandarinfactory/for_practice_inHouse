@@ -6,6 +6,7 @@ import InstructionText from "../components/UI/InstructionText";
 import Colors from "../constants/colors";
 import Title from "../components/UI/Title";
 import Card from "../components/UI/Card";
+import DescriptionCard from "./DescriptionCard";
 
 export default function StartGameScreen({ onPickNumber }) {
   const [enteredNumber, setEnteredNumber] = useState("");
@@ -53,6 +54,7 @@ export default function StartGameScreen({ onPickNumber }) {
           </View>
         </View>
       </Card>
+      <DescriptionCard  style={styles.descriptionCard}/>
     </View>
   );
 }
@@ -63,9 +65,8 @@ const styles = StyleSheet.create({
     marginTop: 100,
     alignItems: "center",
   },
-  titleText : {
-    width : "80%",
-    fontSize : 35,
+  titleText: {
+    fontSize: 35,
   },
   textInput: {
     width: 50,

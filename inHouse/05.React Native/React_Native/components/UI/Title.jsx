@@ -17,5 +17,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: Colors.yellow100,
     padding: 10,
+    minWidth : "80%",
   },
 });
