@@ -1,5 +1,13 @@
 import { useState } from "react";
-import { TextInput, View, Text, Alert, StyleSheet } from "react-native";
+import {
+  TextInput,
+  View,
+  Alert,
+  StyleSheet,
+  useWindowDimensions,
+  KeyboardAvoidingView,
+  ScrollView,
+} from "react-native";
 
 import PrimaryButton from "../components/UI/PrimaryButton";
 import InstructionText from "../components/UI/InstructionText";
@@ -10,6 +18,8 @@ import DescriptionCard from "./DescriptionCard";
 
 export default function StartGameScreen({ onPickNumber }) {
   const [enteredNumber, setEnteredNumber] = useState("");
+
+  const { width, height } = useWindowDimensions();
 
   const numberInputHandler = (inputText) => {
     setEnteredNumber(inputText);
@@ -31,38 +41,49 @@ export default function StartGameScreen({ onPickNumber }) {
     onPickNumber(chosenNumber);
   };
 
+  const marginTopDistance = height < 400 ? 50 : 100;
+
   return (
-    <View style={styles.rootContainer}>
-      <Title style={styles.titleText}>숫자QUIZ</Title>
-      <Card>
-        <InstructionText>원하는 숫자를 입력해주세요!</InstructionText>
-        <TextInput
-          style={styles.textInput}
-          maxLength={2}
-          keyboardType="number-pad"
-          autoCapitalize="none"
-          autoCorrect={false}
-          onChangeText={numberInputHandler}
-          value={enteredNumber}
-        />
-        <View style={styles.btnsContainer}>
-          <View style={styles.btnContainer}>
-            <PrimaryButton onPress={resetInputHandler}>리셋</PrimaryButton>
-          </View>
-          <View style={styles.btnContainer}>
-            <PrimaryButton onPress={confirmInputHandler}>확인</PrimaryButton>
-          </View>
+    <ScrollView style={styles.screen}>
+      <KeyboardAvoidingView style={styles.screen} behavior="position">
+        <View style={[styles.rootContainer, { marginTop: marginTopDistance }]}>
+          <Title style={styles.titleText}>숫자QUIZ</Title>
+          <Card>
+            <InstructionText>원하는 숫자를 입력해주세요!</InstructionText>
+            <TextInput
+              style={styles.textInput}
+              maxLength={2}
+              keyboardType="number-pad"
+              autoCapitalize="none"
+              autoCorrect={false}
+              onChangeText={numberInputHandler}
+              value={enteredNumber}
+            />
+            <View style={styles.btnsContainer}>
+              <View style={styles.btnContainer}>
+                <PrimaryButton onPress={resetInputHandler}>리셋</PrimaryButton>
+              </View>
+              <View style={styles.btnContainer}>
+                <PrimaryButton onPress={confirmInputHandler}>
+                  확인
+                </PrimaryButton>
+              </View>
+            </View>
+          </Card>
+          <DescriptionCard style={styles.descriptionCard} />
         </View>
-      </Card>
-      <DescriptionCard  style={styles.descriptionCard}/>
-    </View>
+      </KeyboardAvoidingView>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
+  screen: {
+    flex: 1,
+  },
   rootContainer: {
     flex: 1,
-    marginTop: 100,
+    //marginTop: deviceHeight < 400 ? 50 : 100,
     alignItems: "center",
   },
   titleText: {
