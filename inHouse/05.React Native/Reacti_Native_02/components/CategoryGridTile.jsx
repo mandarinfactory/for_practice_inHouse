@@ -1,11 +1,13 @@
-import { View, Pressable } from "react-native";
+import { Text, View, Pressable } from "react-native";
 
-export default function CategoryGridTile () {
-    return (
+export default function CategoryGridTile({ title, color }) {
+  return (
+    <View>
+      <Pressable>
         <View>
-            <Pressable>
-                
-            </Pressable>
+          <Text>{title}</Text>
         </View>
-    );
-};
+      </Pressable>
+    </View>
+  );
+}
