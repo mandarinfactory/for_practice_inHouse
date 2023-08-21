@@ -53,7 +53,7 @@ export default function App() {
         source={require("./assets/images/dice.png")}
         resizeMode="cover"
         style={styles.rootScreen}
-        imageStyle={styles.bgImage}
+        imageStyle={styles.bgImage} 
       >
         <SafeAreaView style={styles.rootScreen}>{screen}</SafeAreaView>
       </ImageBackground>
