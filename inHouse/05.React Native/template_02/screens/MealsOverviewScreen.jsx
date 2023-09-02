@@ -29,6 +29,7 @@ export default function MealsOverviewScreen({ route, navigation }) {
       complexity: item.complexity,
       affordability: item.affordability,
     };
+    
     return <MealItem {...mealItemProps} />;
   };
 
