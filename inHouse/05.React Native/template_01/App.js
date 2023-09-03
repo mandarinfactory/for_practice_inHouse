@@ -28,7 +28,7 @@ export default function App() {
   };
   const gameOverHandler = (numberOfRounds) => {
     setGameIsOver(true);
-    setGuessRounds(numberOfRounds)
+    setGuessRounds(numberOfRounds);
   };
   const startNewGameHandler = () => {
     setUserNumber(null);
@@ -44,7 +44,13 @@ export default function App() {
   }
 
   if (gameIsOver && userNumber) {
-    screen = <GameOverScreen roundsNumber={userNumber} userNumber={guessRounds} onStartNewGame={startNewGameHandler}/>;
+    screen = (
+      <GameOverScreen
+        roundsNumber={userNumber}
+        userNumber={guessRounds}
+        onStartNewGame={startNewGameHandler}
+      />
+    );
   }
 
   return (
@@ -53,7 +59,7 @@ export default function App() {
         source={require("./assets/images/dice.png")}
         resizeMode="cover"
         style={styles.rootScreen}
-        imageStyle={styles.bgImage} 
+        imageStyle={styles.bgImage}
       >
         <SafeAreaView style={styles.rootScreen}>{screen}</SafeAreaView>
       </ImageBackground>

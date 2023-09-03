@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Text, View, Alert, StyleSheet, FlatList } from "react-native";
+import { View, Alert, StyleSheet, FlatList } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 import Title from "../components/UI/Title";
