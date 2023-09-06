@@ -7,9 +7,9 @@ export default function HeaderScreen() {
       <View style={styles.headerInnerContainer}>
         <View style={styles.headerElementContainer}>
           <Pressable style={styles.IconPlayContainer}>
-            <Ionicons name="play" size={25} color="black" />
+            <Ionicons name="business" size={25} color="black" />
           </Pressable>
-          <Text style={styles.headerFirstText}>OurTube</Text>
+          <Text style={styles.headerFirstText}>HOWSE?</Text>
         </View>
         <View style={styles.headerElementContainer}>
           <TextInput style={styles.searchInput} />
@@ -39,12 +39,12 @@ const styles = StyleSheet.create({
   },
   IconPlayContainer: {
     padding: 5,
-    backgroundColor: "#40a68f",
+    backgroundColor: "#2a73dc",
     borderRadius: 20,
   },
   IconPersonContainer: {
     padding: 3,
-    backgroundColor: "#40a68f",
+    backgroundColor: "#2a73dc",
     borderRadius: 20,
   },
   headerFirstText: {

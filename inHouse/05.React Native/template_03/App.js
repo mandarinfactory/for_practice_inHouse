@@ -4,8 +4,10 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
 } from "react-native";
+import { useEffect } from "react";
 import { StatusBar } from "expo-status-bar";
 
+import getAptTradeAPI from "./API";
 import HeaderScreen from "./screens/HeaderScreen";
 
 export default function App() {
@@ -15,6 +17,10 @@ export default function App() {
     </TouchableWithoutFeedback>
   );
 
+  useEffect(() => {
+      getAptTradeAPI();
+  },[])
+  
   return (
     <>
       <StatusBar style="light" />
