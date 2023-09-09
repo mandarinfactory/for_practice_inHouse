@@ -7,8 +7,9 @@ import {
 import { useEffect } from "react";
 import { StatusBar } from "expo-status-bar";
 
-import getAptTradeAPI from "./API";
+import getAptTradeAPI from "./API/RealEstate/aptIndex";
 import HeaderScreen from "./screens/HeaderScreen";
+import SearchScreen from "./screens/SearchScreen";
 
 export default function App() {
   const DismissKeyboard = ({ children }) => (
@@ -27,6 +28,7 @@ export default function App() {
       <DismissKeyboard>
         <SafeAreaView style={styles.rootContainer}>
           <HeaderScreen />
+          <SearchScreen />
         </SafeAreaView>
       </DismissKeyboard>
     </>

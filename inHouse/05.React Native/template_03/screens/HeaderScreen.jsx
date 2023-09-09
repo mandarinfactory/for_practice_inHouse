@@ -1,20 +1,22 @@
-import { Text, View, Pressable, TextInput, StyleSheet } from "react-native";
+import { Text, View, Pressable, StyleSheet } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
+
+import Colors from "../constant/color";
 
 export default function HeaderScreen() {
   return (
     <View style={styles.headerOuterContainer}>
       <View style={styles.headerInnerContainer}>
         <View style={styles.headerElementContainer}>
-          <Pressable style={styles.IconPlayContainer}>
+          <Pressable style={styles.IconTitleContainer}>
             <Ionicons name="business" size={25} color="black" />
           </Pressable>
-          <Text style={styles.headerFirstText}>HOWSE?</Text>
+          <Text style={styles.headerFirstText}>집순위</Text>
         </View>
         <View style={styles.headerElementContainer}>
-          <TextInput style={styles.searchInput} />
+
           <Pressable style={styles.IconPersonContainer}>
-            <Ionicons name="person-circle" size={25} color="black" />
+            <Ionicons name="moon" size={25} color="black" />{/* darkmode btn */}
           </Pressable>
         </View>
       </View>
@@ -37,14 +39,14 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "center",
   },
-  IconPlayContainer: {
+  IconTitleContainer: {
     padding: 5,
-    backgroundColor: "#2a73dc",
+    backgroundColor: Colors.primaryColor,
     borderRadius: 20,
   },
   IconPersonContainer: {
     padding: 3,
-    backgroundColor: "#2a73dc",
+    backgroundColor: Colors.primaryColor,
     borderRadius: 20,
   },
   headerFirstText: {
@@ -52,14 +54,5 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
     fontSize: 24,
-  },
-  searchInput: {
-    width: 100,
-    paddingHorizontal: 15,
-    paddingVertical: 5,
-    marginRight: 7,
-    borderColor: "transparent",
-    backgroundColor: "white",
-    borderRadius: 15,
   },
 });
