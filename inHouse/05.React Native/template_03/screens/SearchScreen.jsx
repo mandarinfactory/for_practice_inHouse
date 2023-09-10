@@ -11,7 +11,7 @@ export default function SearchScreen() {
         </Text>
         <Text style={styles.subtitleText}>순위를 알고 싶으신가요?</Text>
         <Text style={styles.subtitleText}>
-          <Text style={styles.subtitleInnerText}>원하는 구</Text>를 검색해
+          <Text style={styles.subtitleInnerText}>원하는 동</Text>을 검색해
           보세요!
         </Text>
       </View>
@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
     fontSize: 30,
+    fontFamily: "HeroSans",
   },
   subtitleInnerText: {
     color: Colors.primaryColor,
