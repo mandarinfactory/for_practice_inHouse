@@ -64,7 +64,6 @@ export default function Hero({
         }}
       />
       {searchedMovie &&
-      
       MovieInfosCtx.searchMovieKeyword ? (
         <SearchedMovieBox
           searchedMovie={searchedMovie}

@@ -20,7 +20,6 @@ const getAptTradeAPI = async () => {
     let rawData = JSON.stringify(result);
     let JSONData = JSON.parse(rawData);
     let aptData = JSONData.response.body[0].items[0].item;
-    //console.log(aptData);
   });
 };
 

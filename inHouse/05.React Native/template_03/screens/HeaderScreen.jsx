@@ -52,8 +52,7 @@ const styles = StyleSheet.create({
   headerFirstText: {
     marginLeft: 5,
     color: "white",
-    fontWeight: "bold",
     fontSize: 24,
-    fontFamily: "titleSans"
+    fontFamily: "Bold"
   },
 });
