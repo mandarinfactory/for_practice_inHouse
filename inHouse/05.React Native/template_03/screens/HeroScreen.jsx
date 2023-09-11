@@ -2,24 +2,34 @@ import { View, Text, StyleSheet } from "react-native";
 import Colors from "../constant/color";
 
 export default function HeroScreen({ apartmentData }) {
+  let deAptData;
   return (
     <>
-      <View style={styles.outerConatiner}>
-      <View style={styles.titleTextContainer}>
-        <Text style={styles.titleText}>현재 종로구 아파트 순위</Text>
-      </View>
-        {apartmentData?.map((aptData) => (
-          <View style={styles.innerContainer}>
-            <Text style={styles.innerText}>{aptData.아파트}아파트</Text>
-            <Text style={styles.innerText}>{aptData.거래금액}</Text>
-            <Text style={styles.innerText}>
-              {aptData.년}
-              {aptData.월}
-              {aptData.일}
-            </Text>
+      {apartmentData !== undefined ? (
+        <View style={styles.outerConatiner}>
+          <View style={styles.titleTextContainer}>
+            <Text style={styles.titleText}>현재 종로구 아파트 순위</Text>
           </View>
-        ))}
-      </View>
+          {apartmentData?.map((aptData, index) => (
+            <View style={styles.innerContainer} key={index}>
+              <Text style={styles.innerText}>{aptData.아파트}아파트</Text>
+              <Text style={styles.innerText}>
+                {aptData.거래금액
+                  .toString()
+                  .trim()
+                  .substring(0, 3)
+                  .replace(/,/g, "")}억
+              </Text>
+              <Text style={styles.innerText}>
+                {aptData.년.toString().replace("20", "")}.
+                {aptData.월 < 10 ? `0${aptData.월}` : aptData.월}.{aptData.일}
+              </Text>
+            </View>
+          ))}
+        </View>
+      ) : (
+        <></>
+      )}
     </>
   );
 }
@@ -38,7 +48,7 @@ const styles = StyleSheet.create({
   },
   titleTextContainer: {
     width: "80%",
-    alignItems:"flex-start"
+    alignItems: "flex-start",
   },
   titleText: {
     marginBottom: 10,
