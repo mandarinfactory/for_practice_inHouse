@@ -1,30 +1,45 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Pressable } from "react-native";
 import Colors from "../constant/color";
 
-export default function HeroScreen({ apartmentData }) {
-  let deAptData;
+export default function HeroScreen({ apartmentData, onPress }) {
   return (
     <>
-      {apartmentData !== undefined ? (
+      {apartmentData !== undefined &&
+      apartmentData.sort(function (x, y) {
+        return parseInt(y.거래금액) - parseInt(x.거래금액);
+      }) ? (
         <View style={styles.outerConatiner}>
           <View style={styles.titleTextContainer}>
             <Text style={styles.titleText}>현재 종로구 아파트 순위</Text>
           </View>
           {apartmentData?.map((aptData, index) => (
-            <View style={styles.innerContainer} key={index}>
+            /* aptData.거래금액.sort(function (a, b) {
+              return b - a;
+            }) */
+            <Pressable
+              style={({ pressed }) =>
+                pressed
+                  ? [styles.innerContainer, styles.pressed]
+                  : styles.innerContainer
+              }
+              key={index}
+              onPress={onPress}
+              android_ripple={{ color: Colors.primaryColor }}
+            >
               <Text style={styles.innerText}>{aptData.아파트}아파트</Text>
               <Text style={styles.innerText}>
                 {aptData.거래금액
                   .toString()
                   .trim()
-                  .substring(0, 3)
-                  .replace(/,/g, "")}억
+                  .replace(/,/g, "0000")
+                  .replace(/(\d)(?=(?:\d{3})+(?!\d))/g, "$1,")}
+                원
               </Text>
               <Text style={styles.innerText}>
                 {aptData.년.toString().replace("20", "")}.
                 {aptData.월 < 10 ? `0${aptData.월}` : aptData.월}.{aptData.일}
               </Text>
-            </View>
+            </Pressable>
           ))}
         </View>
       ) : (
@@ -39,12 +54,18 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginVertical: 30,
   },
+  pressed: {
+    backgroundColor: Colors.primaryColor,
+    borderRadius: 10,
+  },
   innerContainer: {
     width: "80%",
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginVertical: 15,
+    marginVertical: 3,
+    paddingVertical: 15,
+    paddingHorizontal: 3,
   },
   titleTextContainer: {
     width: "80%",
@@ -58,7 +79,7 @@ const styles = StyleSheet.create({
   },
   innerText: {
     fontFamily: "ExtraLight",
-    fontSize: 14,
+    fontSize: 13,
     color: "white",
   },
 });
