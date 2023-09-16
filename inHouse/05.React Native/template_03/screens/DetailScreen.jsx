@@ -16,7 +16,20 @@ export default function DetailScreen({
     .replace(/(\d)(?=(?:\d{3})+(?!\d))/g, "$1,");
   const aptSizeData = parseFloat(pressedAptData.전용면적.toString()).toFixed(2);
 
-  const aptAddressData = () => {
+  const aptNewAddressData = () => {
+    console.log(parseInt(pressedAptData.도로명건물부번호코드) !== 0);
+    if (parseInt(pressedAptData.도로명건물부번호코드) !== 0) {
+      return `${pressedAptData.도로명} ${pressedAptData.도로명건물본번호코드
+        .toString()
+        .replace(/000?/, "")} - ${pressedAptData.도로명건물부번호코드
+        .toString()
+        .replace(/000?/, "")}`;
+    } else
+      return `${pressedAptData.도로명} ${pressedAptData.도로명건물본번호코드
+        .toString()
+        .replace(/000?/, "")}`;
+  };
+  const aptOldAddressData = () => {
     if (parseInt(pressedAptData.법정동부번코드) !== 0) {
       return `${pressedAptData.법정동} ${pressedAptData.법정동본번코드
         .toString()
@@ -37,7 +50,20 @@ export default function DetailScreen({
         <Text style={styles.titleText}>{pressedAptData.아파트}아파트</Text>
         <View>
           <Text style={styles.innerText}>거래금액 : {aptTradeData}원</Text>
-          <Text style={styles.innerText}>주소 : {aptAddressData()}</Text>
+          <Text style={styles.innerText}>
+            거래날짜 : 20{pressedAptData.년.toString().replace("20", "")}년
+            {pressedAptData.월 < 10
+              ? ` 0${pressedAptData.월}`
+              : pressedAptData.월}
+            월
+            {pressedAptData.일 < 10
+              ? ` 0${pressedAptData.일}`
+              : pressedAptData.일}
+            일
+          </Text>
+          <Text style={styles.innerText}>
+            주소 : {aptNewAddressData()} / {aptOldAddressData()}
+          </Text>
           <Text style={styles.innerText}>
             건축년도 : {pressedAptData.건축년도}년
           </Text>
@@ -55,14 +81,15 @@ export default function DetailScreen({
 
 const styles = StyleSheet.create({
   titleText: {
-    marginVertical: 10,
+    marginTop: 25,
+    marginBottom: 15,
     fontFamily: "ExtraLight",
     fontSize: 30,
     color: Colors.primaryColor,
     textAlign: "center",
   },
   innerText: {
-    marginVertical: 5,
+    marginVertical: 8,
     color: "white",
     fontFamily: "Light",
     fontSize: 18,

@@ -48,7 +48,8 @@ export default function HeroScreen({
               </Text>
               <Text style={styles.innerText}>
                 {aptData.년.toString().replace("20", "")}.
-                {aptData.월 < 10 ? `0${aptData.월}` : aptData.월}.{aptData.일}
+                {aptData.월 < 10 ? `0${aptData.월}` : aptData.월}.
+                {aptData.일 < 10 ? `0${aptData.일}` : aptData.일}
               </Text>
             </Pressable>
           ))}
