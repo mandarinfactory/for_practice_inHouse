@@ -1,7 +1,11 @@
 import { View, Text, StyleSheet, Pressable } from "react-native";
 import Colors from "../constant/color";
 
-export default function HeroScreen({ apartmentData, onPress }) {
+export default function HeroScreen({ apartmentData, setIsAptPressed }) {
+  const onPress = () => {
+    setIsAptPressed(true);
+  }
+  
   return (
     <>
       {apartmentData !== undefined &&
@@ -10,12 +14,12 @@ export default function HeroScreen({ apartmentData, onPress }) {
       }) ? (
         <View style={styles.outerConatiner}>
           <View style={styles.titleTextContainer}>
-            <Text style={styles.titleText}>현재 종로구 아파트 순위</Text>
+            <Text style={styles.subtitleText}>
+              현재 <Text style={styles.titleText}>서울특별시 종로구 </Text>
+              아파트 순위
+            </Text>
           </View>
           {apartmentData?.map((aptData, index) => (
-            /* aptData.거래금액.sort(function (a, b) {
-              return b - a;
-            }) */
             <Pressable
               style={({ pressed }) =>
                 pressed
@@ -75,7 +79,12 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     fontFamily: "Bold",
     fontSize: 24,
-    color: Colors.subColor,
+    color: Colors.primaryColor,
+  },
+  subtitleText: {
+    fontFamily: "ExtraLight",
+    fontSize: 24,
+    color: "white",
   },
   innerText: {
     fontFamily: "ExtraLight",

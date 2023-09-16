@@ -7,26 +7,28 @@ import {
 } from "react-native";
 import { useEffect, useState } from "react";
 import { StatusBar } from "expo-status-bar";
-import Geolocation from "@react-native-community/geolocation";
+import AppLoading from "expo-app-loading";
+//import Geolocation from "@react-native-community/geolocation";
 
 //import getAptTradeAPI from "./API/RealEstate/aptIndex";
 //import getWeatherDataAPI from "./API/weather";
-import HeaderScreen from "./screens/HeaderScreen";
-import SearchScreen from "./screens/SearchScreen";
-import HeroScreen from "./screens/HeroScreen";
-import WeatherScreen from "./screens/WeatherScreen";
-/* screens */
+
+import Detail from "./components/Detail";
+import Home from "./components/Home";
+/* components&scrrens */
+
 import useFonts from "./hooks/useFonts";
 /* custom-hooks */
-import getLocationAndroidHandler from "./android/permissionAndroid";
+
+//import getLocationAndroidHandler from "./android/permissionAndroid";
 /* Natives-Permission */
 
 export default function App() {
-  Geolocation.setRNConfiguration(config);
-  
   const [apartmentData, setApartmentData] = useState();
   const [weatherData, setWeatherData] = useState([]);
+  const [dataLoaded, setDataLoaded] = useState(false);
   const [isFont, setIsFont] = useState(false);
+  const [isAptPressed, setIsAptPressed] = useState(false);
 
   const DismissKeyboard = ({ children }) => (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -84,17 +86,28 @@ export default function App() {
     setWeatherData(rawWeatherData);
   };
 
-  const getDetailPageHandler = () => {
-    return;
-  };
-
   useEffect(() => {
-    useFonts();
     setIsFont(true);
     getAptTradeAPI();
     getWeatherDataAPI();
-    getLocationAndroidHandler();
+    //getLocationAndroidHandler();
   }, []);
+
+  if (!dataLoaded) {
+    return (
+      <AppLoading
+        startAsync={useFonts}
+        onFinish={() => setDataLoaded(true)}
+        onError={(error) => console.warn(error)}
+      />
+    );
+  }
+  
+  let screen = <Home apartmentData={apartmentData} weatherData={weatherData} setIsAptPressed={setIsAptPressed}/>;
+
+  if(isAptPressed) {
+    screen = <Detail isAptPressed={isAptPressed}/>
+  }
 
   return (
     <>
@@ -102,13 +115,7 @@ export default function App() {
       <DismissKeyboard>
         <ScrollView>
           <SafeAreaView style={styles.rootContainer}>
-            <HeaderScreen />
-            <WeatherScreen weatherData={weatherData} />
-            <SearchScreen />
-            <HeroScreen
-              apartmentData={apartmentData}
-              onPress={getDetailPageHandler}
-            />
+            {screen}
           </SafeAreaView>
         </ScrollView>
       </DismissKeyboard>
