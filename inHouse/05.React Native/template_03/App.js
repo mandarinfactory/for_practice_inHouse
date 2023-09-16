@@ -29,6 +29,7 @@ export default function App() {
   const [dataLoaded, setDataLoaded] = useState(false);
   const [isFont, setIsFont] = useState(false);
   const [isAptPressed, setIsAptPressed] = useState(false);
+  const [pressedAptData, setPressedAptData] = useState();
 
   const DismissKeyboard = ({ children }) => (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -102,11 +103,25 @@ export default function App() {
       />
     );
   }
-  
-  let screen = <Home apartmentData={apartmentData} weatherData={weatherData} setIsAptPressed={setIsAptPressed}/>;
 
-  if(isAptPressed) {
-    screen = <Detail isAptPressed={isAptPressed}/>
+  let screen = (
+    <Home
+      apartmentData={apartmentData}
+      weatherData={weatherData}
+      setIsAptPressed={setIsAptPressed}
+      setPressedAptData={setPressedAptData}
+    />
+  );
+
+  if (isAptPressed) {
+    screen = (
+      <Detail
+        isAptPressed={isAptPressed}
+        setIsAptPressed={setIsAptPressed}
+        apartmentData={apartmentData}
+        pressedAptData={pressedAptData}
+      />
+    );
   }
 
   return (
@@ -114,9 +129,7 @@ export default function App() {
       <StatusBar style="light" />
       <DismissKeyboard>
         <ScrollView>
-          <SafeAreaView style={styles.rootContainer}>
-            {screen}
-          </SafeAreaView>
+          <SafeAreaView style={styles.rootContainer}>{screen}</SafeAreaView>
         </ScrollView>
       </DismissKeyboard>
     </>

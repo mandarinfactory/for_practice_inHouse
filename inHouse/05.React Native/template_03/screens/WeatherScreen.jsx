@@ -22,7 +22,9 @@ export default function WeatherScreen({ weatherData }) {
             </View>
           ) : (
             <View>
-              <Text style={styles.innerText}>오늘은 비 또는 눈이 옵니다.</Text>
+              <Text style={styles.innerText}>
+                오늘은 <Text style={styles.weatherText}>비 또는 눈이 옵니다.</Text>
+              </Text>
               <Text style={styles.innerText}>우산을 챙기시길 바랍니다.</Text>
             </View>
           )}

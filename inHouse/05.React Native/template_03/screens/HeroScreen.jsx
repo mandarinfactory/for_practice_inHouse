@@ -1,11 +1,15 @@
 import { View, Text, StyleSheet, Pressable } from "react-native";
 import Colors from "../constant/color";
 
-export default function HeroScreen({ apartmentData, setIsAptPressed }) {
-  const onPress = () => {
+export default function HeroScreen({
+  apartmentData,
+  setIsAptPressed,
+  setPressedAptData,
+}) {
+  const onPress = (e) => {
     setIsAptPressed(true);
-  }
-  
+  };
+
   return (
     <>
       {apartmentData !== undefined &&
@@ -27,7 +31,10 @@ export default function HeroScreen({ apartmentData, setIsAptPressed }) {
                   : styles.innerContainer
               }
               key={index}
-              onPress={onPress}
+              onPress={() => {
+                onPress();
+                setPressedAptData(aptData);
+              }}
               android_ripple={{ color: Colors.primaryColor }}
             >
               <Text style={styles.innerText}>{aptData.아파트}아파트</Text>
