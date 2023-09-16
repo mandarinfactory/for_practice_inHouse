@@ -17,7 +17,6 @@ export default function DetailScreen({
   const aptSizeData = parseFloat(pressedAptData.전용면적.toString()).toFixed(2);
 
   const aptNewAddressData = () => {
-    console.log(parseInt(pressedAptData.도로명건물부번호코드) !== 0);
     if (parseInt(pressedAptData.도로명건물부번호코드) !== 0) {
       return `${pressedAptData.도로명} ${pressedAptData.도로명건물본번호코드
         .toString()
