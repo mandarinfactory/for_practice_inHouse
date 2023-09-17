@@ -7,7 +7,7 @@ import {
 import { useEffect, useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import AppLoading from "expo-app-loading";
-//import Geolocation from "@react-native-community/geolocation";
+import * as Location from "expo-location";
 
 //import getAptTradeAPI from "./API/RealEstate/aptIndex";
 //import getWeatherDataAPI from "./API/weather";
@@ -19,16 +19,19 @@ import Home from "./components/Home";
 import useFonts from "./hooks/useFonts";
 /* custom-hooks */
 
-//import getLocationAndroidHandler from "./android/permissionAndroid";
-/* Natives-Permission */
-
 export default function App() {
+  const [location, setLocation] = useState();
+  const [isLocationActive, setIsLocationActive] = useState(true);
   const [apartmentData, setApartmentData] = useState();
   const [weatherData, setWeatherData] = useState([]);
   const [dataLoaded, setDataLoaded] = useState(false);
   const [isFont, setIsFont] = useState(false);
   const [isAptPressed, setIsAptPressed] = useState(false);
   const [pressedAptData, setPressedAptData] = useState();
+
+  const getLocationHandler = async () => {
+    const permission = await Location.requestBackgroundPermissionsAsync();
+  };
 
   const DismissKeyboard = ({ children }) => (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -87,6 +90,7 @@ export default function App() {
   };
 
   useEffect(() => {
+    getLocationHandler();
     setIsFont(true);
     getAptTradeAPI();
     getWeatherDataAPI();
