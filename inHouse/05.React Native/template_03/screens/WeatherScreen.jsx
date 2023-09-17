@@ -1,12 +1,12 @@
 import { Text, View, StyleSheet } from "react-native";
 import Colors from "../constant/color";
 
-export default function WeatherScreen({ weatherData }) {
+export default function WeatherScreen({ recentLocation, weatherData }) {
   return (
     <>
       {weatherData !== undefined ? (
         <View style={styles.innerContainer}>
-          <Text style={styles.weatherText}>종로구의</Text>
+          <Text style={styles.weatherText}>{recentLocation !== undefined ? recentLocation[0].district : recentLocation}의</Text>
           <Text style={styles.innerText}>
             현재 온도는{" "}
             <Text style={styles.weatherText}>{weatherData[3]?.obsrValue}</Text>

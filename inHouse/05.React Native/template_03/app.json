@@ -16,13 +16,7 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "infoPlist": [
-        "NSLocationWhenInUseUsageDescription",
-        "NSLocationAlwaysAndWhenInUseUsageDescription",
-        {
-          "NMFClientId": "ia4i567onk"
-        }
-      ]
+      "Info.plist": {"NSLocation*UsageDescription" : "Allow $(PRODUCT_NAME) to use your location" }
     },
     "android": {
       "adaptiveIcon": {

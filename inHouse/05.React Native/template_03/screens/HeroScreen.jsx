@@ -1,7 +1,8 @@
-import { View, Text, StyleSheet, Pressable, ScrollView } from "react-native";
+import { View, Text, StyleSheet, Pressable } from "react-native";
 import Colors from "../constant/color";
 
 export default function HeroScreen({
+  recentLocation,
   apartmentData,
   setIsAptPressed,
   setPressedAptData,
@@ -19,7 +20,7 @@ export default function HeroScreen({
         <View style={styles.outerConatiner}>
           <View style={styles.titleTextContainer}>
             <Text style={styles.subtitleText}>
-              현재 <Text style={styles.titleText}>서울특별시 종로구 </Text>
+              현재 <Text style={styles.titleText}>{recentLocation[0].city} {recentLocation[0].district} </Text>
               아파트 순위
             </Text>
           </View>

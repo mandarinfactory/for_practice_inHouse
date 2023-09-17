@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import AppLoading from "expo-app-loading";
 import * as Location from "expo-location";
+import addressData from "./API/realestate/addresssData.json";
 
 //import getAptTradeAPI from "./API/RealEstate/aptIndex";
 //import getWeatherDataAPI from "./API/weather";
@@ -17,20 +18,53 @@ import Home from "./components/Home";
 /* components&scrrens */
 
 import useFonts from "./hooks/useFonts";
+import geoLocationControler from "./API/weather/grid";
 /* custom-hooks */
 
 export default function App() {
-  const [location, setLocation] = useState();
+  const [recentLocation, setRecentLocation] = useState();
   const [isLocationActive, setIsLocationActive] = useState(true);
   const [apartmentData, setApartmentData] = useState();
+  const [aptLocData, setAptLocData] = useState();
   const [weatherData, setWeatherData] = useState([]);
+  const [weatherLocData, setWeatherLocData] = useState({});
+  const postOBJ = { setState: setWeatherLocData };
   const [dataLoaded, setDataLoaded] = useState(false);
   const [isFont, setIsFont] = useState(false);
   const [isAptPressed, setIsAptPressed] = useState(false);
   const [pressedAptData, setPressedAptData] = useState();
 
   const getLocationHandler = async () => {
-    const permission = await Location.requestBackgroundPermissionsAsync();
+    const { granted } = await Location.requestForegroundPermissionsAsync();
+    if (!granted) {
+      setIsLocationActive(false);
+    }
+    const {
+      coords: { latitude, longitude },
+    } = await Location.getCurrentPositionAsync({ accuracy: 5 });
+    if ((latitude, longitude)) {
+      geoLocationControler("toXY", latitude, longitude, postOBJ);
+    }
+    const location = await Location.reverseGeocodeAsync(
+      { latitude, longitude },
+      { useGoogleMaps: false }
+    );
+    setRecentLocation(location);
+  };
+
+  const findCityNumberHandler = () => {
+    if (recentLocation) {
+      addressData.forEach((v) => {
+        if (
+          v.시도명 == recentLocation[0].city &&
+          v.읍면동명 == recentLocation[0].district
+        ) {
+          return setAptLocData(v.법정동코드.toString().substring(0, 5));
+        } else {
+          return false;
+        }
+      });
+    }
   };
 
   const DismissKeyboard = ({ children }) => (
@@ -44,7 +78,7 @@ export default function App() {
       "http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptTradeDev";
     const API_KEY =
       "24vbFaV5oWpSo3qOGdwCXPO%2FX5gr4tqD2gxEwUJWb2xVcv4sWZ5QmmZruySMYWl2471GK88wVe3zjfacPH%2FENQ%3D%3D";
-    const headers = "&pageNo=1&numOfRows=10&LAWD_CD=11110&DEAL_YMD=202308";
+    const headers = `&pageNo=1&numOfRows=10&LAWD_CD=${aptLocData}&DEAL_YMD=202308`;
     const reqestAPI_URL = `${API_URL}?serviceKey=${API_KEY}${headers}`;
     const response = await fetch(reqestAPI_URL)
       .then((res) => res)
@@ -82,7 +116,10 @@ export default function App() {
       "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst";
     const API_KEY =
       "24vbFaV5oWpSo3qOGdwCXPO%2FX5gr4tqD2gxEwUJWb2xVcv4sWZ5QmmZruySMYWl2471GK88wVe3zjfacPH%2FENQ%3D%3D";
-    const headers = `&pageNo=1&numOfRows=10&dataType=JSON&base_date=${date}&base_time=${hours}&nx=60&ny=127`;
+    const headers =
+      weatherLocData !== undefined
+        ? `&pageNo=1&numOfRows=10&dataType=JSON&base_date=${date}&base_time=${hours}&nx=${weatherLocData.x}&ny=${weatherLocData.y}`
+        : weatherLocData;
     const reqestAPI_URL = `${API_URL}?serviceKey=${API_KEY}${headers}`;
     const json = await (await fetch(reqestAPI_URL)).json();
     const rawWeatherData = json.response?.body?.items?.item;
@@ -90,12 +127,20 @@ export default function App() {
   };
 
   useEffect(() => {
-    getLocationHandler();
     setIsFont(true);
     getAptTradeAPI();
     getWeatherDataAPI();
-    //getLocationAndroidHandler();
+    getLocationHandler();
+    findCityNumberHandler();
   }, []);
+
+  useEffect(() => {
+    getWeatherDataAPI();
+  }, [weatherLocData]);
+
+  useEffect(() => {
+    findCityNumberHandler();
+  }, [recentLocation]);
 
   if (!dataLoaded) {
     return (
@@ -109,6 +154,7 @@ export default function App() {
 
   let screen = (
     <Home
+      recentLocation={recentLocation}
       apartmentData={apartmentData}
       weatherData={weatherData}
       setIsAptPressed={setIsAptPressed}

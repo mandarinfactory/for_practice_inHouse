@@ -6,6 +6,7 @@ import WeatherScreen from "../screens/WeatherScreen";
 import Layout from "./Layout";
 
 export default function Home({
+  recentLocation,
   apartmentData,
   weatherData,
   setIsAptPressed,
@@ -14,9 +15,13 @@ export default function Home({
   return (
     <Layout>
       <ScrollView contentContainerStyle={styles.heroScrollView}>
-        <WeatherScreen weatherData={weatherData} />
+        <WeatherScreen
+          recentLocation={recentLocation}
+          weatherData={weatherData}
+        />
         <SearchScreen />
         <HeroScreen
+          recentLocation={recentLocation}
           apartmentData={apartmentData}
           setIsAptPressed={setIsAptPressed}
           setPressedAptData={setPressedAptData}
