@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import AppLoading from "expo-app-loading";
 import * as Location from "expo-location";
-import addressData from "./API/realestate/addresssData.json";
+import addressData from "./API/realestate/addressData.json";
 
 //import getAptTradeAPI from "./API/RealEstate/aptIndex";
 //import getWeatherDataAPI from "./API/weather";
@@ -78,7 +78,10 @@ export default function App() {
       "http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptTradeDev";
     const API_KEY =
       "24vbFaV5oWpSo3qOGdwCXPO%2FX5gr4tqD2gxEwUJWb2xVcv4sWZ5QmmZruySMYWl2471GK88wVe3zjfacPH%2FENQ%3D%3D";
-    const headers = `&pageNo=1&numOfRows=10&LAWD_CD=${aptLocData}&DEAL_YMD=202308`;
+    const headers =
+      aptLocData !== undefined
+        ? `&pageNo=1&numOfRows=10&LAWD_CD=${aptLocData}&DEAL_YMD=${aptdate}`
+        : aptLocData;
     const reqestAPI_URL = `${API_URL}?serviceKey=${API_KEY}${headers}`;
     const response = await fetch(reqestAPI_URL)
       .then((res) => res)
@@ -98,20 +101,19 @@ export default function App() {
       setApartmentData(aptData);
     });
   };
+  const today = new Date();
+  let year = today.getFullYear();
+  let month = ("0" + (new Date().getMonth() + 1)).slice(-2);
+  let day = ("0" + new Date().getDate()).slice(-2);
+  var aptdate = year + month;
+  let date = `${year}${month}${day}`;
+
+  let hours = today.getHours();
+  if (parseInt(hours) < 10) {
+    hours = `0${hours}00`;
+  } else hours = `${hours}00`;
 
   const getWeatherDataAPI = async () => {
-    const today = new Date();
-
-    let year = today.getFullYear();
-    let month = ("0" + (new Date().getMonth() + 1)).slice(-2);
-    let day = ("0" + new Date().getDate()).slice(-2);
-    let date = `${year}${month}${day}`;
-
-    let hours = today.getHours();
-    if (parseInt(hours) < 10) {
-      hours = `0${hours}00`;
-    } else hours = `${hours}00`;
-
     const API_URL =
       "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst";
     const API_KEY =
@@ -140,6 +142,7 @@ export default function App() {
 
   useEffect(() => {
     findCityNumberHandler();
+    getAptTradeAPI();
   }, [recentLocation]);
 
   if (!dataLoaded) {
