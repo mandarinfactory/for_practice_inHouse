@@ -16,16 +16,26 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "infoPlist": ["NSLocationWhenInUseUsageDescription", "NSLocationAlwaysAndWhenInUseUsageDescription", { "NMFClientId" : "ia4i567onk" }]
+      "infoPlist": [
+        "NSLocationWhenInUseUsageDescription",
+        "NSLocationAlwaysAndWhenInUseUsageDescription",
+        {
+          "NMFClientId": "ia4i567onk"
+        }
+      ]
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "permissions": ["ACCESS_COARSE_LOCATION", "ACCESS_FINE_LOCATION"],
-      "andorid:name" : "com.naver.maps.map.ia4i567onk",
-      "android:value" : "ia4i567onk"
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION"
+      ],
+      "andorid:name": "com.naver.maps.map.ia4i567onk",
+      "android:value": "ia4i567onk",
+      "package": "com.native.android"
     },
     "web": {
       "favicon": "./assets/favicon.png"
