@@ -6,6 +6,7 @@ export default function WeatherScreen({ weatherData }) {
     <>
       {weatherData !== undefined ? (
         <View style={styles.innerContainer}>
+          <Text style={styles.weatherText}>종로구의</Text>
           <Text style={styles.innerText}>
             현재 온도는{" "}
             <Text style={styles.weatherText}>{weatherData[3]?.obsrValue}</Text>
@@ -50,6 +51,9 @@ const styles = StyleSheet.create({
     color: Colors.graycolor,
   },
   weatherText: {
+    marginBottom: 3,
+    fontFamily: "Light",
+    fontSize: 18,
     color: Colors.subColor,
   },
 });

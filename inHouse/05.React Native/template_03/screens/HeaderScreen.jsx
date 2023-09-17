@@ -14,9 +14,9 @@ export default function HeaderScreen() {
           <Text style={styles.headerFirstText}>집순위</Text>
         </View>
         <View style={styles.headerElementContainer}>
-
           <Pressable style={styles.IconPersonContainer}>
-            <Ionicons name="moon" size={25} color="black" />{/* darkmode btn */}
+            <Ionicons name="moon" size={25} color="black" />
+            {/* darkmode btn */}
           </Pressable>
         </View>
       </View>
@@ -53,6 +53,6 @@ const styles = StyleSheet.create({
     marginLeft: 5,
     color: "white",
     fontSize: 24,
-    fontFamily: "Bold"
+    fontFamily: "Bold",
   },
 });

@@ -1,4 +1,6 @@
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import MapView from "react-native-maps";
+
 import Colors from "../constant/color";
 
 export default function DetailScreen({
@@ -68,11 +70,14 @@ export default function DetailScreen({
           </Text>
           <Text style={styles.innerText}>전용면적 : {aptSizeData}㎡</Text>
         </View>
-      </View>
-      <View style={styles.buttonContainer}>
-        <Pressable style={styles.button} onPress={rollBackToHomeScreen}>
-          <Text style={styles.buttonText}>홈으로!</Text>
-        </Pressable>
+        <View style={styles.buttonContainer}>
+          <Pressable style={styles.button} onPress={rollBackToHomeScreen}>
+            <Text style={styles.buttonText}>홈으로!</Text>
+          </Pressable>
+        </View>
+        <View style={styles.mapContainer}>
+          <MapView style={styles.map} />
+        </View>
       </View>
     </>
   );
@@ -82,15 +87,15 @@ const styles = StyleSheet.create({
   titleText: {
     marginTop: 25,
     marginBottom: 15,
-    fontFamily: "ExtraLight",
-    fontSize: 30,
+    fontFamily: "ExtraBold",
+    fontSize: 35,
     color: Colors.primaryColor,
     textAlign: "center",
   },
   innerText: {
     marginVertical: 8,
     color: "white",
-    fontFamily: "Light",
+    fontFamily: "ExtraLight",
     fontSize: 18,
     textAlign: "center",
   },
@@ -110,5 +115,16 @@ const styles = StyleSheet.create({
     fontFamily: "Regular",
     fontSize: 20,
     color: "white",
+  },
+  mapContainer: {
+    flex: 1,
+    alignItems: "center",
+    marginTop: 10,
+    marginBottom: 30,
+  },
+  map: {
+    width: "80%",
+    height: 400,
+    borderRadius: 15,
   },
 });

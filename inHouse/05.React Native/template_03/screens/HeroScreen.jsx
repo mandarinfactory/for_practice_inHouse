@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Pressable } from "react-native";
+import { View, Text, StyleSheet, Pressable, ScrollView } from "react-native";
 import Colors from "../constant/color";
 
 export default function HeroScreen({
@@ -64,7 +64,7 @@ export default function HeroScreen({
 const styles = StyleSheet.create({
   outerConatiner: {
     alignItems: "center",
-    marginVertical: 30,
+    marginVertical: 15,
   },
   pressed: {
     backgroundColor: Colors.primaryColor,
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
   },
   titleText: {
-    marginBottom: 10,
+    marginBottom: 5,
     fontFamily: "Bold",
     fontSize: 24,
     color: Colors.primaryColor,
