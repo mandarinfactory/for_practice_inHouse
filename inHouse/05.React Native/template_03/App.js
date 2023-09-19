@@ -8,10 +8,9 @@ import { useEffect, useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import AppLoading from "expo-app-loading";
 import * as Location from "expo-location";
-import addressData from "./API/realestate/addressData.json";
+import addressData from "./API/realEstate/addressData.json";
 
-//import getAptTradeAPI from "./API/RealEstate/aptIndex";
-//import getWeatherDataAPI from "./API/weather";
+import getFilteredGeoLocation from "./API/realEstate/index_geoLoc";
 
 import Detail from "./components/Detail";
 import Home from "./components/Home";
@@ -144,6 +143,7 @@ export default function App() {
     getWeatherDataAPI();
     getLocationHandler();
     findCityNumberHandler();
+    getFilteredGeoLocation();
   }, []);
 
   useEffect(() => {

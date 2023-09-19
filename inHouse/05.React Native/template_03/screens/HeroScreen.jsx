@@ -36,6 +36,7 @@ export default function HeroScreen({
               onPress={() => {
                 onPress();
                 setPressedAptData(aptData);
+                console.log(aptData);
               }}
               android_ripple={{ color: Colors.primaryColor }}
             >

@@ -2,7 +2,7 @@ import { View, Text, TextInput, StyleSheet } from "react-native";
 import { useState } from "react";
 
 import Colors from "../constant/color";
-import addressData from "../API/realestate/addressData.json";
+import addressData from "../API/realEstate/addressData.json";
 
 export default function SearchScreen({ setSearchTextValue }) {
   const [filteredAddressData, setFilteredAddressData] = useState();
@@ -45,7 +45,7 @@ export default function SearchScreen({ setSearchTextValue }) {
         </Text>
         <Text style={styles.subtitleText}>순위를 알고 싶으신가요?</Text>
         <Text style={styles.subtitleText}>
-          <Text style={styles.subtitleInnerText}>궁금한 구</Text>을 검색해
+          <Text style={styles.subtitleInnerText}>궁금한 구</Text>를 검색해
           보세요!
         </Text>
       </View>
