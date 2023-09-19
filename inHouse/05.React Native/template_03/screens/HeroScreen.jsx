@@ -3,6 +3,7 @@ import Colors from "../constant/color";
 
 export default function HeroScreen({
   recentLocation,
+  filteredDistrict,
   apartmentData,
   setIsAptPressed,
   setPressedAptData,
@@ -20,7 +21,7 @@ export default function HeroScreen({
         <View style={styles.outerConatiner}>
           <View style={styles.titleTextContainer}>
             <Text style={styles.subtitleText}>
-              현재 <Text style={styles.titleText}>{recentLocation[0].city} {recentLocation[0].district} </Text>
+              현재 <Text style={styles.titleText}>{recentLocation[0].city} {filteredDistrict} </Text>
               아파트 순위
             </Text>
           </View>

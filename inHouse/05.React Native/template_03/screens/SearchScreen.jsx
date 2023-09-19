@@ -8,31 +8,36 @@ export default function SearchScreen({ setSearchTextValue }) {
   const [filteredAddressData, setFilteredAddressData] = useState();
   const getTextInputValue = (value) => {
     let addressArr = [];
-    addressData.forEach((v) => {
-      if (value == v.시군구명 || value == v.읍면동명) {
-        addressArr.push(v);
-        setFilteredAddressData(addressArr);
-      }
-    });
+    if (value !== "") {
+      addressData.forEach((v) => {
+        if (value == v.시군구명) {
+          addressArr.push(v);
+          setFilteredAddressData(addressArr);
+        }
+      });
+    } else {
+      setFilteredAddressData(value);
+    }
   };
-  console.log(filteredAddressData);
 
   return (
-    <View>
-      <View style={styles.innerContainer}>
+    <View style={styles.rootContainer}>
+      <View style={styles.innerSearchContainer}>
         <TextInput
           style={styles.searchInput}
           onChangeText={getTextInputValue}
         />
-        {filteredAddressData
-        ? 
-        <View style={styles.findResultContainer}>
-          <Text>hi</Text>
-          {filteredAddressData.forEach(e => (
-            <Text style={styles.findResultText}>{e.시도명} {e.시군구명} {e.읍면동명}</Text>
-          ))}
-        </View> 
-        : undefined}
+        {filteredAddressData ? (
+          <View style={styles.findResultContainer}>
+            {filteredAddressData.map((e) =>
+              e.읍면동명 == undefined ? (
+                <Text style={styles.findResultText}>
+                  {e.시도명} {e.시군구명}
+                </Text>
+              ) : undefined
+            )}
+          </View>
+        ) : undefined}
       </View>
       <View style={styles.innerContainer}>
         <Text style={styles.subtitleText}>
@@ -40,7 +45,7 @@ export default function SearchScreen({ setSearchTextValue }) {
         </Text>
         <Text style={styles.subtitleText}>순위를 알고 싶으신가요?</Text>
         <Text style={styles.subtitleText}>
-          <Text style={styles.subtitleInnerText}>궁금한 구/동</Text>을 검색해
+          <Text style={styles.subtitleInnerText}>궁금한 구</Text>을 검색해
           보세요!
         </Text>
       </View>
@@ -49,9 +54,18 @@ export default function SearchScreen({ setSearchTextValue }) {
 }
 
 const styles = StyleSheet.create({
+  rootContainer: {
+    zIndex: 1,
+  },
+  innerSearchContainer: {
+    alignItems: "center",
+    marginVertical: 15,
+    zIndex: 3,
+  },
   innerContainer: {
     alignItems: "center",
     marginVertical: 15,
+    zIndex: 2,
   },
   subtitleText: {
     color: "white",
@@ -66,20 +80,22 @@ const styles = StyleSheet.create({
     width: 300,
     paddingHorizontal: 15,
     paddingVertical: 10,
-    marginRight: 7,
     borderColor: "transparent",
     backgroundColor: "white",
     borderRadius: 15,
   },
   findResultContainer: {
-    //position: "absolute",
-    //top: 50,
-    //right: 50,
+    position: "absolute",
+    width: "80%",
+    top: 40,
+    right: 40,
     backgroundColor: "white",
+    elevation: 3,
   },
   findResultText: {
-    marginLeft: 10,
-    fontFamily: "Light",
+    padding: 7,
+    margin: 3,
+    fontFamily: "Regular",
     fontSize: 15,
-  }
+  },
 });

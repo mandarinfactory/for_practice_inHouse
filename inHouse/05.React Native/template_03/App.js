@@ -23,17 +23,20 @@ import geoLocationControler from "./API/weather/grid";
 
 export default function App() {
   const [recentLocation, setRecentLocation] = useState();
+  const [filteredDistrict, setFilteredDistrict] = useState();
   const [isLocationActive, setIsLocationActive] = useState(true);
+  const [dataLoaded, setDataLoaded] = useState(false);
+  const [isFont, setIsFont] = useState(false);
+  const [searchTextValue, setSearchTextValue] = useState();
+
   const [apartmentData, setApartmentData] = useState();
   const [aptLocData, setAptLocData] = useState();
+  const [pressedAptData, setPressedAptData] = useState();
+  const [isAptPressed, setIsAptPressed] = useState(false);
+
   const [weatherData, setWeatherData] = useState([]);
   const [weatherLocData, setWeatherLocData] = useState({});
   const postOBJ = { setState: setWeatherLocData };
-  const [dataLoaded, setDataLoaded] = useState(false);
-  const [isFont, setIsFont] = useState(false);
-  const [isAptPressed, setIsAptPressed] = useState(false);
-  const [pressedAptData, setPressedAptData] = useState();
-  const [searchTextValue, setSearchTextValue] = useState();
 
   const getLocationHandler = async () => {
     const { granted } = await Location.requestForegroundPermissionsAsync();
@@ -60,7 +63,10 @@ export default function App() {
           v.시도명 == recentLocation[0].city &&
           v.읍면동명 == recentLocation[0].district
         ) {
-          return setAptLocData(v.법정동코드.toString().substring(0, 5));
+          return (
+            setAptLocData(v.법정동코드.toString().substring(0, 5)),
+            setFilteredDistrict(v.시군구명)
+          );
         } else {
           return false;
         }
@@ -122,13 +128,14 @@ export default function App() {
       "24vbFaV5oWpSo3qOGdwCXPO%2FX5gr4tqD2gxEwUJWb2xVcv4sWZ5QmmZruySMYWl2471GK88wVe3zjfacPH%2FENQ%3D%3D";
     const headers =
       weatherLocData !== undefined
-        ? `&pageNo=1&numOfRows=10&dataType=JSON&base_date=${date}&base_time=${hours}&nx=${weatherLocData.x}&ny=${weatherLocData.y}`
+        ? `&pageNo=1&numOfRows=10&dataType=JSON&base_date=${date}&base_time=${
+            hours - 100
+          }&nx=${weatherLocData.x}&ny=${weatherLocData.y}`
         : weatherLocData;
     const reqestAPI_URL = `${API_URL}?serviceKey=${API_KEY}${headers}`;
     const json = await (await fetch(reqestAPI_URL)).json();
     const rawWeatherData = json?.response?.body?.items?.item;
     setWeatherData(rawWeatherData);
-    setDataLoaded(true);
   };
 
   useEffect(() => {
@@ -161,6 +168,7 @@ export default function App() {
   let screen = (
     <Home
       recentLocation={recentLocation}
+      filteredDistrict={filteredDistrict}
       apartmentData={apartmentData}
       weatherData={weatherData}
       setIsAptPressed={setIsAptPressed}

@@ -7,6 +7,7 @@ import Layout from "./Layout";
 
 export default function Home({
   recentLocation,
+  filteredDistrict,
   apartmentData,
   weatherData,
   setIsAptPressed,
@@ -23,6 +24,7 @@ export default function Home({
         <SearchScreen setSearchTextValue={setSearchTextValue} />
         <HeroScreen
           recentLocation={recentLocation}
+          filteredDistrict={filteredDistrict}
           apartmentData={apartmentData}
           setIsAptPressed={setIsAptPressed}
           setPressedAptData={setPressedAptData}
