@@ -33,6 +33,7 @@ export default function App() {
   const [isFont, setIsFont] = useState(false);
   const [isAptPressed, setIsAptPressed] = useState(false);
   const [pressedAptData, setPressedAptData] = useState();
+  const [searchTextValue, setSearchTextValue] = useState();
 
   const getLocationHandler = async () => {
     const { granted } = await Location.requestForegroundPermissionsAsync();
@@ -97,8 +98,9 @@ export default function App() {
       }
       let rawData = JSON.stringify(result);
       let JSONData = JSON.parse(rawData);
-      let aptData = JSONData.response.body[0].items[0].item;
+      let aptData = JSONData?.response?.body[0].items[0].item;
       setApartmentData(aptData);
+      setDataLoaded(true);
     });
   };
   const today = new Date();
@@ -124,8 +126,9 @@ export default function App() {
         : weatherLocData;
     const reqestAPI_URL = `${API_URL}?serviceKey=${API_KEY}${headers}`;
     const json = await (await fetch(reqestAPI_URL)).json();
-    const rawWeatherData = json.response?.body?.items?.item;
+    const rawWeatherData = json?.response?.body?.items?.item;
     setWeatherData(rawWeatherData);
+    setDataLoaded(true);
   };
 
   useEffect(() => {
@@ -138,12 +141,12 @@ export default function App() {
 
   useEffect(() => {
     getWeatherDataAPI();
-  }, [weatherLocData]);
+  }, [recentLocation, weatherLocData]);
 
   useEffect(() => {
     findCityNumberHandler();
     getAptTradeAPI();
-  }, [recentLocation]);
+  }, [recentLocation, aptLocData]);
 
   if (!dataLoaded) {
     return (
@@ -162,6 +165,7 @@ export default function App() {
       weatherData={weatherData}
       setIsAptPressed={setIsAptPressed}
       setPressedAptData={setPressedAptData}
+      setSearchTextValue={setSearchTextValue}
     />
   );
 
@@ -180,7 +184,9 @@ export default function App() {
     <>
       <StatusBar style="light" />
       <DismissKeyboard>
-        <SafeAreaView style={styles.rootContainer}>{screen}</SafeAreaView>
+        <SafeAreaView style={styles.rootContainer}>
+          {dataLoaded ? screen : dataLoaded}
+        </SafeAreaView>
       </DismissKeyboard>
     </>
   );

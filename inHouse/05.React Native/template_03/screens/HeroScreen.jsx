@@ -7,7 +7,7 @@ export default function HeroScreen({
   setIsAptPressed,
   setPressedAptData,
 }) {
-  const onPress = (e) => {
+  const onPress = () => {
     setIsAptPressed(true);
   };
 

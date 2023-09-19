@@ -11,6 +11,7 @@ export default function Home({
   weatherData,
   setIsAptPressed,
   setPressedAptData,
+  setSearchTextValue,
 }) {
   return (
     <Layout>
@@ -19,7 +20,7 @@ export default function Home({
           recentLocation={recentLocation}
           weatherData={weatherData}
         />
-        <SearchScreen />
+        <SearchScreen setSearchTextValue={setSearchTextValue} />
         <HeroScreen
           recentLocation={recentLocation}
           apartmentData={apartmentData}
