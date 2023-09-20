@@ -35,7 +35,7 @@ export default function App() {
 
   const [weatherData, setWeatherData] = useState([]);
   const [weatherLocData, setWeatherLocData] = useState({});
-  const postOBJ = { setState: setWeatherLocData };
+  const weatherObj = { setState: setWeatherLocData };
 
   const getLocationHandler = async () => {
     const { granted } = await Location.requestForegroundPermissionsAsync();
@@ -46,7 +46,7 @@ export default function App() {
       coords: { latitude, longitude },
     } = await Location.getCurrentPositionAsync({ accuracy: 5 });
     if ((latitude, longitude)) {
-      geoLocationControler("toXY", latitude, longitude, postOBJ);
+      geoLocationControler("toXY", latitude, longitude, weatherObj, pressedAptData);
     }
     const location = await Location.reverseGeocodeAsync(
       { latitude, longitude },
@@ -143,7 +143,6 @@ export default function App() {
     getWeatherDataAPI();
     getLocationHandler();
     findCityNumberHandler();
-    getFilteredGeoLocation();
   }, []);
 
   useEffect(() => {

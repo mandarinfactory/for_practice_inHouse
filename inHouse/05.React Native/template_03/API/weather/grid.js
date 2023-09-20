@@ -12,7 +12,7 @@ var YO = 136; // 기1준점 Y좌표(GRID)
 
 // LCC DFS 좌표변환 ( code : "toXY"(위경도->좌표, v1:위도, v2:경도), "toLL"(좌표->위경도,v1:x, v2:y) )
 
-function geoLocationControler (code, v1, v2, {setState}) {
+function geoLocationControler (code, v1, v2, {setState} ) {
   var DEGRAD = Math.PI / 180.0;
   var RADDEG = 180.0 / Math.PI;
 
