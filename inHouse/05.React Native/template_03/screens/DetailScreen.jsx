@@ -1,4 +1,4 @@
-import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 import MapView from "react-native-maps";
 
 import Colors from "../constant/color";
@@ -11,34 +11,34 @@ export default function DetailScreen({
   const rollBackToHomeScreen = () => {
     setIsAptPressed(false);
   };
-  const aptTradeData = pressedAptData.거래금액
+  const aptTradeData = pressedAptData?.거래금액
     .toString()
     .trim()
     .replace(/,/g, "0000")
     .replace(/(\d)(?=(?:\d{3})+(?!\d))/g, "$1,");
-  const aptSizeData = parseFloat(pressedAptData.전용면적.toString()).toFixed(2);
+  const aptSizeData = parseFloat(pressedAptData.전용면적?.toString()).toFixed(2);
 
   const aptNewAddressData = () => {
     if (parseInt(pressedAptData.도로명건물부번호코드) !== 0) {
-      return `${pressedAptData.도로명} ${pressedAptData.도로명건물본번호코드
+      return `${pressedAptData.도로명} ${pressedAptData?.도로명건물본번호코드
         .toString()
-        .replace(/000?/, "")} - ${pressedAptData.도로명건물부번호코드
+        .replace(/000?/, "")} - ${pressedAptData?.도로명건물부번호코드
         .toString()
         .replace(/000?/, "")}`;
     } else
-      return `${pressedAptData.도로명} ${pressedAptData.도로명건물본번호코드
+      return `${pressedAptData.도로명} ${pressedAptData?.도로명건물본번호코드
         .toString()
         .replace(/000?/, "")}`;
   };
   const aptOldAddressData = () => {
     if (parseInt(pressedAptData.법정동부번코드) !== 0) {
-      return `${pressedAptData.법정동} ${pressedAptData.법정동본번코드
+      return `${pressedAptData.법정동} ${pressedAptData?.법정동본번코드
         .toString()
-        .replace(/00?/, "")} - ${pressedAptData.법정동부번코드
+        .replace(/00?/, "")} - ${pressedAptData?.법정동부번코드
         .toString()
         .replace(/00?/, "")}`;
     } else {
-      return `${pressedAptData.법정동} ${pressedAptData.법정동본번코드
+      return `${pressedAptData.법정동} ${pressedAptData?.법정동본번코드
         .toString()
         .replace(/00?/, "")}`;
     }

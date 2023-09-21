@@ -32,6 +32,8 @@ export default function App() {
   const [aptLocData, setAptLocData] = useState();
   const [pressedAptData, setPressedAptData] = useState();
   const [isAptPressed, setIsAptPressed] = useState(false);
+  const [pressedAptLocData, setPressedAptLocData] = useState();
+  const aptObj = { setState: setPressedAptLocData };
 
   const [weatherData, setWeatherData] = useState([]);
   const [weatherLocData, setWeatherLocData] = useState({});
@@ -46,7 +48,7 @@ export default function App() {
       coords: { latitude, longitude },
     } = await Location.getCurrentPositionAsync({ accuracy: 5 });
     if ((latitude, longitude)) {
-      geoLocationControler("toXY", latitude, longitude, weatherObj, pressedAptData);
+      geoLocationControler("toXY", latitude, longitude, weatherObj);
     }
     const location = await Location.reverseGeocodeAsync(
       { latitude, longitude },
@@ -185,6 +187,7 @@ export default function App() {
         pressedAptData={pressedAptData}
       />
     );
+    getFilteredGeoLocation(pressedAptData, aptObj);
   }
 
   return (

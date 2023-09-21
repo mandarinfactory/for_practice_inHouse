@@ -21,7 +21,10 @@ export default function HeroScreen({
         <View style={styles.outerConatiner}>
           <View style={styles.titleTextContainer}>
             <Text style={styles.subtitleText}>
-              현재 <Text style={styles.titleText}>{recentLocation[0].city} {filteredDistrict} </Text>
+              현재{" "}
+              <Text style={styles.titleText}>
+                {recentLocation[0].city} {filteredDistrict}{" "}
+              </Text>
               아파트 순위
             </Text>
           </View>
