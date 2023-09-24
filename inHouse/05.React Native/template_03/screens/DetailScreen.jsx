@@ -1,5 +1,5 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
-import MapView from "react-native-maps";
+import MapView, { Marker } from "react-native-maps";
 
 import Colors from "../constant/color";
 
@@ -7,7 +7,23 @@ export default function DetailScreen({
   isAptPressed,
   setIsAptPressed,
   pressedAptData,
+  pressedAptLocData,
 }) {
+  let coordinates;
+  pressedAptLocData ? (
+    ((coordinates = {
+      latitude: parseFloat(pressedAptLocData[0]).toFixed(5),
+      longitude: parseFloat(pressedAptLocData[1]).toFixed(5),
+    }),
+    (initialCoord = {
+      latitude: parseFloat(pressedAptLocData[0]).toFixed(5),
+      longitude: parseFloat(pressedAptLocData[1]).toFixed(5),
+      latitudeDelta: 0.01,
+      longitudeDelta: 0.01,
+    }))
+  ) : (
+    <></>
+  );
   const rollBackToHomeScreen = () => {
     setIsAptPressed(false);
   };
@@ -16,7 +32,9 @@ export default function DetailScreen({
     .trim()
     .replace(/,/g, "0000")
     .replace(/(\d)(?=(?:\d{3})+(?!\d))/g, "$1,");
-  const aptSizeData = parseFloat(pressedAptData.전용면적?.toString()).toFixed(2);
+  const aptSizeData = parseFloat(pressedAptData.전용면적?.toString()).toFixed(
+    2
+  );
 
   const aptNewAddressData = () => {
     if (parseInt(pressedAptData.도로명건물부번호코드) !== 0) {
@@ -46,39 +64,46 @@ export default function DetailScreen({
 
   return (
     <>
-      {isAptPressed}
-      <View>
-        <Text style={styles.titleText}>{pressedAptData.아파트}아파트</Text>
+      {isAptPressed && (
         <View>
-          <Text style={styles.innerText}>거래금액 : {aptTradeData}원</Text>
-          <Text style={styles.innerText}>
-            거래날짜 : 20{pressedAptData.년.toString().replace("20", "")}년
-            {pressedAptData.월 < 10
-              ? ` 0${pressedAptData.월}`
-              : pressedAptData.월}
-            월
-            {pressedAptData.일 < 10
-              ? ` 0${pressedAptData.일}`
-              : pressedAptData.일}
-            일
-          </Text>
-          <Text style={styles.innerText}>
-            주소 : {aptNewAddressData()} / {aptOldAddressData()}
-          </Text>
-          <Text style={styles.innerText}>
-            건축년도 : {pressedAptData.건축년도}년
-          </Text>
-          <Text style={styles.innerText}>전용면적 : {aptSizeData}㎡</Text>
+          <Text style={styles.titleText}>{pressedAptData.아파트}아파트</Text>
+          <View>
+            <Text style={styles.innerText}>거래금액 : {aptTradeData}원</Text>
+            <Text style={styles.innerText}>
+              거래날짜 : 20{pressedAptData.년.toString().replace("20", "")}년
+              {pressedAptData.월 < 10
+                ? ` 0${pressedAptData.월}`
+                : pressedAptData.월}
+              월
+              {pressedAptData.일 < 10
+                ? ` 0${pressedAptData.일}`
+                : pressedAptData.일}
+              일
+            </Text>
+            <Text style={styles.innerText}>
+              주소 : {aptNewAddressData()} / {aptOldAddressData()}
+            </Text>
+            <Text style={styles.innerText}>
+              건축년도 : {pressedAptData.건축년도}년
+            </Text>
+            <Text style={styles.innerText}>전용면적 : {aptSizeData}㎡</Text>
+          </View>
+          <View style={styles.buttonContainer}>
+            <Pressable style={styles.button} onPress={rollBackToHomeScreen}>
+              <Text style={styles.buttonText}>홈으로!</Text>
+            </Pressable>
+          </View>
+          <View style={styles.mapContainer}>
+            {pressedAptLocData && (
+              <>
+                <MapView style={styles.map} initialRegion={initialCoord}>
+                  <Marker coordinate={coordinates} pinColor={Colors.primaryColor} />
+                </MapView>
+              </>
+            )}
+          </View>
         </View>
-        <View style={styles.buttonContainer}>
-          <Pressable style={styles.button} onPress={rollBackToHomeScreen}>
-            <Text style={styles.buttonText}>홈으로!</Text>
-          </Pressable>
-        </View>
-        <View style={styles.mapContainer}>
-          <MapView style={styles.map} />
-        </View>
-      </View>
+      )}
     </>
   );
 }

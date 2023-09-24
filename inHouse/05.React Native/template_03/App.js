@@ -10,7 +10,7 @@ import AppLoading from "expo-app-loading";
 import * as Location from "expo-location";
 import addressData from "./API/realEstate/addressData.json";
 
-import getFilteredGeoLocation from "./API/realEstate/index_geoLoc";
+import getFilteredGeoLocation from "./API/realEstate/getFilteredGeoLoc";
 
 import Detail from "./components/Detail";
 import Home from "./components/Home";
@@ -32,7 +32,7 @@ export default function App() {
   const [aptLocData, setAptLocData] = useState();
   const [pressedAptData, setPressedAptData] = useState();
   const [isAptPressed, setIsAptPressed] = useState(false);
-  const [pressedAptLocData, setPressedAptLocData] = useState();
+  const [pressedAptLocData, setPressedAptLocData] = useState([]);
   const aptObj = { setState: setPressedAptLocData };
 
   const [weatherData, setWeatherData] = useState([]);
@@ -185,6 +185,7 @@ export default function App() {
         setIsAptPressed={setIsAptPressed}
         apartmentData={apartmentData}
         pressedAptData={pressedAptData}
+        pressedAptLocData={pressedAptLocData}
       />
     );
     getFilteredGeoLocation(pressedAptData, aptObj);

@@ -5,6 +5,7 @@ export default function Detail({
   isAptPressed,
   setIsAptPressed,
   pressedAptData,
+  pressedAptLocData,
 }) {
   return (
     <Layout>
@@ -12,6 +13,7 @@ export default function Detail({
         isAptPressed={isAptPressed}
         setIsAptPressed={setIsAptPressed}
         pressedAptData={pressedAptData}
+        pressedAptLocData={pressedAptLocData}
       />
     </Layout>
   );

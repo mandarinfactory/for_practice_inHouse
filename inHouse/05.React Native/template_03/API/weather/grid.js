@@ -65,7 +65,6 @@ function geoLocationControler (code, v1, v2, {setState} ) {
     rs["lng"] = alon * RADDEG;
   }
 
-  console.log(rs);
   return setState(rs);
 }
 
