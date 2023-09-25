@@ -1,4 +1,4 @@
-import { View, Text, TextInput, StyleSheet } from "react-native";
+import { View, Text, TextInput, StyleSheet, Pressable } from "react-native";
 import { useState } from "react";
 
 import Colors from "../constant/color";
@@ -6,6 +6,7 @@ import addressData from "../API/realEstate/addressData.json";
 
 export default function SearchScreen({ setSearchTextValue }) {
   const [filteredAddressData, setFilteredAddressData] = useState();
+
   const getTextInputValue = (value) => {
     let addressArr = [];
     if (value !== "") {
@@ -28,15 +29,26 @@ export default function SearchScreen({ setSearchTextValue }) {
           onChangeText={getTextInputValue}
         />
         {filteredAddressData ? (
-          <View style={styles.findResultContainer}>
+          <Pressable style={styles.findResultContainer}>
             {filteredAddressData.map((e) =>
               e.읍면동명 == undefined ? (
-                <Text style={styles.findResultText}>
-                  {e.시도명} {e.시군구명}
-                </Text>
+                <Pressable style={({ pressed }) =>
+                pressed
+                  ? styles.pressedContainer
+                  : undefined
+              }
+              onPress={() => {
+                setSearchTextValue(e);
+                setFilteredAddressData(undefined);
+              }}
+              >
+                  <Text style={styles.findResultText}>
+                    {e.시도명} {e.시군구명}
+                  </Text>
+                </Pressable>
               ) : undefined
             )}
-          </View>
+          </Pressable>
         ) : undefined}
       </View>
       <View style={styles.innerContainer}>
@@ -91,6 +103,10 @@ const styles = StyleSheet.create({
     right: 40,
     backgroundColor: "white",
     elevation: 3,
+  },
+  pressedContainer: {
+    backgroundColor: Colors.subColor,
+    color: "white"
   },
   findResultText: {
     padding: 7,

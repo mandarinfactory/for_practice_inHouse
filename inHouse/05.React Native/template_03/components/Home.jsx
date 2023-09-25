@@ -12,6 +12,7 @@ export default function Home({
   weatherData,
   setIsAptPressed,
   setPressedAptData,
+  searchTextValue,
   setSearchTextValue,
 }) {
   return (
@@ -28,6 +29,8 @@ export default function Home({
           apartmentData={apartmentData}
           setIsAptPressed={setIsAptPressed}
           setPressedAptData={setPressedAptData}
+          searchTextValue={searchTextValue}
+          setSearchTextValue={setSearchTextValue}
         />
       </ScrollView>
     </Layout>

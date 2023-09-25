@@ -96,8 +96,8 @@ export default function DetailScreen({
           <View style={styles.mapContainer}>
             {pressedAptLocData && (
               <>
-                <MapView style={styles.map} initialRegion={initialCoord}>
-                  <Marker coordinate={coordinates} pinColor={Colors.primaryColor} />
+                <MapView style={styles.map} initialRegion={initialCoord} userInterfaceStyle="dark" zoomTapEnabled="false">
+                  <Marker coordinate={coordinates} pinColor={Colors.primaryColor} title={`${pressedAptData.아파트}아파트`} />
                 </MapView>
               </>
             )}

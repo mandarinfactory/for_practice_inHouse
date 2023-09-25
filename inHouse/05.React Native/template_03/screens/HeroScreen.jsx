@@ -1,4 +1,6 @@
 import { View, Text, StyleSheet, Pressable } from "react-native";
+import Ionicons from "@expo/vector-icons/Ionicons";
+
 import Colors from "../constant/color";
 
 export default function HeroScreen({
@@ -7,6 +9,8 @@ export default function HeroScreen({
   apartmentData,
   setIsAptPressed,
   setPressedAptData,
+  searchTextValue,
+  setSearchTextValue
 }) {
   const onPress = () => {
     setIsAptPressed(true);
@@ -19,11 +23,14 @@ export default function HeroScreen({
         return parseInt(y.거래금액) - parseInt(x.거래금액);
       }) ? (
         <View style={styles.outerConatiner}>
+          <Ionicons name="navigate-circle" color={Colors.graycolor} size={30} style={styles.locationIcon} onPress={() => {
+            setSearchTextValue(undefined)
+          }}/>
           <View style={styles.titleTextContainer}>
             <Text style={styles.subtitleText}>
               현재{" "}
               <Text style={styles.titleText}>
-                {recentLocation[0].city} {filteredDistrict}{" "}
+                {searchTextValue ? searchTextValue.시도명 : recentLocation[0].city} {searchTextValue ? searchTextValue.시군구명 : filteredDistrict}{" "}
               </Text>
               아파트 순위
             </Text>
@@ -69,7 +76,15 @@ export default function HeroScreen({
 const styles = StyleSheet.create({
   outerConatiner: {
     alignItems: "center",
-    marginVertical: 15,
+    marginVertical: 20,
+  },
+  locationIcon: {
+    position: "absolute",
+    top: -35,
+    right: 45,
+  },
+  pressedIcon: {
+    color: Colors.primaryColor,
   },
   pressed: {
     backgroundColor: Colors.primaryColor,

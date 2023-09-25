@@ -21,12 +21,18 @@ import geoLocationControler from "./API/weather/grid";
 /* custom-hooks */
 
 export default function App() {
+  let pressedLocValue;
   const [recentLocation, setRecentLocation] = useState();
   const [filteredDistrict, setFilteredDistrict] = useState();
   const [isLocationActive, setIsLocationActive] = useState(true);
   const [dataLoaded, setDataLoaded] = useState(false);
   const [isFont, setIsFont] = useState(false);
   const [searchTextValue, setSearchTextValue] = useState();
+  searchTextValue ? (
+    (pressedLocValue = searchTextValue.법정동코드.toString().substr(0, 5))
+  ) : (
+    <></>
+  );
 
   const [apartmentData, setApartmentData] = useState();
   const [aptLocData, setAptLocData] = useState();
@@ -88,7 +94,7 @@ export default function App() {
       "24vbFaV5oWpSo3qOGdwCXPO%2FX5gr4tqD2gxEwUJWb2xVcv4sWZ5QmmZruySMYWl2471GK88wVe3zjfacPH%2FENQ%3D%3D";
     const headers =
       aptLocData !== undefined
-        ? `&pageNo=1&numOfRows=10&LAWD_CD=${aptLocData}&DEAL_YMD=${aptdate}`
+        ? `&pageNo=1&numOfRows=10&LAWD_CD=${pressedLocValue ? pressedLocValue : aptLocData}&DEAL_YMD=${aptdate}`
         : aptLocData;
     const reqestAPI_URL = `${API_URL}?serviceKey=${API_KEY}${headers}`;
     const response = await fetch(reqestAPI_URL)
@@ -154,7 +160,7 @@ export default function App() {
   useEffect(() => {
     findCityNumberHandler();
     getAptTradeAPI();
-  }, [recentLocation, aptLocData]);
+  }, [recentLocation, aptLocData, pressedLocValue]);
 
   if (!dataLoaded) {
     return (
@@ -174,6 +180,8 @@ export default function App() {
       weatherData={weatherData}
       setIsAptPressed={setIsAptPressed}
       setPressedAptData={setPressedAptData}
+      setSearchTextValue={setSearchTextValue}
+      searchTextValue={searchTextValue}
       setSearchTextValue={setSearchTextValue}
     />
   );
