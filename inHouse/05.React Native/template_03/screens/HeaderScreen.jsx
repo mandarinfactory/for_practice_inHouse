@@ -14,10 +14,6 @@ export default function HeaderScreen() {
           <Text style={styles.headerFirstText}>집순위</Text>
         </View>
         <View style={styles.headerElementContainer}>
-          <Pressable style={styles.IconPersonContainer}>
-            <Ionicons name="moon" size={25} color="black" />
-            {/* darkmode btn */}
-          </Pressable>
         </View>
       </View>
     </View>
@@ -41,11 +37,6 @@ const styles = StyleSheet.create({
   },
   IconTitleContainer: {
     padding: 5,
-    backgroundColor: Colors.primaryColor,
-    borderRadius: 20,
-  },
-  IconPersonContainer: {
-    padding: 3,
     backgroundColor: Colors.primaryColor,
     borderRadius: 20,
   },

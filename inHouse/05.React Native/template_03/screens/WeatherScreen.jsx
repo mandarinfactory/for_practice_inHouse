@@ -1,5 +1,6 @@
 import { Text, View, StyleSheet } from "react-native";
 import Colors from "../constant/color";
+import lightColors from "../constant/lightColor";
 
 export default function WeatherScreen({ recentLocation, weatherData }) {
   return (

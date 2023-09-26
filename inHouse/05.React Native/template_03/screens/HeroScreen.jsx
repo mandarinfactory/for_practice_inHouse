@@ -1,5 +1,4 @@
 import { View, Text, StyleSheet, Pressable } from "react-native";
-import Ionicons from "@expo/vector-icons/Ionicons";
 
 import Colors from "../constant/color";
 
@@ -23,9 +22,6 @@ export default function HeroScreen({
         return parseInt(y.거래금액) - parseInt(x.거래금액);
       }) ? (
         <View style={styles.outerConatiner}>
-          <Ionicons name="navigate-circle" color={Colors.graycolor} size={30} style={styles.locationIcon} onPress={() => {
-            setSearchTextValue(undefined)
-          }}/>
           <View style={styles.titleTextContainer}>
             <Text style={styles.subtitleText}>
               현재{" "}
@@ -77,11 +73,6 @@ const styles = StyleSheet.create({
   outerConatiner: {
     alignItems: "center",
     marginVertical: 20,
-  },
-  locationIcon: {
-    position: "absolute",
-    top: -35,
-    right: 45,
   },
   pressedIcon: {
     color: Colors.primaryColor,

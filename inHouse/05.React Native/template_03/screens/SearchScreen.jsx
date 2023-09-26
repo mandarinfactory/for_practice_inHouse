@@ -1,5 +1,6 @@
 import { View, Text, TextInput, StyleSheet, Pressable } from "react-native";
 import { useState } from "react";
+import Ionicons from "@expo/vector-icons/Ionicons";
 
 import Colors from "../constant/color";
 import addressData from "../API/realEstate/addressData.json";
@@ -24,6 +25,9 @@ export default function SearchScreen({ setSearchTextValue }) {
   return (
     <View style={styles.rootContainer}>
       <View style={styles.innerSearchContainer}>
+      <Ionicons name="navigate-circle" color={Colors.subColor} size={30} style={styles.locationIcon} onPress={() => {
+            setSearchTextValue(undefined)
+          }}/>
         <TextInput
           style={styles.searchInput}
           onChangeText={getTextInputValue}
@@ -113,5 +117,10 @@ const styles = StyleSheet.create({
     margin: 3,
     fontFamily: "Regular",
     fontSize: 15,
+  },
+  locationIcon: {
+    position: "absolute",
+    top: -35,
+    right: 45,
   },
 });

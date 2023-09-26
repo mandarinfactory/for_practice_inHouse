@@ -28,6 +28,7 @@ export default function App() {
   const [dataLoaded, setDataLoaded] = useState(false);
   const [isFont, setIsFont] = useState(false);
   const [searchTextValue, setSearchTextValue] = useState();
+  const [isDarkMode, setIsDarkMode] = useState(false);
   searchTextValue ? (
     (pressedLocValue = searchTextValue.법정동코드.toString().substr(0, 5))
   ) : (
@@ -182,7 +183,6 @@ export default function App() {
       setPressedAptData={setPressedAptData}
       setSearchTextValue={setSearchTextValue}
       searchTextValue={searchTextValue}
-      setSearchTextValue={setSearchTextValue}
     />
   );
 
@@ -198,7 +198,6 @@ export default function App() {
     );
     getFilteredGeoLocation(pressedAptData, aptObj);
   }
-
   return (
     <>
       <StatusBar style="light" />
