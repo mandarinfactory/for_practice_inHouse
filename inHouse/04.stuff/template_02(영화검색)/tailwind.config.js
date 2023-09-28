@@ -5,10 +5,10 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    fontFamily: {
-      "sans" : ["NanumSquare_Neo"],
-    },
     extend: {},
+    fontFamily: {
+      "sans": ["S-CoreDream-3Light"],
+    },
   },
   plugins: [
     require('tailwindcss-animated')
