@@ -60,7 +60,7 @@ export default function Hero({
         type="text"
         placeholder="영화를 검색해보세요."
         onChange={(e) => {
-          MovieInfosCtx.setSearchMovieKeyword(e.target.value);
+            MovieInfosCtx.setSearchMovieKeyword(e.target.value);
         }}
       />
       {searchedMovie &&

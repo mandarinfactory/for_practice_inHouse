@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {},
     fontFamily: {
-      "sans": ["S-CoreDream-3Light"],
+      "sans": ["NanumSquareNeo-Variable"],
     },
   },
   plugins: [

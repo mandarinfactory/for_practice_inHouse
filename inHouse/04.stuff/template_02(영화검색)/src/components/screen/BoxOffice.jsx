@@ -5,7 +5,7 @@ export default function BoxOffice({ isBoxOffice, setNotUpdatedInfos }) {
   const MovieInfosCtx = useContext(MovieInfoContextStore);
 
   const clickHandler = (v) => {
-    const clickedTitle = v.target.innerText.replace(/1?2?3?4?5?./, "");
+    const clickedTitle = v.target.innerText.replace(/1?2?3?4?5?./, " ");
     MovieInfosCtx.setSearchMovieKeyword(clickedTitle);
     MovieInfosCtx.setIsBoxClicked(true);
   };
