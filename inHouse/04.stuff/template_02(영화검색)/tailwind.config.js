@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {},
     fontFamily: {
-      "sans": ["NanumSquareNeo-Variable"],
+      "sans": ["GongGothicMedium"],
     },
   },
   plugins: [

@@ -21,7 +21,7 @@ export default function SearchedMovieBox({ searchedMovie, clickedToFocus }) {
           }}
         >
           <div className="flex flex-col justify-center items-start">
-            <h2 className="my-3 lg:text-2xl sm:text-base font-bold text-black" key={i}>
+            <h2 className="my-3 lg:text-2xl sm:text-base text-black" key={i}>
               {movie.title.includes("!")
                 ? movie.title.replace(/!HS?E?/gi, "")
                 : movie.title}

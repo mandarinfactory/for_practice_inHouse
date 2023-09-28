@@ -26,7 +26,7 @@ export default function Hero({
     <div className="w-full h-full flex flex-col justify-center items-center">
       <div className="lg:w-[50%] sm:w-full sm:ml-10 h-full flex justify-start">
         <button
-          className="mr-10 mt-7 md:text-3xl sm:text-2xl font-extrabold drop-shadow-lg hover:text-slate-700 duration-100"
+          className="mr-10 mt-7 md:text-3xl sm:text-2xl drop-shadow-lg hover:text-slate-700 duration-100"
           onClick={() => {
             setIsBoxOffice(true);
             setIsUpcoming(false);
@@ -35,7 +35,7 @@ export default function Hero({
           박스오피스
         </button>
         <button
-          className="mt-7 md:text-3xl sm:text-2xl font-extrabold drop-shadow-lg hover:text-slate-700 duration-100"
+          className="mt-7 md:text-3xl sm:text-2xl drop-shadow-lg hover:text-slate-700 duration-100"
           onClick={() => {
             setIsBoxOffice(false);
             setIsUpcoming(true);

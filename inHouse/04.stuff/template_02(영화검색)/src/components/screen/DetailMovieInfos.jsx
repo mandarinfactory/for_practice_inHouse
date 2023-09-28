@@ -51,7 +51,7 @@ export default function DetailMovieInfos({ clickedToFocus }) {
             alt="movie-poster"
           />
           <div className="p-5 flex flex-col">
-            <h1 className="p-1 lg:text-3xl md:text-2xl sm:text-xl font-bold my-3 bg-gradient-to-r from-yellow-400 to-red-400 text-black shadow-xl drop-shadow-lg">
+            <h1 className="p-1 lg:text-3xl md:text-2xl sm:text-xl my-3 bg-gradient-to-r from-yellow-400 to-red-400 text-black shadow-xl drop-shadow-lg">
               {MovieInfosCtx.movieVal.title.includes("!")
                 ? MovieInfosCtx.movieVal.title.replace(/!HS?E?/gi, "")
                 : MovieInfosCtx.movieVal.title}
@@ -61,7 +61,7 @@ export default function DetailMovieInfos({ clickedToFocus }) {
                 ? MovieInfosCtx.movieVal.titleEng.replace(/!HS?E?/gi, "")
                 : MovieInfosCtx.movieVal.titleEng}
             </h4>
-            <p className="my-1 w-full lg:text-xl md:text-md sm:text-sm font-bold">
+            <p className="my-1 w-full lg:text-xl md:text-md sm:text-sm">
               감독 :
               {MovieInfosCtx.movieVal.directors.director[0].directorNm.includes(
                 "!"
@@ -72,7 +72,7 @@ export default function DetailMovieInfos({ clickedToFocus }) {
                   )
                 : MovieInfosCtx.movieVal.directors.director[0].directorNm}
             </p>
-            <p className="w-full my-1 lg:text-xl md:text-md sm:text-sm font-bold">
+            <p className="w-full my-1 lg:text-xl md:text-md sm:text-sm">
               배우 :
               {actorsName.includes("!")
                 ? actorsName.replace(/!HS?E?/gi, "")
@@ -128,7 +128,7 @@ export default function DetailMovieInfos({ clickedToFocus }) {
                 </svg>
               </a>
             </div>
-            <p className="w-full my-3 lg:text-lg md:text-base sm:text-sm font-bold">
+            <p className="w-full my-3 lg:text-lg md:text-base sm:text-sm">
               {MovieInfosCtx.movieVal.plots.plot[0].plotText}
             </p>
           </div>

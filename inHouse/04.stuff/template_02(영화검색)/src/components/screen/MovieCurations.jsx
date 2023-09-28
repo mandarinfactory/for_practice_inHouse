@@ -14,12 +14,12 @@ export default function MovieCurations({
   return (
     <div className="lg:w-[80%] sm:w-[90%] p-5 m-10 bg-white rounded-xl backdrop-filter backdrop-blur-md bg-opacity-50 border-gray-200 shadow-xl">
       <button
-        className="p-2 my-3 absolute top-5 right-10 bg-white text-black lg:text-2xl sm:text-xl font-bold hover:bg-black hover:text-white duration-200"
+        className="p-2 my-3 absolute top-5 right-10 bg-white text-black lg:text-2xl sm:text-xl hover:bg-black hover:text-white duration-200"
         onClick={() => {setGenres(genre[randomNumber])}}
       >
         다시추천!
       </button>
-      <h1 className="lg:w-[25%] sm:w-[50%] px-1 py-2 my-3 text-center lg:text-2xl sm:text-xl font-bold bg-white shadow-lg">
+      <h1 className="lg:w-[25%] sm:w-[50%] px-1 py-2 my-3 text-center lg:text-2xl sm:text-xl bg-white shadow-lg">
         오늘은 이런 {genres}영화 어떠세요?
       </h1>
       <div className="flex lg:flex-row sm:flex-col justify-center items-center w-full h-full">
@@ -46,7 +46,7 @@ export default function MovieCurations({
                   className="w-full h-full cursor-pointer hover:scale-110 duration-300"
                 />
               </div>
-              <h1 className="my-2 text-lg font-bold">{movie.title}</h1>
+              <h1 className="my-2 text-lg">{movie.title}</h1>
             </div>
           ))
         ) : (
