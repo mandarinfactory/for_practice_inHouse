@@ -24,9 +24,9 @@ export default function Hero({
   
   return (
     <div className="w-full h-full flex flex-col justify-center items-center">
-      <div className="w-[50%] h-full flex justify-start">
+      <div className="lg:w-[50%] sm:w-full sm:ml-10 h-full flex justify-start">
         <button
-          className="mr-10 mt-7 text-3xl font-extrabold drop-shadow-lg hover:text-slate-700 duration-100"
+          className="mr-10 mt-7 md:text-3xl sm:text-2xl font-extrabold drop-shadow-lg hover:text-slate-700 duration-100"
           onClick={() => {
             setIsBoxOffice(true);
             setIsUpcoming(false);
@@ -35,7 +35,7 @@ export default function Hero({
           박스오피스
         </button>
         <button
-          className="mt-7 text-3xl font-extrabold drop-shadow-lg hover:text-slate-700 duration-100"
+          className="mt-7 md:text-3xl sm:text-2xl font-extrabold drop-shadow-lg hover:text-slate-700 duration-100"
           onClick={() => {
             setIsBoxOffice(false);
             setIsUpcoming(true);
@@ -56,7 +56,7 @@ export default function Hero({
         />
       </div>
       <input
-        className="w-[50%] p-5 my-10 opacity-40 rounded-lg text-2xl shadow-xl"
+        className="lg:w-[50%] sm:w-[90%] p-5 my-10 opacity-40 rounded-lg md:text-2xl sm:text-xl shadow-xl"
         type="text"
         placeholder="영화를 검색해보세요."
         onChange={(e) => {

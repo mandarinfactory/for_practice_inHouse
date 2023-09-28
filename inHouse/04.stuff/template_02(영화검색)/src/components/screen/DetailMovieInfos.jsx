@@ -16,7 +16,7 @@ export default function DetailMovieInfos({ clickedToFocus }) {
 
   return (
     <div
-      className="flex justify-center items-center absolute top-[20%] w-[60%] h-auto p-10 bg-white shadow-lg rounded-xl overflow-auto animate-fade animate-duration-200 z-10"
+      className="flex justify-center items-center absolute top-[20%] lg:w-[60%] sm:w-[90%] h-auto p-10 bg-white shadow-lg rounded-xl overflow-auto animate-fade animate-duration-200 z-10"
       ref={clickedToFocus}
     >
       <button
@@ -35,9 +35,9 @@ export default function DetailMovieInfos({ clickedToFocus }) {
         </svg>
       </button>
       <div>
-        <div className="flex mb-2 overflow-hidden">
+        <div className="flex lg:flex-row sm:flex-col mb-2 overflow-hidden">
           <img
-            className="w-[25%] h-auto m-10 hover:scale-[1.3] duration-300 object-contain"
+            className="w-[25%] h-auto md:m-auto sm:m-auto m-10 hover:scale-[1.3] duration-300 object-contain"
             src={
               MovieInfosCtx.movieVal.posters
                 ? MovieInfosCtx.movieVal.posters.includes("|")
@@ -51,17 +51,17 @@ export default function DetailMovieInfos({ clickedToFocus }) {
             alt="movie-poster"
           />
           <div className="p-5 flex flex-col">
-            <h1 className="p-1 text-3xl font-bold my-3 bg-gradient-to-r from-yellow-400 to-red-400 text-black shadow-xl drop-shadow-lg">
+            <h1 className="p-1 lg:text-3xl md:text-2xl sm:text-xl font-bold my-3 bg-gradient-to-r from-yellow-400 to-red-400 text-black shadow-xl drop-shadow-lg">
               {MovieInfosCtx.movieVal.title.includes("!")
                 ? MovieInfosCtx.movieVal.title.replace(/!HS?E?/gi, "")
                 : MovieInfosCtx.movieVal.title}
             </h1>
-            <h4 className="my-1 text-lg">
+            <h4 className="my-1 lg:text-lg sm:text-sm">
               {MovieInfosCtx.movieVal.titleEng.includes("!")
                 ? MovieInfosCtx.movieVal.titleEng.replace(/!HS?E?/gi, "")
                 : MovieInfosCtx.movieVal.titleEng}
             </h4>
-            <p className="my-1 w-full text-xl font-bold">
+            <p className="my-1 w-full lg:text-xl md:text-md sm:text-sm font-bold">
               감독 :
               {MovieInfosCtx.movieVal.directors.director[0].directorNm.includes(
                 "!"
@@ -72,7 +72,7 @@ export default function DetailMovieInfos({ clickedToFocus }) {
                   )
                 : MovieInfosCtx.movieVal.directors.director[0].directorNm}
             </p>
-            <p className="w-full my-1 text-xl font-bold">
+            <p className="w-full my-1 lg:text-xl md:text-md sm:text-sm font-bold">
               배우 :
               {actorsName.includes("!")
                 ? actorsName.replace(/!HS?E?/gi, "")
@@ -80,8 +80,8 @@ export default function DetailMovieInfos({ clickedToFocus }) {
             </p>
             <div className="flex justify-between">
               <div>
-                <p className="my-1 text-xl">{MovieInfosCtx.movieVal.genre}</p>
-                <p className="my-1 text-xl">
+                <p className="my-1 lg:text-xl md:text-md sm:text-sm">{MovieInfosCtx.movieVal.genre}</p>
+                <p className="my-1 lg:text-xl md:text-md sm:text-sm">
                   {MovieInfosCtx.movieVal.ratings.rating[0].ratingGrade.includes(
                     "|"
                   )
@@ -97,8 +97,8 @@ export default function DetailMovieInfos({ clickedToFocus }) {
               </div>
               <a href={MovieInfosCtx.movieVal.kmdbUrl} target="_blank">
                 <svg
-                  width="45px"
-                  height="45px"
+                  width="30px"
+                  height="30px"
                   version="1.0"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 1280.000000 1280.000000"
@@ -128,12 +128,12 @@ export default function DetailMovieInfos({ clickedToFocus }) {
                 </svg>
               </a>
             </div>
-            <p className="w-full my-3 text-lg font-bold">
+            <p className="w-full my-3 lg:text-lg md:text-base sm:text-sm font-bold">
               {MovieInfosCtx.movieVal.plots.plot[0].plotText}
             </p>
           </div>
         </div>
-        <div className="w-auto h-auto flex justify-center">
+        <div className="w-auto h-auto justify-center lg:flex sm:hidden">
           {stillCuts[0].map((pic, i) => (
             <div className="w-auto h-auto rounded-lg overflow-hidden" key={i}>
               <img

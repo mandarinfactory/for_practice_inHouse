@@ -35,9 +35,9 @@ export default function Upcoming({
   return (
     <>
       {isUpcoming ? (
-        <div className="w-[50%]">
+        <div className="lg:w-[50%] sm:w-full">
           {MovieInfosCtx.isLoading ? (
-            <h1 className="p-10 text-3xl">로딩중......</h1>
+            <h1 className="p-10 lg:text-3xl md:text-2xl sm:text-xl">로딩중......</h1>
           ) : (
             <div className="here w-full p-5 my-3 bg-white rounded-xl backdrop-filter backdrop-blur-md bg-opacity-10 border-gray-200 shadow-xl">
               {upcomings.map((movie, i) => (
@@ -47,7 +47,7 @@ export default function Upcoming({
                   key={movie.id}
                   onClick={clickHandler}
                 >
-                  <h3 className="mx-10 my-3 text-3xl">
+                  <h3 className="mx-10 my-3 lg:text-3xl md:text-2xl sm:text-xl">
                     {i + 1}. {movie.title}
                   </h3>
                 </div>
