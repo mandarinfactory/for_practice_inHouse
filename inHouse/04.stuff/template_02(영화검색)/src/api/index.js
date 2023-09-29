@@ -17,8 +17,9 @@ export const getBoxOfficeInfo = async (MovieInfosCtx) => {
     date - 1
   }&itemPerPage=5`;
   const json = await fetchJson(url);
-  MovieInfosCtx.setMoviesInfo(json.boxOfficeResult.dailyBoxOfficeList);
+  MovieInfosCtx.setMoviesInfo(json?.boxOfficeResult?.dailyBoxOfficeList);
   MovieInfosCtx.setIsLoading(false);
+  console.log(json);
 };
 
 export const getSearchMovieInfo = async (MovieInfosCtx, setSearchedMovie) => {

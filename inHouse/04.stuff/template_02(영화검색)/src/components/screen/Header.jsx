@@ -1,9 +1,13 @@
-import { useContext } from "react";
+import { useEffect, useContext } from "react";
 import { MovieInfoContextStore } from "../../contexts";
-import AuthComponent from "../AuthComponent";
+import AuthComponent from "./auth/AuthComponent";
 
 export default function Header() {
   const MovieInfosCtx = useContext(MovieInfoContextStore);
+
+  useEffect(() => {
+    <AuthComponent />
+  },[MovieInfosCtx.isLoginClicked])
 
   return (
     <>

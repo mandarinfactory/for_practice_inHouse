@@ -33,7 +33,7 @@ export default function BoxOffice({ isBoxOffice, setNotUpdatedInfos }) {
             <h1 className="p-10 lg:text-3xl md:text-2xl sm:text-xl">로딩중......</h1>
           ) : (
             <div className="w-full p-5 my-3 bg-white rounded-xl backdrop-filter backdrop-blur-md bg-opacity-10 border-gray-200 shadow-xl">
-              {MovieInfosCtx.moviesInfo.map((movie, i) => (
+              {MovieInfosCtx.moviesInfo?.map((movie, i) => (
                 <div
                   className="p-2 my-1 bg-white backdrop-filter backdrop-blur-md bg-opacity-10 border-gray-200 shadow-md animate-fade-left duration-100 hover:bg-slate-200 cursor-pointer"
                   data-key={movie.movieCd}

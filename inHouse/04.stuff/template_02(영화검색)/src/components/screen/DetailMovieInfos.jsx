@@ -146,6 +146,12 @@ export default function DetailMovieInfos({ clickedToFocus }) {
             </div>
           ))}
         </div>
+        <div className="w-full h-auto mx-3 my-5 flex flex-row justify-center items-center">
+          <form className="w-full h-full">
+            <input type="text" className="w-full h-full p-2 bg-slate-300 rounded-lg text-lg" placeholder="댓글을 적어주세요."/>
+          </form>
+            <button className="lg:w-[70px] sm:w-[90px] px-[20px] py-2 mx-3 bg-slate-700 text-white rounded-lg">입력</button>
+        </div>
       </div>
     </div>
   );
