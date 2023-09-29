@@ -28,9 +28,10 @@ export default function MovieCurations({
             <div
               className="w-full h-auto px-2 py-3 m-2 bg-white rounded-xl backdrop-filter backdrop-blur-md bg-opacity-50 border-gray-200 shadow-xl hover:bg-slate-300 duration-100  cursor-pointer"
               key={i}
-              onClick={() => {
+              onClick={(e) => {
                 MovieInfosCtx.setDetailMovieInfos(true);
                 MovieInfosCtx.setMovieVal(curatedMovie[i]);
+                e.current?.scrollIntoView({ behavior: "smooth" });
               }}
             >
               <div className="w-full h-full overflow-hidden lg:flex sm:hidden">

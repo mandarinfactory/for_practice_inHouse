@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {},
     fontFamily: {
-      "sans": ["GongGothicMedium"],
+      "sans": ["LeferiPoint-BlackA"],
     },
   },
   plugins: [

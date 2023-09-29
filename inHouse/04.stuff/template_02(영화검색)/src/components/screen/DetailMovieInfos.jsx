@@ -37,7 +37,7 @@ export default function DetailMovieInfos({ clickedToFocus }) {
       <div>
         <div className="flex lg:flex-row sm:flex-col mb-2 overflow-hidden">
           <img
-            className="w-[25%] h-auto md:m-auto sm:m-auto m-10 hover:scale-[1.3] duration-300 object-contain"
+            className="w-[25%] h-auto md:m-auto sm:m-auto m-10 hover:scale-[1.3] duration-300 object-contain z-10 "
             src={
               MovieInfosCtx.movieVal.posters
                 ? MovieInfosCtx.movieVal.posters.includes("|")
@@ -51,7 +51,7 @@ export default function DetailMovieInfos({ clickedToFocus }) {
             alt="movie-poster"
           />
           <div className="p-5 flex flex-col">
-            <h1 className="p-1 lg:text-3xl md:text-2xl sm:text-xl my-3 bg-gradient-to-r from-yellow-400 to-red-400 text-black shadow-xl drop-shadow-lg">
+            <h1 className="px-1 py-2 lg:text-3xl md:text-2xl sm:text-xl my-3 bg-gradient-to-r from-yellow-400 to-red-400 text-black shadow-xl drop-shadow-lg">
               {MovieInfosCtx.movieVal.title.includes("!")
                 ? MovieInfosCtx.movieVal.title.replace(/!HS?E?/gi, "")
                 : MovieInfosCtx.movieVal.title}
@@ -80,7 +80,9 @@ export default function DetailMovieInfos({ clickedToFocus }) {
             </p>
             <div className="flex justify-between">
               <div>
-                <p className="my-1 lg:text-xl md:text-md sm:text-sm">{MovieInfosCtx.movieVal.genre}</p>
+                <p className="my-1 lg:text-xl md:text-md sm:text-sm">
+                  {MovieInfosCtx.movieVal.genre}
+                </p>
                 <p className="my-1 lg:text-xl md:text-md sm:text-sm">
                   {MovieInfosCtx.movieVal.ratings.rating[0].ratingGrade.includes(
                     "|"
