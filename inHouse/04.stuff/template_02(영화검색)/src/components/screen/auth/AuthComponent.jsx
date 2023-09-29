@@ -17,6 +17,7 @@ export default function AuthComponent() {
         const user = userCredential.user;
         MovieInfosCtx.setIsLoginBtnClicked(false);
         MovieInfosCtx.setIsLoginClicked(true);
+        MovieInfosCtx.setUserIdName(user.providerData[0].email.toString().substring(0, user.providerData[0].email.toString().search("@")));
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -54,7 +55,7 @@ export default function AuthComponent() {
           </svg>
         </button>
         <div className="w-[45%] h-full flex flex-col items-center justify-center bg-gradient-to-r from-yellow-400 to-red-400">
-          <h1 className="p-2 my-7 text-2xl">무비써치</h1>
+          <h1 className="p-2 my-7 text-3xl">무비써치</h1>
           <p className="lg:text-xl md:text-base lg:flex sm:hidden">
             항상 다채로운 영화찾기를 위해
           </p>

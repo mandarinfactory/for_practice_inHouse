@@ -1,15 +1,12 @@
-import { useState, useContext } from "react";
+import { useContext } from "react";
 
 import { MovieInfoContextStore } from "../../contexts";
-import PopupBox from "../PopupBox";
 
 export default function DetailMovieInfos({ clickedToFocus }) {
   const MovieInfosCtx = useContext(MovieInfoContextStore);
   const actorsName = [];
   const stillCuts = new Array(MovieInfosCtx.movieVal.stlls.split("|"));
   stillCuts[0].length = 5;
-
-  const [showPopup, setShowPopup] = useState(false);
 
   MovieInfosCtx.movieVal.actors.actor.forEach((v) => {
     actorsName.push(`${v.actorNm}, `);
@@ -54,17 +51,17 @@ export default function DetailMovieInfos({ clickedToFocus }) {
             alt="movie-poster"
           />
           <div className="p-5 flex flex-col">
-            <h1 className="px-1 py-2 lg:text-3xl md:text-2xl sm:text-xl my-3 bg-gradient-to-r from-yellow-400 to-red-400 text-black shadow-xl drop-shadow-lg">
+            <h1 className="px-1 py-2 lg:text-3xl sm:text-2xl my-3 bg-gradient-to-r from-yellow-400 to-red-400 text-black shadow-xl drop-shadow-lg">
               {MovieInfosCtx.movieVal.title.includes("!")
                 ? MovieInfosCtx.movieVal.title.replace(/!HS?E?/gi, "")
                 : MovieInfosCtx.movieVal.title}
             </h1>
-            <h4 className="my-1 lg:text-lg sm:text-sm">
+            <h4 className="my-1 lg:text-lg sm:text-md">
               {MovieInfosCtx.movieVal.titleEng.includes("!")
                 ? MovieInfosCtx.movieVal.titleEng.replace(/!HS?E?/gi, "")
                 : MovieInfosCtx.movieVal.titleEng}
             </h4>
-            <p className="my-1 w-full lg:text-xl md:text-md sm:text-sm">
+            <p className="my-1 w-full lg:text-xl sm:text-md">
               감독 :
               {MovieInfosCtx.movieVal.directors.director[0].directorNm.includes(
                 "!"
@@ -75,7 +72,7 @@ export default function DetailMovieInfos({ clickedToFocus }) {
                   )
                 : MovieInfosCtx.movieVal.directors.director[0].directorNm}
             </p>
-            <p className="w-full my-1 lg:text-xl md:text-md sm:text-sm">
+            <p className="w-full my-1 lg:text-xl sm:text-md">
               배우 :
               {actorsName.includes("!")
                 ? actorsName.replace(/!HS?E?/gi, "")
@@ -83,10 +80,10 @@ export default function DetailMovieInfos({ clickedToFocus }) {
             </p>
             <div className="flex justify-between">
               <div>
-                <p className="my-1 lg:text-xl md:text-md sm:text-sm">
+                <p className="my-1 lg:text-xl sm:text-md">
                   {MovieInfosCtx.movieVal.genre}
                 </p>
-                <p className="my-1 lg:text-xl md:text-md sm:text-sm">
+                <p className="my-1 lg:text-xl sm:text-md">
                   {MovieInfosCtx.movieVal.ratings.rating[0].ratingGrade.includes(
                     "|"
                   )
@@ -133,7 +130,7 @@ export default function DetailMovieInfos({ clickedToFocus }) {
                 </svg>
               </a>
             </div>
-            <p className="w-full my-3 lg:text-lg md:text-base sm:text-sm">
+            <p className="w-full my-3 lg:text-lg sm:text-md">
               {MovieInfosCtx.movieVal.plots.plot[0].plotText}
             </p>
           </div>
@@ -148,40 +145,6 @@ export default function DetailMovieInfos({ clickedToFocus }) {
               />
             </div>
           ))}
-        </div>
-        <div className="w-full h-auto mx-3 my-5 flex flex-row justify-center items-center">
-          <form className="w-full h-full">
-            <input
-              type="text"
-              className="w-full h-full p-2 bg-slate-300 rounded-lg text-lg"
-              placeholder="댓글을 적어주세요."
-            />
-          </form>
-          <button
-            className="lg:w-[70px] sm:w-[90px] px-[20px] py-2 mx-3 bg-slate-700 text-white rounded-lg"
-            onClick={() => {
-              if (MovieInfosCtx.isLoginClicked === false) {
-                setShowPopup(true);
-              }
-            }}
-          >
-            입력
-          </button>
-          {showPopup && (
-            <PopupBox onClick={() => {
-              setShowPopup(false);
-            }}>
-              <p className="my-1 text-sm">
-                아직 로그인을 하지 않으셨습니다!
-              </p>
-              <p className="my-1 text-sm">
-                로그인이나 회원가입을 해야
-              </p>
-              <p className="my-1 text-sm">
-                댓글 작성이 가능합니다.
-              </p>
-            </PopupBox>
-          )}
         </div>
       </div>
     </div>

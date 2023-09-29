@@ -35,7 +35,7 @@ export default function Upcoming({
   return (
     <>
       {isUpcoming ? (
-        <div className="lg:w-[50%] sm:w-full">
+        <div className="lg:w-[50%] sm:w-[90%]">
           {MovieInfosCtx.isLoading ? (
             <h1 className="p-10 lg:text-3xl md:text-2xl sm:text-xl">로딩중......</h1>
           ) : (

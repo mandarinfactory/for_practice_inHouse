@@ -14,6 +14,7 @@ const MovieInfoContext = (props) => {
   const [isLoginBtnClicked, setIsLoginBtnClicked] = useState(false);
   const [isLoginClicked, setIsLoginClicked] = useState(false);
   const [isSignUpClicked, setIsSignUpClicked] = useState(false);
+  const [userIdName, setUserIdName] = useState();
 
   const MovieInfoStore = {
     isLoading,
@@ -36,6 +37,8 @@ const MovieInfoContext = (props) => {
     setIsLoginClicked,
     isSignUpClicked,
     setIsSignUpClicked,
+    userIdName,
+    setUserIdName
   };
 
   return (
