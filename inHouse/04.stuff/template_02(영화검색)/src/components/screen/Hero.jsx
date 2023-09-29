@@ -24,7 +24,7 @@ export default function Hero({
   
   return (
     <div className="w-full h-full flex flex-col justify-center items-center">
-      <div className="lg:w-[50%] sm:w-full sm:ml-10 h-full flex justify-start">
+      <div className="lg:w-[50%] sm:w-[90%] sm:ml-10 h-full flex justify-start">
         <button
           className="mr-10 mt-7 md:text-3xl sm:text-2xl drop-shadow-lg hover:text-slate-700 duration-100"
           onClick={() => {

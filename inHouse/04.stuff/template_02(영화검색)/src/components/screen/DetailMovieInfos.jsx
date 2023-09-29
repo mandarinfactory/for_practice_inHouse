@@ -1,12 +1,15 @@
-import { useContext } from "react";
+import { useState, useContext } from "react";
+
 import { MovieInfoContextStore } from "../../contexts";
+import PopupBox from "../PopupBox";
 
 export default function DetailMovieInfos({ clickedToFocus }) {
   const MovieInfosCtx = useContext(MovieInfoContextStore);
-
   const actorsName = [];
   const stillCuts = new Array(MovieInfosCtx.movieVal.stlls.split("|"));
   stillCuts[0].length = 5;
+
+  const [showPopup, setShowPopup] = useState(false);
 
   MovieInfosCtx.movieVal.actors.actor.forEach((v) => {
     actorsName.push(`${v.actorNm}, `);
@@ -148,9 +151,37 @@ export default function DetailMovieInfos({ clickedToFocus }) {
         </div>
         <div className="w-full h-auto mx-3 my-5 flex flex-row justify-center items-center">
           <form className="w-full h-full">
-            <input type="text" className="w-full h-full p-2 bg-slate-300 rounded-lg text-lg" placeholder="댓글을 적어주세요."/>
+            <input
+              type="text"
+              className="w-full h-full p-2 bg-slate-300 rounded-lg text-lg"
+              placeholder="댓글을 적어주세요."
+            />
           </form>
-            <button className="lg:w-[70px] sm:w-[90px] px-[20px] py-2 mx-3 bg-slate-700 text-white rounded-lg">입력</button>
+          <button
+            className="lg:w-[70px] sm:w-[90px] px-[20px] py-2 mx-3 bg-slate-700 text-white rounded-lg"
+            onClick={() => {
+              if (MovieInfosCtx.isLoginClicked === false) {
+                setShowPopup(true);
+              }
+            }}
+          >
+            입력
+          </button>
+          {showPopup && (
+            <PopupBox onClick={() => {
+              setShowPopup(false);
+            }}>
+              <p className="my-1 text-sm">
+                아직 로그인을 하지 않으셨습니다!
+              </p>
+              <p className="my-1 text-sm">
+                로그인이나 회원가입을 해야
+              </p>
+              <p className="my-1 text-sm">
+                댓글 작성이 가능합니다.
+              </p>
+            </PopupBox>
+          )}
         </div>
       </div>
     </div>

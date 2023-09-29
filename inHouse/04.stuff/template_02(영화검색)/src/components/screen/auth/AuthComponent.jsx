@@ -5,7 +5,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import SignUpComponent from "./SignUpComponent";
+import PopupBox from "../../PopupBox";
 
 export default function AuthComponent() {
   const MovieInfosCtx = useContext(MovieInfoContextStore);
@@ -15,7 +15,8 @@ export default function AuthComponent() {
     await signInWithEmailAndPassword(authentication, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        MovieInfosCtx.setIsLoginClicked(false);
+        MovieInfosCtx.setIsLoginBtnClicked(false);
+        MovieInfosCtx.setIsLoginClicked(true);
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -33,14 +34,14 @@ export default function AuthComponent() {
         const errorCode = error.code;
         const errorMessage = error.message;
       });
-    };
+  };
 
   return (
     <>
       <div className="absolute top-[30%] lg:w-[50%] md:w-[70%] sm:w-[70%] h-[40%] flex flex-row bg-white shadow-md z-10">
         <button
           onClick={() => {
-            MovieInfosCtx.setIsLoginClicked(false);
+            MovieInfosCtx.setIsLoginBtnClicked(false);
           }}
         >
           <svg
@@ -52,12 +53,17 @@ export default function AuthComponent() {
             <path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
           </svg>
         </button>
-        <div className="w-[40%] h-full flex flex-col items-center justify-center bg-gradient-to-r from-yellow-400 to-red-400">
+        <div className="w-[45%] h-full flex flex-col items-center justify-center bg-gradient-to-r from-yellow-400 to-red-400">
           <h1 className="p-2 my-7 text-2xl">무비써치</h1>
-          <p className="text-xl">
-            항상 다채로운 영화찾기를 위해 노력하고 있습니다.
+          <p className="lg:text-xl md:text-base lg:flex sm:hidden">
+            항상 다채로운 영화찾기를 위해
           </p>
-          <p className="text-xl">무비써치에 오신걸 환영합니다!</p>
+          <p className="lg:text-xl md:text-base lg:flex sm:hidden">
+            노력하고 있습니다.
+          </p>
+          <p className="lg:text-xl md:text-base lg:flex sm:hidden">
+            무비써치에 오신걸 환영합니다!
+          </p>
         </div>
         <div className="m-auto flex flex-col items-center justify-center">
           <div className="my-10 flex flex-col items-center justify-center">
@@ -84,7 +90,19 @@ export default function AuthComponent() {
           </div>
         </div>
       </div>
-      {MovieInfosCtx.isSignUpClicked ? <SignUpComponent /> : <></>}
+      {MovieInfosCtx.isSignUpClicked ? (
+        <PopupBox onClick={() => {
+          MovieInfosCtx.setIsSignUpClicked(false);
+      }}>
+          <p className="my-1 lg:text-lg sm:text-sm">축하합니다! 회원가입이 되셨습니다!</p>
+          <p className="my-1 lg:text-lg sm:text-sm">
+            이제 로그인 하시면 됩니다.
+          </p>
+          <p className="my-1 lg:text-lg sm:text-sm"> 무비써치에 가입해주셔서 감사합니다.</p>
+        </PopupBox>
+      ) : (
+        <></>
+      )}
     </>
   );
 }

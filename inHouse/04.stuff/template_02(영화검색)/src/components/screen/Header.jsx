@@ -1,13 +1,21 @@
-import { useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { MovieInfoContextStore } from "../../contexts";
 import AuthComponent from "./auth/AuthComponent";
 
 export default function Header() {
+  const [loggedHandler, setLoggedHandler] = useState(true);
   const MovieInfosCtx = useContext(MovieInfoContextStore);
 
   useEffect(() => {
-    <AuthComponent />
-  },[MovieInfosCtx.isLoginClicked])
+    if (MovieInfosCtx.isLoginClicked) {
+      setLoggedHandler(false);
+    }
+  }, [MovieInfosCtx.isLoginClicked]);
+
+  const handleLogout = () => {
+    MovieInfosCtx.setIsLoginClicked(false);
+    setLoggedHandler(true);
+  };
 
   return (
     <>
@@ -17,19 +25,24 @@ export default function Header() {
             <a href="./"> 무비써치</a>
           </h1>
           <h1 className="mr-20 md:text-3xl sm:text-2xl font-extrabold text-black drop-shadow-lg">
-            <a
-              href="#"
-              onClick={() => {
-                MovieInfosCtx.setIsLoginClicked(true);
-              }}
-            >
-              {" "}
-              로그인
-            </a>
+            {MovieInfosCtx.isLoginClicked ? (
+              <a href="#" onClick={handleLogout}>
+                로그아웃
+              </a>
+            ) : (
+              <a
+                href="#"
+                onClick={() => {
+                  MovieInfosCtx.setIsLoginBtnClicked(true);
+                }}
+              >
+                {loggedHandler ? "로그인" : "로그아웃"}
+              </a>
+            )}
           </h1>
         </div>
       </header>
-      {MovieInfosCtx.isLoginClicked ? <AuthComponent /> : <></>}
+      {MovieInfosCtx.isLoginBtnClicked ? <AuthComponent /> : null}
     </>
   );
 }
