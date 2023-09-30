@@ -81,7 +81,9 @@ export default function App() {
       });
     }
   };
-
+  console.log(aptLocData);
+  console.log(filteredDistrict);
+  console.log(weatherLocData);
   const DismissKeyboard = ({ children }) => (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       {children}
@@ -106,6 +108,7 @@ export default function App() {
         console.log(error);
       });
     const xmlString = await response.text();
+    console.log(xmlString);
     const parseString = require("react-native-xml2js").parseString;
     parseString(xmlString, (err, result) => {
       if (err !== null) {
@@ -119,6 +122,7 @@ export default function App() {
       setDataLoaded(true);
     });
   };
+
   const today = new Date();
   let year = today.getFullYear();
   let month = ("0" + (new Date().getMonth() + 1)).slice(-2);
