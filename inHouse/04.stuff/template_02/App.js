@@ -14,7 +14,7 @@ import getFilteredGeoLocation from "./API/realEstate/getFilteredGeoLoc";
 
 import Detail from "./components/Detail";
 import Home from "./components/Home";
-/* components&scrrens */
+/* components&screens */
 
 import useFonts from "./hooks/useFonts";
 import geoLocationControler from "./API/weather/grid";
@@ -81,9 +81,6 @@ export default function App() {
       });
     }
   };
-  console.log(aptLocData);
-  console.log(filteredDistrict);
-  console.log(weatherLocData);
   const DismissKeyboard = ({ children }) => (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       {children}
@@ -108,7 +105,6 @@ export default function App() {
         console.log(error);
       });
     const xmlString = await response.text();
-    console.log(xmlString);
     const parseString = require("react-native-xml2js").parseString;
     parseString(xmlString, (err, result) => {
       if (err !== null) {

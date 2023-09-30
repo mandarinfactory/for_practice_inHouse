@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 
@@ -9,24 +10,24 @@ export default function DetailScreen({
   pressedAptData,
   pressedAptLocData,
 }) {
-  let coordinates;
-  pressedAptLocData ? (
-    ((coordinates = {
-      latitude: parseFloat(pressedAptLocData[0]).toFixed(5),
-      longitude: parseFloat(pressedAptLocData[1]).toFixed(5),
-    }),
-    (initialCoord = {
-      latitude: parseFloat(pressedAptLocData[0]).toFixed(5),
-      longitude: parseFloat(pressedAptLocData[1]).toFixed(5),
-      latitudeDelta: 0.01,
-      longitudeDelta: 0.01,
-    }))
-  ) : (
-    <></>
-  );
+  const [initialCoord, setInitialCoord] = useState(null);
+
+  useEffect(() => {
+    if (pressedAptLocData) {
+      const newCoord = {
+        latitude: parseFloat(pressedAptLocData[0]).toFixed(5),
+        longitude: parseFloat(pressedAptLocData[1]).toFixed(5),
+        latitudeDelta: 0.01,
+        longitudeDelta: 0.01,
+      };
+      setInitialCoord(newCoord);
+    }
+  }, [pressedAptLocData]);
+
   const rollBackToHomeScreen = () => {
     setIsAptPressed(false);
   };
+
   const aptTradeData = pressedAptData?.거래금액
     .toString()
     .trim()
@@ -48,6 +49,7 @@ export default function DetailScreen({
         .toString()
         .replace(/000?/, "")}`;
   };
+
   const aptOldAddressData = () => {
     if (parseInt(pressedAptData.법정동부번코드) !== 0) {
       return `${pressedAptData.법정동} ${pressedAptData?.법정동본번코드
@@ -94,10 +96,19 @@ export default function DetailScreen({
             </Pressable>
           </View>
           <View style={styles.mapContainer}>
-            {pressedAptLocData && (
+            {initialCoord && (
               <>
-                <MapView style={styles.map} initialRegion={initialCoord} userInterfaceStyle="dark" loadingEnabled={true}>
-                  <Marker coordinate={coordinates} pinColor={Colors.primaryColor} title={`${pressedAptData.아파트}아파트`} />
+                <MapView
+                  style={styles.map}
+                  initialRegion={initialCoord}
+                  userInterfaceStyle="dark"
+                  loadingEnabled={true}
+                >
+                  <Marker
+                    coordinate={initialCoord}
+                    pinColor={Colors.primaryColor}
+                    title={`${pressedAptData.아파트}아파트`}
+                  />
                 </MapView>
               </>
             )}
