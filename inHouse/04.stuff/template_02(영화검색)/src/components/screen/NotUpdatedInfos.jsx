@@ -7,8 +7,9 @@ export default function NotUpdatedInfos({ setNotUpdatedInfos }) {
     <div
       className="flex flex-col justify-center items-center absolute top-[20%] lg:w-[35%] sm:w-[70%] h-[30%] bg-white shadow-lg rounded-xl animate-fade animate-duration-200 cursor-pointer"
       onClick={() => {
-        setNotUpdatedInfos(false)
-        MovieInfosCtx.setIsBoxClicked(false)
+        setNotUpdatedInfos(false);
+        MovieInfosCtx.setIsBoxOfficeBoxClicked(false);
+        MovieInfosCtx.setIsUpcomingBoxClicked(false);
       }}
     >
       <h1 className="text-3xl font-bold md:text-2xl sm:text-xl">

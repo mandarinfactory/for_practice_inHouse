@@ -22,7 +22,8 @@ export default function DetailMovieInfos({ clickedToFocus }) {
       <button
         onClick={() => {
           MovieInfosCtx.setDetailMovieInfos(false);
-          MovieInfosCtx.setIsBoxClicked(false);
+          MovieInfosCtx.setIsBoxOfficeBoxClicked(false);
+          MovieInfosCtx.setIsUpcomingBoxClicked(false);
         }}
       >
         <svg

@@ -13,7 +13,7 @@ export default function MapInfoBoxCard({ place, selected, refProp }) {
         }
         alt=""
       />
-      <h1 className="px-10 py-5 text-2xl font-bold bg-green-300">
+      <h1 className="px-10 py-5 text-2xl font-bold bg-green-600">
         {place.name}
       </h1>
       <p className="flex justify-between px-10 py-3 text-lg">

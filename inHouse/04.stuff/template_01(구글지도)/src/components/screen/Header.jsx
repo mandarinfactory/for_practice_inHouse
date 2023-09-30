@@ -13,7 +13,7 @@ export default function Header({ setCoordinates }) {
   };
 
   return (
-    <header className="text-gray-600 body-font bg-green-300">
+    <header className="text-slate-200 body-font bg-green-600">
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
         <a className="flex flex-row title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
           <svg

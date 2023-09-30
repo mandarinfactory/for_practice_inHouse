@@ -11,9 +11,9 @@ export default function Upcoming({
   const clickHandler = (v) => {
     const clickedTitle = v.target.innerText.replace(/1?2?3?4?5?./, "  ");
     MovieInfosCtx.setSearchMovieKeyword(clickedTitle);
-    MovieInfosCtx.setIsBoxClicked(true);
+    MovieInfosCtx.setIsUpcomingBoxClicked(true);
   };
-  if (MovieInfosCtx.isBoxClicked) {
+  if (MovieInfosCtx.isUpcomingBoxClicked) {
     const filteredTitle = MovieInfosCtx.boxesMoviesInfo?.find((e) => {
       return (
         e.titleEtc.substring(0, e.titleEtc.indexOf("^")) ==

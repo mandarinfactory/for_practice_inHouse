@@ -6,7 +6,7 @@ export default {
   ],
   theme: {
     fontFamily: {
-      "sans" : ["NanumSquare-Neo"]
+      "sans" : ["GmarketSansMedium"]
     },
     extend: {},
   },

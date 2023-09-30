@@ -7,9 +7,9 @@ export default function BoxOffice({ isBoxOffice, setNotUpdatedInfos }) {
   const clickHandler = (v) => {
     const clickedTitle = v.target.innerText.replace(/1?2?3?4?5?./, "  ");
     MovieInfosCtx.setSearchMovieKeyword(clickedTitle);
-    MovieInfosCtx.setIsBoxClicked(true);
+    MovieInfosCtx.setIsBoxOfficeBoxClicked(true);
   };
-  if (MovieInfosCtx.isBoxClicked) {
+  if (MovieInfosCtx.isBoxOfficeBoxClicked) {
     const filteredTitle = MovieInfosCtx.boxesMoviesInfo?.find((e) => {
       return (
         e.titleEtc.substring(0, e.titleEtc.indexOf("^")) ==
