@@ -1,64 +1,72 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 
 import Colors from "../constant/color";
+import { AptInfoContextStore } from "../context";
 
-export default function DetailScreen({
-  isAptPressed,
-  setIsAptPressed,
-  pressedAptData,
-  pressedAptLocData,
-}) {
+export default function DetailScreen() {
+  const AptInfosCtx = useContext(AptInfoContextStore);
   const [initialCoord, setInitialCoord] = useState(null);
 
   useEffect(() => {
-    if (pressedAptLocData) {
+    if (AptInfosCtx.pressedAptLocData) {
       const newCoord = {
-        latitude: parseFloat(pressedAptLocData[0]).toFixed(5),
-        longitude: parseFloat(pressedAptLocData[1]).toFixed(5),
+        latitude: parseFloat(AptInfosCtx.pressedAptLocData[0]).toFixed(5),
+        longitude: parseFloat(AptInfosCtx.pressedAptLocData[1]).toFixed(5),
         latitudeDelta: 0.01,
         longitudeDelta: 0.01,
       };
       setInitialCoord(newCoord);
     }
-  }, [pressedAptLocData]);
+  }, [AptInfosCtx.pressedAptLocData]);
 
   const rollBackToHomeScreen = () => {
-    setIsAptPressed(false);
+    AptInfosCtx.setIsAptPressed(false);
   };
 
-  const aptTradeData = pressedAptData?.거래금액
+  const aptTradeData = AptInfosCtx.pressedAptData?.거래금액
     .toString()
     .trim()
     .replace(/,/g, "0000")
     .replace(/(\d)(?=(?:\d{3})+(?!\d))/g, "$1,");
-  const aptSizeData = parseFloat(pressedAptData.전용면적?.toString()).toFixed(
-    2
-  );
+  const aptSizeData = parseFloat(
+    AptInfosCtx.pressedAptData?.전용면적?.toString()
+  ).toFixed(2);
 
   const aptNewAddressData = () => {
-    if (parseInt(pressedAptData.도로명건물부번호코드) !== 0) {
-      return `${pressedAptData.도로명} ${pressedAptData?.도로명건물본번호코드
+    if (parseInt(AptInfosCtx.pressedAptData.도로명건물부번호코드) !== 0) {
+      return `${
+        AptInfosCtx.pressedAptData.도로명
+      } ${AptInfosCtx.pressedAptData?.도로명건물본번호코드
         .toString()
-        .replace(/000?/, "")} - ${pressedAptData?.도로명건물부번호코드
+        .replace(
+          /000?/,
+          ""
+        )} - ${AptInfosCtx.pressedAptData?.도로명건물부번호코드
         .toString()
         .replace(/000?/, "")}`;
     } else
-      return `${pressedAptData.도로명} ${pressedAptData?.도로명건물본번호코드
+      return `${
+        AptInfosCtx.pressedAptData.도로명
+      } ${AptInfosCtx.pressedAptData?.도로명건물본번호코드
         .toString()
         .replace(/000?/, "")}`;
   };
 
   const aptOldAddressData = () => {
-    if (parseInt(pressedAptData.법정동부번코드) !== 0) {
-      return `${pressedAptData.법정동} ${pressedAptData?.법정동본번코드
+    if (parseInt(AptInfosCtx.pressedAptData.법정동부번코드) !== 0) {
+      return `${
+        AptInfosCtx.pressedAptData.법정동
+      } ${AptInfosCtx.pressedAptData?.법정동본번코드
         .toString()
-        .replace(/00?/, "")} - ${pressedAptData?.법정동부번코드
+        .replace(/00?/, "")} - ${AptInfosCtx.pressedAptData?.법정동부번코드
         .toString()
         .replace(/00?/, "")}`;
     } else {
-      return `${pressedAptData.법정동} ${pressedAptData?.법정동본번코드
+      return `${
+        AptInfosCtx.pressedAptData.법정동
+      } ${AptInfosCtx.pressedAptData?.법정동본번코드
         .toString()
         .replace(/00?/, "")}`;
     }
@@ -66,27 +74,30 @@ export default function DetailScreen({
 
   return (
     <>
-      {isAptPressed && (
+      {AptInfosCtx.isAptPressed && (
         <View>
-          <Text style={styles.titleText}>{pressedAptData.아파트}아파트</Text>
+          <Text style={styles.titleText}>
+            {AptInfosCtx.pressedAptData.아파트}아파트
+          </Text>
           <View>
             <Text style={styles.innerText}>거래금액 : {aptTradeData}원</Text>
             <Text style={styles.innerText}>
-              거래날짜 : 20{pressedAptData.년.toString().replace("20", "")}년
-              {pressedAptData.월 < 10
-                ? ` 0${pressedAptData.월}`
-                : pressedAptData.월}
+              거래날짜 : 20
+              {AptInfosCtx.pressedAptData.년.toString().replace("20", "")}년
+              {AptInfosCtx.pressedAptData.월 < 10
+                ? ` 0${AptInfosCtx.pressedAptData.월}`
+                : AptInfosCtx.pressedAptData.월}
               월
-              {pressedAptData.일 < 10
-                ? ` 0${pressedAptData.일}`
-                : pressedAptData.일}
+              {AptInfosCtx.pressedAptData.일 < 10
+                ? ` 0${AptInfosCtx.pressedAptData.일}`
+                : AptInfosCtx.pressedAptData.일}
               일
             </Text>
             <Text style={styles.innerText}>
               주소 : {aptNewAddressData()} / {aptOldAddressData()}
             </Text>
             <Text style={styles.innerText}>
-              건축년도 : {pressedAptData.건축년도}년
+              건축년도 : {AptInfosCtx.pressedAptData.건축년도}년
             </Text>
             <Text style={styles.innerText}>전용면적 : {aptSizeData}㎡</Text>
           </View>
@@ -107,7 +118,7 @@ export default function DetailScreen({
                   <Marker
                     coordinate={initialCoord}
                     pinColor={Colors.primaryColor}
-                    title={`${pressedAptData.아파트}아파트`}
+                    title={`${AptInfosCtx.pressedAptData.아파트}아파트`}
                   />
                 </MapView>
               </>

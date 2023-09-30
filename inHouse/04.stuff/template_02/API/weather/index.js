@@ -1,4 +1,4 @@
-const getWeatherDataAPI = async () => {
+const getWeatherDataAPI = async (AptInfosCtx) => {
   const today = new Date();
 
   let year = today.getFullYear();
@@ -15,10 +15,16 @@ const getWeatherDataAPI = async () => {
     "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst";
   const API_KEY =
     "24vbFaV5oWpSo3qOGdwCXPO%2FX5gr4tqD2gxEwUJWb2xVcv4sWZ5QmmZruySMYWl2471GK88wVe3zjfacPH%2FENQ%3D%3D";
-  const headers = `&pageNo=1&numOfRows=10&dataType=JSON&base_date=${date}&base_time=${hours}&nx=60&ny=127`;
+  const headers =
+    AptInfosCtx.weatherLocData !== undefined
+      ? `&pageNo=1&numOfRows=10&dataType=JSON&base_date=${date}&base_time=${
+          hours - 100
+        }&nx=${AptInfosCtx.weatherLocData.x}&ny=${AptInfosCtx.weatherLocData.y}`
+      : AptInfosCtx.weatherLocData;
   const reqestAPI_URL = `${API_URL}?serviceKey=${API_KEY}${headers}`;
   const json = await (await fetch(reqestAPI_URL)).json();
-  const weatherData = json.response.body.items.item
+  const rawWeatherData = json?.response?.body?.items?.item;
+  AptInfosCtx.setWeatherData(rawWeatherData);
 };
 
 export default getWeatherDataAPI;

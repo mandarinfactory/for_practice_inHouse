@@ -1,20 +1,10 @@
 import Layout from "./Layout";
 import DetailScreen from "../screens/DetailScreen";
 
-export default function Detail({
-  isAptPressed,
-  setIsAptPressed,
-  pressedAptData,
-  pressedAptLocData,
-}) {
+export default function Detail({}) {
   return (
     <Layout>
-      <DetailScreen
-        isAptPressed={isAptPressed}
-        setIsAptPressed={setIsAptPressed}
-        pressedAptData={pressedAptData}
-        pressedAptLocData={pressedAptLocData}
-      />
+      <DetailScreen />
     </Layout>
   );
 }

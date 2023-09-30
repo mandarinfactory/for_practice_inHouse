@@ -1,18 +1,23 @@
+import React, { useContext } from "react";
 import { Text, View, StyleSheet } from "react-native";
+
+import { AptInfoContextStore } from "../context";
 import Colors from "../constant/color";
 
-export default function WeatherScreen({ recentLocation, weatherData }) {
+export default function WeatherScreen() {
+  const AptInfosCtx = useContext(AptInfoContextStore);
+
   return (
     <>
-      {weatherData !== undefined ? (
+      {AptInfosCtx.weatherData !== undefined ? (
         <View style={styles.innerContainer}>
-          <Text style={styles.weatherText}>{recentLocation !== undefined ? recentLocation[0].district : recentLocation}의</Text>
+          <Text style={styles.weatherText}>{AptInfosCtx.recentLocation !== undefined ? AptInfosCtx.recentLocation[0].district : AptInfosCtx.recentLocation}의</Text>
           <Text style={styles.innerText}>
             현재 온도는{" "}
-            <Text style={styles.weatherText}>{weatherData[3]?.obsrValue}</Text>
+            <Text style={styles.weatherText}>{AptInfosCtx.weatherData[3]?.obsrValue}</Text>
             도 입니다.
           </Text>
-          {weatherData[2]?.obsrValue == 0 ? (
+          {AptInfosCtx.weatherData[2]?.obsrValue == 0 ? (
             <View>
               <Text style={styles.innerText}>
                 오늘은 비 또는 눈이 오지 않습니다.

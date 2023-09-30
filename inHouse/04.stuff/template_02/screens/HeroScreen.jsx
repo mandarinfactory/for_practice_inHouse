@@ -1,24 +1,19 @@
+import React, { useContext } from "react";
 import { View, Text, StyleSheet, Pressable } from "react-native";
 
+import { AptInfoContextStore } from "../context";
 import Colors from "../constant/color";
 
-export default function HeroScreen({
-  recentLocation,
-  filteredDistrict,
-  apartmentData,
-  setIsAptPressed,
-  setPressedAptData,
-  searchTextValue,
-  setSearchTextValue
-}) {
+export default function HeroScreen() {
+  const AptInfosCtx = useContext(AptInfoContextStore);
   const onPress = () => {
-    setIsAptPressed(true);
+    AptInfosCtx.setIsAptPressed(true);
   };
 
   return (
     <>
-      {apartmentData !== undefined &&
-      apartmentData.sort(function (x, y) {
+      {AptInfosCtx.apartmentData !== undefined &&
+      AptInfosCtx.apartmentData.sort(function (x, y) {
         return parseInt(y.거래금액) - parseInt(x.거래금액);
       }) ? (
         <View style={styles.outerConatiner}>
@@ -26,12 +21,17 @@ export default function HeroScreen({
             <Text style={styles.subtitleText}>
               현재{" "}
               <Text style={styles.titleText}>
-                {searchTextValue ? searchTextValue.시도명 : recentLocation[0].city} {searchTextValue ? searchTextValue.시군구명 : filteredDistrict}{" "}
+                {AptInfosCtx.searchTextValue
+                  ? AptInfosCtx.searchTextValue.시도명
+                  : AptInfosCtx.recentLocation[0].city}{" "}
+                {AptInfosCtx.searchTextValue
+                  ? AptInfosCtx.searchTextValue.시군구명
+                  : AptInfosCtx.filteredDistrict}{" "}
               </Text>
               아파트 순위
             </Text>
           </View>
-          {apartmentData?.map((aptData, index) => (
+          {AptInfosCtx.apartmentData?.map((aptData, index) => (
             <Pressable
               style={({ pressed }) =>
                 pressed
@@ -41,7 +41,7 @@ export default function HeroScreen({
               key={index}
               onPress={() => {
                 onPress();
-                setPressedAptData(aptData);
+                AptInfosCtx.setPressedAptData(aptData);
               }}
               android_ripple={{ color: Colors.primaryColor }}
             >

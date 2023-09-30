@@ -1,11 +1,13 @@
+import React, { useState, useContext } from "react";
 import { View, Text, TextInput, StyleSheet, Pressable } from "react-native";
-import { useState } from "react";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
-import Colors from "../constant/color";
+import { AptInfoContextStore } from "../context";
 import addressData from "../API/realEstate/addressData.json";
+import Colors from "../constant/color";
 
-export default function SearchScreen({ setSearchTextValue }) {
+export default function SearchScreen() {
+  const AptInfosCtx = useContext(AptInfoContextStore);
   const [filteredAddressData, setFilteredAddressData] = useState();
 
   const getTextInputValue = (value) => {
@@ -26,7 +28,7 @@ export default function SearchScreen({ setSearchTextValue }) {
     <View style={styles.rootContainer}>
       <View style={styles.innerSearchContainer}>
       <Ionicons name="navigate-circle" color={Colors.subColor} size={30} style={styles.locationIcon} onPress={() => {
-            setSearchTextValue(undefined)
+            AptInfosCtx.setSearchTextValue(undefined)
           }}/>
         <TextInput
           style={styles.searchInput}
@@ -42,7 +44,7 @@ export default function SearchScreen({ setSearchTextValue }) {
                   : undefined
               }
               onPress={() => {
-                setSearchTextValue(e);
+                AptInfosCtx.setSearchTextValue(e);
                 setFilteredAddressData(undefined);
               }}
               >

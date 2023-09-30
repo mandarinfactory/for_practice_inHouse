@@ -1,9 +1,18 @@
-const getAptTradeAPI = async () => {
+const getAptTradeAPI = async (AptInfosCtx, pressedLocValue) => {
+  const today = new Date();
+  let year = today.getFullYear();
+  let month = ("0" + (new Date().getMonth() + 1)).slice(-2);
+  var aptdate = year + month;
   const API_URL =
     "http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptTradeDev";
   const API_KEY =
     "24vbFaV5oWpSo3qOGdwCXPO%2FX5gr4tqD2gxEwUJWb2xVcv4sWZ5QmmZruySMYWl2471GK88wVe3zjfacPH%2FENQ%3D%3D";
-  const headers = "&pageNo=1&numOfRows=10&LAWD_CD=11140&DEAL_YMD=202308";
+  const headers =
+    AptInfosCtx.aptLocData !== undefined
+      ? `&pageNo=1&numOfRows=10&LAWD_CD=${
+          pressedLocValue ? pressedLocValue : AptInfosCtx.aptLocData
+        }&DEAL_YMD=${aptdate}`
+      : AptInfosCtx.aptLocData;
   const reqestAPI_URL = `${API_URL}?serviceKey=${API_KEY}${headers}`;
   const response = await fetch(reqestAPI_URL)
     .then((res) => res)
@@ -19,7 +28,9 @@ const getAptTradeAPI = async () => {
     }
     let rawData = JSON.stringify(result);
     let JSONData = JSON.parse(rawData);
-    let aptData = JSONData.response.body[0].items[0].item;
+    let aptData = JSONData?.response?.body[0].items[0].item;
+    AptInfosCtx.setApartmentData(aptData);
+    AptInfosCtx.setDataLoaded(true);
   });
 };
 
