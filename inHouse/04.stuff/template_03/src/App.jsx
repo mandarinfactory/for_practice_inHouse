@@ -1,10 +1,16 @@
-function App() {
+import { NavermapsProvider } from "react-naver-maps";
 
+import Layout from "./components/Layout";
+import Hero from "./components/screens/Hero";
+
+function App() {
   return (
-    <h1 className="text-3xl font-bold underline text-green-400">
-      Hello world!
-    </h1>
-  )
+    <Layout>
+      <NavermapsProvider ncpClientId="ia4i567onk">
+        <Hero />
+      </NavermapsProvider>
+    </Layout>
+  );
 }
 
-export default App
+export default App;
