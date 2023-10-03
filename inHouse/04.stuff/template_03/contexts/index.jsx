@@ -1,10 +1,22 @@
 import { createContext, useState } from "react";
 
-const MapInfoContextStore = createContext();
+export const MapInfoContextStore = createContext();
 
 const MapInfoContext = (props) => {
+  const [isLocation, setIsLocation] = useState();
+  const [comData, setComData] = useState();
+  const [isfilteredNumber, setIsfilteredNumber] = useState();
+  const [bounds, setBounds] = useState();
+
   const MapInfoStore = {
-    //여기다가 state들 쓰면 됨.
+    isLocation,
+    setIsLocation,
+    comData,
+    setComData,
+    isfilteredNumber,
+    setIsfilteredNumber,
+    bounds,
+    setBounds,
   };
 
   return (

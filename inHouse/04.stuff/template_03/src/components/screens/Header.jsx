@@ -1,23 +1,74 @@
+import { useContext } from "react";
+
+import { MapInfoContextStore } from "../../../contexts";
+
 export default function Header() {
+  const MapInfosCtx = useContext(MapInfoContextStore);
+
   return (
     <header className="text-white bg-white body-font">
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
         <nav className="flex lg:w-2/5 flex-wrap items-center text-base md:ml-auto">
-          <a className="mr-10 text-black text-xl hover:text-teal-700 cursor-pointer  ">
-            모두
-          </a>
-          <a className="mr-10 text-black text-xl hover:text-teal-700 cursor-pointer  ">
-            음식점/카페
-          </a>
-          <a className="mr-10 text-black text-xl hover:text-teal-700 cursor-pointer  ">
+          <button
+            className="mr-10 text-black text-xl hover:text-teal-700 cursor-pointer"
+            onClick={() =>
+              MapInfosCtx.setIsfilteredNumber({
+                largeClass: "I2",
+                middleClass: "I212",
+                smallClass: "I21201",
+              })
+            }
+          >
+            카페
+          </button>
+          <button
+            className="mr-10 text-black text-xl hover:text-teal-700 cursor-pointer"
+            onClick={() =>
+              MapInfosCtx.setIsfilteredNumber({
+                largeClass: "I2",
+                middleClass: "I201",
+                smallClass: "",
+              })
+            }
+          >
+            음식점
+          </button>
+          <button
+            className="mr-10 text-black text-xl hover:text-teal-700 cursor-pointer"
+            onClick={() =>
+              MapInfosCtx.setIsfilteredNumber({
+                largeClass: "G2",
+                middleClass: "G204",
+                smallClass: "G20405",
+              })
+            }
+          >
             편의점
-          </a>
-          <a className="mr-10 text-black text-xl hover:text-teal-700 cursor-pointer  ">
-            헬스장
-          </a>
-          <a className="mr-10 text-black text-xl hover:text-teal-700 cursor-pointer  ">
-            미용실
-          </a>
+          </button>
+          <button
+            className="mr-10 text-black text-xl hover:text-teal-700 cursor-pointer"
+            onClick={() =>
+              MapInfosCtx.setIsfilteredNumber({
+                largeClass: "Q1",
+                middleClass: "Q102",
+                smallClass: "",
+              })
+            }
+          >
+            병원
+          </button>
+          <button
+            className="mr-10 text-black text-xl hover:text-teal-700 cursor-pointer"
+            onClick={() =>
+              MapInfosCtx.setIsfilteredNumber({
+                largeClass: "G2",
+                middleClass: "G215",
+                smallClass: "G21501",
+              })
+            }
+          >
+            약국
+          </button>
         </nav>
         <a className="flex order-first lg:order-none lg:w-1/5 title-font font-medium items-center text-gray-900 lg:items-center lg:justify-center mb-4 md:mb-0">
           <svg

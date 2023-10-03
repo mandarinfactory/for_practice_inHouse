@@ -1,7 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { NaverMap, Container, Marker, InfoWindow } from "react-naver-maps";
 
+import { MapInfoContextStore } from "../../contexts";
+
 export default function NaverMapBox() {
+  const MapInfosCtx = useContext(MapInfoContextStore);
+
   const [map, setMap] = useState(null);
   const [infowindow, setInfowindow] = useState(null);
 
@@ -10,12 +14,11 @@ export default function NaverMapBox() {
 
     const location = {
       lat: position.coords.latitude,
-      lng: position.coords.longitude
+      lng: position.coords.longitude,
     };
     map.setCenter(location);
     map.setZoom(16);
-    let {lat, lng} = location.toString();
-    console.log({lat, lng});
+    MapInfosCtx.setIsLocation(location);
   }
 
   function onErrorGeolocation() {
@@ -41,7 +44,6 @@ export default function NaverMapBox() {
     if (!map || !infowindow) {
       return;
     }
-
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         onSuccessGeolocation,
@@ -64,17 +66,26 @@ export default function NaverMapBox() {
       }}
     >
       <NaverMap
-        defaultCenter={{ lat: 37.4876336, lng: 126.7530568 }}
         defaultZoom={15}
-        minZoom={12}
+        minZoom={16}
+        maxZoom={17}
         enableWheelZoom={false}
         ref={setMap}
+        onBoundsChanged={(e) =>
+          MapInfosCtx.setBounds({ max: e._max, min: e._min })
+        }
       >
-        <Marker
-          position={{ lat: 37.4876336, lng: 126.7530568 }}
-          title="송내역"
-          clickable={true}
-        />
+        {MapInfosCtx.comData ? (
+          MapInfosCtx.comData.body.items.map((e, id) => (
+            <Marker
+              position={{ lat: e.lat, lng: e.lon }}
+              clickable={true}
+              key={id}
+            />
+          ))
+        ) : (
+          <></>
+        )}
         <InfoWindow ref={setInfowindow} />
       </NaverMap>
     </Container>
