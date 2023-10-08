@@ -2,8 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { NaverMap, Container, Marker, InfoWindow } from "react-naver-maps";
 
 import { MapInfoContextStore } from "../../contexts";
-import MapMarkerBox from "./MapMarkerBox";
-import createMapMarkerBoxHandler from "./MapMarkerBox";
+import createMapMarkerBox from "./MapMarkerBox";
 
 export default function NaverMapBox({ mapRef }) {
   const MapInfosCtx = useContext(MapInfoContextStore);
@@ -59,7 +58,6 @@ export default function NaverMapBox({ mapRef }) {
       infowindow.open(map, center);
     }
   }, [map, infowindow]);
-
   return (
     <Container
       style={{
@@ -79,20 +77,22 @@ export default function NaverMapBox({ mapRef }) {
       >
         {MapInfosCtx.comData ? (
           MapInfosCtx.comData.body.items.map((e, id) => (
-            <Marker
-              position={{ lat: e.lat, lng: e.lon }}
-              clickable={true}
-              key={id}
-              onClick={() => {
-                mapRef.current?.scrollIntoView({ behavior: "smooth" });
-                let clickedLocation = { lat: e.lat, lng: e.lon };
-                map.panTo(clickedLocation)
-              }}
-              icon={{
-                //url: "../icons/location-pin.svg",
-                content: [createMapMarkerBoxHandler].join(""),
-              }}
-            />
+            <>
+              <Marker
+                position={{ lat: e.lat, lng: e.lon }}
+                clickable={true}
+                key={id}
+                onClick={() => {
+                  mapRef.current?.scrollIntoView({ behavior: "smooth" });
+                  let clickedLocation = { lat: e.lat, lng: e.lon };
+                  map.panTo(clickedLocation);
+                }}
+                title={MapInfosCtx.setPlaceName(e.bizesNm)}
+                icon={{
+                  content: [createMapMarkerBox(MapInfosCtx)].join(""),
+                }}
+              />
+            </>
           ))
         ) : (
           <></>

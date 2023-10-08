@@ -70,7 +70,7 @@ export default function Header() {
             약국
           </button>
         </nav>
-        <a className="flex order-first lg:order-none lg:w-1/5 title-font font-medium items-center text-gray-900 lg:items-center lg:justify-center mb-4 md:mb-0">
+        <a className="flex flex-row order-first lg:order-none lg:w-1/5 title-font font-medium justify-center items-center text-gray-900 lg:items-center lg:justify-center mb-4 md:mb-0">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="1em"
