@@ -4,7 +4,7 @@ import { MapInfoContextStore } from "../../../contexts";
 import NoDataInfoBox from "../NoDataInfoBox";
 import getCommercialInfosHandler from "../../../API";
 
-export default function MapInfoBox() {
+export default function MapInfoBox({ mapRef }) {
   const MapInfosCtx = useContext(MapInfoContextStore);
 
   useEffect(() => {
@@ -24,6 +24,7 @@ export default function MapInfoBox() {
             <div
               className="w-[90%] my-5 px-2 py-5 flex flex-col justify-center items-center bg-slate-200"
               key={key}
+              ref={mapRef}
             >
               <h1 className="text-black text-2xl mb-5">{e.bizesNm}</h1>
               <p className="text-black text-xl">주소 : {e.lnoAdr}</p>

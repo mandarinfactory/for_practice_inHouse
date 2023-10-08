@@ -2,8 +2,10 @@ import { useState, useEffect, useContext } from "react";
 import { NaverMap, Container, Marker, InfoWindow } from "react-naver-maps";
 
 import { MapInfoContextStore } from "../../contexts";
+import MapMarkerBox from "./MapMarkerBox";
+import createMapMarkerBoxHandler from "./MapMarkerBox";
 
-export default function NaverMapBox() {
+export default function NaverMapBox({ mapRef }) {
   const MapInfosCtx = useContext(MapInfoContextStore);
 
   const [map, setMap] = useState(null);
@@ -66,7 +68,7 @@ export default function NaverMapBox() {
       }}
     >
       <NaverMap
-        defaultZoom={15}
+        defaultZoom={16}
         minZoom={16}
         maxZoom={17}
         enableWheelZoom={false}
@@ -81,6 +83,15 @@ export default function NaverMapBox() {
               position={{ lat: e.lat, lng: e.lon }}
               clickable={true}
               key={id}
+              onClick={() => {
+                mapRef.current?.scrollIntoView({ behavior: "smooth" });
+                let clickedLocation = { lat: e.lat, lng: e.lon };
+                map.panTo(clickedLocation)
+              }}
+              icon={{
+                //url: "../icons/location-pin.svg",
+                content: [createMapMarkerBoxHandler].join(""),
+              }}
             />
           ))
         ) : (
