@@ -18,6 +18,28 @@ function createMapMarkerBox(title) {
         </div>
       </div>
     </div>
+    <style type="text/css">
+      .messageBubble:before {
+        content:"";
+        position: absolute;
+        right: 60px;
+        top: 43px; 
+        border-left: 8px solid transparent; 
+        border-right: 8px solid transparent; 
+        border-top: 10px solid white;
+        z-index: 0;
+      }
+      .messageBubble:after {
+        content:"";
+        position: absolute;
+        right: 59px;
+        top: 45px; 
+        border-left: 9px solid transparent; 
+        border-right: 9px solid transparent; 
+        border-top: 11px solid black;
+        z-index: -1;
+      }
+    </style>
   `;
 }
 
