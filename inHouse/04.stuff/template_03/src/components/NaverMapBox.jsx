@@ -2,15 +2,15 @@ import { useState, useEffect, useContext } from "react";
 import { NaverMap, Container, Marker, InfoWindow } from "react-naver-maps";
 
 import { MapInfoContextStore } from "../../contexts";
-import createMapMarkerBox from "./MapMarkerBox";
+import createMapMarkerBox from "./marker/MapMarkerBox";
 
 export default function NaverMapBox({ mapRef }) {
   const MapInfosCtx = useContext(MapInfoContextStore);
 
   const [map, setMap] = useState(null);
-  const [marker, setMarker] = useState(null);
+  const [isClicked, setIsClicked] = useState(false);
+  const [isMouseMove, setIsMouseMove] = useState(false);
   const [infowindow, setInfowindow] = useState(null);
-  const [isMarkerOver, setIsMarkerOver] = useState(null);
 
   function onSuccessGeolocation(position) {
     if (!map || !infowindow) return;
@@ -85,17 +85,28 @@ export default function NaverMapBox({ mapRef }) {
               key={key}
               zIndex={1}
               onMouseover={(v) => {
+                setIsMouseMove(true);
                 v.originalEvent.target.parentNode.style.zIndex = 2;
-                console.log(v.originalEvent.target.parentNode.style.zIndex);
+                v.originalEvent.target.children[0].children[0].children[1].style.color =
+                  "#0f766e";
               }}
-              onMouseout={(v) =>
-                (v.originalEvent.target.parentNode.style.zIndex = 1)
-              }
-              onClick={() => {
-                //mapRef.current?.scrollIntoView({ behavior: "smooth" });
+              onMouseout={(v) => {
+                setIsMouseMove(false);
+                v.originalEvent.target.parentNode.style.zIndex = 1;
+                v.originalEvent.target.children[0].children[0].children[1].style.color =
+                  "black";
+              }}
+              onClick={(v) => {
+                //marker.current?.scrollIntoView({ behavior: "smooth" });
+                setIsClicked(true);
+                isClicked
+                  ? (v.overlay.eventTarget.children[0].children[0].children[1].style.color =
+                      "#ff6f00", v.overlay.eventTarget.children[0].style.zIndex = 2)
+                  : undefined;
                 let clickedLocation = { lat: e.lat, lng: e.lon };
                 map.panTo(clickedLocation);
               }}
+              on
               icon={{
                 content: [createMapMarkerBox(e.bizesNm)].join(""),
               }}
