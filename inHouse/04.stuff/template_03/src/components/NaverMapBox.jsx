@@ -70,7 +70,7 @@ export default function NaverMapBox({ mapRef }) {
       <NaverMap
         defaultZoom={16}
         minZoom={16}
-        maxZoom={17} 
+        maxZoom={17}
         enableWheelZoom={false}
         ref={setMap}
         onBoundsChanged={(e) =>
@@ -79,28 +79,27 @@ export default function NaverMapBox({ mapRef }) {
       >
         {MapInfosCtx.comData ? (
           MapInfosCtx.comData.body.items.map((e, key) => (
-            <>
-              <Marker
-                position={{ lat: e.lat, lng: e.lon }}
-                clickable={true}
-                key={key}
-                zIndex={1}
-                onMouseover={(v) => {
-                  console.log(key);
-                  //e.originalEvent.target.style.zIndex = 20;
-                  //console.log(e.originalEvent.target.style.zIndex);
-                }}
-                //onMouseout={() => marker.setZIndex(1)}
-                onClick={() => {
-                  //mapRef.current?.scrollIntoView({ behavior: "smooth" });
-                  let clickedLocation = { lat: e.lat, lng: e.lon };
-                  map.panTo(clickedLocation);
-                }}
-                icon={{
-                  content: [createMapMarkerBox(e.bizesNm)].join(""),
-                }}
-              />
-            </>
+            <Marker
+              position={{ lat: e.lat, lng: e.lon }}
+              clickable={true}
+              key={key}
+              zIndex={1}
+              onMouseover={(v) => {
+                v.originalEvent.target.parentNode.style.zIndex = 2;
+                console.log(v.originalEvent.target.parentNode.style.zIndex);
+              }}
+              onMouseout={(v) =>
+                (v.originalEvent.target.parentNode.style.zIndex = 1)
+              }
+              onClick={() => {
+                //mapRef.current?.scrollIntoView({ behavior: "smooth" });
+                let clickedLocation = { lat: e.lat, lng: e.lon };
+                map.panTo(clickedLocation);
+              }}
+              icon={{
+                content: [createMapMarkerBox(e.bizesNm)].join(""),
+              }}
+            />
           ))
         ) : (
           <></>

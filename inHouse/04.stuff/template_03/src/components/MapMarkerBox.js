@@ -1,6 +1,6 @@
 function createMapMarkerBox(title) {
   return `
-    <div class="w-full flex flex-row justify-center items-center border-2 border-black rounded-full z-0">
+    <div class="w-full flex flex-row justify-center items-center border-2 border-black rounded-full">
       <div class="p-1 w-auto flex flex-row justify-center items-center bg-white rounded-full">
         <div class="w-[35px] h-[35px] flex flex-row items-center rounded-full bg-teal-700">
           <svg
@@ -18,28 +18,6 @@ function createMapMarkerBox(title) {
         </div>
       </div>
     </div>
-    <style type="text/css">
-      /* .messageBubble:before {
-        content:"";
-        position: absolute;
-        right: 86px;
-        top: 43px; 
-        border-left: 8px solid transparent; 
-        border-right: 8px solid transparent; 
-        border-top: 10px solid white;
-        z-index: 0;
-      } */
-      /* .messageBubble:after {
-        content:"";
-        position: absolute;
-        right: 85px;
-        top: 45px; 
-        border-left: 9px solid transparent; 
-        border-right: 9px solid transparent; 
-        border-top: 11px solid black;
-        z-index: -1;
-      } */
-    </style>
   `;
 }
 
