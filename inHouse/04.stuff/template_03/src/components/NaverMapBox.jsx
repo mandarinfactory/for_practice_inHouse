@@ -8,7 +8,9 @@ export default function NaverMapBox({ mapRef }) {
   const MapInfosCtx = useContext(MapInfoContextStore);
 
   const [map, setMap] = useState(null);
+  const [marker, setMarker] = useState(null);
   const [infowindow, setInfowindow] = useState(null);
+  const [isMarkerOver, setIsMarkerOver] = useState(null);
 
   function onSuccessGeolocation(position) {
     if (!map || !infowindow) return;
@@ -68,7 +70,7 @@ export default function NaverMapBox({ mapRef }) {
       <NaverMap
         defaultZoom={16}
         minZoom={16}
-        maxZoom={17}
+        maxZoom={17} 
         enableWheelZoom={false}
         ref={setMap}
         onBoundsChanged={(e) =>
@@ -76,20 +78,26 @@ export default function NaverMapBox({ mapRef }) {
         }
       >
         {MapInfosCtx.comData ? (
-          MapInfosCtx.comData.body.items.map((e, id) => (
+          MapInfosCtx.comData.body.items.map((e, key) => (
             <>
               <Marker
                 position={{ lat: e.lat, lng: e.lon }}
                 clickable={true}
-                key={id}
+                key={key}
+                zIndex={1}
+                onMouseover={(v) => {
+                  console.log(key);
+                  //e.originalEvent.target.style.zIndex = 20;
+                  //console.log(e.originalEvent.target.style.zIndex);
+                }}
+                //onMouseout={() => marker.setZIndex(1)}
                 onClick={() => {
-                  mapRef.current?.scrollIntoView({ behavior: "smooth" });
+                  //mapRef.current?.scrollIntoView({ behavior: "smooth" });
                   let clickedLocation = { lat: e.lat, lng: e.lon };
                   map.panTo(clickedLocation);
                 }}
-                title={MapInfosCtx.setPlaceName(e.bizesNm)}
                 icon={{
-                  content: [createMapMarkerBox(MapInfosCtx)].join(""),
+                  content: [createMapMarkerBox(e.bizesNm)].join(""),
                 }}
               />
             </>

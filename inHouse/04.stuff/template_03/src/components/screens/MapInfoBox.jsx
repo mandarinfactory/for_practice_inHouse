@@ -17,6 +17,7 @@ export default function MapInfoBox({ mapRef }) {
       );
     }
   }, [MapInfosCtx.isLocation, MapInfosCtx.isfilteredNumber]);
+
   return (
     <div className="w-full h-[800px] flex flex-col justify-center items-center text-white body-font bg-slate-100 overflow-auto">
         {MapInfosCtx.comData && MapInfosCtx.isfilteredNumber ? (

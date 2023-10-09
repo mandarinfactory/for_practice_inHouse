@@ -1,6 +1,6 @@
-function createMapMarkerBox(MapInfosCtx) {
+function createMapMarkerBox(title) {
   return `
-    <div class="w-full flex flex-row justify-center items-center border-2 border-black rounded-full z-[30]">
+    <div class="w-full flex flex-row justify-center items-center border-2 border-black rounded-full z-0">
       <div class="p-1 w-auto flex flex-row justify-center items-center bg-white rounded-full">
         <div class="w-[35px] h-[35px] flex flex-row items-center rounded-full bg-teal-700">
           <svg
@@ -12,7 +12,7 @@ function createMapMarkerBox(MapInfosCtx) {
           </svg>
         </div>
         <h1 class="mx-3 text-lg">
-          ${MapInfosCtx.placeName}
+          ${title}
         </h1>
         <div class="messageBubble">
         </div>
