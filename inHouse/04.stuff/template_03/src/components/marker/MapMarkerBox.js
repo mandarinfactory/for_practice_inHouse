@@ -1,6 +1,6 @@
-function createMapMarkerBox(title) {
+function createMapMarkerBox(title, key) {
   return `
-    <div class="w-full flex flex-row justify-center items-center border-2 border-black rounded-full">
+    <div class="w-full flex flex-row justify-center items-center border-2 border-black rounded-full" data-num=${key}>
       <div class="p-1 w-auto flex flex-row justify-center items-center bg-white rounded-full">
         <div class="w-[35px] h-[35px] flex flex-row items-center rounded-full bg-teal-700">
           <svg

@@ -3,6 +3,7 @@ import { NaverMap, Container, Marker, InfoWindow } from "react-naver-maps";
 
 import { MapInfoContextStore } from "../../contexts";
 import createMapMarkerBox from "./marker/MapMarkerBox";
+import createMapMarkerActiveBox from "./marker/MapMarkerActiveBox";
 
 export default function NaverMapBox({ mapRef }) {
   const MapInfosCtx = useContext(MapInfoContextStore);
@@ -11,6 +12,7 @@ export default function NaverMapBox({ mapRef }) {
   const [isClicked, setIsClicked] = useState(false);
   const [isMouseMove, setIsMouseMove] = useState(false);
   const [infowindow, setInfowindow] = useState(null);
+  const [clickedMarkerIndex, setClickedMarkerIndex] = useState(null);
 
   function onSuccessGeolocation(position) {
     if (!map || !infowindow) return;
@@ -60,6 +62,7 @@ export default function NaverMapBox({ mapRef }) {
       infowindow.open(map, center);
     }
   }, [map, infowindow]);
+
   return (
     <Container
       style={{
@@ -83,32 +86,35 @@ export default function NaverMapBox({ mapRef }) {
               position={{ lat: e.lat, lng: e.lon }}
               clickable={true}
               key={key}
-              zIndex={1}
               onMouseover={(v) => {
-                setIsMouseMove(true);
-                v.originalEvent.target.parentNode.style.zIndex = 2;
-                v.originalEvent.target.children[0].children[0].children[1].style.color =
-                  "#0f766e";
+                if (clickedMarkerIndex !== key) {
+                  setIsMouseMove(true);
+                  v.originalEvent.target.parentNode.style.zIndex = 3;
+                }
               }}
               onMouseout={(v) => {
-                setIsMouseMove(false);
-                v.originalEvent.target.parentNode.style.zIndex = 1;
-                v.originalEvent.target.children[0].children[0].children[1].style.color =
-                  "black";
+                if (clickedMarkerIndex !== key) {
+                  setIsMouseMove(false);
+                  v.originalEvent.target.parentNode.style.zIndex = 1;
+                }
               }}
               onClick={(v) => {
-                //marker.current?.scrollIntoView({ behavior: "smooth" });
-                setIsClicked(true);
-                isClicked
-                  ? (v.overlay.eventTarget.children[0].children[0].children[1].style.color =
-                      "#ff6f00", v.overlay.eventTarget.children[0].style.zIndex = 2)
-                  : undefined;
-                let clickedLocation = { lat: e.lat, lng: e.lon };
-                map.panTo(clickedLocation);
+                //setClickedMarkerIndex(key);
+                setIsClicked(!isClicked);
+                if (isClicked) {
+                  v.overlay.eventTarget.children[0].children[0].children[1].style.color = "#0f766e";
+                  v.overlay.eventTarget.children[0].style.zIndex = 2;
+                  map.panTo({ lat: e.lat, lng: e.lon });
+                } else {
+                  // 클릭 해제 시, 스타일을 초기화하고 지도를 원래 위치로 복원
+                  setIsClicked(!isClicked);
+                  v.overlay.eventTarget.children[0].children[0].children[1].style.color =
+                  "black";
+                  v.overlay.eventTarget.children[0].style.zIndex = 1;
+                }
               }}
-              on
               icon={{
-                content: [createMapMarkerBox(e.bizesNm)].join(""),
+                content: [createMapMarkerBox(e.bizesNm)].join("")
               }}
             />
           ))
