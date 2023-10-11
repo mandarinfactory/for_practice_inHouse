@@ -9,7 +9,7 @@ export default function MapInfoBox({ mapRef }) {
 
   useEffect(() => {
     if (MapInfosCtx.isLocation && MapInfosCtx.isfilteredNumber) {
-     getCommercialInfosHandler(
+      getCommercialInfosHandler(
         MapInfosCtx,
         MapInfosCtx.isfilteredNumber.largeClass,
         MapInfosCtx.isfilteredNumber.middleClass,
@@ -19,13 +19,13 @@ export default function MapInfoBox({ mapRef }) {
   }, [MapInfosCtx.isLocation, MapInfosCtx.isfilteredNumber]);
 
   return (
-    <div className="w-full h-[800px] flex flex-col justify-center items-center text-white body-font bg-slate-100 overflow-auto">
+    <div className="w-full h-[800px] overflow-y-scroll">
+      <div className="w-full h-[2600px] flex flex-col justify-center items-center text-white body-font bg-slate-100 overflow-hidden">
         {MapInfosCtx.comData && MapInfosCtx.isfilteredNumber ? (
           MapInfosCtx.comData.body.items.map((e, key) => (
             <div
               className="w-[90%] my-5 px-2 py-5 flex flex-col justify-center items-center bg-slate-200"
               key={key}
-              ref={mapRef}
             >
               <h1 className="text-black text-2xl mb-5">{e.bizesNm}</h1>
               <p className="text-black text-xl">주소 : {e.lnoAdr}</p>
@@ -34,6 +34,7 @@ export default function MapInfoBox({ mapRef }) {
         ) : (
           <NoDataInfoBox />
         )}
+      </div>
     </div>
   );
 }

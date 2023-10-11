@@ -3,7 +3,6 @@ import { NaverMap, Container, Marker, InfoWindow } from "react-naver-maps";
 
 import { MapInfoContextStore } from "../../contexts";
 import createMapMarkerBox from "./marker/MapMarkerBox";
-import createMapMarkerActiveBox from "./marker/MapMarkerActiveBox";
 
 export default function NaverMapBox({ mapRef }) {
   const MapInfosCtx = useContext(MapInfoContextStore);
@@ -43,6 +42,25 @@ export default function NaverMapBox({ mapRef }) {
       );
       infowindow.open(map, center);
     }
+  }
+
+  const handleMarkerClick = (key) => {
+    if (clickedMarkerIndex !== null) {
+      const prevMarker = MapInfosCtx.comData.body.items[clickedMarkerIndex];
+      const prevMarkerElement = document.querySelector(
+        `.marker-${clickedMarkerIndex}`
+      );
+      prevMarkerElement.style.zIndex = 1;
+      prevMarkerElement.style.color = "black";
+    }
+
+    const currentMarker = MapInfosCtx.comData.body.items[key];
+    const currentMarkerElement = document.querySelector(`.marker-${key}`);
+    currentMarkerElement.style.zIndex = 2;
+    currentMarkerElement.style.color = "#0f766e";
+
+    setClickedMarkerIndex(key);
+    setIsClicked(!isClicked);
   }
 
   useEffect(() => {
@@ -98,23 +116,12 @@ export default function NaverMapBox({ mapRef }) {
                   v.originalEvent.target.parentNode.style.zIndex = 1;
                 }
               }}
-              onClick={(v) => {
-                //setClickedMarkerIndex(key);
-                setIsClicked(!isClicked);
-                if (isClicked) {
-                  v.overlay.eventTarget.children[0].children[0].children[1].style.color = "#0f766e";
-                  v.overlay.eventTarget.children[0].style.zIndex = 2;
-                  map.panTo({ lat: e.lat, lng: e.lon });
-                } else {
-                  // 클릭 해제 시, 스타일을 초기화하고 지도를 원래 위치로 복원
-                  setIsClicked(!isClicked);
-                  v.overlay.eventTarget.children[0].children[0].children[1].style.color =
-                  "black";
-                  v.overlay.eventTarget.children[0].style.zIndex = 1;
-                }
+              onClick={() => {
+                handleMarkerClick(key);
+                map.panTo({ lat: e.lat, lng: e.lon });
               }}
               icon={{
-                content: [createMapMarkerBox(e.bizesNm)].join("")
+                content: [createMapMarkerBox(e.bizesNm, key)].join(""),
               }}
             />
           ))

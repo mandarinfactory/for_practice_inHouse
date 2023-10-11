@@ -1,6 +1,6 @@
 function createMapMarkerBox(title, key) {
   return `
-    <div class="w-full flex flex-row justify-center items-center border-2 border-black rounded-full" data-num=${key}>
+    <div class="marker-${key} w-full flex flex-row justify-center items-center border-2 border-black rounded-full">
       <div class="p-1 w-auto flex flex-row justify-center items-center bg-white rounded-full">
         <div class="w-[35px] h-[35px] flex flex-row items-center rounded-full bg-teal-700">
           <svg
@@ -11,7 +11,7 @@ function createMapMarkerBox(title, key) {
             <path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/>
           </svg>
         </div>
-        <h1 class="mx-3 text-lg">${title}</h1>
+        <h1 class="mx-3 text-lg" data-num=${key}>${title}</h1>
         <div class="messageBubble">
         </div>
       </div>
