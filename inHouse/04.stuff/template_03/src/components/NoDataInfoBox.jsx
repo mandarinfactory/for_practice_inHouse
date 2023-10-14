@@ -1,6 +1,6 @@
 export default function NoDataInfoBox() {
   return (
-    <section className="w-full h-full mt-[300px] flex flex-col justify-start items-center">
+    <section className="w-full h-[800px] flex flex-col justify-center items-center">
       <div className="w-auto h-auto mb-20">
         <svg
           xmlns="http://www.w3.org/2000/svg"

@@ -61,7 +61,7 @@ export default function NaverMapBox({ mapRef }) {
 
     setClickedMarkerIndex(key);
     setIsClicked(!isClicked);
-  }
+  };
 
   useEffect(() => {
     if (!map || !infowindow) {
@@ -104,6 +104,7 @@ export default function NaverMapBox({ mapRef }) {
               position={{ lat: e.lat, lng: e.lon }}
               clickable={true}
               key={key}
+              ref={mapRef}
               onMouseover={(v) => {
                 if (clickedMarkerIndex !== key) {
                   setIsMouseMove(true);
@@ -119,6 +120,7 @@ export default function NaverMapBox({ mapRef }) {
               onClick={() => {
                 handleMarkerClick(key);
                 map.panTo({ lat: e.lat, lng: e.lon });
+                MapInfosCtx.setIsMarkerClicked(e.bizesNm);
               }}
               icon={{
                 content: [createMapMarkerBox(e.bizesNm, key)].join(""),
