@@ -5,7 +5,6 @@ export const MapInfoContextStore = createContext();
 const MapInfoContext = (props) => {
   const [isLocation, setIsLocation] = useState();
   const [isMarkerClicked, setIsMarkerClicked] = useState();
-  const [isBoxClicked, setIsBoxClicked] = useState();
   const [comData, setComData] = useState();
   const [isfilteredNumber, setIsfilteredNumber] = useState();
   const [bounds, setBounds] = useState();
@@ -15,8 +14,6 @@ const MapInfoContext = (props) => {
     setIsLocation,
     isMarkerClicked,
     setIsMarkerClicked,
-    isBoxClicked,
-    setIsBoxClicked,
     comData,
     setComData,
     isfilteredNumber,

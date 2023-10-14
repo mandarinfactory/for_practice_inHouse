@@ -4,7 +4,7 @@ import { NaverMap, Container, Marker, InfoWindow } from "react-naver-maps";
 import { MapInfoContextStore } from "../../contexts";
 import createMapMarkerBox from "./marker/MapMarkerBox";
 
-export default function NaverMapBox({ mapRef }) {
+export default function NaverMapBox() {
   const MapInfosCtx = useContext(MapInfoContextStore);
 
   const [map, setMap] = useState(null);
@@ -104,7 +104,6 @@ export default function NaverMapBox({ mapRef }) {
               position={{ lat: e.lat, lng: e.lon }}
               clickable={true}
               key={key}
-              ref={mapRef}
               onMouseover={(v) => {
                 if (clickedMarkerIndex !== key) {
                   setIsMouseMove(true);
