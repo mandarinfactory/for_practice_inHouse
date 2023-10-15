@@ -20,7 +20,7 @@ export default function MapInfoBox() {
 
   return (
     <div className="w-full h-[800px] overflow-y-scroll">
-      <div className="w-full h-auto flex flex-col justify-center items-center text-white body-font bg-slate-100 overflow-hidden">
+      <div className="infoBox w-full h-auto flex flex-col justify-center items-center text-white body-font bg-slate-100 overflow-hidden">
         {MapInfosCtx.comData && MapInfosCtx.isfilteredNumber ? (
           MapInfosCtx.comData.body.items.map((e, key) => (
             <>

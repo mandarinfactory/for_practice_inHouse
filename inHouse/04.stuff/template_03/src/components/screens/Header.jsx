@@ -5,6 +5,9 @@ import * as api from "../../../API";
 
 export default function Header() {
   const MapInfosCtx = useContext(MapInfoContextStore);
+  const scrollToTop = () => {
+    document.querySelector(".infoBox").scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <header className="text-white bg-teal-700 body-font">
@@ -23,61 +26,66 @@ export default function Header() {
         <nav className="md:mr-auto md:ml-4 md:py-1 md:pl-4 flex flex-wrap items-center text-base justify-center">
           <button
             className="mr-10 text-white text-xl hover:text-slate-800 cursor-pointer duration-100"
-            onClick={() =>
+            onClick={() => {
               MapInfosCtx.setIsfilteredNumber({
                 largeClass: "I2",
                 middleClass: "I212",
                 smallClass: "I21201",
-              })
-            }
+              });
+              scrollToTop();
+            }}
           >
             카페
           </button>
           <button
             className="mr-10 text-white text-xl hover:text-slate-800 cursor-pointer duration-100"
-            onClick={() =>
+            onClick={() => {
               MapInfosCtx.setIsfilteredNumber({
                 largeClass: "I2",
                 middleClass: "I201",
                 smallClass: "",
-              })
-            }
+              });
+              scrollToTop();
+            }}
           >
             음식점
           </button>
           <button
             className="mr-10 text-white text-xl hover:text-slate-800 cursor-pointer duration-100"
-            onClick={() =>
+            onClick={() => {
               MapInfosCtx.setIsfilteredNumber({
                 largeClass: "G2",
                 middleClass: "G204",
                 smallClass: "G20405",
-              })
-            }
+              });
+              scrollToTop();
+            }}
           >
             편의점
           </button>
           <button
             className="mr-10 text-white text-xl hover:text-slate-800 cursor-pointer duration-100"
-            onClick={() =>
+            onClick={() => {
               MapInfosCtx.setIsfilteredNumber({
                 largeClass: "Q1",
                 middleClass: "Q102",
                 smallClass: "",
-              })
-            }
+              });
+              scrollToTop();
+            }}
           >
             병원
           </button>
           <button
             className="mr-10 text-white text-xl hover:text-slate-800 cursor-pointer duration-100"
-            onClick={() =>
+            onClick={() => {
               MapInfosCtx.setIsfilteredNumber({
                 largeClass: "G2",
                 middleClass: "G215",
                 smallClass: "G21501",
-              })
-            }
+              });
+              scrollToTop();
+            }}
           >
             약국
           </button>
