@@ -25,7 +25,4 @@ const getCommercialInfosHandler = async (
   MapInfosCtx.setComData(json);
 };
 
-const getSearchPlaceHandler = async () => {};
-
-export {getCommercialInfosHandler, getSearchPlaceHandler};
-
+export default getCommercialInfosHandler;

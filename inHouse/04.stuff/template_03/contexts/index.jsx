@@ -8,6 +8,7 @@ const MapInfoContext = (props) => {
   const [comData, setComData] = useState();
   const [isfilteredNumber, setIsfilteredNumber] = useState();
   const [bounds, setBounds] = useState();
+  const [inputVal, setInputVal] = useState();
 
   const MapInfoStore = {
     isLocation,
@@ -20,6 +21,8 @@ const MapInfoContext = (props) => {
     setIsfilteredNumber,
     bounds,
     setBounds,
+    inputVal,
+    setInputVal
   };
 
   return (

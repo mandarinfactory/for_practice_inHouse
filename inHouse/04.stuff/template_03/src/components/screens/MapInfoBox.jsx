@@ -32,9 +32,11 @@ export default function MapInfoBox() {
                 <p className="text-black text-xl">주소 : {e.lnoAdr}</p>
               </div>
               {MapInfosCtx.isMarkerClicked === e.bizesNm
-                ? document
-                    .querySelector(`.${e.bizesNm}`)
-                    .scrollIntoView({ behavior: "smooth" })
+                ? matchMedia("screen and (min-width: 768px)").matches
+                  ? document
+                      .querySelector(`.${e.bizesNm}`)
+                      .scrollIntoView({ behavior: "smooth" })
+                  : undefined
                 : undefined}
             </>
           ))
