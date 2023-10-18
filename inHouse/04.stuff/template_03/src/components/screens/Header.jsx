@@ -1,7 +1,6 @@
-import { useState, useContext } from "react";
+import { useContext } from "react";
 
 import { MapInfoContextStore } from "../../../contexts";
-import * as api from "../../../API";
 
 export default function Header() {
   const MapInfosCtx = useContext(MapInfoContextStore);
@@ -90,9 +89,6 @@ export default function Header() {
             약국
           </button>
         </nav>
-        <div>
-          <input type="text" className="w-[100%] px-5 py-2 rounded-xl text-black" placeholder="도시를 입력해주세요." onChange={(v) => {MapInfosCtx.setInputVal(v)}}/>
-        </div>
       </div>
     </header>
   );
