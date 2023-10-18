@@ -25,4 +25,40 @@ const getCommercialInfosHandler = async (
   MapInfosCtx.setComData(json);
 };
 
-export default getCommercialInfosHandler;
+const getSearchPlaceLocation = async () => {
+  const options = {
+    protocol: "https:",
+    hostname: "openapi.naver.com",
+    path: "/v1/search/local.json?query=부천&display=5",
+    headers: {
+      "X-Naver-Client-Id": "G3kN_B5HTbOgWOsnz14I",
+      "X-Naver-Client-Secret": "aVlu4IdAoB",
+    },
+  };
+
+  const resultObj = await new Promise((res, reject) => {
+    https.get(options, (response) => {
+      var result = "";
+      response.on("data", function (chunk) {
+        result += chunk;
+      });
+
+      response.on("end", function () {
+        const body = {
+          headers: {
+            "Access-Control-Allow-Headers": "Content-Type",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
+          },
+          statusCode: 200,
+          body: JSON.stringify(result),
+        };
+        res(body);
+      });
+    });
+  });
+  console.log(body);
+  return resultObj;
+};
+
+export {getCommercialInfosHandler};

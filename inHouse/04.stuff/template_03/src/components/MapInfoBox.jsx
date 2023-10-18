@@ -2,14 +2,14 @@ import { useEffect, useContext } from "react";
 
 import { MapInfoContextStore } from "../../contexts";
 import NoDataInfoBox from "./NoDataInfoBox";
-import getCommercialInfosHandler from "../../API";
+import * as api from "../../API";
 
 export default function MapInfoBox() {
   const MapInfosCtx = useContext(MapInfoContextStore);
 
   useEffect(() => {
     if (MapInfosCtx.isLocation && MapInfosCtx.isfilteredNumber) {
-      getCommercialInfosHandler(
+      api.getCommercialInfosHandler(
         MapInfosCtx,
         MapInfosCtx.isfilteredNumber.largeClass,
         MapInfosCtx.isfilteredNumber.middleClass,
@@ -27,7 +27,9 @@ export default function MapInfoBox() {
               <div
                 className={`${e.bizesNm} w-[90%] my-3 px-2 py-5 flex flex-col justify-center items-center bg-slate-200 cursor-pointer hover:bg-slate-300`}
                 key={key}
-                onClick={() => MapInfosCtx.setIsInfoBoxClicked(true)}
+                onClick={() => {
+                  MapInfosCtx.setIsInfoBoxClicked(true)
+                }}
               >
                 <h1 className="text-black text-2xl mb-5">{e.bizesNm}</h1>
                 <p className="text-black text-lg">주소 : {e.lnoAdr}</p>

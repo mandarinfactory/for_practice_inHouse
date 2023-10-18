@@ -90,6 +90,9 @@ export default function Header() {
             약국
           </button>
         </nav>
+        <div>
+          <input type="text" className="w-[100%] px-5 py-2 rounded-xl text-black" placeholder="도시를 입력해주세요." onChange={(v) => {MapInfosCtx.setInputVal(v)}}/>
+        </div>
       </div>
     </header>
   );
