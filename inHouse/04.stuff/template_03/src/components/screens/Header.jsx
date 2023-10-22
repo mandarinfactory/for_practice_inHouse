@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import Autocomplete from "react-google-autocomplete";
 
 import { MapInfoContextStore } from "../../../contexts";
 
@@ -89,7 +90,18 @@ export default function Header() {
             약국
           </button>
         </nav>
+        <div className="lg:mt-0 md:mt-0 sm:mt-5">
+          <Autocomplete
+            className="px-5 py-2 rounded-2xl text-black"
+            placeholder="도시를 입력해주세요."
+            apiKey="AIzaSyBYd6DJGHfDDHicLsEvRyssDr3Ps6dfWGg"
+            onPlaceSelected={(place) => {
+              console.log(place);
+            }}
+          />
+        </div>
       </div>
     </header>
   );
 }
+ 
