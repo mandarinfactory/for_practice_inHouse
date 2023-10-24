@@ -91,10 +91,10 @@ export default function NaverMapBox() {
       <NaverMap
         defaultZoom={16}
         centerPoint={
-          MapInfosCtx.inputVal
+          MapInfosCtx?.inputVal
             ? map.panTo({
-                lat: MapInfosCtx.filteredLat,
-                lng: MapInfosCtx.filteredLng,
+                lat: MapInfosCtx?.filteredLat,
+                lng: MapInfosCtx?.filteredLng,
               })
             : undefined
         }
