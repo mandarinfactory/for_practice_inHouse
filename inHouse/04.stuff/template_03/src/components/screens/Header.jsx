@@ -15,7 +15,11 @@ export default function Header() {
     setText("");
   };
   const scrollToTop = () => {
-    document.querySelector(".infoBox").scrollIntoView({ behavior: "smooth" });
+    matchMedia("screen and (min-width: 768px)").matches
+      ? document
+          .querySelector(".infoBox")
+          .scrollIntoView({ behavior: "smooth" })
+      : undefined;
   };
 
   return (
