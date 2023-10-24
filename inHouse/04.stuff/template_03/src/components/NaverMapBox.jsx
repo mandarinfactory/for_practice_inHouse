@@ -90,13 +90,24 @@ export default function NaverMapBox() {
     >
       <NaverMap
         defaultZoom={16}
+        centerPoint={
+          MapInfosCtx.inputVal
+            ? map.panTo({
+                lat: MapInfosCtx.filteredLat,
+                lng: MapInfosCtx.filteredLng,
+              })
+            : undefined
+        }
         minZoom={16}
         maxZoom={17}
         enableWheelZoom={false}
         ref={setMap}
-        onBoundsChanged={(e) =>
-          MapInfosCtx.setBounds({ max: e._max, min: e._min })
-        }
+        onBoundsChanged={(e) => {
+          MapInfosCtx.setBounds({ max: e._max, min: e._min });
+        }}
+        onCenterChanged={() => {
+          MapInfosCtx.setInputVal(false);
+        }}
       >
         {MapInfosCtx.comData ? (
           MapInfosCtx.comData.body.items.map((e, key) => (
