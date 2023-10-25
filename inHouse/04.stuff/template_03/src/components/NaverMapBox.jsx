@@ -2,7 +2,9 @@ import { useState, useEffect, useContext } from "react";
 import { NaverMap, Container, Marker, InfoWindow } from "react-naver-maps";
 
 import { MapInfoContextStore } from "../../contexts";
+
 import createMapMarkerBox from "./marker/MapMarkerBox";
+import InfoDetailBox from "./InfoDetailBox";
 
 export default function NaverMapBox() {
   const MapInfosCtx = useContext(MapInfoContextStore);
@@ -142,6 +144,7 @@ export default function NaverMapBox() {
         )}
         <InfoWindow ref={setInfowindow} />
       </NaverMap>
+        {MapInfosCtx.isMarkerClicked !== undefined ? <InfoDetailBox/> : <></>}
     </Container>
   );
 }
