@@ -2,7 +2,7 @@ import proj4 from "proj4";
 
 const getFilteredGeoLocation = async (value, { setState }) => {
   const API_URL = "https://business.juso.go.kr/addrlink/addrCoordApi.do";
-  const API_KEY = "U01TX0FVVEgyMDIzMDkxNzIyMzk1MDExNDEwOTg=";
+  const API_KEY = process.env.EXPO_PUBLIC_GEOLOCATION_API_KEY;
   const headers = `
   &admCd=${value.법정동시군구코드}${value.법정동읍면동코드}
   &rnMgtSn=${value.법정동시군구코드}${value.도로명코드}

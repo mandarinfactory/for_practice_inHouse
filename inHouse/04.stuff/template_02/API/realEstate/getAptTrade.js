@@ -5,8 +5,7 @@ const getAptTradeAPI = async (AptInfosCtx, pressedLocValue) => {
   var aptdate = year + month;
   const API_URL =
     "http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptTradeDev";
-  const API_KEY =
-    "24vbFaV5oWpSo3qOGdwCXPO%2FX5gr4tqD2gxEwUJWb2xVcv4sWZ5QmmZruySMYWl2471GK88wVe3zjfacPH%2FENQ%3D%3D";
+  const API_KEY = process.env.EXPO_PUBLIC_PUBLICDATA_API_KEY;
   const headers =
     AptInfosCtx.aptLocData !== undefined
       ? `&pageNo=1&numOfRows=10&LAWD_CD=${

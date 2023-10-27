@@ -13,8 +13,7 @@ const getWeatherDataAPI = async (AptInfosCtx) => {
 
   const API_URL =
     "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst";
-  const API_KEY =
-    "24vbFaV5oWpSo3qOGdwCXPO%2FX5gr4tqD2gxEwUJWb2xVcv4sWZ5QmmZruySMYWl2471GK88wVe3zjfacPH%2FENQ%3D%3D";
+  const API_KEY = process.env.EXPO_PUBLIC_PUBLICDATA_API_KEY;
   const headers =
     AptInfosCtx.weatherLocData !== undefined
       ? `&pageNo=1&numOfRows=10&dataType=JSON&base_date=${date}&base_time=${
