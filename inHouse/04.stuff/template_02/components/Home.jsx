@@ -3,6 +3,7 @@ import { ScrollView, StyleSheet } from "react-native";
 import HeroScreen from "../screens/HeroScreen";
 import SearchScreen from "../screens/SearchScreen";
 import WeatherScreen from "../screens/WeatherScreen";
+import NewspaperScreen from "../screens/NewspaperScreen";
 import Layout from "./Layout";
 
 export default function Home() {
@@ -10,6 +11,7 @@ export default function Home() {
     <Layout>
       <ScrollView contentContainerStyle={styles.heroScrollView}>
         <WeatherScreen />
+        <NewspaperScreen />
         <SearchScreen />
         <HeroScreen />
       </ScrollView>

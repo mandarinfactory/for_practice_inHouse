@@ -16,6 +16,7 @@
     "react-dom": "^18.2.0",
     "react-google-autocomplete": "^2.7.3",
     "react-naver-maps": "^0.1.2",
+    "selenium-webdriver": "^4.14.0",
     "tailwindcss-animated": "^1.0.1",
     "uninstall": "^0.0.0"
   },

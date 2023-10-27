@@ -8,6 +8,9 @@ import { StatusBar } from "expo-status-bar";
 
 import Main from "./components/Main";
 import AptInfoContext from "./context";
+import { useEffect } from "react";
+import filteredNewspaperAPI from "./API/newspaper";
+
 
 export default function App() {
   const DismissKeyboard = ({ children }) => (
@@ -15,7 +18,11 @@ export default function App() {
       {children}
     </TouchableWithoutFeedback>
   );
-
+  
+  useEffect(() => {
+    filteredNewspaperAPI();
+  },[])
+  
   return (
     <>
       <DismissKeyboard>
