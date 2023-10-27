@@ -77,7 +77,9 @@ export default function DetailScreen() {
       {AptInfosCtx.isAptPressed && (
         <View>
           <Text style={styles.titleText}>
-            {AptInfosCtx.pressedAptData.아파트}아파트
+            {AptInfosCtx.pressedAptData.아파트.toString().includes("아파트")
+              ? AptInfosCtx.pressedAptData.아파트
+              : `${AptInfosCtx.pressedAptData.아파트}아파트`}
           </Text>
           <View>
             <Text style={styles.innerText}>거래금액 : {aptTradeData}원</Text>
@@ -111,9 +113,12 @@ export default function DetailScreen() {
               <>
                 <MapView
                   style={styles.map}
-                  initialRegion={initialCoord}
+                  region={initialCoord}
                   userInterfaceStyle="dark"
                   loadingEnabled={true}
+                  zoomEnabled={false}
+                  zoomTapEnabled={false}
+                  rotateEnabled={false}
                 >
                   <Marker
                     coordinate={initialCoord}
@@ -135,7 +140,7 @@ const styles = StyleSheet.create({
     marginTop: 25,
     marginBottom: 15,
     fontFamily: "ExtraBold",
-    fontSize: 35,
+    fontSize: 28,
     color: Colors.primaryColor,
     textAlign: "center",
   },

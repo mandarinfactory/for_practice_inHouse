@@ -45,7 +45,11 @@ export default function HeroScreen() {
               }}
               android_ripple={{ color: Colors.primaryColor }}
             >
-              <Text style={styles.innerText}>{aptData.아파트}아파트</Text>
+              <Text style={styles.innerText}>
+                {aptData.아파트.toString().includes("아파트")
+                  ? aptData.아파트
+                  : `${aptData.아파트}아파트`}
+              </Text>
               <Text style={styles.innerText}>
                 {aptData.거래금액
                   .toString()
