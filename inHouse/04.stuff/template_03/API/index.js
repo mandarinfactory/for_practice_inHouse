@@ -10,8 +10,7 @@ const getCommercialInfosHandler = async (
   };
   const url =
     "https://apis.data.go.kr/B553077/api/open/sdsc2/storeListInRectangle";
-  const API_KEY =
-    "24vbFaV5oWpSo3qOGdwCXPO%2FX5gr4tqD2gxEwUJWb2xVcv4sWZ5QmmZruySMYWl2471GK88wVe3zjfacPH%2FENQ%3D%3D";
+  const API_KEY = import.meta.env.VITE_COMMERCIAL_API_KEY;
   const headers = {
     lat: MapInfosCtx.isLocation ? MapInfosCtx.isLocation.lat : undefined,
     lng: MapInfosCtx.isLocation ? MapInfosCtx.isLocation.lng : undefined,

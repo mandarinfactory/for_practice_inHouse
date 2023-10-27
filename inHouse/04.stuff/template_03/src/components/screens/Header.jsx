@@ -110,7 +110,7 @@ export default function Header() {
           <Autocomplete
             className="w-full px-3 py-2 rounded-2xl text-black text-xl"
             placeholder="도시를 입력해주세요."
-            apiKey="AIzaSyBYd6DJGHfDDHicLsEvRyssDr3Ps6dfWGg"
+            apiKey={import.meta.env.VITE_GOOGLE_AUTOCOMPLETE_KEY}
             onChange={displayText}
             onPlaceSelected={(place) => {
               MapInfosCtx.setInputVal(true);

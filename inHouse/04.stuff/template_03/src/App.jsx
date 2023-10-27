@@ -6,7 +6,7 @@ import Hero from "./components/screens/Hero";
 function App() {
   return (
     <Layout>
-      <NavermapsProvider ncpClientId="ia4i567onk">
+      <NavermapsProvider ncpClientId={import.meta.env.VITE_NAVER_MAP_KEY}>
         <Hero />
       </NavermapsProvider>
     </Layout>
