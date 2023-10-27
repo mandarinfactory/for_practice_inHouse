@@ -15,7 +15,6 @@
       "**/*"
     ],
     "ios": {
-      "bundleIdentifier": "com.template.template_03",
       "buildNumber": "1.0.0",
       "supportsTablet": true,
       "Info.plist": {"NSLocation*UsageDescription" : "Allow $(PRODUCT_NAME) to use your location" }
