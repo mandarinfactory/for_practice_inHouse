@@ -25,7 +25,7 @@ export default function BoxOffice({ isBoxOffice, setNotUpdatedInfos }) {
         setNotUpdatedInfos(true);
       }
     }
-  }, [MovieInfosCtx.searchMovieKeyword, MovieInfosCtx.boxesMoviesInfo]);
+  }, [MovieInfosCtx.searchMovieKeyword, MovieInfosCtx.boxesMoviesInfo, setNotUpdatedInfos]);
 
   return (
     <>
