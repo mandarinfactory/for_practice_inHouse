@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useEffect, useContext } from "react";
 import { MovieInfoContextStore } from "../../contexts";
 
 export default function BoxOffice({ isBoxOffice, setNotUpdatedInfos }) {
@@ -7,30 +7,34 @@ export default function BoxOffice({ isBoxOffice, setNotUpdatedInfos }) {
   const clickHandler = (v) => {
     const clickedTitle = v.target.innerText.replace(/1?2?3?4?5?./, "  ");
     MovieInfosCtx.setSearchMovieKeyword(clickedTitle);
-    MovieInfosCtx.setIsBoxOfficeBoxClicked(true);
   };
-  if (MovieInfosCtx.isBoxOfficeBoxClicked) {
-    const filteredTitle = MovieInfosCtx.boxesMoviesInfo?.find((e) => {
-      return (
-        e.titleEtc.substring(0, e.titleEtc.indexOf("^")) ==
-        MovieInfosCtx.searchMovieKeyword?.replace(/ /g, "")
-      );
-    });
-    if (filteredTitle !== undefined) {
-      MovieInfosCtx.setMovieVal(filteredTitle);
-      MovieInfosCtx.setDetailMovieInfos(true);
-      setNotUpdatedInfos(false);
-    } else {
-      setNotUpdatedInfos(true);
+
+  useEffect(() => {
+    if (MovieInfosCtx.searchMovieKeyword !== undefined) {
+      const filteredTitle = MovieInfosCtx.boxesMoviesInfo?.find((e) => {
+        return (
+          e.titleEtc.substring(0, e.titleEtc.indexOf("^")) ==
+          MovieInfosCtx.searchMovieKeyword?.replace(/ /g, "")
+        );
+      });
+      if (filteredTitle !== undefined) {
+        MovieInfosCtx.setMovieVal(filteredTitle);
+        MovieInfosCtx.setDetailMovieInfos(true);
+        setNotUpdatedInfos(false);
+      } else {
+        setNotUpdatedInfos(true);
+      }
     }
-  }
+  }, [MovieInfosCtx.searchMovieKeyword, MovieInfosCtx.boxesMoviesInfo]);
 
   return (
     <>
       {isBoxOffice ? (
         <div className="lg:w-[50%] sm:w-[90%]">
           {MovieInfosCtx.isLoading ? (
-            <h1 className="p-10 lg:text-3xl md:text-2xl sm:text-xl">로딩중......</h1>
+            <h1 className="p-10 lg:text-3xl md:text-2xl sm:text-xl">
+              로딩중......
+            </h1>
           ) : (
             <div className="w-full p-5 my-3 bg-white rounded-xl backdrop-filter backdrop-blur-md bg-opacity-10 border-gray-200 shadow-xl">
               {MovieInfosCtx.moviesInfo?.map((movie, i) => (

@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useEffect, useContext } from "react";
 import { MovieInfoContextStore } from "../../contexts";
 
 export default function Upcoming({
@@ -11,23 +11,25 @@ export default function Upcoming({
   const clickHandler = (v) => {
     const clickedTitle = v.target.innerText.replace(/1?2?3?4?5?./, "  ");
     MovieInfosCtx.setSearchMovieKeyword(clickedTitle);
-    MovieInfosCtx.setIsUpcomingBoxClicked(true);
   };
-  if (MovieInfosCtx.isUpcomingBoxClicked) {
-    const filteredTitle = MovieInfosCtx.boxesMoviesInfo?.find((e) => {
-      return (
-        e.titleEtc.substring(0, e.titleEtc.indexOf("^")) ==
-        MovieInfosCtx.searchMovieKeyword?.replace(/ /g, "")
-      );
-    });
-    if (filteredTitle !== undefined) {
-      MovieInfosCtx.setMovieVal(filteredTitle);
-      MovieInfosCtx.setDetailMovieInfos(true);
-      setNotUpdatedInfos(false);
-    } else {
-      setNotUpdatedInfos(true);
+
+  useEffect(() => {
+    if (MovieInfosCtx.searchMovieKeyword !== undefined) {
+      const filteredTitle = MovieInfosCtx.boxesMoviesInfo?.find((e) => {
+        return (
+          e.titleEtc.substring(0, e.titleEtc.indexOf("^")) ==
+          MovieInfosCtx.searchMovieKeyword?.replace(/ /g, "")
+        );
+      });
+      if (filteredTitle !== undefined) {
+        MovieInfosCtx.setMovieVal(filteredTitle);
+        MovieInfosCtx.setDetailMovieInfos(true);
+        setNotUpdatedInfos(false);
+      } else {
+        setNotUpdatedInfos(true);
+      }
     }
-  }
+  }, [MovieInfosCtx.searchMovieKeyword, MovieInfosCtx.boxesMoviesInfo]);
 
   {
     upcomings ? (upcomings.length = 5) : <></>;

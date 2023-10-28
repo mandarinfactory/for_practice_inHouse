@@ -44,7 +44,7 @@ export const getSearchGenreMovies = async (
 };
 
 export const getUpComingMovies = async (setUpcomings, MovieInfosCtx) => {
-  const url = `https://api.themoviedb.org/3/movie/upcoming?api_key=${import.meta.env.VITE_TMDB_KEY}&language=ko-KR&region=KR`;
+  const url = `https://api.themoviedb.org/3/movie/upcoming?api_key=${import.meta.env.VITE_TMDB_KEY}&language=ko-KR&region=KR&page=1`;
   const json = await fetchJson(url);
   setUpcomings(json.results);
   MovieInfosCtx.setIsLoading(false);
