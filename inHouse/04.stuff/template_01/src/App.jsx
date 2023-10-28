@@ -10,6 +10,7 @@ import {
 import Layout from "./components/Layout";
 import Hero from "./components/screen/Hero";
 import MovieCurations from "./components/screen/MovieCurations";
+import MovieTrailerBox from "./components/screen/MovieTrailerBox";
 
 function App() {
   const genre = [
@@ -48,16 +49,19 @@ function App() {
   }, [MovieInfosCtx.searchMovieKeyword]);
 
   return (
-    <Layout>
-      <Hero searchedMovie={searchedMovie} upcomings={upcomings} />
-      <MovieCurations
-        curatedMovie={curatedMovie}
-        genre={genre}
-        randomNumber={randomNumber}
-        genres={genres}
-        setGenres={setGenres}
-      />
-    </Layout>
+    <>
+      <Layout>
+      {MovieInfosCtx.isTrailerClicked ? <MovieTrailerBox /> : undefined}
+        <Hero searchedMovie={searchedMovie} upcomings={upcomings} />
+        <MovieCurations
+          curatedMovie={curatedMovie}
+          genre={genre}
+          randomNumber={randomNumber}
+          genres={genres}
+          setGenres={setGenres}
+        />
+      </Layout>
+    </>
   );
 }
 

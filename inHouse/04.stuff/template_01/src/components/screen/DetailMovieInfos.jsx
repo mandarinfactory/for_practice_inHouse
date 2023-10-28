@@ -6,6 +6,7 @@ export default function DetailMovieInfos({ clickedToFocus }) {
   const MovieInfosCtx = useContext(MovieInfoContextStore);
   const actorsName = [];
   const stillCuts = new Array(MovieInfosCtx.movieVal.stlls.split("|"));
+  const movieTrailer = MovieInfosCtx.movieVal.vods.vod[0].vodUrl;
   stillCuts[0].length = 5;
 
   MovieInfosCtx.movieVal.actors.actor.forEach((v) => {
@@ -98,21 +99,26 @@ export default function DetailMovieInfos({ clickedToFocus }) {
                   / {MovieInfosCtx.movieVal.repRlsDate} 개봉
                 </p>
               </div>
-              <a href={MovieInfosCtx.movieVal.kmdbUrl} target="_blank">
-                <svg
-                  width="30px"
-                  height="30px"
-                  version="1.0"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 1280.000000 1280.000000"
-                  className="fill-orange-400 hover:fill-red-500 duration-100"
+              <div className="flex flex-row">
+                <a
+                  href={MovieInfosCtx.movieVal.kmdbUrl}
+                  target="_blank"
+                  title="영화정보"
                 >
-                  <g
-                    transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)"
-                    stroke="none"
+                  <svg
+                    width="30px"
+                    height="30px"
+                    version="1.0"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 1280.000000 1280.000000"
+                    className="mr-5 fill-orange-400 hover:fill-red-600 duration-100"
                   >
-                    <path
-                      d="M6095 12794 c-1354 -72 -2631 -552 -3669 -1378 -273 -218 -627 -554
+                    <g
+                      transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)"
+                      stroke="none"
+                    >
+                      <path
+                        d="M6095 12794 c-1354 -72 -2631 -552 -3669 -1378 -273 -218 -627 -554
                           -842 -801 -821 -944 -1342 -2077 -1518 -3305 -49 -339 -60 -507 -60 -910 0
                           -403 11 -571 60 -910 177 -1235 697 -2364 1527 -3314 132 -151 446 -464 592
                           -592 944 -821 2077 -1342 3305 -1518 339 -49 507 -60 910 -60 403 0 571 11
@@ -126,10 +132,30 @@ export default function DetailMovieInfos({ clickedToFocus }) {
                           24 325 21 160 -2 219 -6 270 -20z m670 -5550 l0 -2845 380 0 380 0 0 -340 0
                           -340 -1720 0 -1720 0 0 340 0 340 380 0 380 0 0 2505 0 2505 -380 0 -380 0 0
                           340 0 340 1340 0 1340 0 0 -2845z"
-                    />
-                  </g>
-                </svg>
-              </a>
+                      />
+                    </g>
+                  </svg>
+                </a>
+                {movieTrailer ? (
+                  <button
+                    onClick={() => MovieInfosCtx.setIsTrailerClicked(true)}
+                    className="h-0"
+                    title="영화예고편"
+                  >
+                    <svg
+                      width="30px"
+                      height="30px"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 512 512"
+                      className="fill-red-600 hover:fill-orange-500 duration-100"
+                    >
+                      <path d="M0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zM188.3 147.1c-7.6 4.2-12.3 12.3-12.3 20.9V344c0 8.7 4.7 16.7 12.3 20.9s16.8 4.1 24.3-.5l144-88c7.1-4.4 11.5-12.1 11.5-20.5s-4.4-16.1-11.5-20.5l-144-88c-7.4-4.5-16.7-4.7-24.3-.5z" />
+                    </svg>
+                  </button>
+                ) : (
+                  <></>
+                )}
+              </div>
             </div>
             <p className="w-full my-3 lg:text-lg sm:text-md">
               {MovieInfosCtx.movieVal.plots.plot[0].plotText}
