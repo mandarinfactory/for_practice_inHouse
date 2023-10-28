@@ -5,7 +5,10 @@ import { MovieInfoContextStore } from "../../contexts";
 export default function MovieTrailerBox() {
   const MovieInfosCtx = useContext(MovieInfoContextStore);
   const movieTrailer = MovieInfosCtx.movieVal.vods.vod[0].vodUrl;
-  const filteredTrailer = movieTrailer.replace("trailerPlayPop?pFileNm=", "play/");
+  const filteredTrailer = movieTrailer.replace(
+    "trailerPlayPop?pFileNm=",
+    "play/"
+  );
 
   return (
     <div className="absolute w-full h-full flex flex-col justify-center items-center bg-black z-30 bg-opacity-80">
@@ -21,9 +24,9 @@ export default function MovieTrailerBox() {
         </svg>
       </button>
       <div className="lg:w-[50%] sm:w-[90%] h-[50%]">
-      <video controls autoPlay className="w-full h-full">
-        <source src={filteredTrailer} type="video/mp4"/>
-      </video>
+        <video controls autoPlay className="w-full h-full">
+          <source src={filteredTrailer} type="video/mp4" />
+        </video>
       </div>
     </div>
   );
