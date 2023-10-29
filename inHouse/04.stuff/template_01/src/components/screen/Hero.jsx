@@ -51,7 +51,7 @@ export default function Hero({
           />
       </div>
       <input
-        className="lg:w-[50%] sm:w-[90%] p-5 my-10 opacity-40 rounded-lg md:text-2xl sm:text-xl shadow-xl"
+        className="lg:w-[50%] sm:w-[90%] p-5 my-1 opacity-40 rounded-lg md:text-2xl sm:text-xl shadow-xl"
         type="text"
         placeholder="영화를 검색해보세요."
         onChange={(e) => {

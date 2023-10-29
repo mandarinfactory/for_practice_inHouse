@@ -24,7 +24,7 @@ export default function MovieTrailerBox() {
         </svg>
       </button>
       <div className="lg:w-[50%] sm:w-[90%] h-[50%]">
-        <video controls autoPlay className="w-full h-full">
+        <video controls autoPlay className="w-full h-[50%]">
           <source src={filteredTrailer} type="video/mp4" />
         </video>
       </div>
