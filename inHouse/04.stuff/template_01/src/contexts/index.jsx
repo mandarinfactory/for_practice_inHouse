@@ -9,6 +9,7 @@ const MovieInfoContext = (props) => {
   const [boxesMoviesInfo, setBoxesMoviesInfo] = useState();
   const [detailMovieInfos, setDetailMovieInfos] = useState(false);
   const [movieVal, setMovieVal] = useState();
+  const [inputVal, setInputVal] = useState(false);
   const [moviesInfo, setMoviesInfo] = useState([]);
   const [isBoxOfficeBoxClicked, setIsBoxOfficeBoxClicked] = useState(false);
   const [isUpcomingBoxClicked, setIsUpcomingBoxClicked] = useState(false);
@@ -29,6 +30,8 @@ const MovieInfoContext = (props) => {
     setDetailMovieInfos,
     movieVal,
     setMovieVal,
+    inputVal,
+    setInputVal,
     moviesInfo,
     setMoviesInfo,
     isBoxOfficeBoxClicked,

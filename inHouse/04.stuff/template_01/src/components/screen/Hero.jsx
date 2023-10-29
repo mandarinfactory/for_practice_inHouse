@@ -11,16 +11,11 @@ export default function Hero({
   upcomings,
 }) {
   const clickedToFocus = useRef();
-
   const MovieInfosCtx = useContext(MovieInfoContextStore);
 
   const [notUpdatedInfos, setNotUpdatedInfos] = useState(false);
   const [isBoxOffice, setIsBoxOffice] = useState(true);
   const [isUpcoming, setIsUpcoming] = useState(false);
-
-  useEffect(() => {
-    MovieInfosCtx.searchMovieKeyword;
-  }, []);
   
   return (
     <div className="w-full h-full flex flex-col justify-center items-center">
@@ -53,21 +48,23 @@ export default function Hero({
           isUpcoming={isUpcoming}
           upcomings={upcomings}
           setNotUpdatedInfos={setNotUpdatedInfos}
-        />
+          />
       </div>
       <input
         className="lg:w-[50%] sm:w-[90%] p-5 my-10 opacity-40 rounded-lg md:text-2xl sm:text-xl shadow-xl"
         type="text"
         placeholder="영화를 검색해보세요."
         onChange={(e) => {
-            MovieInfosCtx.setSearchMovieKeyword(e.target.value);
+          MovieInfosCtx.setSearchMovieKeyword(e.target.value);
+          MovieInfosCtx.setInputVal(true);
         }}
-      />
+        />
       {searchedMovie &&
       MovieInfosCtx.searchMovieKeyword ? (
         <SearchedMovieBox
-          searchedMovie={searchedMovie}
-          clickedToFocus={clickedToFocus}
+        searchedMovie={searchedMovie}
+        clickedToFocus={clickedToFocus}
+        setNotUpdatedInfos={setNotUpdatedInfos}
         />
       ) : (
         <></>

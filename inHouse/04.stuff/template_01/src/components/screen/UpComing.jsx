@@ -25,7 +25,7 @@ export default function Upcoming({
         MovieInfosCtx.setMovieVal(filteredTitle);
         MovieInfosCtx.setDetailMovieInfos(true);
         setNotUpdatedInfos(false);
-      } else {
+      } else if (filteredTitle === undefined && MovieInfosCtx.isUpcomingBoxClicked) {
         setNotUpdatedInfos(true);
       }
     }

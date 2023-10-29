@@ -24,7 +24,7 @@ export default function SearchedMovieBox({ searchedMovie, clickedToFocus }) {
             </h2>
             <div>
               {movie.posters ? (
-                <div className="lg:w-[40%] sm:w-0 h-auto object-contain shadow-lg">
+                <div className="lg:w-[20%] sm:w-0 h-auto object-contain shadow-lg">
                   <img
                     src={
                       movie.posters.includes("|")

@@ -21,7 +21,7 @@ export default function BoxOffice({ isBoxOffice, setNotUpdatedInfos }) {
         MovieInfosCtx.setMovieVal(filteredTitle);
         MovieInfosCtx.setDetailMovieInfos(true);
         setNotUpdatedInfos(false);
-      } else {
+      } else if (filteredTitle === undefined && MovieInfosCtx.isBoxOfficeBoxClicked) {
         setNotUpdatedInfos(true);
       }
     }
