@@ -22,7 +22,7 @@ export const getSearchMovieInfo = async (MovieInfosCtx, setSearchedMovie) => {
   const json = await fetchJson(url);
 
   if (MovieInfosCtx.searchMovieKeyword) {
-    if (MovieInfosCtx.searchMovieKeyword.includes(" ")) {
+    if (MovieInfosCtx.searchMovieKeyword.includes("  ")) {
       MovieInfosCtx.setBoxesMoviesInfo(json.Data[0].Result);
       setSearchedMovie(undefined);
     } else {
