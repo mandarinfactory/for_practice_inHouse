@@ -17,7 +17,11 @@ export default function AuthComponent() {
         const user = userCredential.user;
         MovieInfosCtx.setIsLoginBtnClicked(false);
         MovieInfosCtx.setIsLoginClicked(true);
-        MovieInfosCtx.setUserIdName(user.providerData[0].email.toString().substring(0, user.providerData[0].email.toString().search("@")));
+        MovieInfosCtx.setUserIdName(
+          user.providerData[0].email
+            .toString()
+            .substring(0, user.providerData[0].email.toString().search("@"))
+        );
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -68,18 +72,22 @@ export default function AuthComponent() {
         </div>
         <div className="m-auto flex flex-col items-center justify-center">
           <div className="my-10 flex flex-col items-center justify-center">
-            <input
-              type="email"
-              placeholder="이메일"
-              onChange={(e) => setEmail(e.target.value)}
-              className="mx-5 my-2 px-10 py-3 bg-slate-200 text-lg"
-            />
-            <input
-              type="password"
-              placeholder="비밀번호"
-              onChange={(e) => setPassword(e.target.value)}
-              className="mx-5 my-2 px-10 py-3 bg-slate-200 text-lg"
-            />
+            <form>
+              <input
+                type="email"
+                placeholder="이메일"
+                onChange={(e) => setEmail(e.target.value)}
+                className="mx-5 my-2 px-10 py-3 bg-slate-200 text-lg"
+              />
+            </form>
+            <form>
+              <input
+                type="password"
+                placeholder="비밀번호"
+                onChange={(e) => setPassword(e.target.value)}
+                className="mx-5 my-2 px-10 py-3 bg-slate-200 text-lg"
+              />
+            </form>
           </div>
           <div>
             <button onClick={handleSignIn} className="mx-5 text-lg">
@@ -92,14 +100,21 @@ export default function AuthComponent() {
         </div>
       </div>
       {MovieInfosCtx.isSignUpClicked ? (
-        <PopupBox onClick={() => {
-          MovieInfosCtx.setIsSignUpClicked(false);
-      }}>
-          <p className="my-1 lg:text-lg sm:text-sm">축하합니다! 회원가입이 되셨습니다!</p>
+        <PopupBox
+          onClick={() => {
+            MovieInfosCtx.setIsSignUpClicked(false);
+          }}
+        >
+          <p className="my-1 lg:text-lg sm:text-sm">
+            축하합니다! 회원가입이 되셨습니다!
+          </p>
           <p className="my-1 lg:text-lg sm:text-sm">
             이제 로그인 하시면 됩니다.
           </p>
-          <p className="my-1 lg:text-lg sm:text-sm"> 무비써치에 가입해주셔서 감사합니다.</p>
+          <p className="my-1 lg:text-lg sm:text-sm">
+            {" "}
+            무비써치에 가입해주셔서 감사합니다.
+          </p>
         </PopupBox>
       ) : (
         <></>
