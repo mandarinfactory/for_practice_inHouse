@@ -1,7 +1,7 @@
 const getAptTradeAPI = async (AptInfosCtx, pressedLocValue) => {
   const today = new Date();
   let year = today.getFullYear();
-  let month = ("0" + (new Date().getMonth() + 1)).slice(-2);
+  let month = ("0" + (new Date().getMonth())).slice(-2);
   var aptdate = year + month;
   const API_URL =
     "http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptTradeDev";
