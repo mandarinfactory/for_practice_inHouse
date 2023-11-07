@@ -17,7 +17,10 @@
     "ios": {
       "buildNumber": "1.0.0",
       "supportsTablet": true,
-      "Info.plist": {"NSLocation*UsageDescription" : "Allow $(PRODUCT_NAME) to use your location" }
+      "Info.plist": {
+        "NSLocation*UsageDescription": "Allow $(PRODUCT_NAME) to use your location"
+      },
+      "bundleIdentifier": "com.native.realEstateTemplate"
     },
     "android": {
       "adaptiveIcon": {
@@ -34,6 +37,11 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "836d466b-299c-4087-8dfe-2d570d446ca3"
+      }
     }
   }
 }
