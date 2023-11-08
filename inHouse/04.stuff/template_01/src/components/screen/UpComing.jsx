@@ -9,6 +9,7 @@ export default function Upcoming({
   const MovieInfosCtx = useContext(MovieInfoContextStore);
 
   const clickHandler = (v) => {
+    MovieInfosCtx.setInputVal(false);
     const clickedTitle = v.target.innerText.replace(/1?2?3?4?5?./, "  ");
     MovieInfosCtx.setSearchMovieKeyword(clickedTitle);
   };
@@ -25,7 +26,7 @@ export default function Upcoming({
         MovieInfosCtx.setMovieVal(filteredTitle);
         MovieInfosCtx.setDetailMovieInfos(true);
         setNotUpdatedInfos(false);
-      } else if (filteredTitle === undefined && MovieInfosCtx.isUpcomingBoxClicked) {
+      } else if (filteredTitle === undefined && !MovieInfosCtx.inputVal) {
         setNotUpdatedInfos(true);
       }
     }
@@ -39,7 +40,9 @@ export default function Upcoming({
       {isUpcoming ? (
         <div className="lg:w-[50%] sm:w-[90%]">
           {MovieInfosCtx.isLoading ? (
-            <h1 className="p-10 lg:text-3xl md:text-2xl sm:text-xl">로딩중......</h1>
+            <h1 className="p-10 lg:text-3xl md:text-2xl sm:text-xl">
+              로딩중......
+            </h1>
           ) : (
             <div className="here w-full p-5 my-3 bg-white rounded-xl backdrop-filter backdrop-blur-md bg-opacity-10 border-gray-200 shadow-xl">
               {upcomings.map((movie, i) => (

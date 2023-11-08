@@ -5,6 +5,7 @@ export default function BoxOffice({ isBoxOffice, setNotUpdatedInfos }) {
   const MovieInfosCtx = useContext(MovieInfoContextStore);
 
   const clickHandler = (v) => {
+    MovieInfosCtx.setInputVal(false);
     const clickedTitle = v.target.innerText.replace(/1?2?3?4?5?./, "  ");
     MovieInfosCtx.setSearchMovieKeyword(clickedTitle);
   };
@@ -21,11 +22,15 @@ export default function BoxOffice({ isBoxOffice, setNotUpdatedInfos }) {
         MovieInfosCtx.setMovieVal(filteredTitle);
         MovieInfosCtx.setDetailMovieInfos(true);
         setNotUpdatedInfos(false);
-      } else if (filteredTitle === undefined && MovieInfosCtx.isBoxOfficeBoxClicked) {
+      } else if (filteredTitle === undefined && !MovieInfosCtx.inputVal) {
         setNotUpdatedInfos(true);
       }
     }
-  }, [MovieInfosCtx.searchMovieKeyword, MovieInfosCtx.boxesMoviesInfo, setNotUpdatedInfos]);
+  }, [
+    MovieInfosCtx.searchMovieKeyword,
+    MovieInfosCtx.boxesMoviesInfo,
+    setNotUpdatedInfos,
+  ]);
 
   return (
     <>

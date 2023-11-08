@@ -7,7 +7,6 @@ const run = async () => {
     .forBrowser("chrome")
     .setChromeOptions(new chrome.Options())
     .build();
-
   try {
     // 자동화 하려는 사이트로 이동
     await driver.get("https://map.naver.com/p/search/%EC%B9%B4%ED%8E%98/place/1717521971?c=15.99,0,0,0,dh&placePath=%3Fentry%3Dbmp");
