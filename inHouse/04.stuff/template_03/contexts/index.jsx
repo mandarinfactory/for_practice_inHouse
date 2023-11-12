@@ -8,7 +8,9 @@ const MapInfoContext = (props) => {
   const [isInfoBoxClicked, setIsInfoBoxClicked] = useState(false);
   const [comData, setComData] = useState();
   const [isfilteredNumber, setIsfilteredNumber] = useState();
-  const [clickedMarkerData, setClickedMarkerData] = useState();
+  const [filteredStoreClass, setFilteredStoreClass] = useState();
+  const [clickedMarkerClass, setClickedMarkerClass] = useState();
+  const [clickedMarkerAddress, setClickedMarkerAddress] = useState();
   const [bounds, setBounds] = useState();
   const [inputVal, setInputVal] = useState(false);
   const [filteredLat, setFilteredLat] = useState();
@@ -25,6 +27,12 @@ const MapInfoContext = (props) => {
     setComData,
     isfilteredNumber,
     setIsfilteredNumber,
+    filteredStoreClass,
+    setFilteredStoreClass,
+    clickedMarkerClass,
+    setClickedMarkerClass,
+    clickedMarkerAddress,
+    setClickedMarkerAddress,
     bounds,
     setBounds,
     inputVal,

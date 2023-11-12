@@ -133,6 +133,8 @@ export default function NaverMapBox() {
                 handleMarkerClick(key);
                 map.panTo({ lat: e.lat, lng: e.lon });
                 MapInfosCtx.setIsMarkerClicked(e.bizesNm);
+                MapInfosCtx.setClickedMarkerClass(e.ksicNm);
+                MapInfosCtx.setClickedMarkerAddress(e.lnoAdr);
               }}
               icon={{
                 content: [createMapMarkerBox(e.bizesNm, key)].join(""),

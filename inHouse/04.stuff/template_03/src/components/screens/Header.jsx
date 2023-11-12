@@ -48,9 +48,10 @@ export default function Header() {
                 middleClass: "I212",
                 smallClass: "I21201",
               });
+              MapInfosCtx.setFilteredStoreClass("cafe");
               scrollToTop();
             }}
-          >
+            >
             카페
           </button>
           <button
@@ -61,9 +62,10 @@ export default function Header() {
                 middleClass: "I201",
                 smallClass: "",
               });
+              MapInfosCtx.setFilteredStoreClass("restaurant");
               scrollToTop();
             }}
-          >
+            >
             음식점
           </button>
           <button
@@ -74,9 +76,10 @@ export default function Header() {
                 middleClass: "G204",
                 smallClass: "G20405",
               });
+              MapInfosCtx.setFilteredStoreClass("cvs");
               scrollToTop();
             }}
-          >
+            >
             편의점
           </button>
           <button
@@ -87,9 +90,10 @@ export default function Header() {
                 middleClass: "Q102",
                 smallClass: "",
               });
+              MapInfosCtx.setFilteredStoreClass("hospital");
               scrollToTop();
             }}
-          >
+            >
             병원
           </button>
           <button
@@ -100,9 +104,10 @@ export default function Header() {
                 middleClass: "G215",
                 smallClass: "G21501",
               });
+              MapInfosCtx.setFilteredStoreClass("pharmacy");
               scrollToTop();
             }}
-          >
+            >
             약국
           </button>
         </nav>
