@@ -26,10 +26,11 @@ export default function MapInfoBox() {
           MapInfosCtx.comData.body.items.map((e, key) => (
             <>
               <div
-                className={`${e.bizesNm} w-[90%] my-3 px-2 py-5 flex flex-col justify-center items-center bg-slate-200`}
+                className={`${e.bizesNm} w-[90%] my-3 px-2 py-5 flex flex-col justify-center items-center bg-slate-200 hover:bg-slate-300 cursor-pointer`}
                 key={key}
                 onClick={() => {
-                  MapInfosCtx.setIsInfoBoxClicked(true)
+                  MapInfosCtx.setIsInfoBoxClicked(true);
+                  MapInfosCtx.setClickedInfoBox({ lat: e.lat, lng: e.lon });
                 }}
               >
                 <h1 className="text-black text-2xl mb-5">{e.bizesNm}</h1>

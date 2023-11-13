@@ -98,6 +98,11 @@ export default function NaverMapBox() {
                 lat: MapInfosCtx?.filteredLat,
                 lng: MapInfosCtx?.filteredLng,
               })
+            : MapInfosCtx.clickedInfoBox
+            ? map.panTo({
+                lat: MapInfosCtx.clickedInfoBox.lat,
+                lng: MapInfosCtx.clickedInfoBox.lng,
+              })
             : undefined
         }
         minZoom={16}
@@ -109,6 +114,7 @@ export default function NaverMapBox() {
         }}
         onCenterChanged={() => {
           MapInfosCtx.setInputVal(false);
+          MapInfosCtx.setClickedInfoBox(undefined);
         }}
       >
         {MapInfosCtx.comData ? (
@@ -145,8 +151,8 @@ export default function NaverMapBox() {
           <></>
         )}
         <InfoWindow ref={setInfowindow} />
+        {MapInfosCtx.isMarkerClicked !== undefined ? <InfoDetailBox /> : <></>}
       </NaverMap>
-        {MapInfosCtx.isMarkerClicked !== undefined ? <InfoDetailBox/> : <></>}
     </Container>
   );
 }

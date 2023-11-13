@@ -11,6 +11,7 @@ const MapInfoContext = (props) => {
   const [filteredStoreClass, setFilteredStoreClass] = useState();
   const [clickedMarkerClass, setClickedMarkerClass] = useState();
   const [clickedMarkerAddress, setClickedMarkerAddress] = useState();
+  const [clickedInfoBox, setClickedInfoBox] = useState();
   const [bounds, setBounds] = useState();
   const [inputVal, setInputVal] = useState(false);
   const [filteredLat, setFilteredLat] = useState();
@@ -33,6 +34,8 @@ const MapInfoContext = (props) => {
     setClickedMarkerClass,
     clickedMarkerAddress,
     setClickedMarkerAddress,
+    clickedInfoBox,
+    setClickedInfoBox,
     bounds,
     setBounds,
     inputVal,
