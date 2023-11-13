@@ -31,6 +31,9 @@ export default function MapInfoBox() {
                 onClick={() => {
                   MapInfosCtx.setIsInfoBoxClicked(true);
                   MapInfosCtx.setClickedInfoBox({ lat: e.lat, lng: e.lon });
+                  MapInfosCtx.setIsMarkerClicked(e.bizesNm);
+                  MapInfosCtx.setClickedMarkerClass(e.ksicNm);
+                  MapInfosCtx.setClickedMarkerAddress(e.lnoAdr);
                 }}
               >
                 <h1 className="text-black text-2xl mb-5">{e.bizesNm}</h1>
