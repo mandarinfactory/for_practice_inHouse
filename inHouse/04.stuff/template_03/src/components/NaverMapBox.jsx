@@ -10,12 +10,10 @@ export default function NaverMapBox() {
   const MapInfosCtx = useContext(MapInfoContextStore);
 
   const [map, setMap] = useState(null);
-  const [isClicked, setIsClicked] = useState(false);
   const [isMouseMove, setIsMouseMove] = useState(false);
   const [infowindow, setInfowindow] = useState(null);
-  const [clickedMarkerIndex, setClickedMarkerIndex] = useState(null);
 
-  function onSuccessGeolocation(position) {
+  const onSuccessGeolocation = (position) => {
     if (!map || !infowindow) return;
 
     const location = {
@@ -27,7 +25,7 @@ export default function NaverMapBox() {
     MapInfosCtx.setIsLocation(location);
   }
 
-  function onErrorGeolocation() {
+  const onErrorGeolocation = () => {
     if (!map || !infowindow) return;
 
     const center = map.getCenter();
@@ -47,22 +45,19 @@ export default function NaverMapBox() {
   }
 
   const handleMarkerClick = (key) => {
-    if (clickedMarkerIndex !== null) {
-      const prevMarker = MapInfosCtx.comData.body.items[clickedMarkerIndex];
+    if (MapInfosCtx.clickedMarkerIndex !== null) {
       const prevMarkerElement = document.querySelector(
-        `.marker-${clickedMarkerIndex}`
+        `.marker-${MapInfosCtx.clickedMarkerIndex}`
       );
       prevMarkerElement.style.zIndex = 1;
       prevMarkerElement.style.color = "black";
     }
-
-    const currentMarker = MapInfosCtx.comData.body.items[key];
     const currentMarkerElement = document.querySelector(`.marker-${key}`);
     currentMarkerElement.style.zIndex = 2;
     currentMarkerElement.style.color = "#0f766e";
 
-    setClickedMarkerIndex(key);
-    setIsClicked(!isClicked);
+    MapInfosCtx.setClickedMarkerIndex(key);
+    MapInfosCtx.setIsClicked(!MapInfosCtx.isClicked);
   };
 
   useEffect(() => {
@@ -124,19 +119,19 @@ export default function NaverMapBox() {
               clickable={true}
               key={key}
               onMouseover={(v) => {
-                if (clickedMarkerIndex !== key) {
+                if (MapInfosCtx.clickedMarkerIndex !== key) {
                   setIsMouseMove(true);
                   v.originalEvent.target.parentNode.style.zIndex = 3;
                 }
               }}
               onMouseout={(v) => {
-                if (clickedMarkerIndex !== key) {
+                if (MapInfosCtx.clickedMarkerIndex !== key) {
                   setIsMouseMove(false);
                   v.originalEvent.target.parentNode.style.zIndex = 1;
                 }
               }}
               onClick={() => {
-                handleMarkerClick(key);
+                MapInfosCtx.handleMarkerClick(key);
                 map.panTo({ lat: e.lat, lng: e.lon });
                 MapInfosCtx.setIsMarkerClicked(e.bizesNm);
                 MapInfosCtx.setClickedMarkerClass(e.ksicNm);

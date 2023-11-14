@@ -34,6 +34,7 @@ export default function MapInfoBox() {
                   MapInfosCtx.setIsMarkerClicked(e.bizesNm);
                   MapInfosCtx.setClickedMarkerClass(e.ksicNm);
                   MapInfosCtx.setClickedMarkerAddress(e.lnoAdr);
+                  MapInfosCtx.handleMarkerClick(key);
                 }}
               >
                 <h1 className="text-black text-2xl mb-5">{e.bizesNm}</h1>
