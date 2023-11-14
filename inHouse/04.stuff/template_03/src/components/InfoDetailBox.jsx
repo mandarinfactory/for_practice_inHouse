@@ -3,13 +3,31 @@ import { useContext, useEffect, useState } from "react";
 import { MapInfoContextStore } from "../../contexts";
 
 export default function InfoDetailBox() {
-    const MapInfosCtx = useContext(MapInfoContextStore);
-    const [randomNum, setRandomNum] = useState();
-    
-    useEffect(() => {
-        const randomNumber = Math.ceil(Math.random() * 10);
-        setRandomNum(randomNumber);
-  },[MapInfosCtx.isMarkerClicked])
+  const MapInfosCtx = useContext(MapInfoContextStore);
+  const [randomNum, setRandomNum] = useState();
+  const [matchedStoreClass, setMatchedStoreClass] = useState();
+
+  useEffect(() => {
+    const randomNumber = Math.ceil(Math.random() * 10);
+    setRandomNum(randomNumber);
+    switch (MapInfosCtx.filteredStoreClass) {
+      case "cafe":
+        setMatchedStoreClass("cafe");
+        break;
+      case "restaurant":
+        setMatchedStoreClass("restaurant");
+        break;
+      case "cvs":
+        setMatchedStoreClass("cvs");
+        break;
+      case "hospital":
+        setMatchedStoreClass("hospital");
+        break;
+      case "pharmacy":
+        setMatchedStoreClass("pharmacy");
+        break;
+    }
+  }, [MapInfosCtx.isMarkerClicked]);
 
   return (
     <div className="absolute top-[15%] right-[40%] w-[15%] h-[35%] bg-slate-200 rounded-lg shadow-lg">
@@ -27,7 +45,10 @@ export default function InfoDetailBox() {
         </svg>
       </div>
       <div className="w-auto h-auto m-5">
-        <img src={`../images/cafe/cafe${randomNum}.jpg`} alt="" />
+        <img
+          src={`../images/${matchedStoreClass}/${matchedStoreClass}${randomNum}.jpg`}
+          alt=""
+        />
       </div>
       <h1 className="my-2 text-lg text-center">
         {MapInfosCtx.isMarkerClicked}
