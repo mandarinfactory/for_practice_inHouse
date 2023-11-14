@@ -28,7 +28,7 @@ const MapInfoContext = (props) => {
       prevMarkerElement.style.color = "black";
     }
     const currentMarkerElement = document.querySelector(`.marker-${key}`);
-    currentMarkerElement.style.zIndex = 2;
+    currentMarkerElement.style.zIndex = 3;
     currentMarkerElement.style.color = "#0f766e";
 
     setClickedMarkerIndex(key);
