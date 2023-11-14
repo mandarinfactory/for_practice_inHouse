@@ -44,22 +44,6 @@ export default function NaverMapBox() {
     }
   }
 
-  const handleMarkerClick = (key) => {
-    if (MapInfosCtx.clickedMarkerIndex !== null) {
-      const prevMarkerElement = document.querySelector(
-        `.marker-${MapInfosCtx.clickedMarkerIndex}`
-      );
-      prevMarkerElement.style.zIndex = 1;
-      prevMarkerElement.style.color = "black";
-    }
-    const currentMarkerElement = document.querySelector(`.marker-${key}`);
-    currentMarkerElement.style.zIndex = 2;
-    currentMarkerElement.style.color = "#0f766e";
-
-    MapInfosCtx.setClickedMarkerIndex(key);
-    MapInfosCtx.setIsClicked(!MapInfosCtx.isClicked);
-  };
-
   useEffect(() => {
     if (!map || !infowindow) {
       return;
