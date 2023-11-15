@@ -31,14 +31,14 @@ export default function InfoDetailBox() {
 
   return (
     <div
-      className="absolute top-[15%] right-[40%] w-[15%] h-[35%] flex flex-col items-center justify-center bg-slate-100 rounded-lg shadow-xl cursor-pointer"
+      className="absolute top-[15%] lg:right-[40%] md:right-[25%] sm:right-[30%] lg:w-[15%] md:w-[40%] sm:w-[30%] h-[35%] flex flex-col items-center justify-center bg-slate-100 rounded-lg shadow-xl cursor-pointer"
       onClick={() => {
         MapInfosCtx.setIsMarkerClicked(undefined);
       }}
     >
       <div className="w-auto h-auto m-5">
         <img
-          src={`../images/${matchedStoreClass}/${matchedStoreClass}${randomNum}.jpg`}
+          src={matchedStoreClass ? `../images/${matchedStoreClass}/${matchedStoreClass}${randomNum}.jpg` : <></>}
           alt=""
         />
       </div>

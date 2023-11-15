@@ -24,10 +24,9 @@ export default function MapInfoBox() {
       <div className="infoBox w-full h-auto flex flex-col justify-center items-center text-white body-font bg-slate-100 overflow-hidden">
         {MapInfosCtx.comData && MapInfosCtx.isfilteredNumber ? (
           MapInfosCtx.comData.body.items.map((e, key) => (
-            <>
+            <div className="w-full h-full flex justify-center" key={key}>
               <div
                 className={`${e.bizesNm} w-[90%] my-3 px-2 py-5 flex flex-col justify-center items-center bg-slate-200 hover:bg-slate-300 cursor-pointer`}
-                key={key}
                 onClick={() => {
                   MapInfosCtx.setIsInfoBoxClicked(true);
                   MapInfosCtx.setClickedInfoBox({ lat: e.lat, lng: e.lon });
@@ -47,7 +46,7 @@ export default function MapInfoBox() {
                       ?.scrollIntoView({ behavior: "smooth" })
                   : undefined
                 : undefined}
-            </>
+            </div>
           ))
         ) : (
           <NoDataInfoBox />
