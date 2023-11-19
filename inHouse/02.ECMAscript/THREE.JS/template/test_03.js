@@ -108,7 +108,7 @@ class App {
 		time *= 0.001;
 		//this._cube.rotation.x = time;
 		//this._cube.rotation.y = time;
-		this._solarSystem.rotation.y = time / 2;
+		this._solarSystem.rotation.y = time;
 		this._earthOrbit.rotation.y = time * 2;
 		this._moonOrbit.rotation.y = time * 5;
 	}
