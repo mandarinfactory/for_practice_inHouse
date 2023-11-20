@@ -29,29 +29,31 @@ class App {
 		const width = this._divContainer.clientWidth;
 		const height = this._divContainer.clientHeight;
 		const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 100);
-		camera.position.z = 3;
+		camera.position.z = 7;
 		this._camera = camera;
 	}
 
 	_setupLight() {
 		const color = 0xffffff;
-		const intensity = 1;
+		const intensity = 4;
 		const light = new THREE.DirectionalLight(color, intensity);
 		light.position.set(-1, 2, 4);
 		this._scene.add(light);
 	}
 
 	_setupModel() {
+		const textureLoader = new THREE.TextureLoader();
+		const map = textureLoader.load("image/glass/Glass_Window_002_basecolor.jpg");
+		const mapAO = textureLoader.load("image/glass/Glass_Window_002_ambientOcclusion.jpg");
+		const mapHeight = textureLoader.load("image/glass/Glass_Window_002_height.jpg");
+		const mapNormal = textureLoader.load("image/glass/Glass_Window_002_normal.jpg");
+		const mapRoughness = textureLoader.load("image/glass/Glass_Window_002_roughness.jpg");
+		const mapMetalic = textureLoader.load("image/glass/Glass_Window_002_metalic.jpg");
+		const mapAlpha = textureLoader.load("image/glass/Glass_Window_002_opacity.jpg");
+		
 		const material = new THREE.MeshPhysicalMaterial({
-			color: 0xfde58e,
-			emissive: 0x00000,
-			roughness: 1,
-			metalness: 0,
-			clearcoat: 1,
-			clearcoatRoughness: 0,
-			wireframe: false,
-			flatShading: false,
-		})
+			map,
+		});
 
 		const box = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), material);
 		box.position.set(-1, 0, 0);
