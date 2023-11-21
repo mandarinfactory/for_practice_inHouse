@@ -162,7 +162,7 @@ export default function DetailMovieInfos({ clickedToFocus }) {
             </p>
           </div>
         </div>
-        <div className="w-auto h-auto justify-center lg:flex sm:hidden">
+        <div className="w-auto h-auto justify-center lg:flex md:flex sm:hidden">
           {stillCuts[0].map((pic, i) => (
             <div className="w-auto h-auto rounded-lg overflow-hidden" key={i}>
               <img

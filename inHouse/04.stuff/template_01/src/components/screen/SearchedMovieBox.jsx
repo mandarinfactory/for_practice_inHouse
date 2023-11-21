@@ -24,7 +24,7 @@ export default function SearchedMovieBox({ searchedMovie, clickedToFocus }) {
             </h2>
             <div>
               {movie.posters ? (
-                <div className="lg:w-[20%] sm:w-0 h-auto object-contain shadow-lg">
+                <div className="lg:w-[20%] md:sm:w-[20%] w-0 h-auto object-contain shadow-lg">
                   <img
                     src={
                       movie.posters.includes("|")
@@ -39,7 +39,7 @@ export default function SearchedMovieBox({ searchedMovie, clickedToFocus }) {
               )}
             </div>
           </div>
-          <p className="text-sm italic text-gray-900">
+          <p className="text-sm italic text-gray-900 sm:hidden">
             {movie.genre} /{" "}
             {movie.titleEng.includes("!")
               ? movie.titleEng.replace(/!HS?E?/gi, "")

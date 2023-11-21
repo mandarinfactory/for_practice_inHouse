@@ -19,7 +19,7 @@ export default function MovieCurations({
       >
         다시추천!
       </button>
-      <h1 className="lg:w-[45%] sm:w-[55%] px-1 py-2 my-3 text-center lg:text-2xl sm:text-xl bg-white shadow-lg">
+      <h1 className="lg:w-[45%] sm:w-[55%] px-1 py-2 my-3 text-center lg:text-2xl sm:text-md bg-white shadow-lg">
         오늘은 이런 {genres}영화 어떠세요?
       </h1>
       <div className="flex lg:flex-row sm:flex-col justify-center items-center w-full h-full">

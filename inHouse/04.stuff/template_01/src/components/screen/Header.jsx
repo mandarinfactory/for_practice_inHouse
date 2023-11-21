@@ -19,9 +19,9 @@ export default function Header() {
 
   return (
     <>
-      <header className="p-2 w-full h-auto text-gray-200 bg-gray-100 bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10 border-gray-100 shadow-lg">
-        <div className="container mx-auto flex flex-wrap p-5 flex-row items-center justify-between">
-          <h1 className="mr-20 md:text-3xl sm:text-2xl font-extrabold text-black drop-shadow-lg hover:text-slate-800">
+      <header className="p-2 w-full h-auto text-gray-200 bg-gray-100 bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10 border-gray-100 shadow-lg flex justify-center">
+        <div className="w-full container flex flex-wrap p-5 flex-row items-center justify-between">
+          <h1 className="mr-20 lg:text-3xl md:text-3xl sm:text-2xl font-extrabold text-black drop-shadow-lg hover:text-slate-800">
             <a href="./"> 무비써치</a>
           </h1>
           <div className="flex flex-row">
@@ -30,7 +30,7 @@ export default function Header() {
             ) : (
               <></>
             )}
-            <h1 className="md:text-3xl sm:text-2xl font-extrabold text-black drop-shadow-lg hover:text-slate-800">
+            <h1 className="lg:text-3xl md:text-3xl sm:text-2xl font-extrabold text-black drop-shadow-lg hover:text-slate-800">
               {MovieInfosCtx.isLoginClicked ? (
                 <a href="#" onClick={handleLogout}>
                   로그아웃

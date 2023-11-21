@@ -35,7 +35,7 @@ export default function BoxOffice({ isBoxOffice, setNotUpdatedInfos }) {
   return (
     <>
       {isBoxOffice ? (
-        <div className="lg:w-[50%] sm:w-[90%]">
+        <div className="lg:w-[50%] md:w-[50%] sm:w-[90%]">
           {MovieInfosCtx.isLoading ? (
             <h1 className="p-10 lg:text-3xl md:text-2xl sm:text-xl">
               로딩중......
@@ -49,7 +49,7 @@ export default function BoxOffice({ isBoxOffice, setNotUpdatedInfos }) {
                   key={movie.movieCd}
                   onClick={clickHandler}
                 >
-                  <h3 className="mx-10 my-3 lg:text-3xl md:text-2xl sm:text-xl">
+                  <h3 className="mx-10 my-3 lg:text-3xl md:text-2xl sm:text-lg">
                     {i + 1}. {movie.movieNm}
                   </h3>
                 </div>
