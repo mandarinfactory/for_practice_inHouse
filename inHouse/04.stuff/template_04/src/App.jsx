@@ -1,15 +1,23 @@
-import { Canvas } from "@react-three/fiber";
-import React from "react";
-import { Model } from "./components/Model";
+import { Routes, Route } from "react-router-dom";
 
-const color = 0xffffff;
-const intensity = 1;
+import Layout from "./components/Layout";
+import Hero from "./components/screens/Hero";
+import AboutMe from "./components/screens/AboutMe";
+import Projects from "./components/screens/Projects";
+import Contact from "./components/screens/Contact";
 
 function App() {
   return (
-    <div>
-      
-    </div>
+    <>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Hero />} />
+          <Route path="/aboutme" element={<AboutMe />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </Layout>
+    </>
   );
 }
 
