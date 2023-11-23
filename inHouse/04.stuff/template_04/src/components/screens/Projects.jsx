@@ -50,22 +50,26 @@ export default function Project() {
   }, []);
 
   return (
-    <>
-      <section className="flex min-h-screen items-center justify-center text-gray-600 body-font dark:bg-slate-800 dark:text-gray-300">
-        <div className={`frame ${style.frame}`} ref={frameRef}>
+    <section className="flex min-h-full py-[105px] items-center justify-center text-gray-600 body-font dark:bg-slate-800 dark:text-gray-300">
+      <div className={`frame ${style.frame}`} ref={frameRef}>
+        <div
+          className="card relative w-full h-full rounded-2xl bg-gradient-to-r from-red-600 to-yellow-500 bg-center bg-no-repeat shadow-lg duartion-200 transition-all ease-out"
+          ref={cardRef}
+        >
           <div
-            className="card relative w-full h-full rounded-2xl bg-gradient-to-r from-red-600 to-yellow-500 bg-center bg-no-repeat shadow-lg duartion-200 transition-all ease-out"
-            ref={cardRef}
+            className="light absolute w-full h-full rounded-lg"
+            ref={lightRef}
           >
-            <div
-              className="light absolute w-full h-full rounded-lg"
-              ref={lightRef}
+            <a
+              href="https://react-moviesearch-30490.web.app"
+              className="block w-full h-full m-10 text-4xl text-black"
+              target="blank"
             >
-              <a href="https://react-moviesearch-30490.web.app" className="block w-full h-full m-10 text-4xl text-black" target="blank">무비써치</a>
-            </div>
+              무비써치
+            </a>
           </div>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }

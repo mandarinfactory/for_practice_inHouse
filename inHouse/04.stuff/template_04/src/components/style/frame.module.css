@@ -1,6 +1,6 @@
 .frame {
   width: 400px;
-  height: 800px;
+  height: 600px;
   transition: transfrom 200ms;
   cursor: pointer;
 }
