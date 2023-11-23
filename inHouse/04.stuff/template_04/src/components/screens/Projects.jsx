@@ -89,7 +89,7 @@ export default function Project() {
           >
             <a
               href="https://react-moviesearch-30490.web.app"
-              className="block w-full h-full m-10 text-4xl text-black"
+              className="block w-full h-full m-10 text-4xl text-white"
               target="blank"
             >
               무비써치
@@ -99,7 +99,7 @@ export default function Project() {
       </div>
       <div className={`frame ${style.frame} mr-20`} ref={frame2Ref}>
         <div
-          className="card relative w-full h-full rounded-2xl bg-gradient-to-r from-teal-600 to-gray-500 bg-center bg-no-repeat shadow-lg duartion-200 transition-all ease-out"
+          className="card relative w-full h-full rounded-2xl bg-gradient-to-r from-teal-600 to-slate-500 bg-center bg-no-repeat shadow-lg duartion-200 transition-all ease-out"
           ref={card2Ref}
         >
           <div
@@ -108,7 +108,7 @@ export default function Project() {
           >
             <a
               href="https://react-mylocalmap.web.app/"
-              className="block w-full h-full m-10 text-4xl text-black"
+              className="block w-full h-full m-10 text-4xl text-white"
               target="blank"
             >
               동네지도
@@ -127,7 +127,7 @@ export default function Project() {
           >
             <a
               href="https://react-moviesearch-30490.web.app"
-              className="block w-full h-full m-10 text-4xl text-black"
+              className="block w-full h-full m-10 text-4xl text-white"
               target="blank"
             >
               집순위
