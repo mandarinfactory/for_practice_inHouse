@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import Animation from "../Animation";
 
 export default function Hero() {
@@ -18,7 +20,7 @@ export default function Hero() {
             </p>
             <div className="flex justify-center">
               <button className="inline-flex text-white bg-indigo-500 dark:bg-fuchsia-600 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 dark:hover:bg-fuchsia-700 rounded text-lg duration-100">
-                프로젝트 보러가기
+                <Link to={"/projects"}>프로젝트 보러가기</Link>
               </button>
             </div>
           </div>
