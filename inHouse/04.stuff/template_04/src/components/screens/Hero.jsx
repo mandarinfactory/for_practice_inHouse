@@ -4,7 +4,7 @@ import Animation from "../Animation";
 
 export default function Hero() {
   return (
-    <section className="flex min-h-full py-[30px] flex-col items-center justify-center text-gray-600 body-font dark:bg-slate-800 dark:text-gray-300">
+    <section className="flex min-h-screen flex-col items-center justify-center text-gray-600 body-font dark:bg-slate-800 dark:text-gray-300">
       <div className="container lg:w-[60%] md:w-full sm:w-full mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
         <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
           <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900 dark:text-gray-100">

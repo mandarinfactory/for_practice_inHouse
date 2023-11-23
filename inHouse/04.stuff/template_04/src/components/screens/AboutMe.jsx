@@ -1,6 +1,6 @@
 export default function AboutMe() {
   return (
-    <section className="flex min-h-full py-[15px] flex-col items-center justify-center text-gray-600 body-font dark:bg-slate-800 dark:text-gray-300">
+    <section className="flex min-h-screen flex-col items-center justify-center text-gray-600 body-font dark:bg-slate-800 dark:text-gray-300">
       <div className="container lg:w-[60%] md:w-full sm:w-full mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
         <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
           <div>
@@ -18,29 +18,15 @@ export default function AboutMe() {
             </p>
           </div>
           <div>
-            <p className="mt-10 mb-1.5 lg:text-xl md:text-lg">
-              2023년 3월까지 웹퍼블리셔 교육으로 마크업언어(HTML, CSS) <br />
+            <p className="mt-10 mb-1.5 lg:text-lg md:text-lg">
+              23년 3월까지 웹퍼블리셔 교육으로 마크업언어(HTML, CSS) <br />
               그리고 기본적인 바닐라JS, jQuery를 배웠으며
             </p>
-            <p className="mb-1.5 lg:text-xl md:text-lg">
+            <p className="mb-1.5 lg:text-lg md:text-lg">
               교육을 끝마치고 JavaScript 라이브러리인 <br />
               React JS와 React Native를 독학으로 공부했습니다.
             </p>
-            <p className="mb-1.5 lg:text-xl md:text-lg">
-              또한, 기본적인 바닐라JS교육을 바탕으로 JavaScript ES6을
-              공부했습니다.
-            </p>
-          </div>
-          <div>
-            <p className="mt-10 mb-1.5 lg:text-xl md:text-lg">
-              2023년 3월까지 웹퍼블리셔 교육으로 마크업언어(HTML, CSS) <br />
-              그리고 기본적인 바닐라JS, jQuery를 배웠으며
-            </p>
-            <p className="mb-1.5 lg:text-xl md:text-lg">
-              교육을 끝마치고 JavaScript 라이브러리인 <br />
-              React JS와 React Native를 독학으로 공부했습니다.
-            </p>
-            <p className="mb-1.5 lg:text-xl md:text-lg">
+            <p className="mb-1.5 lg:text-lg md:text-lg">
               또한, 기본적인 바닐라JS교육을 바탕으로 JavaScript ES6을
               공부했습니다.
             </p>
