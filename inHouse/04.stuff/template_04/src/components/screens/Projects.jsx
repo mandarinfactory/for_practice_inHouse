@@ -60,7 +60,9 @@ export default function Project() {
             <div
               className="light absolute w-full h-full rounded-lg"
               ref={lightRef}
-            ></div>
+            >
+              <a href="https://react-moviesearch-30490.web.app" className="block w-full h-full m-10 text-4xl text-black" target="blank">무비써치</a>
+            </div>
           </div>
         </div>
       </section>
