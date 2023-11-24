@@ -12,7 +12,7 @@ export default {
       lg: { min: "1080px" },
     }, */
     fontFamily: {
-      sans: ["GongGothicMedium"],
+      sans: ["JalnanGothic"],
     },
   },
   plugins: [],

@@ -1,8 +1,30 @@
 .frame {
-  width: 400px;
+  width: 20%;
   height: 600px;
-  transition: transfrom 200ms;
-  cursor: pointer;
+  transition: transform 200ms;
+}
+
+@media (max-width: 1500px) {
+  .frame {
+    width: 25%;
+  }
+  
+}
+
+@media (max-width: 1100px) {
+  .frame {
+    width: 28%;
+  }
+}
+
+@media (max-width: 1000px) {
+  .frame {
+    width: 60%;
+    height: 250px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 0px;
+  }
 }
 
 .frame:hover {
