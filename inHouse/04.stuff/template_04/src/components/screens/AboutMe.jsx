@@ -1,14 +1,14 @@
 export default function AboutMe() {
   return (
     <section className="flex min-h-screen flex-col items-center justify-center text-gray-600 body-font dark:bg-slate-800 dark:text-gray-300">
-      <div className="container lg:w-[60%] md:w-full sm:w-full mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
+      <div className="container lg:w-[70%] md:w-full sm:w-full mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
         <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
           <div>
             <p className="sm:text-2xl text-xl mb-1.5 font-medium text-gray-900 dark:text-gray-100">
               몇번이고 벽을 만나 부딪힌 적도, 힘든적도 많지만, 직접 코딩을 통해
             </p>
             <p className="sm:text-2xl text-xl mb-1.5 font-medium text-gray-900 dark:text-gray-100">
-              나오는 결과에 성취감을 느끼고 새로운것을 배움에 있어 즐거움이 항상
+              나오는 결과에 성취감을 느끼고 새로운것을 배움에 있어 즐거움이 늘
             </p>
             <p className="sm:text-2xl text-xl mb-1.5 font-medium text-gray-900 dark:text-gray-100">
               생깁니다. 깃헙에 주중 한 커밋 하는 습관을 꾸준하게 유지하며,
