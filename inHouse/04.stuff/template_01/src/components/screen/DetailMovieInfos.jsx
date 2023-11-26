@@ -4,16 +4,21 @@ import { MovieInfoContextStore } from "../../contexts";
 
 export default function DetailMovieInfos({ clickedToFocus }) {
   const MovieInfosCtx = useContext(MovieInfoContextStore);
+  // 모든 state를 관리하기 위해서 contextAPI를 이용했습니다.(추후 redux 배워서 redux로 바꿀 예정)
   const actorsName = [];
-  const stillCuts = new Array(MovieInfosCtx.movieVal.stlls.split("|"));
+  const stillCuts = new Array(MovieInfosCtx.movieVal.stlls.split("|")); 
+  // 스틸컷 데이터에 "|"가 있어 제대로 쓸 수 없어서 "|"를 기준으로 짤라 배열로 만들었습니다.
   const movieTrailer = MovieInfosCtx.movieVal.vods.vod[0].vodUrl;
   stillCuts[0].length = 5;
-
+  
   MovieInfosCtx.movieVal.actors.actor.forEach((v) => {
     actorsName.push(`${v.actorNm}, `);
   });
-  actorsName.push(actorsName[actorsName.length - 1].replace(/,?/gi, "")); // 마지막에 오는 문자열에 있는 ,을 없애주고 추가해서
-  actorsName.splice(actorsName.length - 2, 1); // 계속,이 붙어있는 문자열은 제거해줌.
+  // 데이터에서 따로 영화배우들 string들을 뽑아서 배열에 넣었습니다.
+  actorsName.push(actorsName[actorsName.length - 1].replace(/,?/gi, "")); 
+  // 마지막에 오는 문자열에 있는 ,을 없애주고 추가해줬습니다.
+  actorsName.splice(actorsName.length - 2, 1); 
+  // 계속,이 붙어있는 문자열은 제거해줬습니다.
 
   return (
     <div

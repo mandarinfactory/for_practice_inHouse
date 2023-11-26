@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef, useContext } from "react";
+import { useState, useRef, useContext } from "react";
 import DetailMovieInfos from "./DetailMovieInfos";
 import NotUpdatedInfos from "./NotUpdatedInfos";
 import BoxOffice from "./BoxOffice";
@@ -57,6 +57,8 @@ export default function Hero({
         onChange={(e) => {
           MovieInfosCtx.setSearchMovieKeyword(e.target.value);
           MovieInfosCtx.setInputVal(true);
+          // 해당 input에서 value값을 searchMovieKeyword state에 넣어줬습니다.
+          // 또한, 박스오피스와의 충돌을 막기위해 setInputVal(true)로 변경시켜줍니다.
         }}
         />
       {searchedMovie &&

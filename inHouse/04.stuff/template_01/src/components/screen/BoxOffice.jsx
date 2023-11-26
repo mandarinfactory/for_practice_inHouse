@@ -2,12 +2,15 @@ import { useEffect, useContext } from "react";
 import { MovieInfoContextStore } from "../../contexts";
 
 export default function BoxOffice({ isBoxOffice, setNotUpdatedInfos }) {
-  const MovieInfosCtx = useContext(MovieInfoContextStore);
+  const MovieInfosCtx = useContext(MovieInfoContextStore); 
+  // 모든 state를 관리하기 위해서 contextAPI를 이용했습니다.(추후 redux 배워서 redux로 바꿀 예정)
 
   const clickHandler = (v) => {
     MovieInfosCtx.setInputVal(false);
     const clickedTitle = v.target.innerText.replace(/1?2?3?4?5?./, "  ");
     MovieInfosCtx.setSearchMovieKeyword(clickedTitle);
+    // API에서 가져온 데이터들을 clickedTitle로 변수화해서 상세정보API에 줄 state값으로 넣어줍니다.
+    // clickhandler 함수가 특정 영화를 클릭시, 실행되게 해줍니다.
   };
 
   useEffect(() => {
@@ -18,12 +21,15 @@ export default function BoxOffice({ isBoxOffice, setNotUpdatedInfos }) {
           MovieInfosCtx.searchMovieKeyword?.replace(/ /g, "")
         );
       });
+      // searchMovieKeyword에서 통해 받은 API에서 state에 저장한 값을
+      //  다시 필터링을 통해 상세영화페이지 modal창에 줄 데이터를 만들었습니다.
       if (filteredTitle !== undefined) {
         MovieInfosCtx.setMovieVal(filteredTitle);
         MovieInfosCtx.setDetailMovieInfos(true);
         setNotUpdatedInfos(false);
       } else if (filteredTitle === undefined && !MovieInfosCtx.inputVal) {
         setNotUpdatedInfos(true);
+        // 만약, state에 저장한 값이 undefined면 정보를 불러올 수 없다는 modal을 true로 변경해줍니다.
       }
     }
   }, [

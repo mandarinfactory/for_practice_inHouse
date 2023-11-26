@@ -25,6 +25,8 @@ export const getSearchMovieInfo = async (MovieInfosCtx, setSearchedMovie) => {
 
   if (MovieInfosCtx.searchMovieKeyword) {
     if (MovieInfosCtx.searchMovieKeyword.includes("  ")) {
+      // 만약, searchMovieKeyword state에 "  "가 포함되어있다면 아예 searchedMovie를 undefined로 만들어
+      // 검색결과가 없어지게 구현했습니다.
       MovieInfosCtx.setBoxesMoviesInfo(json.Data[0].Result);
       setSearchedMovie(undefined);
     } else {

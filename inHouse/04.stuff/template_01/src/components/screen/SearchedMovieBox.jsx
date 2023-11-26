@@ -14,6 +14,8 @@ export default function SearchedMovieBox({ searchedMovie, clickedToFocus }) {
           MovieInfosCtx.setDetailMovieInfos(true);
           MovieInfosCtx.setMovieVal(searchedMovie[i]);
           clickedToFocus.current?.scrollIntoView({ behavior: "smooth" });
+          // useRef(clickedToFocus)를 Hero.jsx에서 props로 받아 scrollIntoView를 이용해 검색결과가 너무 길어서
+          // 상세modal로 자동으로 올라오게 구현했습니다.
           }}
         >
           <div className="flex flex-col justify-center items-start">
