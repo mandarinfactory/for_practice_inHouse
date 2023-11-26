@@ -205,7 +205,7 @@ export default function Project() {
           ref={frame3Ref}
         >
           <div
-            className="card relative w-full h-full rounded-2xl bg-gradient-to-r from-[#2a73dc] to-[#6c9ee7] bg-center bg-no-repeat shadow-lg duartion-200 transition-all ease-out overflow-hidden"
+            className="card relative w-full h-full rounded-2xl bg-gradient-to-r from-[#2a73dc] to-gray-500 bg-center bg-no-repeat shadow-lg duartion-200 transition-all ease-out overflow-hidden"
             ref={card3Ref}
           >
             <div
