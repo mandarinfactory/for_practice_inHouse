@@ -10,16 +10,10 @@ export default function Navbar() {
         자기소개
       </Link>
       <Link
-        className="mr-9 text-xl hover:text-gray-900 dark:hover:text-gray-400 cursor-pointer duration-100"
+        className="lg:mr-9 md:mr-9 sm:mr-0 text-xl hover:text-gray-900 dark:hover:text-gray-400 cursor-pointer duration-100"
         to={"/projects"}
       >
         프로젝트
-      </Link>
-      <Link
-        className="lg:mr-9 md:mr-9 sm:mr-0 text-xl hover:text-gray-900 dark:hover:text-gray-400 cursor-pointer duration-100"
-        to={"/contact"}
-      >
-        연락처
       </Link>
     </div>
   );
