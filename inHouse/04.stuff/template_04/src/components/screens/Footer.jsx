@@ -11,7 +11,7 @@ export default function Footer() {
           <p className="text-sm sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4 text-gray-500 dark:text-gray-300">
             깃헙 홈페이지
             <a
-              href="#"
+              href="https://github.com/mandarinfactory"
               className="ml-1 text-gray-500 dark:text-gray-300"
               rel="noopener noreferrer"
               target="_blank"
