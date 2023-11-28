@@ -16,6 +16,7 @@ export default function MovieCurations({
       <button
         className="p-2 my-3 absolute top-5 right-10 bg-white text-black lg:text-2xl sm:text-xl hover:bg-black hover:text-white duration-200"
         onClick={() => {setGenres(genre[randomNumber])}}
+        // 버튼을 누르면 무작위로 나오는 장르값이 바뀌면서 같이 영화 리스트도 바뀌게 구현했습니다.
       >
         다시추천!
       </button>
@@ -24,6 +25,7 @@ export default function MovieCurations({
       </h1>
       <div className="flex lg:flex-row sm:flex-col justify-center items-center w-full h-full">
         {curatedMovie ? (
+          // App.jsx에서 curatedMovie state에 genre state를 포함한 API데이터값을 넣어서 가져와 구현했습니다.
           curatedMovie.map((movie, i) => (
             <div
               className="w-full h-auto px-2 py-3 m-2 bg-white rounded-xl backdrop-filter backdrop-blur-md bg-opacity-50 border-gray-200 shadow-xl hover:bg-slate-300 duration-100  cursor-pointer"

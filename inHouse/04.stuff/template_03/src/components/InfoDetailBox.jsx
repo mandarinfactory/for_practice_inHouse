@@ -9,6 +9,7 @@ export default function InfoDetailBox() {
 
   useEffect(() => {
     const randomNumber = Math.ceil(Math.random() * 10);
+    // 각각 저장된 사진들이 무작위로 나오게 지정해놨습니다.
     setRandomNum(randomNumber);
     switch (MapInfosCtx.filteredStoreClass) {
       case "cafe":
@@ -26,8 +27,10 @@ export default function InfoDetailBox() {
       case "pharmacy":
         setMatchedStoreClass("pharmacy");
         break;
+        // 각각 클릭한 메뉴들이랑 사진들이 맞도록 switch문을 이용했습니다.
     }
   }, [MapInfosCtx.isMarkerClicked]);
+  // 마커를 클릭할때 바로 실행될 수 있도록 dependency를 넣었습니다.
 
   return (
     <div

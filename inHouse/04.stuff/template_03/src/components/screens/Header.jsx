@@ -47,11 +47,12 @@ export default function Header() {
                 largeClass: "I2",
                 middleClass: "I212",
                 smallClass: "I21201",
+                // 해당 메뉴를 클릭하면 각각의 상점분류를 state값으로 저장해 API에 추가해서 필요한 데이터만 가져오도록 구현했습니다.
               });
               MapInfosCtx.setFilteredStoreClass("cafe");
               scrollToTop();
             }}
-            >
+          >
             카페
           </button>
           <button
@@ -65,7 +66,7 @@ export default function Header() {
               MapInfosCtx.setFilteredStoreClass("restaurant");
               scrollToTop();
             }}
-            >
+          >
             음식점
           </button>
           <button
@@ -79,7 +80,7 @@ export default function Header() {
               MapInfosCtx.setFilteredStoreClass("cvs");
               scrollToTop();
             }}
-            >
+          >
             편의점
           </button>
           <button
@@ -93,7 +94,7 @@ export default function Header() {
               MapInfosCtx.setFilteredStoreClass("hospital");
               scrollToTop();
             }}
-            >
+          >
             병원
           </button>
           <button
@@ -107,12 +108,13 @@ export default function Header() {
               MapInfosCtx.setFilteredStoreClass("pharmacy");
               scrollToTop();
             }}
-            >
+          >
             약국
           </button>
         </nav>
         <div className="flex flex-row items-center lg:mt-0 md:mt-3 sm:mt-5">
           <Autocomplete
+          // React Google AutoComplete library를 사용했습니다.
             className="w-full px-3 py-2 rounded-2xl text-black text-xl"
             placeholder="도시를 입력해주세요."
             apiKey={import.meta.env.VITE_GOOGLE_AUTOCOMPLETE_KEY}
@@ -121,10 +123,13 @@ export default function Header() {
               MapInfosCtx.setInputVal(true);
               MapInfosCtx.setFilteredLat(place.geometry.location.lat());
               MapInfosCtx.setFilteredLng(place.geometry.location.lng());
+              // 원하는 도시를 클릭하면, 해당 도시의 위,경도값을 가져오도록 구현했습니다.
             }}
             options={{
               types: ["(regions)"],
+              // 지역으로 제한
               componentRestrictions: { country: "kr" },
+              // 한국으로 제한
             }}
             value={text}
           />
@@ -134,6 +139,7 @@ export default function Header() {
             viewBox="0 0 512 512"
             className="ml-3 fill-teal-100 cursor-pointer"
             onClick={onReset}
+            // 클릭시 검색했던 도시가 지워지게 구현했습니다.
           >
             <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z" />
           </svg>

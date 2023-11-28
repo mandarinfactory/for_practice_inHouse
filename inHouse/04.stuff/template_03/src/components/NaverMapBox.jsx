@@ -76,11 +76,13 @@ export default function NaverMapBox() {
             ? map.panTo({
                 lat: MapInfosCtx?.filteredLat,
                 lng: MapInfosCtx?.filteredLng,
+              // input에서 장소 검색시의 위,경도
               })
             : MapInfosCtx.clickedInfoBox
             ? map.panTo({
                 lat: MapInfosCtx.clickedInfoBox.lat,
                 lng: MapInfosCtx.clickedInfoBox.lng,
+                // 상점리스트 클릭시 받는 위,경도
               })
             : undefined
         }
@@ -106,6 +108,7 @@ export default function NaverMapBox() {
                 if (MapInfosCtx.clickedMarkerIndex !== key) {
                   setIsMouseMove(true);
                   v.originalEvent.target.parentNode.style.zIndex = 3;
+                  // 마커들에 hover-event를 주기위해 직접적으로 node를 타서 임의로 z-index를 변경시키게끔 해서 구현했습니다.
                 }
               }}
               onMouseout={(v) => {
@@ -117,12 +120,14 @@ export default function NaverMapBox() {
               onClick={() => {
                 MapInfosCtx.handleMarkerClick(key);
                 map.panTo({ lat: e.lat, lng: e.lon });
+                // 마커를 클릭하면 해당 위치로 움직이게 구현했습니다.
                 MapInfosCtx.setIsMarkerClicked(e.bizesNm);
                 MapInfosCtx.setClickedMarkerClass(e.ksicNm);
                 MapInfosCtx.setClickedMarkerAddress(e.lnoAdr);
               }}
               icon={{
                 content: [createMapMarkerBox(e.bizesNm, key)].join(""),
+                // 마커는 js파일로 따로 커스텀화해 만들었습니다.
               }}
             />
           ))

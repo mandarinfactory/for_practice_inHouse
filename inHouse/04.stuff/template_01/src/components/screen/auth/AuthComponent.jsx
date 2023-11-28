@@ -39,6 +39,7 @@ export default function AuthComponent() {
         const errorCode = error.code;
         const errorMessage = error.message;
       });
+      // modal창이 나오면 아이디, 비밀번호를 입력하고 --> 회원가입 클릭후 --> 로그인하는걸로 구현했습니다.
   };
 
   return (

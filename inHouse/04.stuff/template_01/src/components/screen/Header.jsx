@@ -15,6 +15,7 @@ export default function Header() {
   const handleLogout = () => {
     MovieInfosCtx.setIsLoginClicked(false);
     setLoggedHandler(true);
+    // 로그인, 로그아웃 toggle형식으로 만들었습니다.
   };
 
   return (
