@@ -119,6 +119,7 @@ export default function DetailScreen() {
                   zoomEnabled={false}
                   zoomTapEnabled={false}
                   rotateEnabled={false}
+                  // ReactNative expo에서 MapView를 이용하면 쉽게 지도를 이용할 수 있었습니다.
                 >
                   <Marker
                     coordinate={initialCoord}

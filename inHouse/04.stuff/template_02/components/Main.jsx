@@ -31,6 +31,7 @@ export default function Main() {
   );
   const aptObj = { setState: AptInfosCtx.setPressedAptLocData };
   const weatherObj = { setState: AptInfosCtx.setWeatherLocData };
+  // 해당 state들을 jsx가 아닌 js파일내 함수에 사용하기 위해 따로 변수화해서 사용했습니다.
 
   const getLocationHandler = async () => {
     const { granted } = await Location.requestForegroundPermissionsAsync();

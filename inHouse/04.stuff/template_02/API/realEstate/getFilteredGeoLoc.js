@@ -19,7 +19,7 @@ const getFilteredGeoLocation = async (value, { setState }) => {
 
   proj4.defs["EPSG:5179"] =
     "+proj=tmerc +lat_0=38 +lon_0=127.5 +k=0.9996 +x_0=1000000 +y_0=2000000 +ellps=GRS80 +units=m +no_defs"; //제공되는 좌표
-
+  // 위,경도 변환 library를 사용했습니다.
   let grs80 = proj4.Proj(proj4.defs["EPSG:5179"]);
   let wgs84 = proj4.Proj(proj4.defs["EPSG:4326"]); // 위경도
 
@@ -27,6 +27,7 @@ const getFilteredGeoLocation = async (value, { setState }) => {
   p = proj4.transform(grs80, wgs84, p);
 
   setState([p.y, p.x]);
+  // 현재위치의 위,경도를 기상청x,y값으로 변환된 값을 state값으로 넣어줬습니다.
 };
 
 export default getFilteredGeoLocation;

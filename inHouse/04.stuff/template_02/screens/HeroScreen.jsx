@@ -14,6 +14,7 @@ export default function HeroScreen() {
     <>
       {AptInfosCtx.apartmentData !== undefined &&
       AptInfosCtx.apartmentData.sort(function (x, y) {
+        // 아파트실거래가API데이터를 가져와서 해당 데이터를 내림차순으로 다시 정렬했습니다.
         return parseInt(y.거래금액) - parseInt(x.거래금액);
       }) ? (
         <View style={styles.outerConatiner}>
@@ -22,6 +23,7 @@ export default function HeroScreen() {
               현재{" "}
               <Text style={styles.titleText}>
                 {AptInfosCtx.searchTextValue
+                // 시/도검색칸에서 검색할경우의 state와 아닐때를 나눠놨습니다.
                   ? AptInfosCtx.searchTextValue.시도명
                   : AptInfosCtx.recentLocation[0].city}{" "}
                 {AptInfosCtx.searchTextValue
@@ -55,7 +57,11 @@ export default function HeroScreen() {
                   .toString()
                   .trim()
                   .replace(/,/g, "0000")
-                  .replace(/(\d)(?=(?:\d{3})+(?!\d))/g, "$1,")}
+                  //단위가 만원단위라서 아예 0000을 붙여 1원단위부터 나오게 했습니다.
+                  .replace(/(\d)(?=(?:\d{3})+(?!\d))/g, "$1,")
+                  // (\d)는 숫자를, (?=(?:\d{3})+(?!\d))는 숫자뒤에는 3자리마다 하나의 숫자가 있어야한다는거고,
+                  // $1,은 숫자($1)뒤에 ,를 추가하게 합니다. --> 천 단위로 ,로 숫자를 구분하게 해줍니다.
+                  }
                 원
               </Text>
               <Text style={styles.innerText}>

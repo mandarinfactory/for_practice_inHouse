@@ -10,6 +10,7 @@ export default function WeatherScreen() {
   return (
     <>
       {AptInfosCtx.weatherData !== undefined ? (
+        // 날씨API에서 받은 state값이 undefined가 아니면 구현되도록 했습니다.
         <View style={styles.innerContainer}>
           <Text style={styles.weatherText}>{AptInfosCtx.recentLocation !== undefined ? AptInfosCtx.recentLocation[0].district : AptInfosCtx.recentLocation}의</Text>
           <Text style={styles.innerText}>
@@ -18,6 +19,7 @@ export default function WeatherScreen() {
             도 입니다.
           </Text>
           {AptInfosCtx.weatherData[2]?.obsrValue == 0 ? (
+            // obsrValue는 현재 강수량을 알려주는 값입니다.
             <View>
               <Text style={styles.innerText}>
                 오늘은 비 또는 눈이 오지 않습니다.

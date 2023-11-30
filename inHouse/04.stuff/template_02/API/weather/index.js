@@ -16,6 +16,7 @@ const getWeatherDataAPI = async (AptInfosCtx) => {
   const API_KEY = process.env.EXPO_PUBLIC_PUBLICDATA_API_KEY;
   const headers =
     AptInfosCtx.weatherLocData !== undefined
+    // 변환된 현재위치값을 API header에 대입해 원하는 값을 가져오게 했습니다.
       ? `&pageNo=1&numOfRows=10&dataType=JSON&base_date=${date}&base_time=${
           hours - 100
         }&nx=${AptInfosCtx.weatherLocData.x}&ny=${AptInfosCtx.weatherLocData.y}`

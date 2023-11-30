@@ -16,7 +16,9 @@ export default function SearchScreen() {
       addressData.forEach((v) => {
         if (value == v.시군구명) {
           addressArr.push(v);
+          //addressArr.json으로 따로 배열값들을 저장해놨습니다.
           setFilteredAddressData(addressArr);
+          //input값과 같은 장소가 나오면 따로 배열에 저장시켜서 state값으로 넣었습니다.
         }
       });
     } else {
@@ -29,6 +31,7 @@ export default function SearchScreen() {
       <View style={styles.innerSearchContainer}>
       <Ionicons name="navigate-circle" color={Colors.subColor} size={30} style={styles.locationIcon} onPress={() => {
             AptInfosCtx.setSearchTextValue(undefined)
+            // 나침반 아이콘을 누르면 검색값이 사라지면서 현재 위치 기준으로 실거래값을 가져오게 했습니다.
           }}/>
         <TextInput
           style={styles.searchInput}
@@ -63,7 +66,7 @@ export default function SearchScreen() {
         </Text>
         <Text style={styles.subtitleText}>순위를 알고 싶으신가요?</Text>
         <Text style={styles.subtitleText}>
-          <Text style={styles.subtitleInnerText}>궁금한 구</Text>를 검색해
+          <Text style={styles.subtitleInnerText}>궁금한 시/구</Text>를 검색해
           보세요!
         </Text>
       </View>
