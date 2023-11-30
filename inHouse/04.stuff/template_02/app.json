@@ -11,6 +11,9 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
     "assetBundlePatterns": [
       "**/*"
     ],
@@ -20,7 +23,7 @@
       "Info.plist": {
         "NSLocation*UsageDescription": "Allow $(PRODUCT_NAME) to use your location"
       },
-      "bundleIdentifier": "com.native.realEstateTemplate"
+      "bundleIdentifier": "com.template.realestate"
     },
     "android": {
       "adaptiveIcon": {
@@ -33,7 +36,8 @@
       ],
       "andorid:name": "com.naver.maps.map.ia4i567onk",
       "android:value": "ia4i567onk",
-      "package": "com.native.android"
+      "package": "com.template.realestate",
+      "versionCode": 1
     },
     "web": {
       "favicon": "./assets/favicon.png"
