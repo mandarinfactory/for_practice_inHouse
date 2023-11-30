@@ -20,6 +20,7 @@ const getAptTradeAPI = async (AptInfosCtx, pressedLocValue) => {
     });
   const xmlString = await response.text();
   const parseString = require("react-native-xml2js").parseString;
+  // 아파트 실거래가 API가 xml이라서 json으로 변환하는 library를 썼습니다.
   parseString(xmlString, (err, result) => {
     if (err !== null) {
       console.log("ERROR", err);
