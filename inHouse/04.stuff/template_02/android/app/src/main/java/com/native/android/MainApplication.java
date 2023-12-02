@@ -1,4 +1,4 @@
-package com.native.android;
+package com.template_03.android;
 
 import android.app.Application;
 import android.content.res.Configuration;
@@ -12,6 +12,7 @@ import com.facebook.react.config.ReactFeatureFlags;
 import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint;
 import com.facebook.react.defaults.DefaultReactNativeHost;
 import com.facebook.soloader.SoLoader;
+import com.facebook.react.BuildConfig;
 
 import expo.modules.ApplicationLifecycleDispatcher;
 import expo.modules.ReactNativeHostWrapper;

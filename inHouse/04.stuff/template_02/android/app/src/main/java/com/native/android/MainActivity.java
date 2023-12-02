@@ -1,4 +1,4 @@
-package com.native.android;
+package com.template_03.android;
 
 import android.os.Build;
 import android.os.Bundle;

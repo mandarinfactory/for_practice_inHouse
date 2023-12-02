@@ -83,7 +83,7 @@ android {
 
     namespace "com.template03"
     defaultConfig {
-        applicationId 'com.native.android'
+        applicationId 'com.template_03app.android'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
