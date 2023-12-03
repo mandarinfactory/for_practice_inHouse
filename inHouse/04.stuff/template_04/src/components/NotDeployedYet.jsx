@@ -1,15 +1,19 @@
 export default function NotDeployedYet({ setNotDeployedYet }) {
   return (
     <div
-      className="absolute top-[40%] right-[39%] w-[25%] h-[25%] bg-slate-300 shadow-xl rounded-2xl flex justify-center items-center cursor-pointer"
+      className="absolute top-[40%] lg:right-[39%] md:right-[30%] sm:right-[30%] lg:w-[25%] mdLw-[40%] sm:w-[45%] h-[25%] bg-slate-300 shadow-xl rounded-2xl flex justify-center items-center cursor-pointer"
       onClick={() => {
         setNotDeployedYet(false);
       }}
     >
-      <h1 className="text-3xl">
+      <h1 className="lg:text-2xl md:text-xl sm:text-xl">
         프로젝트 집순위는
         <br />
-        아직 베포 예정입니다!
+        현재 안드로이드 앱 심사중 입니다!
+        <br />
+        심사완료되는데로 빠른 업데이트
+        <br />
+        예정입니다!
       </h1>
     </div>
   );
