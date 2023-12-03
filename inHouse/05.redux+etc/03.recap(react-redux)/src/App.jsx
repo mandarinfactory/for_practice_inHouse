@@ -1,3 +1,4 @@
+import ChangeColor from "./components/ChangeColor";
 import Login from "./components/Login";
 import Profile from "./components/Profile";
 
@@ -6,6 +7,7 @@ function App() {
     <div>
       <Profile />
       <Login />
+      <ChangeColor />
     </div>
   );
 }
