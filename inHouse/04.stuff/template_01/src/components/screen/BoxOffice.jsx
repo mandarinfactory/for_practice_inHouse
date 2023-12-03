@@ -2,15 +2,16 @@ import { useEffect, useContext } from "react";
 import { MovieInfoContextStore } from "../../contexts";
 
 export default function BoxOffice({ isBoxOffice, setNotUpdatedInfos }) {
-  const MovieInfosCtx = useContext(MovieInfoContextStore); 
+  const MovieInfosCtx = useContext(MovieInfoContextStore);
   // 모든 state를 관리하기 위해서 contextAPI를 이용했습니다.(추후 redux 배워서 redux로 바꿀 예정)
-
+  
   const clickHandler = (v) => {
     MovieInfosCtx.setInputVal(false);
     const clickedTitle = v.target.innerText.replace(/1?2?3?4?5?./, "  ");
     MovieInfosCtx.setSearchMovieKeyword(clickedTitle);
     // API에서 가져온 데이터들을 clickedTitle로 변수화해서 상세정보API에 줄 state값으로 넣어줍니다.
     // clickhandler 함수가 특정 영화를 클릭시, 실행되게 해줍니다.
+    dispatch(searchMovieKeyword(clickedTitle));
   };
 
   useEffect(() => {

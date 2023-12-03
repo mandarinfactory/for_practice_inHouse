@@ -5,18 +5,20 @@ export const MovieInfoContextStore = createContext(); // context생성
 
 const MovieInfoContext = (props) => {
   const [isLoading, setIsLoading] = useState(true);
+  const [inputVal, setInputVal] = useState(false);
   const [searchMovieKeyword, setSearchMovieKeyword] = useState();
   const [boxesMoviesInfo, setBoxesMoviesInfo] = useState();
-  const [detailMovieInfos, setDetailMovieInfos] = useState(false);
   const [movieVal, setMovieVal] = useState();
-  const [inputVal, setInputVal] = useState(false);
+  const [detailMovieInfos, setDetailMovieInfos] = useState(false);
   const [moviesInfo, setMoviesInfo] = useState([]);
+
   const [isBoxOfficeBoxClicked, setIsBoxOfficeBoxClicked] = useState(false);
   const [isUpcomingBoxClicked, setIsUpcomingBoxClicked] = useState(false);
   const [isLoginBtnClicked, setIsLoginBtnClicked] = useState(false);
   const [isLoginClicked, setIsLoginClicked] = useState(false);
   const [isSignUpClicked, setIsSignUpClicked] = useState(false);
   const [isTrailerClicked, setIsTrailerClicked] = useState(false);
+  
   const [userIdName, setUserIdName] = useState();
 
   const MovieInfoStore = {
