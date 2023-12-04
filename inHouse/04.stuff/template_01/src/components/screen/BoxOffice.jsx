@@ -11,7 +11,6 @@ export default function BoxOffice({ isBoxOffice, setNotUpdatedInfos }) {
     MovieInfosCtx.setSearchMovieKeyword(clickedTitle);
     // API에서 가져온 데이터들을 clickedTitle로 변수화해서 상세정보API에 줄 state값으로 넣어줍니다.
     // clickhandler 함수가 특정 영화를 클릭시, 실행되게 해줍니다.
-    dispatch(searchMovieKeyword(clickedTitle));
   };
 
   useEffect(() => {

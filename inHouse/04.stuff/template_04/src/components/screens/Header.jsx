@@ -9,8 +9,8 @@ export default function Header({ isDarkMode, setIsDarkMode }) {
   }, [isDarkMode]);
   return (
     <>
-      <header className="bg-slate-100 text-gray-600 body-font dark:bg-slate-800 dark:text-gray-100">
-        <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+      <header className="bg-slate-100 text-gray-600 body-font dark:bg-slate-900 dark:text-gray-100">
+        <div className="container mx-auto flex flex-wrap p-5 flex-col lg:flex-row md:flex-row items-center">
           <Link
             className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
             to={"./"}
@@ -23,15 +23,14 @@ export default function Header({ isDarkMode, setIsDarkMode }) {
             >
               <path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6zm80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3L562.7 256l-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3z" />
             </svg>
-
             <span className="ml-3 text-2xl text-black dark:text-gray-100">
               이호준의 포트폴리오
             </span>
           </Link>
-          <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
+          <nav className="lg:ml-auto md:ml-auto flex flex-wrap items-center text-base justify-center">
             <Navbar />
           </nav>
-          <button className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">
+          <button className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-2 lg:mt-0 md:mt-0">
             {!isDarkMode ? (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
