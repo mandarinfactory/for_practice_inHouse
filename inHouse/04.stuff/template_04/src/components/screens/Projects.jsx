@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import style from "../style/frame.module.css";
 import NotDeployedYet from "../NotDeployedYet";
+import * as card from "./projectCard";
 
 export default function Project() {
   const frame1Ref = useRef(null);
@@ -18,66 +19,12 @@ export default function Project() {
   const [notDeployedYet, setNotDeployedYet] = useState(false);
 
   useEffect(() => {
-    const handleMouseMove = (frameRef, cardRef, lightRef) => (e) => {
-      const { x, y, width, height } = frameRef.current.getBoundingClientRect();
-      const left = e.clientX - x;
-      const top = e.clientY - y;
-      const centerX = left - width / 2;
-      const centerY = top - height / 2;
-      const d = Math.sqrt(centerX ** 2 + centerY ** 2);
+    card.attachMouseEvents(frame1Ref, card1Ref, light1Ref);
 
-      cardRef.current.style.boxShadow = `
-        ${-centerX / 10}px ${-centerY / 10}px 10px rgba(0,0,0,0.2)
-      `;
-      cardRef.current.style.transform = `
-        rotate3d(
-          ${-centerY / 100}, ${centerX / 100}, 0, ${d / 10}deg
-        )
-      `;
-      lightRef.current.style.backgroundImage = `
-        radial-gradient(
-          circle at ${left}px ${top}px, #00000010, #ffffff00, #ffffff70
-        )
-      `;
-    };
+    card.attachMouseEvents(frame2Ref, card2Ref, light2Ref);
 
-    const attachMouseEvents = (frameRef, cardRef, lightRef) => {
-      frameRef.current.addEventListener("mouseenter", () => {
-        frameRef.current.addEventListener(
-          "mousemove",
-          handleMouseMove(frameRef, cardRef, lightRef)
-        );
-      });
-      frameRef.current.addEventListener("mouseleave", () => {
-        frameRef.current.removeEventListener(
-          "mousemove",
-          handleMouseMove(frameRef, cardRef, lightRef)
-        );
-        cardRef.current.style.boxShadow = "";
-        cardRef.current.style.transform = "";
-        lightRef.current.style.backgroundImage = "";
-      });
-    };
-
-    const windowResize = (frameRef) => {
-      window.addEventListener("resize", () => {
-        const rect = frameRef.current.getBoundingClientRect();
-        x = rect.x;
-        y = rect.y;
-        width = rect.width;
-        height = rect.height;
-      });
-    };
-
-    attachMouseEvents(frame1Ref, card1Ref, light1Ref);
-    //windowResize(frame1Ref);
-
-    attachMouseEvents(frame2Ref, card2Ref, light2Ref);
-    //windowResize(frame2Ref);
-
-    attachMouseEvents(frame3Ref, card3Ref, light3Ref);
-    //windowResize(frame3Ref);
-  }, []);
+    card.attachMouseEvents(frame3Ref, card3Ref, light3Ref);
+  }, [useRef]);
 
   return (
     <>
