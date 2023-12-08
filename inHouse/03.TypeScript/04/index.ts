@@ -7,8 +7,18 @@ if (title?.innerHTML !== undefined) {
   title.innerHTML = "반가워요!";
 }
 
-const link = document.querySelector(".link");
-if (link instanceof HTMLAnchorElement) {
-  // 그냥 Element가 아닌 보다 상세한 type들이다. HTMLAnchor/Button...
-  link.href = "https://www.kakao.com";
-}
+const link = document.querySelectorAll(".link");
+link.forEach((e) => {
+  if (e instanceof HTMLAnchorElement) {
+    // 그냥 Element가 아닌 보다 상세한 type들이다. HTMLAnchor/Button...
+    e.href = "https://www.kakao.com";
+  }
+});
+
+const button = document.querySelector(".button");
+const image = document.querySelector(".image");
+button?.addEventListener("click", (v) => {
+  if (typeof v !== undefined) {
+    if (image instanceof HTMLImageElement) image.src = "new.jpg";
+  }
+});
