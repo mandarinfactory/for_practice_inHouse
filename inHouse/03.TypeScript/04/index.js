@@ -56,5 +56,27 @@ class Word {
     }
 }
 let word1 = new Word(1, 4, "ab", "cd");
-; // interface는 =필요없다. class만드는법과 유사하다.
 let 네모 = { color: "red", width: 900 };
+let 학생 = { name: "kim", score: 90 };
+let 선생 = { name: "kim", age: 20, score: 87 };
+let 상품 = {
+    brand: "Samsung",
+    serialNumber: 1360,
+    model: ["TV", "phone"],
+};
+let 장바구니 = [
+    { product: "청소기", price: 7000 },
+    { product: "삼다수", price: 800 },
+];
+class Numbers {
+    constructor(x, y) {
+        this.plus = () => {
+            return this.number1 + this.number2;
+        };
+        this.minus = () => {
+            return this.number1 - this.number2;
+        };
+        this.number1 = x;
+        this.number2 = y;
+    }
+}
