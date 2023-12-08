@@ -21,3 +21,40 @@ button === null || button === void 0 ? void 0 : button.addEventListener("click",
             image.src = "new.jpg";
     }
 });
+/* 08. class문법에서 type지정하기 */
+class Person {
+    constructor(a) {
+        this.name = a;
+    }
+}
+let 사람1 = new Person("a");
+let 사람2 = new Person("b");
+class Car {
+    constructor(x, y) {
+        this.tax = () => {
+            return this.price / 10;
+        }; // prototype
+        this.model = x;
+        this.price = y;
+    }
+}
+let car1 = new Car("아반떼", 3000);
+class Word {
+    constructor(...param) {
+        let number = [];
+        let string = [];
+        param.forEach((v) => {
+            if (typeof v === "string") {
+                string.push(v);
+            }
+            else {
+                number.push(v);
+            }
+        });
+        this.num = number;
+        this.str = string;
+    }
+}
+let word1 = new Word(1, 4, "ab", "cd");
+; // interface는 =필요없다. class만드는법과 유사하다.
+let 네모 = { color: "red", width: 900 };
