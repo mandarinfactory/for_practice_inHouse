@@ -1,22 +1,23 @@
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Dispatch } from "redux";
+import { RootState, increment } from "./main";
 
 function App() {
-  const [user, setUser] = useState<string | number>("kim");
+  const 꺼내온거 = useSelector((state: RootState) => state);
+  const dispatch: Dispatch = useDispatch();
 
   return (
-    <div>
-      <h1>안녕</h1>
-      <Profile name="철수" age={20} />
+    <div className="App">
+      {꺼내온거.counter1.user}
+      <button
+        onClick={() => {
+          dispatch(increment());
+        }}
+      >
+        버튼
+      </button>
     </div>
   );
 }
-
-const Profile = (props: { name: string; age: number }): JSX.Element => {
-  return (
-    <div>
-      프로필입니다. {props.name}, {props.age}
-    </div>
-  );
-};
 
 export default App;
