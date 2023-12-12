@@ -37,9 +37,7 @@ export type RootState = ReturnType<typeof store.getState>;
 export let { increment, decrement, incrementByAmount } = counterSlice.actions;
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>
+  <Provider store={store}>
+    <App />
+  </Provider>
 );

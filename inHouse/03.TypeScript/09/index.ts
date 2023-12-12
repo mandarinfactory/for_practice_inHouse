@@ -12,7 +12,7 @@ const 함수21 = (...x: [string, number]) => {
 let arr4 = [1, 2, 3];
 let arr5: [number, number, ...number[]] = [4, 5, 6, ...arr4];
 
-/* 외부파일 이용시 declare & ambient module */
+/* 18. 외부파일 이용시 declare & ambient module */
 
 declare let a :number;
 // declare를 통해 변수 재정의를 해줄 수 있다. --> 어디선가 다르게 정의된 변수를 가져올때 declare를 쓴다.

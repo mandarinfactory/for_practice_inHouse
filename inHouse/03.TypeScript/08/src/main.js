@@ -34,8 +34,6 @@ let store = (0, toolkit_1.configureStore)({
 });
 //수정방법 만든거 export
 _a = counterSlice.actions, exports.increment = _a.increment, exports.decrement = _a.decrement, exports.incrementByAmount = _a.incrementByAmount;
-client_1.default.createRoot(document.getElementById("root")).render(<react_1.default.StrictMode>
-    <react_redux_1.Provider store={store}>
-      <App_tsx_1.default />
-    </react_redux_1.Provider>
-  </react_1.default.StrictMode>);
+client_1.default.createRoot(document.getElementById("root")).render(<react_redux_1.Provider store={store}>
+    <App_tsx_1.default />
+  </react_redux_1.Provider>);
