@@ -1,10 +1,9 @@
-import PageHeader from "./components/layout/PageHeader";
+import Button from "./components/Button";
 
 function App() {
   return (
-    <div className="max-h-screen flex flex-col">
-      <PageHeader />
-      <div>2</div>
+    <div className="min-h-screen flex justify-center">
+      <Button backgroundColor="red" fontSize={30} pillShape={true} />
     </div>
   );
 }
