@@ -1,9 +1,0 @@
-.container, .container div {
-    border: 5px solid darkred;
-    margin: 10px;
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
