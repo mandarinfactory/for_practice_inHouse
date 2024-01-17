@@ -20,11 +20,22 @@
 
     <script>
       const reducer = (state, action) => {
+        console.log(state, action);
+        // input 클릭전 -> undefined {type: '@@redux/INITw.c.r.7.f.a'}
+        // input 클릭후() -> {color: 'darkgreen'}, {type: 'change_color', color: 'firebrick'}
         if (state === undefined) {
           // state의 초깃값 -> 아직 setting되지 않았으므로 초기값인 undefined를 출력한다.
           return { color: "darkgreen" }; // 이게 초기 state값으로 setting이 된다.
         }
+        let newState;
+        if (action.type === "change_color") {
+          newState = Object.assign({}, state, { color: "yellow" });
+        }
+        return newState;
       };
+      // 어쨌든 reducer라는 함수는 이전의 state와 가져온 action객체함수를 가지고 새로운 state값을 출력한다.
+      // 따라서 action값이 뭐가 되었건 return된 state값으로 변경된다.
+      // 하지만 state값을 직접 건들이기보단 복사본으로 만들어서 사용하는것을 추천한다. (newState, JS의 불변성을 위해서!)
       const store = Redux.createStore(reducer);
       console.log(store.getState()); // getState()를 통해 초기값을 확인할 수 있다.
 
@@ -34,9 +45,7 @@
         <div class="container" id="component_red" style="background-color:${state.color}">
             <h1>red</h1>
             <input type="button" value="fire" onclick="
-            document.querySelector('#component_red').style.backgroundColor = 'red';
-            document.querySelector('#component_green').style.backgroundColor = 'red';
-            document.querySelector('#component_blue').style.backgroundColor = 'green';
+              store.dispatch({ type:'change_color', color:'firebrick' });
             ">
         </div>
     `;
