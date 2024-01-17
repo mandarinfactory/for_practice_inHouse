@@ -1,4 +1,5 @@
-import { createSlice, configureStore } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
+import counterSlice from "./counterSlice";
 
 /*
 const reducer = (currentState, action) => {
@@ -10,22 +11,10 @@ const reducer = (currentState, action) => {
 };
 const initialState = { value: 0 };
 const store = createStore(reducer, initialState);
+--> react-redux를 쓸때 쓰는법
 */
 
-const counterSlice = createSlice({
-  name: "counter",
-  initialState: { value: 452 },
-  reducers: {
-    // 복수형인 reducers이다!
-    up: (state, action) => {
-      console.log(action);
-      // 따로 if문 쓰지 않아도 type이 up일때를 말한다!
-      state.value = state.value + action.payload;
-      // 따로 불변성을 위해 복사하지 않아도 자동으로 복사 후 state변환이 일어난다!
-      // actions를 쓰면 자동으로 type으로 가져올 값을 payload로 가져온다!
-    },
-  },
-});
+
 const store = configureStore({
   reducer: {
     // configureStore내 reducer에는 각각의 slice내 reducers을 써주면 된다.
@@ -34,4 +23,4 @@ const store = configureStore({
   },
 });
 
-export {store, counterSlice};
+export default store;

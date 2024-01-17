@@ -1,9 +1,11 @@
 import { Provider, useSelector, useDispatch } from "react-redux";
-import * as redux from "./store";
+
+import counterSlice from "./store/counterSlice";
+import store from "./store/store";
 
 export default function App() {
   return (
-    <Provider store={redux.store}>
+    <Provider store={store}>
       <Counter />
     </Provider>
   );
@@ -18,7 +20,7 @@ const Counter = () => {
     <div>
       <button
         onClick={() => {
-          dispatch(redux.counterSlice.actions.up(2));
+          dispatch(counterSlice.actions.up(2));
           // dispatch에 따로 type객체형태를 주지않고 actions.해당type이름(해당type으로 가져올 값)을 넣어줄수 있다.
         }}
       >
