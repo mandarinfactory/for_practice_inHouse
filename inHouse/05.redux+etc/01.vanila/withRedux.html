@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.0.1/redux.js"></script>
+  </head>
+  <body>
+    <style>
+      .container {
+        border: 5px solid black;
+        padding: 1rem;
+        margin-bottom: 1rem;
+      }
+      body {
+        margin: 1rem;
+      }
+    </style>
+    <h1>Redux로 만들기</h1>
+    <div id="red"></div>
+    <div id="green"></div>
+    <div id="blue"></div>
+
+    <script>
+      const reducer = (state, action) => {
+        if (state === undefined) {
+          // state의 초깃값 -> 아직 setting되지 않았으므로 초기값인 undefined를 출력한다.
+          return { color: "darkgreen" }; // 이게 초기 state값으로 setting이 된다.
+        }
+      };
+      const store = Redux.createStore(reducer);
+      console.log(store.getState()); // getState()를 통해 초기값을 확인할 수 있다.
+
+      function red() {
+        let state = store.getState(); // 초기의 state값을 가져옴
+        document.querySelector("#red").innerHTML = `
+        <div class="container" id="component_red" style="background-color:${state.color}">
+            <h1>red</h1>
+            <input type="button" value="fire" onclick="
+            document.querySelector('#component_red').style.backgroundColor = 'red';
+            document.querySelector('#component_green').style.backgroundColor = 'red';
+            document.querySelector('#component_blue').style.backgroundColor = 'green';
+            ">
+        </div>
+    `;
+      }
+      red();
+    </script>
+  </body>
+</html>
