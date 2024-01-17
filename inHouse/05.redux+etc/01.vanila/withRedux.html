@@ -8,6 +8,7 @@
         border: 5px solid black;
         padding: 1rem;
         margin-bottom: 1rem;
+        color: white;
       }
       body {
         margin: 1rem;
@@ -15,8 +16,8 @@
     </style>
     <h1>Redux로 만들기</h1>
     <div id="red"></div>
-    <div id="green"></div>
     <div id="blue"></div>
+    <div id="green"></div>
 
     <script>
       const reducer = (state, action) => {
@@ -25,11 +26,11 @@
         // input 클릭후() -> {color: 'darkgreen'}, {type: 'change_color', color: 'firebrick'}
         if (state === undefined) {
           // state의 초깃값 -> 아직 setting되지 않았으므로 초기값인 undefined를 출력한다.
-          return { color: "darkgreen" }; // 이게 초기 state값으로 setting이 된다.
+          return { color: "purple" }; // 이게 초기 state값으로 setting이 된다.
         }
         let newState;
         if (action.type === "change_color") {
-          newState = Object.assign({}, state, { color: "yellow" });
+          newState = Object.assign({}, state, { color: action.color });
         }
         return newState;
       };
@@ -39,18 +40,47 @@
       const store = Redux.createStore(reducer);
       console.log(store.getState()); // getState()를 통해 초기값을 확인할 수 있다.
 
-      function red() {
+      const red = () => {
         let state = store.getState(); // 초기의 state값을 가져옴
         document.querySelector("#red").innerHTML = `
         <div class="container" id="component_red" style="background-color:${state.color}">
             <h1>red</h1>
             <input type="button" value="fire" onclick="
-              store.dispatch({ type:'change_color', color:'firebrick' });
+              store.dispatch({ type:'change_color', color:'darkred' });
             ">
         </div>
     `;
       }
+      store.subscribe(red);
       red();
+
+      const blue = () => {
+        let state = store.getState(); // 초기의 state값을 가져옴
+        document.querySelector("#blue").innerHTML = `
+        <div class="container" id="component_blue" style="background-color:${state.color}">
+            <h1>blue</h1>
+            <input type="button" value="fire" onclick="
+              store.dispatch({ type:'change_color', color:'darkblue' });
+            ">
+        </div>
+    `;
+      }
+      store.subscribe(blue);
+      blue();
+
+      const green = () => {
+        let state = store.getState(); // 초기의 state값을 가져옴
+        document.querySelector("#green").innerHTML = `
+        <div class="container" id="component_green" style="background-color:${state.color}">
+            <h1>green</h1>
+            <input type="button" value="fire" onclick="
+              store.dispatch({ type:'change_color', color:'darkgreen' });
+            ">
+        </div>
+    `;
+      }
+      store.subscribe(green);
+      green();
     </script>
   </body>
 </html>
