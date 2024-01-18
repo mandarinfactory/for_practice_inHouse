@@ -10,9 +10,12 @@ export type Address = {
   detail: string;
   zipCode: number;
 };
+export type AddressWithoutZip = Omit<Address, "zipCode">;
 
 export type Menu = {
-  name: string;
-  price: number;
-  category: string;
+    name: string;
+    price: number;
+    category: string;
 };
+
+export type MenuWithoutPrice = Omit<Menu, "price">;

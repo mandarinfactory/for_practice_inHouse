@@ -4,6 +4,7 @@ import "./App.css";
 import Store from "./Store";
 
 import { Address, Restaurant } from "./model/restuarant";
+import BestMenu from "./BestMenu";
 
 let data: Restaurant = { 
   name: "restuarant",
@@ -37,9 +38,13 @@ const App: React.FC = () => {
   const changeAddress = (address:Address) => {
     setMyRestaurant({...myRestuarant, address:address});
   }
+  const showBestMenuName = (name:string) => {
+    return name;
+  }
   return (
     <>
       <Store data={myRestuarant} changeAddress={changeAddress}/>
+      <BestMenu name='cheezepizza' category='western' showBestMenuName={showBestMenuName}/>
     </>
   );
 };
