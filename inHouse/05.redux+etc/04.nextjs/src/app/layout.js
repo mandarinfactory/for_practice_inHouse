@@ -1,12 +1,14 @@
 import Link from "next/link";
-import './globals.css';
+import "./globals.css";
 
-export const metadata = {
+/* export const metadata = {
   title: "NEXTJS 기초!",
   description: "NEXTJS 기초강의!",
-};
+}; */
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const response = await fetch("http://localhost:9999/topics");
+  const topics = await response.json();
   return (
     <html>
       <body>
@@ -14,12 +16,13 @@ export default function RootLayout({ children }) {
           <Link href="/">WEB</Link>
         </h1>
         <ol>
-          <li>
-            <Link href="/read/1">html</Link>
-          </li>
-          <li>
-            <Link href="/read/2">css</Link>
-          </li>
+          {topics?.map((topic) => {
+            return (
+              <li key={topic.id}>
+                <Link href={`/read/${topic.id}`}>{topic.title}</Link>
+              </li>
+            );
+          })}
         </ol>
         {children}
         <ul>
