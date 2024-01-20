@@ -1,17 +1,14 @@
-import React from "react";
 import Header from "./components/Header";
-import Footer from "./components/Footer";
-import Hero from "./components/Hero";
+import Map from "./components/Map";
 
-const App:React.FC = () => {
+const App: React.FC = () => {
 
   return (
     <>
       <Header />
-      <Hero />
-      <Footer />
+      <Map />
     </>
-  )
-}
+  );
+};
 
 export default App;

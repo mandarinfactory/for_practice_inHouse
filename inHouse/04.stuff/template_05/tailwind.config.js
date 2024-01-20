@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend: {},
+    fontFamily: {
+      'sans': ['S-CoreDream-3Light'],
+    }
   },
   plugins: [],
 }
