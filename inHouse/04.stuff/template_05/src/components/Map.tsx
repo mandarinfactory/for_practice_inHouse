@@ -34,6 +34,7 @@ const Map: React.FC = () => {
         setClickedLocation({ latitude: v.coord._lat, longitude: v.coord._lng });
       });
       if (typeof clickedLocation !== "string") {
+        setIsMarkerSaved(true);
         const markerPosition = [
           clickedLocation.latitude,
           clickedLocation.longitude,
@@ -49,7 +50,11 @@ const Map: React.FC = () => {
 
   return (
     <>
-      <div id="map" style={{ width: "100%", height: "800px" }}></div>
+      <div id="map" style={{ width: "100%", height: "800px" }}>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" className="p-3 absolute bottom-10 right-10 w-15 h-12 text-white bg-red-500 rounded-full z-[2]">
+            <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
+          </svg>
+      </div>
     </>
   );
 };
