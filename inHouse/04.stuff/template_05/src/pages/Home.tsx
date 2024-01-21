@@ -1,13 +1,13 @@
-import React from 'react'
-import Navbar from '../components/Navbar'
+import React, { useEffect } from "react";
 
-const Home:React.FC = () => {
+
+const Home: React.FC = () => {
+
   return (
-    
     <>
-        <Navbar />
-    </>
-  )
-}
 
-export default Home
+    </>
+  );
+};
+
+export default Home;
