@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { getHomepageVideos } from "../store/reducers/getHomepageVideos";
@@ -6,11 +6,9 @@ import { getHomepageVideos } from "../store/reducers/getHomepageVideos";
 const Hero: React.FC = () => {
   const dispatch = useDispatch<any>();
   const videoSelector = useSelector<any>((state) => state.youtubeApp);
-  const [isHeroLoad, setIsHeroLoad] = useState<boolean>(false);
 
   useEffect(() => {
     dispatch(getHomepageVideos());
-    setIsHeroLoad(true);
   }, [dispatch]);
 
   return (

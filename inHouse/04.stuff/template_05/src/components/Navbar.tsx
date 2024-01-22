@@ -17,9 +17,13 @@ const Navbar: React.FC = () => {
         </a>
         <h1 className="mx-5 my-3 text-4xl font-bold">밥반찬친구</h1>
         <div>
-          <p>기다리고 기다리던 나의 밥반찬친구..!</p>
-          <p>밥먹을때, 심심할때, 설거지할때 원하는 YouTube영상을 본다!</p>
+          <p className="text-xs">기다리고 기다리던 나의 밥반찬친구..!</p>
+          <p className="text-xs">밥먹을때, 심심할때, 설거지할때 원하는 YouTube영상을 본다!</p>
         </div>
+        <div>
+          메뉴보드판
+        </div>
+        <input type="text" className="bg-slate-200 ml-10 text-xl p-2 rounded-3xl" />
       </div>
     </header>
   );
