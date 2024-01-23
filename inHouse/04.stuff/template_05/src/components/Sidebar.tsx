@@ -1,9 +1,17 @@
-import React from 'react'
+import React from "react";
 
-const Sidebar = () => {
+import MainSidebar from "./sidebar/MainSidebar";
+import SubSidebar from "./sidebar/SubSidebar";
+import CategorySidebar from "./sidebar/CategorySidebar";
+
+const Sidebar: React.FC = () => {
   return (
-    <div>Sidebar</div>
-  )
-}
+    <div className="sticky top-0 flex flex-col w-[7%] h-[50%] mx-5 bg-slate-50 rounded-3xl shadow-2xl">
+      <MainSidebar />
+      <SubSidebar />
+      <CategorySidebar />
+    </div>
+  );
+};
 
-export default Sidebar
+export default Sidebar;

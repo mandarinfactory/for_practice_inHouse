@@ -13,14 +13,18 @@ const Hero: React.FC = () => {
 
   return (
     <>
-      <div className="flex flex-wrap flex-1 justify-center">
+      <div className="w-[85%] flex flex-wrap justify-center">
         {videoSelector?.videos?.items?.map(
-          (value: { key: string; value: any }, id) => (
-            <div className="m-5">
+          (value: { key: string; value: any }, id: number) => (
+            <div className="w-[290px] h-300px m-3" key={id}>
               <iframe
                 src={`https://www.youtube.com/embed/${value.id.videoId}?autoplay-1`}
-                className="w-[540px] h-[360px]"
+                className="w-[290px] h-[200px] rounded-3xl"
               ></iframe>
+              <h1 className="text-lg my-2 overflow-hidden truncate">
+                {value.snippet.title}
+              </h1>
+              <p className="text-xs">채널이름 : {value.snippet.channelTitle}</p>
             </div>
           )
         )}

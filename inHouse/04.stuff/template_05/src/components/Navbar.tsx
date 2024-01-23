@@ -2,10 +2,10 @@ import React from "react";
 
 const Navbar: React.FC = () => {
   return (
-    <header className="w-[80%] mx-auto my-7 text-black body-font bg-slate-50 rounded-[2rem] shadow-xl">
-      <div className="container flex flex-wrap p-3 flex-col md:flex-row justify-center items-center">
-        <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-          <div className="w-15 h-15 p-3 bg-indigo-800 flex justify-center items-center rounded-full">
+    <header className="w-[90%] mx-auto my-7 text-black body-font bg-slate-50 rounded-[2rem] shadow-xl">
+      <div className="container flex flex-wrap p-3 flex-col mx-auto md:flex-row justify-center items-center">
+        <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0" href="./">
+          <div className="p-4 bg-indigo-800 rounded-full">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 384 512"
@@ -15,15 +15,26 @@ const Navbar: React.FC = () => {
             </svg>
           </div>
         </a>
-        <h1 className="mx-5 my-3 text-4xl font-bold">밥반찬친구</h1>
-        <div>
-          <p className="text-xs">기다리고 기다리던 나의 밥반찬친구..!</p>
-          <p className="text-xs">밥먹을때, 심심할때, 설거지할때 원하는 YouTube영상을 본다!</p>
+        <h1 className="mx-5 my-3 text-4xl font-bold">밥반찬</h1>
+        <div className="text-sm mx-5">
+          <p>필요할때 보는 나의 밥반찬..!</p>
+          <p>밥먹을때, 심심할때, 설거지할때 원하는 YouTube영상을 본다!</p>
         </div>
-        <div>
-          메뉴보드판
+        <input
+          type="text"
+          className="bg-slate-200 ml-10 text-xl p-2 rounded-3xl"
+        />
+        <div className="p-3 ml-5 rounded-full bg-indigo-800 hover:bg-indigo-700 cursor-pointer">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="white"
+            className="w-9 h-9"
+          >
+            <path d="M8.25 4.5a3.75 3.75 0 1 1 7.5 0v8.25a3.75 3.75 0 1 1-7.5 0V4.5Z" />
+            <path d="M6 10.5a.75.75 0 0 1 .75.75v1.5a5.25 5.25 0 1 0 10.5 0v-1.5a.75.75 0 0 1 1.5 0v1.5a6.751 6.751 0 0 1-6 6.709v2.291h3a.75.75 0 0 1 0 1.5h-7.5a.75.75 0 0 1 0-1.5h3v-2.291a6.751 6.751 0 0 1-6-6.709v-1.5A.75.75 0 0 1 6 10.5Z" />
+          </svg>
         </div>
-        <input type="text" className="bg-slate-200 ml-10 text-xl p-2 rounded-3xl" />
       </div>
     </header>
   );
