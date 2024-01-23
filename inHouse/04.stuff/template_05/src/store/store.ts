@@ -4,14 +4,17 @@ import { InitialState } from "../types/types";
 import { getHomepageVideos } from "./reducers/getHomepageVideos";
 
 const initialState: InitialState = {
+  searchVal: "",
   videos: [],
 };
 
-const YoutubeSlice = createSlice({
+export const YoutubeSlice = createSlice({
   name: "youtubeApp",
   initialState,
   reducers: {
-
+    search: (state, action) => {
+      state.searchVal = action.payload;
+    }
   },
   extraReducers: (builder => {
     builder.addCase(getHomepageVideos.fulfilled,(state, action) => {

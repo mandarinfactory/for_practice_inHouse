@@ -1,4 +1,5 @@
 export interface InitialState {
+  searchVal: string;
   videos: HomePageVideos[];
 }
 

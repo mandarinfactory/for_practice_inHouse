@@ -1,10 +1,16 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { YoutubeSlice } from "../store/store";
 
 const Navbar: React.FC = () => {
+  const dispatch = useDispatch();
   return (
     <header className="w-[90%] mx-auto my-7 text-black body-font bg-slate-50 rounded-[2rem] shadow-xl">
       <div className="container flex flex-wrap p-3 flex-col mx-auto md:flex-row justify-center items-center">
-        <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0" href="./">
+        <a
+          className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
+          href="./"
+        >
           <div className="p-4 bg-indigo-800 rounded-full">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -18,11 +24,14 @@ const Navbar: React.FC = () => {
         <h1 className="mx-5 my-3 text-4xl font-bold">밥반찬</h1>
         <div className="text-sm mx-5">
           <p>필요할때 보는 나의 밥반찬..!</p>
-          <p>밥먹을때, 심심할때, 설거지할때 원하는 YouTube영상을 본다!</p>
+          <p>밥먹을때, 심심할때, 설거지할때 원하는 영상을 본다!</p>
         </div>
         <input
           type="text"
-          className="bg-slate-200 ml-10 text-xl p-2 rounded-3xl"
+          className="bg-slate-200 ml-10 text-xl px-5 py-3 rounded-3xl"
+          onChange={(v) => {
+            dispatch(YoutubeSlice.actions.search(v.target.value));
+          }}
         />
         <div className="p-3 ml-5 rounded-full bg-indigo-800 hover:bg-indigo-700 cursor-pointer">
           <svg

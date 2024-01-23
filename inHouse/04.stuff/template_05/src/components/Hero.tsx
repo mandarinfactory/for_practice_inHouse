@@ -9,6 +9,8 @@ const Hero: React.FC = () => {
 
   useEffect(() => {
     dispatch(getHomepageVideos());
+    console.log(videoSelector);
+    
   }, [dispatch]);
 
   return (
