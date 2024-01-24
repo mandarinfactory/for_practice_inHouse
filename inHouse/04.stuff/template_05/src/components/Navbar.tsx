@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { YoutubeSlice } from "../store/store";
+import { YoutubeSlice, store } from "../store/store";
+import { getSearchVideos } from "../store/reducers/getSearchVideos";
 
 const Navbar: React.FC = () => {
   const dispatch = useDispatch();
@@ -30,7 +31,7 @@ const Navbar: React.FC = () => {
           type="text"
           className="bg-slate-200 ml-10 text-xl px-5 py-3 rounded-3xl"
           onChange={(v) => {
-            dispatch(YoutubeSlice.actions.search(v.target.value));
+            store.dispatch(getSearchVideos(YoutubeSlice.actions.searchSucess(v.target.value)));
           }}
         />
         <div className="p-3 ml-5 rounded-full bg-indigo-800 hover:bg-indigo-700 cursor-pointer">

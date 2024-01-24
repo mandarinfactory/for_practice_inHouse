@@ -9,7 +9,7 @@ export const getHomepageVideos = createAsyncThunk(
   async () => {
     try {
       const response = await fetch(
-        `${YOUTUBE_API_URL}/search?maxResults=30&key=${API_KEY}&part=snippet&regionCode=kr&type=video`
+        `${YOUTUBE_API_URL}/search?maxResults=5&key=${API_KEY}&part=snippet&regionCode=kr&q=무한도전&type=video`
       );
       const data = await response.json();
       return data;
