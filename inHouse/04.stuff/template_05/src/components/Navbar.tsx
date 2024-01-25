@@ -1,10 +1,19 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+
 import { YoutubeSlice, store } from "../store/store";
 import { getSearchVideos } from "../store/reducers/getSearchVideos";
 
 const Navbar: React.FC = () => {
-  const dispatch = useDispatch();
+  const getInputValue = (event) => {
+    if (event.key === "Enter") {
+      const inputValueElement =
+        document.querySelector<HTMLInputElement>(".inputValue");
+      const inputValue = inputValueElement?.value;
+      store.dispatch(
+        getSearchVideos(YoutubeSlice.actions.searchSucess(inputValue))
+      );
+    }
+  };
   return (
     <header className="w-[90%] mx-auto my-7 text-black body-font bg-slate-50 rounded-[2rem] shadow-xl">
       <div className="container flex flex-wrap p-3 flex-col mx-auto md:flex-row justify-center items-center">
@@ -28,10 +37,10 @@ const Navbar: React.FC = () => {
           <p>밥먹을때, 심심할때, 설거지할때 원하는 영상을 본다!</p>
         </div>
         <input
-          type="text"
-          className="bg-slate-200 ml-10 text-xl px-5 py-3 rounded-3xl"
-          onChange={(v) => {
-            store.dispatch(getSearchVideos(YoutubeSlice.actions.searchSucess(v.target.value)));
+          type="textd"
+          className="inputValue bg-slate-200 ml-10 text-xl px-5 py-3 rounded-3xl"
+          onKeyDown={(value) => {
+            getInputValue(value);
           }}
         />
         <div className="p-3 ml-5 rounded-full bg-indigo-800 hover:bg-indigo-700 cursor-pointer">

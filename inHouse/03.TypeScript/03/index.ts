@@ -41,7 +41,7 @@ const 가위바위보 = (x: "가위" | "바위" | "보"): ("가위" | "바위" |
 
 var 자료 = {
   name: "kim",
-} as const;
+} as const
 자료.name; // "kim"
 
 function 함수10(a: "kim") {}
