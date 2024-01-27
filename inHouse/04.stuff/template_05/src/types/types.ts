@@ -1,14 +1,18 @@
-export interface InitialState {
-  searchVal: string;
-  videos: HomePageVideos[];
-  clickedVideos: [{ key: string; value: string }];
-  comments: HomePageVideos[];
+export interface FirstVideoState {
+  videos: any[];
+}
+
+export interface LoadingError {
   loading: boolean;
   error: null;
 }
 
-export interface HomePageVideos {
-  items: {
-    string: any;
-  };
+export interface SearchInputState extends LoadingError {
+  searchVal: string;
+  clickedVideos: any[];
 }
+
+export interface CommentState extends LoadingError {
+  comments: string[],
+}
+

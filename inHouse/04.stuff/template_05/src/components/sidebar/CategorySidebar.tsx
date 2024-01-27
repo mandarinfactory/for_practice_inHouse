@@ -3,7 +3,9 @@ import React from "react";
 const CategorySidebar: React.FC = () => {
   return (
     <div className="flex flex-col">
-      <div className="flex flex-col justify-center items-center mb-7 hover:text-indigo-800 cursor-pointer">
+      <div className="flex flex-col justify-center items-center mb-7 hover:text-indigo-800 cursor-pointer" onClick={() => {
+        
+      }}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"

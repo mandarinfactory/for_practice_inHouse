@@ -2,7 +2,6 @@ import React from "react";
 
 import Hero from "../components/Hero";
 import Layout from "./Layout";
-import VideoScreen from "./VideoScreen";
 
 const Home: React.FC = () => {
   return (

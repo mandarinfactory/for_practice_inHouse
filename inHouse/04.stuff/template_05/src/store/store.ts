@@ -1,34 +1,51 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 
-import { InitialState } from "../types/types";
+import { CommentState, FirstVideoState, SearchInputState } from "../types/types";
 import { getHomepageVideos } from "./reducers/getHomepageVideos";
 
-const initialState: InitialState = {
+const searchInputState: SearchInputState = {
   searchVal: "",
-  videos: [],
+  loading: false,
+  error: null,
   clickedVideos: [],
+};
+const commentState: CommentState = {
   comments: [],
   loading: false,
   error: null,
 };
+const firstVideoState: FirstVideoState = {
+  videos: [],
+};
 
-export const YoutubeSlice = createSlice({
-  name: "youtubeApp",
-  initialState,
+export const SearchInputSlice = createSlice({
+  name: "youtubeSearchInputApp",
+  initialState: searchInputState,
   reducers: {
+    searchStart: (state) => {
+      state.loading = true;
+    },
     searchSucess: (state, action) => {
+      console.log(action);
       state.searchVal = action.payload;
       state.loading = false;
       state.error = null;
-    },
-    searchStart: (state) => {
-      state.loading = true;
     },
     searchFailure: (state, action) => {
       state.searchVal = "";
       state.loading = false;
       state.error = action.payload;
     },
+    clickedVideos: (state, action) => {
+      state.clickedVideos = [...state.clickedVideos, action.payload];
+    },
+  },
+});
+
+export const CommentSlice = createSlice({
+  name: "youtubeCommentApp",
+  initialState: commentState,
+  reducers: {
     commentsStart: (state) => {
       state.loading = true;
     },
@@ -40,11 +57,13 @@ export const YoutubeSlice = createSlice({
       state.comments = [];
       state.error = action.payload;
     },
-    clickedVideos: (state, action) => {
-      state.clickedVideos = state.clickedVideos.push(action.payload)
-      console.log(state);
-      
-    }
+  },
+});
+
+export const YoutubeSlice = createSlice({
+  name: "youtubeApp",
+  initialState: firstVideoState,
+  reducers: {
   },
   extraReducers: (builder) => {
     builder.addCase(getHomepageVideos.fulfilled, (state, action) => {
@@ -53,11 +72,15 @@ export const YoutubeSlice = createSlice({
   },
 });
 
-export const { searchStart, searchSucess, searchFailure } = YoutubeSlice.actions;
-export const { commentsStart, commentsSucess,commentsFailure } = YoutubeSlice.actions;
+export const { searchStart, searchSucess, searchFailure } =
+  SearchInputSlice.actions;
+export const { commentsStart, commentsSucess, commentsFailure } =
+  CommentSlice.actions;
 
 export const store = configureStore({
   reducer: {
+    youtubeSearchInputApp: SearchInputSlice.reducer,
+    youtubeCommentApp: CommentSlice.reducer,
     youtubeApp: YoutubeSlice.reducer,
   },
 });
