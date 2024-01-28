@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 import { SearchInputSlice, store } from "../store/store";
 import { getSearchVideos } from "../store/reducers/getSearchVideos";
@@ -31,9 +30,9 @@ const Navbar: React.FC = () => {
             </svg>
           </div>
         </div>
-        <h1 className="mx-5 my-3 text-4xl font-bold">밥반찬</h1>
+        <h1 className="mx-5 my-3 text-4xl font-bold">밥튜브</h1>
         <div className="text-sm mx-5">
-          <p>필요할때 보는 나의 밥반찬..!</p>
+          <p>필요할때 보는 나의 밥튜브..!</p>
           <p>밥먹을때, 심심할때, 설거지할때 원하는 영상을 본다!</p>
         </div>
         <input

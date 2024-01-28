@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend: {},
+    fontFamily: {
+      'sans': ['KBO-Dia-Gothic_bold'],
+    }
   },
   plugins: [],
 }
