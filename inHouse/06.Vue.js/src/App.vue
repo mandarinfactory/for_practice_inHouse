@@ -1,30 +1,28 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
   <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+    <h2>{{ products[0] }}</h2>
+    <p>5,000만원</p>
   </div>
-  <HelloWorld msg="Vite + Vue" />
+  <div>
+    <h2>{{ products[1] }}</h2>
+    <p>4,700만원</p>
+  </div>
+  <div>
+    <h2>{{ products[2] }}</h2>
+    <p>6,500만원</p>
+  </div>
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>
+<script>
+export default {
+  name: "App",
+  data() {
+    return {
+      products: ["역삼동원룸", "천호동원룸", "마포구원룸"],
+    };
+  }, // vue.js는 여기다가 data를 보관한다. => react에서 useState역할을 한다.
+  components: {},
+};
+</script>
+
+<style></style>
