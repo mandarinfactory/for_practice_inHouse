@@ -2,8 +2,10 @@ import React from "react";
 
 import { SearchInputSlice, store } from "../store/store";
 import { getSearchVideos } from "../store/reducers/getSearchVideos";
+import { useSpeechToText } from "../hooks/useSpeechToText";
 
 const Navbar: React.FC = () => {
+  const { transcript, listening, toggleListening } = useSpeechToText();
   const getInputValue = (event: any) => {
     if (event.key === "Enter") {
       const inputValueElement =
@@ -17,9 +19,12 @@ const Navbar: React.FC = () => {
   return (
     <header className="w-[90%] mx-auto my-7 text-black body-font bg-slate-50 rounded-[2rem] shadow-xl">
       <div className="container flex flex-wrap p-3 flex-col mx-auto md:flex-row justify-center items-center">
-        <div className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer" onClick={() => {
-          window.location.reload();
-        }}>
+        <div
+          className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer"
+          onClick={() => {
+            window.location.reload();
+          }}
+        >
           <div className="p-4 bg-indigo-800 rounded-full">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -42,16 +47,26 @@ const Navbar: React.FC = () => {
             getInputValue(value);
           }}
         />
-        <div className="p-3 ml-5 rounded-full bg-indigo-800 hover:bg-indigo-700 cursor-pointer">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="white"
-            className="w-9 h-9"
-          >
-            <path d="M8.25 4.5a3.75 3.75 0 1 1 7.5 0v8.25a3.75 3.75 0 1 1-7.5 0V4.5Z" />
-            <path d="M6 10.5a.75.75 0 0 1 .75.75v1.5a5.25 5.25 0 1 0 10.5 0v-1.5a.75.75 0 0 1 1.5 0v1.5a6.751 6.751 0 0 1-6 6.709v2.291h3a.75.75 0 0 1 0 1.5h-7.5a.75.75 0 0 1 0-1.5h3v-2.291a6.751 6.751 0 0 1-6-6.709v-1.5A.75.75 0 0 1 6 10.5Z" />
-          </svg>
+        <div>
+          <textarea
+            className="transcript"
+            value={transcript}
+            onChange={() => {}}
+          ></textarea>
+          <button className="transcript p-3 ml-5 rounded-full bg-indigo-800 hover:bg-indigo-700 cursor-pointer">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="white"
+              className="w-9 h-9"
+            >
+              <path d="M8.25 4.5a3.75 3.75 0 1 1 7.5 0v8.25a3.75 3.75 0 1 1-7.5 0V4.5Z" />
+              <path d="M6 10.5a.75.75 0 0 1 .75.75v1.5a5.25 5.25 0 1 0 10.5 0v-1.5a.75.75 0 0 1 1.5 0v1.5a6.751 6.751 0 0 1-6 6.709v2.291h3a.75.75 0 0 1 0 1.5h-7.5a.75.75 0 0 1 0-1.5h3v-2.291a6.751 6.751 0 0 1-6-6.709v-1.5A.75.75 0 0 1 6 10.5Z" />
+            </svg>
+            <button onClick={toggleListening}>
+              {listening ? "음성인식 중지" : "음성인식 시작"}
+            </button>
+          </button>
         </div>
       </div>
     </header>
