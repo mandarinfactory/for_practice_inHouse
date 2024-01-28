@@ -1,8 +1,18 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 
-import { CommentState, FirstVideoState, SearchInputState } from "../types/types";
+import {
+  ClickedButtonPageState,
+  CommentState,
+  FirstVideoState,
+  SearchInputState,
+} from "../types/types";
 import { getHomepageVideos } from "./reducers/getHomepageVideos";
 
+const clickedButtonPageState: ClickedButtonPageState = {
+  clickedValue: "",
+  loading: false,
+  error: null,
+};
 const searchInputState: SearchInputState = {
   searchVal: "",
   loading: false,
@@ -18,6 +28,26 @@ const firstVideoState: FirstVideoState = {
   videos: [],
 };
 
+export const ClickedButtonPageSlice = createSlice({
+  name: "youtubeClickedButtonPageApp",
+  initialState: clickedButtonPageState,
+  reducers: {
+    clickedStart: (state) => {
+      state.loading = true;
+    },
+    clickedSucess: (state, action) => {
+      state.clickedValue = action.payload;
+      state.loading = false;
+      state.error = null;
+    },
+    clickedFailure: (state, action) => {
+      state.clickedValue = "";
+      state.loading = false;
+      state.error = action.payload;
+    },
+  },
+});
+
 export const SearchInputSlice = createSlice({
   name: "youtubeSearchInputApp",
   initialState: searchInputState,
@@ -26,7 +56,6 @@ export const SearchInputSlice = createSlice({
       state.loading = true;
     },
     searchSucess: (state, action) => {
-      console.log(action);
       state.searchVal = action.payload;
       state.loading = false;
       state.error = null;
@@ -63,8 +92,7 @@ export const CommentSlice = createSlice({
 export const YoutubeSlice = createSlice({
   name: "youtubeApp",
   initialState: firstVideoState,
-  reducers: {
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(getHomepageVideos.fulfilled, (state, action) => {
       state.videos = action.payload;
@@ -72,6 +100,8 @@ export const YoutubeSlice = createSlice({
   },
 });
 
+export const { clickedStart, clickedSucess, clickedFailure } =
+  ClickedButtonPageSlice.actions;
 export const { searchStart, searchSucess, searchFailure } =
   SearchInputSlice.actions;
 export const { commentsStart, commentsSucess, commentsFailure } =
@@ -79,6 +109,7 @@ export const { commentsStart, commentsSucess, commentsFailure } =
 
 export const store = configureStore({
   reducer: {
+    youtubeClickedButtonPageApp: ClickedButtonPageSlice.reducer,
     youtubeSearchInputApp: SearchInputSlice.reducer,
     youtubeCommentApp: CommentSlice.reducer,
     youtubeApp: YoutubeSlice.reducer,

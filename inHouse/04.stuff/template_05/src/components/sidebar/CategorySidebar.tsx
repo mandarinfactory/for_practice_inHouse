@@ -1,10 +1,15 @@
 import React from "react";
 
+import { ClickedButtonPageSlice, store } from "../../store/store";
+import { getClickedSidebar } from "../../store/reducers/getClickedSidebar";
+
 const CategorySidebar: React.FC = () => {
   return (
     <div className="flex flex-col">
       <div className="flex flex-col justify-center items-center mb-7 hover:text-indigo-800 cursor-pointer" onClick={() => {
-        
+        store.dispatch(
+          getClickedSidebar(ClickedButtonPageSlice.actions.clickedSucess(""))
+        )
       }}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -21,7 +26,11 @@ const CategorySidebar: React.FC = () => {
 
         <h1>인기 급상승</h1>
       </div>
-      <div className="flex flex-col justify-center items-center mb-7 hover:text-indigo-800 cursor-pointer">
+      <div className="flex flex-col justify-center items-center mb-7 hover:text-indigo-800 cursor-pointer" onClick={() => {
+        store.dispatch(
+          getClickedSidebar(ClickedButtonPageSlice.actions.clickedSucess("음악"))
+        )
+      }}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
@@ -36,7 +45,11 @@ const CategorySidebar: React.FC = () => {
         </svg>
         <h1>음악</h1>
       </div>
-      <div className="flex flex-col justify-center items-center mb-7 hover:text-indigo-800 cursor-pointer">
+      <div className="flex flex-col justify-center items-center mb-7 hover:text-indigo-800 cursor-pointer" onClick={() => {
+        store.dispatch(
+          getClickedButtonPage(ClickedButtonPageSlice.actions.clickedSucess("영화"))
+        )
+      }}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
@@ -51,7 +64,11 @@ const CategorySidebar: React.FC = () => {
         </svg>
         <h1>영화</h1>
       </div>
-      <div className="flex flex-col justify-center items-center mb-7 hover:text-indigo-800 cursor-pointer">
+      <div className="flex flex-col justify-center items-center mb-7 hover:text-indigo-800 cursor-pointer" onClick={() => {
+        store.dispatch(
+          getClickedButtonPage(ClickedButtonPageSlice.actions.clickedSucess("live"))
+        )
+      }}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 576 512"

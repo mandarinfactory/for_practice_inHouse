@@ -16,3 +16,7 @@ export interface CommentState extends LoadingError {
   comments: string[],
 }
 
+export interface ClickedButtonPageState extends LoadingError {
+  clickedValue: string
+}
+
