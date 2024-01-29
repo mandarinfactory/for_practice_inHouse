@@ -8,7 +8,7 @@ const CategorySidebar: React.FC = () => {
     <div className="flex flex-col">
       <div className="flex flex-col justify-center items-center mb-7 hover:text-indigo-800 cursor-pointer" onClick={() => {
         store.dispatch(
-          getClickedSidebar(ClickedButtonPageSlice.actions.clickedSucess(""))
+          getClickedSidebar(ClickedButtonPageSlice.actions.clickedSuccess(""))
         )
       }}>
         <svg
@@ -28,7 +28,7 @@ const CategorySidebar: React.FC = () => {
       </div>
       <div className="flex flex-col justify-center items-center mb-7 hover:text-indigo-800 cursor-pointer" onClick={() => {
         store.dispatch(
-          getClickedSidebar(ClickedButtonPageSlice.actions.clickedSucess("음악"))
+          getClickedSidebar(ClickedButtonPageSlice.actions.clickedSuccess("음악"))
         )
       }}>
         <svg
@@ -47,7 +47,7 @@ const CategorySidebar: React.FC = () => {
       </div>
       <div className="flex flex-col justify-center items-center mb-7 hover:text-indigo-800 cursor-pointer" onClick={() => {
         store.dispatch(
-          getClickedButtonPage(ClickedButtonPageSlice.actions.clickedSucess("영화"))
+          getClickedSidebar(ClickedButtonPageSlice.actions.clickedSuccess("영화"))
         )
       }}>
         <svg
@@ -66,7 +66,7 @@ const CategorySidebar: React.FC = () => {
       </div>
       <div className="flex flex-col justify-center items-center mb-7 hover:text-indigo-800 cursor-pointer" onClick={() => {
         store.dispatch(
-          getClickedButtonPage(ClickedButtonPageSlice.actions.clickedSucess("live"))
+          getClickedSidebar(ClickedButtonPageSlice.actions.clickedSuccess("live"))
         )
       }}>
         <svg

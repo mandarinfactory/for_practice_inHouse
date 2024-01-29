@@ -3,6 +3,7 @@ import { configureStore, createSlice } from "@reduxjs/toolkit";
 import {
   ClickedButtonPageState,
   CommentState,
+  DictaphoneState,
   FirstVideoState,
   SearchInputState,
 } from "../types/types";
@@ -27,6 +28,10 @@ const commentState: CommentState = {
 const firstVideoState: FirstVideoState = {
   videos: [],
 };
+const dictaphoneState: DictaphoneState = {
+  mic: false,
+  micValue: "",
+};
 
 export const ClickedButtonPageSlice = createSlice({
   name: "youtubeClickedButtonPageApp",
@@ -35,7 +40,7 @@ export const ClickedButtonPageSlice = createSlice({
     clickedStart: (state) => {
       state.loading = true;
     },
-    clickedSucess: (state, action) => {
+    clickedSuccess: (state, action) => {
       state.clickedValue = action.payload;
       state.loading = false;
       state.error = null;
@@ -55,7 +60,7 @@ export const SearchInputSlice = createSlice({
     searchStart: (state) => {
       state.loading = true;
     },
-    searchSucess: (state, action) => {
+    searchSuccess: (state, action) => {
       state.searchVal = action.payload;
       state.loading = false;
       state.error = null;
@@ -78,7 +83,7 @@ export const CommentSlice = createSlice({
     commentsStart: (state) => {
       state.loading = true;
     },
-    commentsSucess: (state, action) => {
+    commentsSuccess: (state, action) => {
       state.comments = action.payload;
       state.error = null;
     },
@@ -100,12 +105,28 @@ export const YoutubeSlice = createSlice({
   },
 });
 
-export const { clickedStart, clickedSucess, clickedFailure } =
+export const DictaphoneSlice = createSlice({
+  name: "dictaphoneApp",
+  initialState: dictaphoneState,
+  reducers: {
+    dictaphoneStart: (state, action) => {
+      state.mic = action.payload;
+    },
+    dictaphoneSuccess: (state, action) => {
+      if(state.mic === true) {
+        state.micValue = action.payload;
+      }
+    },
+  },
+});
+
+export const { clickedStart, clickedSuccess, clickedFailure } =
   ClickedButtonPageSlice.actions;
-export const { searchStart, searchSucess, searchFailure } =
+export const { searchStart, searchSuccess, searchFailure } =
   SearchInputSlice.actions;
-export const { commentsStart, commentsSucess, commentsFailure } =
+export const { commentsStart, commentsSuccess, commentsFailure } =
   CommentSlice.actions;
+export const { dictaphoneStart, dictaphoneSuccess } = DictaphoneSlice.actions;
 
 export const store = configureStore({
   reducer: {
@@ -113,6 +134,7 @@ export const store = configureStore({
     youtubeSearchInputApp: SearchInputSlice.reducer,
     youtubeCommentApp: CommentSlice.reducer,
     youtubeApp: YoutubeSlice.reducer,
+    dictaphoneApp: DictaphoneSlice.reducer,
   },
 });
 

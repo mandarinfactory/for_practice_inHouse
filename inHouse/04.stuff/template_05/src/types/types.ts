@@ -13,10 +13,14 @@ export interface SearchInputState extends LoadingError {
 }
 
 export interface CommentState extends LoadingError {
-  comments: string[],
+  comments: string[];
 }
 
 export interface ClickedButtonPageState extends LoadingError {
-  clickedValue: string
+  clickedValue: string;
 }
 
+export interface DictaphoneState {
+  mic: boolean;
+  micValue: string;
+}

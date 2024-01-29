@@ -1,5 +1,5 @@
 import { YOUTUBE_API_URL } from "../../utils/constants";
-import { commentsFailure, commentsStart, commentsSucess } from "../store";
+import { commentsFailure, commentsStart, commentsSuccess } from "../store";
 
 const API_KEY = import.meta.env.VITE_YOUTUBE_DATA_API_KEY;
 
@@ -16,7 +16,7 @@ export const getClickedVideoComments =
       }
       const data = await response.json();
       console.log(data);
-      dispatch(commentsSucess(data));
+      dispatch(commentsSuccess(data));
     } catch (error) {
       dispatch(commentsFailure(error));
     }

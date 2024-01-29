@@ -1,9 +1,17 @@
 import React from "react";
 
+import { store } from "../../store/store";
+import { getClickedSidebar } from "../../store/reducers/getClickedSidebar";
+import { ClickedButtonPageSlice } from "../../store/store";
+
 const SubSidebar: React.FC = () => {
   return (
     <div className="flex flex-col">
-      <div className="flex flex-col justify-center items-center mb-7 hover:text-indigo-800 cursor-pointer">
+      <div className="flex flex-col justify-center items-center my-7 hover:text-indigo-800 cursor-pointer" onClick={() => {
+        store.dispatch(
+          getClickedSidebar(ClickedButtonPageSlice.actions.clickedSuccess("무한도전"))
+        )
+      }}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
@@ -16,9 +24,13 @@ const SubSidebar: React.FC = () => {
             clipRule="evenodd"
           />
         </svg>
-        <h1>내 채널</h1>
+        <h1>무한도전</h1>
       </div>
-      <div className="flex flex-col justify-center items-center hover:text-indigo-800 cursor-pointer">
+      <div className="flex flex-col justify-center items-center mb-7 hover:text-indigo-800 cursor-pointer" onClick={() => {
+        store.dispatch(
+          getClickedSidebar(ClickedButtonPageSlice.actions.clickedSuccess("침착맨"))
+        )
+      }}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
@@ -31,7 +43,45 @@ const SubSidebar: React.FC = () => {
             clipRule="evenodd"
           />
         </svg>
-        <h1>시청 기록</h1>
+        <h1>침착맨</h1>
+      </div>
+      <div className="flex flex-col justify-center items-center mb-7 hover:text-indigo-800 cursor-pointer" onClick={() => {
+        store.dispatch(
+          getClickedSidebar(ClickedButtonPageSlice.actions.clickedSuccess("haha ha"))
+        )
+      }}>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          className="w-8 h-8"
+        >
+          <path
+            fillRule="evenodd"
+            d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 6a.75.75 0 0 0-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 0 0 0-1.5h-3.75V6Z"
+            clipRule="evenodd"
+          />
+        </svg>
+        <h1>haha ha</h1>
+      </div>
+      <div className="flex flex-col justify-center items-center hover:text-indigo-800 cursor-pointer" onClick={() => {
+        store.dispatch(
+          getClickedSidebar(ClickedButtonPageSlice.actions.clickedSuccess("슈카월드"))
+        )
+      }}>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          className="w-8 h-8"
+        >
+          <path
+            fillRule="evenodd"
+            d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 6a.75.75 0 0 0-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 0 0 0-1.5h-3.75V6Z"
+            clipRule="evenodd"
+          />
+        </svg>
+        <h1>슈카월드</h1>
       </div>
       <div className="w-[80%] h-1 my-7 mx-auto bg-slate-300"></div>
     </div>

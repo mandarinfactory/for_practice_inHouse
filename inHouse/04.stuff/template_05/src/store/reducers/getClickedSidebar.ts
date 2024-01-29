@@ -1,5 +1,5 @@
 import { YOUTUBE_API_URL } from "../../utils/constants";
-import { clickedStart, clickedSucess, clickedFailure } from "../store";
+import { clickedStart, clickedSuccess, clickedFailure } from "../store";
 
 const API_KEY = import.meta.env.VITE_YOUTUBE_DATA_API_KEY;
 
@@ -14,7 +14,7 @@ export const getClickedSidebar =
         throw new Error("Failed to fetch data");
       }
       const data = await response.json();
-      dispatch(clickedSucess(data));
+      dispatch(clickedSuccess(data));
     } catch (error) {
       dispatch(clickedFailure(error));
     }

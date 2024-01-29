@@ -1,4 +1,4 @@
-import { searchStart, searchSucess, searchFailure } from "../store";
+import { searchStart, searchSuccess, searchFailure } from "../store";
 import { YOUTUBE_API_URL } from "../../utils/constants";
 
 const API_KEY = import.meta.env.VITE_YOUTUBE_DATA_API_KEY;
@@ -13,7 +13,7 @@ export const getSearchVideos = (inputValue: any) => async (dispatch: any) => {
       throw new Error("Failed to fetch data");
     }
     const data = await response.json();
-    dispatch(searchSucess(data));
+    dispatch(searchSuccess(data));
   } catch (error) {
     dispatch(searchFailure(error));
   }
