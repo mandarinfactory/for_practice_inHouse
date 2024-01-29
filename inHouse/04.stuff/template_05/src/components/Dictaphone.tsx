@@ -32,7 +32,7 @@ const Dictaphone: React.FC = () => {
   return (
     <>
       {dictaphoneSelector ? (
-        <div className="absolute w-[450px] h-[20%] top-[10%] right-[5%] bg-slate-50  rounded-3xl shadow-2xl">
+        <div className="absolute w-[450px] h-[20%] top-[12%] right-[5%] bg-slate-50  rounded-3xl shadow-2xl">
           <button
             onClick={() => {
               dispatch(DictaphoneSlice.actions.dictaphoneStart(false));
