@@ -3,9 +3,10 @@ import { useDispatch } from "react-redux";
 
 import { DictaphoneSlice, SearchInputSlice, store } from "../store/store";
 import { getSearchVideos } from "../store/reducers/getSearchVideos";
+import Dictaphone from "./Dictaphone";
 
 const Navbar: React.FC = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const getInputValue = (event: any) => {
     if (event.key === "Enter") {
       const inputValueElement =
@@ -48,10 +49,12 @@ const Navbar: React.FC = () => {
           }}
         />
         <div>
-          <button className="transcript p-3 ml-5 rounded-full bg-indigo-800 hover:bg-indigo-700 cursor-pointer" onClick={() => {
-            dispatch(DictaphoneSlice.actions.dictaphoneStart(true));
-            
-          }}>
+          <button
+            className="transcript p-3 ml-5 rounded-full bg-indigo-800 hover:bg-indigo-700 cursor-pointer"
+            onClick={() => {
+              dispatch(DictaphoneSlice.actions.dictaphoneStart(true));
+            }}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -62,6 +65,7 @@ const Navbar: React.FC = () => {
               <path d="M6 10.5a.75.75 0 0 1 .75.75v1.5a5.25 5.25 0 1 0 10.5 0v-1.5a.75.75 0 0 1 1.5 0v1.5a6.751 6.751 0 0 1-6 6.709v2.291h3a.75.75 0 0 1 0 1.5h-7.5a.75.75 0 0 1 0-1.5h3v-2.291a6.751 6.751 0 0 1-6-6.709v-1.5A.75.75 0 0 1 6 10.5Z" />
             </svg>
           </button>
+          <Dictaphone />
         </div>
       </div>
     </header>

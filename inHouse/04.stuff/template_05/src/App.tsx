@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
-import Dictaphone from "./components/Dictaphone";
 
 const App: React.FC = () => {
   return (
@@ -11,7 +10,6 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/" element={<Home />} />
         </Routes>
-        <Dictaphone />
       </BrowserRouter>
     </>
   );
