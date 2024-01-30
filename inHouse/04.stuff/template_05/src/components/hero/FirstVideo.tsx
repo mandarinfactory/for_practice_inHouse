@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { RootState } from "../../store/store";
+import { RootState, VideoScreenIsClicked } from "../../store/store";
 import { getHomepageVideos } from "../../store/reducers/getHomepageVideos";
 
 const FirstVideo: React.FC = () => {
@@ -17,7 +17,9 @@ const FirstVideo: React.FC = () => {
   return (
     <div className="w-[85%] flex flex-wrap justify-center">
       {firstVideoSelector?.videos?.items?.map((value: any, id: number) => (
-        <div className="w-[290px] h-300px m-3" key={id}>
+        <div className="w-[290px] h-300px m-3" key={id} onClick={() => {
+          dispatch(VideoScreenIsClicked.actions.isClicked(value));
+        }}>
           <iframe
             src={`https://www.youtube.com/embed/${value.id.videoId}?autoplay-1`}
             className="w-[290px] h-[200px] rounded-3xl"

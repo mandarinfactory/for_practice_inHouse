@@ -6,6 +6,7 @@ import {
   DictaphoneState,
   FirstVideoState,
   SearchInputState,
+  VideoIsClickedState,
 } from "../types/types";
 import { getHomepageVideos } from "./reducers/getHomepageVideos";
 
@@ -31,6 +32,9 @@ const firstVideoState: FirstVideoState = {
 const dictaphoneState: DictaphoneState = {
   mic: false,
   micValue: "",
+};
+const videoIsClickedState: VideoIsClickedState = {
+  clickedVideo: [],
 };
 
 export const ClickedButtonPageSlice = createSlice({
@@ -113,9 +117,19 @@ export const DictaphoneSlice = createSlice({
       state.mic = action.payload;
     },
     dictaphoneSuccess: (state, action) => {
-      if(state.mic === true) {
+      if (state.mic === true) {
         state.micValue = action.payload;
       }
+    },
+  },
+});
+
+export const VideoScreenIsClicked = createSlice({
+  name: "videoScreenIsClickedApp",
+  initialState: videoIsClickedState,
+  reducers: {
+    isClicked: (state, action) => {
+      state.clickedVideo = action.payload;
     },
   },
 });
@@ -127,6 +141,7 @@ export const { searchStart, searchSuccess, searchFailure } =
 export const { commentsStart, commentsSuccess, commentsFailure } =
   CommentSlice.actions;
 export const { dictaphoneStart, dictaphoneSuccess } = DictaphoneSlice.actions;
+export const { isClicked } = VideoScreenIsClicked.actions;
 
 export const store = configureStore({
   reducer: {
@@ -135,6 +150,7 @@ export const store = configureStore({
     youtubeCommentApp: CommentSlice.reducer,
     youtubeApp: YoutubeSlice.reducer,
     dictaphoneApp: DictaphoneSlice.reducer,
+    videoScreenIsClickedApp: VideoScreenIsClicked.reducer,
   },
 });
 

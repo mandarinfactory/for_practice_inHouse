@@ -1,15 +1,13 @@
-import { useDispatch } from "react-redux";
 import Layout from "./Layout";
+import Video from "../components/Video";
 
 
 
 const VideoScreen: React.FC = () => {
-    const dispatch = useDispatch();
-    
   return (
     <>
       <Layout>
-
+        <Video />
       </Layout>
     </>
   );

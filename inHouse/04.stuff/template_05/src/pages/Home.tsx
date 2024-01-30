@@ -5,11 +5,9 @@ import Layout from "./Layout";
 
 const Home: React.FC = () => {
   return (
-    <>
-      <Layout>
-        <Hero />
-      </Layout>
-    </>
+    <Layout>
+      <Hero />
+    </Layout>
   );
 };
 

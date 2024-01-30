@@ -24,3 +24,7 @@ export interface DictaphoneState {
   mic: boolean;
   micValue: string;
 }
+
+export interface VideoIsClickedState {
+  clickedVideo: string[];
+}

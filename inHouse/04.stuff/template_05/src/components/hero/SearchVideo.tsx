@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { SearchInputSlice } from "../../store/store";
+import { SearchInputSlice, VideoScreenIsClicked } from "../../store/store";
 import { RootState } from "../../store/store";
 const SearchVideo: React.FC = () => {
   const dispatch = useDispatch();
@@ -16,6 +16,7 @@ const SearchVideo: React.FC = () => {
           key={id}
           onClick={() => {
             dispatch(SearchInputSlice.actions.clickedVideos(value));
+            dispatch(VideoScreenIsClicked.actions.isClicked(value));
           }}
         >
           <iframe
