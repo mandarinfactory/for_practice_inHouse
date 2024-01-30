@@ -7,10 +7,10 @@ import VideoScreen from "./pages/VideoScreen";
 
 const App: React.FC = () => {
   const AppSelector = useSelector<any>((state) =>
-    state.videoScreenIsClickedApp.clickedVideo
+    state.videoScreenIsClickedApp.clickedVideo.length
   );
   let screen;
-  if (AppSelector === "") {
+  if (!AppSelector.length) {
     screen = <Home />
   } else {
     screen = <VideoScreen />
