@@ -12,17 +12,14 @@ const SearchVideo: React.FC = () => {
     <div className="w-[85%] flex flex-wrap justify-center">
       {searchVideoSelector?.searchVal?.items?.map((value: any, id: number) => (
         <div
-          className="w-[290px] h-300px m-3"
+          className="w-[290px] h-300px m-3 cursor-pointer"
           key={id}
           onClick={() => {
             dispatch(SearchInputSlice.actions.clickedVideos(value));
             dispatch(VideoScreenIsClicked.actions.isClicked(value));
           }}
         >
-          <iframe
-            src={`https://www.youtube.com/embed/${value.id.videoId}?autoplay-1`}
-            className="w-[290px] h-[200px] rounded-3xl"
-          ></iframe>
+          <img src={`${value.snippet.thumbnails.high.url}`} alt="thumbnail" className="rounded-3xl" />
           <h1 className="text-lg my-2 overflow-hidden truncate">
             {value.snippet.title}
           </h1>

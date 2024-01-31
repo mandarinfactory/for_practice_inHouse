@@ -34,7 +34,7 @@ const dictaphoneState: DictaphoneState = {
   micValue: "",
 };
 const videoIsClickedState: VideoIsClickedState = {
-  clickedVideo: [],
+  clickedVideo: 0,
 };
 
 export const ClickedButtonPageSlice = createSlice({

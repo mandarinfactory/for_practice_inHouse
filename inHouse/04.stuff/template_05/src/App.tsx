@@ -3,19 +3,19 @@ import { BrowserRouter } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import Home from "./pages/Home";
-import VideoScreen from "./pages/VideoScreen";
+import VideoHome from "./pages/VideoHome";
 
 const App: React.FC = () => {
-  const AppSelector = useSelector<any>((state) =>
-    state.videoScreenIsClickedApp.clickedVideo.length
+  const AppSelector = useSelector<any>(
+    (state) => state.videoScreenIsClickedApp.clickedVideo
   );
-  let screen;
-  if (!AppSelector.length) {
-    screen = <Home />
-  } else {
-    screen = <VideoScreen />
-  }
 
+    let screen;
+    if (!AppSelector) {
+      screen = <Home />;
+    } else {
+      screen = <VideoHome />;
+    }
   return (
     <>
       <BrowserRouter>{screen}</BrowserRouter>

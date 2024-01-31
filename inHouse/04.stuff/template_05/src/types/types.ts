@@ -26,5 +26,5 @@ export interface DictaphoneState {
 }
 
 export interface VideoIsClickedState {
-  clickedVideo: string[];
+  clickedVideo: number[];
 }

@@ -23,7 +23,7 @@ const Navbar: React.FC = () => {
         <div
           className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer"
           onClick={() => {
-            dispatch(VideoScreenIsClicked.actions.isClicked([]));
+            dispatch(VideoScreenIsClicked.actions.isClicked(0));
           }}
         >
           <div className="p-4 bg-indigo-800 rounded-full">

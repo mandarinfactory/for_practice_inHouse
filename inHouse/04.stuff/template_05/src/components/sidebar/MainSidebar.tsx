@@ -1,13 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
+import { VideoScreenIsClicked } from "../../store/store";
 
 const MainSidebar: React.FC = () => {
+  const dispatch = useDispatch();
   return (
     <>
-      <Link to="/">
         <div
           className="flex flex-col justify-center items-center my-7 hover:text-indigo-800 cursor-pointer"
-          onClick={() => {}}
+          onClick={() => {
+            dispatch(VideoScreenIsClicked.actions.isClicked(0));
+          }}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -20,7 +24,6 @@ const MainSidebar: React.FC = () => {
           </svg>
           <h1>홈</h1>
         </div>
-      </Link>
       <div className="w-[80%] h-1 mx-auto bg-slate-300"></div>
     </>
   );
