@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {},
     fontFamily: {
-      sans: ["KBO-Dia-Gothic_bold"],
+      sans: ["LeferiPoint-BlackA"],
     },
   },
   plugins: [],
