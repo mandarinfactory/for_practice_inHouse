@@ -2,7 +2,7 @@ import { configureStore, createSlice } from "@reduxjs/toolkit";
 
 import {
   ClickedButtonPageState,
-  CommentState,
+  RecommendedState,
   DictaphoneState,
   FirstVideoState,
   SearchInputState,
@@ -21,8 +21,8 @@ const searchInputState: SearchInputState = {
   error: null,
   clickedVideos: [],
 };
-const commentState: CommentState = {
-  comments: [],
+const recommendedState: RecommendedState = {
+  recommendeds: [],
   loading: false,
   error: null,
 };
@@ -80,19 +80,19 @@ export const SearchInputSlice = createSlice({
   },
 });
 
-export const CommentSlice = createSlice({
-  name: "youtubeCommentApp",
-  initialState: commentState,
+export const RecommendedVideoSlice = createSlice({
+  name: "youtubeRecommendedApp",
+  initialState: recommendedState,
   reducers: {
-    commentsStart: (state) => {
+    recommendedStart: (state) => {
       state.loading = true;
     },
-    commentsSuccess: (state, action) => {
-      state.comments = action.payload;
+    recommendedSuccess: (state, action) => {
+      state.recommendeds = action.payload;
       state.error = null;
     },
-    commentsFailure: (state, action) => {
-      state.comments = [];
+    recommendedFailure: (state, action) => {
+      state.recommendeds = [];
       state.error = action.payload;
     },
   },
@@ -138,8 +138,8 @@ export const { clickedStart, clickedSuccess, clickedFailure } =
   ClickedButtonPageSlice.actions;
 export const { searchStart, searchSuccess, searchFailure } =
   SearchInputSlice.actions;
-export const { commentsStart, commentsSuccess, commentsFailure } =
-  CommentSlice.actions;
+export const { recommendedStart, recommendedSuccess, recommendedFailure } =
+  RecommendedVideoSlice.actions;
 export const { dictaphoneStart, dictaphoneSuccess } = DictaphoneSlice.actions;
 export const { isClicked } = VideoScreenIsClicked.actions;
 
@@ -147,7 +147,7 @@ export const store = configureStore({
   reducer: {
     youtubeClickedButtonPageApp: ClickedButtonPageSlice.reducer,
     youtubeSearchInputApp: SearchInputSlice.reducer,
-    youtubeCommentApp: CommentSlice.reducer,
+    youtubeRecommendedApp: RecommendedVideoSlice.reducer,
     youtubeApp: YoutubeSlice.reducer,
     dictaphoneApp: DictaphoneSlice.reducer,
     videoScreenIsClickedApp: VideoScreenIsClicked.reducer,

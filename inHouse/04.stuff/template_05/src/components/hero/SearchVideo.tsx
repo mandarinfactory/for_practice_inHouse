@@ -1,8 +1,14 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { SearchInputSlice, VideoScreenIsClicked } from "../../store/store";
+import {
+  RecommendedVideoSlice,
+  SearchInputSlice,
+  VideoScreenIsClicked,
+  store,
+} from "../../store/store";
 import { RootState } from "../../store/store";
+import { getRecommendedVideos } from "../../store/reducers/getRecommendedVideos";
 const SearchVideo: React.FC = () => {
   const dispatch = useDispatch();
   const searchVideoSelector = useSelector(
@@ -17,9 +23,20 @@ const SearchVideo: React.FC = () => {
           onClick={() => {
             dispatch(SearchInputSlice.actions.clickedVideos(value));
             dispatch(VideoScreenIsClicked.actions.isClicked(value));
+            store.dispatch(
+              getRecommendedVideos(
+                RecommendedVideoSlice.actions.recommendedSuccess(
+                  value.snippet.channelId
+                )
+              )
+            );
           }}
         >
-          <img src={`${value.snippet.thumbnails.high.url}`} alt="thumbnail" className="rounded-3xl" />
+          <img
+            src={`${value.snippet.thumbnails.high.url}`}
+            alt="thumbnail"
+            className="rounded-3xl"
+          />
           <h1 className="text-lg my-2 overflow-hidden truncate">
             {value.snippet.title}
           </h1>

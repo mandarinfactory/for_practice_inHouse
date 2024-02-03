@@ -1,7 +1,12 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 
-import { DictaphoneSlice, SearchInputSlice, VideoScreenIsClicked, store } from "../store/store";
+import {
+  DictaphoneSlice,
+  SearchInputSlice,
+  VideoScreenIsClicked,
+  store,
+} from "../store/store";
 import { getSearchVideos } from "../store/reducers/getSearchVideos";
 import Dictaphone from "./Dictaphone";
 

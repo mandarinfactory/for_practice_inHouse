@@ -12,8 +12,8 @@ export interface SearchInputState extends LoadingError {
   clickedVideos: any[];
 }
 
-export interface CommentState extends LoadingError {
-  comments: string[];
+export interface RecommendedState extends LoadingError {
+  recommendeds: string[];
 }
 
 export interface ClickedButtonPageState extends LoadingError {
@@ -26,5 +26,5 @@ export interface DictaphoneState {
 }
 
 export interface VideoIsClickedState {
-  clickedVideo: number[];
+  clickedVideo: number;
 }

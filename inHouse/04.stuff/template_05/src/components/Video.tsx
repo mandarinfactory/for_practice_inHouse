@@ -9,12 +9,12 @@ const Video: React.FC = () => {
   const videoArr = Object.entries(videoSelector);
 
   return (
-    <div className="w-[85%] h-full">
+    <div className="w-full h-full">
       {videoArr.map<any>((value: any, index: number) => (
         <div className="w-full h-full flex flex-col justify-center items-center" key={index}>
           <iframe
             src={`https://www.youtube.com/embed/${value[1].id.videoId}?autoplay=1&mute=1`}
-            className="w-full h-[800px]"
+            className="w-full h-[800px] rounded-3xl"
           ></iframe>
           <div className="w-full my-7 flex flex-col justify-start items-start">
           <h1 className="mb-3 text-2xl">{value[1].snippet.title}</h1>
