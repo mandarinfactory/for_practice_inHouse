@@ -2,7 +2,7 @@ import React from 'react'
 
 const Comments:React.FC = () => {
   return (
-    <div>Comments</div>
+    <div className="w-[75%] h-auto">Comments</div>
   )
 }
 
