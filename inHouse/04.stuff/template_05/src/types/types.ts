@@ -2,6 +2,10 @@ export interface FirstVideoState {
   videos: any[];
 }
 
+export interface VideoCommentsState {
+  comments: any[];
+}
+
 export interface LoadingError {
   loading: boolean;
   error: null;

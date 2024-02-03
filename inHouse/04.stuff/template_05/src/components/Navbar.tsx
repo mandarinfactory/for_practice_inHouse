@@ -4,11 +4,12 @@ import { useDispatch } from "react-redux";
 import {
   DictaphoneSlice,
   SearchInputSlice,
-  VideoScreenIsClicked,
+  VideoScreenIsClickedSlice,
   store,
 } from "../store/store";
 import { getSearchVideos } from "../store/reducers/getSearchVideos";
 import Dictaphone from "./Dictaphone";
+import { getHomepageVideos } from "../store/reducers/getHomepageVideos";
 
 const Navbar: React.FC = () => {
   const dispatch = useDispatch();
@@ -28,7 +29,8 @@ const Navbar: React.FC = () => {
         <div
           className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer"
           onClick={() => {
-            dispatch(VideoScreenIsClicked.actions.isClicked(0));
+            dispatch(VideoScreenIsClickedSlice.actions.isClicked(0));
+            dispatch<any>(getHomepageVideos());
           }}
         >
           <div className="p-4 bg-indigo-800 rounded-full">

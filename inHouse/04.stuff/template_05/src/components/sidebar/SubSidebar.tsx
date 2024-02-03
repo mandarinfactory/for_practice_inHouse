@@ -1,15 +1,17 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 
-import { store } from "../../store/store";
+import { VideoScreenIsClickedSlice, store } from "../../store/store";
 import { getClickedSidebar } from "../../store/reducers/getClickedSidebar";
 import { ClickedButtonPageSlice } from "../../store/store";
 
-import 무한도전 from "../../assets/무한도전.jpg"
+import 무한도전 from "../../assets/무한도전.jpg";
 import 침착맨 from "../../assets/침착맨.webp";
-import hahaha from "../../assets/haha ha.webp"
-import 슈카월드 from "../../assets/슈카월드.webp"
+import hahaha from "../../assets/haha ha.webp";
+import 슈카월드 from "../../assets/슈카월드.webp";
 
 const SubSidebar: React.FC = () => {
+  const dispatch = useDispatch();
   return (
     <div className="flex flex-col">
       <div
@@ -20,6 +22,7 @@ const SubSidebar: React.FC = () => {
               ClickedButtonPageSlice.actions.clickedSuccess("무한도전")
             )
           );
+          dispatch(VideoScreenIsClickedSlice.actions.isClicked(0));
         }}
       >
         <img className="w-[35%] h-10 rounded-full" src={무한도전} alt="" />
@@ -33,6 +36,7 @@ const SubSidebar: React.FC = () => {
               ClickedButtonPageSlice.actions.clickedSuccess("침착맨")
             )
           );
+          dispatch(VideoScreenIsClickedSlice.actions.isClicked(0));
         }}
       >
         <img className="w-10 h-10 rounded-full" src={침착맨} alt="" />
@@ -46,6 +50,7 @@ const SubSidebar: React.FC = () => {
               ClickedButtonPageSlice.actions.clickedSuccess("haha ha")
             )
           );
+          dispatch(VideoScreenIsClickedSlice.actions.isClicked(0));
         }}
       >
         <img className="w-10 h-10 rounded-full" src={hahaha} alt="" />
@@ -59,9 +64,14 @@ const SubSidebar: React.FC = () => {
               ClickedButtonPageSlice.actions.clickedSuccess("슈카월드")
             )
           );
+          dispatch(VideoScreenIsClickedSlice.actions.isClicked(0));
         }}
       >
-        <img className="w-10 h-10 rounded-full bg-blue-500" src={슈카월드} alt="" />
+        <img
+          className="w-10 h-10 rounded-full bg-blue-500"
+          src={슈카월드}
+          alt=""
+        />
         <h1>슈카월드</h1>
       </div>
       <div className="w-[80%] h-1 my-7 mx-auto bg-slate-300"></div>

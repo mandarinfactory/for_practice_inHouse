@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   RecommendedVideoSlice,
   RootState,
-  VideoScreenIsClicked,
+  VideoScreenIsClickedSlice,
   store,
 } from "../../store/store";
 import { getHomepageVideos } from "../../store/reducers/getHomepageVideos";
@@ -27,7 +27,7 @@ const FirstVideo: React.FC = () => {
           className="w-[290px] h-300px m-3 cursor-pointer"
           key={id}
           onClick={() => {
-            dispatch(VideoScreenIsClicked.actions.isClicked(value));
+            dispatch(VideoScreenIsClickedSlice.actions.isClicked(value));
             store.dispatch(
               getRecommendedVideos(
                 RecommendedVideoSlice.actions.recommendedSuccess(

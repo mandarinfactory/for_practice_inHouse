@@ -1,16 +1,26 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 
-import { ClickedButtonPageSlice, store } from "../../store/store";
+import {
+  ClickedButtonPageSlice,
+  VideoScreenIsClickedSlice,
+  store,
+} from "../../store/store";
 import { getClickedSidebar } from "../../store/reducers/getClickedSidebar";
 
 const CategorySidebar: React.FC = () => {
+  const dispatch = useDispatch();
   return (
     <div className="flex flex-col">
-      <div className="flex flex-col justify-center items-center mb-7 hover:text-indigo-800 cursor-pointer" onClick={() => {
-        store.dispatch(
-          getClickedSidebar(ClickedButtonPageSlice.actions.clickedSuccess(""))
-        )
-      }}>
+      <div
+        className="flex flex-col justify-center items-center mb-7 hover:text-indigo-800 cursor-pointer"
+        onClick={() => {
+          store.dispatch(
+            getClickedSidebar(ClickedButtonPageSlice.actions.clickedSuccess(""))
+          );
+          dispatch(VideoScreenIsClickedSlice.actions.isClicked(0));
+        }}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
@@ -26,11 +36,17 @@ const CategorySidebar: React.FC = () => {
 
         <h1>인기 급상승</h1>
       </div>
-      <div className="flex flex-col justify-center items-center mb-7 hover:text-indigo-800 cursor-pointer" onClick={() => {
-        store.dispatch(
-          getClickedSidebar(ClickedButtonPageSlice.actions.clickedSuccess("음악"))
-        )
-      }}>
+      <div
+        className="flex flex-col justify-center items-center mb-7 hover:text-indigo-800 cursor-pointer"
+        onClick={() => {
+          store.dispatch(
+            getClickedSidebar(
+              ClickedButtonPageSlice.actions.clickedSuccess("음악")
+            )
+          );
+          dispatch(VideoScreenIsClickedSlice.actions.isClicked(0));
+        }}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
@@ -45,11 +61,17 @@ const CategorySidebar: React.FC = () => {
         </svg>
         <h1>음악</h1>
       </div>
-      <div className="flex flex-col justify-center items-center mb-7 hover:text-indigo-800 cursor-pointer" onClick={() => {
-        store.dispatch(
-          getClickedSidebar(ClickedButtonPageSlice.actions.clickedSuccess("영화"))
-        )
-      }}>
+      <div
+        className="flex flex-col justify-center items-center mb-7 hover:text-indigo-800 cursor-pointer"
+        onClick={() => {
+          store.dispatch(
+            getClickedSidebar(
+              ClickedButtonPageSlice.actions.clickedSuccess("영화")
+            )
+          );
+          dispatch(VideoScreenIsClickedSlice.actions.isClicked(0));
+        }}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
@@ -64,11 +86,17 @@ const CategorySidebar: React.FC = () => {
         </svg>
         <h1>영화</h1>
       </div>
-      <div className="flex flex-col justify-center items-center mb-7 hover:text-indigo-800 cursor-pointer" onClick={() => {
-        store.dispatch(
-          getClickedSidebar(ClickedButtonPageSlice.actions.clickedSuccess("live"))
-        )
-      }}>
+      <div
+        className="flex flex-col justify-center items-center mb-7 hover:text-indigo-800 cursor-pointer"
+        onClick={() => {
+          store.dispatch(
+            getClickedSidebar(
+              ClickedButtonPageSlice.actions.clickedSuccess("live")
+            )
+          );
+          dispatch(VideoScreenIsClickedSlice.actions.isClicked(0));
+        }}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 576 512"

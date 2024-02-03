@@ -7,8 +7,10 @@ import {
   FirstVideoState,
   SearchInputState,
   VideoIsClickedState,
+  VideoCommentsState,
 } from "../types/types";
 import { getHomepageVideos } from "./reducers/getHomepageVideos";
+import { getVideoComments } from "./reducers/getVideoComments";
 
 const clickedButtonPageState: ClickedButtonPageState = {
   clickedValue: "",
@@ -28,6 +30,9 @@ const recommendedState: RecommendedState = {
 };
 const firstVideoState: FirstVideoState = {
   videos: [],
+};
+const videoCommentsState: VideoCommentsState = {
+  comments: [],
 };
 const dictaphoneState: DictaphoneState = {
   mic: false,
@@ -109,6 +114,17 @@ export const YoutubeSlice = createSlice({
   },
 });
 
+export const VideoCommentsSlice = createSlice({
+  name: "videoCommentsApp",
+  initialState: videoCommentsState,
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(getVideoComments.fulfilled, (state, action: any) => {
+      state.comments = action.payload;
+    });
+  },
+});
+
 export const DictaphoneSlice = createSlice({
   name: "dictaphoneApp",
   initialState: dictaphoneState,
@@ -124,7 +140,7 @@ export const DictaphoneSlice = createSlice({
   },
 });
 
-export const VideoScreenIsClicked = createSlice({
+export const VideoScreenIsClickedSlice = createSlice({
   name: "videoScreenIsClickedApp",
   initialState: videoIsClickedState,
   reducers: {
@@ -141,7 +157,7 @@ export const { searchStart, searchSuccess, searchFailure } =
 export const { recommendedStart, recommendedSuccess, recommendedFailure } =
   RecommendedVideoSlice.actions;
 export const { dictaphoneStart, dictaphoneSuccess } = DictaphoneSlice.actions;
-export const { isClicked } = VideoScreenIsClicked.actions;
+export const { isClicked } = VideoScreenIsClickedSlice.actions;
 
 export const store = configureStore({
   reducer: {
@@ -149,8 +165,9 @@ export const store = configureStore({
     youtubeSearchInputApp: SearchInputSlice.reducer,
     youtubeRecommendedApp: RecommendedVideoSlice.reducer,
     youtubeApp: YoutubeSlice.reducer,
+    videoCommentsApp: VideoCommentsSlice.reducer,
     dictaphoneApp: DictaphoneSlice.reducer,
-    videoScreenIsClickedApp: VideoScreenIsClicked.reducer,
+    videoScreenIsClickedApp: VideoScreenIsClickedSlice.reducer,
   },
 });
 

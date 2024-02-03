@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   RecommendedVideoSlice,
   SearchInputSlice,
-  VideoScreenIsClicked,
+  VideoScreenIsClickedSlice,
   store,
 } from "../../store/store";
 import { RootState } from "../../store/store";
@@ -22,7 +22,7 @@ const SearchVideo: React.FC = () => {
           key={id}
           onClick={() => {
             dispatch(SearchInputSlice.actions.clickedVideos(value));
-            dispatch(VideoScreenIsClicked.actions.isClicked(value));
+            dispatch(VideoScreenIsClickedSlice.actions.isClicked(value));
             store.dispatch(
               getRecommendedVideos(
                 RecommendedVideoSlice.actions.recommendedSuccess(
