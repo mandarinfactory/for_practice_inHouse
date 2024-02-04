@@ -1,7 +1,7 @@
 import { atom, selector } from "recoil";
 
-export const textState = atom({
-  key: "textState",
+export const textState = atom<string | undefined>({
+  key: "textState", // 모든 atom들에는 unique한 key를 가져야한다.
   default: "안녕! 난 Recoil이야!",
 });
 

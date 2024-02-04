@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 
-import { charCountState, textState } from "../store/store";
+import { charCountState, textState } from "../state";
 
 const Hero: React.FC = () => {
   const CLIENT_ID = "7a365dfad3bb44c0bbeb1740aa8a4259";
