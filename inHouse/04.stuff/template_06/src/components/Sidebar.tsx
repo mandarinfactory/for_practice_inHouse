@@ -2,13 +2,13 @@ import React from "react";
 
 const Sidebar: React.FC = () => {
   return (
-    <div className="w-[15%] h-[400px] m-7 p-5 bg-slate-50 rounded-3xl shadow-2xl">
+    <div className="w-[15%] h-auto m-7 p-5">
       <div className="flex">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
           fill="currentColor"
-          className="w-6 h-6 mr-1 p-1 rounded-full bg-gradient-to-r from-yellow-500 to-emerald-500"
+          className="w-11 h-11 mr-2 p-1 rounded-full bg-gradient-to-r from-yellow-500 to-emerald-500"
         >
           <path
             fillRule="evenodd"
@@ -17,32 +17,21 @@ const Sidebar: React.FC = () => {
           />
         </svg>
 
-        <h1 className="text-xl">쉼표</h1>
+        <h1 className="text-[2.3rem] mb-3">쉼표</h1>
       </div>
-      <input type="text" className="py-1 px-2 w-full bg-slate-200 rounded-3xl my-5 text-sm" placeholder="쉼표 검색"/>
-      <div className="mt-3">
-        <h1 className="text-base mb-5">라이브러리</h1>
-        <h1 className="text-sm mb-5 hover:text-emerald-500 cursor-pointer rounded-3xl">
+      <input
+        type="text"
+        className="p-3 w-full bg-slate-200 rounded-2xl my-7 text-xl"
+        placeholder="쉼표 검색"
+      />
+      <div className="mt-7 text-slate-700">
+        <h1 className="text-3xl mb-7 text-black">라이브러리</h1>
+        <h1 className="text-2xl mb-7 hover:text-black cursor-pointer rounded-3xl">
           홈
         </h1>
-        <h1 className="text-sm mb-5 hover:text-emerald-500 cursor-pointer">
-          노래
-        </h1>
-        <h1 className="text-sm mb-5 hover:text-emerald-500 cursor-pointer">
-          앨범
-        </h1>
-        <h1 className="text-sm hover:text-emerald-500 cursor-pointer">
-          아티스트
-        </h1>
-      </div>
-      <div className="mt-7">
-        <h1 className="text-base mb-7">내 음악</h1>
-        <h1 className="text-sm mb-5 hover:text-emerald-500 cursor-pointer">
-          최근 재생된 노래
-        </h1>
-        <h1 className="text-sm hover:text-emerald-500 cursor-pointer">
-          좋아하는 노래
-        </h1>
+        <h1 className="text-2xl mb-7 hover:text-black cursor-pointer">노래</h1>
+        <h1 className="text-2xl mb-7 hover:text-black cursor-pointer">앨범</h1>
+        <h1 className="text-2xl hover:text-black cursor-pointer">아티스트</h1>
       </div>
     </div>
   );
