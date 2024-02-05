@@ -62,6 +62,26 @@ export const ClickedButtonPageSlice = createSlice({
   },
 });
 
+export const ClickedVideoInfoSlice = createSlice({
+  name: "clickedVideoInfoApp",
+  initialState: clickedButtonPageState,
+  reducers: {
+    videoInfosStart: (state) => {
+      state.loading = true;
+    },
+    videoInfosSuccess: (state, action) => {
+      state.clickedValue = action.payload;
+      state.loading = false;
+      state.error = null;
+    },
+    videoInfosFailure: (state, action) => {
+      state.clickedValue = "";
+      state.loading = false;
+      state.error = action.payload;
+    },
+  },
+});
+
 export const SearchInputSlice = createSlice({
   name: "youtubeSearchInputApp",
   initialState: searchInputState,
@@ -152,6 +172,8 @@ export const VideoScreenIsClickedSlice = createSlice({
 
 export const { clickedStart, clickedSuccess, clickedFailure } =
   ClickedButtonPageSlice.actions;
+export const { videoInfosStart, videoInfosSuccess, videoInfosFailure } =
+  ClickedVideoInfoSlice.actions;
 export const { searchStart, searchSuccess, searchFailure } =
   SearchInputSlice.actions;
 export const { recommendedStart, recommendedSuccess, recommendedFailure } =
@@ -162,6 +184,7 @@ export const { isClicked } = VideoScreenIsClickedSlice.actions;
 export const store = configureStore({
   reducer: {
     youtubeClickedButtonPageApp: ClickedButtonPageSlice.reducer,
+    clickedVideoInfoApp: ClickedVideoInfoSlice.reducer,
     youtubeSearchInputApp: SearchInputSlice.reducer,
     youtubeRecommendedApp: RecommendedVideoSlice.reducer,
     youtubeApp: YoutubeSlice.reducer,

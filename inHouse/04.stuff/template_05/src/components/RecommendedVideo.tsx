@@ -1,8 +1,9 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import { RootState } from "../store/store";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState, VideoScreenIsClickedSlice } from "../store/store";
 
 const RecommendedVideo: React.FC = () => {
+  const dispatch = useDispatch();
   const recommendedSelector = useSelector(
     (state: RootState) => state.youtubeRecommendedApp
   );
@@ -13,7 +14,9 @@ const RecommendedVideo: React.FC = () => {
           <div
             className="w-[180px] h-[120px] m-1 flex cursor-pointer"
             key={id}
-            onClick={() => {}}
+            onClick={() => {
+              dispatch(VideoScreenIsClickedSlice.actions.isClicked(value));
+            }}
           >
             <img
               src={`${value.snippet.thumbnails.high.url}`}
