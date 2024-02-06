@@ -1,8 +1,9 @@
 import React from "react";
+import PlayerControls from "./PlayerControls";
 
 const Sidebar: React.FC = () => {
   return (
-    <div className="w-[15%] h-auto m-7 p-5">
+    <div className="w-[18%] h-auto m-7 p-5">
       <div className="flex">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -33,6 +34,7 @@ const Sidebar: React.FC = () => {
         <h1 className="text-2xl mb-7 hover:text-black cursor-pointer">앨범</h1>
         <h1 className="text-2xl hover:text-black cursor-pointer">아티스트</h1>
       </div>
+      <PlayerControls />
     </div>
   );
 };

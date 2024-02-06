@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import {
+  ClickedVideoInfoSlice,
   RecommendedVideoSlice,
   RootState,
   VideoScreenIsClickedSlice,
@@ -9,11 +10,15 @@ import {
 } from "../../store/store";
 import { getHomepageVideos } from "../../store/reducers/getHomepageVideos";
 import { getRecommendedVideos } from "../../store/reducers/getRecommendedVideos";
+import { getVideoInfos } from "../../store/reducers/getVideoInfos";
 
 const FirstVideo: React.FC = () => {
   const dispatch = useDispatch();
   const firstVideoSelector = useSelector(
     (state: RootState) => state.youtubeApp
+  );
+  const videoAddInfosSelector = useSelector(
+    (state: RootState) => state.clickedVideoInfoApp
   );
 
   useEffect(() => {
@@ -26,6 +31,15 @@ const FirstVideo: React.FC = () => {
         <div
           className="w-[290px] h-300px m-3 cursor-pointer"
           key={id}
+          onLoad={() => {
+            store.dispatch(
+              getVideoInfos(
+                ClickedVideoInfoSlice.actions.videoInfosSuccess(
+                  value.id.videoId
+                )
+              )
+            );
+          }}
           onClick={() => {
             dispatch(VideoScreenIsClickedSlice.actions.isClicked(value));
             store.dispatch(
@@ -46,6 +60,13 @@ const FirstVideo: React.FC = () => {
             {value.snippet.title}
           </h1>
           <p className="text-xs">채널이름 : {value.snippet.channelTitle}</p>
+          <p className="text-xs">
+            조회수 :{" "}
+            {videoAddInfosSelector.clickedValue
+              ? videoAddInfosSelector?.clickedValue?.items[0]?.statistics
+                  ?.viewCount
+              : ""}
+          </p>
         </div>
       ))}
     </div>

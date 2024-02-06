@@ -8,9 +8,11 @@ import {
   SearchInputState,
   VideoIsClickedState,
   VideoCommentsState,
+  ChannelInfosState,
 } from "../types/types";
 import { getHomepageVideos } from "./reducers/getHomepageVideos";
 import { getVideoComments } from "./reducers/getVideoComments";
+import { getChannelInfos } from "./reducers/getChannelInfos";
 
 const clickedButtonPageState: ClickedButtonPageState = {
   clickedValue: "",
@@ -27,6 +29,9 @@ const recommendedState: RecommendedState = {
   recommendeds: [],
   loading: false,
   error: null,
+};
+const channelInfosState: ChannelInfosState = {
+  channelInfos: [],
 };
 const firstVideoState: FirstVideoState = {
   videos: [],
@@ -120,6 +125,17 @@ export const RecommendedVideoSlice = createSlice({
       state.recommendeds = [];
       state.error = action.payload;
     },
+  },
+});
+
+export const ChannelInfosSlice = createSlice({
+  name: "channelInfosApp",
+  initialState: channelInfosState,
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(getChannelInfos.fulfilled, (state, action: any) => {
+      state.channelInfos = action.payload;
+    });
   },
 });
 

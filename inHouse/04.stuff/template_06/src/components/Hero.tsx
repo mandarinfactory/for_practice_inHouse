@@ -72,7 +72,7 @@ const Hero: React.FC = () => {
       <input
         type="value"
         placeholder="테스트용!"
-        onKeyPress={(event) => {
+        onKeyPress={(event) => {          
           if (event.key === "Enter") {
             setSearchInput(event.target.value);
             search();

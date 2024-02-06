@@ -2,6 +2,10 @@ export interface FirstVideoState {
   videos: any[];
 }
 
+export interface ChannelInfosState {
+  channelInfos: any[];
+}
+
 export interface VideoCommentsState {
   comments: any[];
 }
