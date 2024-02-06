@@ -1,4 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+
 import { YOUTUBE_API_URL } from "../../utils/constants";
 
 const API_KEY = import.meta.env.VITE_YOUTUBE_DATA_API_KEY;
