@@ -1,5 +1,6 @@
-import { atom } from "recoil";
+import { atom, RecoilEnv } from "recoil";
 
+RecoilEnv.RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED = false;
 const CLIENT_ID = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
 const CLIENT_SECRET = import.meta.env.VITE_SPOTIFY_CLIENT_SECRET;
 
@@ -13,7 +14,7 @@ export const musicValState = atom<string | undefined>({
   default: "",
 });
 
-export const getAccessTokenData = async (state: any) => {
+export const getAccessTokenData = async () => {
   const authParameters = {
     method: "POST",
     headers: {
@@ -53,7 +54,7 @@ export const searchMusicHandler = async (accessToken: any, musicVal: any) => {
     .then((data) => {
       return data;
     });
-  return albumsData;
+  return albumsData.items;
 };
 
 /* export const getAuthToken = selector({
