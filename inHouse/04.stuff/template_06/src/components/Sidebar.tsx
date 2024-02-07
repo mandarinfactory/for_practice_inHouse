@@ -1,7 +1,11 @@
 import React from "react";
 import PlayerControls from "./PlayerControls";
+import { useRecoilState } from "recoil";
+import { musicValState } from "../state";
 
 const Sidebar: React.FC = () => {
+  const [musicVal, setMusicVal] = useRecoilState(musicValState);
+
   return (
     <div className="w-[18%] h-auto m-7 p-5">
       <div className="flex">
@@ -21,9 +25,14 @@ const Sidebar: React.FC = () => {
         <h1 className="text-[2.3rem] mb-3">쉼표</h1>
       </div>
       <input
-        type="text"
+        type="value"
         className="p-3 w-full bg-slate-200 rounded-2xl my-7 text-xl"
         placeholder="쉼표 검색"
+        onKeyDown={(event: any) => {
+          if (event.key === "Enter") {
+            setMusicVal(event.target.value);
+          }
+        }}
       />
       <div className="mt-7 text-slate-700">
         <h1 className="text-3xl mb-7 text-black">라이브러리</h1>
