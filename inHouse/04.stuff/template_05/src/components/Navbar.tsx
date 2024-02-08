@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 
 import {
+  ChannelInfosSlice,
   DictaphoneSlice,
   SearchInputSlice,
   VideoScreenIsClickedSlice,
@@ -10,6 +11,7 @@ import {
 import { getSearchVideos } from "../store/reducers/getSearchVideos";
 import Dictaphone from "./Dictaphone";
 import { getHomepageVideos } from "../store/reducers/getHomepageVideos";
+import { getChannelInfos } from "../store/reducers/getChannelInfos";
 
 const Navbar: React.FC = () => {
   const dispatch = useDispatch();
@@ -31,6 +33,7 @@ const Navbar: React.FC = () => {
           onClick={() => {
             dispatch(VideoScreenIsClickedSlice.actions.isClicked(0));
             dispatch<any>(getHomepageVideos());
+            dispatch(ChannelInfosSlice.actions.channelInfosSuccess(""))
           }}
         >
           <div className="p-4 bg-indigo-800 rounded-full">

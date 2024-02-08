@@ -2,7 +2,7 @@ export interface FirstVideoState {
   videos: any[];
 }
 
-export interface ChannelInfosState {
+export interface ChannelInfosState extends LoadingError {
   channelInfos: any[];
 }
 

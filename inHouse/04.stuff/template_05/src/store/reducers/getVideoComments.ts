@@ -9,7 +9,7 @@ export const getVideoComments = createAsyncThunk(
   async (clickedId) => {
     try {
       const response = await fetch(
-        `${YOUTUBE_COMMENTS_API_URL}?key=${API_KEY}&part=snippet&videoId=${clickedId}&maxResults=10`
+        `${YOUTUBE_COMMENTS_API_URL}?key=${API_KEY}&part=snippet&videoId=${clickedId}&maxResults=15`
       );
       const data = await response.json();
       return data;

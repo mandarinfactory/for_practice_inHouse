@@ -30,7 +30,11 @@ export const getAccessTokenData = async () => {
   return data.access_token;
 };
 
-export const searchMusicHandler = async (accessToken: any, musicVal: any) => {
+export const searchMusicHandler = async (
+  accessToken: any,
+  musicVal: any,
+  category: any
+) => {
   let searchParameters = {
     method: "GET",
     headers: {
@@ -46,15 +50,15 @@ export const searchMusicHandler = async (accessToken: any, musicVal: any) => {
     .then((data) => {
       return data.artists.items[0].id;
     });
-  let albumsData = await fetch(
-    `https://api.spotify.com/v1/artists/${artistID}/albums?limit=20`,
+  let searchData = await fetch(
+    `https://api.spotify.com/v1/artists/${artistID}/albums/${category}?limit=20`,
     searchParameters
   )
     .then((response) => response.json())
     .then((data) => {
       return data;
     });
-  return albumsData.items;
+  return searchData.items;
 };
 
 /* export const getAuthToken = selector({
