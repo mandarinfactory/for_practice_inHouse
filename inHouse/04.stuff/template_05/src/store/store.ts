@@ -130,24 +130,6 @@ export const RecommendedVideoSlice = createSlice({
   },
 });
 
-export const ChannelInfosSlice = createSlice({
-  name: "channelInfosApp",
-  initialState: channelInfosState,
-  reducers: {
-    channelInfosStart: (state) => {
-      state.loading = true;
-    },
-    channelInfosSuccess: (state, action) => {
-      state.channelInfos = action.payload;
-      state.error = null;
-    },
-    channelInfosFailure: (state, action) => {
-      state.channelInfos = [];
-      state.error = action.payload;
-    },
-  },
-});
-
 export const YoutubeSlice = createSlice({
   name: "youtubeApp",
   initialState: firstVideoState,
@@ -199,8 +181,6 @@ export const { clickedStart, clickedSuccess, clickedFailure } =
   ClickedButtonPageSlice.actions;
 export const { videoInfosStart, videoInfosSuccess, videoInfosFailure } =
   ClickedVideoInfoSlice.actions;
-export const { channelInfosStart, channelInfosSuccess, channelInfosFailure } =
-  ChannelInfosSlice.actions;
 export const { searchStart, searchSuccess, searchFailure } =
   SearchInputSlice.actions;
 export const { recommendedStart, recommendedSuccess, recommendedFailure } =
@@ -218,7 +198,6 @@ export const store = configureStore({
     videoCommentsApp: VideoCommentsSlice.reducer,
     dictaphoneApp: DictaphoneSlice.reducer,
     videoScreenIsClickedApp: VideoScreenIsClickedSlice.reducer,
-    channelInfosApp: ChannelInfosSlice.reducer,
   },
 });
 

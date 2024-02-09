@@ -30,11 +30,7 @@ export const getAccessTokenData = async () => {
   return data.access_token;
 };
 
-export const searchMusicHandler = async (
-  accessToken: any,
-  musicVal: any,
-  category: any
-) => {
+export const searchAlbumHandler = async (accessToken: any, musicVal: any) => {
   let searchParameters = {
     method: "GET",
     headers: {
@@ -50,17 +46,36 @@ export const searchMusicHandler = async (
     .then((data) => {
       return data.artists.items[0].id;
     });
-  let searchData = await fetch(
-    `https://api.spotify.com/v1/artists/${artistID}/albums/${category}?limit=20`,
+  let albumData = await fetch(
+    `https://api.spotify.com/v1/artists/${artistID}/albums?limit=20`,
     searchParameters
   )
     .then((response) => response.json())
     .then((data) => {
       return data;
     });
-  return searchData.items;
+  return albumData.items;
 };
 
+export const searchMusicHandler = async (accessToken: any, searchVal: any) => {
+  let musicParameters = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + accessToken,
+    },
+  };
+  let searchData = await fetch(
+    `https://api.spotify.com/v1/search?q=${searchVal}&type=track&limit=20`,
+    musicParameters
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      return data;
+    });
+  return searchData;
+};
 /* export const getAuthToken = selector({
   key: "get/authSpotifyToken",
   get: async ({ get }) => {

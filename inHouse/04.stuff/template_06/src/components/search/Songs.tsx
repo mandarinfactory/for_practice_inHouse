@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import {
   accessTokenState,
@@ -11,17 +11,19 @@ const Songs: React.FC = () => {
   const musicVal = useRecoilValue(musicValState);
 
   const [songData, setSongData] = useState("");
-  if (musicVal && accessToken) {
-    const albumResultData = searchMusicHandler(accessToken, musicVal, "tracks");
-    albumResultData.then((response) => setSongData(response));
-  }
+  useEffect(() => {
+    if (musicVal && accessToken) {
+      const albumResultData = searchMusicHandler(accessToken, musicVal);
+      albumResultData.then((response) => setSongData(response));
+    }
+  }, [musicVal, songData]);
 
   return (
     <div className="flex my-3">
-      {/* {songData ? (
-        songData.map((v: any) => (
+      {songData ? (
+        songData?.tracks.items.map((v: any) => (
           <div className="flex flex-wrap">
-            <img src={v.images[1].url} alt="앨범아트" className="w-[120px]" />
+            <img src={v.images[1].href} alt="앨범아트" className="w-[120px]" />
             <div className="flex flex-col">
               <h1>{v.artists[0].name}</h1>
               <h1 className="overflow-hidden">{v.name}</h1>
@@ -31,7 +33,7 @@ const Songs: React.FC = () => {
         ))
       ) : (
         <></>
-      )} */}
+      )}
     </div>
   );
 };

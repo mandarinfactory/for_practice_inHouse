@@ -3,7 +3,7 @@ import { useRecoilValue } from "recoil";
 import {
   accessTokenState,
   musicValState,
-  searchMusicHandler,
+  searchAlbumHandler,
 } from "../../state";
 
 const Albums: React.FC = () => {
@@ -12,15 +12,15 @@ const Albums: React.FC = () => {
 
   const [albumData, setAlbumData] = useState("");
   if (musicVal && accessToken) {
-    const albumResultData = searchMusicHandler(accessToken, musicVal, "");
+    const albumResultData = searchAlbumHandler(accessToken, musicVal);
     albumResultData.then((response) => setAlbumData(response));
   }
 
   return (
     <div className="flex my-3">
       {albumData ? (
-        albumData.map((v: any) => (
-          <div className="flex flex-wrap">
+        albumData.map((v: any, i:number) => (
+          <div className="flex flex-wrap" key={i}>
             <img src={v.images[1].url} alt="앨범아트" className="w-[120px]" />
             <div className="flex flex-col">
               <h1>{v.artists[0].name}</h1>

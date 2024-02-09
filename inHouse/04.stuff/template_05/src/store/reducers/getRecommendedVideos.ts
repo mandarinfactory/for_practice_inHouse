@@ -12,7 +12,7 @@ export const getRecommendedVideos =
     try {
       dispatch(recommendedStart());
       const response = await fetch(
-        `${YOUTUBE_API_URL}/activities?&key=${API_KEY}&part=snippet&maxResults=7&channelId=${clickedValue.payload}`
+        `${YOUTUBE_API_URL}/activities?&key=${API_KEY}&part=snippet&maxResults=8&channelId=${clickedValue.payload}`
       );
       if (!response.ok) {
         throw new Error("Failed to fetch data");
