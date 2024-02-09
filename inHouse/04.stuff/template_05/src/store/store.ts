@@ -8,11 +8,10 @@ import {
   SearchInputState,
   VideoIsClickedState,
   VideoCommentsState,
-  ChannelInfosState,
+  DarkmodeState,
 } from "../types/types";
 import { getHomepageVideos } from "./reducers/getHomepageVideos";
 import { getVideoComments } from "./reducers/getVideoComments";
-import { getChannelInfos } from "./reducers/getChannelInfos";
 
 const clickedButtonPageState: ClickedButtonPageState = {
   clickedValue: "",
@@ -30,11 +29,6 @@ const recommendedState: RecommendedState = {
   loading: false,
   error: null,
 };
-const channelInfosState: ChannelInfosState = {
-  channelInfos: [],
-  loading: false,
-  error: null,
-};
 const firstVideoState: FirstVideoState = {
   videos: [],
 };
@@ -48,6 +42,28 @@ const dictaphoneState: DictaphoneState = {
 const videoIsClickedState: VideoIsClickedState = {
   clickedVideo: 0,
 };
+const darkmodeState: DarkmodeState = {
+  isDark:
+    localStorage.theme === "dark" ||
+    (!("theme" in localStorage) &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches),
+};
+
+export const DarkmodeSlice = createSlice({
+  name: "darkmodeApp",
+  initialState: darkmodeState,
+  reducers: {
+    toggleDarkMode: (state) => {
+      const update = !state.isDark;
+      if (update) {
+        localStorage.theme = "dark";
+      } else {
+        localStorage.theme = "light";
+      }
+      state.isDark = update;
+    },
+  },
+});
 
 export const ClickedButtonPageSlice = createSlice({
   name: "youtubeClickedButtonPageApp",
@@ -177,6 +193,7 @@ export const VideoScreenIsClickedSlice = createSlice({
   },
 });
 
+export const { toggleDarkMode } = DarkmodeSlice.actions;
 export const { clickedStart, clickedSuccess, clickedFailure } =
   ClickedButtonPageSlice.actions;
 export const { videoInfosStart, videoInfosSuccess, videoInfosFailure } =
@@ -190,6 +207,7 @@ export const { isClicked } = VideoScreenIsClickedSlice.actions;
 
 export const store = configureStore({
   reducer: {
+    darkmodeApp: DarkmodeSlice.reducer,
     youtubeClickedButtonPageApp: ClickedButtonPageSlice.reducer,
     clickedVideoInfoApp: ClickedVideoInfoSlice.reducer,
     youtubeSearchInputApp: SearchInputSlice.reducer,

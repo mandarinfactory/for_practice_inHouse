@@ -11,8 +11,10 @@ import {
 import { getHomepageVideos } from "../../store/reducers/getHomepageVideos";
 import { getRecommendedVideos } from "../../store/reducers/getRecommendedVideos";
 import { getVideoInfos } from "../../store/reducers/getVideoInfos";
+import { UseDarkmode, useDarkmode } from "../../hooks/useDarkmode";
 
 const FirstVideo: React.FC = () => {
+  const [darkmodeSelector, onToggleDarkMode]: UseDarkmode= useDarkmode();
   const dispatch = useDispatch();
   const firstVideoSelector = useSelector(
     (state: RootState) => state.youtubeApp
@@ -26,7 +28,7 @@ const FirstVideo: React.FC = () => {
   }, [dispatch]);
 
   return (
-    <div className="w-[85%] flex flex-wrap justify-center">
+    <div className="w-[85%] flex flex-wrap justify-center dark:bg-slate-800">
       {firstVideoSelector?.videos?.items?.map((value: any, id: number) => (
         <div
           className="w-[290px] h-300px m-3 cursor-pointer"

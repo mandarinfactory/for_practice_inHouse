@@ -2,10 +2,6 @@ export interface FirstVideoState {
   videos: any[];
 }
 
-export interface ChannelInfosState extends LoadingError {
-  channelInfos: any[];
-}
-
 export interface VideoCommentsState {
   comments: any[];
 }
@@ -13,6 +9,10 @@ export interface VideoCommentsState {
 export interface LoadingError {
   loading: boolean;
   error: null;
+}
+
+export interface DarkmodeState {
+  isDark: boolean;
 }
 
 export interface SearchInputState extends LoadingError {
