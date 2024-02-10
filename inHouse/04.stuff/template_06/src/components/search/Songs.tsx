@@ -31,7 +31,7 @@ const Songs: React.FC = () => {
                 {songData.tracks.items
                   .slice(index * 4, (index + 1) * 4)
                   .map((v: any, i: number) => (
-                    <div className="w-full h-auto mx-10 my-2 flex flex-wrap" key={i}>
+                    <div className="w-full h-auto mx-10 my-2 flex flex-wrap cursor-pointer" key={i}>
                       <img
                         src={v.album.images[1].url}
                         alt="앨범아트"

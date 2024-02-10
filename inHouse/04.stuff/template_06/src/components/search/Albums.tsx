@@ -47,7 +47,7 @@ const Albums: React.FC = () => {
           >
             {albumData ? (
               albumData?.map((v: any, i: number) => (
-                <div className="flex flex-wrap" key={i}>
+                <div className="flex flex-wrap cursor-pointer" key={i}>
                   <img
                     src={v.images[1].url}
                     alt="앨범아트"
