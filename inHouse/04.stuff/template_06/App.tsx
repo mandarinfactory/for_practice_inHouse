@@ -3,7 +3,7 @@ import { RecoilRoot } from "recoil";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 
-import Home from "./page/Home";
+import Home from "./src/page/Home";
 
 const queryClient = new QueryClient();
 

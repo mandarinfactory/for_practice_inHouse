@@ -71,15 +71,9 @@ export const searchMusicHandler = async (accessToken: any, searchVal: any) => {
   )
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
+      // console.log(data.tracks.items);
       return data;
     });
   return searchData;
 };
-/* export const getAuthToken = selector({
-  key: "get/authSpotifyToken",
-  get: async ({ get }) => {
-    const authToken = get(authTokenState);
-    const url 
-  }
-}) */
+

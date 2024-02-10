@@ -19,22 +19,38 @@ const Songs: React.FC = () => {
   }, [musicVal, songData]);
 
   return (
-    <div className="flex my-3">
-      {songData ? (
-        songData?.tracks.items.map((v: any) => (
-          <div className="flex flex-wrap">
-            <img src={v.images[1].href} alt="앨범아트" className="w-[120px]" />
-            <div className="flex flex-col">
-              <h1>{v.artists[0].name}</h1>
-              <h1 className="overflow-hidden">{v.name}</h1>
-              <p>{v.release_date}</p>
-            </div>
-          </div>
-        ))
-      ) : (
-        <></>
-      )}
-    </div>
+    <>
+      <h1 className="w-full h-auto text-3xl">노래</h1>
+      <div className="flex my-3">
+        {songData ? (
+          // 20개의 데이터를 4개씩 묶어 배열 생성
+          Array.from(
+            { length: Math.ceil(songData.tracks.items.length / 4) },
+            (value, index) => (
+              <div className="w-auto h-full flex flex-wrap" key={index}>
+                {songData.tracks.items
+                  .slice(index * 4, (index + 1) * 4)
+                  .map((v: any, i: number) => (
+                    <div className="w-full h-auto mx-10 my-2 flex flex-wrap" key={i}>
+                      <img
+                        src={v.album.images[1].url}
+                        alt="앨범아트"
+                        className="w-[70px] h-auto rounded-md"
+                      />
+                      <div className="w-[160px] ml-1 flex flex-col">
+                        <h1 className="w-full truncate text-lg">{v.name}</h1>
+                        <h1>{v.artists[0].name}</h1>
+                      </div>
+                    </div>
+                  ))}
+              </div>
+            )
+          )
+        ) : (
+          <></>
+        )}
+      </div>
+    </>
   );
 };
 
