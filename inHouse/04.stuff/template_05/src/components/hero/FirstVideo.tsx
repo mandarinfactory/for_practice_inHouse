@@ -28,7 +28,7 @@ const FirstVideo: React.FC = () => {
   }, [dispatch]);
 
   return (
-    <div className="w-[85%] flex flex-wrap justify-center dark:bg-slate-800">
+    <div className="w-[85%] flex flex-wrap justify-center">
       {firstVideoSelector?.videos?.items?.map((value: any, id: number) => (
         <div
           className="w-[290px] h-300px m-3 cursor-pointer"

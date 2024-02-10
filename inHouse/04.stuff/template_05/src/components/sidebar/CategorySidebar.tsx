@@ -13,7 +13,7 @@ const CategorySidebar: React.FC = () => {
   return (
     <div className="flex flex-col">
       <div
-        className="flex flex-col justify-center items-center mb-7 hover:text-indigo-800 cursor-pointer"
+        className="flex flex-col justify-center items-center mb-7 hover:text-indigo-800 dark:hover:text-indigo-400 cursor-pointer"
         onClick={() => {
           store.dispatch(
             getClickedSidebar(ClickedButtonPageSlice.actions.clickedSuccess(""))
@@ -37,7 +37,7 @@ const CategorySidebar: React.FC = () => {
         <h1>인기 급상승</h1>
       </div>
       <div
-        className="flex flex-col justify-center items-center mb-7 hover:text-indigo-800 cursor-pointer"
+        className="flex flex-col justify-center items-center mb-7 hover:text-indigo-800 dark:hover:text-indigo-400 cursor-pointer"
         onClick={() => {
           store.dispatch(
             getClickedSidebar(
@@ -62,7 +62,7 @@ const CategorySidebar: React.FC = () => {
         <h1>음악</h1>
       </div>
       <div
-        className="flex flex-col justify-center items-center mb-7 hover:text-indigo-800 cursor-pointer"
+        className="flex flex-col justify-center items-center mb-7 hover:text-indigo-800 dark:hover:text-indigo-400 cursor-pointer"
         onClick={() => {
           store.dispatch(
             getClickedSidebar(
@@ -87,7 +87,7 @@ const CategorySidebar: React.FC = () => {
         <h1>영화</h1>
       </div>
       <div
-        className="flex flex-col justify-center items-center mb-7 hover:text-indigo-800 cursor-pointer"
+        className="flex flex-col justify-center items-center mb-7 hover:text-indigo-800 dark:hover:text-indigo-400 cursor-pointer"
         onClick={() => {
           store.dispatch(
             getClickedSidebar(

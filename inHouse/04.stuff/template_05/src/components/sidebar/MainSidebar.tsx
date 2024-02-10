@@ -9,7 +9,7 @@ const MainSidebar: React.FC = () => {
   return (
     <>
       <div
-        className="flex flex-col justify-center items-center my-7 hover:text-indigo-800 cursor-pointer"
+        className="flex flex-col justify-center items-center my-7 hover:text-indigo-800 dark:hover:text-indigo-400 cursor-pointer"
         onClick={() => {
           dispatch(VideoScreenIsClickedSlice.actions.isClicked(0));
           dispatch<any>(getHomepageVideos());

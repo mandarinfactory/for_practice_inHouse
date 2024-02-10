@@ -29,7 +29,7 @@ const Navbar: React.FC = () => {
     }
   };
   return (
-    <header className="w-[90%] mx-auto my-7 text-black body-font bg-slate-50 rounded-[2rem] shadow-xl">
+    <header className="w-[90%] mx-auto mb-7 text-black body-font bg-slate-50 rounded-[2rem] shadow-xl dark:bg-gray-700 dark:text-white">
       <div className="container flex flex-wrap p-3 flex-col mx-auto md:flex-row justify-center items-center">
         <div
           className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer"
@@ -38,7 +38,7 @@ const Navbar: React.FC = () => {
             dispatch<any>(getHomepageVideos());
           }}
         >
-          <div className="p-4 bg-indigo-800 rounded-full">
+          <div className="p-4 bg-indigo-800 dark:bg-indigo-500 rounded-full">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 384 512"
@@ -62,7 +62,7 @@ const Navbar: React.FC = () => {
         />
         <div>
           <button
-            className="dictaphone transcript p-3 ml-5 rounded-full bg-indigo-800 hover:bg-indigo-700 cursor-pointer"
+            className="dictaphone transcript p-3 ml-5 rounded-full bg-indigo-800 dark:bg-indigo-500 hover:bg-indigo-700 dark:hover:bg-indigo-400 cursor-pointer"
             onClick={() => {
               dispatch(DictaphoneSlice.actions.dictaphoneStart(true));
             }}

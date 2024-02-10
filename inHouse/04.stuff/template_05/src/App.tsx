@@ -16,7 +16,7 @@ const App: React.FC = () => {
   } else {
     screen = <VideoHome />;
   }
-  return <>{screen}</>;
+  return <div className="w-full h-screen pt-3 dark:bg-black">{screen}</div>;
 };
 
 export default App;

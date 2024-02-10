@@ -15,7 +15,7 @@ const SubSidebar: React.FC = () => {
   return (
     <div className="flex flex-col">
       <div
-        className="flex flex-col justify-center items-center my-7 hover:text-indigo-800 cursor-pointer"
+        className="flex flex-col justify-center items-center my-7 hover:text-indigo-800 dark:hover:text-indigo-400 cursor-pointer"
         onClick={() => {
           store.dispatch(
             getClickedSidebar(
@@ -29,7 +29,7 @@ const SubSidebar: React.FC = () => {
         <h1>무한도전</h1>
       </div>
       <div
-        className="flex flex-col justify-center items-center mb-7 hover:text-indigo-800 cursor-pointer"
+        className="flex flex-col justify-center items-center mb-7 hover:text-indigo-800 dark:hover:text-indigo-400 cursor-pointer"
         onClick={() => {
           store.dispatch(
             getClickedSidebar(
@@ -43,7 +43,7 @@ const SubSidebar: React.FC = () => {
         <h1>침착맨</h1>
       </div>
       <div
-        className="flex flex-col justify-center items-center mb-7 hover:text-indigo-800 cursor-pointer"
+        className="flex flex-col justify-center items-center mb-7 hover:text-indigo-800 dark:hover:text-indigo-400 cursor-pointer"
         onClick={() => {
           store.dispatch(
             getClickedSidebar(
@@ -57,7 +57,7 @@ const SubSidebar: React.FC = () => {
         <h1>haha ha</h1>
       </div>
       <div
-        className="flex flex-col justify-center items-center hover:text-indigo-800 cursor-pointer"
+        className="flex flex-col justify-center items-center hover:text-indigo-800 dark:hover:text-indigo-400 cursor-pointer"
         onClick={() => {
           store.dispatch(
             getClickedSidebar(
