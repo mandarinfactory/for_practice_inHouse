@@ -28,7 +28,32 @@ export const getAccessTokenData = async () => {
   return data.access_token;
 };
 
-export const searchAlbumHandler = async (accessToken: any, musicVal: any) => {
+export const searchArtistFinder = async (
+  accessToken: string,
+  artistVal: string
+) => {
+  let artistParameters = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + accessToken,
+    },
+  };
+  let artistData = await fetch(
+    `${SPOTIFY_URL}/search?q=${artistVal}&type=artist`,
+    artistParameters
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      return data.artists.items;
+    });
+    return artistData
+};
+
+export const searchAlbumHandler = async (
+  accessToken: string,
+  musicVal: string
+) => {
   let searchParameters = {
     method: "GET",
     headers: {
@@ -55,7 +80,10 @@ export const searchAlbumHandler = async (accessToken: any, musicVal: any) => {
   return albumData.items;
 };
 
-export const searchMusicHandler = async (accessToken: any, searchVal: any) => {
+export const searchMusicHandler = async (
+  accessToken: string,
+  searchVal: string
+) => {
   let musicParameters = {
     method: "GET",
     headers: {
@@ -69,10 +97,26 @@ export const searchMusicHandler = async (accessToken: any, searchVal: any) => {
   )
     .then((response) => response.json())
     .then((data) => {
-      // console.log(data.tracks.items);
       return data;
     });
   return searchData;
 };
 
-export const randomCategoriesHandler = async () => {};
+export const browseHandler = async (accessToken: string, type: string) => {
+  let browseParameters = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + accessToken,
+    },
+  };
+  let browseData = await fetch(
+    `${SPOTIFY_URL}/browse/${type}?locale=kr_KR&limit=10`,
+    browseParameters
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      return data;
+    });
+  return browseData;
+};

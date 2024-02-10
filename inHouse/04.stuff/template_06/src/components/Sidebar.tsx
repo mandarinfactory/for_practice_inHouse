@@ -8,7 +8,7 @@ const Sidebar: React.FC = () => {
   const [musicVal, setMusicVal] = useRecoilState(musicValState);
 
   return (
-    <div className="w-[18%] h-auto my-7 mx-1 p-5">
+    <div className="sticky top-15 w-[18%] h-auto my-7 mx-1 p-5">
       <div
         className="flex cursor-pointer"
         onClick={() => {
@@ -42,7 +42,6 @@ const Sidebar: React.FC = () => {
       />
 
       <div className="mt-7 text-slate-700">
-        <h1 className="text-3xl mb-7 text-black">라이브러리</h1>
         <h1 className="text-2xl mb-7 hover:text-black cursor-pointer rounded-3xl">
           홈
         </h1>

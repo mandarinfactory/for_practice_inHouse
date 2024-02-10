@@ -13,10 +13,10 @@ import RightChevron from "../button/RightChevron";
 const Albums: React.FC = () => {
   const accessToken = useRecoilValue(accessTokenState);
   const musicVal = useRecoilValue(musicValState);
+  const [albumData, setAlbumData] = useState("");
   const [activeItemIndex, setActiveItemIndex] = useState(2);
   const chevronWidth = 50;
-
-  const [albumData, setAlbumData] = useState("");
+  
   if (musicVal && accessToken) {
     const albumResultData = searchAlbumHandler(accessToken, musicVal);
     albumResultData.then((response) => setAlbumData(response));
@@ -31,7 +31,7 @@ const Albums: React.FC = () => {
             requestToChangeActive={setActiveItemIndex}
             activeItemIndex={activeItemIndex}
             numberOfCards={5}
-            gutter={10}
+            gutter={20}
             leftChevron={
               <button>
                 <LeftChevron />
@@ -51,7 +51,7 @@ const Albums: React.FC = () => {
                   <img
                     src={v.images[1].url}
                     alt="앨범아트"
-                    className="w-[240px] rounded-lg"
+                    className="w-[240px] rounded-lg hover:scale-95 duration-300 shadow-xl"
                   />
                   <div className="my-2 flex flex-col">
                     <h1 className="text-lg">{v.artists[0].name}</h1>

@@ -1,9 +1,16 @@
-import React from 'react'
+import React from "react";
 
-const MainBox:React.FC = () => {
+import Categories from "./mainBox/Categories";
+import Playlists from "./mainBox/Playlists";
+
+const MainBox: React.FC = () => {
+
   return (
-    <div></div>
-  )
-}
+    <>
+      <Playlists />
+      <Categories />
+    </>
+  );
+};
 
-export default MainBox
+export default MainBox;

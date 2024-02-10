@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useRecoilValue } from "recoil";
 import {
   accessTokenState,
@@ -9,18 +9,16 @@ import {
 const Songs: React.FC = () => {
   const accessToken = useRecoilValue(accessTokenState);
   const musicVal = useRecoilValue(musicValState);
-
   const [songData, setSongData] = useState("");
-  useEffect(() => {
     if (musicVal && accessToken) {
       const albumResultData = searchMusicHandler(accessToken, musicVal);
       albumResultData.then((response) => setSongData(response));
     }
-  }, [musicVal, songData]);
+
 
   return (
     <>
-      <h1 className="w-full h-auto text-3xl">노래</h1>
+      <h1 className="w-full h-auto mt-7 text-3xl">노래</h1>
       <div className="flex my-3">
         {songData ? (
           // 20개의 데이터를 4개씩 묶어 배열 생성
@@ -35,7 +33,7 @@ const Songs: React.FC = () => {
                       <img
                         src={v.album.images[1].url}
                         alt="앨범아트"
-                        className="w-[70px] h-auto rounded-md"
+                        className="w-[70px] h-auto rounded-md hover:scale-105 duration-200 shadow-lg"
                       />
                       <div className="w-[160px] ml-1 flex flex-col">
                         <h1 className="w-full truncate text-lg">{v.name}</h1>
