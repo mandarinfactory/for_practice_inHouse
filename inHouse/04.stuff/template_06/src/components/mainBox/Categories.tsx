@@ -18,7 +18,9 @@ const Categories: React.FC = () => {
       <div className="flex flex-wrap justify-center">
         {categoriesData ? (
           categoriesData.categories.items.map((v: any) => (
-            <div className="flex flex-col items-center cursor-pointer">
+            <div
+              className="flex flex-col items-center cursor-pointer"
+            >
               <img
                 src={v.icons[0].url}
                 alt="categories"

@@ -8,7 +8,7 @@ const MainBox: React.FC = () => {
   return (
     <>
       <Playlists />
-      <Categories />
+      {/* <Categories /> */}
     </>
   );
 };

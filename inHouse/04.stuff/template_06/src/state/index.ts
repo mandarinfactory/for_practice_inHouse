@@ -11,7 +11,17 @@ export const accessTokenState = atom<string | undefined>({
 });
 
 export const musicValState = atom<string | undefined>({
-  key: `musicValState`, // 모든 atom들에는 unique한 key를 가져야한다.
+  key: `musicValState`,
+  default: "",
+});
+
+export const isClickedState = atom<boolean>({
+  key: "isClickedState",
+  default: false,
+});
+
+export const detailTrackState = atom<any>({
+  key: "detailTrackState",
   default: "",
 });
 
@@ -47,7 +57,7 @@ export const searchArtistFinder = async (
     .then((data) => {
       return data.artists.items;
     });
-    return artistData
+  return artistData;
 };
 
 export const searchAlbumHandler = async (
@@ -119,4 +129,23 @@ export const browseHandler = async (accessToken: string, type: string) => {
       return data;
     });
   return browseData;
+};
+
+export const detailTrackFinder = async (accessToken: string, id: string) => {
+  let trackParameters = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + accessToken,
+    },
+  };
+  let detailTrackData = await fetch(
+    `${SPOTIFY_URL}/playlists/${id}/tracks?limit=15`,
+    trackParameters
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      return data;
+    });
+  return detailTrackData;
 };

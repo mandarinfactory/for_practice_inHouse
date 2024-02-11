@@ -14,7 +14,7 @@ export const App: React.FC = () => {
       <RecoilRoot>
         <QueryClientProvider client={queryClient}>
           <Home />
-          {/* <DetailPage /> */}
+          <DetailPage />
           <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>
       </RecoilRoot>
