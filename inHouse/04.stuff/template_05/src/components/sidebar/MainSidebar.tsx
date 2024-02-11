@@ -1,18 +1,12 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-
-import { VideoScreenIsClickedSlice } from "../../store/store";
-import { getHomepageVideos } from "../../store/reducers/getHomepageVideos";
 
 const MainSidebar: React.FC = () => {
-  const dispatch = useDispatch();
   return (
     <>
       <div
         className="flex flex-col justify-center items-center my-7 hover:text-indigo-800 dark:hover:text-indigo-400 cursor-pointer"
         onClick={() => {
-          dispatch(VideoScreenIsClickedSlice.actions.isClicked(0));
-          dispatch<any>(getHomepageVideos());
+          location.reload();
         }}
       >
         <svg

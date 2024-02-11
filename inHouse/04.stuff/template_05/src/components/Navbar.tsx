@@ -4,14 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   DarkmodeSlice,
   DictaphoneSlice,
-  RootState,
   SearchInputSlice,
-  VideoScreenIsClickedSlice,
   store,
 } from "../store/store";
 import { getSearchVideos } from "../store/reducers/getSearchVideos";
 import Dictaphone from "./Dictaphone";
-import { getHomepageVideos } from "../store/reducers/getHomepageVideos";
 import { UseDarkmode, useDarkmode } from "../hooks/useDarkmode";
 
 const Navbar: React.FC = () => {
@@ -29,13 +26,12 @@ const Navbar: React.FC = () => {
     }
   };
   return (
-    <header className="w-[90%] mx-auto mb-7 text-black body-font bg-slate-50 rounded-[2rem] shadow-xl dark:bg-gray-700 dark:text-white">
+    <header className="w-[90%] mx-auto mb-7 text-black body-font bg-slate-50 rounded-[2rem] shadow-xl dark:bg-neutral-700 dark:text-white">
       <div className="container flex flex-wrap p-3 flex-col mx-auto md:flex-row justify-center items-center">
         <div
           className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer"
           onClick={() => {
-            dispatch(VideoScreenIsClickedSlice.actions.isClicked(0));
-            dispatch<any>(getHomepageVideos());
+            location.reload();
           }}
         >
           <div className="p-4 bg-indigo-800 dark:bg-indigo-500 rounded-full">
@@ -55,7 +51,7 @@ const Navbar: React.FC = () => {
         </div>
         <input
           type="textd"
-          className="inputValue bg-slate-200 ml-10 text-xl px-5 py-3 rounded-3xl"
+          className="inputValue bg-slate-200 ml-10 text-xl px-5 py-3 rounded-3xl text-black"
           onKeyDown={(value) => {
             getInputValue(value);
           }}

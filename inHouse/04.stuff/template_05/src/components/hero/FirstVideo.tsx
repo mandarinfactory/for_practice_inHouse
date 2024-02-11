@@ -11,10 +11,8 @@ import {
 import { getHomepageVideos } from "../../store/reducers/getHomepageVideos";
 import { getRecommendedVideos } from "../../store/reducers/getRecommendedVideos";
 import { getVideoInfos } from "../../store/reducers/getVideoInfos";
-import { UseDarkmode, useDarkmode } from "../../hooks/useDarkmode";
 
 const FirstVideo: React.FC = () => {
-  const [darkmodeSelector, onToggleDarkMode]: UseDarkmode= useDarkmode();
   const dispatch = useDispatch();
   const firstVideoSelector = useSelector(
     (state: RootState) => state.youtubeApp
@@ -24,7 +22,7 @@ const FirstVideo: React.FC = () => {
   );
 
   useEffect(() => {
-    dispatch<any>(getHomepageVideos());
+    dispatch<any>(getHomepageVideos(""));
   }, [dispatch]);
 
   return (
