@@ -1,30 +1,39 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 
 import {
   accessTokenState,
+  detailClickedInfoState,
   detailTrackFinder,
   detailTrackState,
   isClickedState,
+  selectedMusicValState,
 } from "../../state";
 import { browseHandler } from "../../state";
 
 const Playlists: React.FC = () => {
   const [isClicked, setIsClicked] = useRecoilState(isClickedState);
   const [trackData, setTrackData] = useRecoilState(detailTrackState);
+  const [selectedVal, setSelectedVal] = useRecoilState(selectedMusicValState);
+  const [clickedDetailInfos, setClickedDetailInfos] = useRecoilState(
+    detailClickedInfoState
+  );
   const accessToken = useRecoilValue<any>(accessTokenState);
   const [playlistsData, setPlaylistsData] = useState<any>("");
 
-  if (accessToken) {
-    const playlistsResultData = browseHandler(
-      accessToken,
-      "featured-playlists"
-    );
-    playlistsResultData.then((data) => setPlaylistsData(data));
-  }
-  const clickedPlaylist = async (a: string, v: any) => {
+  useEffect(() => {
+    if (accessToken) {
+      const playlistsResultData = browseHandler(
+        accessToken,
+        "featured-playlists"
+      );
+      playlistsResultData.then((data) => setPlaylistsData(data));
+    }
+  }, [accessToken]);
+
+  const clickedPlaylist = async (token: string, value: any) => {
     if (isClicked) {
-      detailTrackFinder(a, v).then((data) => {
+      detailTrackFinder(token, value).then((data) => {
         setTrackData(data);
       });
     }
@@ -42,6 +51,9 @@ const Playlists: React.FC = () => {
               onClick={() => {
                 setIsClicked(true);
                 clickedPlaylist(accessToken, v.id);
+                setSelectedVal(v.id);
+                setClickedDetailInfos(v);
+                console.log(v.id)
               }}
             >
               <img

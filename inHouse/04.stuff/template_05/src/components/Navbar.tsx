@@ -5,6 +5,7 @@ import {
   DarkmodeSlice,
   DictaphoneSlice,
   SearchInputSlice,
+  VideoScreenIsClickedSlice,
   store,
 } from "../store/store";
 import { getSearchVideos } from "../store/reducers/getSearchVideos";
@@ -14,7 +15,7 @@ import { UseDarkmode, useDarkmode } from "../hooks/useDarkmode";
 const Navbar: React.FC = () => {
   const [darkmodeSelector, onToggleDarkMode]: UseDarkmode = useDarkmode();
   const dispatch = useDispatch();
-  
+
   const getInputValue = (event: any) => {
     if (event.key === "Enter") {
       const inputValueElement =
@@ -53,7 +54,10 @@ const Navbar: React.FC = () => {
           type="textd"
           className="inputValue bg-slate-200 ml-10 text-xl px-5 py-3 rounded-3xl text-black"
           onKeyDown={(value) => {
-            getInputValue(value);
+            if (value.key === "Enter") {
+              getInputValue(value);
+              dispatch(VideoScreenIsClickedSlice.actions.isClicked(0));
+            }
           }}
         />
         <div>
@@ -100,9 +104,9 @@ const Navbar: React.FC = () => {
             <div
               className="sun p-3 rounded-full bg-orange-500 hover:bg-orange-400 cursor-pointer"
               onClick={() => {
-                dispatch(DarkmodeSlice.actions?.toggleDarkMode("light"));                
+                dispatch(DarkmodeSlice.actions?.toggleDarkMode("light"));
               }}
-              >
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"

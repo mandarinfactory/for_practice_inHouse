@@ -5,7 +5,6 @@ import { VideoScreenIsClickedSlice, store } from "../../store/store";
 import { getClickedSidebar } from "../../store/reducers/getClickedSidebar";
 import { ClickedButtonPageSlice } from "../../store/store";
 
-import 무한도전 from "../../assets/무한도전.jpg";
 import 침착맨 from "../../assets/침착맨.webp";
 import hahaha from "../../assets/haha ha.webp";
 import 슈카월드 from "../../assets/슈카월드.webp";

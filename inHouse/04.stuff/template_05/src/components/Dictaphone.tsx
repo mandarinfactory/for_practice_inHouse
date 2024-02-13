@@ -3,7 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
-import { ClickedButtonPageSlice, DictaphoneSlice, store } from "../store/store";
+import {
+  ClickedButtonPageSlice,
+  DictaphoneSlice,
+  VideoScreenIsClickedSlice,
+  store,
+} from "../store/store";
 import { getClickedSidebar } from "../store/reducers/getClickedSidebar";
 
 const Dictaphone: React.FC = () => {
@@ -26,13 +31,13 @@ const Dictaphone: React.FC = () => {
       getClickedSidebar(
         ClickedButtonPageSlice.actions.clickedSuccess(transcript)
       )
-    )
-    // transcript = undefined;
+    );
+    dispatch(VideoScreenIsClickedSlice.actions.isClicked(0));
   }
   return (
     <>
       {dictaphoneSelector ? (
-        <div className="absolute w-[450px] h-[20%] top-[12%] right-[5%] bg-slate-50  rounded-3xl shadow-2xl dark:bg-neutral-700">
+        <div className="absolute w-[20%] h-[20%] top-[10%] right-[5%] bg-slate-50  rounded-3xl shadow-2xl dark:bg-neutral-700">
           <button
             onClick={() => {
               dispatch(DictaphoneSlice.actions.dictaphoneStart(false));
@@ -57,9 +62,7 @@ const Dictaphone: React.FC = () => {
             {listening ? "" : "시작버튼을 누르고 말씀하세요!"}
           </p>
           <div className="w-[90%] h-[30%]">
-            <h1 className="m-7 text-2xl">
-              {transcript}
-            </h1>
+            <h1 className="m-7 text-2xl">{transcript}</h1>
           </div>
           <div className="my-5 flex justify-center">
             <button
