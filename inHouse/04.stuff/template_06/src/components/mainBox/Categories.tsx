@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useRecoilValue } from "recoil";
 
-import { accessTokenState } from "../../state";
-import { browseHandler } from "../../state";
+import { accessTokenState } from "../../recoil";
+import { browseHandler } from "../../recoil";
 
 const Categories: React.FC = () => {
   const accessToken = useRecoilValue(accessTokenState);

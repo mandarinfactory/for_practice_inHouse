@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { RecoilRoot } from "recoil";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
@@ -9,13 +9,19 @@ const queryClient = new QueryClient();
 
 export const App: React.FC = () => {
   return (
-    <>
-      <RecoilRoot>
-        <QueryClientProvider client={queryClient}>
-          <Home />
-          <ReactQueryDevtools initialIsOpen={false} />
-        </QueryClientProvider>
-      </RecoilRoot>
-    </>
+      <Suspense
+        fallback={
+          <div>
+            <h1>로딩중!!!!</h1>
+          </div>
+        }
+      >
+        <RecoilRoot>
+          <QueryClientProvider client={queryClient}>
+            <Home />
+            <ReactQueryDevtools initialIsOpen={false} />
+          </QueryClientProvider>
+        </RecoilRoot>
+      </Suspense>
   );
 };

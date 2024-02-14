@@ -14,7 +14,8 @@
     "react-dom": "^18.2.0",
     "react-items-carousel": "^2.8.0",
     "react-query": "^3.39.3",
-    "recoil": "^0.7.7"
+    "recoil": "^0.7.7",
+    "zustand": "^4.5.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",

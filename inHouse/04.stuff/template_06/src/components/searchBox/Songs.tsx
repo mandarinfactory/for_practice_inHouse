@@ -4,7 +4,7 @@ import {
   accessTokenState,
   musicValState,
   searchMusicHandler,
-} from "../../state";
+} from "../../recoil";
 
 const Songs: React.FC = () => {
   const accessToken = useRecoilValue(accessTokenState);

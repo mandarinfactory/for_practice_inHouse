@@ -1,4 +1,4 @@
-import { atom, RecoilEnv, selector } from "recoil";
+import { atom, RecoilEnv } from "recoil";
 import { SPOTIFY_ACCESS_TOKEN_URL, SPOTIFY_URL } from "../util/constants";
 
 RecoilEnv.RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED = false;
@@ -159,30 +159,4 @@ export const detailTrackFinder = async (accessToken: string, id: string) => {
   return detailTrackData;
 };
 
-export const detailTrackFinderState = selector({
-  key: "detailTrackFinderState",
-  get: async ({ get }) => {
-    let trackParameters = {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + get(accessTokenState),
-      },
-    };
-    try {
-      const response = await fetch(
-        `${SPOTIFY_URL}/playlists/${get(
-          selectedMusicValState
-        )}/tracks?limit=15`,
-        trackParameters
-      );
-      const data = await response.json();
-      get(detailTrackState);
-      console.log(data);
-      return data;
-    } catch (error) {
-      console.error("에러!", error);
-      throw error;
-    }
-  },
-});
+

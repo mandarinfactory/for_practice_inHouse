@@ -6,7 +6,7 @@ import {
   accessTokenState,
   musicValState,
   searchAlbumHandler,
-} from "../../state";
+} from "../../recoil";
 import LeftChevron from "../button/LeftChevron";
 import RightChevron from "../button/RightChevron";
 

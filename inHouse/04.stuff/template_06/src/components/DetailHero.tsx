@@ -1,22 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import {
   detailClickedInfoState,
-  detailTrackFinderState,
-  detailTrackState,
   isClickedState,
-} from "../state";
+} from "../recoil";
+import { detailTrackFinderState } from "../recoil/store";
 
 const DetailHero: React.FC = () => {
   const [isClicked, setIsClicked] = useRecoilState(isClickedState);
-  const trackData = useRecoilValue(detailTrackState);
   const clickedDetailInfos = useRecoilValue(detailClickedInfoState);
-  const [load, setLoad] = useState(true);
-  
   useEffect(() => {
-    if (isClicked) {
-      const testRecoilState = useRecoilValue(detailTrackFinderState);
-    }
+    const test = useRecoilValue(detailTrackFinderState);
   },[isClicked])
 
   return (
@@ -35,16 +29,6 @@ const DetailHero: React.FC = () => {
             <h1>{clickedDetailInfos.description}</h1>
           </div>
           <div>
-            {/* {load ? (
-              <h1>로딩중입니다.....</h1>
-            ) : (
-              trackData.items?.map((v: any, i: number) => (
-                <div className="my-2 bg-yellow-200" key={i}>
-                  <h1>{v?.track?.name}</h1>
-                  <h1>{v?.track?.artists[0]?.name}</h1>
-                </div>
-              ))
-            )} */}
           </div>
         </>
       ) : (

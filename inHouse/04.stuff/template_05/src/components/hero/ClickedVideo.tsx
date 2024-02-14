@@ -39,7 +39,7 @@ const ClickedVideo: React.FC = () => {
             }}
             onClick={() => {
               dispatch(SearchInputSlice.actions.clickedVideos(value));
-              dispatch(VideoScreenIsClickedSlice.actions.isClicked(value));
+              dispatch(VideoScreenIsClickedSlice.actions.isClicked(value));              
               store.dispatch(
                 getRecommendedVideos(
                   RecommendedVideoSlice.actions.recommendedSuccess(

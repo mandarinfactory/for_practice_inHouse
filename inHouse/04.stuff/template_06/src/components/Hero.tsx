@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { useQuery } from "react-query";
 
-import { accessTokenState, getAccessTokenData, musicValState } from "../state";
+import { accessTokenState, getAccessTokenData, musicValState } from "../recoil";
 import SearchBox from "./SearchBox";
 import MainBox from "./MainBox";
 

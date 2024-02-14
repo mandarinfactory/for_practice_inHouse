@@ -2,7 +2,7 @@ import React from "react";
 
 import PlayerControls from "./PlayerControls";
 import { useRecoilState } from "recoil";
-import { musicValState } from "../state";
+import { musicValState } from "../recoil";
 
 const Sidebar: React.FC = () => {
   const [musicVal, setMusicVal] = useRecoilState(musicValState);

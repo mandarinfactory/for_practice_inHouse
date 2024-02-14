@@ -12,11 +12,14 @@ const Comments: React.FC = () => {
   const clickedIdSelector = useSelector(
     (state: RootState) => state.videoScreenIsClickedApp
   );
-  const videoId = clickedIdSelector?.clickedVideo?.id?.videoId;
+  const videoId = clickedIdSelector.clickedVideo.contentDetails
+    ? clickedIdSelector?.clickedVideo.contentDetails.upload?.videoId
+    : clickedIdSelector?.clickedVideo?.id?.videoId;
 
   useEffect(() => {
     dispatch<any>(getVideoComments(videoId));
-  }, [dispatch]);
+  }, [dispatch, videoId]);
+
   return (
     <div className="w-[75%] h-auto">
       {commentSelector?.comments?.items?.map((value: any, index: any) => (

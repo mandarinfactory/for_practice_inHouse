@@ -1,7 +1,7 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
 
-import { isClickedState } from "../state";
+import { isClickedState } from "../recoil";
 import Hero from "../components/Hero";
 import Sidebar from "../components/Sidebar";
 import DetailHero from "../components/DetailHero";
