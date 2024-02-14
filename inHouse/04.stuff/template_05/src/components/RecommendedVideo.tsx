@@ -26,7 +26,7 @@ const RecommendedVideo: React.FC = () => {
     <div className="flex flex-col">
       {filteredSelector?.map((value: any, id: number) => (
         <div
-          className="w-[180px] h-[120px] m-1 flex cursor-pointer"
+          className="w-[180px] h-[130px] m-1 flex cursor-pointer"
           key={id}
           onClick={() => {
             dispatch(VideoScreenIsClickedSlice.actions.isClicked(value));
