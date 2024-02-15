@@ -16,14 +16,12 @@ const SearchVideo: React.FC = () => {
   const searchVideoSelector = useSelector(
     (state: RootState) => state.youtubeSearchInputApp
   );
-  const videoAddInfosSelector = useSelector(
-    (state: RootState) => state.clickedVideoInfoApp
-  );
+
   return (
-    <div className="w-[85%] flex flex-wrap justify-center">
+    <div className="w-[85%] h-screen flex flex-wrap justify-center">
       {searchVideoSelector?.searchVal?.items?.map((value: any, id: number) => (
         <div
-          className="w-[290px] h-300px m-3 cursor-pointer"
+          className="w-[290px] h-auto m-3 cursor-pointer"
           key={id}
           onLoad={() => {
             store.dispatch(
@@ -51,17 +49,12 @@ const SearchVideo: React.FC = () => {
             alt="thumbnail"
             className="rounded-3xl"
           />
-          <h1 className="text-lg my-2 overflow-hidden truncate">
-            {value.snippet.title}
-          </h1>
-          <p className="text-xs">채널이름 : {value.snippet.channelTitle}</p>
-          <p className="mt-1 text-xs">
-            조회수 :{" "}
-            {videoAddInfosSelector.clickedValue
-              ? videoAddInfosSelector?.clickedValue?.items[0]?.statistics
-                  ?.viewCount
-              : ""}
-          </p>
+          <div className="w-full h-full">
+            <h1 className="text-lg my-2 overflow-hidden truncate">
+              {value.snippet.title}
+            </h1>
+            <p className="text-xs">채널이름 : {value.snippet.channelTitle}</p>
+          </div>
         </div>
       ))}
     </div>

@@ -1,12 +1,14 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  ClickedVideoInfoSlice,
   RecommendedVideoSlice,
   RootState,
   VideoScreenIsClickedSlice,
   store,
 } from "../store/store";
 import { getRecommendedVideos } from "../store/reducers/getRecommendedVideos";
+import { getVideoInfos } from "../store/reducers/getVideoInfos";
 
 const RecommendedVideo: React.FC = () => {
   const dispatch = useDispatch();
@@ -15,7 +17,7 @@ const RecommendedVideo: React.FC = () => {
   );
 
   const filteredSelector = recommendedSelector?.recommendeds?.items?.filter(
-    (el:any) => {
+    (el: any) => {
       if (!el.contentDetails.playlistItem) {
         return el;
       }
@@ -30,11 +32,17 @@ const RecommendedVideo: React.FC = () => {
           key={id}
           onClick={() => {
             dispatch(VideoScreenIsClickedSlice.actions.isClicked(value));
-            // console.log(value.snippet.channelId);
             store.dispatch(
               getRecommendedVideos(
                 RecommendedVideoSlice.actions.recommendedSuccess(
                   value.snippet.channelId
+                )
+              )
+            );
+            store.dispatch(
+              getVideoInfos(
+                ClickedVideoInfoSlice.actions.videoInfosSuccess(
+                  value.contentDetails?.upload?.videoId
                 )
               )
             );

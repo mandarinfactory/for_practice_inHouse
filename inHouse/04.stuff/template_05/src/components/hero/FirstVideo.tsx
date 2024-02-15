@@ -17,9 +17,6 @@ const FirstVideo: React.FC = () => {
   const firstVideoSelector = useSelector(
     (state: RootState) => state.youtubeApp
   );
-  const videoAddInfosSelector = useSelector(
-    (state: RootState) => state.clickedVideoInfoApp
-  );
 
   useEffect(() => {
     dispatch<any>(getHomepageVideos(""));
@@ -29,7 +26,7 @@ const FirstVideo: React.FC = () => {
     <div className="w-[85%] flex flex-wrap justify-center">
       {firstVideoSelector?.videos?.items?.map((value: any, id: number) => (
         <div
-          className="w-[290px] h-300px m-3 cursor-pointer"
+          className="w-[290px] h-auto m-3 cursor-pointer"
           key={id}
           onLoad={() => {
             store.dispatch(
@@ -60,13 +57,6 @@ const FirstVideo: React.FC = () => {
             {value.snippet.title}
           </h1>
           <p className="text-xs">채널이름 : {value.snippet.channelTitle}</p>
-          <p className="text-xs">
-            조회수 :{" "}
-            {videoAddInfosSelector.clickedValue
-              ? videoAddInfosSelector?.clickedValue?.items[0]?.statistics
-                  ?.viewCount
-              : ""}
-          </p>
         </div>
       ))}
     </div>
