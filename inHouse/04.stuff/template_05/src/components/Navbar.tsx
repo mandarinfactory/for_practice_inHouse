@@ -16,8 +16,8 @@ const Navbar: React.FC = () => {
   const [darkmodeSelector, onToggleDarkMode]: UseDarkmode = useDarkmode();
   const dispatch = useDispatch();
 
-  const getInputValue = (event: any) => {
-    if (event.key === "Enter") {
+  const getInputValue = (value: any) => {
+    if (value.key === "Enter") {
       const inputValueElement =
         document.querySelector<HTMLInputElement>(".inputValue");
       const inputValue = inputValueElement?.value;

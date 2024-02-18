@@ -1,11 +1,7 @@
-import { selector, RecoilEnv } from "recoil";
+import { RecoilEnv, selectorFamily } from "recoil";
 
 import { SPOTIFY_ACCESS_TOKEN_URL, SPOTIFY_URL } from "../util/constants";
-import {
-  accessTokenState,
-  detailTrackState,
-  selectedMusicValState,
-} from "./atom";
+import { accessTokenState } from "./atom";
 
 RecoilEnv.RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED = false;
 const CLIENT_ID = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
@@ -24,12 +20,13 @@ export const getAccessTokenData = async () => {
   return data.access_token;
 };
 
-export const detailTrackFinderState = selector({
-  key: "detailTrackFinderState",
-  get: async ({ get }) => {
-    const token = get(accessTokenState);
-    const selectedPlaylist = get(selectedMusicValState);
-    if (token && selectedPlaylist) {
+export const detailTrackHandlerState = selectorFamily({
+  key: "detailTrackHandlerState",
+  get:
+    (detailTrack: any) =>
+    async ({ get }) => {
+      console.log(detailTrack);
+      const token = get(accessTokenState);
       let trackParameters = {
         method: "GET",
         headers: {
@@ -37,19 +34,11 @@ export const detailTrackFinderState = selector({
           Authorization: "Bearer " + token,
         },
       };
-      try {
-        const response = await fetch(
-          `${SPOTIFY_URL}/playlists/${selectedPlaylist}
-          /tracks?limit=15`,
-          trackParameters
-        );
-        const data = await response.json();
-        console.log(data);
-        return data;
-      } catch (error) {
-        console.error("에러!", error);
-        throw error;
-      }
-    }
-  },
+      const responseData = await fetch(
+        `${SPOTIFY_URL}/playlists/${detailTrack}/tracks?limit=15`,
+        trackParameters
+      ).then((res) => res.json());
+      console.log(responseData);
+      return responseData;
+    },
 });

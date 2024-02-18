@@ -6,6 +6,7 @@ import SpeechRecognition, {
 import {
   ClickedButtonPageSlice,
   DictaphoneSlice,
+  RootState,
   VideoScreenIsClickedSlice,
   store,
 } from "../store/store";
@@ -13,8 +14,8 @@ import { getClickedSidebar } from "../store/reducers/getClickedSidebar";
 
 const Dictaphone: React.FC = () => {
   const dispatch = useDispatch();
-  const dictaphoneSelector = useSelector<any>(
-    (state) => state.dictaphoneApp.mic
+  const dictaphoneSelector = useSelector(
+    (state: RootState) => state.dictaphoneApp.mic
   );
   const {
     transcript,

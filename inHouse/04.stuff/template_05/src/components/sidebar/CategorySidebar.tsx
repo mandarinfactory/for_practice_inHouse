@@ -10,15 +10,18 @@ import { getClickedSidebar } from "../../store/reducers/getClickedSidebar";
 
 const CategorySidebar: React.FC = () => {
   const dispatch = useDispatch();
+  const storeToDispatch = (value: string) => {
+    store.dispatch(
+      getClickedSidebar(ClickedButtonPageSlice.actions.clickedSuccess(value))
+    );
+    dispatch(VideoScreenIsClickedSlice.actions.isClicked(0));
+  };
   return (
     <div className="flex flex-col">
       <div
         className="flex flex-col justify-center items-center mb-7 hover:text-indigo-800 dark:hover:text-indigo-400 cursor-pointer"
         onClick={() => {
-          store.dispatch(
-            getClickedSidebar(ClickedButtonPageSlice.actions.clickedSuccess(""))
-          );
-          dispatch(VideoScreenIsClickedSlice.actions.isClicked(0));
+          storeToDispatch("");
         }}
       >
         <svg
@@ -39,12 +42,7 @@ const CategorySidebar: React.FC = () => {
       <div
         className="flex flex-col justify-center items-center mb-7 hover:text-indigo-800 dark:hover:text-indigo-400 cursor-pointer"
         onClick={() => {
-          store.dispatch(
-            getClickedSidebar(
-              ClickedButtonPageSlice.actions.clickedSuccess("음악")
-            )
-          );
-          dispatch(VideoScreenIsClickedSlice.actions.isClicked(0));
+          storeToDispatch("음악");
         }}
       >
         <svg
@@ -64,12 +62,7 @@ const CategorySidebar: React.FC = () => {
       <div
         className="flex flex-col justify-center items-center mb-7 hover:text-indigo-800 dark:hover:text-indigo-400 cursor-pointer"
         onClick={() => {
-          store.dispatch(
-            getClickedSidebar(
-              ClickedButtonPageSlice.actions.clickedSuccess("영화")
-            )
-          );
-          dispatch(VideoScreenIsClickedSlice.actions.isClicked(0));
+          storeToDispatch("영화");
         }}
       >
         <svg
@@ -89,12 +82,7 @@ const CategorySidebar: React.FC = () => {
       <div
         className="flex flex-col justify-center items-center mb-7 hover:text-indigo-800 dark:hover:text-indigo-400 cursor-pointer"
         onClick={() => {
-          store.dispatch(
-            getClickedSidebar(
-              ClickedButtonPageSlice.actions.clickedSuccess("live")
-            )
-          );
-          dispatch(VideoScreenIsClickedSlice.actions.isClicked(0));
+          storeToDispatch("스트리밍");
         }}
       >
         <svg

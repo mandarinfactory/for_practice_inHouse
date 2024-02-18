@@ -8,11 +8,10 @@ import {
   selectedMusicValState,
 } from "../../recoil";
 import { browseHandler } from "../../recoil";
-import { detailTrackFinderState } from "../../recoil/store";
+import { detailTrackHandlerState } from "../../recoil/store";
 
 const Playlists: React.FC = () => {
   const [isClicked, setIsClicked] = useRecoilState(isClickedState);
-  // const [trackData, setTrackData] = useRecoilState(detailTrackState);
   const [selectedVal, setSelectedVal] = useRecoilState(selectedMusicValState);
   const [clickedDetailInfos, setClickedDetailInfos] = useRecoilState(
     detailClickedInfoState
@@ -28,15 +27,10 @@ const Playlists: React.FC = () => {
       );
       playlistsResultData.then((data) => setPlaylistsData(data));
     }
+    const detailTrackFinder = useRecoilValue(
+      detailTrackHandlerState(selectedVal)
+    );
   }, [accessToken]);
-
-  /*  const clickedPlaylist = async (token: string, value: any) => {
-    if (isClicked) {
-      detailTrackFinder(token, value).then((data) => {
-        setTrackData(data);
-      });
-    }
-  }; */
 
   return (
     <>
@@ -49,7 +43,6 @@ const Playlists: React.FC = () => {
               className="flex flex-col items-center w-[18%] h-auto cursor-pointer"
               onClick={() => {
                 setIsClicked(true);
-                //clickedPlaylist(accessToken, v.id);
                 setSelectedVal(v.id);
                 setClickedDetailInfos(v);
               }}

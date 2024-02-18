@@ -9,9 +9,6 @@ import { detailTrackFinderState } from "../recoil/store";
 const DetailHero: React.FC = () => {
   const [isClicked, setIsClicked] = useRecoilState(isClickedState);
   const clickedDetailInfos = useRecoilValue(detailClickedInfoState);
-  useEffect(() => {
-    const test = useRecoilValue(detailTrackFinderState);
-  },[isClicked])
 
   return (
     <div className="w-[95%] h-full flex flex-col justify-center h-max-screen mr-7 my-7 p-5 bg-gradient-to-r from-yellow-500 to-emerald-500 rounded-3xl shadow-2xl">

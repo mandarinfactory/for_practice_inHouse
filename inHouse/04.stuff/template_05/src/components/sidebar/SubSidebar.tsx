@@ -1,27 +1,45 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
-import { VideoScreenIsClickedSlice, store } from "../../store/store";
+import {
+  RootState,
+  SearchInputSlice,
+  VideoScreenIsClickedSlice,
+  store,
+} from "../../store/store";
 import { getClickedSidebar } from "../../store/reducers/getClickedSidebar";
 import { ClickedButtonPageSlice } from "../../store/store";
 
 import 침착맨 from "../../assets/침착맨.webp";
 import hahaha from "../../assets/haha ha.webp";
 import 슈카월드 from "../../assets/슈카월드.webp";
+import { getSearchVideos } from "../../store/reducers/getSearchVideos";
 
 const SubSidebar: React.FC = () => {
   const dispatch = useDispatch();
+  const searchedSelector = useSelector((state: RootState) => {
+    return state.youtubeSearchInputApp.searchVal?.etag;
+  });
+  const storeToDispatch = (value: string) => {
+    store.dispatch(
+      getClickedSidebar(ClickedButtonPageSlice.actions.clickedSuccess(value))
+    );
+    dispatch(VideoScreenIsClickedSlice.actions.isClicked(0));
+  };
+  const searchedInputValHandler = (replace: string) => {
+    if (searchedSelector) {
+      store.dispatch(
+        getSearchVideos(SearchInputSlice.actions.searchSuccess(replace))
+      );
+    }
+  };
   return (
     <div className="flex flex-col">
       <div
         className="flex flex-col justify-center items-center my-7 hover:fill-indigo-800 hover:text-indigo-800 dark:fill-slate-50 dark:hover:fill-indigo-400 dark:hover:text-indigo-400 cursor-pointer"
         onClick={() => {
-          store.dispatch(
-            getClickedSidebar(
-              ClickedButtonPageSlice.actions.clickedSuccess("무한도전")
-            )
-          );
-          dispatch(VideoScreenIsClickedSlice.actions.isClicked(0));
+          storeToDispatch("무한도전");
+          searchedInputValHandler("무한도전");
         }}
       >
         <svg
@@ -66,12 +84,8 @@ const SubSidebar: React.FC = () => {
       <div
         className="flex flex-col justify-center items-center mb-7 hover:text-indigo-800 dark:hover:text-indigo-400 cursor-pointer"
         onClick={() => {
-          store.dispatch(
-            getClickedSidebar(
-              ClickedButtonPageSlice.actions.clickedSuccess("침착맨")
-            )
-          );
-          dispatch(VideoScreenIsClickedSlice.actions.isClicked(0));
+          storeToDispatch("침착맨");
+          searchedInputValHandler("침착맨");
         }}
       >
         <img className="w-10 h-10 rounded-full" src={침착맨} alt="" />
@@ -80,12 +94,8 @@ const SubSidebar: React.FC = () => {
       <div
         className="flex flex-col justify-center items-center mb-7 hover:text-indigo-800 dark:hover:text-indigo-400 cursor-pointer"
         onClick={() => {
-          store.dispatch(
-            getClickedSidebar(
-              ClickedButtonPageSlice.actions.clickedSuccess("haha ha")
-            )
-          );
-          dispatch(VideoScreenIsClickedSlice.actions.isClicked(0));
+          storeToDispatch("haha ha");
+          searchedInputValHandler("haha ha");
         }}
       >
         <img className="w-10 h-10 rounded-full" src={hahaha} alt="" />
@@ -94,12 +104,8 @@ const SubSidebar: React.FC = () => {
       <div
         className="flex flex-col justify-center items-center hover:text-indigo-800 dark:hover:text-indigo-400 cursor-pointer"
         onClick={() => {
-          store.dispatch(
-            getClickedSidebar(
-              ClickedButtonPageSlice.actions.clickedSuccess("슈카월드")
-            )
-          );
-          dispatch(VideoScreenIsClickedSlice.actions.isClicked(0));
+          storeToDispatch("슈카월드");
+          searchedInputValHandler("슈카월드");
         }}
       >
         <img
