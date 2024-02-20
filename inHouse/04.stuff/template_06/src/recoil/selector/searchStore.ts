@@ -4,8 +4,6 @@ import { accessTokenState } from "../atom";
 import { SPOTIFY_URL } from "../../util/constants";
 
 RecoilEnv.RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED = false;
-const CLIENT_ID = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
-const CLIENT_SECRET = import.meta.env.VITE_SPOTIFY_CLIENT_SECRET;
 
 export const searchArtistFinderState = selectorFamily({
     key: "searchArtistFinderState",
