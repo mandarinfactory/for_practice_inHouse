@@ -1,41 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 
 import {
-  accessTokenState,
   detailClickedInfoState,
   isClickedState,
   selectedMusicValState,
-} from "../../recoil";
-import { browseHandler } from "../../recoil";
-import { detailTrackHandlerState } from "../../recoil/store";
+} from "../../recoil/atom";
+
+import { getPlaylistsDataState } from "../../recoil/store";
 
 const Playlists: React.FC = () => {
+  const findPlaylistsData = useRecoilValue(getPlaylistsDataState);
   const [isClicked, setIsClicked] = useRecoilState(isClickedState);
   const [selectedVal, setSelectedVal] = useRecoilState(selectedMusicValState);
   const [clickedDetailInfos, setClickedDetailInfos] = useRecoilState(
     detailClickedInfoState
   );
-  const accessToken = useRecoilValue<any>(accessTokenState);
-  const [playlistsData, setPlaylistsData] = useState<any>("");
-
-
-  useEffect(() => {
-    if (accessToken) {
-      const playlistsResultData = browseHandler(
-        accessToken,
-        "featured-playlists"
-      );
-      playlistsResultData.then((data) => setPlaylistsData(data));
-    }
-  }, [accessToken]);
 
   return (
     <>
       <h1 className="my-1 text-3xl">플레이리스트</h1>
       <div className="flex flex-wrap justify-center">
-        {playlistsData ? (
-          playlistsData.playlists.items.map((v: any, i: number) => (
+        {findPlaylistsData ? (
+          findPlaylistsData.items.map((v: any, i: number) => (
             <div
               key={i}
               className="flex flex-col items-center w-[18%] h-auto cursor-pointer"

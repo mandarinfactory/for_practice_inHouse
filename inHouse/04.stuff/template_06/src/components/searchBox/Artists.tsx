@@ -1,19 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import { useRecoilValue } from "recoil";
-import {
-  accessTokenState,
-  musicValState,
-  searchArtistFinder,
-} from "../../recoil";
+
+import { musicValState } from "../../recoil/atom";
+import { searchArtistFinderState } from "../../recoil/store";
 
 const Artists: React.FC = () => {
-  const accessToken = useRecoilValue(accessTokenState);
   const musicVal = useRecoilValue(musicValState);
-  const [artistData, setArtistData] = useState("");
-  if (musicVal && accessToken) {
-    const artistResultData = searchArtistFinder(accessToken, musicVal);
-    artistResultData.then((response) => setArtistData(response[0]));    
-  }
+  const artistData = useRecoilValue(searchArtistFinderState(musicVal));
 
   return (
     <>
@@ -21,8 +14,14 @@ const Artists: React.FC = () => {
       <div className="w-full flex justify-start mt-5">
         {artistData ? (
           <div>
-            <img src={artistData.images[2].url} alt="artist" className="rounded-full shadow-xl hover:scale-105 duration-300 cursor-pointer" />
-            <h1 className="mt-3 text-xl text-center">{artistData.name}</h1>
+            <img
+              src={artistData.artists.items[0].images[2].url}
+              alt="artist"
+              className="rounded-full shadow-xl hover:scale-105 duration-300 cursor-pointer"
+            />
+            <h1 className="mt-3 text-xl text-center">
+              {artistData.artists.items[0].name}
+            </h1>
           </div>
         ) : (
           <></>

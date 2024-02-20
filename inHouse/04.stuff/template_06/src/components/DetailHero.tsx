@@ -4,7 +4,7 @@ import {
   detailClickedInfoState,
   isClickedState,
   selectedMusicValState,
-} from "../recoil";
+} from "../recoil/atom";
 import { detailTrackHandlerState } from "../recoil/store";
 
 const DetailHero: React.FC = () => {

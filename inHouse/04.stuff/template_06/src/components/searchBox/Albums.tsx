@@ -2,25 +2,16 @@ import React, { useState } from "react";
 import { useRecoilValue } from "recoil";
 import ItemsCarousel from "react-items-carousel";
 
-import {
-  accessTokenState,
-  musicValState,
-  searchAlbumHandler,
-} from "../../recoil";
+import { musicValState } from "../../recoil/atom";
 import LeftChevron from "../button/LeftChevron";
 import RightChevron from "../button/RightChevron";
+import { searchAlbumFinderState } from "../../recoil/store";
 
 const Albums: React.FC = () => {
-  const accessToken = useRecoilValue(accessTokenState);
   const musicVal = useRecoilValue(musicValState);
-  const [albumData, setAlbumData] = useState("");
+  const albumData = useRecoilValue(searchAlbumFinderState(musicVal));
   const [activeItemIndex, setActiveItemIndex] = useState(2);
   const chevronWidth = 50;
-  
-  if (musicVal && accessToken) {
-    const albumResultData = searchAlbumHandler(accessToken, musicVal);
-    albumResultData.then((response) => setAlbumData(response));
-  }
 
   return (
     <>

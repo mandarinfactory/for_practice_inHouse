@@ -1,10 +1,9 @@
 import React, { useEffect } from "react";
 import { useRecoilValueLoadable } from "recoil";
-import { randomArtistsHandler } from "../../recoil/store";
+// import { randomArtistsHandler } from "../../recoil/store";
 
 const RandomArtists: React.FC = () => {
-  const randomArtistsData = useRecoilValueLoadable(randomArtistsHandler(""));
-  console.log(randomArtistsData.contents);
+  // const randomArtistsData = useRecoilValueLoadable(randomArtistsHandler(""));
 
   return (
     <>
