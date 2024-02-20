@@ -11,9 +11,7 @@ const Home: React.FC = () => {
   return (
     <div className="w-full h-full flex justify-center">
       <Sidebar />
-      {/* {isClicked ? <DetailHero /> : <Hero />} */}
-      <DetailHero />
-      <Hero />
+      {isClicked ? <DetailHero /> : <Hero />}
     </div>
   );
 };

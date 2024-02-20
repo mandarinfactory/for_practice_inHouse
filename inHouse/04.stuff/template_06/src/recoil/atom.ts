@@ -1,7 +1,7 @@
 import { atom } from "recoil";
 
 export const accessTokenState = atom<string | undefined>({
-    key: `accessTokenState`,
+    key: "accessTokenState",
     default: "",
   });
   
@@ -11,7 +11,7 @@ export const accessTokenState = atom<string | undefined>({
   });
   
   export const musicValState = atom<string | undefined>({
-    key: `musicValState`,
+    key: "musicValState",
     default: "",
   });
   

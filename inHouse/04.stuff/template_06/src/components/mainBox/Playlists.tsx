@@ -19,6 +19,7 @@ const Playlists: React.FC = () => {
   const accessToken = useRecoilValue<any>(accessTokenState);
   const [playlistsData, setPlaylistsData] = useState<any>("");
 
+
   useEffect(() => {
     if (accessToken) {
       const playlistsResultData = browseHandler(
@@ -27,9 +28,6 @@ const Playlists: React.FC = () => {
       );
       playlistsResultData.then((data) => setPlaylistsData(data));
     }
-    const detailTrackFinder = useRecoilValue(
-      detailTrackHandlerState(selectedVal)
-    );
   }, [accessToken]);
 
   return (

@@ -1,14 +1,13 @@
 import React from "react";
 
-import Categories from "./mainBox/Categories";
 import Playlists from "./mainBox/Playlists";
+import RandomArtists from "./mainBox/RandomArtists";
 
 const MainBox: React.FC = () => {
-
   return (
     <>
+      <RandomArtists />
       <Playlists />
-      {/* <Categories /> */}
     </>
   );
 };

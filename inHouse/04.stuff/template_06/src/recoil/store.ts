@@ -25,20 +25,62 @@ export const detailTrackHandlerState = selectorFamily({
   get:
     (detailTrack: any) =>
     async ({ get }) => {
-      console.log(detailTrack);
+      if (detailTrack) {
+        const token = get(accessTokenState);
+        const trackParameters = {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + token,
+          },
+        };
+        const detailTrackData = await fetch(
+          `${SPOTIFY_URL}/playlists/${detailTrack}/tracks?limit=15`,
+          trackParameters
+        ).then((res) => res.json());
+        return detailTrackData;
+      } else {
+        return detailTrack;
+      }
+    },
+});
+
+export const randomArtistsHandler = selectorFamily({
+  key: "randomArtistsHandler",
+  get:
+    (value: string) =>
+    async ({ get }) => {
       const token = get(accessTokenState);
-      let trackParameters = {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + token,
-        },
-      };
-      const responseData = await fetch(
-        `${SPOTIFY_URL}/playlists/${detailTrack}/tracks?limit=15`,
-        trackParameters
-      ).then((res) => res.json());
-      console.log(responseData);
-      return responseData;
+      if (token) {
+        const randomParameters = {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + token,
+          },
+        };
+
+        const findRandomGenre = await fetch(
+          `${SPOTIFY_URL}/recommendations/available-genre-seeds`,
+          randomParameters
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            return data;
+          });
+        const pickRandomNumber = Math.ceil(
+          Math.random() * findRandomGenre.genres.length
+        );
+        const getRandomGenre = findRandomGenre.genres[pickRandomNumber];
+        const randomGenreFinder = await fetch(
+          `${SPOTIFY_URL}/search?q=genre%3A${getRandomGenre}&type=artist&limit=7`,
+          randomParameters
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            return data;
+          });
+        return randomGenreFinder;
+      }
     },
 });

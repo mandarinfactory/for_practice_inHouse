@@ -18,7 +18,7 @@ const Hero: React.FC = () => {
     if (isLoading) return data;
     if (isError) return undefined;
     setAccessToken(data);
-  }, [data, isLoading, isError]);
+  }, [data, isLoading, isError, accessToken]); // Spotify API token 가져오는걸 react-query를 사용함
 
   let screen;
   if (!musicVal) {
