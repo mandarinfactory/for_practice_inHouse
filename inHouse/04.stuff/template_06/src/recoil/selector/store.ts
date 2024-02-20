@@ -20,31 +20,6 @@ export const getAccessTokenData = async () => {
   return data.access_token;
 };
 
-export const getPlaylistsDataState = selector({
-  key: "getPlaylistsDataState",
-  get: async ({ get }) => {
-    const token = get(accessTokenState);
-    if (token) {
-      const playlistParameters = {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + token,
-        },
-      };
-      const playlistData = await fetch(
-        `${SPOTIFY_URL}/browse/featured-playlists?locale=kr_KR&limit=10`,
-        playlistParameters
-      )
-        .then((res) => res.json())
-        .then((data) => {
-          return data;
-        });
-      return playlistData.playlists;
-    }
-  },
-});
-
 export const detailTrackHandlerState = selectorFamily({
   key: "detailTrackHandlerState",
   get:
@@ -74,7 +49,7 @@ export const detailTrackHandlerState = selectorFamily({
     },
 });
 
-/* export const randomArtistsHandler = selectorFamily({
+export const randomArtistsHandler = selectorFamily({
   key: "randomArtistsHandler",
   get:
     (value: string) =>
@@ -112,4 +87,4 @@ export const detailTrackHandlerState = selectorFamily({
         return randomGenreFinder;
       }
     },
-}); */
+});

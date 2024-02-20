@@ -1,8 +1,8 @@
 import React from "react";
 
-import Songs from "./searchBox/Songs";
-import Albums from "./searchBox/Albums";
-import Artists from "./searchBox/Artists";
+import Songs from "../searchBox/Songs";
+import Albums from "../searchBox/Albums";
+import Artists from "../searchBox/Artists";
 
 const SearchBox: React.FC = () => {
   return (

@@ -2,13 +2,19 @@ import React from "react";
 
 import PlayerControls from "./PlayerControls";
 import { useRecoilState } from "recoil";
-import { musicValState } from "../recoil/atom";
+import {
+  isNewClickedState,
+  isTopClickedState,
+  musicValState,
+} from "../recoil/atom";
 
 const Sidebar: React.FC = () => {
   const [musicVal, setMusicVal] = useRecoilState(musicValState);
+  const [isNewClicked, setIsNewClicked] = useRecoilState(isNewClickedState);
+  const [isTopClicked, setIsTopClicked] = useRecoilState(isTopClickedState);
 
   return (
-    <div className="sticky w-[20%] h-screen my-7 mx-1 p-5">
+    <div className="sticky top-[1%] w-[20%] h-screen my-7 mx-1 p-5">
       <div
         className="flex cursor-pointer"
         onClick={() => {
@@ -42,24 +48,33 @@ const Sidebar: React.FC = () => {
       />
 
       <div className="mt-7 text-slate-700">
-        <div className="home flex">
+        <div className="home flex hover:text-black cursor-pointer">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             fill="currentColor"
-            className="w-7 h-7 mr-2"
+            className="w-6 h-6 mr-2"
           >
             <path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" />
             <path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" />
           </svg>
-          <h1 className="text-2xl mb-7 hover:text-black cursor-pointer">홈</h1>
+          <h1
+            className="text-2xl mb-7"
+            onClick={() => {
+              setMusicVal("");
+              setIsNewClicked(false);
+              setIsTopClicked(false);
+            }}
+          >
+            홈
+          </h1>
         </div>
-        <div className="chart flex">
+        <div className="chart flex hover:text-black cursor-pointer">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             fill="currentColor"
-            className="w-7 h-7 mr-2"
+            className="w-6 h-6 mr-2"
           >
             <path
               fillRule="evenodd"
@@ -67,8 +82,35 @@ const Sidebar: React.FC = () => {
               clipRule="evenodd"
             />
           </svg>
-          <h1 className="text-2xl mb-7 hover:text-black cursor-pointer">
+          <h1
+            className="text-2xl mb-7 hover:text-black cursor-pointer"
+            onClick={() => {
+              setIsTopClicked(true);
+            }}
+          >
             인기차트
+          </h1>
+        </div>
+        <div className="new_release flex hover:text-black cursor-pointer">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            className="w-6 h-6 mr-2"
+          >
+            <path
+              fillRule="evenodd"
+              d="M9 4.5a.75.75 0 0 1 .721.544l.813 2.846a3.75 3.75 0 0 0 2.576 2.576l2.846.813a.75.75 0 0 1 0 1.442l-2.846.813a3.75 3.75 0 0 0-2.576 2.576l-.813 2.846a.75.75 0 0 1-1.442 0l-.813-2.846a3.75 3.75 0 0 0-2.576-2.576l-2.846-.813a.75.75 0 0 1 0-1.442l2.846-.813A3.75 3.75 0 0 0 7.466 7.89l.813-2.846A.75.75 0 0 1 9 4.5ZM18 1.5a.75.75 0 0 1 .728.568l.258 1.036c.236.94.97 1.674 1.91 1.91l1.036.258a.75.75 0 0 1 0 1.456l-1.036.258c-.94.236-1.674.97-1.91 1.91l-.258 1.036a.75.75 0 0 1-1.456 0l-.258-1.036a2.625 2.625 0 0 0-1.91-1.91l-1.036-.258a.75.75 0 0 1 0-1.456l1.036-.258a2.625 2.625 0 0 0 1.91-1.91l.258-1.036A.75.75 0 0 1 18 1.5ZM16.5 15a.75.75 0 0 1 .712.513l.394 1.183c.15.447.5.799.948.948l1.183.395a.75.75 0 0 1 0 1.422l-1.183.395c-.447.15-.799.5-.948.948l-.395 1.183a.75.75 0 0 1-1.422 0l-.395-1.183a1.5 1.5 0 0 0-.948-.948l-1.183-.395a.75.75 0 0 1 0-1.422l1.183-.395c.447-.15.799-.5.948-.948l.395-1.183A.75.75 0 0 1 16.5 15Z"
+              clipRule="evenodd"
+            />
+          </svg>
+          <h1
+            className="text-2xl mb-7 hover:text-black cursor-pointer"
+            onClick={() => {
+              setIsNewClicked(true);
+            }}
+          >
+            최신앨범
           </h1>
         </div>
       </div>

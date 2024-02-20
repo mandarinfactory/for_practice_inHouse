@@ -1,10 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useRecoilValueLoadable } from "recoil";
-// import { randomArtistsHandler } from "../../recoil/store";
+import { randomArtistsHandler } from "../../recoil/selector/store";
 
 const RandomArtists: React.FC = () => {
-  // const randomArtistsData = useRecoilValueLoadable(randomArtistsHandler(""));
-
+    // const randomArtistsData = useRecoilValueLoadable(randomArtistsHandler(""));
   return (
     <>
       <h1 className="my-1 text-3xl">추천하는 아티스트들</h1>

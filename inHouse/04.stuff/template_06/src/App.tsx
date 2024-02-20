@@ -5,6 +5,7 @@ import { ReactQueryDevtools } from "react-query/devtools";
 
 import Home from "./page/Home";
 import SuspenseBox from "./page/SuspenseBox";
+import NewReleases from "./components/hero/NewReleases";
 
 const queryClient = new QueryClient();
 
