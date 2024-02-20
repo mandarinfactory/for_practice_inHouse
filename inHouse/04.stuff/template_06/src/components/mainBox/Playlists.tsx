@@ -7,7 +7,7 @@ import {
   selectedMusicValState,
 } from "../../recoil/atom";
 
-import { getPlaylistsDataState } from "../../recoil/store";
+import { getPlaylistsDataState } from "../../recoil/selector/store";
 
 const Playlists: React.FC = () => {
   const findPlaylistsData = useRecoilValue(getPlaylistsDataState);

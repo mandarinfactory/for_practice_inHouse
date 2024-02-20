@@ -5,7 +5,7 @@ import {
   isClickedState,
   selectedMusicValState,
 } from "../recoil/atom";
-import { detailTrackHandlerState } from "../recoil/store";
+import { detailTrackHandlerState } from "../recoil/selector/store";
 
 const DetailHero: React.FC = () => {
   const [isClicked, setIsClicked] = useRecoilState(isClickedState);

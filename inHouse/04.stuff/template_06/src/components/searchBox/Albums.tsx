@@ -5,7 +5,7 @@ import ItemsCarousel from "react-items-carousel";
 import { musicValState } from "../../recoil/atom";
 import LeftChevron from "../button/LeftChevron";
 import RightChevron from "../button/RightChevron";
-import { searchAlbumFinderState } from "../../recoil/store";
+import { searchAlbumFinderState } from "../../recoil/selector/searchStore";
 
 const Albums: React.FC = () => {
   const musicVal = useRecoilValue(musicValState);

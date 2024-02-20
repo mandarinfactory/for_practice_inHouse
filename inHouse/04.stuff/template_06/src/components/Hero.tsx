@@ -3,7 +3,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { useQuery } from "react-query";
 
 import { accessTokenState, musicValState } from "../recoil/atom";
-import { getAccessTokenData } from "../recoil/store";
+import { getAccessTokenData } from "../recoil/selector/store";
 import SearchBox from "./SearchBox";
 import MainBox from "./MainBox";
 

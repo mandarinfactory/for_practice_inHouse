@@ -2,7 +2,7 @@ import React from "react";
 import { useRecoilValue } from "recoil";
 
 import { musicValState } from "../../recoil/atom";
-import { searchArtistFinderState } from "../../recoil/store";
+import { searchArtistFinderState } from "../../recoil/selector/searchStore";
 
 const Artists: React.FC = () => {
   const musicVal = useRecoilValue(musicValState);
