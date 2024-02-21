@@ -11,7 +11,7 @@ const Sidebar: React.FC = () => {
 
   return (
     <div className="sticky top-[1%] w-[20%] h-screen my-7 mx-1 p-5">
-      <Link to="./">
+      <Link to="/.">
         <div
           className="flex cursor-pointer"
           onClick={() => {
