@@ -1,4 +1,4 @@
-import { RecoilEnv, selector, selectorFamily } from "recoil";
+import { RecoilEnv, selectorFamily } from "recoil";
 
 import { SPOTIFY_ACCESS_TOKEN_URL, SPOTIFY_URL } from "../../util/constants";
 import { accessTokenState } from "../atom";

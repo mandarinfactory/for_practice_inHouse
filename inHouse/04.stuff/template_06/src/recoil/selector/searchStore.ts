@@ -110,15 +110,21 @@ export const searchBrowseState = selectorFamily({
         };
         const browseData = await fetch(
           `${SPOTIFY_URL}/browse/${
-            limit === 25 ? "new-releases" : "featured-playlists"
+            limit === 25
+              ? "new-releases"
+              : limit === 30
+              ? "top-hit"
+              : "featured-playlists"
           }?locale=kr_KR&limit=${limit}`,
           browseParameters
         )
           .then((res) => res.json())
           .then((data) => {
+            
             return data;
           });
-        return browseData;
+          console.log(browseData);
+          return browseData;
       }
     },
 });

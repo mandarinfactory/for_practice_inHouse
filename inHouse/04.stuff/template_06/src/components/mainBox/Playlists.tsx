@@ -10,7 +10,10 @@ import {
 import { searchBrowseState } from "../../recoil/selector/searchStore";
 
 const Playlists: React.FC = () => {
-  const findPlaylistsData = useRecoilValue(searchBrowseState(10));
+  const playlistsData = useRecoilValue(searchBrowseState(10));
+  const data = useRecoilValue(searchBrowseState(30));
+  console.log(data);
+  
   const [isClicked, setIsClicked] = useRecoilState(isClickedState);
   const [selectedVal, setSelectedVal] = useRecoilState(selectedMusicValState);
   const [clickedDetailInfos, setClickedDetailInfos] = useRecoilState(
@@ -21,8 +24,8 @@ const Playlists: React.FC = () => {
     <>
       <h1 className="my-1 text-3xl">플레이리스트</h1>
       <div className="flex flex-wrap justify-center">
-        {findPlaylistsData ? (
-          findPlaylistsData.playlists.items.map((v: any, i: number) => (
+        {playlistsData ? (
+          playlistsData.playlists.items.map((v: any, i: number) => (
             <div
               key={i}
               className="flex flex-col items-center w-[18%] h-auto cursor-pointer"

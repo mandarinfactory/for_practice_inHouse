@@ -5,6 +5,7 @@ import Sidebar from "../Sidebar";
 
 const NewReleases: React.FC = () => {
   const newReleasesData = useRecoilValue(searchBrowseState(25));
+  
   return (
     <div className="w-full h-full flex justify-center">
       <Sidebar />
