@@ -52,7 +52,7 @@ export const detailTrackHandlerState = selectorFamily({
 export const randomArtistsHandler = selectorFamily({
   key: "randomArtistsHandler",
   get:
-    (value: string) =>
+    () =>
     async ({ get }) => {
       const token = get(accessTokenState);
       if (token) {
@@ -77,7 +77,7 @@ export const randomArtistsHandler = selectorFamily({
         );
         const getRandomGenre = findRandomGenre.genres[pickRandomNumber];
         const randomGenreFinder = await fetch(
-          `${SPOTIFY_URL}/search?q=genre%3A${getRandomGenre}&type=artist&limit=7`,
+          `${SPOTIFY_URL}/search?q=genre%3A${getRandomGenre}&type=artist&limit=10`,
           randomParameters
         )
           .then((res) => res.json())
