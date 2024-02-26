@@ -22,7 +22,7 @@ const Hero: React.FC = () => {
   }, [data, isLoading, isError, accessToken]); // Spotify API token 가져오는걸 react-query를 사용함
 
   return (
-    <div className="w-[95%] h-max-screen mr-7 my-7 p-5 bg-gradient-to-r from-yellow-500 to-emerald-500 rounded-3xl shadow-2xl">
+    <div className="w-[95%] h-max-screen mr-7 my-7 p-5 bg-gradient-to-r from-red-500 to-sky-500 rounded-3xl shadow-2xl">
       {!musicVal ? <MainBox /> : <SearchBox />}
     </div>
   );

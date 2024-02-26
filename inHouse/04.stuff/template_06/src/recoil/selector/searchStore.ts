@@ -113,17 +113,15 @@ export const searchBrowseState = selectorFamily({
             limit === 25
               ? "new-releases"
               : limit === 30
-              ? "top-hit"
+              ? "top-charts"
               : "featured-playlists"
           }?locale=kr_KR&limit=${limit}`,
           browseParameters
         )
           .then((res) => res.json())
           .then((data) => {
-            
             return data;
           });
-          console.log(browseData);
           return browseData;
       }
     },

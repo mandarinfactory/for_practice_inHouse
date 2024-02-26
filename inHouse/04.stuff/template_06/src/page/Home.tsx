@@ -4,7 +4,7 @@ import { useRecoilValue } from "recoil";
 import { isClickedState } from "../recoil/atom";
 import Hero from "../components/Hero";
 import Sidebar from "../components/Sidebar";
-import DetailHero from "../components/DetailHero";
+import DetailHero from "../components/DetailPlaylists";
 
 const Home: React.FC = () => {
   const isClicked = useRecoilValue(isClickedState);

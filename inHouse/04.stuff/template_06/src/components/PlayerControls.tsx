@@ -3,8 +3,8 @@ import React from "react";
 const PlayerControls: React.FC = () => {
 
   return (
-    <div className="mt-5 p-3 w-full h-[475px] bg-slate-100 rounded-3xl shadow-xl">
-      <div className="m-5 w-auto h-[250px] bg-slate-50 rounded-3xl shadow-xl"></div>
+    <div className="mt-5 p-3 w-full h-[70%] flex flex-col justify-center bg-slate-100 rounded-3xl shadow-xl">
+      <div className="m-5 w-auto h-[50%] bg-slate-50 rounded-3xl shadow-xl"></div>
       <div className="flex flex-col justify-center items-center">
         <h1 className="my-3 text-2xl">헤어지자 말해요</h1>
         <h1 className="my-1 text-2xl">박재정</h1>

@@ -1,16 +1,32 @@
-import React from "react";
-import { useRecoilValue } from "recoil";
+import React, { useEffect } from "react";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { useNavigate } from "react-router-dom";
 import { randomArtistsHandler } from "../../recoil/selector/store";
+import {
+  detailClickedInfosState,
+  isDetailClickedState,
+} from "../../recoil/atom";
 
 const RandomArtists: React.FC = () => {
+  const navigate = useNavigate();
   const randomArtistsData = useRecoilValue(randomArtistsHandler(""));
+  const [isClicked, setIsClicked] = useRecoilState(isDetailClickedState);
+  const [detailInfos, setDetailInfos] = useRecoilState(detailClickedInfosState);
 
   return (
     <>
       <h1 className="my-1 text-3xl">추천하는 아티스트들</h1>
       <div className="flex flex-wrap justify-center items-center">
         {randomArtistsData?.artists.items.map((e: any, i: number) => (
-          <div className="m-3 flex justify-center items-center w-[16%]" key={i}>
+          <div
+            className="m-3 flex justify-center items-center w-[16%]"
+            key={i}
+            onClick={() => {
+              setIsClicked(true);
+              navigate("/DetailHero");     
+              setDetailInfos(e);           
+            }}
+          >
             <div className="relative w-[80%] hover:scale-95 duration-150 cursor-pointer">
               <img
                 className="object-cover rounded-xl shadow-xl"

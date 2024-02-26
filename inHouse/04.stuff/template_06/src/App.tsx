@@ -7,8 +7,8 @@ import { ReactQueryDevtools } from "react-query/devtools";
 import Home from "./page/Home";
 import SuspenseBox from "./page/SuspenseBox";
 import MainBox from "./components/hero/MainBox";
-import TopCharts from "./components/hero/TopCharts";
 import NewReleases from "./components/hero/NewReleases";
+import DetailHero from "./components/DetailHero";
 
 const queryClient = new QueryClient();
 
@@ -21,8 +21,8 @@ export const App: React.FC = () => {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/MainBox" element={<MainBox />} />
-              <Route path="/TopCharts" element={<TopCharts />} />
               <Route path="/NewReleases" element={<NewReleases />} />
+              <Route path="/DetailHero" element={<DetailHero />} />
             </Routes>
           </Suspense>
         </BrowserRouter>

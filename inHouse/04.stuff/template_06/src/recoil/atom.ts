@@ -20,11 +20,23 @@ export const isClickedState = atom<boolean>({
   default: false,
 });
 
-export const detailTrackState = atom<any>({
+export const isDetailClickedState = atom<boolean>({
+  key: "isDetailClickedState",
+  default: false,
+});
+
+export const detailTrackState = atom<object>({
   key: "detailTrackState",
-  default: "",
+  default: [],
 });
-export const detailClickedInfoState = atom<any>({
-  key: "detailClickedInfoState",
-  default: "",
+
+export const detailClickedPlaylistsInfoState = atom<object>({
+  key: "detailClickedPlaylistsInfoState",
+  default: [],
 });
+
+export const detailClickedInfosState = atom<object>({
+  key: "detailClickedInfosState",
+  default: [],
+
+})

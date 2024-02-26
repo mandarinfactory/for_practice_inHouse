@@ -1,5 +1,6 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
+
 import { searchBrowseState } from "../../recoil/selector/searchStore";
 import Sidebar from "../Sidebar";
 
@@ -9,7 +10,7 @@ const NewReleases: React.FC = () => {
   return (
     <div className="w-full h-full flex justify-center">
       <Sidebar />
-      <div className="w-[95%] h-max-screen mr-7 my-7 p-5 bg-gradient-to-r from-yellow-500 to-emerald-500 rounded-3xl shadow-2xl">
+      <div className="w-[95%] h-max-screen mr-7 my-7 p-5 bg-gradient-to-r from-red-500 to-sky-500 rounded-3xl shadow-2xl">
         <h1 className="my-1 text-3xl">최신앨범</h1>
         <div className="flex flex-wrap">
           {newReleasesData.albums.items.map((v: any, i:number) => (
