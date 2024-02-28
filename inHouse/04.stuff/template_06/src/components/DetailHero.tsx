@@ -2,18 +2,22 @@ import React from "react";
 import { useRecoilValue } from "recoil";
 
 import Sidebar from "./Sidebar";
-import { searchSongFinderState } from "../recoil/selector/searchStore";
+import {
+  searchDescriptionState,
+  searchSongFinderState,
+} from "../recoil/selector/searchStore";
 import { detailClickedInfosState, isDetailClickedState } from "../recoil/atom";
 
 const DetailHero: React.FC = () => {
-  const isClicked = useRecoilValue(isDetailClickedState);
+  const isDetailClicked = useRecoilValue(isDetailClickedState);
   const detailInfosData = useRecoilValue<any>(detailClickedInfosState);
   const artistData = detailInfosData.name;
   const detailSongsData = useRecoilValue(searchSongFinderState(artistData));
+  const detailDescData = useRecoilValue(searchDescriptionState(artistData));
 
   return (
     <div className="w-full h-full flex justify-center">
-      {isClicked ? (
+      {isDetailClicked ? (
         <>
           <Sidebar />
           <div className="w-[95%] h-max-screen mr-7 my-7 p-5 bg-gradient-to-r from-red-500 to-sky-500 rounded-3xl shadow-2xl">
@@ -23,11 +27,27 @@ const DetailHero: React.FC = () => {
                 src={detailInfosData?.images[0].url}
                 alt=""
               />
-              <h1 className="ml-5 text-[4rem]">{detailInfosData?.name}</h1>
+              <div className="flex flex-col justify-between">
+                <h1 className="ml-5 text-[4rem]">{detailInfosData?.name}</h1>
+                <div>
+                  <h1 className="ml-5 text-[2rem]">
+                    {detailDescData.pages[0].description}
+                  </h1>
+                  <h1 className="ml-5 flex text-[2rem]">
+                    장르 :
+                    {detailInfosData.genres.map((genre: string) => (
+                      <p className="ml-3">{genre}</p>
+                    ))}
+                  </h1>
+                </div>
+              </div>
             </div>
             <div>
-              {detailSongsData?.items.map((v: object) => (
-                <div className="my-3 p-2 flex justify-between items-center bg-white bg-opacity-30 hover:bg-opacity-50 rounded-xl cursor-pointer duration-150">
+              {detailSongsData?.items.map((v: object, i: number) => (
+                <div
+                  className="my-3 p-2 flex justify-between items-center bg-white bg-opacity-30 hover:bg-opacity-50 rounded-xl cursor-pointer duration-150"
+                  key={i}
+                >
                   <img
                     className="w-[60px] h-auto ml-3 object-cover rounded-md"
                     src={v.album.images[1].url}

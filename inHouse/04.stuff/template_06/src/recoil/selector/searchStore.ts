@@ -122,7 +122,44 @@ export const searchBrowseState = selectorFamily({
           .then((data) => {
             return data;
           });
-          return browseData;
+        return browseData;
+      }
+    },
+});
+
+export const searchDescriptionState = selectorFamily({
+  key: "searchDescriptionState",
+  get:
+    (searchValue: string) =>
+    async ({ get }) => {
+      const token = get(accessTokenState);
+      if (token) {
+        const languageCode = "en";
+        const headers = {
+          Authorization: "d19f95d5ee0b91dd9ebc8fc4ac763b6f",
+          "User-Agent": "music_information",
+        };
+        const baseUrl = "https://api.wikimedia.org/core/v1/wikipedia/";
+        const endPoint = "/search/page";
+        const parameters = { q: searchValue, limit: 3 };
+        const theUrl = baseUrl + languageCode + endPoint;
+        const descriptionData = await fetch(
+          theUrl + "?" + new URLSearchParams(parameters),
+          {
+            method: "GET",
+            headers: headers,
+          }
+        )
+          .then((res) => {
+            console.log(res);
+            
+            return res.json();
+          })
+          .then((data) => {
+            console.log(data);
+            return data;
+          });
+        return descriptionData;
       }
     },
 });
