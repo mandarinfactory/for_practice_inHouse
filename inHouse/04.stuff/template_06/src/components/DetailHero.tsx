@@ -30,15 +30,27 @@ const DetailHero: React.FC = () => {
               <div className="flex flex-col justify-between">
                 <h1 className="ml-5 text-[4rem]">{detailInfosData?.name}</h1>
                 <div>
-                  <h1 className="ml-5 text-[2rem]">
-                    {detailDescData.pages[0].description}
-                  </h1>
-                  <h1 className="ml-5 flex text-[2rem]">
-                    장르 :
-                    {detailInfosData.genres.map((genre: string) => (
-                      <p className="ml-3">{genre}</p>
-                    ))}
-                  </h1>
+                  {detailInfosData.genres ? (
+                    <>
+                      <h1 className="w-[35%] ml-5 mb-2 p-1 text-[1.5rem] text-center rounded-2xl bg-slate-50 shadow-lg">
+                        설명 및 장르
+                      </h1>
+                      <h1 className="ml-5 text-[1.8rem]">
+                        {detailDescData.pages[0].description}
+                      </h1>
+                      <h1 className="ml-5 flex text-[1.5rem]">
+                        {detailInfosData.genres.map(
+                          (genre: string, i: number) => (
+                            <p className="mr-3" key={i}>
+                              {genre}
+                            </p>
+                          )
+                        )}
+                      </h1>
+                    </>
+                  ) : (
+                    <></>
+                  )}
                 </div>
               </div>
             </div>

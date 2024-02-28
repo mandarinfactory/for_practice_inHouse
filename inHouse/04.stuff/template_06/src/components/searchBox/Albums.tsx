@@ -1,17 +1,21 @@
 import React, { useState } from "react";
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import ItemsCarousel from "react-items-carousel";
 
-import { musicValState } from "../../recoil/atom";
+import { detailClickedInfosState, isDetailClickedState, musicValState } from "../../recoil/atom";
 import LeftChevron from "../button/LeftChevron";
 import RightChevron from "../button/RightChevron";
 import { searchAlbumFinderState } from "../../recoil/selector/searchStore";
+import { useNavigate } from "react-router-dom";
 
 const Albums: React.FC = () => {
+  const navigate = useNavigate();
   const musicVal = useRecoilValue(musicValState);
   const albumData = useRecoilValue(searchAlbumFinderState(musicVal));
+  const setIsClicked = useSetRecoilState(isDetailClickedState);
+  const setDetailInfos = useSetRecoilState(detailClickedInfosState);
   const [activeItemIndex, setActiveItemIndex] = useState(2);
-  const chevronWidth = 50;
+  const CHEVRONWIDTH = 50;
 
   return (
     <>
@@ -34,11 +38,16 @@ const Albums: React.FC = () => {
               </button>
             }
             outsideChevron
-            chevronWidth={chevronWidth}
+            chevronWidth={CHEVRONWIDTH}
           >
             {albumData ? (
               albumData?.map((v: any, i: number) => (
-                <div className="flex flex-wrap cursor-pointer" key={i}>
+                <div className="flex flex-wrap cursor-pointer" key={i} onClick={() => {
+                  setIsClicked(true);
+                  navigate("/DetailHero");
+                  setDetailInfos(v);
+                  
+                }}>
                   <img
                     src={v.images[1].url}
                     alt="앨범아트"

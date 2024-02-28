@@ -23,8 +23,8 @@ const RandomArtists: React.FC = () => {
             key={i}
             onClick={() => {
               setIsClicked(true);
-              navigate("/DetailHero");     
-              setDetailInfos(e);           
+              navigate("/DetailHero");
+              setDetailInfos(e);
             }}
           >
             <div className="relative w-[80%] hover:scale-95 duration-150 cursor-pointer">

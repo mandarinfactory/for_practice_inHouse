@@ -52,7 +52,7 @@ export const searchAlbumFinderState = selectorFamily({
         )
           .then((res) => res.json())
           .then((data) => {
-            return data.artists.items[0].id;
+            return data.artists.items[0]?.id;
           });
         const albumData = await fetch(
           `${SPOTIFY_URL}/artists/${artistID}/albums?limit=20`,
@@ -150,13 +150,8 @@ export const searchDescriptionState = selectorFamily({
             headers: headers,
           }
         )
-          .then((res) => {
-            console.log(res);
-            
-            return res.json();
-          })
+          .then((res) => res.json())
           .then((data) => {
-            console.log(data);
             return data;
           });
         return descriptionData;

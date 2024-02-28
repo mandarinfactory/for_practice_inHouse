@@ -12,10 +12,9 @@ const Songs: React.FC = () => {
       <h1 className="w-full h-auto mt-7 text-3xl">노래</h1>
       <div className="flex my-3">
         {songData ? (
-          // 20개의 데이터를 4개씩 묶어 배열 생성
           Array.from(
             { length: Math.ceil(songData.items.length / 4) },
-            (value, index) => (
+            (value, index:number) => (
               <div className="w-auto h-full flex flex-wrap" key={index}>
                 {songData.items
                   .slice(index * 4, (index + 1) * 4)
