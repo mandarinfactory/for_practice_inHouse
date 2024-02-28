@@ -4,14 +4,14 @@ import { useRecoilValue } from "recoil";
 import { isClickedState } from "../recoil/atom";
 import Hero from "../components/Hero";
 import Sidebar from "../components/Sidebar";
-import DetailHero from "../components/DetailPlaylists";
+import DetailPlaylists from "../components/detail/DetailPlaylists";
 
 const Home: React.FC = () => {
   const isClicked = useRecoilValue(isClickedState);
   return (
     <div className="w-full h-full flex justify-center">
       <Sidebar />
-      {isClicked ? <DetailHero /> : <Hero />}
+      {isClicked ? <DetailPlaylists /> : <Hero />}
     </div>
   );
 };

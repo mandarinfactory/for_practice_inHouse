@@ -23,7 +23,7 @@ const RandomArtists: React.FC = () => {
             key={i}
             onClick={() => {
               setIsClicked(true);
-              navigate("/DetailHero");
+              navigate("/DetailTracks");
               setDetailInfos(e);
             }}
           >

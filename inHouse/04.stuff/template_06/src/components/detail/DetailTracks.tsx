@@ -1,14 +1,14 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
 
-import Sidebar from "./Sidebar";
+import Sidebar from "../Sidebar";
 import {
   searchDescriptionState,
   searchSongFinderState,
-} from "../recoil/selector/searchStore";
-import { detailClickedInfosState, isDetailClickedState } from "../recoil/atom";
+} from "../../recoil/selector/searchStore";
+import { detailClickedInfosState, isDetailClickedState } from "../../recoil/atom";
 
-const DetailHero: React.FC = () => {
+const DetailTracks: React.FC = () => {
   const isDetailClicked = useRecoilValue(isDetailClickedState);
   const detailInfosData = useRecoilValue<any>(detailClickedInfosState);
   const artistData = detailInfosData.name;
@@ -33,7 +33,7 @@ const DetailHero: React.FC = () => {
                   {detailInfosData.genres ? (
                     <>
                       <h1 className="w-[35%] ml-5 mb-2 p-1 text-[1.5rem] text-center rounded-2xl bg-slate-50 shadow-lg">
-                        설명 및 장르
+                        소개 및 장르
                       </h1>
                       <h1 className="ml-5 text-[1.8rem]">
                         {detailDescData.pages[0].description}
@@ -94,4 +94,4 @@ const DetailHero: React.FC = () => {
   );
 };
 
-export default DetailHero;
+export default DetailTracks;

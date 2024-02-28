@@ -15,6 +15,11 @@ export const musicValState = atom<string | undefined>({
   default: "",
 });
 
+export const clickedAlbumState = atom<object>({
+  key: "clickedAlbumState",
+  default: [],
+})
+
 export const isClickedState = atom<boolean>({
   key: "isClickedState",
   default: false,

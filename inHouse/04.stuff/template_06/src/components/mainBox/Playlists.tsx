@@ -1,5 +1,5 @@
 import React from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 
 import {
   detailClickedPlaylistsInfoState,
@@ -11,10 +11,9 @@ import { searchBrowseState } from "../../recoil/selector/searchStore";
 
 const Playlists: React.FC = () => {
   const playlistsData = useRecoilValue(searchBrowseState(10));
-  
-  const [isClicked, setIsClicked] = useRecoilState(isClickedState);
-  const [selectedVal, setSelectedVal] = useRecoilState(selectedMusicValState);
-  const [clickedDetailInfos, setClickedDetailInfos] = useRecoilState(
+  const setIsClicked = useSetRecoilState(isClickedState);
+  const setSelectedVal = useSetRecoilState(selectedMusicValState);
+  const setClickedDetailInfos = useSetRecoilState(
     detailClickedPlaylistsInfoState
   );
 
@@ -30,7 +29,7 @@ const Playlists: React.FC = () => {
               onClick={() => {
                 setIsClicked(true);
                 setSelectedVal(v.id);
-                setClickedDetailInfos(v);                
+                setClickedDetailInfos(v);
               }}
             >
               <img

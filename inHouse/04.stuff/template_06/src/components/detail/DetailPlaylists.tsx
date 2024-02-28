@@ -1,15 +1,15 @@
 import React, { useEffect } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilValue } from "recoil";
 import {
   detailClickedPlaylistsInfoState,
   isClickedState,
   selectedMusicValState,
-} from "../recoil/atom";
-import { detailTrackHandlerState } from "../recoil/selector/store";
+} from "../../recoil/atom";
+import { detailTrackHandlerState } from "../../recoil/selector/store";
 
-const DetailHero: React.FC = () => {
-  const [isClicked, setIsClicked] = useRecoilState(isClickedState);
-  const [selectedVal, setSelectedVal] = useRecoilState(selectedMusicValState);
+const DetailPlaylists: React.FC = () => {
+  const isClicked= useRecoilValue(isClickedState);
+  const selectedVal = useRecoilValue(selectedMusicValState);
   const clickedDetailInfos = useRecoilValue(detailClickedPlaylistsInfoState);
   const detailTracksData = useRecoilValue(
     detailTrackHandlerState(selectedVal || "")
@@ -77,4 +77,4 @@ const DetailHero: React.FC = () => {
   );
 };
 
-export default DetailHero;
+export default DetailPlaylists;

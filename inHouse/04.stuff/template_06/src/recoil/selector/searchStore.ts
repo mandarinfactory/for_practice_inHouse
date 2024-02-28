@@ -94,6 +94,33 @@ export const searchSongFinderState = selectorFamily({
     },
 });
 
+export const searchDetailTrackState = selectorFamily({
+  key: "searchDetailTrackState",
+  get:
+    (albumID:any) =>
+    async ({ get }) => {
+      const token = get(accessTokenState);
+      if (token) {
+        const detailTrackParams = {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + token,
+          },
+        };
+        const detailTrackData = await fetch(
+          `${SPOTIFY_URL}/albums/${albumID}/tracks`,
+          detailTrackParams
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            return data;
+          });
+        return detailTrackData;
+      }
+    },
+});
+
 export const searchBrowseState = selectorFamily({
   key: "searchBrowseState",
   get:
@@ -110,11 +137,7 @@ export const searchBrowseState = selectorFamily({
         };
         const browseData = await fetch(
           `${SPOTIFY_URL}/browse/${
-            limit === 25
-              ? "new-releases"
-              : limit === 30
-              ? "top-charts"
-              : "featured-playlists"
+            limit === 25 ? "new-releases" : "featured-playlists"
           }?locale=kr_KR&limit=${limit}`,
           browseParameters
         )

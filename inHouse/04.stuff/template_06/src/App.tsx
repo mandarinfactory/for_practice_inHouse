@@ -2,13 +2,13 @@ import React, { Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { RecoilRoot } from "recoil";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { ReactQueryDevtools } from "react-query/devtools";
 
 import Home from "./page/Home";
 import SuspenseBox from "./page/SuspenseBox";
 import MainBox from "./components/hero/MainBox";
 import NewReleases from "./components/hero/NewReleases";
-import DetailHero from "./components/DetailHero";
+import DetailTracks from "./components/detail/DetailTracks";
+import DetailAlbumTracks from "./components/detail/DetailAlbumTracks";
 
 const queryClient = new QueryClient();
 
@@ -22,11 +22,11 @@ export const App: React.FC = () => {
               <Route path="/" element={<Home />} />
               <Route path="/MainBox" element={<MainBox />} />
               <Route path="/NewReleases" element={<NewReleases />} />
-              <Route path="/DetailHero" element={<DetailHero />} />
+              <Route path="/DetailTracks" element={<DetailTracks />} />
+              <Route path="/DetailAlbumTracks" element={<DetailAlbumTracks />}/>
             </Routes>
           </Suspense>
         </BrowserRouter>
-        <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </RecoilRoot>
   );

@@ -25,7 +25,7 @@ const Artists: React.FC = () => {
             onClick={() => {
               const filteredArtistData = artistData.artists.items[0];
               setIsClicked(true);
-              navigate("/DetailHero");
+              navigate("/DetailTracks");
               setDetailInfos(filteredArtistData);
             }}
           >

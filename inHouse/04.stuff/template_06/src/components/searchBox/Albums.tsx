@@ -44,7 +44,7 @@ const Albums: React.FC = () => {
               albumData?.map((v: any, i: number) => (
                 <div className="flex flex-wrap cursor-pointer" key={i} onClick={() => {
                   setIsClicked(true);
-                  navigate("/DetailHero");
+                  navigate("/DetailAlbumTracks");
                   setDetailInfos(v);
                   
                 }}>
