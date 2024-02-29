@@ -1,7 +1,7 @@
 import React from "react";
 
 const PlayerControls: React.FC = () => {
-
+  
   return (
     <div className="mt-5 p-3 w-full h-[70%] flex flex-col justify-center bg-slate-100 rounded-3xl shadow-xl">
       <div className="m-5 w-auto h-[50%] bg-slate-50 rounded-3xl shadow-xl"></div>

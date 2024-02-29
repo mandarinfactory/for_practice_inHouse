@@ -1,19 +1,17 @@
 import React from "react";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 
-import { searchBrowseState, searchDetailTrackState } from "../../recoil/selector/searchStore";
+import { searchBrowseState } from "../../recoil/selector/searchStore";
 import Sidebar from "../Sidebar";
 import { useNavigate } from "react-router-dom";
-import { detailTrackState, isClickedState, selectedMusicValState } from "../../recoil/atom";
+import { detailTrackState, isClickedState } from "../../recoil/atom";
 
 
 const NewReleases: React.FC = () => {
   const navigate = useNavigate();
   const newReleasesData = useRecoilValue(searchBrowseState(25));
   const setIsClicked = useSetRecoilState(isClickedState);
-  const [clickedAlbum, setClickedAlbum] = useRecoilState(detailTrackState);
-  const detailTrackData = useRecoilValue(searchDetailTrackState(clickedAlbum || ""))
-
+  const setClickedAlbum = useSetRecoilState(detailTrackState);
 
   return (
     <div className="w-full h-full flex justify-center">
@@ -28,7 +26,7 @@ const NewReleases: React.FC = () => {
               onClick={() => {
                 setIsClicked(true);
                 navigate("/DetailAlbumTracks")
-                setClickedAlbum(v.id);                
+                setClickedAlbum(v);                
               }}
             >
               <img

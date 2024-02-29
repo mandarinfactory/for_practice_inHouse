@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import ItemsCarousel from "react-items-carousel";
 
-import { detailClickedInfosState, isDetailClickedState, musicValState } from "../../recoil/atom";
+import { detailClickedInfosState, detailTrackState, isClickedState, musicValState } from "../../recoil/atom";
 import LeftChevron from "../button/LeftChevron";
 import RightChevron from "../button/RightChevron";
 import { searchAlbumFinderState } from "../../recoil/selector/searchStore";
@@ -12,8 +12,8 @@ const Albums: React.FC = () => {
   const navigate = useNavigate();
   const musicVal = useRecoilValue(musicValState);
   const albumData = useRecoilValue(searchAlbumFinderState(musicVal));
-  const setIsClicked = useSetRecoilState(isDetailClickedState);
-  const setDetailInfos = useSetRecoilState(detailClickedInfosState);
+  const setIsClicked = useSetRecoilState(isClickedState);
+  const setClickedAlbum = useSetRecoilState(detailTrackState);
   const [activeItemIndex, setActiveItemIndex] = useState(2);
   const CHEVRONWIDTH = 50;
 
@@ -45,7 +45,7 @@ const Albums: React.FC = () => {
                 <div className="flex flex-wrap cursor-pointer" key={i} onClick={() => {
                   setIsClicked(true);
                   navigate("/DetailAlbumTracks");
-                  setDetailInfos(v);
+                  setClickedAlbum(v);
                   
                 }}>
                   <img
