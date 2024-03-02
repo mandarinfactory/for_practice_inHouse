@@ -10,6 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@types/spotify-web-playback-sdk": "^0.1.19",
+    "axios": "^1.6.7",
+    "axois": "^0.0.1-security",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-items-carousel": "^2.8.0",
@@ -21,6 +24,7 @@
     "zustand": "^4.5.0"
   },
   "devDependencies": {
+    "@types/node": "^20.11.24",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
     "@types/uuid": "^9.0.8",

@@ -88,28 +88,3 @@ export const randomArtistsHandler = selectorFamily({
       }
     },
 });
-
-export const getplayerHandler = selectorFamily({
-  key: "getplayerHandler",
-  get:
-    () =>
-    async ({ get }) => {
-      const token = get(accessTokenState);
-      if (token) {
-        const playParams = {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: "Bearer " + token,
-          },
-        };
-
-        const playerHandler = await fetch(
-          `https://api.spotify.com/v1/me/player`,
-          playParams
-        );
-        console.log(playerHandler);
-        return playerHandler;
-      }
-    },
-});
