@@ -60,18 +60,3 @@ export const getRefreshAccessToken = async (refreshToken: string) => {
     },
   });
 };
-
-const tokenAPI = axios.create({
-  baseURL: SPOTIFY_ACCESS_TOKEN_URL,
-});
-
-tokenAPI.interceptors.request.use(
-  async (request) => {
-    if (typeof window !== "undefined") {
-      try {
-        const access_token = getCookie("access_token");
-        const refresh_token = getCookie("refresh_token");
-      }
-    }
-  }
-)

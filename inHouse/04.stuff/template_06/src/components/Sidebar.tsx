@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-import PlayerControls from "./PlayerControls";
+import PlayerControls from "./player/PlayerControls";
 import { useRecoilState } from "recoil";
 import { isClickedState, musicValState } from "../recoil/atom";
 

@@ -1,6 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { accessTokenState } from "../../recoil/atom";
+import { useRecoilValue } from "recoil";
 
 const PlayerControls: React.FC = () => {
+  const token = useRecoilValue(accessTokenState);
+  const [player, setPlayer] = useState<Spotify.Player>();
   useEffect(() => {
     const spotifyScript = document.createElement("script");
     spotifyScript.src = "https://sdk.scdn.co/spotify-player.js";
@@ -11,13 +15,31 @@ const PlayerControls: React.FC = () => {
     window.onSpotifyWebPlaybackSDKReady = () => {
       const spotifyPlayer = new window.Spotify.Player({
         name: "Web Playback SDK",
-        getOAuthToken: (cb) => {
-          cb(getToken());
+        getOAuthToken: (cb: any) => {
+          cb(token?.replace(/\"/g, ""));
         },
         volume: 0.5,
       });
+
+      setPlayer(spotifyPlayer);
+
+      spotifyPlayer.addListener("ready", ({ device_id }) => {
+        console.log("Ready with Device ID", device_id);
+      });
+
+      spotifyPlayer.addListener("not_ready", ({ device_id }) => {
+        console.log("Device ID has gone offline", device_id);
+      });
+      spotifyPlayer.addListener("player_state_changed", (state) => {
+        if (!state) {
+          return;
+        }
+        console.log("state changed", state);
+      });
+
+      spotifyPlayer.connect();
     };
-  }, []);
+  }, [token]);
 
   return (
     <div className="mt-5 p-3 w-full h-[70%] flex flex-col justify-center bg-slate-100 rounded-3xl shadow-xl">
