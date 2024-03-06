@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 import PlayerControls from "./player/PlayerControls";
 import { useRecoilState } from "recoil";
-import { isClickedState, musicValState } from "../recoil/recoil/atom";
+import { isClickedState, musicValState } from "../api/recoil/atom";
 import LoginButton from "./button/LoginButton";
 
 const Sidebar: React.FC = () => {

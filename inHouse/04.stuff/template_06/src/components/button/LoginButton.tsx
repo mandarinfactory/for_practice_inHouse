@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import { BASE_URL } from "../../utils/constants";
 import { generateRandomString } from "../../utils/generateRandomString";
@@ -37,24 +37,6 @@ const LoginButton: React.FC = () => {
       console.error("Error redirecting to Spotify authorize URL:", error);
     }
   };
-
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://sdk.scdn.co/spotify-player.js";
-    script.async = true;
-
-    document.body.appendChild(script);
-
-    window.onSpotifyWebPlaybackSDKReady = () => {
-      const player = new window.Spotify.Player({
-        name: "Web Playback SDK",
-        getOAuthToken: (cb) => {
-          cb(getToken());
-        },
-        volume: 0.5,
-      });
-    };
-  }, []);
 
   return (
     <div className="w-auto">

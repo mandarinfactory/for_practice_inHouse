@@ -13,9 +13,7 @@ spotifyAPI.interceptors.request.use(
     if (typeof window !== "undefined") {
       try {
         const access_token = getCookie("access_token");
-        const refresh_token = getCookie("refresh_token");
-        console.log(access_token, refresh_token);
-        
+        const refresh_token = getCookie("refresh_token");      
 
         // access_token있으면 그대로 사용
         if (typeof access_token === "string" && access_token !== "") {

@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { useNavigate } from "react-router-dom";
-import { randomArtistsHandler } from "../../recoil/recoil/selector/selectors";
+import { randomArtistsHandler } from "../../api/recoil/selector/selectors";
 import {
   detailClickedInfosState,
   isDetailClickedState,
-} from "../../recoil/recoil/atom";
+} from "../../api/recoil/atom";
 
 const RandomArtists: React.FC = () => {
   const navigate = useNavigate();

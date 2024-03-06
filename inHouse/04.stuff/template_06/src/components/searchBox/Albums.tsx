@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import ItemsCarousel from "react-items-carousel";
 
-import { detailClickedInfosState, detailTrackState, isClickedState, musicValState } from "../../recoil/recoil/atom";
+import { detailTrackState, isClickedState, musicValState } from "../../api/recoil/atom";
 import LeftChevron from "../button/LeftChevron";
 import RightChevron from "../button/RightChevron";
-import { searchAlbumFinderState } from "../../recoil/recoil/selector/searchSelectors";
+import { searchAlbumFinderState } from "../../api/recoil/selector/searchSelectors";
 import { useNavigate } from "react-router-dom";
 
 const Albums: React.FC = () => {

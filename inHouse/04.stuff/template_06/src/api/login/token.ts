@@ -24,7 +24,8 @@ export const getAccessTokenData = () => {
     data: {
       grant_type: "client_credentials",
     },
-  });
+    scope: "user-read-private user-read-email user-read-playback-state user-modify-playback-state streaming"
+})
 };
 
 export const getLoginAccessTokenData = async (code: string) => {

@@ -1,9 +1,11 @@
 export interface TokenObject {
   access_token: string;
   token_type: string;
-  expires_in: number;
+  expires_in?: number;
 }
-export interface AccessTokenData extends TokenObject {}
+export interface AccessTokenData extends TokenObject {
+  scope?: string;
+}
 
 export interface LoginAccessTokenData extends TokenObject {
   refresh_token: string;
