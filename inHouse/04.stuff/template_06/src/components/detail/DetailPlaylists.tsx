@@ -5,9 +5,9 @@ import {
   detailClickedPlaylistsInfoState,
   isClickedState,
   selectedMusicValState,
-} from "../../recoil/atom";
-import { detailTrackHandlerState } from "../../recoil/selector/selectors";
-import { musicPlayPauseHandlerState } from "../../recoil/selector/playerSelectors";
+} from "../../recoil/recoil/atom";
+import { detailTrackHandlerState } from "../../recoil/recoil/selector/selectors";
+import { musicPlayPauseHandlerState } from "../../recoil/recoil/selector/playerSelectors";
 
 const DetailPlaylists: React.FC = () => {
   const isClicked = useRecoilValue(isClickedState);

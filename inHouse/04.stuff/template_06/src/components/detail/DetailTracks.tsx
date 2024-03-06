@@ -5,8 +5,8 @@ import Sidebar from "../Sidebar";
 import {
   searchDescriptionState,
   searchSongFinderState,
-} from "../../recoil/selector/searchSelectors";
-import { detailClickedInfosState, isDetailClickedState } from "../../recoil/atom";
+} from "../../recoil/recoil/selector/searchSelectors";
+import { detailClickedInfosState, isDetailClickedState } from "../../recoil/recoil/atom";
 
 const DetailTracks: React.FC = () => {
   const isDetailClicked = useRecoilValue(isDetailClickedState);

@@ -5,8 +5,8 @@ import {
   detailClickedInfosState,
   isDetailClickedState,
   musicValState,
-} from "../../recoil/atom";
-import { searchArtistFinderState } from "../../recoil/selector/searchSelectors";
+} from "../../recoil/recoil/atom";
+import { searchArtistFinderState } from "../../recoil/recoil/selector/searchSelectors";
 import { useNavigate } from "react-router-dom";
 
 const Artists: React.FC = () => {

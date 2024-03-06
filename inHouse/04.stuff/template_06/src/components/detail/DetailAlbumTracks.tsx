@@ -2,8 +2,8 @@ import React from "react";
 import { useRecoilValue } from "recoil";
 
 import Sidebar from "../Sidebar";
-import { searchDetailTrackState } from "../../recoil/selector/searchSelectors";
-import { detailTrackState, isClickedState } from "../../recoil/atom";
+import { searchDetailTrackState } from "../../recoil/recoil/selector/searchSelectors";
+import { detailTrackState, isClickedState } from "../../recoil/recoil/atom";
 
 const DetailAlbumTracks: React.FC = () => {
   const isClicked = useRecoilValue(isClickedState);
