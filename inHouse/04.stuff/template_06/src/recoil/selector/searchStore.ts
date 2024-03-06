@@ -1,7 +1,7 @@
 import { selectorFamily, RecoilEnv } from "recoil";
 
 import { accessTokenState } from "../atom";
-import { SPOTIFY_URL } from "../../util/constants";
+import { SPOTIFY_URL } from "../../utils/constants";
 
 RecoilEnv.RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED = false;
 
@@ -24,9 +24,7 @@ export const searchArtistFinderState = selectorFamily({
           artistParameters
         )
           .then((res) => res.json())
-          .then((data) => {
-            return data;
-          });
+          .then((data) => data);
         return artistData;
       }
     },
@@ -51,17 +49,13 @@ export const searchAlbumFinderState = selectorFamily({
           albumParameters
         )
           .then((res) => res.json())
-          .then((data) => {
-            return data.artists.items[0]?.id;
-          });
+          .then((data) => data.artists.items[0]?.id);
         const albumData = await fetch(
           `${SPOTIFY_URL}/artists/${artistID}/albums?limit=20`,
           albumParameters
         )
           .then((res) => res.json())
-          .then((data) => {
-            return data;
-          });
+          .then((data) => data);
         return albumData.items;
       }
     },
@@ -86,9 +80,7 @@ export const searchSongFinderState = selectorFamily({
           songParameters
         )
           .then((res) => res.json())
-          .then((data) => {
-            return data;
-          });
+          .then((data) => data);
         return songData.tracks;
       }
     },
@@ -97,7 +89,7 @@ export const searchSongFinderState = selectorFamily({
 export const searchDetailTrackState = selectorFamily({
   key: "searchDetailTrackState",
   get:
-    (albumID:any) =>
+    (albumID: any) =>
     async ({ get }) => {
       const token = get(accessTokenState);
       if (token) {
@@ -113,9 +105,7 @@ export const searchDetailTrackState = selectorFamily({
           detailTrackParams
         )
           .then((res) => res.json())
-          .then((data) => {
-            return data;
-          });
+          .then((data) => data);
         return detailTrackData;
       }
     },
@@ -142,9 +132,7 @@ export const searchBrowseState = selectorFamily({
           browseParameters
         )
           .then((res) => res.json())
-          .then((data) => {
-            return data;
-          });
+          .then((data) => data);
         return browseData;
       }
     },
@@ -174,9 +162,7 @@ export const searchDescriptionState = selectorFamily({
           }
         )
           .then((res) => res.json())
-          .then((data) => {
-            return data;
-          });
+          .then((data) => data);
         return descriptionData;
       }
     },

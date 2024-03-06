@@ -1,6 +1,6 @@
 import { RecoilEnv, selectorFamily } from "recoil";
 
-import { SPOTIFY_ACCESS_TOKEN_URL, SPOTIFY_URL } from "../../util/constants";
+import { SPOTIFY_ACCESS_TOKEN_URL, SPOTIFY_URL } from "../../utils/constants";
 import { accessTokenState } from "../atom";
 
 RecoilEnv.RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED = false;
@@ -39,9 +39,7 @@ export const detailTrackHandlerState = selectorFamily({
           trackParameters
         )
           .then((res) => res.json())
-          .then((data) => {
-            return data;
-          });
+          .then((data) => data);
         return detailTrackData;
       } else {
         return detailTrack;
@@ -69,9 +67,7 @@ export const randomArtistsHandler = selectorFamily({
           randomParameters
         )
           .then((res) => res.json())
-          .then((data) => {
-            return data;
-          });
+          .then((data) => data);
         const pickRandomNumber = Math.ceil(
           Math.random() * findRandomGenre.genres.length
         );
@@ -81,9 +77,7 @@ export const randomArtistsHandler = selectorFamily({
           randomParameters
         )
           .then((res) => res.json())
-          .then((data) => {
-            return data;
-          });
+          .then((data) => data);
         return randomGenreFinder;
       }
     },

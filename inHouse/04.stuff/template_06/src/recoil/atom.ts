@@ -5,6 +5,11 @@ export const accessTokenState = atom<string | undefined>({
   default: "",
 });
 
+export const confirmedURIState = atom<string>({
+  key: "confirmedURIState",
+  default: "",
+})
+
 export const selectedMusicValState = atom<string | undefined>({
   key: "selectedMusicValState",
   default: "",

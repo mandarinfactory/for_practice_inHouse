@@ -1,18 +1,25 @@
 import React, { useEffect } from "react";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import {
+  confirmedURIState,
   detailClickedPlaylistsInfoState,
   isClickedState,
   selectedMusicValState,
 } from "../../recoil/atom";
 import { detailTrackHandlerState } from "../../recoil/selector/store";
+import { musicPlayPauseHandlerState } from "../../recoil/selector/playerStore";
 
 const DetailPlaylists: React.FC = () => {
-  const isClicked= useRecoilValue(isClickedState);
+  const isClicked = useRecoilValue(isClickedState);
   const selectedVal = useRecoilValue(selectedMusicValState);
   const clickedDetailInfos = useRecoilValue(detailClickedPlaylistsInfoState);
   const detailTracksData = useRecoilValue(
     detailTrackHandlerState(selectedVal || "")
+  );
+
+  const [confirmedURI, setConfirmedURI] = useRecoilState(confirmedURIState);
+  const playerHandler = useRecoilValue(
+    musicPlayPauseHandlerState(confirmedURI || "")
   );
 
   useEffect(() => {
@@ -46,11 +53,19 @@ const DetailPlaylists: React.FC = () => {
                 className="my-3 p-2 flex justify-between items-center bg-white bg-opacity-30 hover:bg-opacity-50 rounded-xl cursor-pointer duration-150"
                 key={index}
               >
-                <div className="w-full flex">
-                  <img className="w-[60px] h-auto ml-3 object-cover rounded-md" src={value.track.album.images[1].url} alt="" />
+                <div className="w-full flex" onClick={() => {
+                  setConfirmedURI(value.track.uri)
+                }}>
+                  <img
+                    className="w-[60px] h-auto ml-3 object-cover rounded-md"
+                    src={value.track.album.images[1].url}
+                    alt=""
+                  />
                   <div className="w-[80%] h-auto mx-auto flex justify-between items-center truncate">
                     <h1 className="text-xl">{value.track.name}</h1>
-                    <h1 className="text-lg">{value.track.album.artists[0].name}</h1>
+                    <h1 className="text-lg">
+                      {value.track.album.artists[0].name}
+                    </h1>
                     <h1 className="text-lg">{value.track.album.name}</h1>
                   </div>
                 </div>
