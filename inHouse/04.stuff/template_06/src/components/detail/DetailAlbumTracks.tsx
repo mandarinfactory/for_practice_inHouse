@@ -2,7 +2,7 @@ import React from "react";
 import { useRecoilValue } from "recoil";
 
 import Sidebar from "../Sidebar";
-import { searchDetailTrackState } from "../../recoil/selector/searchStore";
+import { searchDetailTrackState } from "../../recoil/selector/searchSelectors";
 import { detailTrackState, isClickedState } from "../../recoil/atom";
 
 const DetailAlbumTracks: React.FC = () => {

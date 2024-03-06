@@ -5,7 +5,7 @@ import ItemsCarousel from "react-items-carousel";
 import { detailClickedInfosState, detailTrackState, isClickedState, musicValState } from "../../recoil/atom";
 import LeftChevron from "../button/LeftChevron";
 import RightChevron from "../button/RightChevron";
-import { searchAlbumFinderState } from "../../recoil/selector/searchStore";
+import { searchAlbumFinderState } from "../../recoil/selector/searchSelectors";
 import { useNavigate } from "react-router-dom";
 
 const Albums: React.FC = () => {

@@ -3,12 +3,12 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { useQuery } from "react-query";
 
 import { accessTokenState, musicValState } from "../recoil/atom";
-import { getAccessTokenData } from "../recoil/selector/store";
+import { getAccessTokenData } from "../recoil/login/token";
 import SearchBox from "./hero/SearchBox";
 import MainBox from "./hero/MainBox";
 
 const Hero: React.FC = () => {
-  const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
+  const [accessToken, setAccessToken] = useRecoilState<any>(accessTokenState);
   const musicVal = useRecoilValue(musicValState);
   const { data, isLoading, isError } = useQuery(
     "accessTokenData",

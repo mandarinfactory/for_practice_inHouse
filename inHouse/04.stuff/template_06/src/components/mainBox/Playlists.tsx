@@ -7,7 +7,7 @@ import {
   selectedMusicValState,
 } from "../../recoil/atom";
 
-import { searchBrowseState } from "../../recoil/selector/searchStore";
+import { searchBrowseState } from "../../recoil/selector/searchSelectors";
 
 const Playlists: React.FC = () => {
   const playlistsData = useRecoilValue(searchBrowseState(10));

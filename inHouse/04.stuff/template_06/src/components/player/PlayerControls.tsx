@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { accessTokenState } from "../../recoil/atom";
 import { useRecoilValue } from "recoil";
-import { musicPlayPauseHandlerState } from "../../recoil/selector/playerStore";
+import { musicPlayPauseHandlerState } from "../../recoil/selector/playerSelectors";
 
 const PlayerControls: React.FC = () => {
   const token = useRecoilValue(accessTokenState);

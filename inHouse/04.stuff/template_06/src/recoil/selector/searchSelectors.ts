@@ -16,7 +16,7 @@ export const searchArtistFinderState = selectorFamily({
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            Authorization: "Bearer " + token,
+            Authorization: "Bearer " + token.data.access_token,
           },
         };
         const artistData = await fetch(
@@ -41,7 +41,7 @@ export const searchAlbumFinderState = selectorFamily({
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            Authorization: "Bearer " + token,
+            Authorization: "Bearer " + token.data.access_token,
           },
         };
         const artistID = await fetch(
@@ -72,7 +72,7 @@ export const searchSongFinderState = selectorFamily({
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            Authorization: "Bearer " + token,
+            Authorization: "Bearer " + token.data.access_token,
           },
         };
         const songData = await fetch(
@@ -97,7 +97,7 @@ export const searchDetailTrackState = selectorFamily({
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            Authorization: "Bearer " + token,
+            Authorization: "Bearer " + token.data.access_token,
           },
         };
         const detailTrackData = await fetch(
@@ -122,7 +122,7 @@ export const searchBrowseState = selectorFamily({
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            Authorization: "Bearer " + token,
+            Authorization: "Bearer " + token.data.access_token,
           },
         };
         const browseData = await fetch(
@@ -152,7 +152,7 @@ export const searchDescriptionState = selectorFamily({
         };
         const baseUrl = "https://api.wikimedia.org/core/v1/wikipedia/";
         const endPoint = "/search/page";
-        const parameters = { q: searchValue, limit: 3 };
+        const parameters: any = { q: searchValue, limit: 3 };
         const theUrl = baseUrl + languageCode + endPoint;
         const descriptionData = await fetch(
           theUrl + "?" + new URLSearchParams(parameters),

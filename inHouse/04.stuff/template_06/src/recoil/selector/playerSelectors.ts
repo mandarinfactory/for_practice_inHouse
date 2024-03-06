@@ -11,14 +11,12 @@ export const musicPlayPauseHandlerState = selectorFamily({
     (uri: string) =>
     async ({ get }) => {
       const token = get(accessTokenState);
-      if (token && uri) {
-        console.log(token, uri);
-        
+      if (token && uri) {        
         const playerParams = {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
-            Authorization: "Bearer " + token,
+            Authorization: "Bearer " + token.data.access_token,
           },
           data: {
             context_uri: uri,

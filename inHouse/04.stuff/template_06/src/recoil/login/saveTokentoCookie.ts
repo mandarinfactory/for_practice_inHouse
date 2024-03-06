@@ -3,7 +3,7 @@ import qs from "querystring";
 
 import { getLoginAccessTokenData } from "./token";
 
-const saveTokentoCookie = () => {
+const saveTokenToCookie = () => {
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get("code");
@@ -26,4 +26,4 @@ const saveTokentoCookie = () => {
   }, []);
 }
 
-export default saveTokentoCookie;
+export default saveTokenToCookie;

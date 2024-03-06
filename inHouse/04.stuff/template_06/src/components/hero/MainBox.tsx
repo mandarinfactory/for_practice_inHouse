@@ -6,7 +6,7 @@ import RandomArtists from "../mainBox/RandomArtists";
 const MainBox: React.FC = () => {
   return (
     <>
-      <RandomArtists />
+      {/* <RandomArtists /> */}
       <Playlists />
     </>
   );

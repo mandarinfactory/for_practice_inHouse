@@ -5,7 +5,7 @@ import Sidebar from "../Sidebar";
 import {
   searchDescriptionState,
   searchSongFinderState,
-} from "../../recoil/selector/searchStore";
+} from "../../recoil/selector/searchSelectors";
 import { detailClickedInfosState, isDetailClickedState } from "../../recoil/atom";
 
 const DetailTracks: React.FC = () => {

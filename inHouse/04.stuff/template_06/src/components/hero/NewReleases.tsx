@@ -1,7 +1,7 @@
 import React from "react";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 
-import { searchBrowseState } from "../../recoil/selector/searchStore";
+import { searchBrowseState } from "../../recoil/selector/searchSelectors";
 import Sidebar from "../Sidebar";
 import { useNavigate } from "react-router-dom";
 import { detailTrackState, isClickedState } from "../../recoil/atom";

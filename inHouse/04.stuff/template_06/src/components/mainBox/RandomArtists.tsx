@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { useNavigate } from "react-router-dom";
-import { randomArtistsHandler } from "../../recoil/selector/store";
+import { randomArtistsHandler } from "../../recoil/selector/selectors";
 import {
   detailClickedInfosState,
   isDetailClickedState,

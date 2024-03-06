@@ -13,7 +13,7 @@ export const getCookie = (str: string) => {
   }
 };
 
-export const setCookie = (str: string, value: string, exdays: number) => {
+export const setCookie = (str: string, value: string, exdays: any) => {
   var exdate = new Date();
   exdate.setDate(exdate.getDate() + exdays);
   var c_value =

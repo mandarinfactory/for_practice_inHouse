@@ -1,4 +1,5 @@
 import axios from "axios";
+import {Buffer} from 'buffer';
 
 import {
   AccessTokenData,
@@ -44,7 +45,7 @@ export const getLoginAccessTokenData = async (code: string) => {
   });
 };
 
-export const getRefreshAccessToken = async (refreshToken: string) => {
+export const getRefreshAccessTokenData = async (refreshToken: string) => {
   return axios<RefreshAccessTokenData>({
     method: "POST",
     url: SPOTIFY_ACCESS_TOKEN_URL,
