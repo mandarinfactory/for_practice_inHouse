@@ -1,5 +1,5 @@
 import axios from "axios";
-import {Buffer} from 'buffer';
+import { Buffer } from "buffer";
 
 import {
   AccessTokenData,
