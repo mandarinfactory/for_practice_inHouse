@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Figtree } from "next/font/google";
+import { Noto_Sans_KR } from "next/font/google";
 
 import "./globals.css";
 import Sidebar from "@/components/Sidebar";
 
-const font = Figtree({ subsets: ["latin"] });
+const font = Noto_Sans_KR({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "스포티파이",
