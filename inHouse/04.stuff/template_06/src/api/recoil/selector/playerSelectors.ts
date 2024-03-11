@@ -16,7 +16,7 @@ export const musicPlayPauseHandlerState = selectorFamily({
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
-            Authorization: "Bearer " + token.data.access_token,
+            Authorization: "Bearer " + token,
           },
           data: {
             context_uri: uri,

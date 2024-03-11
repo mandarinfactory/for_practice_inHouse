@@ -22,7 +22,7 @@ const Playlists: React.FC = () => {
       <h1 className="my-1 text-3xl">플레이리스트</h1>
       <div className="flex flex-wrap justify-center">
         {playlistsData ? (
-          playlistsData.playlists.items.map((v: any, i: number) => (
+          playlistsData.playlists?.items.map((v: any, i: number) => (
             <div
               key={i}
               className="flex flex-col items-center w-[18%] h-auto cursor-pointer"

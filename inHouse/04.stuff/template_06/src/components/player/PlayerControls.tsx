@@ -7,12 +7,11 @@ const PlayerControls: React.FC = () => {
   const token = useRecoilValue(accessTokenState);
 
   const trackUri = useRecoilValue(confirmedURIState);
-  // console.log(trackUri);
 
   return (
     <>
       <SpotifyPlayer
-        token={token?.data?.access_token}
+        token={token}
         uris={trackUri ? [trackUri] : []}
       />
     </>

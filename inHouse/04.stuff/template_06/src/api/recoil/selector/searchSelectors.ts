@@ -16,7 +16,7 @@ export const searchArtistFinderState = selectorFamily({
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            Authorization: "Bearer " + token.data.access_token,
+            Authorization: "Bearer " + token,
           },
         };
         const artistData = await fetch(
@@ -41,7 +41,7 @@ export const searchAlbumFinderState = selectorFamily({
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            Authorization: "Bearer " + token.data.access_token,
+            Authorization: "Bearer " + token,
           },
         };
         const artistID = await fetch(
@@ -72,7 +72,7 @@ export const searchSongFinderState = selectorFamily({
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            Authorization: "Bearer " + token.data.access_token,
+            Authorization: "Bearer " + token,
           },
         };
         const songData = await fetch(
@@ -97,7 +97,7 @@ export const searchDetailTrackState = selectorFamily({
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            Authorization: "Bearer " + token.data.access_token,
+            Authorization: "Bearer " + token,
           },
         };
         const detailTrackData = await fetch(
@@ -122,7 +122,7 @@ export const searchBrowseState = selectorFamily({
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            Authorization: "Bearer " + token.data.access_token,
+            Authorization: "Bearer " + token,
           },
         };
         const browseData = await fetch(
