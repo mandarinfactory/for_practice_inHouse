@@ -37,16 +37,19 @@ export const randomArtistsHandler = selectorFamily({
   get:
     () =>
     async ({ get }) => {
-      const token = get(accessTokenState);
+      const token = localStorage.getItem("accessToken")
+      console.log(localStorage.getItem("accessToken"));
+      
       if (token) {
         const randomParameters = {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            Authorization: "Bearer " + token.data.access_token,
+            Authorization: "Bearer " + token,
           },
         };
-
+        console.log(randomParameters);
+        
         const findRandomGenre = await fetch(
           `${SPOTIFY_URL}/recommendations/available-genre-seeds`,
           randomParameters

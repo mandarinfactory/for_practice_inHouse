@@ -5,15 +5,14 @@ import SpotifyPlayer from "react-spotify-web-playback";
 
 const PlayerControls: React.FC = () => {
   const token = useRecoilValue(accessTokenState);
-  console.log(token);
-  
+
   const trackUri = useRecoilValue(confirmedURIState);
+  // console.log(trackUri);
 
   return (
     <>
       <SpotifyPlayer
         token={token?.data?.access_token}
-        showSaveIcon
         uris={trackUri ? [trackUri] : []}
       />
     </>

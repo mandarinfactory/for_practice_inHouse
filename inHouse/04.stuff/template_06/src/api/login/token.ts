@@ -3,8 +3,8 @@ import { Buffer } from "buffer";
 
 import {
   AccessTokenData,
-  LoginAccessTokenData,
-  RefreshAccessTokenData,
+  // LoginAccessTokenData,
+  // RefreshAccessTokenData,
 } from "../../types/type";
 import { SPOTIFY_ACCESS_TOKEN_URL } from "../../utils/constants";
 
@@ -23,11 +23,14 @@ export const getAccessTokenData = () => {
     },
     data: {
       grant_type: "client_credentials",
-    }
-})
+      scope:
+        "user-read-private user-read-email user-read-playback-state user-modify-playback-state streaming",
+    },
+  });
 };
 
-export const getLoginAccessTokenData = async (code: string) => {
+
+/* export const getLoginAccessTokenData = async (code: string) => {
   return axios<LoginAccessTokenData>({
     method: "POST",
     url: SPOTIFY_ACCESS_TOKEN_URL,
@@ -61,3 +64,4 @@ export const getRefreshAccessTokenData = async (refreshToken: string) => {
     },
   });
 };
+ */

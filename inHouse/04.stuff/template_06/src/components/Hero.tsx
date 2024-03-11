@@ -9,6 +9,10 @@ import MainBox from "./hero/MainBox";
 
 const Hero: React.FC = () => {
   const [accessToken, setAccessToken] = useRecoilState<any>(accessTokenState);
+
+  const saveAccessToken = localStorage.setItem("accessToken", accessToken?.data?.access_token);
+  const getSaveAccessToken = localStorage.getItem("accessToken");
+
   const musicVal = useRecoilValue(musicValState);
   const { data, isLoading, isError } = useQuery(
     "accessTokenData",

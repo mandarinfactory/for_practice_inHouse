@@ -9,6 +9,7 @@ const LoginButton: React.FC = () => {
   const state = generateRandomString(16);
   const scope =
     "user-read-private user-read-email user-read-playback-state user-modify-playback-state streaming";
+    
   const loginRedirectHandler = async () => {
     const loginParams = {
       response_type: "code",
@@ -40,7 +41,7 @@ const LoginButton: React.FC = () => {
 
   return (
     <div className="w-auto">
-      <button onClick={loginRedirectHandler}>
+      <button onClick={() => loginRedirectHandler}>
         <h1 className="p-2 mb-3 text-2xl text-white bg-gradient-to-r from-red-500 to-sky-500 rounded-2xl cursor-pointer">
           로그인
         </h1>

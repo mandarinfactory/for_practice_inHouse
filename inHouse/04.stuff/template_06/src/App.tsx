@@ -1,10 +1,7 @@
-import axios from "axios";
-import React, { useState, useEffect, Suspense } from "react";
+import React, { Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { RecoilRoot } from "recoil";
 import { QueryClient, QueryClientProvider } from "react-query";
-
-import { getCookie } from "./utils/cookie";
 
 import Home from "./page/Home";
 import SuspenseBox from "./page/SuspenseBox";
