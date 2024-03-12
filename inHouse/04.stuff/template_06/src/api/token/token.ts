@@ -1,11 +1,7 @@
 import axios from "axios";
 import { Buffer } from "buffer";
 
-import {
-  AccessTokenData,
-  // LoginAccessTokenData,
-  // RefreshAccessTokenData,
-} from "../../types/type";
+import { AccessTokenData } from "../../types/type";
 import { SPOTIFY_ACCESS_TOKEN_URL } from "../../utils/constants";
 
 const CLIENT_ID = import.meta.env.VITE_SPOTIFY_CLIENT_ID;

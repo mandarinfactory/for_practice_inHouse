@@ -6,12 +6,3 @@ export interface TokenObject {
 export interface AccessTokenData extends TokenObject {
   scope?: string;
 }
-
-export interface LoginAccessTokenData extends TokenObject {
-  refresh_token: string;
-  scope: string;
-}
-
-export interface RefreshAccessTokenData extends TokenObject {
-  scope: string;
-}
