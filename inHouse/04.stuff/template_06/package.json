@@ -13,6 +13,8 @@
     "@types/spotify-web-playback-sdk": "^0.1.19",
     "axios": "^1.6.7",
     "buffer": "^6.0.3",
+    "express": "^4.18.3",
+    "query-string": "^9.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-items-carousel": "^2.8.0",
@@ -20,7 +22,10 @@
     "react-router": "^6.22.1",
     "react-router-dom": "^6.22.1",
     "react-spotify-web-playback": "^0.14.3",
-    "recoil": "^0.7.7"
+    "react-spotify-web-playback-sdk": "^3.0.2",
+    "recoil": "^0.7.7",
+    "util": "^0.12.5",
+    "vite-plugin-require": "^1.1.14"
   },
   "devDependencies": {
     "@types/node": "^20.11.24",
