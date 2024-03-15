@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Noto_Sans_KR } from "next/font/google";
 import "./globals.css";
 
+import Sidebar from "@/components/Sidebar";
+import RecoilRootWrapper from "./RecoilRootWrapper";
+
 const font = Noto_Sans_KR({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -17,8 +20,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
-        {children}
-        </body>
+        <RecoilRootWrapper>
+          <Sidebar>{children}</Sidebar>
+        </RecoilRootWrapper>
+      </body>
     </html>
   );
 }

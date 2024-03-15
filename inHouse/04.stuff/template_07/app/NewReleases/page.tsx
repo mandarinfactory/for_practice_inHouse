@@ -4,8 +4,8 @@ import React from "react";
 import { useRouter } from "next/navigation";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 
-import { detailTrackState, isClickedState } from "../recoil/atom";
-import { searchBrowseState } from "../recoil/selector/searchSelectors";
+import { detailTrackState, isClickedState } from "../../recoil/atom";
+import { searchBrowseState } from "../../recoil/selector/searchSelectors";
 
 const NewReleases = () => {
   const router = useRouter();
@@ -15,10 +15,10 @@ const NewReleases = () => {
 
   return (
     <div className="w-full h-full flex justify-center">
-        <div className="w-[95%] h-max-screen mr-7 my-7 p-5 bg-gradient-to-r from-red-500 to-sky-500 rounded-3xl shadow-2xl">
-          <h1 className="my-1 text-3xl">최신앨범</h1>
-          <div className="flex flex-wrap">
-            {newReleasesData.albums.items.map((v: any, i: number) => (
+        <div className="w-full h-max-screen">
+          <h1 className="my-1 text-3xl mb-7">최신앨범</h1>
+          <div className="flex flex-wrap justify-center">
+            {newReleasesData?.albums.items.map((v: any, i: number) => (
               <div
                 className="flex flex-col justify-center items-center my-1 cursor-pointer"
                 key={i}

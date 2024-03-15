@@ -5,10 +5,10 @@ import Playlists from "./mainHero/Playlists";
 
 const MainHero: React.FC = () => {
   return (
-    <>
+    <div>
       <RandomArtists />
       <Playlists />
-    </>
+    </div>
   );
 };
 
