@@ -9,12 +9,12 @@ import SuspenseBox from "./components/page/SuspenseBox";
 export default function Home() {
   return (
     <RecoilRoot>
-      <Suspense fallback={<SuspenseBox />}>
+      {/* <Suspense fallback={<SuspenseBox />}> */}
         <div className="w-full h-full flex justify-center">
           <Sidebar />
           <Hero />
         </div>
-      </Suspense>
+      {/* </Suspense> */}
     </RecoilRoot>
   );
 }
