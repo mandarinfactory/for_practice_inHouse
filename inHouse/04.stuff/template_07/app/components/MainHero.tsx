@@ -1,15 +1,15 @@
-import React from 'react'
+import React from "react";
 
-import RandomArtists from './RandomArtists'
-import Playlists from './Playlists'
+import RandomArtists from "./mainHero/RandomArtists";
+import Playlists from "./mainHero/Playlists";
 
-const MainHero:React.FC = () => {
+const MainHero: React.FC = () => {
   return (
     <>
-        <RandomArtists />
-        <Playlists />
+      <RandomArtists />
+      <Playlists />
     </>
-  )
-}
+  );
+};
 
-export default MainHero
+export default MainHero;

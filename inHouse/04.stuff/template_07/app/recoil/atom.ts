@@ -30,11 +30,6 @@ export const isClickedState = atom<boolean>({
   default: false,
 });
 
-export const isDetailClickedState = atom<boolean>({
-  key: "isDetailClickedState",
-  default: false,
-});
-
 export const detailTrackState = atom<object>({
   key: "detailTrackState",
   default: [],

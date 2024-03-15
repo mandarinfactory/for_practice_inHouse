@@ -1,12 +1,12 @@
 import React from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 
-import { searchBrowseState } from "../recoil/selector/searchSelectors";
+import { searchBrowseState } from "../../recoil/selector/searchSelectors";
 import {
   detailClickedPlaylistsInfoState,
   isClickedState,
   selectedMusicValState,
-} from "../recoil/atom";
+} from "../../recoil/atom";
 
 const Playlists: React.FC = () => {
     

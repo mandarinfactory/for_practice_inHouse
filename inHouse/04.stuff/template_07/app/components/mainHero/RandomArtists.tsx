@@ -1,12 +1,12 @@
 import React from "react";
 import { useRouter } from "next/navigation";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilValue, useRecoilValueLoadable, useSetRecoilState } from "recoil";
 
-import { randomArtistsHandler } from "../recoil/selector/selectors";
+import { randomArtistsHandler } from "../../recoil/selector/selectors";
 import {
   detailClickedInfosState,
   isClickedState,
-} from "../recoil/atom";
+} from "../../recoil/atom";
 
 const RandomArtists: React.FC = () => {
     
@@ -14,7 +14,7 @@ const RandomArtists: React.FC = () => {
   const randomArtistsData = useRecoilValue(randomArtistsHandler(""));
   const setIsClicked = useSetRecoilState(isClickedState);
   const setDetailInfos = useSetRecoilState(detailClickedInfosState);
-
+  
   return (
     <>
       <h1 className="my-1 text-3xl">추천하는 아티스트들</h1>
