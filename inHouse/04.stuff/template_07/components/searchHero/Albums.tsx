@@ -7,6 +7,7 @@ import { detailTrackState, isClickedState, musicValState } from "@/recoil/atom";
 import LeftChevron from "../button/LeftChevron";
 import RightChevron from "../button/RightChevron";
 import { searchAlbumFinderState } from "@/recoil/selector/searchSelectors";
+import Link from "next/link";
 
 const Albums = () => {
   const router = useRouter();
@@ -41,7 +42,8 @@ const Albums = () => {
           >
             {albumData ? (
               albumData?.map((v: any, i: number) => (
-                <div
+                <Link
+                  href="/DetailAlbumTracks"
                   className="flex flex-wrap cursor-pointer"
                   key={i}
                   onClick={() => {
@@ -60,7 +62,7 @@ const Albums = () => {
                     <h1 className="text-lg overflow-hidden">{v.name}</h1>
                     <p>{v.release_date}</p>
                   </div>
-                </div>
+                </Link>
               ))
             ) : (
               <></>

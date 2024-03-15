@@ -6,7 +6,6 @@ import {
   isClickedState,
   selectedMusicValState,
 } from "../../api/recoil/atom";
-
 import { searchBrowseState } from "../../api/recoil/selector/searchSelectors";
 
 const Playlists: React.FC = () => {

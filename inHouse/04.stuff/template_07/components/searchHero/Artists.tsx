@@ -2,10 +2,15 @@ import React from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { useRouter } from "next/navigation";
 
-import { detailClickedInfosState, isClickedState, musicValState } from "@/recoil/atom";
+import {
+  detailClickedInfosState,
+  isClickedState,
+  musicValState,
+} from "@/recoil/atom";
 import { searchArtistFinderState } from "@/recoil/selector/searchSelectors";
+import Link from "next/link";
 
-const Artists:React.FC = () => {
+const Artists: React.FC = () => {
   const router = useRouter();
   const setIsClicked = useSetRecoilState(isClickedState);
   const setDetailInfos = useSetRecoilState(detailClickedInfosState);
@@ -17,7 +22,8 @@ const Artists:React.FC = () => {
       <h1 className="w-full h-auto text-3xl">아티스트</h1>
       <div className="w-full flex justify-start mt-5">
         {artistData ? (
-          <div
+          <Link
+            href="/DetailTracks"
             onClick={() => {
               const filteredArtistData = artistData.artists.items[0];
               setIsClicked(true);
@@ -33,7 +39,7 @@ const Artists:React.FC = () => {
             <h1 className="mt-3 text-xl text-center">
               {artistData?.artists?.items[0]?.name}
             </h1>
-          </div>
+          </Link>
         ) : (
           <></>
         )}

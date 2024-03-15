@@ -7,9 +7,9 @@ import {
   isClickedState,
   selectedMusicValState,
 } from "../../recoil/atom";
+import Link from "next/link";
 
 const Playlists: React.FC = () => {
-    
   const playlistsData = useRecoilValue(searchBrowseState(10));
   const setIsClicked = useSetRecoilState(isClickedState);
   const setSelectedVal = useSetRecoilState(selectedMusicValState);
@@ -23,7 +23,8 @@ const Playlists: React.FC = () => {
       <div className="flex flex-wrap justify-center">
         {playlistsData ? (
           playlistsData.playlists?.items.map((v: any, i: number) => (
-            <div
+            <Link
+              href="/DetailPlaylists"
               key={i}
               className="flex flex-col items-center w-[18%] h-auto cursor-pointer"
               onClick={() => {
@@ -39,7 +40,7 @@ const Playlists: React.FC = () => {
               />
               <h1>{v.name}</h1>
               <p className="w-[60%] truncate">{v.description}</p>
-            </div>
+            </Link>
           ))
         ) : (
           <></>
