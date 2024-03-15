@@ -3,14 +3,10 @@ import { useRouter } from "next/navigation";
 import ItemsCarousel from "react-items-carousel";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 
-import {
-  detailTrackState,
-  isClickedState,
-  musicValState,
-} from "@/app/recoil/atom";
+import { detailTrackState, isClickedState, musicValState } from "@/recoil/atom";
 import LeftChevron from "../button/LeftChevron";
 import RightChevron from "../button/RightChevron";
-import { searchAlbumFinderState } from "@/app/recoil/selector/searchSelectors";
+import { searchAlbumFinderState } from "@/recoil/selector/searchSelectors";
 
 const Albums = () => {
   const router = useRouter();

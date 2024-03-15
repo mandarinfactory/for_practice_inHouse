@@ -7,7 +7,6 @@ const CLIENT_ID = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID;
 const CLIENT_SECRET = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_SECRET;
 
 export const getAccessTokenData = () => {
-  console.log(CLIENT_ID, CLIENT_SECRET);
   return axios<AccessTokenData>({
     method: "POST",
     url: SPOTIFY_ACCESS_TOKEN_URL,

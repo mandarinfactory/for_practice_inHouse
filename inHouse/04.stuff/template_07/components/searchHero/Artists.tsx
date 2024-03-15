@@ -2,12 +2,8 @@ import React from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { useRouter } from "next/navigation";
 
-import {
-  detailClickedInfosState,
-  isClickedState,
-  musicValState,
-} from "@/app/recoil/atom";
-import { searchArtistFinderState } from "@/app/recoil/selector/searchSelectors";
+import { detailClickedInfosState, isClickedState, musicValState } from "@/recoil/atom";
+import { searchArtistFinderState } from "@/recoil/selector/searchSelectors";
 
 const Artists:React.FC = () => {
   const router = useRouter();
