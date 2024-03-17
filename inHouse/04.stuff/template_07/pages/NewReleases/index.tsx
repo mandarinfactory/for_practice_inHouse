@@ -4,9 +4,9 @@ import React from "react";
 import { useRouter } from "next/navigation";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 
-import Sidebar from "../Sidebar";
-import { detailTrackState, isClickedState } from "../../../recoil/atom";
-import { searchBrowseState } from "../../../recoil/selector/searchSelectors";
+import Sidebar from "../components/Sidebar";
+import { detailTrackState, isClickedState } from "../../recoil/atom";
+import { searchBrowseState } from "../../recoil/selector/searchSelectors";
 
 const NewReleases = () => {
   const router = useRouter();

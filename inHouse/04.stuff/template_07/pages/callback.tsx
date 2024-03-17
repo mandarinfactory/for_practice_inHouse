@@ -1,16 +1,15 @@
 import { GetServerSideProps } from "next";
 import axios from "axios";
 
-import "../app/globals.css"
+import "../app/globals.css";
 import Hero from "./components/Hero";
 import Sidebar from "./components/Sidebar";
 import { RecoilRootWrapper } from "@/utils/RecoilRootWrapper";
 import { clientId, clientSecret, redirectUri } from "./constants";
 
-
 const Callback = ({ accessToken }: { accessToken: string }) => {
-    console.log(accessToken);
-    
+  console.log(accessToken);
+
   return (
     <RecoilRootWrapper>
       <Sidebar>
@@ -23,8 +22,6 @@ const Callback = ({ accessToken }: { accessToken: string }) => {
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const code = query.code as string;
-  console.log(code);
-  
 
   if (!code) {
     return {
@@ -51,12 +48,9 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
         },
       }
     );
-
-    console.log(response);
     const accessToken = response.data;
-    
     return { props: { accessToken } };
-} catch (error) {
+  } catch (error) {
     console.log(error);
     console.error("Error:", error);
     return { props: { accessToken: "" } };

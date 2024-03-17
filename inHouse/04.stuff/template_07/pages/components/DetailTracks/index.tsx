@@ -39,7 +39,7 @@ const DetailTracks: React.FC = () => {
                       <h1 className="ml-5 text-[1.8rem]">
                         {detailDescData.pages[0].description}
                       </h1>
-                      <h1 className="ml-5 flex text-[1.5rem]">
+                      <h1 className="truncate ml-5 flex text-[1.5rem]">
                         {detailInfosData.genres.map(
                           (genre: string, i: number) => (
                             <p className="mr-3" key={i}>

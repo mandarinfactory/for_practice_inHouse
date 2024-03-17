@@ -1,6 +1,5 @@
 import React from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 
 import { SidebarItemProps } from "@/types";
 
@@ -10,11 +9,11 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
   active,
   href,
 }) => {
-  const router = useRouter();
+  console.log(href);
+  
   return (
     <Link
       href={href}
-      onClick={() => {router.refresh()}}
       className="flex flex-row h-auto items-center w-full gap-x-5 text-md font-medium cursor-pointer transition py-1"
     >
       <Icon size={30} />
