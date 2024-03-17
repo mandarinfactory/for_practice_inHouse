@@ -1,23 +1,19 @@
 "use client";
 
 import { GetServerSideProps } from "next";
-import "../app/globals.css";
 
 import Hero from "./components/Hero";
 import { REDIRECT_URL, SCOPE } from "@/utils/constants";
-import { RecoilRootWrapper } from "@/utils/RecoilRootWrapper";
 import Sidebar from "./components/Sidebar";
 
 const Home = ({ spotifyAuthUrl }: { spotifyAuthUrl: string }) => {
   return (
-    <RecoilRootWrapper>
       <Sidebar>
         <h1 className="w-[7%] h-auto p-2 mb-3 text-center text-2xl text-black bg-white rounded-2xl cursor-pointer">
           <a href={spotifyAuthUrl}>로그인</a>
         </h1>
         <Hero />
       </Sidebar>
-    </RecoilRootWrapper>
   );
 };
 

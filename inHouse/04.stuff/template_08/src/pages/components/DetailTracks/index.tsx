@@ -7,7 +7,6 @@ import {
   searchDescriptionState,
   searchSongFinderState,
 } from "@/recoil/selector/searchSelectors";
-import Sidebar from "../Sidebar";
 import { detailClickedInfosState, isClickedState } from "@/recoil/atom";
 
 const DetailTracks: React.FC = () => {
@@ -18,9 +17,9 @@ const DetailTracks: React.FC = () => {
   const detailDescData = useRecoilValue(searchDescriptionState(artistData));
 
   return (
-    <Sidebar>
-      <div className="w-full h-full flex justify-center">
-        {isDetailClicked ? (
+    <div className="w-full h-full flex justify-center">
+      {isDetailClicked ? (
+        <>
           <div className="w-[95%] h-max-screen">
             <div className="w-full h-auto flex">
               <img
@@ -87,11 +86,11 @@ const DetailTracks: React.FC = () => {
               ))}
             </div>
           </div>
-        ) : (
-          <></>
-        )}
-      </div>
-    </Sidebar>
+        </>
+      ) : (
+        <></>
+      )}
+    </div>
   );
 };
 

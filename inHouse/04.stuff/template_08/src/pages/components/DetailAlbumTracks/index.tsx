@@ -3,9 +3,8 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
 
-import Sidebar from "../Sidebar";
-import { detailTrackState, isClickedState } from "@/recoil/atom";
 import { searchDetailTrackState } from "@/recoil/selector/searchSelectors";
+import { detailTrackState, isClickedState } from "@/recoil/atom";
 
 const DetailAlbumTracks: React.FC = () => {
   const isClicked = useRecoilValue(isClickedState);
@@ -17,7 +16,7 @@ const DetailAlbumTracks: React.FC = () => {
   return (
     <div className="w-full h-full flex justify-center">
       {isClicked ? (
-        <Sidebar>
+        <>
           <div className="w-[95%] h-max-screen">
             <div className="flex">
               <img
@@ -68,7 +67,7 @@ const DetailAlbumTracks: React.FC = () => {
               ))}
             </div>
           </div>
-        </Sidebar>
+        </>
       ) : (
         <></>
       )}

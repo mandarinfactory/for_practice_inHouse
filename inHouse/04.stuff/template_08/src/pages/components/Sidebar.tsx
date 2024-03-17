@@ -6,10 +6,10 @@ import { HiHome } from "react-icons/hi";
 import { WiStars } from "react-icons/wi";
 import { usePathname, useRouter } from "next/navigation";
 
-import { SidebarProps } from "@/types";
+import { SidebarProps } from "@/types/types";
 import SidebarItem from "./SidebarItem";
 import Title from "./Title";
-import { isClickedState, musicValState } from "@/recoil/atom";
+import { isClickedState, musicValState } from "../recoil/atom";
 
 const Sidebar: React.FC<SidebarProps> = ({ children }) => {
   const pathname = usePathname();
@@ -25,7 +25,7 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
         icon: WiStars,
         label: "최신앨범",
         active: pathname === "NewReleases",
-        href: "components/NewReleases",
+        href: "/NewReleases",
       },
     ],
     [pathname]

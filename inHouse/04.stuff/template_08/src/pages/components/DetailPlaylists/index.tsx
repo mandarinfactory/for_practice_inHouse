@@ -9,7 +9,6 @@ import {
   isClickedState,
   selectedMusicValState,
 } from "@/recoil/atom";
-import Sidebar from "../Sidebar";
 import { detailTrackHandlerState } from "@/recoil/selector/selectors";
 
 const DetailPlaylists: React.FC = () => {
@@ -33,7 +32,7 @@ const DetailPlaylists: React.FC = () => {
   return (
     <div className="w-full h-full flex flex-col justify-center h-max-screen">
       {isClicked ? (
-        <Sidebar>
+        <>
           <div className="flex mb-5">
             <div className="w-auto h-auto">
               <img
@@ -89,7 +88,7 @@ const DetailPlaylists: React.FC = () => {
               </div>
             ))}
           </div>
-        </Sidebar>
+        </>
       ) : (
         <></>
       )}
