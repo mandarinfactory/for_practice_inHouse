@@ -6,10 +6,10 @@ import { HiHome } from "react-icons/hi";
 import { WiStars } from "react-icons/wi";
 import { usePathname, useRouter } from "next/navigation";
 
-import { isClickedState, musicValState } from "../recoil/atom";
 import { SidebarProps } from "@/types";
 import SidebarItem from "./SidebarItem";
 import Title from "./Title";
+import { isClickedState, musicValState } from "@/recoil/atom";
 
 const Sidebar: React.FC<SidebarProps> = ({ children }) => {
   const pathname = usePathname();

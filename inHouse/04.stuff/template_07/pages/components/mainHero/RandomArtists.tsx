@@ -2,8 +2,8 @@ import React from "react";
 import Link from "next/link";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 
-import { randomArtistsHandler } from "../../recoil/selector/selectors";
-import { detailClickedInfosState, isClickedState } from "../../recoil/atom";
+import { randomArtistsHandler } from "@/recoil/selector/selectors";
+import { isClickedState, detailClickedInfosState } from "@/recoil/atom";
 
 const RandomArtists: React.FC = () => {
   const randomArtistsData = useRecoilValue(randomArtistsHandler(""));
@@ -16,7 +16,7 @@ const RandomArtists: React.FC = () => {
       <div className="flex flex-wrap justify-center items-center">
         {randomArtistsData?.artists.items.map((e: any, i: number) => (
           <Link
-            href="/DetailTracks"
+            href="components/DetailTracks"
             className="m-3 flex justify-center items-center w-[16%]"
             key={i}
             onClick={() => {

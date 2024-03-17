@@ -1,13 +1,9 @@
 import React from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 
-import { searchBrowseState } from "../../recoil/selector/searchSelectors";
-import {
-  detailClickedPlaylistsInfoState,
-  isClickedState,
-  selectedMusicValState,
-} from "../../recoil/atom";
 import Link from "next/link";
+import { searchBrowseState } from "@/recoil/selector/searchSelectors";
+import { isClickedState, selectedMusicValState, detailClickedPlaylistsInfoState } from "@/recoil/atom";
 
 const Playlists: React.FC = () => {
   const playlistsData = useRecoilValue(searchBrowseState(10));
@@ -24,7 +20,7 @@ const Playlists: React.FC = () => {
         {playlistsData ? (
           playlistsData.playlists?.items.map((v: any, i: number) => (
             <Link
-              href="/DetailPlaylists"
+              href="components/DetailPlaylists"
               key={i}
               className="flex flex-col items-center w-[18%] h-auto cursor-pointer"
               onClick={() => {

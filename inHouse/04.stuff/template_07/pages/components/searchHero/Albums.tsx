@@ -43,7 +43,7 @@ const Albums = () => {
             {albumData ? (
               albumData?.map((v: any, i: number) => (
                 <Link
-                  href="/DetailAlbumTracks"
+                  href="components/DetailAlbumTracks"
                   className="flex flex-wrap cursor-pointer"
                   key={i}
                   onClick={() => {

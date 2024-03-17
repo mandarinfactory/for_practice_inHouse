@@ -4,8 +4,8 @@ import React from "react";
 import { useRouter } from "next/navigation";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 
-import { detailTrackState, isClickedState } from "../../recoil/atom";
-import { searchBrowseState } from "../../recoil/selector/searchSelectors";
+import { detailTrackState, isClickedState } from "../../../recoil/atom";
+import { searchBrowseState } from "../../../recoil/selector/searchSelectors";
 
 const NewReleases = () => {
   const router = useRouter();

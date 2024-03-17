@@ -3,7 +3,6 @@ import Link from "next/link";
 import { useSetRecoilState } from "recoil";
 
 import { isClickedState, musicValState } from "@/recoil/atom";
-import LoginButton from "./button/LoginButton";
 
 const Title: React.FC = () => {
   const setMusicVal = useSetRecoilState(musicValState);
@@ -34,7 +33,6 @@ const Title: React.FC = () => {
           <h1 className="w-auto text-[2.3rem] font-extrabold cursor-pointer">쉼표</h1>
         </div>
       </Link>
-      <LoginButton />
     </div>
   );
 };

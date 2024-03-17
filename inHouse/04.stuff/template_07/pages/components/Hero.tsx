@@ -3,10 +3,10 @@
 import React, { useEffect } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 
-import { accessTokenState, musicValState } from "../recoil/atom";
 import { getAccessTokenData } from "@/api/token";
 import MainHero from "./MainHero";
 import SearchHero from "./SearchHero";
+import { accessTokenState, musicValState } from "@/recoil/atom";
 
 const Hero: React.FC = () => {
   const setAccessToken = useSetRecoilState(accessTokenState);

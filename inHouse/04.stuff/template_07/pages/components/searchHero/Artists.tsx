@@ -23,7 +23,7 @@ const Artists: React.FC = () => {
       <div className="w-full flex justify-start mt-5">
         {artistData ? (
           <Link
-            href="/DetailTracks"
+            href="components/DetailTracks"
             onClick={() => {
               const filteredArtistData = artistData.artists.items[0];
               setIsClicked(true);
