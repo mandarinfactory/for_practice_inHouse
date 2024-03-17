@@ -15,9 +15,9 @@ const DetailAlbumTracks: React.FC = () => {
   );
 
   return (
-    <div className="w-full h-full flex justify-center">
+    <Sidebar>
       {isClicked ? (
-        <Sidebar>
+        <div className="w-full h-full flex justify-center">
           <div className="w-[95%] h-max-screen">
             <div className="flex">
               <img
@@ -68,11 +68,11 @@ const DetailAlbumTracks: React.FC = () => {
               ))}
             </div>
           </div>
-        </Sidebar>
+        </div>
       ) : (
         <></>
       )}
-    </div>
+    </Sidebar>
   );
 };
 

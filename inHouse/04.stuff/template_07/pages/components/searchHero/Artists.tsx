@@ -1,6 +1,5 @@
 import React from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { useRouter } from "next/navigation";
 
 import {
   detailClickedInfosState,
@@ -11,7 +10,6 @@ import { searchArtistFinderState } from "@/recoil/selector/searchSelectors";
 import Link from "next/link";
 
 const Artists: React.FC = () => {
-  const router = useRouter();
   const setIsClicked = useSetRecoilState(isClickedState);
   const setDetailInfos = useSetRecoilState(detailClickedInfosState);
   const musicVal = useRecoilValue(musicValState);
@@ -27,7 +25,6 @@ const Artists: React.FC = () => {
             onClick={() => {
               const filteredArtistData = artistData.artists.items[0];
               setIsClicked(true);
-              router.push("/DetailTracks");
               setDetailInfos(filteredArtistData);
             }}
           >

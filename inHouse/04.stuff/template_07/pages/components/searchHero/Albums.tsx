@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useRouter } from "next/navigation";
 import ItemsCarousel from "react-items-carousel";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 
@@ -10,7 +9,6 @@ import { searchAlbumFinderState } from "@/recoil/selector/searchSelectors";
 import Link from "next/link";
 
 const Albums = () => {
-  const router = useRouter();
   const musicVal = useRecoilValue(musicValState);
   const albumData = useRecoilValue(searchAlbumFinderState(musicVal));
   const setIsClicked = useSetRecoilState(isClickedState);
@@ -48,7 +46,6 @@ const Albums = () => {
                   key={i}
                   onClick={() => {
                     setIsClicked(true);
-                    router.push("/DetailAlbumTracks");
                     setClickedAlbum(v);
                   }}
                 >

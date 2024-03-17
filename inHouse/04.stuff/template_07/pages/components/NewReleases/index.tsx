@@ -15,36 +15,34 @@ const NewReleases = () => {
   const setClickedAlbum = useSetRecoilState(detailTrackState);
 
   return (
-    <div className="w-full h-full flex justify-center">
-      <Sidebar>
-        <div className="w-full h-max-screen">
-          <h1 className="my-1 text-3xl mb-7">최신앨범</h1>
-          <div className="flex flex-wrap justify-center">
-            {newReleasesData?.albums.items.map((v: any, i: number) => (
-              <div
-                className="flex flex-col justify-center items-center my-1 cursor-pointer"
-                key={i}
-                onClick={() => {
-                  setIsClicked(true);
-                  router.push("/DetailAlbumTracks");
-                  setClickedAlbum(v);
-                }}
-              >
-                <img
-                  className="w-[70%] rounded-xl hover:scale-95 duration-150"
-                  src={v.images[0].url}
-                  alt="앨범아트"
-                />
-                <div className="mt-1 text-lg flex flex-col justify-start">
-                  <h1>{v.name}</h1>
-                  <h1>{v.artists[0].name}</h1>
-                </div>
+    <Sidebar>
+      <div className="w-full h-max-screen">
+        <h1 className="my-1 text-3xl mb-7">최신앨범</h1>
+        <div className="flex flex-wrap justify-center">
+          {newReleasesData?.albums.items.map((v: any, i: number) => (
+            <div
+              className="flex flex-col justify-center items-center cursor-pointer"
+              key={i}
+              onClick={() => {
+                setIsClicked(true);
+                router.replace("components/DetailAlbumTracks");
+                setClickedAlbum(v);
+              }}
+            >
+              <img
+                className="w-[70%] rounded-xl hover:scale-95 duration-150"
+                src={v.images[0].url}
+                alt="앨범아트"
+              />
+              <div className="mt-1 text-lg flex flex-col justify-start">
+                <h1>{v.name}</h1>
+                <h1>{v.artists[0].name}</h1>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
-      </Sidebar>
-    </div>
+      </div>
+    </Sidebar>
   );
 };
 

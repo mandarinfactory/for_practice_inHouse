@@ -18,13 +18,13 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
       {
         icon: HiHome,
         label: "홈",
-        active: pathname !== "/NewReleases",
-        href: "/",
+        active: pathname !== "components/NewReleases",
+        href: "/.",
       },
       {
         icon: WiStars,
         label: "최신앨범",
-        active: pathname === "NewReleases",
+        active: pathname === "components/NewReleases",
         href: "components/NewReleases",
       },
     ],
