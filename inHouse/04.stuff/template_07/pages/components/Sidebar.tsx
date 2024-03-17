@@ -1,17 +1,27 @@
 "use client";
 
-import React, { useMemo } from "react";
-import { useSetRecoilState } from "recoil";
+import React, { useEffect, useMemo } from "react";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { HiHome } from "react-icons/hi";
 import { WiStars } from "react-icons/wi";
 import { usePathname, useRouter } from "next/navigation";
+import SpotifyPlayer from "react-spotify-web-playback";
 
 import Title from "./Title";
 import { SidebarProps } from "@/types";
 import SidebarItem from "./SidebarItem";
-import { isClickedState, musicValState } from "@/recoil/atom";
+import {
+  authenticationTokenState,
+  confirmedURIState,
+  isClickedState,
+  musicValState,
+} from "@/recoil/atom";
 
 const Sidebar: React.FC<SidebarProps> = ({ children }) => {
+  const [savedAuthToken, setSavedAuthToken] = useRecoilState(
+    authenticationTokenState
+  );
+  const confirmedURI = useRecoilValue(confirmedURIState);
   const pathname = usePathname();
   const routes = useMemo(
     () => [
@@ -30,6 +40,13 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
     ],
     [pathname]
   );
+
+  useEffect(() => {
+    const savedAuthToken = localStorage.getItem("authToken");
+    if (typeof savedAuthToken === "string") {
+      setSavedAuthToken(savedAuthToken);
+    }
+  }, []);
 
   const router = useRouter();
   const setMusicVal = useSetRecoilState(musicValState);
@@ -58,6 +75,7 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
         </div>
       </div>
       <main className="w-[95%] h-max-screen mr-7 my-7 p-5 bg-gradient-to-r from-red-500 to-sky-500 rounded-3xl shadow-2xl">
+        <SpotifyPlayer token={savedAuthToken} uris={confirmedURI} />
         {children}
       </main>
     </div>

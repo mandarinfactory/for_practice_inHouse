@@ -5,10 +5,15 @@ export const accessTokenState = atom<any | undefined>({
   default: "",
 });
 
+export const authenticationTokenState = atom<any | undefined>({
+  key: "authenticationTokenState",
+  default: "",
+});
+
 export const confirmedURIState = atom<string>({
   key: "confirmedURIState",
   default: "",
-})
+});
 
 export const selectedMusicValState = atom<string | undefined>({
   key: "selectedMusicValState",
@@ -23,7 +28,7 @@ export const musicValState = atom<string | undefined>({
 export const clickedAlbumState = atom<object>({
   key: "clickedAlbumState",
   default: [],
-})
+});
 
 export const isClickedState = atom<boolean>({
   key: "isClickedState",
@@ -43,5 +48,4 @@ export const detailClickedPlaylistsInfoState = atom<object>({
 export const detailClickedInfosState = atom<object>({
   key: "detailClickedInfosState",
   default: [],
-
-})
+});

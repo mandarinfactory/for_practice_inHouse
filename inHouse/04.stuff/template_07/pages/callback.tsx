@@ -6,9 +6,16 @@ import Hero from "./components/Hero";
 import Sidebar from "./components/Sidebar";
 import { RecoilRootWrapper } from "@/utils/RecoilRootWrapper";
 import { clientId, clientSecret, redirectUri } from "./constants";
+import { useEffect } from "react";
 
 const Callback = ({ accessToken }: { accessToken: string }) => {
-  console.log(accessToken);
+
+  useEffect(() => {
+    if (accessToken) {
+      const saveAuthToken = localStorage.setItem("authToken", accessToken);
+      console.log(saveAuthToken);
+    }
+  },[])
 
   return (
     <RecoilRootWrapper>
@@ -48,7 +55,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
         },
       }
     );
-    const accessToken = response.data;
+    const accessToken = response.data.access_token;
     return { props: { accessToken } };
   } catch (error) {
     console.log(error);

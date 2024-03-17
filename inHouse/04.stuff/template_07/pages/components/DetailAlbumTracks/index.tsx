@@ -1,10 +1,14 @@
 "use client";
 
 import React from "react";
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 
 import Sidebar from "../Sidebar";
-import { detailTrackState, isClickedState } from "@/recoil/atom";
+import {
+  detailTrackState,
+  isClickedState,
+  confirmedURIState,
+} from "@/recoil/atom";
 import { searchDetailTrackState } from "@/recoil/selector/searchSelectors";
 
 const DetailAlbumTracks: React.FC = () => {
@@ -13,6 +17,7 @@ const DetailAlbumTracks: React.FC = () => {
   const detailAlbumTrackData = useRecoilValue(
     searchDetailTrackState(albumData.id)
   );
+  const setConfirmedURI = useSetRecoilState(confirmedURIState);
 
   return (
     <Sidebar>
@@ -42,6 +47,9 @@ const DetailAlbumTracks: React.FC = () => {
                 <div
                   className="my-3 p-2 flex justify-between items-center bg-white bg-opacity-30 hover:bg-opacity-50 rounded-xl cursor-pointer duration-150"
                   key={i}
+                  onClick={() => {
+                    setConfirmedURI(v.uri);
+                  }}
                 >
                   <img
                     className="w-[60px] h-auto ml-3 object-cover rounded-md"

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 
 import {
   confirmedURIState,
@@ -22,7 +22,7 @@ const DetailPlaylists: React.FC = () => {
     detailTrackHandlerState(selectedVal || "")
   );
 
-  const [confirmedURI, setConfirmedURI] = useRecoilState(confirmedURIState);
+  const setConfirmedURI = useSetRecoilState(confirmedURIState);
 
   useEffect(() => {
     if (selectedVal) {

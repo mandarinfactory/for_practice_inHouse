@@ -20,6 +20,7 @@
     "react-items-carousel": "^2.8.0",
     "react-loading": "^2.0.3",
     "react-query": "^3.39.3",
+    "react-spotify-web-playback": "^0.14.3",
     "recoil": "^0.7.7"
   },
   "devDependencies": {

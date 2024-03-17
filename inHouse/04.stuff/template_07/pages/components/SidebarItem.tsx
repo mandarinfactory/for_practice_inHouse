@@ -9,7 +9,6 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
   active,
   href,
 }) => {
-  console.log(href);
   
   return (
     <Link
