@@ -10,6 +10,15 @@ export interface AccessTokenData extends TokenObject {
   scope?: string;
 }
 
+export interface AuthorizationTokenData extends TokenObject {
+  refresh_token: string;
+  scope: string;
+}
+
+export interface RefreshTokenData extends TokenObject {
+  scope: string;
+}
+
 export interface SidebarProps {
   children: React.ReactNode;
 }

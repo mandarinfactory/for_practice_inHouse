@@ -3,7 +3,7 @@ import { Noto_Sans_KR } from "next/font/google";
 import "./globals.css";
 
 import Sidebar from "@/components/Sidebar";
-import RecoilRootWrapper from "./RecoilRootWrapper";
+import { RecoilRootWrapper } from "./RecoilRootWrapper";
 
 const font = Noto_Sans_KR({ subsets: ["latin"] });
 

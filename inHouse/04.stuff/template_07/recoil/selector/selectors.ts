@@ -54,7 +54,7 @@ export const randomArtistsHandler = selectorFamily({
           .then((res) => res.json())
           .then((data) => data);
         const pickRandomNumber = Math.ceil(
-          Math.random() * findRandomGenre.genres.length
+          Math.random() * findRandomGenre.genres?.length
         );
         const getRandomGenre = findRandomGenre.genres[pickRandomNumber];
         const randomGenreFinder = await fetch(

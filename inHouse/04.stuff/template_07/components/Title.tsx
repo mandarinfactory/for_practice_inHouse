@@ -9,10 +9,10 @@ const Title: React.FC = () => {
   const setMusicVal = useSetRecoilState(musicValState);
   const setIsClicked = useSetRecoilState(isClickedState);
   return (
-    <div className="flex justify-between">
+    <div className="flex justify-between items-center">
       <Link href="/.">
         <div
-          className="flex cursor-pointer"
+          className="flex items-center cursor-pointer"
           onClick={() => {
             setMusicVal("");
             setIsClicked(false);
@@ -31,7 +31,7 @@ const Title: React.FC = () => {
             />
           </svg>
 
-          <h1 className="w-auto text-[2.3rem] mb-3 cursor-pointer">쉼표</h1>
+          <h1 className="w-auto text-[2.3rem] font-extrabold cursor-pointer">쉼표</h1>
         </div>
       </Link>
       <LoginButton />
