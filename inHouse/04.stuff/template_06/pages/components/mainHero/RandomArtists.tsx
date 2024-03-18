@@ -27,7 +27,7 @@ const RandomArtists: React.FC = () => {
             <div className="relative w-[80%] hover:scale-95 duration-150 cursor-pointer">
               <img
                 className="object-cover rounded-xl shadow-xl"
-                src={e.images[0].url}
+                src={e.images[0]?.url}
                 alt="아티스트"
               />
               <h1 className="absolute top-1 left-1 text-white mix-blend-difference mt-2 drop-shadow-2xl uppercase text-lg">

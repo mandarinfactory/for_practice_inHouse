@@ -9,7 +9,7 @@ const LeftChevron: React.FC = () => {
         viewBox="0 0 24 24"
         strokeWidth={3}
         stroke="black"
-        className="w-10 h-10 p-2 bg-slate-100 rounded-full"
+        className="w-10 h-10 p-2 bg-slate-100 rounded-full shadow-lg"
       >
         <path
           strokeLinecap="round"

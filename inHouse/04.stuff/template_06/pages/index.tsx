@@ -1,25 +1,12 @@
 "use client";
 
-import { useSetRecoilState } from "recoil";
 import { GetServerSideProps } from "next";
-import { useEffect, useState } from "react";
 
 import Hero from "./components/Hero";
 import Sidebar from "./components/Sidebar";
 import { REDIRECT_URL, SCOPE } from "@/utils/constants";
-import { authenticationTokenState } from "@/recoil/atom";
 
 const Home = ({ spotifyAuthUrl }: { spotifyAuthUrl: string }) => {
-  const setSavedAuthToken = useSetRecoilState(authenticationTokenState);
-  const [removeAuth, setRemoveAuth] = useState(false);
-
-  useEffect(() => {
-    if (removeAuth) {
-      localStorage.removeItem("authToken");
-      setSavedAuthToken(null);
-    }
-  }, [removeAuth]);
-
   return (
     <Sidebar spotifyAuthUrl={spotifyAuthUrl}>
       <Hero />

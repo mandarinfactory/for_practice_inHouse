@@ -84,13 +84,19 @@ const Sidebar: React.FC<SidebarProps> = ({ spotifyAuthUrl, children }) => {
       <main className="w-[95%] h-max-screen mr-7 my-7 p-5 bg-gradient-to-r from-red-500 to-sky-500 rounded-3xl shadow-2xl">
         <h1 className="w-[7%] h-auto p-2 mb-3 text-center text-2xl text-black bg-white rounded-2xl cursor-pointer">
           {!savedAuthToken ? (
-            <a href={spotifyAuthUrl} className="cursor">
+            <a
+              href={spotifyAuthUrl}
+              onClick={() => {
+                router.replace("/.");
+              }}
+            >
               로그인
             </a>
           ) : (
             <button
               onClick={() => {
                 setRemoveAuth(true);
+                router.replace("/.");
               }}
             >
               로그아웃
