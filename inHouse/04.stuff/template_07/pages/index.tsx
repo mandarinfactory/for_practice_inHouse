@@ -1,6 +1,6 @@
 "use client";
 
-import { useRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import { GetServerSideProps } from "next";
 import { useEffect, useState } from "react";
 
@@ -10,9 +10,7 @@ import { REDIRECT_URL, SCOPE } from "@/utils/constants";
 import { authenticationTokenState } from "@/recoil/atom";
 
 const Home = ({ spotifyAuthUrl }: { spotifyAuthUrl: string }) => {
-  const [savedAuthToken, setSavedAuthToken] = useRecoilState(
-    authenticationTokenState
-  );
+  const setSavedAuthToken = useSetRecoilState(authenticationTokenState);
   const [removeAuth, setRemoveAuth] = useState(false);
 
   useEffect(() => {
