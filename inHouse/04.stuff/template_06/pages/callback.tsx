@@ -1,12 +1,11 @@
-import { GetServerSideProps } from "next";
 import axios from "axios";
+import { useEffect } from "react";
+import { GetServerSideProps } from "next";
 
-import "../app/globals.css";
 import Hero from "./components/Hero";
 import Sidebar from "./components/Sidebar";
 import { RecoilRootBox } from "@/pages/components/Box/RecoilRootBox";
-import { clientId, clientSecret, redirectUri } from "./constants";
-import { useEffect } from "react";
+import { CLIENT_ID, CLIENT_SECRET, REDIRECT_URL } from "@/utils/constants";
 
 const Callback = ({ accessToken }: { accessToken: string }) => {
   useEffect(() => {
@@ -40,23 +39,23 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   try {
     const response = await axios.post(
       "https://accounts.spotify.com/api/token",
-      new URLSearchParams({
-        grant_type: "authorization_code",
-        code,
-        redirect_uri: redirectUri,
-        client_id: clientId,
-        client_secret: clientSecret,
-      }).toString(),
-      {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-      }
-    );
-    const accessToken = response.data.access_token;
-    return { props: { accessToken } };
+      
+        new URLSearchParams({
+          grant_type: "authorization_code",
+          code,
+          redirect_uri: REDIRECT_URL,
+          client_id: CLIENT_ID,
+          client_secret: CLIENT_SECRET,
+        }).toString(),
+        {
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        }
+        );
+        const accessToken = response.data.access_token;
+        return { props: { accessToken } };
   } catch (error) {
-    console.log(error);
     console.error("Error:", error);
     return { props: { accessToken: "" } };
   }
