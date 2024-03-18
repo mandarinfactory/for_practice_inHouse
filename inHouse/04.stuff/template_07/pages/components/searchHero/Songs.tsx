@@ -1,12 +1,13 @@
 import React from "react";
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 
-import { musicValState } from "@/recoil/atom";
+import { confirmedURIState, musicValState } from "@/recoil/atom";
 import { searchSongFinderState } from "@/recoil/selector/searchSelectors";
 
 const Songs: React.FC = () => {
   const musicVal = useRecoilValue(musicValState);
   const songData = useRecoilValue(searchSongFinderState(musicVal));
+  const setConfirmedURI = useSetRecoilState(confirmedURIState);
 
   return (
     <>
@@ -23,6 +24,9 @@ const Songs: React.FC = () => {
                     <div
                       className="w-full h-auto mx-10 my-2 flex flex-wrap cursor-pointer"
                       key={i}
+                      onClick={() => {
+                        setConfirmedURI(v.uri);
+                      }}
                     >
                       <img
                         src={v.album.images[1].url}

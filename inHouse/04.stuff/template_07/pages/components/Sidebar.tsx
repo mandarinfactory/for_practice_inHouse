@@ -97,13 +97,17 @@ const Sidebar: React.FC<SidebarProps> = ({ spotifyAuthUrl, children }) => {
             </button>
           )}
         </h1>
-        <SpotifyPlayer
-          token={savedAuthToken}
-          uris={confirmedURI}
-          styles={{
-            bgColor: "transparent",
-          }}
-        />
+        {savedAuthToken ? (
+          <SpotifyPlayer
+            token={savedAuthToken}
+            uris={confirmedURI}
+            styles={{
+              bgColor: "transparent",
+            }}
+          />
+        ) : (
+          <></>
+        )}
         {children}
       </main>
     </div>

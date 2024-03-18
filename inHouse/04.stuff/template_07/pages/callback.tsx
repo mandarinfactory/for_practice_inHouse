@@ -4,25 +4,24 @@ import axios from "axios";
 import "../app/globals.css";
 import Hero from "./components/Hero";
 import Sidebar from "./components/Sidebar";
-import { RecoilRootWrapper } from "@/utils/RecoilRootWrapper";
+import { RecoilRootBox } from "@/pages/components/Box/RecoilRootBox";
 import { clientId, clientSecret, redirectUri } from "./constants";
 import { useEffect } from "react";
 
 const Callback = ({ accessToken }: { accessToken: string }) => {
-
   useEffect(() => {
     if (accessToken) {
       localStorage.setItem("authToken", accessToken);
     }
-  },[])
+  }, []);
 
   return (
-    <RecoilRootWrapper>
+    <RecoilRootBox>
       <Sidebar>
         <h1>환영합니다!</h1>
         <Hero />
       </Sidebar>
-    </RecoilRootWrapper>
+    </RecoilRootBox>
   );
 };
 

@@ -8,6 +8,7 @@ import {
   detailTrackState,
   isClickedState,
   confirmedURIState,
+  authenticationTokenState,
 } from "@/recoil/atom";
 import { searchDetailTrackState } from "@/recoil/selector/searchSelectors";
 
@@ -18,6 +19,7 @@ const DetailAlbumTracks: React.FC = () => {
     searchDetailTrackState(albumData.id)
   );
   const setConfirmedURI = useSetRecoilState(confirmedURIState);
+  const savedAuthToken = useRecoilValue(authenticationTokenState);
 
   return (
     <Sidebar>
@@ -49,6 +51,7 @@ const DetailAlbumTracks: React.FC = () => {
                   key={i}
                   onClick={() => {
                     setConfirmedURI(v.uri);
+                    savedAuthToken ? <></> : alert("로그인 후 재생해주시기 바랍니다!")
                   }}
                 >
                   <img
