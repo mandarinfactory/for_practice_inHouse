@@ -12,7 +12,7 @@ const Callback = ({ accessToken }: { accessToken: string }) => {
 
   useEffect(() => {
     if (accessToken) {
-      const saveAuthToken = localStorage.setItem("authToken", accessToken);
+      localStorage.setItem("authToken", accessToken);
     }
   },[])
 
