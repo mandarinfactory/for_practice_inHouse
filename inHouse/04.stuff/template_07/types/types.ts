@@ -21,6 +21,7 @@ export interface RefreshTokenData extends TokenObject {
 
 export interface SidebarProps {
   children: React.ReactNode;
+  spotifyAuthUrl: string;
 }
 
 export interface SidebarItemProps {

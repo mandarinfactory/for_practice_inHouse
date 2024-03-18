@@ -1,14 +1,14 @@
 "use client";
 
-import React, { useEffect, useMemo } from "react";
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { HiHome } from "react-icons/hi";
 import { WiStars } from "react-icons/wi";
+import React, { useEffect, useMemo, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import SpotifyPlayer from "react-spotify-web-playback";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 
 import Title from "./Title";
-import { SidebarProps } from "@/types";
+import { SidebarProps } from "@/types/types";
 import SidebarItem from "./SidebarItem";
 import {
   authenticationTokenState,
@@ -17,12 +17,16 @@ import {
   musicValState,
 } from "@/recoil/atom";
 
-const Sidebar: React.FC<SidebarProps> = ({ children }) => {
+const Sidebar: React.FC<SidebarProps> = ({ spotifyAuthUrl, children }) => {
+  const router = useRouter();
+  const pathname = usePathname();
+  const [removeAuth, setRemoveAuth] = useState(false);
+  const confirmedURI = useRecoilValue(confirmedURIState);
+  const setMusicVal = useSetRecoilState(musicValState);
+  const setIsClicked = useSetRecoilState(isClickedState);
   const [savedAuthToken, setSavedAuthToken] = useRecoilState(
     authenticationTokenState
   );
-  const confirmedURI = useRecoilValue(confirmedURIState);
-  const pathname = usePathname();
   const routes = useMemo(
     () => [
       {
@@ -42,15 +46,18 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
   );
 
   useEffect(() => {
-    const savedAuthToken = localStorage.getItem("authToken");
-    if (typeof savedAuthToken === "string") {
-      setSavedAuthToken(savedAuthToken);
+    const savedLocalAuthToken = localStorage.getItem("authToken");
+    if (typeof savedLocalAuthToken === "string") {
+      setSavedAuthToken(savedLocalAuthToken);
     }
   }, []);
 
-  const router = useRouter();
-  const setMusicVal = useSetRecoilState(musicValState);
-  const setIsClicked = useSetRecoilState(isClickedState);
+  useEffect(() => {
+    if (removeAuth) {
+      localStorage.removeItem("authToken");
+      setSavedAuthToken(null);
+    }
+  }, [removeAuth]);
 
   return (
     <div className="flex">
@@ -75,7 +82,28 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
         </div>
       </div>
       <main className="w-[95%] h-max-screen mr-7 my-7 p-5 bg-gradient-to-r from-red-500 to-sky-500 rounded-3xl shadow-2xl">
-        <SpotifyPlayer token={savedAuthToken} uris={confirmedURI} />
+        <h1 className="w-[7%] h-auto p-2 mb-3 text-center text-2xl text-black bg-white rounded-2xl cursor-pointer">
+          {!savedAuthToken ? (
+            <a href={spotifyAuthUrl} className="cursor">
+              로그인
+            </a>
+          ) : (
+            <button
+              onClick={() => {
+                setRemoveAuth(true);
+              }}
+            >
+              로그아웃
+            </button>
+          )}
+        </h1>
+        <SpotifyPlayer
+          token={savedAuthToken}
+          uris={confirmedURI}
+          styles={{
+            bgColor: "transparent",
+          }}
+        />
         {children}
       </main>
     </div>

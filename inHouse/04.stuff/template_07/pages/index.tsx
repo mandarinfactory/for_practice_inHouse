@@ -1,19 +1,31 @@
 "use client";
 
+import { useRecoilState } from "recoil";
 import { GetServerSideProps } from "next";
+import { useEffect, useState } from "react";
 
 import Hero from "./components/Hero";
-import { REDIRECT_URL, SCOPE } from "@/utils/constants";
 import Sidebar from "./components/Sidebar";
+import { REDIRECT_URL, SCOPE } from "@/utils/constants";
+import { authenticationTokenState } from "@/recoil/atom";
 
 const Home = ({ spotifyAuthUrl }: { spotifyAuthUrl: string }) => {
+  const [savedAuthToken, setSavedAuthToken] = useRecoilState(
+    authenticationTokenState
+  );
+  const [removeAuth, setRemoveAuth] = useState(false);
+
+  useEffect(() => {
+    if (removeAuth) {
+      localStorage.removeItem("authToken");
+      setSavedAuthToken(null);
+    }
+  }, [removeAuth]);
+
   return (
-      <Sidebar>
-        <h1 className="w-[7%] h-auto p-2 mb-3 text-center text-2xl text-black bg-white rounded-2xl cursor-pointer">
-          <a href={spotifyAuthUrl}>로그인</a>
-        </h1>
-        <Hero />
-      </Sidebar>
+    <Sidebar spotifyAuthUrl={spotifyAuthUrl}>
+      <Hero />
+    </Sidebar>
   );
 };
 

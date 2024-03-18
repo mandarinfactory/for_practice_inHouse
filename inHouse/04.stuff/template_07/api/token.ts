@@ -4,7 +4,7 @@ import {
   AccessTokenData,
   AuthorizationTokenData,
   RefreshTokenData,
-} from "../types";
+} from "../types/types";
 import { REDIRECT_URL, SPOTIFY_ACCESS_TOKEN_URL } from "../utils/constants";
 
 const CLIENT_ID = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID;
