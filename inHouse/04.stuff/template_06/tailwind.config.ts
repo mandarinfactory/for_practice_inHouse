@@ -12,7 +12,7 @@ const config: Config = {
         "sans": "JalnanGothic",
       },
       screens: {
-        sm: { min: "400px", max: "819px" },
+        sm: { min: "390px", max: "819px" },
         md: { min: "820px", max: "1079px" },
         lg: { min: "1080px" },
       },
