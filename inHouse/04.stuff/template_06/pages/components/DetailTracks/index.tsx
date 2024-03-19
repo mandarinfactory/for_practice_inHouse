@@ -38,7 +38,7 @@ const DetailTracks: React.FC = () => {
                         소개 및 장르
                       </h1>
                       <h1 className="ml-5 lg:text-[1.8rem] md:text-lg sm:hidden">
-                        {detailDescData.pages[0].description}
+                        {detailDescData.pages[0]?.description}
                       </h1>
                       <h1 className="truncate ml-5 flex lg:text-base md:hidden sm:hidden">
                         {detailInfosData.genres.map(

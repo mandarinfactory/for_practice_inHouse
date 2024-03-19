@@ -30,7 +30,7 @@ const Title: React.FC = () => {
             />
           </svg>
 
-          <h1 className="w-auto text-[2.3rem] sm:text-2xl font-extrabold cursor-pointer">쉼표</h1>
+          <h1 className="w-auto sm:w-[50px] mx-1 text-[2.3rem] sm:text-2xl font-extrabold cursor-pointer">쉼표</h1>
         </div>
       </Link>
     </div>

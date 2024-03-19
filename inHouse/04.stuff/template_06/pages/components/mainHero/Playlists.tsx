@@ -26,7 +26,7 @@ const Playlists: React.FC = () => {
             <Link
               href="components/DetailPlaylists"
               key={i}
-              className="w-[18%] sm:w-auto flex flex-col items-center cursor-pointer"
+              className="w-[18%] sm:m-1 sm:w-auto flex flex-col items-center cursor-pointer"
               onClick={() => {
                 setIsClicked(true);
                 setSelectedVal(v.id);
@@ -37,7 +37,7 @@ const Playlists: React.FC = () => {
                 <img
                   src={v.images[0].url}
                   alt="playlists"
-                  className="sm:w-[30%] my-1 sm:mr-1 rounded-lg object-cover hover:scale-105 duration-300 shadow-xl"
+                  className="sm:w-[35%] my-1 sm:mr-1 rounded-lg object-cover hover:scale-105 duration-300 shadow-xl"
                 />
                 <h1 className="lg:text-lg md:text-base sm:text-sm">{v.name}</h1>
                 <p className="w-[60%] truncate lg:text-lg md:text-sm sm:hidden">
