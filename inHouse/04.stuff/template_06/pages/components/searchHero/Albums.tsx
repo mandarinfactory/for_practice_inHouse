@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ItemsCarousel from "react-items-carousel";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 
@@ -14,7 +14,19 @@ const Albums = () => {
   const setIsClicked = useSetRecoilState(isClickedState);
   const setClickedAlbum = useSetRecoilState(detailTrackState);
   const [activeItemIndex, setActiveItemIndex] = useState(2);
+  const [queryNum, setQueryNum] = useState(0);
   const CHEVRONWIDTH = 50;
+
+  const handleMediaQuery = () => {
+    if (window.matchMedia("(min-width: 1500px)").matches) {
+      return setQueryNum(5);
+    } else if (window.matchMedia("(min-width: 1000px)").matches) {
+      return setQueryNum(4);
+    } else {
+      return setQueryNum(3);
+    }
+  };
+
   return (
     <>
       <h1 className="w-full h-auto text-3xl">앨범</h1>
@@ -25,16 +37,8 @@ const Albums = () => {
             activeItemIndex={activeItemIndex}
             numberOfCards={5}
             gutter={20}
-            leftChevron={
-              <button>
-                <LeftChevron />
-              </button>
-            }
-            rightChevron={
-              <button>
-                <RightChevron />
-              </button>
-            }
+            leftChevron={<LeftChevron />}
+            rightChevron={<RightChevron />}
             outsideChevron
             chevronWidth={CHEVRONWIDTH}
           >
