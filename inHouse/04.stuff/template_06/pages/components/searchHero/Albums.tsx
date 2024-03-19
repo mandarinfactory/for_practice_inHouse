@@ -13,34 +13,46 @@ const Albums = () => {
   const albumData = useRecoilValue(searchAlbumFinderState(musicVal));
   const setIsClicked = useSetRecoilState(isClickedState);
   const setClickedAlbum = useSetRecoilState(detailTrackState);
-  const [activeItemIndex, setActiveItemIndex] = useState(2);
-  const [queryNum, setQueryNum] = useState(0);
   const CHEVRONWIDTH = 50;
 
-  const handleMediaQuery = () => {
-    if (window.matchMedia("(min-width: 1500px)").matches) {
-      return setQueryNum(5);
-    } else if (window.matchMedia("(min-width: 1000px)").matches) {
-      return setQueryNum(4);
-    } else {
-      return setQueryNum(3);
-    }
-  };
+  const [activeItemIndex, setActiveItemIndex] = useState(2);
+  const [numOfCards, setNumOfCards] = useState(4);
+  const [gutter, setGutter] = useState(28);
+
+  useEffect(() => {
+    const resizeMediaQuery = () => {
+      if (window.matchMedia("(min-width: 1900px)").matches) setNumOfCards(4);
+      else if (window.matchMedia("(min-width: 1300px)").matches) setNumOfCards(4);
+      else if (window.matchMedia("(min-width: 1024px)").matches) setNumOfCards(3);
+      else if (window.matchMedia("(min-width: 700px)").matches) setGutter(5);
+      else if (window.matchMedia("(min-width: 450px)").matches) {
+        setGutter(0);
+        setNumOfCards(1);
+      }
+    };
+
+    resizeMediaQuery();
+
+    window.addEventListener("resize", resizeMediaQuery);
+    return () => {
+      window.removeEventListener("resize", resizeMediaQuery);
+    };
+  }, []);
 
   return (
     <>
-      <h1 className="w-full h-auto text-3xl">앨범</h1>
+      <h1 className="w-full h-auto text-3xl sm:text-center">앨범</h1>
       <div className="flex my-3">
-        <div className="w-[1400px]">
+        <div className="lg:max-w-6xl md:max-w-2xl sm:max-w-sm">
           <ItemsCarousel
-            requestToChangeActive={setActiveItemIndex}
+            chevronWidth={CHEVRONWIDTH}
+            gutter={gutter}
+            numberOfCards={numOfCards}
+            outsideChevron
             activeItemIndex={activeItemIndex}
-            numberOfCards={5}
-            gutter={20}
+            requestToChangeActive={setActiveItemIndex}
             leftChevron={<LeftChevron />}
             rightChevron={<RightChevron />}
-            outsideChevron
-            chevronWidth={CHEVRONWIDTH}
           >
             {albumData ? (
               albumData?.map((v: any, i: number) => (
@@ -59,8 +71,12 @@ const Albums = () => {
                     className="w-[240px] rounded-lg hover:scale-95 duration-300 shadow-xl"
                   />
                   <div className="my-2 flex flex-col">
-                    <h1 className="text-lg">{v.artists[0].name}</h1>
-                    <h1 className="text-lg overflow-hidden">{v.name}</h1>
+                    <h1 className="lg:text-lg md:text-base sm:text-sm">
+                      {v.artists[0].name}
+                    </h1>
+                    <h1 className="lg:text-lg md:text-base sm:text-sm overflow-hidden">
+                      {v.name}
+                    </h1>
                     <p>{v.release_date}</p>
                   </div>
                 </Link>

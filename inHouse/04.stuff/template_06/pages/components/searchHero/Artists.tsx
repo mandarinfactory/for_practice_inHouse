@@ -16,9 +16,9 @@ const Artists: React.FC = () => {
   const artistData = useRecoilValue(searchArtistFinderState(musicVal));
 
   return (
-    <>
-      <h1 className="w-full h-auto text-3xl">아티스트</h1>
-      <div className="w-full flex justify-start mt-5">
+    <div className="w-full h-full">
+      <h1 className="w-full h-auto text-3xl sm:text-center">아티스트</h1>
+      <div className="w-full flex justify-start sm:justify-center mt-5">
         {artistData ? (
           <Link
             href="components/DetailTracks"
@@ -41,7 +41,7 @@ const Artists: React.FC = () => {
           <></>
         )}
       </div>
-    </>
+    </div>
   );
 };
 
