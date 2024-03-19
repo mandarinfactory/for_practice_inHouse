@@ -31,10 +31,10 @@ const DetailPlaylists: React.FC = () => {
   }, [isClicked, selectedVal]);
 
   return (
-    <div className="w-full h-full flex flex-col justify-center h-max-screen">
+    <div className="w-full h-full flex flex-col justify-center">
       {isClicked ? (
         <Sidebar>
-          <div className="flex mb-5">
+          <div className="w-auto flex mb-5">
             <div className="w-auto h-auto">
               <img
                 className="rounded-2xl shadow-xl"
@@ -42,9 +42,9 @@ const DetailPlaylists: React.FC = () => {
                 alt=""
               />
             </div>
-            <div className="ml-5 flex flex-col justify-end items-start">
-              <h1 className="text-5xl font-bold">{clickedDetailInfos.name}</h1>
-              <h1 className="mt-1 text-2xl font-bold">
+            <div className="ml-5 flex flex-col justify-end items-start overflow-hidden">
+              <h1 className="lg:text-5xl md:text-3xl sm:text-2xl font-bold">{clickedDetailInfos.name}</h1>
+              <h1 className="mt-1 lg:text-2xl md:text-xl sm:text-base font-bold">
                 {clickedDetailInfos.description}
               </h1>
             </div>
@@ -66,12 +66,12 @@ const DetailPlaylists: React.FC = () => {
                     src={value.track.album.images[1].url}
                     alt=""
                   />
-                  <div className="w-[80%] h-auto mx-auto flex justify-between items-center truncate">
-                    <h1 className="text-xl">{value.track.name}</h1>
-                    <h1 className="text-lg">
+                  <div className="w-[80%] h-auto mx-auto ml-1 flex justify-between items-center truncate">
+                    <h1 className="lg:text-xl md:text-lg sm:text-base truncate">{value.track.name}</h1>
+                    <h1 className="lg:text-lg md:text-base sm:text-sm truncate">
                       {value.track.album.artists[0].name}
                     </h1>
-                    <h1 className="text-lg">{value.track.album.name}</h1>
+                    <h1 className="lg:text-lg md:text-base sm:text-sm truncate">{value.track.album.name}</h1>
                   </div>
                 </div>
                 <svg

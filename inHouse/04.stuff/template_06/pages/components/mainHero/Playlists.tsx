@@ -26,7 +26,7 @@ const Playlists: React.FC = () => {
             <Link
               href="components/DetailPlaylists"
               key={i}
-              className="w-[18%] sm:w-auto m-3 flex flex-col items-center cursor-pointer"
+              className="w-[18%] sm:w-auto flex flex-col items-center cursor-pointer"
               onClick={() => {
                 setIsClicked(true);
                 setSelectedVal(v.id);

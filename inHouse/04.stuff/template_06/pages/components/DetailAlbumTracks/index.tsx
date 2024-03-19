@@ -33,15 +33,15 @@ const DetailAlbumTracks: React.FC = () => {
                 alt=""
               />
               <div className="flex flex-col justify-end ml-3 text-3xl">
-                <h1>{albumData.name}</h1>
+                <h1 className="lg:text-3xl md:text-2xl sm:hidden">{albumData.name}</h1>
                 <div className="flex my-3">
                   {albumData.artists.map((v: any, i: number) => (
-                    <h1 className="mr-3" key={i}>
+                    <h1 className="mr-3 lg:text-3xl md:text-2xl sm:hidden" key={i}>
                       {v.name}
                     </h1>
                   ))}
                 </div>
-                <h1>{albumData.release_date}</h1>
+                <h1 className="lg:text-3xl md:text-2xl sm:hidden">{albumData.release_date}</h1>
               </div>
             </div>
             <div>
@@ -59,9 +59,9 @@ const DetailAlbumTracks: React.FC = () => {
                     src={albumData.images[1].url}
                     alt=""
                   />
-                  <div className="w-[80%] h-auto mx-auto flex justify-between items-center truncate">
-                    <h1 className="text-xl">{v.name}</h1>
-                    <h1 className="text-lg">{v.artists[0].name}</h1>
+                  <div className="w-[80%] h-auto mx-auto ml-1 flex justify-between items-center truncate">
+                    <h1 className="lg:text-xl md:text-lg sm:text-base truncate">{v.name}</h1>
+                    <h1 className="lg:text-lg md:text-base sm:text-sm truncate">{v.artists[0].name}</h1>
                   </div>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

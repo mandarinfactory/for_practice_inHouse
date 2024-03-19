@@ -19,9 +19,9 @@ const NewReleases = () => {
       <div className="w-full h-max-screen">
         <h1 className="my-1 text-3xl mb-7">최신앨범</h1>
         <div className="flex flex-wrap justify-center">
-          {newReleasesData?.albums.items.map((v: any, i: number) => (
+          {newReleasesData?.albums?.items?.map((v: any, i: number) => (
             <div
-              className="flex flex-col justify-center items-center cursor-pointer"
+              className="h-full flex flex-col md:flex-wrap justify-center items-center cursor-pointer"
               key={i}
               onClick={() => {
                 setIsClicked(true);
@@ -30,7 +30,7 @@ const NewReleases = () => {
               }}
             >
               <img
-                className="w-[70%] rounded-xl hover:scale-95 duration-150"
+                className=" w-[70%] rounded-xl hover:scale-95 duration-150"
                 src={v.images[0].url}
                 alt="앨범아트"
               />

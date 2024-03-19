@@ -25,22 +25,22 @@ const DetailTracks: React.FC = () => {
           <div className="w-[95%] h-max-screen">
             <div className="w-full h-auto flex">
               <img
-                className="w-[400px] h-auto rounded-xl object-cover shadow-xl"
+                className="w-[30%] h-auto rounded-xl object-cover shadow-xl"
                 src={detailInfosData?.images[0].url}
                 alt=""
               />
               <div className="flex flex-col justify-between">
-                <h1 className="ml-5 text-[4rem]">{detailInfosData?.name}</h1>
+                <h1 className="ml-5 lg:text-[4rem] md:text-4xl sm:text-3xl">{detailInfosData?.name}</h1>
                 <div>
                   {detailInfosData.genres ? (
                     <>
-                      <h1 className="w-[35%] ml-5 mb-2 p-1 text-[1.5rem] text-center rounded-2xl bg-slate-50 shadow-lg">
+                      <h1 className="lg:w-[40%] md:w-[45%] sm:hidden ml-5 mb-2 p-1 lg:text-[1.2rem] md:text-lg sm:text-lg text-center rounded-2xl bg-slate-50 shadow-lg">
                         소개 및 장르
                       </h1>
-                      <h1 className="ml-5 text-[1.8rem]">
+                      <h1 className="ml-5 lg:text-[1.8rem] md:text-lg sm:hidden">
                         {detailDescData.pages[0].description}
                       </h1>
-                      <h1 className="truncate ml-5 flex text-[1.5rem]">
+                      <h1 className="truncate ml-5 flex lg:text-base md:hidden sm:hidden">
                         {detailInfosData.genres.map(
                           (genre: string, i: number) => (
                             <p className="mr-3" key={i}>
@@ -70,10 +70,10 @@ const DetailTracks: React.FC = () => {
                     src={v.album.images[1].url}
                     alt=""
                   />
-                  <div className="w-[80%] h-auto mx-auto flex justify-between items-center truncate">
-                    <h1 className="text-xl">{v.name}</h1>
-                    <h1 className="text-lg">{v.artists[0].name}</h1>
-                    <h1 className="text-lg">{v.album.name}</h1>
+                  <div className="w-[80%] h-auto mx-auto ml-1 flex justify-between items-center truncate">
+                    <h1 className="lg:text-xl md:text-lg sm:text-base truncate">{v.name}</h1>
+                    <h1 className="lg:text-lg md:text-base sm:text-sm truncate">{v.artists[0].name}</h1>
+                    <h1 className="lg:text-lg md:text-base sm:text-sm truncate">{v.album.name}</h1>
                   </div>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

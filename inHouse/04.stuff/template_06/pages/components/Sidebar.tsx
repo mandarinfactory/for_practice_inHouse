@@ -60,12 +60,12 @@ const Sidebar: React.FC<SidebarProps> = ({ spotifyAuthUrl, children }) => {
   }, [removeAuth]);
 
   return (
-    <div className="flex">
-      <div className="sticky top-[1%] w-[20%] h-screen my-7 mx-1 p-5">
+    <div className="flex sm:flex-col">
+      <div className="sticky sm:static top-[1%] w-[20%] sm:w-full h-screen sm:h-auto my-7 sm:mb-0 mx-1 p-5 sm:flex sm:justify-center">
         <Title />
         <input
           type="value"
-          className="p-3 mr-1 w-full bg-slate-200 rounded-2xl my-7 text-xl"
+          className="p-3 mr-1 sm:ml-5 my-7 sm:my-10 w-full sm:w-[50%] bg-slate-200 rounded-2xl text-xl"
           placeholder="쉼표 검색"
           onKeyDown={(event: any) => {
             if (event.key === "Enter") {
@@ -75,14 +75,14 @@ const Sidebar: React.FC<SidebarProps> = ({ spotifyAuthUrl, children }) => {
             }
           }}
         />
-        <div className="flex flex-col gap-y-4 p-5">
+        <div className="flex flex-col sm:flex-row gap-y-4 p-5">
           {routes.map((item) => (
             <SidebarItem key={item.label} {...item} />
           ))}
         </div>
       </div>
-      <main className="w-[95%] h-max-screen mr-7 my-7 p-5 bg-gradient-to-r from-red-500 to-sky-500 rounded-3xl shadow-2xl">
-        <h1 className="lg:w-[9%] md:w-[10%] sm:w-[15%] h-auto p-2 sm:px-1 mb-3 text-center lg:text-xl md:text-base sm:text-xs text-black bg-white rounded-2xl cursor-pointer">
+      <main className="lg:w-[90%] md:w-[80%] sm:w-[95%] h-full mr-7 my-7 p-5 sm:mx-auto sm:mt-0 bg-gradient-to-r from-red-500 to-sky-500 rounded-3xl shadow-2xl">
+        <h1 className="lg:w-[10%] md:w-[12%] sm:w-[15%] h-auto p-2 sm:px-1 mb-3 text-center lg:text-xl md:text-base sm:text-xs text-black bg-white rounded-2xl cursor-pointer">
           {!savedAuthToken ? (
             <a
               href={spotifyAuthUrl}
