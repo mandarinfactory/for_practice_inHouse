@@ -11,33 +11,33 @@ const RandomArtists: React.FC = () => {
   const setDetailInfos = useSetRecoilState(detailClickedInfosState);
 
   return (
-    <>
-      <h1 className="my-1 text-3xl">추천하는 아티스트들</h1>
-      <div className="flex flex-wrap justify-center items-center">
+    <div className="sm:w-[50%] flex flex-col">
+      <h1 className="my-1 lg:text-3xl md:text-2xl sm:text-xl">추천하는 아티스트들</h1>
+      <div className="flex sm:flex-col flex-wrap justify-center items-start">
         {randomArtistsData?.artists.items.map((e: any, i: number) => (
           <Link
             href="components/DetailTracks"
-            className="m-3 flex justify-center items-center w-[16%]"
+            className="w-[16%] sm:w-auto m-3"
             key={i}
             onClick={() => {
               setIsClicked(true);
               setDetailInfos(e);
             }}
           >
-            <div className="relative w-[80%] hover:scale-95 duration-150 cursor-pointer">
+            <div className="w-full relative sm:flex sm:justify-start hover:scale-95 duration-150 cursor-pointer">
               <img
-                className="object-cover rounded-xl shadow-xl"
+                className="sm:w-[25%] object-cover rounded-xl shadow-xl"
                 src={e.images[0]?.url}
                 alt="아티스트"
               />
-              <h1 className="absolute top-1 left-1 text-white mix-blend-difference mt-2 drop-shadow-2xl uppercase text-lg">
+              <h1 className="absolute sm:relative top-1 left-1 text-white mix-blend-difference sm:mix-blend-normal mt-2 drop-shadow-2xl uppercase text-lg sm:text-sm">
                 {e.name}
               </h1>
             </div>
           </Link>
         ))}
       </div>
-    </>
+    </div>
   );
 };
 

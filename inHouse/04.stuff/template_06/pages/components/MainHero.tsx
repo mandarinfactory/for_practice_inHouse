@@ -5,7 +5,7 @@ import Playlists from "./mainHero/Playlists";
 
 const MainHero: React.FC = () => {
   return (
-    <div>
+    <div className="flex flex-col sm:flex-row">
       <RandomArtists />
       <Playlists />
     </div>

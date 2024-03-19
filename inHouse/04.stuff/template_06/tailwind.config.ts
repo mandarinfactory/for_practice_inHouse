@@ -10,7 +10,12 @@ const config: Config = {
     extend: {
       fontFamily: {
         "sans": "JalnanGothic",
-      }
+      },
+      screens: {
+        sm: { min: "400px", max: "819px" },
+        md: { min: "820px", max: "1079px" },
+        lg: { min: "1080px" },
+      },
     },
   },
   plugins: [],

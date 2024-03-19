@@ -82,12 +82,12 @@ const Sidebar: React.FC<SidebarProps> = ({ spotifyAuthUrl, children }) => {
         </div>
       </div>
       <main className="w-[95%] h-max-screen mr-7 my-7 p-5 bg-gradient-to-r from-red-500 to-sky-500 rounded-3xl shadow-2xl">
-        <h1 className="w-[7%] h-auto p-2 mb-3 text-center text-2xl text-black bg-white rounded-2xl cursor-pointer">
+        <h1 className="lg:w-[9%] md:w-[10%] sm:w-[15%] h-auto p-2 sm:px-1 mb-3 text-center lg:text-xl md:text-base sm:text-xs text-black bg-white rounded-2xl cursor-pointer">
           {!savedAuthToken ? (
             <a
               href={spotifyAuthUrl}
               onClick={() => {
-                router.replace("/.");
+                router.back();
               }}
             >
               로그인
