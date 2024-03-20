@@ -52,7 +52,7 @@ const DetailTracks: React.FC = () => {
                       </h1>
                     </>
                   ) : (
-                    <></>
+                    detailInfosData
                   )}
                 </div>
               </div>

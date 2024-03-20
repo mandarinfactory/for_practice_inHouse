@@ -21,9 +21,13 @@ const Albums = () => {
 
   useEffect(() => {
     const resizeMediaQuery = () => {
-      if (window.matchMedia("(min-width: 1900px)").matches) setNumOfCards(4);
-      else if (window.matchMedia("(min-width: 1300px)").matches) setNumOfCards(4);
-      else if (window.matchMedia("(min-width: 1024px)").matches) setNumOfCards(3);
+      if (window.matchMedia("(min-width: 1900px)").matches) {
+        setGutter(10);
+        setNumOfCards(4);
+      } else if (window.matchMedia("(min-width: 1300px)").matches)
+        setNumOfCards(4);
+      else if (window.matchMedia("(min-width: 1024px)").matches)
+        setNumOfCards(3);
       else if (window.matchMedia("(min-width: 700px)").matches) setGutter(5);
       else if (window.matchMedia("(min-width: 400px)").matches) {
         setGutter(0);
@@ -54,36 +58,34 @@ const Albums = () => {
             leftChevron={<LeftChevron />}
             rightChevron={<RightChevron />}
           >
-            {albumData ? (
-              albumData?.map((v: any, i: number) => (
-                <Link
-                  href="components/DetailAlbumTracks"
-                  className="flex flex-wrap cursor-pointer"
-                  key={i}
-                  onClick={() => {
-                    setIsClicked(true);
-                    setClickedAlbum(v);
-                  }}
-                >
-                  <img
-                    src={v.images[1].url}
-                    alt="앨범아트"
-                    className="w-[240px] rounded-lg hover:scale-95 duration-300 shadow-xl"
-                  />
-                  <div className="my-2 flex flex-col">
-                    <h1 className="lg:text-lg md:text-base sm:text-sm">
-                      {v.artists[0].name}
-                    </h1>
-                    <h1 className="lg:text-lg md:text-base sm:text-sm overflow-hidden">
-                      {v.name}
-                    </h1>
-                    <p>{v.release_date}</p>
-                  </div>
-                </Link>
-              ))
-            ) : (
-              <></>
-            )}
+            {albumData
+              ? albumData?.map((v: any, i: number) => (
+                  <Link
+                    href="components/DetailAlbumTracks"
+                    className="flex flex-wrap cursor-pointer"
+                    key={i}
+                    onClick={() => {
+                      setIsClicked(true);
+                      setClickedAlbum(v);
+                    }}
+                  >
+                    <img
+                      src={v.images[1].url}
+                      alt="앨범아트"
+                      className="w-[240px] rounded-lg hover:scale-95 duration-300 shadow-xl"
+                    />
+                    <div className="my-2 flex flex-col">
+                      <h1 className="lg:text-lg md:text-base sm:text-sm">
+                        {v.artists[0].name}
+                      </h1>
+                      <h1 className="lg:text-lg md:text-base sm:text-sm overflow-hidden">
+                        {v.name}
+                      </h1>
+                      <p>{v.release_date}</p>
+                    </div>
+                  </Link>
+                ))
+              : albumData}
           </ItemsCarousel>
         </div>
       </div>
