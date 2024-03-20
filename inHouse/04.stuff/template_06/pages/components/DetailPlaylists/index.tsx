@@ -44,11 +44,11 @@ const DetailPlaylists: React.FC = () => {
               />
             </div>
             <div className="ml-5 flex flex-col justify-end items-start overflow-hidden">
-              <h1 className="lg:text-5xl md:text-3xl sm:text-2xl font-bold">{clickedDetailInfos.name}</h1>
+              <h1 className="lg:text-5xl md:text-3xl sm:text-xl font-bold">{clickedDetailInfos.name}</h1>
               <h1 className="mt-1 lg:text-2xl md:text-xl sm:text-base font-bold">
                 {clickedDetailInfos.description}
               </h1>
-            </div>
+            </div>  
           </div>
           <div>
             {detailTracksData.items.map((value: any, index: number) => (
