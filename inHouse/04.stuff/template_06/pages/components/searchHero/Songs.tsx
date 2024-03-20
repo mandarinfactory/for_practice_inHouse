@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 
-import { confirmedURIState, musicValState } from "@/recoil/atom";
+import { authenticationTokenState, confirmedURIState, musicValState } from "@/recoil/atom";
 import { searchSongFinderState } from "@/recoil/selector/searchSelectors";
 
 const Songs: React.FC = () => {
   const musicVal = useRecoilValue(musicValState);
   const songData = useRecoilValue(searchSongFinderState(musicVal));
   const setConfirmedURI = useSetRecoilState(confirmedURIState);
+  const savedAuthToken = useRecoilValue(authenticationTokenState);  
   const [queryNum, setQueryNum] = useState(0);
 
   useEffect(() => {
@@ -42,6 +43,7 @@ const Songs: React.FC = () => {
                       key={i}
                       onClick={() => {
                         setConfirmedURI(v.uri);
+                        savedAuthToken ? <></> : alert("로그인 후 재생해주시기 바랍니다!")
                       }}
                     >
                       <img

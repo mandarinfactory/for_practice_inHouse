@@ -61,7 +61,7 @@ const Sidebar: React.FC<SidebarProps> = ({ spotifyAuthUrl, children }) => {
 
   return (
     <div className="flex sm:flex-col">
-      <div className="sticky sm:static top-[1%] w-[20%] sm:w-full h-screen sm:h-auto my-7 sm:mb-0 mx-1 p-5 sm:flex sm:justify-center">
+      <div className="sticky sm:static top-[1%] w-[20%] sm:w-full h-screen sm:h-auto my-7 sm:my-0 mx-1 p-5 sm:flex sm:justify-center">
         <Title />
         <input
           type="value"

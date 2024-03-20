@@ -51,7 +51,7 @@ const DetailAlbumTracks: React.FC = () => {
                   key={i}
                   onClick={() => {
                     setConfirmedURI(v.uri);
-                    savedAuthToken ? <></> : alert("로그인 후 재생해주시기 바랍니다!")
+                    savedAuthToken ? <></> : alert("로그인 후 재생해주시기 바랍니다!");
                   }}
                 >
                   <img

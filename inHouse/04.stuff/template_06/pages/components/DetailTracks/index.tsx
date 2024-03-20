@@ -8,7 +8,7 @@ import {
   searchSongFinderState,
 } from "@/recoil/selector/searchSelectors";
 import Sidebar from "../Sidebar";
-import { detailClickedInfosState, isClickedState, confirmedURIState } from "@/recoil/atom";
+import { detailClickedInfosState, isClickedState, confirmedURIState, authenticationTokenState } from "@/recoil/atom";
 
 const DetailTracks: React.FC = () => {
   const isDetailClicked = useRecoilValue(isClickedState);
@@ -16,7 +16,8 @@ const DetailTracks: React.FC = () => {
   const artistData = detailInfosData.name;
   const detailSongsData = useRecoilValue(searchSongFinderState(artistData));
   const detailDescData = useRecoilValue(searchDescriptionState(artistData));
-  const setConfirmedURI = useSetRecoilState(confirmedURIState);  
+  const setConfirmedURI = useSetRecoilState(confirmedURIState);
+  const savedAuthToken = useRecoilValue(authenticationTokenState);  
 
   return (
     <Sidebar>
@@ -63,6 +64,7 @@ const DetailTracks: React.FC = () => {
                   key={i}
                   onClick={() => {
                     setConfirmedURI(v.uri);
+                    savedAuthToken ? <></> : alert("로그인 후 재생해주시기 바랍니다!");
                   }}
                 >
                   <img

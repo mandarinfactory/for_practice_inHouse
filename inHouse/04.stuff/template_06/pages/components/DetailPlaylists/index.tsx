@@ -4,6 +4,7 @@ import React, { useEffect } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 
 import {
+  authenticationTokenState,
   confirmedURIState,
   detailClickedPlaylistsInfoState,
   isClickedState,
@@ -21,8 +22,8 @@ const DetailPlaylists: React.FC = () => {
   const detailTracksData = useRecoilValue(
     detailTrackHandlerState(selectedVal || "")
   );
-
   const setConfirmedURI = useSetRecoilState(confirmedURIState);
+  const savedAuthToken = useRecoilValue(authenticationTokenState);
 
   useEffect(() => {
     if (selectedVal) {
@@ -59,6 +60,7 @@ const DetailPlaylists: React.FC = () => {
                   className="w-full flex"
                   onClick={() => {
                     setConfirmedURI(value.track.uri);
+                    savedAuthToken ? <></> : alert("로그인 후 재생해주시기 바랍니다!");
                   }}
                 >
                   <img
