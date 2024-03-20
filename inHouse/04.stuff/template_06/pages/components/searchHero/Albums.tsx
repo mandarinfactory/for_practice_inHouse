@@ -25,7 +25,7 @@ const Albums = () => {
       else if (window.matchMedia("(min-width: 1300px)").matches) setNumOfCards(4);
       else if (window.matchMedia("(min-width: 1024px)").matches) setNumOfCards(3);
       else if (window.matchMedia("(min-width: 700px)").matches) setGutter(5);
-      else if (window.matchMedia("(min-width: 450px)").matches) {
+      else if (window.matchMedia("(min-width: 400px)").matches) {
         setGutter(0);
         setNumOfCards(1);
       }

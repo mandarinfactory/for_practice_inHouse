@@ -75,7 +75,7 @@ const Sidebar: React.FC<SidebarProps> = ({ spotifyAuthUrl, children }) => {
             }
           }}
         />
-        <div className="flex flex-col sm:flex-row gap-y-4 p-5">
+        <div className="flex flex-col sm:flex-row gap-y-4 p-5 sm:p-0">
           {routes.map((item) => (
             <SidebarItem key={item.label} {...item} />
           ))}

@@ -12,7 +12,7 @@ const RandomArtists: React.FC = () => {
 
   return (
     <div className="sm:w-[50%] flex flex-col">
-      <h1 className="my-1 lg:text-3xl md:text-2xl sm:text-xl">추천하는 아티스트들</h1>
+      <h1 className="my-1 lg:text-3xl md:text-2xl sm:text-xl">추천 아티스트들</h1>
       <div className="flex sm:flex-col flex-wrap justify-center items-start">
         {randomArtistsData?.artists.items.map((e: any, i: number) => (
           <Link

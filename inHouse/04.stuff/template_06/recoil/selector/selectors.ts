@@ -37,7 +37,7 @@ export const randomArtistsHandler = selectorFamily({
   get:
     () =>
     async ({ get }) => {
-      const token = get(accessTokenState)
+      const token = get(accessTokenState);
       if (token) {
         const randomParameters = {
           method: "GET",
@@ -46,16 +46,17 @@ export const randomArtistsHandler = selectorFamily({
             Authorization: "Bearer " + token,
           },
         };
-        
+
         const findRandomGenre = await fetch(
           `${SPOTIFY_URL}/recommendations/available-genre-seeds`,
           randomParameters
         )
           .then((res) => res.json())
           .then((data) => data);
-        const pickRandomNumber = Math.ceil(
-          Math.random() * findRandomGenre.genres?.length
-        );
+
+        const pickRandomNumber = findRandomGenre
+          ? Math.ceil(Math.random() * findRandomGenre.genres?.length)
+          : findRandomGenre;
         const getRandomGenre = findRandomGenre?.genres[pickRandomNumber];
         const randomGenreFinder = await fetch(
           `${SPOTIFY_URL}/search?q=genre%3A${getRandomGenre}&type=artist&limit=10`,
