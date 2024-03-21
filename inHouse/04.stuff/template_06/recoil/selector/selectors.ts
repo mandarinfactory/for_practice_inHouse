@@ -24,7 +24,7 @@ export const detailTrackHandlerState = selectorFamily({
           trackParameters
         )
           .then((res) => res.json())
-          .then((data) => data);
+          .then((data:string) => data);
         return detailTrackData;
       } else {
         return detailTrack;

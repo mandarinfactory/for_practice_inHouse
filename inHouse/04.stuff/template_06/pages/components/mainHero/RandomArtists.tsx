@@ -4,10 +4,10 @@ import { useRecoilValue, useSetRecoilState } from "recoil";
 
 import { randomArtistsHandler } from "@/recoil/selector/selectors";
 import { isClickedState, detailClickedInfosState } from "@/recoil/atom";
-import { RandomArtistsDataType } from "@/types/AlbumTypes";
+import { ArtistsDataType } from "@/types/AlbumTypes";
 
 const RandomArtists: React.FC = () => {
-  const randomArtistsData = useRecoilValue(randomArtistsHandler("")) as RandomArtistsDataType;
+  const randomArtistsData = useRecoilValue(randomArtistsHandler("")) as ArtistsDataType;
   const setIsClicked = useSetRecoilState(isClickedState);
   const setDetailInfos = useSetRecoilState(detailClickedInfosState);
 

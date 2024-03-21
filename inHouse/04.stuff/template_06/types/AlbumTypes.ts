@@ -8,6 +8,7 @@ interface AdditionalSongDataType {
     total: number;
   };
   images: ImageDataType[];
+  genres?: string[];
 }
 
 interface SongIDType extends desDataType, AdditionalSongDataType {
@@ -17,7 +18,7 @@ interface SongIDType extends desDataType, AdditionalSongDataType {
 
   href: string;
   id?: string;
-  name?: string;
+  name: string;
   type?: string;
   uri: string;
 }
@@ -66,7 +67,7 @@ export interface NewReleasesDataType {
   albums: AlbumIDType;
 }
 
-export interface RandomArtistsDataType {
+export interface ArtistsDataType {
   artists: {
     href: string;
     items: SongIDType[];
@@ -90,5 +91,50 @@ export interface PlaylistsDataType {
   };
 }
 
+export interface SongDataType {
+  href: string;
+  items: [
+    {
+      album: {
+        album_type: string;
+        artists: ArtistDataType[];
+        available_markets: string[];
+        external_urls: {
+          spotify: string;
+        };
+        href: string;
+        id: string;
+        images: ImageDataType[];
+        name: string;
+        release_date: string;
+        release_date_precision: string;
+        total_tracks: number;
+        type: string;
+        uri: string;
+      };
+      album_type: string;
+      artists: ArtistDataType[];
+      available_markets: string[];
+      external_urls: {
+        spotify: string;
+      };
+      href: string;
+      id: string;
+      images: ImageDataType[];
+      name: string;
+      release_date: string;
+      release_date_precision: string;
+      total_tracks: number;
+      type: string;
+      uri: string;
+    }
+  ];
+  limit: number;
+  next: string;
+  offset: number;
+  previous: null;
+}
+
 export interface DetailAlbumTrackDataType extends AlbumIDType {}
-export interface SongDataType extends AlbumIDType {}
+
+export interface DetailInfosDataType extends SongIDType {}

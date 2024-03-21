@@ -8,12 +8,15 @@ import {
 } from "@/recoil/atom";
 import { searchArtistFinderState } from "@/recoil/selector/searchSelectors";
 import Link from "next/link";
+import { ArtistsDataType } from "@/types/AlbumTypes";
 
 const Artists: React.FC = () => {
   const setIsClicked = useSetRecoilState(isClickedState);
   const setDetailInfos = useSetRecoilState(detailClickedInfosState);
   const musicVal = useRecoilValue(musicValState);
-  const artistData = useRecoilValue(searchArtistFinderState(musicVal));
+  const artistData = useRecoilValue(
+    searchArtistFinderState(musicVal)
+  ) as ArtistsDataType;
 
   return (
     <div className="w-full h-full">
@@ -29,12 +32,12 @@ const Artists: React.FC = () => {
             }}
           >
             <img
-              src={artistData?.artists?.items[0]?.images[2]?.url}
+              src={artistData?.artists.items[0].images[2].url}
               alt="artist"
               className="rounded-full shadow-xl hover:scale-105 duration-300 cursor-pointer"
             />
             <h1 className="mt-3 text-xl text-center">
-              {artistData?.artists?.items[0]?.name}
+              {artistData?.artists.items[0].name}
             </h1>
           </Link>
         ) : (

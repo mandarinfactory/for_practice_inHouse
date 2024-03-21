@@ -9,10 +9,11 @@ import {
 } from "@/recoil/selector/searchSelectors";
 import Sidebar from "../Sidebar";
 import { detailClickedInfosState, isClickedState, confirmedURIState, authenticationTokenState } from "@/recoil/atom";
+import { DetailInfosDataType } from "@/types/AlbumTypes";
 
 const DetailTracks: React.FC = () => {
   const isDetailClicked = useRecoilValue(isClickedState);
-  const detailInfosData = useRecoilValue<any>(detailClickedInfosState);
+  const detailInfosData = useRecoilValue(detailClickedInfosState) as DetailInfosDataType & React.ReactNode;
   const artistData = detailInfosData.name;
   const detailSongsData = useRecoilValue(searchSongFinderState(artistData));
   const detailDescData = useRecoilValue(searchDescriptionState(artistData));

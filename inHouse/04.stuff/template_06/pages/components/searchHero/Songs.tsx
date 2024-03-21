@@ -38,7 +38,7 @@ const Songs: React.FC = () => {
               <div key={index}>
                 {songData.items
                   .slice(index * 4, (index + 1) * 4)
-                  .map((v: any, i: number) => (
+                  .map((v, i: number) => (
                     <div
                       className="my-1 cursor-pointer"
                       key={i}
