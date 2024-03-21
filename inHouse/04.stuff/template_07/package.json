@@ -12,7 +12,12 @@
     "axios": "^1.6.8",
     "next": "14.1.4",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-icons": "^5.0.1",
+    "react-items-carousel": "^2.8.0",
+    "react-loading": "^2.0.3",
+    "react-spotify-web-playback": "^0.14.3",
+    "recoil": "^0.7.7"
   },
   "devDependencies": {
     "@types/node": "^20",

@@ -8,10 +8,13 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      fontFamily: {
+        "sans": "JalnanGothic",
+      },
+      screens: {
+        sm: { min: "390px", max: "819px" },
+        md: { min: "820px", max: "1079px" },
+        lg: { min: "1080px" },
       },
     },
   },
