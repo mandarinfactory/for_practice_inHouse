@@ -1,4 +1,4 @@
-import { RecoilEnv, selectorFamily } from "recoil";
+import { GetRecoilValue, RecoilEnv, selectorFamily } from "recoil";
 
 import { accessTokenState } from "../atom";
 import { SPOTIFY_URL } from "@/utils/constants";
@@ -8,9 +8,9 @@ RecoilEnv.RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED = false;
 export const detailTrackHandlerState = selectorFamily({
   key: "detailTrackHandlerState",
   get:
-    (detailTrack: any) =>
+    (detailTrack: string) =>
     async ({ get }) => {
-      const token = get(accessTokenState);
+      const token: GetRecoilValue = get(accessTokenState);
       if (detailTrack) {
         const trackParameters = {
           method: "GET",
@@ -24,7 +24,7 @@ export const detailTrackHandlerState = selectorFamily({
           trackParameters
         )
           .then((res) => res.json())
-          .then((data:string) => data);
+          .then((data) => data);
         return detailTrackData;
       } else {
         return detailTrack;
@@ -37,7 +37,7 @@ export const randomArtistsHandler = selectorFamily({
   get:
     () =>
     async ({ get }) => {
-      const token = get(accessTokenState);
+      const token: GetRecoilValue = get(accessTokenState);
       if (token) {
         const randomParameters = {
           method: "GET",
@@ -54,14 +54,16 @@ export const randomArtistsHandler = selectorFamily({
           .then((res) => res.json())
           .then((data) => data);
 
-        const pickRandomNumber:number = Math.ceil(Math.random() * findRandomGenre.genres?.length);
-        const getRandomGenre:string = isNaN(findRandomGenre?.genres[pickRandomNumber]) ? findRandomGenre?.genres[pickRandomNumber] :  findRandomGenre;  
+        const pickRandomNumber: number = Math.ceil(
+          Math.random() * findRandomGenre.genres?.length
+        );
+        const getRandomGenre = findRandomGenre?.genres[pickRandomNumber];
         const randomGenreFinder = await fetch(
           `${SPOTIFY_URL}/search?q=genre%3A${getRandomGenre}&type=artist&limit=10`,
           randomParameters
         )
           .then((res) => res.json())
-          .then((data) => data);
+          .then((data: any) => data);
         return randomGenreFinder;
       }
     },

@@ -1,4 +1,4 @@
-interface desDataType {
+interface DesDataType {
   description: string;
 }
 
@@ -11,11 +11,10 @@ interface AdditionalSongDataType {
   genres?: string[];
 }
 
-interface SongIDType extends desDataType, AdditionalSongDataType {
+export interface SongIDType extends DesDataType, AdditionalSongDataType {
   external_urls?: {
     spotify: string;
   };
-
   href: string;
   id?: string;
   name: string;
@@ -133,6 +132,86 @@ export interface SongDataType {
   next: string;
   offset: number;
   previous: null;
+}
+
+export interface ClickedDetailInfos extends SongIDType {
+  collaborative: boolean;
+  description: string;
+  images: ImageDataType[];
+  owner: {
+    display_name: "Spotify";
+    external_urls: { spotify: string };
+    href: string;
+    id: string;
+    type: string;
+  };
+  primary_color: string;
+  public: boolean;
+  snapshot_id: string;
+  tracks: {
+    href: string;
+    total: number;
+  };
+}
+
+export interface DetailTrackData {
+  href: string;
+  items: [
+    {
+      added_at: string;
+      added_by: {
+        external_urls: {
+          spotify: string;
+        };
+        href: string;
+        id: string | undefined;
+        type: string;
+        uri: string;
+      };
+      is_local: boolean;
+      primary_color: null;
+      track: {
+        album: {
+          album_type: string;
+          artists: ArtistDataType[];
+          available_markets: string[];
+          images: ImageDataType[];
+          name: string;
+          external_urls: {
+            spotify: string;
+          };
+        };
+        artists: ArtistDataType;
+        available_markets: string[];
+        disc_number: number;
+        duration_ms: number;
+        episode: boolean;
+        explicit: boolean;
+        external_ids: { isrc: string };
+        external_urls: {
+          spotify: string;
+        };
+        href: string;
+        id: string;
+        is_local: false;
+        name: string;
+        popularity: number;
+        preview_url: string;
+        track: true;
+        track_number: number;
+        type: string;
+        uri: string;
+      };
+      video_thumbnail: {
+        url: null | string;
+      };
+    }
+  ];
+  limit: number;
+  next: string | null;
+  offset: number;
+  previous: string | null;
+  total: number;
 }
 
 export interface DetailAlbumTrackDataType extends AlbumIDType {}

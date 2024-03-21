@@ -12,18 +12,21 @@ import {
 } from "@/recoil/atom";
 import Sidebar from "../Sidebar";
 import { detailTrackHandlerState } from "@/recoil/selector/selectors";
+import { ClickedDetailInfos, DetailTrackData } from "@/types/AlbumTypes";
 
 const DetailPlaylists: React.FC = () => {
   const isClicked = useRecoilValue(isClickedState);
   const selectedVal = useRecoilValue(selectedMusicValState);
-  const clickedDetailInfos: any = useRecoilValue(
+  const clickedDetailInfos = useRecoilValue(
     detailClickedPlaylistsInfoState
-  );
+  ) as ClickedDetailInfos;
   const detailTracksData = useRecoilValue(
     detailTrackHandlerState(selectedVal || "")
-  );
+  ) as DetailTrackData
+  console.log(detailTracksData);
+  
   const setConfirmedURI = useSetRecoilState(confirmedURIState);
-  const savedAuthToken = useRecoilValue(authenticationTokenState);
+  const savedAuthToken:string = useRecoilValue(authenticationTokenState);
 
   useEffect(() => {
     if (selectedVal) {
@@ -44,14 +47,16 @@ const DetailPlaylists: React.FC = () => {
               />
             </div>
             <div className="ml-5 flex flex-col justify-end items-start overflow-hidden">
-              <h1 className="lg:text-5xl md:text-3xl sm:text-xl font-bold">{clickedDetailInfos.name}</h1>
+              <h1 className="lg:text-5xl md:text-3xl sm:text-xl font-bold">
+                {clickedDetailInfos.name}
+              </h1>
               <h1 className="mt-1 lg:text-2xl md:text-xl sm:text-base font-bold">
                 {clickedDetailInfos.description}
               </h1>
-            </div>  
+            </div>
           </div>
           <div>
-            {detailTracksData.items.map((value: any, index: number) => (
+            {detailTracksData.items.map((value, index: number) => (
               <div
                 className="my-3 p-2 flex justify-between items-center bg-white bg-opacity-30 hover:bg-opacity-50 rounded-xl cursor-pointer duration-150"
                 key={index}
@@ -60,7 +65,11 @@ const DetailPlaylists: React.FC = () => {
                   className="w-full flex"
                   onClick={() => {
                     setConfirmedURI(value.track.uri);
-                    savedAuthToken ? <></> : alert("로그인 후 재생해주시기 바랍니다!");
+                    savedAuthToken ? (
+                      <></>
+                    ) : (
+                      alert("로그인 후 재생해주시기 바랍니다!")
+                    );
                   }}
                 >
                   <img
@@ -69,11 +78,15 @@ const DetailPlaylists: React.FC = () => {
                     alt=""
                   />
                   <div className="w-[80%] h-auto mx-auto ml-1 flex justify-between items-center truncate">
-                    <h1 className="lg:text-xl md:text-lg sm:text-base truncate">{value.track.name}</h1>
+                    <h1 className="lg:text-xl md:text-lg sm:text-base truncate">
+                      {value.track.name}
+                    </h1>
                     <h1 className="lg:text-lg md:text-base sm:text-sm truncate">
                       {value.track.album.artists[0].name}
                     </h1>
-                    <h1 className="lg:text-lg md:text-base sm:text-sm truncate">{value.track.album.name}</h1>
+                    <h1 className="lg:text-lg md:text-base sm:text-sm truncate">
+                      {value.track.album.name}
+                    </h1>
                   </div>
                 </div>
                 <svg

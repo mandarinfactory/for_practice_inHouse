@@ -31,7 +31,7 @@ const RandomArtists: React.FC = () => {
                 src={e.images[0]?.url}
                 alt="아티스트"
               />
-              <h1 className="absolute sm:relative top-1 left-1 text-white mix-blend-difference sm:mix-blend-normal mt-2 drop-shadow-2xl uppercase text-lg sm:text-sm">
+              <h1 className="absolute sm:relative top-1 left-1 text-white mix-blend-difference sm:mix-blend-normal mt-2 drop-shadow-2xl uppercase text-lg sm:text-xs">
                 {e.name}
               </h1>
             </div>

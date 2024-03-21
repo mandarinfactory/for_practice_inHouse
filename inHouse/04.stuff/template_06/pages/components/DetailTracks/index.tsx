@@ -9,7 +9,7 @@ import {
 } from "@/recoil/selector/searchSelectors";
 import Sidebar from "../Sidebar";
 import { detailClickedInfosState, isClickedState, confirmedURIState, authenticationTokenState } from "@/recoil/atom";
-import { DetailInfosDataType } from "@/types/AlbumTypes";
+import { DetailInfosDataType} from "@/types/AlbumTypes";
 
 const DetailTracks: React.FC = () => {
   const isDetailClicked = useRecoilValue(isClickedState);
@@ -18,7 +18,7 @@ const DetailTracks: React.FC = () => {
   const detailSongsData = useRecoilValue(searchSongFinderState(artistData));
   const detailDescData = useRecoilValue(searchDescriptionState(artistData));
   const setConfirmedURI = useSetRecoilState(confirmedURIState);
-  const savedAuthToken = useRecoilValue(authenticationTokenState);  
+  const savedAuthToken:string = useRecoilValue(authenticationTokenState);  
 
   return (
     <Sidebar>
@@ -40,7 +40,7 @@ const DetailTracks: React.FC = () => {
                         소개 및 장르
                       </h1>
                       <h1 className="ml-5 lg:text-[1.8rem] md:text-lg sm:hidden">
-                        {detailDescData.pages[0]?.description}
+                        {detailDescData?.pages[0].description}
                       </h1>
                       <h1 className="truncate ml-5 flex lg:text-base md:hidden sm:hidden">
                         {detailInfosData.genres.map(

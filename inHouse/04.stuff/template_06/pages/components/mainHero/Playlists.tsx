@@ -40,7 +40,7 @@ const Playlists: React.FC = () => {
                   alt="playlists"
                   className="sm:w-[35%] my-1 sm:mr-1 rounded-lg object-cover hover:scale-105 duration-300 shadow-xl"
                 />
-                <h1 className="lg:text-lg md:text-base sm:text-sm">{v.name}</h1>
+                <h1 className="lg:text-lg md:text-base sm:text-xs">{v.name}</h1>
                 <p className="w-[60%] truncate lg:text-lg md:text-sm sm:hidden">
                   {v.description}
                 </p>

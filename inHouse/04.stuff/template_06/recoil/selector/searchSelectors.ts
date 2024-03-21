@@ -1,4 +1,4 @@
-import { selectorFamily, RecoilEnv } from "recoil";
+import { selectorFamily, RecoilEnv, GetRecoilValue } from "recoil";
 
 import { accessTokenState } from "../atom";
 import { SPOTIFY_URL } from "@/utils/constants";
@@ -10,7 +10,7 @@ export const searchArtistFinderState = selectorFamily({
   get:
     (artist: any) =>
     async ({ get }) => {
-      const token = get(accessTokenState);
+      const token: GetRecoilValue | undefined = get(accessTokenState);
       if (artist) {
         const artistParameters = {
           method: "GET",
@@ -35,7 +35,7 @@ export const searchAlbumFinderState = selectorFamily({
   get:
     (artist: any) =>
     async ({ get }) => {
-      const token = get(accessTokenState);
+      const token: GetRecoilValue | undefined = get(accessTokenState);
       if (artist) {
         const albumParameters = {
           method: "GET",
@@ -66,7 +66,7 @@ export const searchSongFinderState = selectorFamily({
   get:
     (song: any) =>
     async ({ get }) => {
-      const token = get(accessTokenState);
+      const token: GetRecoilValue | undefined = get(accessTokenState);
       if (song) {
         const songParameters = {
           method: "GET",
@@ -91,7 +91,7 @@ export const searchDetailTrackState = selectorFamily({
   get:
     (albumID: any) =>
     async ({ get }) => {
-      const token = get(accessTokenState);
+      const token: GetRecoilValue | undefined = get(accessTokenState);
       if (token) {
         const detailTrackParams = {
           method: "GET",
@@ -114,9 +114,9 @@ export const searchDetailTrackState = selectorFamily({
 export const searchBrowseState = selectorFamily({
   key: "searchBrowseState",
   get:
-    (limit: number) =>
+    (limit: any) =>
     async ({ get }) => {
-      const token = get(accessTokenState);
+      const token: GetRecoilValue | undefined = get(accessTokenState);
       if (token) {
         const browseParameters = {
           method: "GET",
@@ -143,7 +143,7 @@ export const searchDescriptionState = selectorFamily({
   get:
     (searchValue: string) =>
     async ({ get }) => {
-      const token = get(accessTokenState);
+      const token: GetRecoilValue | undefined = get(accessTokenState);
       if (token) {
         const languageCode = "en";
         const headers = {
@@ -152,7 +152,7 @@ export const searchDescriptionState = selectorFamily({
         };
         const baseUrl = "https://api.wikimedia.org/core/v1/wikipedia/";
         const endPoint = "/search/page";
-        const parameters: any = { q: searchValue, limit: 3 };
+        const parameters = { q: searchValue, limit: "3" };
         const theUrl = baseUrl + languageCode + endPoint;
         const descriptionData = await fetch(
           theUrl + "?" + new URLSearchParams(parameters),
