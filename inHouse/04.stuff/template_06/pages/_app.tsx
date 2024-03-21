@@ -14,6 +14,7 @@ export default function App({ Component, pageProps }: AppProps) {
           content="쉼표와 함께 즐거운 휴식을 보내세요!"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
       </Head>
       <Component {...pageProps} />
     </RecoilRootBox>
