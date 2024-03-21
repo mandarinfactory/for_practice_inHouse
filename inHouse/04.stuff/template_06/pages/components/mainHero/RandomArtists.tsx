@@ -4,9 +4,10 @@ import { useRecoilValue, useSetRecoilState } from "recoil";
 
 import { randomArtistsHandler } from "@/recoil/selector/selectors";
 import { isClickedState, detailClickedInfosState } from "@/recoil/atom";
+import { RandomArtistsDataType } from "@/types/AlbumTypes";
 
 const RandomArtists: React.FC = () => {
-  const randomArtistsData = useRecoilValue(randomArtistsHandler(""));
+  const randomArtistsData = useRecoilValue(randomArtistsHandler("")) as RandomArtistsDataType;
   const setIsClicked = useSetRecoilState(isClickedState);
   const setDetailInfos = useSetRecoilState(detailClickedInfosState);
 
@@ -14,7 +15,7 @@ const RandomArtists: React.FC = () => {
     <div className="sm:w-[50%] flex flex-col">
       <h1 className="my-1 lg:text-3xl md:text-2xl sm:text-xl">추천 아티스트들</h1>
       <div className="flex sm:flex-col flex-wrap justify-center items-start">
-        {randomArtistsData?.artists.items.map((e: any, i: number) => (
+        {randomArtistsData?.artists.items.map((e, i: number) => (
           <Link
             href="components/DetailTracks"
             className="w-[16%] sm:w-auto m-3"

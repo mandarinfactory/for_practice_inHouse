@@ -24,7 +24,7 @@ const Sidebar: React.FC<SidebarProps> = ({ spotifyAuthUrl, children }) => {
   const confirmedURI = useRecoilValue(confirmedURIState);
   const setMusicVal = useSetRecoilState(musicValState);
   const setIsClicked = useSetRecoilState(isClickedState);
-  const [savedAuthToken, setSavedAuthToken] = useRecoilState(
+  const [savedAuthToken, setSavedAuthToken] = useRecoilState<string | null>(
     authenticationTokenState
   );
   const routes = useMemo(
@@ -67,9 +67,9 @@ const Sidebar: React.FC<SidebarProps> = ({ spotifyAuthUrl, children }) => {
           type="value"
           className="p-3 mr-1 my-7 sm:my-10 w-full sm:w-[50%] bg-slate-200 rounded-2xl text-xl"
           placeholder="쉼표 검색"
-          onKeyDown={(event: any) => {
+          onKeyDown={(event) => {
             if (event.key === "Enter") {
-              setMusicVal(event.target.value);
+              setMusicVal(event.currentTarget.value);              
               setIsClicked(false);
               router.push("/.");
             }

@@ -55,7 +55,7 @@ export const randomArtistsHandler = selectorFamily({
           .then((data) => data);
 
         const pickRandomNumber:number = Math.ceil(Math.random() * findRandomGenre.genres?.length);
-        const getRandomGenre:string = isNaN(findRandomGenre?.genres[pickRandomNumber]) ? findRandomGenre?.genres[pickRandomNumber] :  findRandomGenre;
+        const getRandomGenre:string = isNaN(findRandomGenre?.genres[pickRandomNumber]) ? findRandomGenre?.genres[pickRandomNumber] :  findRandomGenre;  
         const randomGenreFinder = await fetch(
           `${SPOTIFY_URL}/search?q=genre%3A${getRandomGenre}&type=artist&limit=10`,
           randomParameters

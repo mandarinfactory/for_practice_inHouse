@@ -1,16 +1,17 @@
 import React from "react";
+import Link from "next/link";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 
-import Link from "next/link";
 import { searchBrowseState } from "@/recoil/selector/searchSelectors";
 import {
   isClickedState,
   selectedMusicValState,
   detailClickedPlaylistsInfoState,
 } from "@/recoil/atom";
+import { PlaylistsDataType } from "@/types/AlbumTypes";
 
 const Playlists: React.FC = () => {
-  const playlistsData = useRecoilValue(searchBrowseState(10));
+  const playlistsData = useRecoilValue(searchBrowseState(10)) as PlaylistsDataType
   const setIsClicked = useSetRecoilState(isClickedState);
   const setSelectedVal = useSetRecoilState(selectedMusicValState);
   const setClickedDetailInfos = useSetRecoilState(
@@ -22,7 +23,7 @@ const Playlists: React.FC = () => {
       <h1 className="my-1 lg:text-3xl md:text-2xl sm:text-xl">플레이리스트</h1>
       <div className="flex sm:flex-col flex-wrap justify-center">
         {playlistsData ? (
-          playlistsData.playlists?.items.map((v: any, i: number) => (
+          playlistsData.playlists?.items.map((v, i: number) => (
             <Link
               href="components/DetailPlaylists"
               key={i}

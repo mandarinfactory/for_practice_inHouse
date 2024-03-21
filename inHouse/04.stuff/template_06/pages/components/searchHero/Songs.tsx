@@ -3,12 +3,13 @@ import { useRecoilValue, useSetRecoilState } from "recoil";
 
 import { authenticationTokenState, confirmedURIState, musicValState } from "@/recoil/atom";
 import { searchSongFinderState } from "@/recoil/selector/searchSelectors";
+import { SongDataType } from "@/types/AlbumTypes";
 
 const Songs: React.FC = () => {
   const musicVal = useRecoilValue(musicValState);
-  const songData = useRecoilValue(searchSongFinderState(musicVal));
+  const songData = useRecoilValue(searchSongFinderState(musicVal)) as SongDataType;
   const setConfirmedURI = useSetRecoilState(confirmedURIState);
-  const savedAuthToken = useRecoilValue(authenticationTokenState);  
+  const savedAuthToken:string = useRecoilValue(authenticationTokenState);
   const [queryNum, setQueryNum] = useState(0);
 
   useEffect(() => {

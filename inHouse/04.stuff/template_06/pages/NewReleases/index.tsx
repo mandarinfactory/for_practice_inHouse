@@ -7,10 +7,11 @@ import { useRecoilValue, useSetRecoilState } from "recoil";
 import Sidebar from "../components/Sidebar";
 import { detailTrackState, isClickedState } from "../../recoil/atom";
 import { searchBrowseState } from "../../recoil/selector/searchSelectors";
+import { NewReleasesDataType } from "@/types/AlbumTypes";
 
 const NewReleases = () => {
   const router = useRouter();
-  const newReleasesData = useRecoilValue(searchBrowseState(25));
+  const newReleasesData = useRecoilValue(searchBrowseState(25)) as NewReleasesDataType;
   const setIsClicked = useSetRecoilState(isClickedState);
   const setClickedAlbum = useSetRecoilState(detailTrackState);
 
@@ -19,7 +20,7 @@ const NewReleases = () => {
       <div className="w-full h-max-screen">
         <h1 className="my-1 text-3xl mb-7">최신앨범</h1>
         <div className="flex flex-wrap justify-center">
-          {newReleasesData?.albums?.items?.map((v: any, i: number) => (
+          {newReleasesData?.albums?.items?.map((v, i: number) => (
             <div
               className="h-full flex flex-col md:flex-wrap justify-center items-center cursor-pointer"
               key={i}

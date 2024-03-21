@@ -11,15 +11,16 @@ import {
   authenticationTokenState,
 } from "@/recoil/atom";
 import { searchDetailTrackState } from "@/recoil/selector/searchSelectors";
+import { AlbumDataType, DetailAlbumTrackDataType } from "@/types/AlbumTypes";
 
 const DetailAlbumTracks: React.FC = () => {
   const isClicked = useRecoilValue(isClickedState);
-  const albumData: any = useRecoilValue(detailTrackState);
+  const albumData = useRecoilValue(detailTrackState) as AlbumDataType;
   const detailAlbumTrackData = useRecoilValue(
     searchDetailTrackState(albumData.id)
-  );
+  ) as DetailAlbumTrackDataType;
   const setConfirmedURI = useSetRecoilState(confirmedURIState);
-  const savedAuthToken = useRecoilValue(authenticationTokenState);
+  const savedAuthToken: string = useRecoilValue(authenticationTokenState);
 
   return (
     <Sidebar>
@@ -33,25 +34,36 @@ const DetailAlbumTracks: React.FC = () => {
                 alt=""
               />
               <div className="flex flex-col justify-end ml-3 text-3xl">
-                <h1 className="lg:text-3xl md:text-2xl sm:hidden">{albumData.name}</h1>
+                <h1 className="lg:text-3xl md:text-2xl sm:hidden">
+                  {albumData.name}
+                </h1>
                 <div className="flex my-3">
-                  {albumData.artists.map((v: any, i: number) => (
-                    <h1 className="mr-3 lg:text-3xl md:text-2xl sm:hidden" key={i}>
+                  {albumData.artists.map((v, i: number) => (
+                    <h1
+                      className="mr-3 lg:text-3xl md:text-2xl sm:hidden"
+                      key={i}
+                    >
                       {v.name}
                     </h1>
                   ))}
                 </div>
-                <h1 className="lg:text-3xl md:text-2xl sm:hidden">{albumData.release_date}</h1>
+                <h1 className="lg:text-3xl md:text-2xl sm:hidden">
+                  {albumData.release_date}
+                </h1>
               </div>
             </div>
             <div>
-              {detailAlbumTrackData.items.map((v: any, i: number) => (
+              {detailAlbumTrackData.items.map((v, i: number) => (
                 <div
                   className="my-3 p-2 flex justify-between items-center bg-white bg-opacity-30 hover:bg-opacity-50 rounded-xl cursor-pointer duration-150"
                   key={i}
                   onClick={() => {
-                    setConfirmedURI(v.uri);
-                    savedAuthToken ? <></> : alert("로그인 후 재생해주시기 바랍니다!");
+                    setConfirmedURI(v?.uri);
+                    savedAuthToken ? (
+                      <></>
+                    ) : (
+                      alert("로그인 후 재생해주시기 바랍니다!")
+                    );
                   }}
                 >
                   <img
@@ -60,8 +72,12 @@ const DetailAlbumTracks: React.FC = () => {
                     alt=""
                   />
                   <div className="w-[80%] h-auto mx-auto ml-1 flex justify-between items-center truncate">
-                    <h1 className="lg:text-xl md:text-lg sm:text-base truncate">{v.name}</h1>
-                    <h1 className="lg:text-lg md:text-base sm:text-sm truncate">{v.artists[0].name}</h1>
+                    <h1 className="lg:text-xl md:text-lg sm:text-base truncate">
+                      {v.name}
+                    </h1>
+                    <h1 className="lg:text-lg md:text-base sm:text-sm truncate">
+                      {v.artists[0].name}
+                    </h1>
                   </div>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

@@ -7,10 +7,11 @@ import LeftChevron from "../button/LeftChevron";
 import RightChevron from "../button/RightChevron";
 import { searchAlbumFinderState } from "@/recoil/selector/searchSelectors";
 import Link from "next/link";
+import { AlbumDataType } from "@/types/AlbumTypes";
 
 const Albums = () => {
   const musicVal = useRecoilValue(musicValState);
-  const albumData = useRecoilValue(searchAlbumFinderState(musicVal));
+  const albumData = useRecoilValue(searchAlbumFinderState(musicVal)) as AlbumDataType[];
   const setIsClicked = useSetRecoilState(isClickedState);
   const setClickedAlbum = useSetRecoilState(detailTrackState);
   const CHEVRONWIDTH = 50;
@@ -59,7 +60,7 @@ const Albums = () => {
             rightChevron={<RightChevron />}
           >
             {albumData
-              ? albumData?.map((v: any, i: number) => (
+              ? albumData?.map((v, i: number) => (
                   <Link
                     href="components/DetailAlbumTracks"
                     className="flex flex-wrap cursor-pointer"
