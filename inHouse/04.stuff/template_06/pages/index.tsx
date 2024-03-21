@@ -1,12 +1,24 @@
 "use client";
 
 import { GetServerSideProps } from "next";
+import { useRouter } from "next/router";
 
 import Hero from "./components/Hero";
 import Sidebar from "./components/Sidebar";
 import { REDIRECT_URL, SCOPE } from "@/utils/constants";
+import { useEffect } from "react";
+import { useRecoilValue } from "recoil";
+import { accessTokenState } from "@/recoil/atom";
 
 const Home = ({ spotifyAuthUrl }: { spotifyAuthUrl: string }) => {
+  const router = useRouter();
+  const token = useRecoilValue(accessTokenState)
+
+  useEffect(() => {
+    if (!token) {
+      router.reload();
+    }
+  },[token]) 
   return (
     <Sidebar spotifyAuthUrl={spotifyAuthUrl}>
       <Hero />
