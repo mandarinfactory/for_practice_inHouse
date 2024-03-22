@@ -37,7 +37,7 @@ const DetailAlbumTracks: React.FC = () => {
 
   return (
     <Sidebar>
-      {isClicked ? (
+      {isClicked && detailAlbumTrackData ? (
         <div className="w-full h-full flex justify-center">
           <div className="w-[95%] h-max-screen">
             <div className="flex">

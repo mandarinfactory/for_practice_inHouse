@@ -37,7 +37,7 @@ const DetailPlaylists: React.FC = () => {
 
   return (
     <div className="w-full h-full flex flex-col justify-center">
-      {isClicked ? (
+      {isClicked && detailTracksData ? (
         <Sidebar>
           <div className="w-auto flex mb-5">
             <div className="w-auto h-auto">
