@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useRouter } from "next/navigation";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilValueLoadable, useSetRecoilState } from "recoil";
 
 import Sidebar from "../components/Sidebar";
 import { detailTrackState, isClickedState } from "../recoil/atom";
@@ -11,7 +11,12 @@ import { NewReleasesDataType } from "../types/AlbumTypes";
 
 const NewReleases = () => {
   const router = useRouter();
-  const newReleasesData = useRecoilValue(searchBrowseState(25)) as NewReleasesDataType;
+  const newReleasesLoadable = useRecoilValueLoadable(searchBrowseState(25));
+  const newReleasesData = (
+    newReleasesLoadable.state === "hasValue" && newReleasesLoadable.contents
+      ? newReleasesLoadable.contents
+      : undefined
+  ) as NewReleasesDataType;
   const setIsClicked = useSetRecoilState(isClickedState);
   const setClickedAlbum = useSetRecoilState(detailTrackState);
 

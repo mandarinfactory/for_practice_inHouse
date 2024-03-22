@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilValue, useRecoilValueLoadable, useSetRecoilState } from "recoil";
 
 import {
   authenticationTokenState,
@@ -12,7 +12,7 @@ import {
 } from "../../recoil/atom";
 import Sidebar from "../Sidebar";
 import { detailTrackHandlerState } from "../../recoil/selector/selectors";
-import { ClickedDetailInfos, DetailTrackData } from "../../types/AlbumTypes";
+import { ClickedDetailInfos, DetailTrackDataType } from "../../types/AlbumTypes";
 
 const DetailPlaylists: React.FC = () => {
   const isClicked = useRecoilValue(isClickedState);
@@ -20,11 +20,12 @@ const DetailPlaylists: React.FC = () => {
   const clickedDetailInfos = useRecoilValue(
     detailClickedPlaylistsInfoState
   ) as ClickedDetailInfos;
-  const detailTracksData = useRecoilValue(
-    detailTrackHandlerState(selectedVal || "")
-  ) as DetailTrackData
-  console.log(detailTracksData);
-  
+  const detailTrackLoadable = useRecoilValueLoadable(detailTrackHandlerState(selectedVal || ""))
+  const detailTracksData = (
+    detailTrackLoadable.state === "hasValue" && detailTrackLoadable.contents
+      ? detailTrackLoadable.contents
+      : undefined
+  ) as DetailTrackDataType;
   const setConfirmedURI = useSetRecoilState(confirmedURIState);
   const savedAuthToken:string = useRecoilValue(authenticationTokenState);
 

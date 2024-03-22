@@ -69,7 +69,7 @@ const Sidebar: React.FC<SidebarProps> = ({ spotifyAuthUrl, children }) => {
           placeholder="쉼표 검색"
           onKeyDown={(event) => {
             if (event.key === "Enter") {
-              setMusicVal(event.currentTarget.value);              
+              setMusicVal(event.currentTarget.value);
               setIsClicked(false);
               router.push("/.");
             }
@@ -82,27 +82,31 @@ const Sidebar: React.FC<SidebarProps> = ({ spotifyAuthUrl, children }) => {
         </div>
       </div>
       <main className="lg:w-[90%] md:w-[80%] sm:w-[95%] h-full mr-7 my-7 p-5 sm:mx-auto sm:mt-0 bg-gradient-to-r from-red-500 to-sky-500 rounded-3xl shadow-2xl">
-        <h1 className="lg:w-[10%] md:w-[12%] sm:w-[17%] h-auto p-2 sm:px-1 mb-3 text-center lg:text-xl md:text-base sm:text-xs text-black bg-white rounded-2xl cursor-pointer">
+        <>
           {!savedAuthToken ? (
-            <a
-              href={spotifyAuthUrl}
-              onClick={() => {
-                router.back();
-              }}
-            >
-              로그인
-            </a>
+            <h1 className="lg:w-[10%] md:w-[12%] sm:w-[17%] h-auto p-2 sm:px-1 mb-3 text-center lg:text-xl md:text-base sm:text-xs text-black bg-white rounded-2xl cursor-pointer">
+              <a
+                href={spotifyAuthUrl}
+                onClick={() => {
+                  router.back();
+                }}
+              >
+                로그인
+              </a>
+            </h1>
           ) : (
-            <button
-              onClick={() => {
-                setRemoveAuth(true);
-                router.replace("/.");
-              }}
-            >
-              로그아웃
-            </button>
+            <h1 className="lg:w-[10%] md:w-[12%] sm:w-[17%] h-auto p-2 sm:px-1 mb-3 text-center lg:text-xl md:text-base sm:text-xs text-black bg-white rounded-2xl cursor-pointer">
+              <button
+                onClick={() => {
+                  setRemoveAuth(true);
+                  router.replace("/.");
+                }}
+              >
+                로그아웃
+              </button>
+            </h1>
           )}
-        </h1>
+        </>
         {savedAuthToken ? (
           <SpotifyPlayer
             token={savedAuthToken}

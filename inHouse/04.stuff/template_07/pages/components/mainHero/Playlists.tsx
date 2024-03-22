@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilValueLoadable, useSetRecoilState } from "recoil";
 
 import { searchBrowseState } from "../../recoil/selector/searchSelectors";
 import {
@@ -11,7 +11,12 @@ import {
 import { PlaylistsDataType } from "../../types/AlbumTypes";
 
 const Playlists: React.FC = () => {
-  const playlistsData = useRecoilValue(searchBrowseState(10)) as PlaylistsDataType
+  const playlistsLoadable = useRecoilValueLoadable(searchBrowseState(10));
+  const playlistsData = (
+    playlistsLoadable.state === "hasValue" && playlistsLoadable.contents
+      ? playlistsLoadable.contents
+      : undefined
+  ) as PlaylistsDataType;
   const setIsClicked = useSetRecoilState(isClickedState);
   const setSelectedVal = useSetRecoilState(selectedMusicValState);
   const setClickedDetailInfos = useSetRecoilState(

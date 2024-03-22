@@ -1,24 +1,48 @@
 "use client";
 
 import React from "react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import {
+  useRecoilValue,
+  useRecoilValueLoadable,
+  useSetRecoilState,
+} from "recoil";
 
 import {
   searchDescriptionState,
   searchSongFinderState,
 } from "../../recoil/selector/searchSelectors";
 import Sidebar from "../Sidebar";
-import { detailClickedInfosState, isClickedState, confirmedURIState, authenticationTokenState } from "../../recoil/atom";
-import { DetailInfosDataType} from "../../types/AlbumTypes";
+import {
+  detailClickedInfosState,
+  isClickedState,
+  confirmedURIState,
+  authenticationTokenState,
+} from "../../recoil/atom";
+import { DetailInfosDataType } from "../../types/AlbumTypes";
 
 const DetailTracks: React.FC = () => {
   const isDetailClicked = useRecoilValue(isClickedState);
-  const detailInfosData = useRecoilValue(detailClickedInfosState) as DetailInfosDataType & React.ReactNode;
+  const detailInfosData = useRecoilValue(
+    detailClickedInfosState
+  ) as DetailInfosDataType & React.ReactNode;
   const artistData = detailInfosData.name;
-  const detailSongsData = useRecoilValue(searchSongFinderState(artistData));
-  const detailDescData = useRecoilValue(searchDescriptionState(artistData));
+  const detailSongsLoadable = useRecoilValueLoadable(
+    searchSongFinderState(artistData)
+  );
+  const detailSongsData =
+    detailSongsLoadable.state === "hasValue" && detailSongsLoadable.contents
+      ? detailSongsLoadable.contents
+      : undefined;
+
+  const detailDescLoadable = useRecoilValueLoadable(
+    searchDescriptionState(artistData)
+  );
+  const detailDescData =
+    detailDescLoadable.state === "hasValue" && detailDescLoadable.contents
+      ? detailDescLoadable.contents
+      : undefined;
   const setConfirmedURI = useSetRecoilState(confirmedURIState);
-  const savedAuthToken:string = useRecoilValue(authenticationTokenState);  
+  const savedAuthToken: string = useRecoilValue(authenticationTokenState);
 
   return (
     <Sidebar>
@@ -32,7 +56,9 @@ const DetailTracks: React.FC = () => {
                 alt=""
               />
               <div className="flex flex-col justify-between">
-                <h1 className="ml-5 lg:text-[4rem] md:text-4xl sm:text-3xl">{detailInfosData?.name}</h1>
+                <h1 className="ml-5 lg:text-[4rem] md:text-4xl sm:text-3xl">
+                  {detailInfosData?.name}
+                </h1>
                 <div>
                   {detailInfosData.genres ? (
                     <>
@@ -65,7 +91,11 @@ const DetailTracks: React.FC = () => {
                   key={i}
                   onClick={() => {
                     setConfirmedURI(v.uri);
-                    savedAuthToken ? <></> : alert("로그인 후 재생해주시기 바랍니다!");
+                    savedAuthToken ? (
+                      <></>
+                    ) : (
+                      alert("로그인 후 재생해주시기 바랍니다!")
+                    );
                   }}
                 >
                   <img
@@ -74,9 +104,15 @@ const DetailTracks: React.FC = () => {
                     alt=""
                   />
                   <div className="w-[80%] h-auto mx-auto ml-1 flex justify-between items-center truncate">
-                    <h1 className="lg:text-xl md:text-lg sm:text-base truncate">{v.name}</h1>
-                    <h1 className="lg:text-lg md:text-base sm:text-sm truncate">{v.artists[0].name}</h1>
-                    <h1 className="lg:text-lg md:text-base sm:text-sm truncate">{v.album.name}</h1>
+                    <h1 className="lg:text-xl md:text-lg sm:text-base truncate">
+                      {v.name}
+                    </h1>
+                    <h1 className="lg:text-lg md:text-base sm:text-sm truncate">
+                      {v.artists[0].name}
+                    </h1>
+                    <h1 className="lg:text-lg md:text-base sm:text-sm truncate">
+                      {v.album.name}
+                    </h1>
                   </div>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

@@ -1,8 +1,16 @@
 import React, { useEffect, useState } from "react";
 import ItemsCarousel from "react-items-carousel";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import {
+  useRecoilValue,
+  useRecoilValueLoadable,
+  useSetRecoilState,
+} from "recoil";
 
-import { detailTrackState, isClickedState, musicValState } from "../../recoil/atom";
+import {
+  detailTrackState,
+  isClickedState,
+  musicValState,
+} from "../../recoil/atom";
 import LeftChevron from "../button/LeftChevron";
 import RightChevron from "../button/RightChevron";
 import { searchAlbumFinderState } from "../../recoil/selector/searchSelectors";
@@ -11,7 +19,14 @@ import { AlbumDataType } from "../../types/AlbumTypes";
 
 const Albums = () => {
   const musicVal = useRecoilValue(musicValState);
-  const albumData = useRecoilValue(searchAlbumFinderState(musicVal)) as AlbumDataType[];
+  const albumDataLoadable = useRecoilValueLoadable(
+    searchAlbumFinderState(musicVal)
+  );
+  const albumData = (
+    albumDataLoadable.state === "hasValue" && albumDataLoadable.contents
+      ? albumDataLoadable.contents
+      : undefined
+  ) as AlbumDataType[];
   const setIsClicked = useSetRecoilState(isClickedState);
   const setClickedAlbum = useSetRecoilState(detailTrackState);
   const CHEVRONWIDTH = 50;

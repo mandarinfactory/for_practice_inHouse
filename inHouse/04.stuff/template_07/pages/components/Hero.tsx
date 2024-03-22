@@ -30,10 +30,7 @@ const Hero: React.FC = () => {
     }
   }, []);
 
-  return <>
-  {/* {!musicVal ? <MainHero /> : <SearchHero />} */}
-  <MainHero />
-  </>;
+  return <>{!musicVal ? <MainHero /> : <SearchHero />}</>;
 };
 
 export default Hero;

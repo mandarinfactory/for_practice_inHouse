@@ -1,13 +1,24 @@
 import React from "react";
 import Link from "next/link";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import {
+  useRecoilValue,
+  useRecoilValueLoadable,
+  useSetRecoilState,
+} from "recoil";
 
+import { ArtistsDataType } from "../../types/AlbumTypes";
 import { randomArtistsHandler } from "../../recoil/selector/selectors";
 import { isClickedState, detailClickedInfosState } from "../../recoil/atom";
-import { ArtistsDataType } from "../../types/AlbumTypes";
 
 const RandomArtists: React.FC = () => {
-  const randomArtistsData = useRecoilValue(randomArtistsHandler("")) as ArtistsDataType;
+  const randomArtistsLoadable = useRecoilValueLoadable(
+    randomArtistsHandler("")
+  );
+  const randomArtistsData = (
+    randomArtistsLoadable.state === "hasValue" && randomArtistsLoadable.contents
+      ? randomArtistsLoadable.contents
+      : undefined
+  ) as ArtistsDataType;
   const setIsClicked = useSetRecoilState(isClickedState);
   const setDetailInfos = useSetRecoilState(detailClickedInfosState);
 
