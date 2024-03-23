@@ -154,7 +154,7 @@ export interface ClickedDetailInfos extends SongIDType {
   };
 }
 
-export interface DetailTrackData {
+export interface DetailTrackDataType {
   href: string;
   items: [
     {

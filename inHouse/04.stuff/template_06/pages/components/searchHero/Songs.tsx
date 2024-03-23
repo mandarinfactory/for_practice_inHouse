@@ -1,15 +1,31 @@
+import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import {
+  useRecoilValue,
+  useRecoilValueLoadable,
+  useSetRecoilState,
+} from "recoil";
 
-import { authenticationTokenState, confirmedURIState, musicValState } from "@/recoil/atom";
-import { searchSongFinderState } from "@/recoil/selector/searchSelectors";
-import { SongDataType } from "@/types/AlbumTypes";
+import {
+  authenticationTokenState,
+  confirmedURIState,
+  musicValState,
+} from "../../../recoil/atom";
+import { searchSongFinderState } from "../../../recoil/selector/searchSelectors";
+import { SongDataType } from "../../../types/AlbumTypes";
 
 const Songs: React.FC = () => {
   const musicVal = useRecoilValue(musicValState);
-  const songData = useRecoilValue(searchSongFinderState(musicVal)) as SongDataType;
+  const songDataLoadable = useRecoilValueLoadable(
+    searchSongFinderState(musicVal)
+  );
+  const songData = (
+    songDataLoadable.state === "hasValue" && songDataLoadable.contents
+      ? songDataLoadable.contents
+      : undefined
+  ) as SongDataType;
   const setConfirmedURI = useSetRecoilState(confirmedURIState);
-  const savedAuthToken:string = useRecoilValue(authenticationTokenState);
+  const savedAuthToken: string = useRecoilValue(authenticationTokenState);
   const [queryNum, setQueryNum] = useState(0);
 
   useEffect(() => {
@@ -44,11 +60,17 @@ const Songs: React.FC = () => {
                       key={i}
                       onClick={() => {
                         setConfirmedURI(v.uri);
-                        savedAuthToken ? <></> : alert("로그인 후 재생해주시기 바랍니다!")
+                        savedAuthToken ? (
+                          <></>
+                        ) : (
+                          alert("로그인 후 재생해주시기 바랍니다!")
+                        );
                       }}
                     >
-                      <img
-                        src={v.album.images[1].url}
+                      <Image
+                        src={`${v.album.images[1].url}`}
+                        width={500}
+                        height={500}
                         alt="앨범아트"
                         className="w-[40%] h-auto rounded-md hover:scale-105 duration-200 shadow-lg"
                       />

@@ -1,7 +1,7 @@
 import { GetRecoilValue, RecoilEnv, selectorFamily } from "recoil";
 
 import { accessTokenState } from "../atom";
-import { SPOTIFY_URL } from "@/utils/constants";
+import { SPOTIFY_URL } from "../../utils/constants";
 
 RecoilEnv.RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED = false;
 

@@ -1,21 +1,26 @@
 import React from "react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import Link from "next/link";
+import Image from "next/image";
+import { useRecoilValue, useRecoilValueLoadable, useSetRecoilState } from "recoil";
 
 import {
   detailClickedInfosState,
   isClickedState,
   musicValState,
-} from "@/recoil/atom";
-import { searchArtistFinderState } from "@/recoil/selector/searchSelectors";
-import Link from "next/link";
-import { ArtistsDataType } from "@/types/AlbumTypes";
+} from "../../../recoil/atom";
+import { ArtistsDataType } from "../../../types/AlbumTypes";
+import { searchArtistFinderState } from "../../../recoil/selector/searchSelectors";
 
 const Artists: React.FC = () => {
   const setIsClicked = useSetRecoilState(isClickedState);
   const setDetailInfos = useSetRecoilState(detailClickedInfosState);
   const musicVal = useRecoilValue(musicValState);
-  const artistData = useRecoilValue(
-    searchArtistFinderState(musicVal)
+  const artistDataLoadable = useRecoilValueLoadable(searchArtistFinderState(musicVal));
+
+  const artistData = (
+    artistDataLoadable.state === "hasValue" && artistDataLoadable.contents
+      ? artistDataLoadable.contents
+      : undefined
   ) as ArtistsDataType;
 
   return (
@@ -31,8 +36,10 @@ const Artists: React.FC = () => {
               setDetailInfos(filteredArtistData);
             }}
           >
-            <img
-              src={artistData?.artists.items[0].images[2].url}
+            <Image
+              src={`${artistData?.artists.items[0].images[2].url}`}
+              width={200}
+              height={200}
               alt="artist"
               className="rounded-full shadow-xl hover:scale-105 duration-300 cursor-pointer"
             />

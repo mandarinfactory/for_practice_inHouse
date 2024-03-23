@@ -1,17 +1,33 @@
-import React, { useEffect, useState } from "react";
+import Image from "next/image";
 import ItemsCarousel from "react-items-carousel";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import React, { useEffect, useState } from "react";
+import {
+  useRecoilValue,
+  useRecoilValueLoadable,
+  useSetRecoilState,
+} from "recoil";
 
-import { detailTrackState, isClickedState, musicValState } from "@/recoil/atom";
+import {
+  detailTrackState,
+  isClickedState,
+  musicValState,
+} from "../../../recoil/atom";
 import LeftChevron from "../button/LeftChevron";
 import RightChevron from "../button/RightChevron";
-import { searchAlbumFinderState } from "@/recoil/selector/searchSelectors";
+import { searchAlbumFinderState } from "../../../recoil/selector/searchSelectors";
 import Link from "next/link";
-import { AlbumDataType } from "@/types/AlbumTypes";
+import { AlbumDataType } from "../../../types/AlbumTypes";
 
 const Albums = () => {
   const musicVal = useRecoilValue(musicValState);
-  const albumData = useRecoilValue(searchAlbumFinderState(musicVal)) as AlbumDataType[];
+  const albumDataLoadable = useRecoilValueLoadable(
+    searchAlbumFinderState(musicVal)
+  );
+  const albumData = (
+    albumDataLoadable.state === "hasValue" && albumDataLoadable.contents
+      ? albumDataLoadable.contents
+      : undefined
+  ) as AlbumDataType[];
   const setIsClicked = useSetRecoilState(isClickedState);
   const setClickedAlbum = useSetRecoilState(detailTrackState);
   const CHEVRONWIDTH = 50;
@@ -70,8 +86,10 @@ const Albums = () => {
                       setClickedAlbum(v);
                     }}
                   >
-                    <img
-                      src={v.images[1].url}
+                    <Image
+                      src={`${v.images[1].url}`}
+                      width={500}
+                      height={500}
                       alt="앨범아트"
                       className="w-[240px] rounded-lg hover:scale-95 duration-300 shadow-xl"
                     />

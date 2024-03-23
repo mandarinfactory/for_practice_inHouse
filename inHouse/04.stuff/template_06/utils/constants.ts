@@ -1,5 +1,5 @@
-export const BASE_URL = "http://localhost:5173/";
-export const REDIRECT_URL = "http://localhost:3000/callback";
+export const BASE_URL = "https://next-js-music-peach.vercel.app/";
+export const REDIRECT_URL = "https://next-js-music-peach.vercel.app/callback";
 
 export const CLIENT_ID: any = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID;
 export const CLIENT_SECRET: any = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_SECRET;
