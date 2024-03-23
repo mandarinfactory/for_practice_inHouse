@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import {
   useRecoilValue,
@@ -44,6 +44,12 @@ const DetailTracks: React.FC = () => {
       : undefined;
   const setConfirmedURI = useSetRecoilState(confirmedURIState);
   const savedAuthToken: string = useRecoilValue(authenticationTokenState);
+
+  useEffect(() => {
+    if (!detailDescData || detailDescLoadable.state !== "hasValue") {
+      detailDescLoadable
+    }
+  },[detailDescData])
 
   return (
     <Sidebar>

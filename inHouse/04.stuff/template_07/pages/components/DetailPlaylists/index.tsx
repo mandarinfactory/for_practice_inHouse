@@ -34,7 +34,10 @@ const DetailPlaylists: React.FC = () => {
     if (selectedVal) {
       detailTracksData;
     }
-  }, [isClicked, selectedVal, detailTracksData]);
+    if (!detailTracksData || detailTrackLoadable.state !== "hasValue") {
+      detailTrackLoadable;
+    } 
+  }, [isClicked, selectedVal, detailTracksData, detailTrackLoadable]);
 
   return (
     <div className="w-full h-full flex flex-col justify-center">
