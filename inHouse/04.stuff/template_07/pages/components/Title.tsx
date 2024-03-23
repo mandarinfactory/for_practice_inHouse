@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { useSetRecoilState } from "recoil";
 
-import { isClickedState, musicValState } from "../recoil/atom";
+import { isClickedState, musicValState } from "../../recoil/atom";
 
 const Title: React.FC = () => {
   const setMusicVal = useSetRecoilState(musicValState);

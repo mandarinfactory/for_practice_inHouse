@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import {
   useRecoilValue,
   useRecoilValueLoadable,
@@ -10,15 +11,15 @@ import {
 import {
   searchDescriptionState,
   searchSongFinderState,
-} from "../../recoil/selector/searchSelectors";
+} from "../../../recoil/selector/searchSelectors";
 import Sidebar from "../Sidebar";
 import {
   detailClickedInfosState,
   isClickedState,
   confirmedURIState,
   authenticationTokenState,
-} from "../../recoil/atom";
-import { DetailInfosDataType } from "../../types/AlbumTypes";
+} from "../../../recoil/atom";
+import { DetailInfosDataType } from "../../../types/AlbumTypes";
 
 const DetailTracks: React.FC = () => {
   const isDetailClicked = useRecoilValue(isClickedState);
@@ -50,9 +51,11 @@ const DetailTracks: React.FC = () => {
         {isDetailClicked ? (
           <div className="w-[95%] h-max-screen">
             <div className="w-full h-auto flex">
-              <img
+              <Image
                 className="w-[30%] h-auto rounded-xl object-cover shadow-xl"
-                src={detailInfosData?.images[0].url}
+                src={`${detailInfosData?.images[0].url}`}
+                width={500}
+                height={500}
                 alt=""
               />
               <div className="flex flex-col justify-between">
@@ -98,9 +101,11 @@ const DetailTracks: React.FC = () => {
                     );
                   }}
                 >
-                  <img
+                  <Image
                     className="w-[60px] h-auto ml-3 object-cover rounded-md"
                     src={v.album.images[1].url}
+                    width={100}
+                    height={100}
                     alt=""
                   />
                   <div className="w-[80%] h-auto mx-auto ml-1 flex justify-between items-center truncate">

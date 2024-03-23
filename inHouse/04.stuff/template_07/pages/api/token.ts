@@ -1,7 +1,7 @@
 import axios from "axios";
 
-import { AccessTokenData } from "../types/types";
-import { SPOTIFY_ACCESS_TOKEN_URL } from "../utils/constants";
+import { AccessTokenData } from "../../types/types";
+import { SPOTIFY_ACCESS_TOKEN_URL } from "../../utils/constants";
 
 const CLIENT_ID = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID;
 const CLIENT_SECRET = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_SECRET;

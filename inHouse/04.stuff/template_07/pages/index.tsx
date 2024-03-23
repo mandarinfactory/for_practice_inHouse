@@ -4,7 +4,7 @@ import { GetServerSideProps } from "next";
 
 import Hero from "./components/Hero";
 import Sidebar from "./components/Sidebar";
-import { REDIRECT_URL, SCOPE } from "./utils/constants";
+import { REDIRECT_URL, SCOPE } from "../utils/constants";
 
 const Home = ({ spotifyAuthUrl }: { spotifyAuthUrl: string }) => {
   return (

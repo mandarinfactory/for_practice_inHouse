@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import React, { useEffect } from "react";
 import { useRecoilValue, useRecoilValueLoadable, useSetRecoilState } from "recoil";
 
@@ -9,10 +10,10 @@ import {
   detailClickedPlaylistsInfoState,
   isClickedState,
   selectedMusicValState,
-} from "../../recoil/atom";
+} from "../../../recoil/atom";
 import Sidebar from "../Sidebar";
-import { detailTrackHandlerState } from "../../recoil/selector/selectors";
-import { ClickedDetailInfos, DetailTrackDataType } from "../../types/AlbumTypes";
+import { detailTrackHandlerState } from "../../../recoil/selector/selectors";
+import { ClickedDetailInfos, DetailTrackDataType } from "../../../types/AlbumTypes";
 
 const DetailPlaylists: React.FC = () => {
   const isClicked = useRecoilValue(isClickedState);
@@ -33,7 +34,7 @@ const DetailPlaylists: React.FC = () => {
     if (selectedVal) {
       detailTracksData;
     }
-  }, [isClicked, selectedVal]);
+  }, [isClicked, selectedVal, detailTracksData]);
 
   return (
     <div className="w-full h-full flex flex-col justify-center">
@@ -41,9 +42,11 @@ const DetailPlaylists: React.FC = () => {
         <Sidebar>
           <div className="w-auto flex mb-5">
             <div className="w-auto h-auto">
-              <img
+              <Image
                 className="rounded-2xl shadow-xl"
-                src={clickedDetailInfos.images[0].url}
+                src={`${clickedDetailInfos.images[0].url}`}
+                width={300}
+                height={300}
                 alt=""
               />
             </div>
@@ -73,9 +76,11 @@ const DetailPlaylists: React.FC = () => {
                     );
                   }}
                 >
-                  <img
+                  <Image
                     className="w-[60px] h-auto ml-3 object-cover rounded-md"
-                    src={value.track.album.images[1].url}
+                    src={`${value.track.album.images[1].url}`}
+                    width={100}
+                    height={100}
                     alt=""
                   />
                   <div className="w-[80%] h-auto mx-auto ml-1 flex justify-between items-center truncate">

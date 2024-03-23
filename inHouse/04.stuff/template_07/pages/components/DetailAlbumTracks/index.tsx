@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import {
   useRecoilValue,
   useRecoilValueLoadable,
@@ -13,12 +14,12 @@ import {
   isClickedState,
   confirmedURIState,
   authenticationTokenState,
-} from "../../recoil/atom";
-import { searchDetailTrackState } from "../../recoil/selector/searchSelectors";
+} from "../../../recoil/atom";
+import { searchDetailTrackState } from "../../../recoil/selector/searchSelectors";
 import {
   AlbumDataType,
   DetailAlbumTrackDataType,
-} from "../../types/AlbumTypes";
+} from "../../../types/AlbumTypes";
 
 const DetailAlbumTracks: React.FC = () => {
   const isClicked = useRecoilValue(isClickedState);
@@ -41,9 +42,11 @@ const DetailAlbumTracks: React.FC = () => {
         <div className="w-full h-full flex justify-center">
           <div className="w-[95%] h-max-screen">
             <div className="flex">
-              <img
+              <Image
                 className="w-[400px] h-auto rounded-xl shadow-lg"
-                src={albumData.images[0].url}
+                src={`${albumData.images[0].url}`}
+                width={500}
+                height={500}
                 alt=""
               />
               <div className="flex flex-col justify-end ml-3 text-3xl">
@@ -79,9 +82,11 @@ const DetailAlbumTracks: React.FC = () => {
                     );
                   }}
                 >
-                  <img
+                  <Image
                     className="w-[60px] h-auto ml-3 object-cover rounded-md"
-                    src={albumData.images[1].url}
+                    src={`${albumData.images[1].url}`}
+                    width={100}
+                    height={100}
                     alt=""
                   />
                   <div className="w-[80%] h-auto mx-auto ml-1 flex justify-between items-center truncate">

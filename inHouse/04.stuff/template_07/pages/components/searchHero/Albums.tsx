@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import Image from "next/image";
 import ItemsCarousel from "react-items-carousel";
+import React, { useEffect, useState } from "react";
 import {
   useRecoilValue,
   useRecoilValueLoadable,
@@ -10,12 +11,12 @@ import {
   detailTrackState,
   isClickedState,
   musicValState,
-} from "../../recoil/atom";
+} from "../../../recoil/atom";
 import LeftChevron from "../button/LeftChevron";
 import RightChevron from "../button/RightChevron";
-import { searchAlbumFinderState } from "../../recoil/selector/searchSelectors";
+import { searchAlbumFinderState } from "../../../recoil/selector/searchSelectors";
 import Link from "next/link";
-import { AlbumDataType } from "../../types/AlbumTypes";
+import { AlbumDataType } from "../../../types/AlbumTypes";
 
 const Albums = () => {
   const musicVal = useRecoilValue(musicValState);
@@ -85,8 +86,10 @@ const Albums = () => {
                       setClickedAlbum(v);
                     }}
                   >
-                    <img
-                      src={v.images[1].url}
+                    <Image
+                      src={`${v.images[1].url}`}
+                      width={500}
+                      height={500}
                       alt="앨범아트"
                       className="w-[240px] rounded-lg hover:scale-95 duration-300 shadow-xl"
                     />

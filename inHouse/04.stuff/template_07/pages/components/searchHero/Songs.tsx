@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import {
   useRecoilValue,
@@ -9,9 +10,9 @@ import {
   authenticationTokenState,
   confirmedURIState,
   musicValState,
-} from "../../recoil/atom";
-import { searchSongFinderState } from "../../recoil/selector/searchSelectors";
-import { SongDataType } from "../../types/AlbumTypes";
+} from "../../../recoil/atom";
+import { searchSongFinderState } from "../../../recoil/selector/searchSelectors";
+import { SongDataType } from "../../../types/AlbumTypes";
 
 const Songs: React.FC = () => {
   const musicVal = useRecoilValue(musicValState);
@@ -66,8 +67,10 @@ const Songs: React.FC = () => {
                         );
                       }}
                     >
-                      <img
-                        src={v.album.images[1].url}
+                      <Image
+                        src={`${v.album.images[1].url}`}
+                        width={500}
+                        height={500}
                         alt="앨범아트"
                         className="w-[40%] h-auto rounded-md hover:scale-105 duration-200 shadow-lg"
                       />

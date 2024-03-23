@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-import { SidebarItemProps } from "../types/types";
+import { SidebarItemProps } from "../../types/types";
 
 const SidebarItem: React.FC<SidebarItemProps> = ({
   icon: Icon,
