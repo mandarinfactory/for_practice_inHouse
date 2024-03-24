@@ -24,10 +24,6 @@ export interface RecommendedState extends LoadingError {
   recommendeds: string[];
 }
 
-export interface ClickedButtonPageState extends LoadingError {
-  clickedValue: string;
-}
-
 export interface DictaphoneState {
   mic: boolean;
   micValue: string;

@@ -1,7 +1,6 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 
 import {
-  ClickedButtonPageState,
   RecommendedState,
   DictaphoneState,
   FirstVideoState,
@@ -12,9 +11,22 @@ import {
 } from "../types/types";
 import { getHomepageVideos } from "./reducers/getHomepageVideos";
 import { getVideoComments } from "./reducers/getVideoComments";
-
-const clickedButtonPageState: ClickedButtonPageState = {
-  clickedValue: "",
+import { ClickedVideoSelectorType } from "../types/VideoTypes";
+const videoValueObj = {
+  etag: "",
+  items: [],
+  kind: "",
+  nextPageToken: "",
+  pageInfo: {
+    totalResults: 0,
+    resultsPerPage: 0,
+  },
+  regionCode: "",
+  error: null,
+  loading: false,
+};
+const clickedButtonPageState: ClickedVideoSelectorType = {
+  clickedValue: videoValueObj,
   loading: false,
   error: null,
 };
@@ -78,7 +90,7 @@ export const ClickedButtonPageSlice = createSlice({
       state.error = null;
     },
     clickedFailure: (state, action) => {
-      state.clickedValue = "";
+      state.clickedValue = videoValueObj
       state.loading = false;
       state.error = action.payload;
     },
@@ -98,7 +110,7 @@ export const ClickedVideoInfoSlice = createSlice({
       state.error = null;
     },
     videoInfosFailure: (state, action) => {
-      state.clickedValue = "";
+      state.clickedValue = videoValueObj,
       state.loading = false;
       state.error = action.payload;
     },
