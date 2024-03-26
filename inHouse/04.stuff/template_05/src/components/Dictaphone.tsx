@@ -68,7 +68,7 @@ const Dictaphone: React.FC = () => {
           <div className="my-5 flex justify-center">
             <button
               className="p-2 hover:bg-indigo-700 hover:text-white rounded-3xl duration-75 text-xl"
-              onClick={SpeechRecognition.startListening}
+              onClick={() => SpeechRecognition.startListening()}
             >
               시작
             </button>

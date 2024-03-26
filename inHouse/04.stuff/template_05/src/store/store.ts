@@ -3,57 +3,51 @@ import { configureStore, createSlice } from "@reduxjs/toolkit";
 import {
   RecommendedState,
   DictaphoneState,
-  FirstVideoState,
-  SearchInputState,
-  VideoIsClickedState,
-  VideoCommentsState,
   DarkmodeState,
 } from "../types/types";
 import { getHomepageVideos } from "./reducers/getHomepageVideos";
 import { getVideoComments } from "./reducers/getVideoComments";
-import { ClickedVideoSelectorType } from "../types/VideoTypes";
-const videoValueObj = {
-  etag: "",
-  items: [],
-  kind: "",
-  nextPageToken: "",
-  pageInfo: {
-    totalResults: 0,
-    resultsPerPage: 0,
-  },
-  regionCode: "",
-  error: null,
-  loading: false,
-};
+import {
+  FirstVideoType,
+  ClickedVideoSelectorType,
+  SearchVideoType,
+  CommentType,
+  clickedIdSelectorType,
+  RecommendedSelectorType,
+} from "../types/VideoTypes";
+import { videoObj, commentObj, clickedIdObj } from "../utils/objects";
+
 const clickedButtonPageState: ClickedVideoSelectorType = {
-  clickedValue: videoValueObj,
+  clickedValue: videoObj,
   loading: false,
   error: null,
 };
-const searchInputState: SearchInputState = {
-  searchVal: "",
-  loading: false,
-  error: null,
+const searchInputState: SearchVideoType = {
   clickedVideos: [],
+  error: null,
+  loading: false,
+  searchVal: videoObj,
 };
-const recommendedState: RecommendedState = {
-  recommendeds: [],
+const recommendedState: RecommendedSelectorType = {
+  recommendeds: commentObj,
   loading: false,
   error: null,
 };
-const firstVideoState: FirstVideoState = {
-  videos: [],
+const firstVideoState: FirstVideoType = {
+  videos: videoObj,
 };
-const videoCommentsState: VideoCommentsState = {
-  comments: [],
+const videoCommentsState: CommentType = {
+  comments: commentObj,
 };
 const dictaphoneState: DictaphoneState = {
   mic: false,
   micValue: "",
 };
-const videoIsClickedState: VideoIsClickedState = {
-  clickedVideo: 0,
+
+const videoIsClickedState: any = {
+  clickedVideo: "",
 };
+
 const darkmodeState: DarkmodeState = {
   isDark:
     localStorage.theme === "dark" ||
@@ -90,7 +84,7 @@ export const ClickedButtonPageSlice = createSlice({
       state.error = null;
     },
     clickedFailure: (state, action) => {
-      state.clickedValue = videoValueObj
+      state.clickedValue = videoObj;
       state.loading = false;
       state.error = action.payload;
     },
@@ -110,8 +104,7 @@ export const ClickedVideoInfoSlice = createSlice({
       state.error = null;
     },
     videoInfosFailure: (state, action) => {
-      state.clickedValue = videoValueObj,
-      state.loading = false;
+      (state.clickedValue = videoObj), (state.loading = false);
       state.error = action.payload;
     },
   },
@@ -130,12 +123,12 @@ export const SearchInputSlice = createSlice({
       state.error = null;
     },
     searchFailure: (state, action) => {
-      state.searchVal = "";
+      state.searchVal = videoObj;
       state.loading = false;
       state.error = action.payload;
     },
     clickedVideos: (state, action) => {
-      state.clickedVideos = [...state.clickedVideos, action.payload];
+      state.clickedVideos = [{ ...state.clickedVideos }, action.payload];
     },
   },
 });
@@ -152,7 +145,7 @@ export const RecommendedVideoSlice = createSlice({
       state.error = null;
     },
     recommendedFailure: (state, action) => {
-      state.recommendeds = [];
+      state.recommendeds = commentObj;
       state.error = action.payload;
     },
   },

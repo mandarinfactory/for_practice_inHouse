@@ -17,14 +17,13 @@ const FirstVideo: React.FC = () => {
   const firstVideoSelector = useSelector(
     (state: RootState) => state.youtubeApp
   );
-
+    
   useEffect(() => {
     dispatch<any>(getHomepageVideos(""));
   }, [dispatch]);
-
   return (
     <div className="w-[85%] flex flex-wrap justify-center">
-      {firstVideoSelector?.videos?.items?.map((value: any, id: number) => (
+      {firstVideoSelector?.videos?.items?.map((value, id: number) => (
         <div
           className="w-[290px] h-auto m-3 cursor-pointer"
           key={id}

@@ -15,9 +15,9 @@ const Hero: React.FC = () => {
   );
   return (
     <>
-      {searchVideoSelector.searchVal || clickedVideoSelector.clickedValue ? (
+      {searchVideoSelector.searchVal.etag || clickedVideoSelector.clickedValue.etag ? (
         <>
-          {searchVideoSelector.searchVal ? <SearchVideo /> : <ClickedVideo />}
+          {searchVideoSelector.searchVal.etag ? <SearchVideo /> : <ClickedVideo />}
         </>
       ) : (
         <FirstVideo />

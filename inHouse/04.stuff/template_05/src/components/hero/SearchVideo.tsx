@@ -16,10 +16,10 @@ const SearchVideo: React.FC = () => {
   const searchVideoSelector = useSelector(
     (state: RootState) => state.youtubeSearchInputApp
   );
-
+    
   return (
     <div className="w-[85%] h-screen flex flex-wrap justify-center">
-      {searchVideoSelector?.searchVal?.items?.map((value: any, id: number) => (
+      {searchVideoSelector.searchVal.items.map((value: any, id: number) => (
         <div
           className="w-[290px] h-auto m-3 cursor-pointer"
           key={id}

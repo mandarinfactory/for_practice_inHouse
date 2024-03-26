@@ -41,8 +41,7 @@ const Video: React.FC = () => {
                       </svg>
                       <p className="p-1">
                         {
-                          videoAddInfosSelector.clickedValue?.items[0]
-                            .statistics.likeCount
+                          videoAddInfosSelector?.clickedValue?.items[0]?.statistics.likeCount
                         }
                         개
                       </p>

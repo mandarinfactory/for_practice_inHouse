@@ -15,6 +15,8 @@ const RecommendedVideo: React.FC = () => {
   const recommendedSelector = useSelector(
     (state: RootState) => state.youtubeRecommendedApp
   );
+  console.log(recommendedSelector);
+  
 
   const filteredSelector = recommendedSelector?.recommendeds?.items?.filter(
     (el: any) => {

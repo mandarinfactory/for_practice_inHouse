@@ -12,12 +12,7 @@ export interface LoadingError {
 }
 
 export interface DarkmodeState {
-  isDark: boolean;
-}
-
-export interface SearchInputState extends LoadingError {
-  searchVal: string;
-  clickedVideos: any[];
+  isDark: any;
 }
 
 export interface RecommendedState extends LoadingError {

@@ -9,12 +9,16 @@ const Comments: React.FC = () => {
   const commentSelector = useSelector(
     (state: RootState) => state.videoCommentsApp
   );
+  
   const clickedIdSelector = useSelector(
     (state: RootState) => state.videoScreenIsClickedApp
   );
+  
   const videoId = clickedIdSelector.clickedVideo.contentDetails
-    ? clickedIdSelector?.clickedVideo.contentDetails.upload?.videoId
-    : clickedIdSelector?.clickedVideo?.id?.videoId;
+    ? clickedIdSelector?.clickedVideo.contentDetails.upload.videoId
+    : clickedIdSelector?.clickedVideo.id.videoId;
+    console.log(clickedIdSelector);
+    
 
   useEffect(() => {
     dispatch<any>(getVideoComments(videoId));
