@@ -12,8 +12,6 @@ export const getVideoComments = createAsyncThunk(
         `${YOUTUBE_COMMENTS_API_URL}?key=${API_KEY}&part=snippet&videoId=${clickedId}&maxResults=20`
       );
       const data = await response.json();
-      console.log(data);
-
       return data;
     } catch (error) {
       console.error(error);

@@ -13,7 +13,7 @@ interface SnippetType {
   publishedAt: string;
   thumbnails: { default: LayoutType; medium: LayoutType; high: LayoutType };
   title: string;
-  type: string
+  type?: string;
 }
 
 interface SearchVideoSnippetType {
@@ -59,10 +59,6 @@ interface CommentSnippetType {
   videoId: string;
 }
 
-interface RecommendedSnippetType {
-
-}
-
 interface VideoDataType {
   etag: string;
   id: { kind: string; videoId: string };
@@ -105,7 +101,7 @@ interface RecommendedDataType {
   etag: string;
   id: string;
   kind: string;
-  snippet: SnippetType
+  snippet: SnippetType;
 }
 
 interface VideoValueType {
@@ -164,4 +160,58 @@ export interface RecommendedSelectorType {
     nextPageToken: string;
     pageInfo: { totalResults: number; resultsPerPage: number };
   };
+}
+
+export interface VideoAddInfosSelectorType {
+  clickedValue: {
+    etag: string;
+    items: {
+      contentDetails: {
+        caption: string;
+        contentRating: {};
+        definition: string;
+        dimension: string;
+        duration: string;
+        licensedContent: boolean;
+        projection: string;
+        regionRestriction: { allowed: string[] };
+      };
+      etag: string;
+      id: string;
+      kind: string;
+      snippet: {
+        categoryId: string;
+        channelId: string;
+        channelTitle: string;
+        defaultAudioLanguage: string;
+        defaultLanguage: string;
+        description: string;
+        liveBroadcastContent: string;
+        localized: {
+          description: string;
+          title: string;
+        };
+        publishedAt: string;
+        tags: string[];
+        thumbnails: {
+          default: LayoutType;
+          high: LayoutType;
+          maxres: LayoutType;
+          medium: LayoutType;
+          standard: LayoutType;
+        };
+        title: string;
+      };
+      statistics: {
+        commentCount: string;
+        favoriteCount: string;
+        viewCount: string;
+        likeCount: string;
+      };
+    };
+    kind: string;
+    pageInfo: { resultsPerPage: number; totalResults: number };
+  };
+  error: null;
+  loading: boolean;
 }

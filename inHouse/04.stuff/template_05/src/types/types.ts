@@ -12,7 +12,7 @@ export interface LoadingError {
 }
 
 export interface DarkmodeState {
-  isDark: any;
+  isDark: boolean;
 }
 
 export interface RecommendedState extends LoadingError {

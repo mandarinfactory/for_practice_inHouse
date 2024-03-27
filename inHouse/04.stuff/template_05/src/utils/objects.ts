@@ -46,6 +46,58 @@ export const videoObj = {
   snippet: snippetObj,
 };
 
+export const videoInfosObj = {
+  etag: "",
+  items: {
+    contentDetails: {
+      caption: "",
+      contentRating: {},
+      definition: "",
+      dimension: "",
+      duration: "",
+      licensedContent: false,
+      projection: "",
+      regionRestriction: { allowed: [] },
+    },
+    etag: "",
+    id: "",
+    kind: "",
+    snippet: {
+      categoryId: "",
+      channelId: "",
+      channelTitle: "",
+      defaultAudioLanguage: "",
+      defaultLanguage: "",
+      description: "",
+      liveBroadcastContent: "",
+      localized: {
+        description: "",
+        title: "",
+      },
+      publishedAt: "",
+      tags: [],
+      thumbnails: {
+        default: layoutObj,
+        high: layoutObj,
+        maxres: layoutObj,
+        medium: layoutObj,
+        standard: layoutObj,
+      },
+      title: "",
+    },
+    statistics: {
+      commentCount: "",
+      favoriteCount: "",
+      viewCount: "",
+      likeCount: "",
+    },
+  },
+  kind: "",
+  pageInfo: { resultsPerPage: 0, totalResults: 0 },
+  error: null,
+  loading: false,
+};
+
 export const commentObj = {
   etag: "",
   items: [],
@@ -62,4 +114,18 @@ export const clickedIdObj = {
   id: { kind: "", videoId: "" },
   kind: "",
   snippet: clickedIdSnippetObj,
+};
+
+export const contentIdObj = {
+  clickedVideo: {
+    contentDetails: {
+      upload: {
+        videoId: "",
+      },
+    },
+    etag: "",
+    id: { kind: "", videoId: "" },
+    kind: "",
+    snippet: snippetObj,
+  },
 };

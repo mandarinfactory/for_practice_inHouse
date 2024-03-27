@@ -9,7 +9,7 @@ const Video: React.FC = () => {
   );
   const videoAddInfosSelector = useSelector(
     (state: RootState) => state.clickedVideoInfoApp
-  );
+  );  
 
   return (
     <div className="w-full h-full">
@@ -41,7 +41,8 @@ const Video: React.FC = () => {
                       </svg>
                       <p className="p-1">
                         {
-                          videoAddInfosSelector?.clickedValue?.items[0]?.statistics.likeCount
+                          videoAddInfosSelector?.clickedValue?.items[0]
+                            ?.statistics.likeCount
                         }
                         개
                       </p>

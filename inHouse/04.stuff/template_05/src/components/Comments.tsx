@@ -15,10 +15,8 @@ const Comments: React.FC = () => {
   );
   
   const videoId = clickedIdSelector.clickedVideo.contentDetails
-    ? clickedIdSelector?.clickedVideo.contentDetails.upload.videoId
-    : clickedIdSelector?.clickedVideo.id.videoId;
-    console.log(clickedIdSelector);
-    
+  ? clickedIdSelector?.clickedVideo.contentDetails.upload.videoId
+  : clickedIdSelector?.clickedVideo.id.videoId;
 
   useEffect(() => {
     dispatch<any>(getVideoComments(videoId));

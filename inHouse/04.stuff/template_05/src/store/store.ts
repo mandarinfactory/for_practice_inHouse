@@ -1,10 +1,6 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 
-import {
-  RecommendedState,
-  DictaphoneState,
-  DarkmodeState,
-} from "../types/types";
+import { DictaphoneState, DarkmodeState } from "../types/types";
 import { getHomepageVideos } from "./reducers/getHomepageVideos";
 import { getVideoComments } from "./reducers/getVideoComments";
 import {
@@ -14,8 +10,9 @@ import {
   CommentType,
   clickedIdSelectorType,
   RecommendedSelectorType,
+  VideoAddInfosSelectorType,
 } from "../types/VideoTypes";
-import { videoObj, commentObj, clickedIdObj } from "../utils/objects";
+import { videoObj, commentObj, clickedIdObj, contentIdObj, videoInfosObj } from "../utils/objects";
 
 const clickedButtonPageState: ClickedVideoSelectorType = {
   clickedValue: videoObj,
@@ -39,13 +36,18 @@ const firstVideoState: FirstVideoType = {
 const videoCommentsState: CommentType = {
   comments: commentObj,
 };
+const videoInfosState: VideoAddInfosSelectorType = {
+  clickedValue: videoInfosObj,
+  loading: false,
+  error: null,
+}
 const dictaphoneState: DictaphoneState = {
   mic: false,
   micValue: "",
 };
 
-const videoIsClickedState: any = {
-  clickedVideo: "",
+const videoIsClickedState: any /* clickedIdSelectorType | ContentIdSelectorType */ = {
+  clickedVideo: "" /* clickedIdObj || contentIdObj */,
 };
 
 const darkmodeState: DarkmodeState = {
@@ -93,18 +95,20 @@ export const ClickedButtonPageSlice = createSlice({
 
 export const ClickedVideoInfoSlice = createSlice({
   name: "clickedVideoInfoApp",
-  initialState: clickedButtonPageState,
+  initialState: videoInfosState,
   reducers: {
     videoInfosStart: (state) => {
       state.loading = true;
     },
     videoInfosSuccess: (state, action) => {
+      console.log(state);
+      
       state.clickedValue = action.payload;
       state.loading = false;
       state.error = null;
     },
     videoInfosFailure: (state, action) => {
-      (state.clickedValue = videoObj), (state.loading = false);
+      (state.clickedValue = videoInfosObj), (state.loading = false);
       state.error = action.payload;
     },
   },

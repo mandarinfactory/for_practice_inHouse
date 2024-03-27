@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import {
   DarkmodeSlice,
@@ -12,8 +12,13 @@ import { getSearchVideos } from "../store/reducers/getSearchVideos";
 import Dictaphone from "./Dictaphone";
 import { UseDarkmode, useDarkmode } from "../hooks/useDarkmode";
 
+interface DarkModeAppType {
+  payload: string | undefined;
+  type: string
+}
+
 const Navbar: React.FC = () => {
-  const [darkmodeSelector, onToggleDarkMode]: UseDarkmode = useDarkmode();
+  const [darkmodeSelector, onToggleDarkMode] = useDarkmode();
   const dispatch = useDispatch();
 
   const getInputValue = (value: any) => {
@@ -84,7 +89,7 @@ const Navbar: React.FC = () => {
             <div
               className="moon p-3 rounded-full bg-yellow-400 hover:bg-yellow-300 cursor-pointer"
               onClick={() => {
-                dispatch(DarkmodeSlice.actions.toggleDarkMode("dark"));
+                dispatch(DarkmodeSlice.actions.toggleDarkMode())
               }}
             >
               <svg
@@ -104,7 +109,7 @@ const Navbar: React.FC = () => {
             <div
               className="sun p-3 rounded-full bg-orange-500 hover:bg-orange-400 cursor-pointer"
               onClick={() => {
-                dispatch(DarkmodeSlice.actions?.toggleDarkMode("light"));
+                dispatch(DarkmodeSlice.actions?.toggleDarkMode());
               }}
             >
               <svg

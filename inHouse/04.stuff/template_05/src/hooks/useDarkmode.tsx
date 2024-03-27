@@ -22,8 +22,8 @@ export const useDarkmode = (): UseDarkmode => {
     }
   }, [darkmodeSelector]);
 
-  const onToggleDarkMode = (text: string): void => {
-    dispatch(toggleDarkMode(text));
+  const onToggleDarkMode = () => {
+    dispatch(toggleDarkMode());
   };
 
   return [darkmodeSelector, onToggleDarkMode];
