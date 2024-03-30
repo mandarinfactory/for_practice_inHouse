@@ -28,10 +28,10 @@ const Video: React.FC = () => {
                 <div className="w-full my-7 flex flex-col justify-start items-start p-3 bg-slate-50 rounded-3xl shadow-xl dark:bg-neutral-700 dark:text-white">
                   <h1 className="mb-3 text-2xl">{value[1].snippet.title}</h1>
                   <div className="flex items-center my-3">
-                    <h1 className="text-xl px-3 py-2.5 mr-3 bg-indigo-700 text-white rounded-3xl">
+                    <h1 className="text-xl px-3 py-2.5 mr-3 bg-sky-700 text-white rounded-3xl">
                       {value[1]?.snippet.channelTitle}
                     </h1>
-                    <div className="flex justify-center items-center px-3 py-2 text-white bg-indigo-400 rounded-full">
+                    <div className="flex justify-center items-center px-3 py-2 text-white bg-sky-400 rounded-full">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 24 24"
@@ -83,10 +83,10 @@ const Video: React.FC = () => {
                 <div className="w-full my-7 flex flex-col justify-start items-start p-3 bg-slate-50 rounded-3xl shadow-xl dark:bg-neutral-700 dark:text-white">
                   <h1 className="text-2xl">{value[1].snippet.title}</h1>
                   <div className="flex items-center my-3">
-                    <h1 className="text-xl px-3 py-2.5 mr-3 bg-indigo-700 text-white rounded-3xl">
+                    <h1 className="text-xl px-3 py-2.5 mr-3 bg-sky-700 text-white rounded-3xl">
                       {value[1]?.snippet.channelTitle}
                     </h1>
-                    <div className="flex justify-center items-center px-3 py-2 text-white bg-indigo-400 rounded-full">
+                    <div className="flex justify-center items-center px-3 py-2 text-white bg-sky-400 rounded-full">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 24 24"

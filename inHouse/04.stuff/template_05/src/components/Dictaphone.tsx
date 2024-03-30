@@ -67,20 +67,20 @@ const Dictaphone: React.FC = () => {
           </div>
           <div className="my-5 flex justify-center">
             <button
-              className="p-2 hover:bg-indigo-700 hover:text-white rounded-3xl duration-75 text-xl"
+              className="p-2 hover:bg-sky-700 hover:text-white rounded-3xl duration-75 text-xl"
               onClick={() => SpeechRecognition.startListening()}
             >
               시작
             </button>
             <button
-              className="mx-10 p-2 hover:bg-indigo-700 hover:text-white rounded-3xl duration-75 text-xl"
+              className="mx-10 p-2 hover:bg-sky-700 hover:text-white rounded-3xl duration-75 text-xl"
               onClick={SpeechRecognition.stopListening}
             >
               멈춤
             </button>
             <button
               onClick={resetTranscript}
-              className="p-2 hover:bg-indigo-700 hover:text-white rounded-3xl duration-75 text-xl"
+              className="p-2 hover:bg-sky-700 hover:text-white rounded-3xl duration-75 text-xl"
             >
               리셋
             </button>

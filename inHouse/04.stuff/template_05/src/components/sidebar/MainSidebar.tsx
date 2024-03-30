@@ -4,7 +4,7 @@ const MainSidebar: React.FC = () => {
   return (
     <>
       <div
-        className="flex flex-col justify-center items-center my-7 hover:text-indigo-800 dark:hover:text-indigo-400 cursor-pointer"
+        className="flex flex-col justify-center items-center my-7 hover:text-sky-800 dark:hover:text-sky-400 cursor-pointer"
         onClick={() => {
           location.reload();
         }}

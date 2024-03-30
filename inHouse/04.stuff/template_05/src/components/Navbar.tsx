@@ -35,7 +35,7 @@ const Navbar: React.FC = () => {
             location.reload();
           }}
         >
-          <div className="p-4 bg-indigo-800 dark:bg-indigo-500 rounded-full">
+          <div className="p-4 bg-sky-700 dark:bg-sky-500 rounded-full">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 384 512"
@@ -62,7 +62,7 @@ const Navbar: React.FC = () => {
         />
         <div>
           <button
-            className="dictaphone transcript p-3 ml-5 rounded-full bg-indigo-800 dark:bg-indigo-500 hover:bg-indigo-700 dark:hover:bg-indigo-400 cursor-pointer"
+            className="dictaphone transcript p-3 ml-5 rounded-full bg-sky-800 dark:bg-sky-500 hover:bg-sky-700 dark:hover:bg-sky-400 cursor-pointer"
             onClick={() => {
               dispatch(DictaphoneSlice.actions.dictaphoneStart(true));
             }}
