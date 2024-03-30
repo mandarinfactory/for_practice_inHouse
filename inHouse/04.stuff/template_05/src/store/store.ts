@@ -41,8 +41,6 @@ const firstVideoState: FirstVideoType = {
 const videoCommentsState: CommentType = {
   comments: commentObj,
 };
-console.log(videoInfosObj);
-
 const videoInfosState: VideoAddInfosSelectorType = {
   clickedValue: videoInfosObj,
   loading: false,
@@ -176,7 +174,7 @@ export const VideoCommentsSlice = createSlice({
   initialState: videoCommentsState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(getVideoComments.fulfilled, (state, action: any) => {
+    builder.addCase(getVideoComments.fulfilled, (state, action) => {
       state.comments = action.payload;
     });
   },

@@ -24,20 +24,20 @@ const Comments: React.FC = () => {
 
   return (
     <div className="w-[75%] h-auto">
-      {commentSelector?.comments?.items?.map((value: any, index: any) => (
+      {commentSelector?.comments.items.map((value, index: number) => (
         <div className="flex my-7" key={index}>
           <img
             src={
-              value?.snippet?.topLevelComment?.snippet?.authorProfileImageUrl
+              value.snippet.topLevelComment.snippet.authorProfileImageUrl
             }
             alt="profile"
             className="w-[45px] h-[45px] mr-3 rounded-full"
           />
           <div className="flex flex-col items-start justify-center">
             <p className="mb-1">
-              {value?.snippet?.topLevelComment?.snippet?.authorDisplayName}
+              {value.snippet.topLevelComment.snippet.authorDisplayName}
             </p>
-            <p>{value?.snippet?.topLevelComment?.snippet?.textOriginal}</p>
+            <p>{value.snippet.topLevelComment.snippet.textOriginal}</p>
           </div>
         </div>
       ))}

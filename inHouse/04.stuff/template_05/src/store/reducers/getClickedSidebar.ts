@@ -1,10 +1,12 @@
+import { Dispatch } from "@reduxjs/toolkit";
+import { ReduxType } from "../../types/types";
 import { YOUTUBE_API_URL } from "../../utils/constants";
 import { clickedStart, clickedSuccess, clickedFailure } from "../store";
 
 const API_KEY = import.meta.env.VITE_YOUTUBE_DATA_API_KEY;
 
 export const getClickedSidebar =
-  (clickedValue: any) => async (dispatch: any) => {
+  (clickedValue: ReduxType) => async (dispatch: Dispatch) => {
     try {
       dispatch(clickedStart());
       const response = await fetch(

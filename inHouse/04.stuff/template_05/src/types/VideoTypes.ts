@@ -96,8 +96,10 @@ interface CommentDataType {
 interface RecommendedDataType {
   contentDetails: {
     upload: {
+      kind: string;
       videoId: string;
     };
+    playlistItem?: {};
   };
   etag: string;
   id: string;

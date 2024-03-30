@@ -1,3 +1,5 @@
+import { Dispatch } from "@reduxjs/toolkit";
+import { ReduxType } from "../../types/types";
 import { YOUTUBE_API_URL } from "../../utils/constants";
 import {
   recommendedStart,
@@ -8,7 +10,7 @@ import {
 const API_KEY = import.meta.env.VITE_YOUTUBE_DATA_API_KEY;
 
 export const getRecommendedVideos =
-  (clickedValue: any) => async (dispatch: any) => {
+  (clickedValue: ReduxType) => async (dispatch: Dispatch) => {
     try {
       // console.log(clickedValue);
       dispatch(recommendedStart());

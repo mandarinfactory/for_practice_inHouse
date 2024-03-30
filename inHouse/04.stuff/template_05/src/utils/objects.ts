@@ -45,6 +45,7 @@ export const videoObj = {
   id: { kind: "", videoId: "" },
   snippet: snippetObj,
 };
+
 export const videoInfosItemObj = [
   {
     contentDetails: {

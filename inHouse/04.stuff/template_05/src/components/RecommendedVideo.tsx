@@ -16,8 +16,8 @@ const RecommendedVideo: React.FC = () => {
     (state: RootState) => state.youtubeRecommendedApp
   );
 
-  const filteredSelector = recommendedSelector?.recommendeds?.items?.filter(
-    (el: any) => {
+  const filteredSelector = recommendedSelector?.recommendeds.items.filter(
+    (el) => {
       if (!el.contentDetails.playlistItem) {
         return el;
       }
@@ -26,7 +26,7 @@ const RecommendedVideo: React.FC = () => {
 
   return (
     <div className="flex flex-col">
-      {filteredSelector?.map((value: any, id: number) => (
+      {filteredSelector?.map((value, id: number) => (
         <div
           className="w-[180px] h-[130px] m-1 flex cursor-pointer"
           key={id}
@@ -42,7 +42,7 @@ const RecommendedVideo: React.FC = () => {
             store.dispatch(
               getVideoInfos(
                 ClickedVideoInfoSlice.actions.videoInfosSuccess(
-                  value.contentDetails?.upload?.videoId
+                  value.contentDetails.upload.videoId
                 )
               )
             );

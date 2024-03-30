@@ -16,7 +16,7 @@ const Video: React.FC = () => {
     <div className="w-full h-full">
       {!videoSelector.clickedVideo.contentDetails
         ? Object.entries(videoSelector).map(
-            (value: any, index: number) => (
+            (value, index: number) => (
               <div
                 className="w-full h-full flex flex-col justify-center items-center"
                 key={index}
@@ -71,7 +71,7 @@ const Video: React.FC = () => {
             )
           )
         : Object.entries(videoSelector).map<any>(
-            (value: any, index: number) => (
+            (value, index: number) => (
               <div
                 className="w-full h-full flex flex-col justify-center items-center"
                 key={index}

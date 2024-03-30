@@ -16,7 +16,7 @@ const Navbar: React.FC = () => {
   const [darkmodeSelector, onToggleDarkMode]:UseDarkmode = useDarkmode();
   const dispatch = useDispatch();
 
-  const getInputValue = (value: any) => {
+  const getInputValue = (value: React.KeyboardEvent<HTMLInputElement>) => {
     if (value.key === "Enter") {
       const inputValueElement =
         document.querySelector<HTMLInputElement>(".inputValue");

@@ -1,9 +1,11 @@
 import { searchStart, searchSuccess, searchFailure } from "../store";
 import { YOUTUBE_API_URL } from "../../utils/constants";
+import { ReduxType } from "../../types/types";
+import { Dispatch } from "@reduxjs/toolkit";
 
 const API_KEY = import.meta.env.VITE_YOUTUBE_DATA_API_KEY;
 
-export const getSearchVideos = (inputValue: any) => async (dispatch: any) => {
+export const getSearchVideos = (inputValue: ReduxType) => async (dispatch: Dispatch) => {
   try {    
     dispatch(searchStart());
     const response = await fetch(
