@@ -2,6 +2,7 @@ interface LayoutType {
   height: number;
   url: string;
   width: number;
+  high?: any;
 }
 
 interface SnippetType {
@@ -59,7 +60,7 @@ interface CommentSnippetType {
   videoId: string;
 }
 
-interface VideoDataType {
+export interface VideoDataType {
   etag: string;
   id: { kind: string; videoId: string };
   kind: string;
@@ -116,6 +117,8 @@ interface VideoValueType {
   regionCode: string;
   error?: null;
   loading?: boolean;
+  id: {kind: string; videoId:string};
+  snippet: SnippetType | SearchVideoSnippetType;
 }
 
 export interface ClickedValueType extends VideoDataType {}
@@ -143,10 +146,27 @@ export interface CommentType {
 
 export interface clickedIdSelectorType {
   clickedVideo: {
+    contentDetails: {
+      upload: {
+        videoId: string;
+      };
+    };
     etag: string;
-    id: { kind: string; videoId: string };
+    id: {
+      kind: string;
+      videoId: string;
+    };
     kind: string;
-    snippet: SnippetType;
+    snippet: {
+      channelId: string;
+      channelTitle: string;
+      description: string;
+      liveBroadcastContent: string;
+      publishTime: string;
+      publishedAt: string;
+      thumbnails: { default: LayoutType; medium: LayoutType; high: LayoutType };
+      title: string;
+    };
   };
 }
 
@@ -165,50 +185,51 @@ export interface RecommendedSelectorType {
 export interface VideoAddInfosSelectorType {
   clickedValue: {
     etag: string;
-    items: {
-      contentDetails: {
-        caption: string;
-        contentRating: {};
-        definition: string;
-        dimension: string;
-        duration: string;
-        licensedContent: boolean;
-        projection: string;
-        regionRestriction: { allowed: string[] };
-      };
-      etag: string;
-      id: string;
-      kind: string;
-      snippet: {
-        categoryId: string;
-        channelId: string;
-        channelTitle: string;
-        defaultAudioLanguage: string;
-        defaultLanguage: string;
-        description: string;
-        liveBroadcastContent: string;
-        localized: {
+    items: 
+      {
+        contentDetails: {
+          caption: string;
+          contentRating: {};
+          definition: string;
+          dimension: string;
+          duration: string;
+          licensedContent: boolean;
+          projection: string;
+          regionRestriction: { allowed: string[] };
+        };
+        etag: string;
+        id: string;
+        kind: string;
+        snippet: {
+          categoryId: string;
+          channelId: string;
+          channelTitle: string;
+          defaultAudioLanguage: string;
+          defaultLanguage: string;
           description: string;
+          liveBroadcastContent: string;
+          localized: {
+            description: string;
+            title: string;
+          };
+          publishedAt: string;
+          tags: string[];
+          thumbnails: {
+            default: LayoutType;
+            high: LayoutType;
+            maxres: LayoutType;
+            medium: LayoutType;
+            standard: LayoutType;
+          };
           title: string;
         };
-        publishedAt: string;
-        tags: string[];
-        thumbnails: {
-          default: LayoutType;
-          high: LayoutType;
-          maxres: LayoutType;
-          medium: LayoutType;
-          standard: LayoutType;
+        statistics: {
+          commentCount: string;
+          favoriteCount: string;
+          viewCount: string;
+          likeCount: string;
         };
-        title: string;
-      };
-      statistics: {
-        commentCount: string;
-        favoriteCount: string;
-        viewCount: string;
-        likeCount: string;
-      };
-    };
+      }[];
     kind: string;
     pageInfo: { resultsPerPage: number; totalResults: number };
   };

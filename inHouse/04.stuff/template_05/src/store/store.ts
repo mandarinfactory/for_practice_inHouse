@@ -12,7 +12,12 @@ import {
   RecommendedSelectorType,
   VideoAddInfosSelectorType,
 } from "../types/VideoTypes";
-import { videoObj, commentObj, clickedIdObj, contentIdObj, videoInfosObj } from "../utils/objects";
+import {
+  videoObj,
+  commentObj,
+  clickedIdObj,
+  videoInfosObj,
+} from "../utils/objects";
 
 const clickedButtonPageState: ClickedVideoSelectorType = {
   clickedValue: videoObj,
@@ -36,18 +41,20 @@ const firstVideoState: FirstVideoType = {
 const videoCommentsState: CommentType = {
   comments: commentObj,
 };
+console.log(videoInfosObj);
+
 const videoInfosState: VideoAddInfosSelectorType = {
   clickedValue: videoInfosObj,
   loading: false,
   error: null,
-}
+};
 const dictaphoneState: DictaphoneState = {
   mic: false,
   micValue: "",
 };
 
-const videoIsClickedState: any /* clickedIdSelectorType | ContentIdSelectorType */ = {
-  clickedVideo: "" /* clickedIdObj || contentIdObj */,
+const videoIsClickedState: clickedIdSelectorType = {
+  clickedVideo: clickedIdObj,
 };
 
 const darkmodeState: DarkmodeState = {
@@ -101,8 +108,6 @@ export const ClickedVideoInfoSlice = createSlice({
       state.loading = true;
     },
     videoInfosSuccess: (state, action) => {
-      console.log(state);
-      
       state.clickedValue = action.payload;
       state.loading = false;
       state.error = null;
@@ -217,14 +222,14 @@ export const { isClicked } = VideoScreenIsClickedSlice.actions;
 export const store = configureStore({
   reducer: {
     darkmodeApp: DarkmodeSlice.reducer,
-    youtubeClickedButtonPageApp: ClickedButtonPageSlice.reducer,
-    clickedVideoInfoApp: ClickedVideoInfoSlice.reducer,
-    youtubeSearchInputApp: SearchInputSlice.reducer,
-    youtubeRecommendedApp: RecommendedVideoSlice.reducer,
     youtubeApp: YoutubeSlice.reducer,
-    videoCommentsApp: VideoCommentsSlice.reducer,
     dictaphoneApp: DictaphoneSlice.reducer,
+    videoCommentsApp: VideoCommentsSlice.reducer,
+    youtubeSearchInputApp: SearchInputSlice.reducer,
+    clickedVideoInfoApp: ClickedVideoInfoSlice.reducer,
+    youtubeRecommendedApp: RecommendedVideoSlice.reducer,
     videoScreenIsClickedApp: VideoScreenIsClickedSlice.reducer,
+    youtubeClickedButtonPageApp: ClickedButtonPageSlice.reducer,
   },
 });
 

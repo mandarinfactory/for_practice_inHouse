@@ -45,10 +45,8 @@ export const videoObj = {
   id: { kind: "", videoId: "" },
   snippet: snippetObj,
 };
-
-export const videoInfosObj = {
-  etag: "",
-  items: {
+export const videoInfosItemObj = [
+  {
     contentDetails: {
       caption: "",
       contentRating: {},
@@ -92,6 +90,10 @@ export const videoInfosObj = {
       likeCount: "",
     },
   },
+];
+export const videoInfosObj = {
+  etag: "",
+  items: videoInfosItemObj,
   kind: "",
   pageInfo: { resultsPerPage: 0, totalResults: 0 },
   error: null,
@@ -110,22 +112,13 @@ export const commentObj = {
 };
 
 export const clickedIdObj = {
+  contentDetails: {
+    upload: {
+      videoId: "",
+    },
+  },
   etag: "",
   id: { kind: "", videoId: "" },
   kind: "",
   snippet: clickedIdSnippetObj,
-};
-
-export const contentIdObj = {
-  clickedVideo: {
-    contentDetails: {
-      upload: {
-        videoId: "",
-      },
-    },
-    etag: "",
-    id: { kind: "", videoId: "" },
-    kind: "",
-    snippet: snippetObj,
-  },
 };

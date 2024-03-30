@@ -6,15 +6,16 @@ import { RootState } from "../store/store";
 const Video: React.FC = () => {
   const videoSelector = useSelector(
     (state: RootState) => state.videoScreenIsClickedApp
-  );
+  );  
+
   const videoAddInfosSelector = useSelector(
     (state: RootState) => state.clickedVideoInfoApp
-  );  
+  );
 
   return (
     <div className="w-full h-full">
-      {!videoSelector?.clickedVideo.contentDetails
-        ? Object.entries(videoSelector).map<any>(
+      {!videoSelector.clickedVideo.contentDetails
+        ? Object.entries(videoSelector).map(
             (value: any, index: number) => (
               <div
                 className="w-full h-full flex flex-col justify-center items-center"
@@ -41,8 +42,8 @@ const Video: React.FC = () => {
                       </svg>
                       <p className="p-1">
                         {
-                          videoAddInfosSelector?.clickedValue?.items[0]
-                            ?.statistics.likeCount
+                          videoAddInfosSelector.clickedValue.items[0]
+                            .statistics.likeCount
                         }
                         개
                       </p>
@@ -51,7 +52,7 @@ const Video: React.FC = () => {
                   <p>
                     조회수 :{" "}
                     {
-                      videoAddInfosSelector.clickedValue?.items[0].statistics
+                      videoAddInfosSelector.clickedValue.items[0].statistics
                         .viewCount
                     }
                     개
@@ -59,7 +60,7 @@ const Video: React.FC = () => {
                   <p>
                     댓글 :{" "}
                     {
-                      videoAddInfosSelector.clickedValue?.items[0].statistics
+                      videoAddInfosSelector.clickedValue.items[0].statistics
                         .commentCount
                     }
                     개

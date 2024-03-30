@@ -9,9 +9,11 @@ const App: React.FC = () => {
   const videoSelector = useSelector(
     (state: RootState) => state.videoScreenIsClickedApp.clickedVideo
   );
+  console.log(videoSelector);
+  
 
   let screen;
-  if (!videoSelector) {
+  if (!videoSelector.etag) {
     screen = <Home />;
   } else {
     screen = <VideoHome />;

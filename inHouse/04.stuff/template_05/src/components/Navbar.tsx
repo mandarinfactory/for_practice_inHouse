@@ -12,13 +12,8 @@ import { getSearchVideos } from "../store/reducers/getSearchVideos";
 import Dictaphone from "./Dictaphone";
 import { UseDarkmode, useDarkmode } from "../hooks/useDarkmode";
 
-interface DarkModeAppType {
-  payload: string | undefined;
-  type: string
-}
-
 const Navbar: React.FC = () => {
-  const [darkmodeSelector, onToggleDarkMode] = useDarkmode();
+  const [darkmodeSelector, onToggleDarkMode]:UseDarkmode = useDarkmode();
   const dispatch = useDispatch();
 
   const getInputValue = (value: any) => {
