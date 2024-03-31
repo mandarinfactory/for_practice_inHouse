@@ -38,7 +38,7 @@ const Dictaphone: React.FC = () => {
   return (
     <>
       {dictaphoneSelector ? (
-        <div className="absolute w-[20%] h-[20%] top-[10%] right-[5%] bg-slate-50  rounded-3xl shadow-2xl dark:bg-neutral-700">
+        <div className="absolute w-[20%] md:w-[40%] sm:w-[60%] h-[20%] top-[10%] right-[5%] bg-slate-50  rounded-3xl shadow-2xl dark:bg-neutral-700">
           <button
             onClick={() => {
               dispatch(DictaphoneSlice.actions.dictaphoneStart(false));
@@ -67,20 +67,20 @@ const Dictaphone: React.FC = () => {
           </div>
           <div className="my-5 flex justify-center">
             <button
-              className="p-2 hover:bg-sky-700 hover:text-white rounded-3xl duration-75 text-xl"
+              className="p-2 md:p-0 hover:bg-sky-700 hover:text-white rounded-3xl duration-75 text-xl"
               onClick={() => SpeechRecognition.startListening()}
             >
               시작
             </button>
             <button
-              className="mx-10 p-2 hover:bg-sky-700 hover:text-white rounded-3xl duration-75 text-xl"
+              className="mx-10 p-2 md:p-0 hover:bg-sky-700 hover:text-white rounded-3xl duration-75 text-xl"
               onClick={SpeechRecognition.stopListening}
             >
               멈춤
             </button>
             <button
               onClick={resetTranscript}
-              className="p-2 hover:bg-sky-700 hover:text-white rounded-3xl duration-75 text-xl"
+              className="p-2 md:p-0 hover:bg-sky-700 hover:text-white rounded-3xl duration-75 text-xl"
             >
               리셋
             </button>
