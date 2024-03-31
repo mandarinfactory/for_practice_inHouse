@@ -12,7 +12,6 @@ const API_KEY = import.meta.env.VITE_YOUTUBE_DATA_API_KEY;
 export const getRecommendedVideos =
   (clickedValue: ReduxType) => async (dispatch: Dispatch) => {
     try {
-      // console.log(clickedValue);
       dispatch(recommendedStart());
       const response = await fetch(
         `${YOUTUBE_API_URL}/activities?&key=${API_KEY}&part=contentDetails&part=snippet&maxResults=20&channelId=${clickedValue.payload}`

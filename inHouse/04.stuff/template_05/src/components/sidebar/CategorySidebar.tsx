@@ -1,20 +1,33 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import {
+  SearchInputSlice,
   ClickedButtonPageSlice,
   VideoScreenIsClickedSlice,
   store,
+  RootState,
 } from "../../store/store";
 import { getClickedSidebar } from "../../store/reducers/getClickedSidebar";
+import { getSearchVideos } from "../../store/reducers/getSearchVideos";
 
 const CategorySidebar: React.FC = () => {
   const dispatch = useDispatch();
+  const searchedSelector = useSelector((state: RootState) => {
+    return state.youtubeSearchInputApp.searchVal?.etag;
+  });
   const storeToDispatch = (value: string) => {
     store.dispatch(
       getClickedSidebar(ClickedButtonPageSlice.actions.clickedSuccess(value))
     );
     dispatch(VideoScreenIsClickedSlice.actions.isClicked(0));
+  };
+  const searchedInputValHandler = (replace: string) => {
+    if (searchedSelector) {
+      store.dispatch(
+        getSearchVideos(SearchInputSlice.actions.searchSuccess(replace))
+      );
+    }
   };
   return (
     <div className="flex flex-col">
@@ -22,6 +35,7 @@ const CategorySidebar: React.FC = () => {
         className="flex flex-col justify-center items-center mb-7 hover:text-sky-800 dark:hover:text-sky-400 cursor-pointer"
         onClick={() => {
           storeToDispatch("");
+          searchedInputValHandler("");
         }}
       >
         <svg
@@ -43,6 +57,7 @@ const CategorySidebar: React.FC = () => {
         className="flex flex-col justify-center items-center mb-7 hover:text-sky-800 dark:hover:text-sky-400 cursor-pointer"
         onClick={() => {
           storeToDispatch("음악");
+          searchedInputValHandler("음악");
         }}
       >
         <svg
@@ -63,6 +78,7 @@ const CategorySidebar: React.FC = () => {
         className="flex flex-col justify-center items-center mb-7 hover:text-sky-800 dark:hover:text-sky-400 cursor-pointer"
         onClick={() => {
           storeToDispatch("영화");
+          searchedInputValHandler("영화");
         }}
       >
         <svg
@@ -83,6 +99,7 @@ const CategorySidebar: React.FC = () => {
         className="flex flex-col justify-center items-center mb-7 hover:text-sky-800 dark:hover:text-sky-400 cursor-pointer"
         onClick={() => {
           storeToDispatch("스트리밍");
+          searchedInputValHandler("스트리밍");
         }}
       >
         <svg

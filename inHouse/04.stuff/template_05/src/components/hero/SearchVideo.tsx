@@ -15,9 +15,7 @@ const SearchVideo: React.FC = () => {
   const dispatch = useDispatch();
   const searchVideoSelector = useSelector(
     (state: RootState) => state.youtubeSearchInputApp
-  );
-  console.log(searchVideoSelector);
-  
+  );  
     
   return (
     <div className="w-[85%] h-screen flex flex-wrap justify-center">
@@ -51,7 +49,7 @@ const SearchVideo: React.FC = () => {
             alt="thumbnail"
             className="rounded-3xl"
           />
-          <div className="w-full h-full">
+          <div className="w-full h-full hover:text-sky-700">
             <h1 className="text-lg my-2 overflow-hidden truncate">
               {value.snippet.title}
             </h1>

@@ -58,13 +58,15 @@ const ClickedVideo: React.FC = () => {
               alt="thumbnail"
               className="rounded-3xl"
             />
-            <h1 className="text-lg mt-3 mb-1 overflow-hidden truncate">
-              {value.snippet ? value.snippet.title : value.snippet}
-            </h1>
-            <p className="text-xs">
-              채널이름 :{" "}
-              {value.snippet ? value.snippet.channelTitle : value.snippet}
-            </p>
+            <div className="hover:text-sky-700">
+              <h1 className="text-lg mt-3 mb-1 overflow-hidden truncate">
+                {value.snippet ? value.snippet.title : value.snippet}
+              </h1>
+              <p className="text-xs">
+                채널이름 :{" "}
+                {value.snippet ? value.snippet.channelTitle : value.snippet}
+              </p>
+            </div>
           </div>
         )
       )}

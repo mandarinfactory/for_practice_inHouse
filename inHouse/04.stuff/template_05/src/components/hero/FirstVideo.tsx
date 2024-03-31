@@ -17,7 +17,7 @@ const FirstVideo: React.FC = () => {
   const firstVideoSelector = useSelector(
     (state: RootState) => state.youtubeApp
   );
-    
+
   useEffect(() => {
     dispatch<any>(getHomepageVideos(""));
   }, [dispatch]);
@@ -52,10 +52,12 @@ const FirstVideo: React.FC = () => {
             alt="thumbnail"
             className="rounded-3xl"
           />
-          <h1 className="text-lg my-2 overflow-hidden truncate">
-            {value.snippet.title}
-          </h1>
-          <p className="text-xs">채널이름 : {value.snippet.channelTitle}</p>
+          <div className="hover:text-sky-700">
+            <h1 className="text-lg my-2 overflow-hidden truncate">
+              {value.snippet.title}
+            </h1>
+            <p className="text-xs">채널이름 : {value.snippet.channelTitle}</p>
+          </div>
         </div>
       ))}
     </div>
