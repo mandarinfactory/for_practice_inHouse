@@ -26,7 +26,7 @@ const Video: React.FC = () => {
                   className="w-full h-[800px] rounded-3xl"
                 ></iframe>
                 <div className="w-full my-7 flex flex-col justify-start items-start p-3 bg-slate-50 rounded-3xl shadow-xl dark:bg-neutral-700 dark:text-white">
-                  <h1 className="mb-3 text-2xl">{value[1].snippet.title}</h1>
+                  <h1 className="mb-3 text-2xl sm:text-lg">{value[1].snippet.title}</h1>
                   <div className="flex items-center my-3">
                     <h1 className="text-xl px-3 py-2.5 mr-3 bg-sky-700 text-white rounded-3xl">
                       {value[1]?.snippet.channelTitle}
@@ -65,7 +65,7 @@ const Video: React.FC = () => {
                     }
                     개
                   </p>
-                  <p>{value[1].snippet.description}</p>
+                  <p className="sm:hidden">{value[1].snippet.description}</p>
                 </div>
               </div>
             )
@@ -81,7 +81,7 @@ const Video: React.FC = () => {
                   className="w-full h-[800px] rounded-3xl"
                 ></iframe>
                 <div className="w-full my-7 flex flex-col justify-start items-start p-3 bg-slate-50 rounded-3xl shadow-xl dark:bg-neutral-700 dark:text-white">
-                  <h1 className="text-2xl">{value[1].snippet.title}</h1>
+                  <h1 className="text-2xl sm:text-lg">{value[1].snippet.title}</h1>
                   <div className="flex items-center my-3">
                     <h1 className="text-xl px-3 py-2.5 mr-3 bg-sky-700 text-white rounded-3xl">
                       {value[1]?.snippet.channelTitle}
@@ -120,7 +120,7 @@ const Video: React.FC = () => {
                     }
                     개
                   </p>
-                  <p>{value[1]?.snippet.description}</p>
+                  <p className="sm:hidden">{value[1]?.snippet.description}</p>
                 </div>
               </div>
             )

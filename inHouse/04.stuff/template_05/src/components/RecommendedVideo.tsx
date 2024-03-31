@@ -25,7 +25,7 @@ const RecommendedVideo: React.FC = () => {
   );
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col sm:hidden">
       {filteredSelector?.map((value, id: number) => (
         <div
           className="w-[180px] h-[130px] m-1 flex cursor-pointer"
@@ -53,7 +53,7 @@ const RecommendedVideo: React.FC = () => {
             alt="thumbnail"
             className="mx-1 rounded-xl"
           />
-          <div className="w-full ml-3">
+          <div className="w-full ml-3 md:hidden sm:hidden">
             <h1 className="text-base truncate">{value.snippet.title}</h1>
             <h1 className="mt-3 text-base">{value.snippet.channelTitle}</h1>
           </div>

@@ -24,7 +24,7 @@ const Comments: React.FC = () => {
 
   return (
     <div className="w-[75%] h-auto">
-      {commentSelector?.comments.items.map((value, index: number) => (
+      {commentSelector?.comments?.items?.map((value, index: number) => (
         <div className="flex my-7" key={index}>
           <img
             src={

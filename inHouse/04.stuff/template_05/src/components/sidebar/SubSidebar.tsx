@@ -79,7 +79,7 @@ const SubSidebar: React.FC = () => {
             transform="scale(.998)"
           />
         </svg>
-        <h1>무한도전</h1>
+        <h1 className="md:hidden sm:hidden">무한도전</h1>
       </div>
       <div
         className="flex flex-col justify-center items-center mb-7 hover:text-sky-800 dark:hover:text-sky-400 cursor-pointer"
@@ -89,7 +89,7 @@ const SubSidebar: React.FC = () => {
         }}
       >
         <img className="w-10 h-10 rounded-full" src={침착맨} alt="" />
-        <h1>침착맨</h1>
+        <h1 className="md:hidden sm:hidden">침착맨</h1>
       </div>
       <div
         className="flex flex-col justify-center items-center mb-7 hover:text-sky-800 dark:hover:text-sky-400 cursor-pointer"
@@ -99,7 +99,7 @@ const SubSidebar: React.FC = () => {
         }}
       >
         <img className="w-10 h-10 rounded-full" src={hahaha} alt="" />
-        <h1>haha ha</h1>
+        <h1 className="md:hidden sm:hidden">haha ha</h1>
       </div>
       <div
         className="flex flex-col justify-center items-center hover:text-sky-800 dark:hover:text-sky-400 cursor-pointer"
@@ -113,7 +113,7 @@ const SubSidebar: React.FC = () => {
           src={슈카월드}
           alt=""
         />
-        <h1>슈카월드</h1>
+        <h1 className="md:hidden sm:hidden">슈카월드</h1>
       </div>
       <div className="w-[80%] h-1 my-7 mx-auto bg-slate-300"></div>
     </div>
