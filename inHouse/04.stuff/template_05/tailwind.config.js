@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {},
     fontFamily: {
-      'sans': ['JalnanGothic'],
+      'sans': ['SBAggroB'],
     }
   },
   plugins: [],
