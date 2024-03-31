@@ -23,7 +23,7 @@ export default function Hero() {
             </button>
           </div>
         </div>
-        <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 sm:w-[500px] sm:h-[500px]">
+        <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 sm:w-[350px] sm:h-[350px]">
           <Animation />
         </div>
       </div>

@@ -19,9 +19,9 @@ const handleMouseMove = (frameRef, cardRef, lightRef) => (e) => {
         circle at ${left}px ${top}px, #00000010, #ffffff00, #ffffff70
       )
     `;
-  const windowResize = (frameRef) => {
+  /* const windowResize = (frameRef) => {
     window.addEventListener("resize", () => {
-      const rect = frameRef.current.getBoundingClientRect();
+      // const rect = frameRef.current.getBoundingClientRect();
       if (rect !== undefined) {
         x = rect.x;
         y = rect.y;
@@ -30,7 +30,7 @@ const handleMouseMove = (frameRef, cardRef, lightRef) => (e) => {
       }
     });
   };
-  windowResize(frameRef);
+  windowResize(frameRef); */
 };
 
 const attachMouseEvents = (frameRef, cardRef, lightRef) => {

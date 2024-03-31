@@ -20,16 +20,16 @@ export default function AboutMe() {
           </div>
           <div>
             <p className="mt-10 mb-1.5 lg:text-lg md:text-lg sm:text-md">
-              23년 3월까지 웹퍼블리셔 교육으로 마크업언어(HTML, CSS, SCSS) <br />
-              그리고 기본적인 바닐라JS, jQuery를 배웠으며
+              23년 5월까지 웹퍼블리셔 교육으로 마크업언어(HTML, CSS) <br />
+              그리고 기본적인 바닐라JS, jQuery를 5개월간 배웠으며
             </p>
             <p className="mb-1.5 lg:text-lg md:text-lg sm:text-md">
               교육을 끝마치고 JavaScript 라이브러리인 <br />
-              React JS와 React Native를 독학으로 공부했습니다.
+              React JS, 프레임워크인 NextJS를 독학으로 공부했습니다.
             </p>
             <p className="mb-1.5 lg:text-lg md:text-lg sm:text-md">
-              또한, 기본적인 바닐라JS교육을 바탕으로 JavaScript ES6을
-              공부했습니다.
+              JavaScript ES6 및 Typescript 그리고 TailwindCSS를 공부하고 
+              상태 라이브러리인 Redux와 Recoil를 공부했습니다.
             </p>
           </div>
           <div className="mt-4">
