@@ -19,7 +19,6 @@ export const getServerSideProps: GetServerSideProps = async () => {
   
   const encodeRedirectUri = encodeURIComponent(REDIRECT_URL);
   const spotifyAuthUrl = `https://accounts.spotify.com/authorize?response_type=code&client_id=${CLIENT_ID}&redirect_uri=${encodeRedirectUri}&scope=${SCOPE}`;
-  console.log(spotifyAuthUrl);
   return { props: { spotifyAuthUrl } };
 };
 
