@@ -8,7 +8,7 @@ const car = cars.find((car) => car.id === parseInt(route.params.id));
 </script>
 
 <template>
-  <div>
+  <div v-if="car">
     <h1>ContactInfos</h1>
     <p>{{ car.contact.dealer }}</p>
     <p>{{ car.contact.number }}</p>
