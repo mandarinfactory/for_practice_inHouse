@@ -2,6 +2,8 @@
 import axios from "axios";
 import { ref, watch } from "vue";
 
+import Card from "./Card.vue";
+
 const characters = ref(null);
 const page = ref(0);
 const response = await axios.get("https://rickandmortyapi.com/api/character");
@@ -15,10 +17,8 @@ watch(page, async () => {
 </script>
 
 <template>
-  <div>
-    <n-button type="primary">
-      Primary
-    </n-button>
+  <div class="cards">
+    <Card />
   </div>
 </template>
 
@@ -28,7 +28,7 @@ watch(page, async () => {
   padding: 30px;
 }
 .cards {
-  max-width: 1000px;
+  max-width: 400px;
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;

@@ -1,5 +1,10 @@
 <template>
-  <div></div>
+  <Ncard title="Card with Cover">
+    <template #cover>
+      <img src="https://07akioni.oss-cn-beijing.aliyuncs.com/07akioni.jpeg" />
+    </template>
+    Card Content
+  </Ncard>
 </template>
 
 <style scoped>
