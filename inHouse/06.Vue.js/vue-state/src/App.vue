@@ -25,18 +25,7 @@ const selectRandomColor = () => {
 </script>
 
 <template>
-  <main
-    :style="{
-      backgroundColor: `rgb(${color.red}, ${color.green}, ${color.blue})`,
-    }"
-  >
-    <div>
-      <input type="number" v-model="color.red" placeholder="red" />
-      <input type="number" v-model="color.blue" placeholder="blue" />
-      <input type="number" v-model="color.green" placeholder="green" />
-      <button @click="selectRandomColor">랜덤색상으로 선택하기!</button>
-    </div>
-  </main>
+  <main></main>
 </template>
 
 <style scoped>
