@@ -16,6 +16,12 @@ const color = reactive({
   blue: 0,
   green: 0,
 });
+
+const selectRandomColor = () => {
+  color.red = 266;
+  color.blue = 216;
+  color.green = 170;
+}
 </script>
 
 <template>
@@ -28,6 +34,7 @@ const color = reactive({
       <input type="number" v-model="color.red" placeholder="red" />
       <input type="number" v-model="color.blue" placeholder="blue" />
       <input type="number" v-model="color.green" placeholder="green" />
+      <button @click="selectRandomColor">랜덤색상으로 선택하기!</button>
     </div>
   </main>
 </template>
