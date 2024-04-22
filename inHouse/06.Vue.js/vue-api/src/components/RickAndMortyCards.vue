@@ -1,24 +1,41 @@
 <script setup>
 import axios from "axios";
-import { ref, watch } from "vue";
-
+import { ref, watch, onMounted } from "vue";
 import Card from "./Card.vue";
 
 const characters = ref(null);
-const page = ref(0);
-const response = await axios.get("https://rickandmortyapi.com/api/character");
-characters.value = response.data;
+const page = ref(1);
+
+onMounted(async () => {
+  const response = await axios.get("https://rickandmortyapi.com/api/character");
+  console.log(response);
+  characters.value = response.data.results;
+});
 
 watch(page, async () => {
-  const response = await axios.get(
-    `https://rickandmortyapi.com/api/character?limit=8&offset=${page.value * 8}`
+  const res = await axios.get(
+    `https://rickandmortyapi.com/api/character/?page=${page.value}`
   );
+  characters.value = res.data;
 });
 </script>
 
 <template>
-  <div class="cards">
-    <Card />
+  <div class="container">
+    <div class="cards">
+      <Card
+        v-for="character in characters"
+        :key="character.id"
+        :image="character.image"
+        :name="character.name"
+      >
+        <p>{{ character.location.name }}</p>
+      </Card>
+    </div>
+    <div class="button-container">
+      <button @click="page--">&lt</button>
+      <button @click="page++">></button>
+    </div>
   </div>
 </template>
 
@@ -28,10 +45,11 @@ watch(page, async () => {
   padding: 30px;
 }
 .cards {
-  max-width: 400px;
+  max-width: 1000px;
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
+  height: 700px;
 }
 .cards h3 {
   font-weight: bold;
@@ -39,7 +57,10 @@ watch(page, async () => {
 .cards p {
   font-size: 10px;
 }
-
+.jobs {
+  display: flex;
+  flex-wrap: wrap;
+}
 .button-container {
   display: flex;
   justify-content: center;
@@ -52,5 +73,10 @@ watch(page, async () => {
   border-radius: 100%;
   margin: 0 5px;
   cursor: pointer;
+}
+.spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>

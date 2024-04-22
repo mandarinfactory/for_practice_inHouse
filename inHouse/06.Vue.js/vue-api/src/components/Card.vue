@@ -1,10 +1,20 @@
+<script setup>
+import { defineProps } from "vue";
+
+const { image, name } = defineProps([
+  "image",
+  "name",
+]);
+</script>
+
 <template>
-  <Ncard title="Card with Cover">
+  <NCard>
     <template #cover>
-      <img src="https://07akioni.oss-cn-beijing.aliyuncs.com/07akioni.jpeg" />
+      <img :src="image" />
     </template>
-    Card Content
-  </Ncard>
+    <h3>{{ name }}</h3>
+    <slot></slot>
+  </NCard>
 </template>
 
 <style scoped>
