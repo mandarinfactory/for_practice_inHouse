@@ -1,11 +1,11 @@
 <script setup>
-import { inject } from "vue";
+import { useNumbersStore } from "../stores/numbers";
 
-const numbers = inject("numbers");
+const { numbers, doubleNumber } = useNumbersStore();
 </script>
 
 <template>
   <div>
-    <h1>GreatGrandChild Component {{ numbers }}</h1>
+    <h1>GreatGrandChild Component {{ doubleNumber }}</h1>
   </div>
 </template>
