@@ -1,7 +1,7 @@
 <script setup>
-import { defineProps } from "vue";
+import { inject } from "vue";
 
-const { numbers } = defineProps(["numbers"]);
+const numbers = inject("numbers");
 </script>
 
 <template>
