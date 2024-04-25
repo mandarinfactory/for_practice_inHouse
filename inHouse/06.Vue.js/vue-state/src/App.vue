@@ -1,31 +1,11 @@
 <script setup>
-import { ref, reactive } from "vue";
-
-/* const red = ref(0);
-const blue = ref(0);
-const green = ref(0); */
-
-/* const color = ref({
-  red: 0,
-  blue: 0,
-  green: 0,
-}); */
-
-const color = reactive({
-  red: 0,
-  blue: 0,
-  green: 0,
-});
-
-const selectRandomColor = () => {
-  color.red = 266;
-  color.blue = 216;
-  color.green = 170;
-}
+import Parent from './components/Parent.vue';
 </script>
 
 <template>
-  <main></main>
+  <main>
+    <Parent />
+  </main>
 </template>
 
 <style scoped>
