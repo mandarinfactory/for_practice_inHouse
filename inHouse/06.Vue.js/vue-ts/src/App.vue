@@ -1,30 +1,73 @@
 <script setup lang="ts">
-let name = "DeAngelo";
-let age = 38;
-let gay = false;
-let occupation: string;
+import { ref } from "vue";
+import Card from "./components/Card.vue";
 
-age = 32;
-occupation = "Software Developer";
-
-const arrayOfNumbers: (string | number)[] = [];
-
-interface Employee {
-  name: string;
-  age: number;
-  gay: boolean;
-  occupation?: string;
+enum GENDER {
+  MALE,
+  FEMALE,
 }
 
-const employee: Employee = {
-  name: "Brent",
-  age: 29,
-  gay: true,
-};
+interface Invitees {
+  id: number;
+  name: string;
+  gender: GENDER;
+}
 
-employee.occupation = "Frontend Developer";
+const name = ref("");
+const gender = ref(GENDER.MALE);
+const invitees = ref<Invitees[]>([]);
+
+const addInvitees = (): void => {
+  if (name.value) {
+    invitees.value.push({
+      id: Math.floor(Math.random() * 10000),
+      name: name.value,
+      gender: gender.value,
+    });
+    (name.value = ""), (gender.value = GENDER.MALE);
+  }
+};
 </script>
 
 <template>
-  <main></main>
+  <main>
+    <div>
+      <h1>People Invited to My Party</h1>
+      <div class="inputContainer">
+        <input
+          v-model="name"
+          type="text"
+          placeholder="Name...."
+          @keypress.enter="addInvitees"
+        />
+        <select v-model="gender" @keypress.enter="addInvitees">
+          <option :value="GENDER.MALE">Male</option>
+          <option :value="GENDER.FEMALE">Female</option>
+        </select>
+      </div>
+      <div class="cardsContainer">
+        <Card
+          v-for="invitee in invitees"
+          :key="invitee.id"
+          :invitee="invitee"
+        />
+      </div>
+    </div>
+  </main>
 </template>
+
+<style scoped>
+main {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: antiquewhite;
+}
+input,
+select {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 3px;
+}
+</style>
