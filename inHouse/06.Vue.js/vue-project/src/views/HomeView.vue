@@ -1,11 +1,9 @@
 <script setup lang="ts">
-import Timeline from '@/components/Timeline.vue';
-
-
+import Cards from "../components/Cards/Cards.vue"
 </script>
 
 <template>
   <main>
-    <Timeline />
+    <Cards />
   </main>
 </template>

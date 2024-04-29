@@ -1,17 +1,18 @@
-import "./assets/main.css";
+import { createApp } from 'vue'
+import { createPinia } from 'pinia'
+import Antd from 'ant-design-vue';
 import 'ant-design-vue/dist/reset.css';
 
-import { createApp } from "vue";
-import { createPinia } from "pinia";
-import { DatePicker } from 'ant-design-vue';
 
-import App from "./App.vue";
-import router from "./router";
+import App from './App.vue'
+import router from './router'
 
-const app = createApp(App);
+import './assets/main.css'
 
-app.use(createPinia());
-app.use(DatePicker);
-app.use(router);
+const app = createApp(App)
 
-app.mount("#app");
+app.use(createPinia())
+app.use(Antd)
+app.use(router)
+
+app.mount('#app')
